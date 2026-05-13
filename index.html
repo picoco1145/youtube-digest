@@ -1,0 +1,1332 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>유튜브 구독 정리 대시보드</title>
+<meta name="description" content="구독 중인 유튜브 채널의 최신 영상을 한국어로 요약한 대시보드"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;600;700&family=Inter:wght@400;600&display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --bg: #090e1a;
+    --surface: #111827;
+    --surface2: #1a2235;
+    --border: #1e2d47;
+    --accent: #6c63ff;
+    --accent2: #00d4ff;
+    --text: #e8eaf0;
+    --muted: #7a8499;
+    --card-hover: #16213a;
+    --radius: 14px;
+    --shadow: 0 4px 24px rgba(0,0,0,0.4);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Pretendard', 'Inter', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    line-height: 1.6;
+  }
+
+  /* ── Header ── */
+  header {
+    background: linear-gradient(135deg, #0d1b3e 0%, #1a0533 100%);
+    border-bottom: 1px solid var(--border);
+    padding: 24px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky; top: 0; z-index: 100;
+    backdrop-filter: blur(12px);
+  }
+  .logo {
+    display: flex; align-items: center; gap: 12px;
+  }
+  .logo-icon {
+    width: 40px; height: 40px;
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 20px;
+  }
+  .logo-text h1 { font-size: 1.25rem; font-weight: 700; letter-spacing: -0.5px; }
+  .logo-text p { font-size: 0.75rem; color: var(--muted); }
+  .header-meta { font-size: 0.8rem; color: var(--muted); text-align: right; }
+  .header-meta span { display: block; }
+
+  /* ── Stats bar ── */
+  .stats-bar {
+    display: flex; gap: 20px; padding: 20px 40px;
+    border-bottom: 1px solid var(--border);
+    background: var(--surface);
+  }
+  .stat {
+    display: flex; align-items: center; gap: 8px;
+    font-size: 0.85rem; color: var(--muted);
+  }
+  .stat strong { color: var(--text); font-size: 1rem; }
+
+  /* ── Filter tabs ── */
+  .filter-area {
+    padding: 20px 40px 0;
+    display: flex; gap: 10px; flex-wrap: wrap; align-items: center;
+  }
+  .filter-label { font-size: 0.8rem; color: var(--muted); margin-right: 4px; }
+  .filter-btn {
+    padding: 6px 16px;
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    color: var(--muted);
+    font-size: 0.8rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-family: inherit;
+  }
+  .filter-btn:hover, .filter-btn.active {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: #fff;
+  }
+
+  /* ── Search ── */
+  .search-area { padding: 16px 40px; }
+  #search-input {
+    width: 100%; max-width: 480px;
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 10px 18px;
+    color: var(--text);
+    font-size: 0.9rem;
+    font-family: inherit;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+  #search-input:focus { border-color: var(--accent); }
+
+  /* ── Grid ── */
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 22px;
+    padding: 20px 40px 60px;
+  }
+
+  /* ── Card ── */
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+    transition: transform 0.25s, box-shadow 0.25s, border-color 0.25s;
+    display: flex; flex-direction: column;
+  }
+  .card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow);
+    border-color: var(--accent);
+  }
+  .card-thumb {
+    position: relative; width: 100%; padding-top: 56.25%;
+    overflow: hidden;
+  }
+  .card-thumb img {
+    position: absolute; inset: 0;
+    width: 100%; height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s;
+  }
+  .card:hover .card-thumb img { transform: scale(1.04); }
+  .card-thumb .play-overlay {
+    position: absolute; inset: 0;
+    background: rgba(0,0,0,0);
+    display: flex; align-items: center; justify-content: center;
+    transition: background 0.2s;
+  }
+  .card:hover .play-overlay { background: rgba(0,0,0,0.3); }
+  .play-btn {
+    width: 52px; height: 52px;
+    background: rgba(255,255,255,0.9);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px;
+    opacity: 0; transform: scale(0.8);
+    transition: opacity 0.2s, transform 0.2s;
+  }
+  .card:hover .play-btn { opacity: 1; transform: scale(1); }
+
+  .card-body { padding: 18px; flex: 1; display: flex; flex-direction: column; gap: 10px; }
+  .card-channel {
+    display: flex; align-items: center; gap: 8px;
+  }
+  .channel-pill {
+    font-size: 0.72rem; font-weight: 600;
+    padding: 3px 10px;
+    background: linear-gradient(135deg, rgba(108,99,255,0.2), rgba(0,212,255,0.2));
+    border: 1px solid rgba(108,99,255,0.3);
+    border-radius: 999px;
+    color: var(--accent2);
+  }
+  .card-date { font-size: 0.72rem; color: var(--muted); margin-left: auto; }
+  .card-title {
+    font-size: 0.95rem; font-weight: 600; line-height: 1.4;
+    color: var(--text);
+    display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+  }
+
+  /* 요약 토글 */
+  .summary-toggle {
+    background: none; border: none;
+    color: var(--accent2); font-size: 0.8rem; cursor: pointer;
+    font-family: inherit;
+    display: flex; align-items: center; gap: 4px;
+    padding: 0; margin-top: auto;
+  }
+  .summary-toggle .arrow { transition: transform 0.2s; }
+  .summary-toggle.open .arrow { transform: rotate(180deg); }
+  .summary-content {
+    display: none;
+    background: var(--surface2);
+    border-radius: 10px;
+    padding: 14px;
+    font-size: 0.82rem;
+    line-height: 1.65;
+    color: #c5cad8;
+    border: 1px solid var(--border);
+    margin-top: 4px;
+  }
+  .summary-content.visible { display: block; animation: fadeIn 0.2s ease; }
+  .summary-content h2 { font-size: 0.82rem; color: var(--accent2); margin: 10px 0 4px; }
+  .summary-content h2:first-child { margin-top: 0; }
+  .summary-content ul { padding-left: 16px; }
+  .summary-content li { margin-bottom: 4px; }
+  .card-link {
+    display: inline-flex; align-items: center; gap: 5px;
+    font-size: 0.78rem; color: var(--accent);
+    text-decoration: none; padding: 6px 0;
+    transition: color 0.2s;
+  }
+  .card-link:hover { color: var(--accent2); }
+
+  /* ── Card actions ── */
+  .card-actions {
+    display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+    margin-top: 4px;
+  }
+  .notebooklm-btn {
+    background: rgba(108,99,255,0.12);
+    border: 1px solid rgba(108,99,255,0.3);
+    border-radius: 8px;
+    color: #a78bfa;
+    font-size: 0.72rem;
+    padding: 5px 10px;
+    cursor: pointer;
+    font-family: inherit;
+    transition: all 0.2s;
+    display: inline-flex; align-items: center; gap: 4px;
+    white-space: nowrap;
+  }
+  .notebooklm-btn:hover { background: rgba(108,99,255,0.25); border-color: var(--accent); color: #fff; }
+  .notebooklm-btn:disabled { opacity: 0.6; cursor: not-allowed; }
+  .notebooklm-btn.success { background: rgba(0,200,100,0.15); border-color: rgba(0,200,100,0.4); color: #00c864; }
+  .notebooklm-btn.error { background: rgba(255,80,80,0.15); border-color: rgba(255,80,80,0.4); color: #ff6060; }
+
+  /* ── No transcript badge ── */
+  .badge-no-transcript {
+    font-size: 0.68rem; padding: 2px 8px;
+    background: rgba(255,180,0,0.12);
+    border: 1px solid rgba(255,180,0,0.25);
+    border-radius: 999px; color: #ffa500;
+  }
+
+  /* ── Transcript section ── */
+  .transcript-header {
+    display: flex; align-items: center; justify-content: space-between;
+    margin-top: 6px;
+  }
+  .transcript-toggle {
+    background: none; border: none;
+    color: #7a8499; font-size: 0.78rem; cursor: pointer;
+    font-family: inherit;
+    display: flex; align-items: center; gap: 4px;
+    padding: 0;
+    transition: color 0.2s;
+  }
+  .transcript-toggle:hover { color: var(--text); }
+  .transcript-toggle .arrow { transition: transform 0.2s; }
+  .transcript-toggle.open .arrow { transform: rotate(180deg); }
+  .copy-btn {
+    background: rgba(108,99,255,0.1);
+    border: 1px solid rgba(108,99,255,0.3);
+    border-radius: 8px;
+    color: var(--accent2);
+    font-size: 0.72rem;
+    padding: 4px 10px;
+    cursor: pointer;
+    font-family: inherit;
+    transition: all 0.2s;
+    display: flex; align-items: center; gap: 4px;
+  }
+  .copy-btn:hover { background: rgba(108,99,255,0.25); border-color: var(--accent); color: #fff; }
+  .copy-btn.copied { background: rgba(0,200,100,0.2); border-color: rgba(0,200,100,0.4); color: #00c864; }
+  .transcript-box {
+    display: none;
+    background: #0c1220;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 12px 14px;
+    font-size: 0.78rem;
+    line-height: 1.7;
+    color: #8a95aa;
+    max-height: 240px;
+    overflow-y: auto;
+    margin-top: 6px;
+    white-space: pre-wrap;
+    word-break: break-word;
+    font-family: 'Inter', monospace;
+  }
+  .transcript-box.visible { display: block; animation: fadeIn 0.2s ease; }
+  .transcript-box::-webkit-scrollbar { width: 4px; }
+  .transcript-box::-webkit-scrollbar-track { background: transparent; }
+  .transcript-box::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
+
+  @keyframes fadeIn { from{opacity:0;transform:translateY(-6px)} to{opacity:1;transform:none} }
+
+  /* ── Empty state ── */
+  .empty {
+    text-align: center; padding: 80px 40px; color: var(--muted);
+  }
+  .empty .icon { font-size: 4rem; margin-bottom: 16px; }
+  .empty h2 { font-size: 1.1rem; margin-bottom: 8px; color: var(--text); }
+
+  /* ── Footer ── */
+  footer {
+    text-align: center; padding: 24px;
+    font-size: 0.75rem; color: var(--muted);
+    border-top: 1px solid var(--border);
+  }
+
+  @media (max-width: 600px) {
+    header, .stats-bar, .filter-area, .search-area, .grid { padding-left: 16px; padding-right: 16px; }
+    .grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">
+    <div class="logo-icon">▶</div>
+    <div class="logo-text">
+      <h1>유튜브 구독 정리</h1>
+      <p>구독 채널 새 영상 자동 요약</p>
+    </div>
+  </div>
+  <div class="header-meta">
+    <span>마지막 업데이트</span>
+    <span>2026-05-13 06:00</span>
+  </div>
+</header>
+
+<div class="stats-bar">
+  <div class="stat">📺 <strong>26</strong> 영상</div>
+  <div class="stat">📡 <strong>3</strong> 채널</div>
+</div>
+
+<div class="filter-area">
+  <span class="filter-label">채널:</span>
+  <button class="filter-btn active" id="filter-all" onclick="filterChannel('all', this)">전체</button>
+  
+  <button class="filter-btn" onclick="filterChannel('Grace Leung', this)">Grace Leung</button>
+  
+  <button class="filter-btn" onclick="filterChannel('Nate Herk', this)">Nate Herk</button>
+  
+  <button class="filter-btn" onclick="filterChannel('Nicholas Puru', this)">Nicholas Puru</button>
+  
+</div>
+
+<div class="search-area">
+  <input id="search-input" type="search" placeholder="🔍  영상 제목 검색..." oninput="doSearch(this.value)"/>
+</div>
+
+<main>
+
+<div class="grid" id="video-grid">
+  
+  <article class="card" data-channel="Nate Herk" data-title="every level of claude explained in 21 minutes">
+    <a href="https://www.youtube.com/watch?v=ZRb7D6R64hM" target="_blank" rel="noopener">
+      <div class="card-thumb">
+        <img src="https://i.ytimg.com/vi/ZRb7D6R64hM/hqdefault.jpg" alt="Every Level of Claude Explained in 21 Minutes" loading="lazy"/>
+        <div class="play-overlay"><div class="play-btn">▶</div></div>
+      </div>
+    </a>
+    <div class="card-body">
+      <div class="card-channel">
+        <span class="channel-pill">Nate Herk</span>
+        <span class="badge-no-transcript">설명 기반</span>
+        <span class="card-date">2026-05-12</span>
+      </div>
+      <div class="card-title">Every Level of Claude Explained in 21 Minutes</div>
+      <button class="summary-toggle" onclick="toggleSummary(this)" id="btn-ZRb7D6R64hM">
+        📋 요약 보기 <span class="arrow">▾</span>
+      </button>
+      <div class="summary-content" id="summary-ZRb7D6R64hM">
+        <h2>핵심 요약</h2>
+<p>Nate Herk는 400시간 이상 Claude AI 모델을 사용한 경험을 바탕으로 Claude의 모든 '레벨'을 상세히 설명하는 영상을 제공합니다. 이 영상은 Claude의 다양한 측면과 기능을 심층적으로 분석하여 시청자가 모델을 포괄적으로 이해하고 효과적으로 활용할 수 있도록 돕습니다.</p>
+<h2>주요 포인트</h2>
+<ul>
+<li>Claude AI 모델의 심층적인 이해를 위한 '레벨별' 분석이 제공됩니다.</li>
+<li>400시간 이상 Claude를 활용한 전문가의 풍부한 경험과 실용적인 통찰을 공유합니다.</li>
+<li>Claude의 기능, 활용법, 그리고 각 레벨의 특징에 대한 상세한 설명을 다룹니다.</li>
+</ul>
+<h2>핵심 인사이트</h2>
+<p>Claude AI 모델의 복잡한 기능을 마스터하고 실제 활용 능력을 높이고자 하는 사용자들은 이 영상을 통해 전문가의 깊이 있는 지식과 실용적인 전략을 얻을 수 있습니다.</p>
+      </div>
+      
+      <div class="card-actions">
+        <a class="card-link" href="https://www.youtube.com/watch?v=ZRb7D6R64hM" target="_blank" rel="noopener">
+          ↗ 유튜브에서 보기
+        </a>
+        <button class="notebooklm-btn" data-url="https://www.youtube.com/watch?v=ZRb7D6R64hM" data-title="Every Level of Claude Explained in 21 Minutes" onclick="makeNotebookLM(this)">
+          📓 NotebookLM
+        </button>
+      </div>
+    </div>
+  </article>
+  
+  <article class="card" data-channel="Nate Herk" data-title="claude code just got an agent dashboard">
+    <a href="https://www.youtube.com/watch?v=ZAaxx3qyT8g" target="_blank" rel="noopener">
+      <div class="card-thumb">
+        <img src="https://i.ytimg.com/vi/ZAaxx3qyT8g/hqdefault.jpg" alt="Claude Code Just Got an Agent Dashboard" loading="lazy"/>
+        <div class="play-overlay"><div class="play-btn">▶</div></div>
+      </div>
+    </a>
+    <div class="card-body">
+      <div class="card-channel">
+        <span class="channel-pill">Nate Herk</span>
+        <span class="badge-no-transcript">설명 기반</span>
+        <span class="card-date">2026-05-12</span>
+      </div>
+      <div class="card-title">Claude Code Just Got an Agent Dashboard</div>
+      <button class="summary-toggle" onclick="toggleSummary(this)" id="btn-ZAaxx3qyT8g">
+        📋 요약 보기 <span class="arrow">▾</span>
+      </button>
+      <div class="summary-content" id="summary-ZAaxx3qyT8g">
+        <h2>핵심 요약</h2>
+<p>Claude Code가 최근 'Agent View'라는 새로운 기능을 출시했습니다. 이 기능은 단일 터미널 탭에서 여러 세션을 효율적으로 실행하고 관리할 수 있는 방법을 제공합니다. 본 영상에서는 Nate Herk이 'Agent View'의 작동 방식과 활용법을 직접 시연합니다.</p>
+<h2>주요 포인트</h2>
+<ul>
+<li>Claude Code의 새로운 기능인 'Agent View'가 공식 출시되었습니다.</li>
+<li>'Agent View'는 사용자가 단일 터미널 탭에서 여러 개의 세션을 동시에 실행하고 관리할 수 있게 합니다.</li>
+<li>영상에서는 Nate Herk이 'Agent View'의 전반적인 기능과 사용 방법을 상세히 안내하고 시연합니다.</li>
+</ul>
+<h2>핵심 인사이트</h2>
+<p>'Agent View'를 통해 사용자들은 여러 Claude Code 세션을 한곳에서 통합 관리함으로써 작업 효율성을 크게 높이고 생산성을 향상시킬 수 있다는 점입니다.</p>
+      </div>
+      
+      <div class="card-actions">
+        <a class="card-link" href="https://www.youtube.com/watch?v=ZAaxx3qyT8g" target="_blank" rel="noopener">
+          ↗ 유튜브에서 보기
+        </a>
+        <button class="notebooklm-btn" data-url="https://www.youtube.com/watch?v=ZAaxx3qyT8g" data-title="Claude Code Just Got an Agent Dashboard" onclick="makeNotebookLM(this)">
+          📓 NotebookLM
+        </button>
+      </div>
+    </div>
+  </article>
+  
+  <article class="card" data-channel="Nicholas Puru" data-title="claude desktop just got every open-source model">
+    <a href="https://www.youtube.com/watch?v=qDaoP8ObaTo" target="_blank" rel="noopener">
+      <div class="card-thumb">
+        <img src="https://i.ytimg.com/vi/qDaoP8ObaTo/hqdefault.jpg" alt="Claude Desktop Just Got Every Open-Source Model" loading="lazy"/>
+        <div class="play-overlay"><div class="play-btn">▶</div></div>
+      </div>
+    </a>
+    <div class="card-body">
+      <div class="card-channel">
+        <span class="channel-pill">Nicholas Puru</span>
+        <span class="badge-no-transcript">설명 기반</span>
+        <span class="card-date">2026-05-10</span>
+      </div>
+      <div class="card-title">Claude Desktop Just Got Every Open-Source Model</div>
+      <button class="summary-toggle" onclick="toggleSummary(this)" id="btn-qDaoP8ObaTo">
+        📋 요약 보기 <span class="arrow">▾</span>
+      </button>
+      <div class="summary-content" id="summary-qDaoP8ObaTo">
+        <h2>핵심 요약</h2>
+<p>이 영상은 Claude Desktop이 이제 모든 오픈소스 AI 모델을 지원하게 되었다는 중요한 소식을 전합니다. 이는 사용자들이 다양한 인공지능 모델을 단일 플랫폼에서 활용할 수 있게 되어, Claude Desktop의 기능과 활용성이 크게 확장되었음을 의미합니다.</p>
+<h2>주요 포인트</h2>
+<ul>
+<li>Claude Desktop이 모든 오픈소스 AI 모델을 통합 지원하기 시작했습니다.</li>
+<li>사용자는 이제 Anthropic의 모델뿐만 아니라 다양한 오픈소스 AI 모델을 Claude Desktop에서 활용할 수 있습니다.</li>
+<li>이 업데이트는 Claude Desktop의 다재다능함과 사용자 편의성을 크게 향상시킵니다.</li>
+</ul>
+<h2>핵심 인사이트</h2>
+<p>이 영상은 AI 기술의 통합과 접근성 향상이 사용자 경험과 생산성에 얼마나 큰 영향을 미칠 수 있는지 보여줍니다. 다양한 AI 모델을 한 곳에서 쉽게 사용할 수 있게 됨으로써, AI 활용의 폭이 넓어지고 새로운 가능성이 열릴 것입니다.</p>
+      </div>
+      
+      <div class="card-actions">
+        <a class="card-link" href="https://www.youtube.com/watch?v=qDaoP8ObaTo" target="_blank" rel="noopener">
+          ↗ 유튜브에서 보기
+        </a>
+        <button class="notebooklm-btn" data-url="https://www.youtube.com/watch?v=qDaoP8ObaTo" data-title="Claude Desktop Just Got Every Open-Source Model" onclick="makeNotebookLM(this)">
+          📓 NotebookLM
+        </button>
+      </div>
+    </div>
+  </article>
+  
+  <article class="card" data-channel="Nate Herk" data-title="hermes agent: zero to personal ai assistant (1 hour course)">
+    <a href="https://www.youtube.com/watch?v=gb5TlGw6Uks" target="_blank" rel="noopener">
+      <div class="card-thumb">
+        <img src="https://i.ytimg.com/vi/gb5TlGw6Uks/hqdefault.jpg" alt="Hermes Agent: Zero to Personal AI Assistant (1 Hour Course)" loading="lazy"/>
+        <div class="play-overlay"><div class="play-btn">▶</div></div>
+      </div>
+    </a>
+    <div class="card-body">
+      <div class="card-channel">
+        <span class="channel-pill">Nate Herk</span>
+        <span class="badge-no-transcript">설명 기반</span>
+        <span class="card-date">2026-05-10</span>
+      </div>
+      <div class="card-title">Hermes Agent: Zero to Personal AI Assistant (1 Hour Course)</div>
+      <button class="summary-toggle" onclick="toggleSummary(this)" id="btn-gb5TlGw6Uks">
+        📋 요약 보기 <span class="arrow">▾</span>
+      </button>
+      <div class="summary-content" id="summary-gb5TlGw6Uks">
+        <h2>핵심 요약</h2>
+<p>이 영상은 "Hermes Agent"를 처음부터 설정하여 개인 AI 비서로 만드는 과정을 상세히 안내하는 1시간 분량의 완벽한 가이드입니다. 시청자는 영상을 통해 "Hermes Agent"를 VPS(가상 개인 서버) 환경에 성공적으로 구축하고 개인 맞춤형 AI 자동화 시스템을 만드는 방법을 배울 수 있습니다.</p>
+<h2>주요 포인트</h2>
+<ul>
+<li><strong>Hermes Agent 설정의 완전한 과정:</strong> "Hermes Agent"를 처음부터 구축하고 개인 AI 비서로 활용하기 위한 모든 단계별 설정 방법을 제공합니다.</li>
+<li><strong>VPS 환경 구축 및 활용:</strong> "Hermes Agent"를 호스팅하고 실행하는 데 필요한 VPS(가상 개인 서버) 환경 설정에 대한 내용을 다룹니다. (영상의 설명에는 Hostinger VPS 할인 코드도 포함되어 있습니다.)</li>
+<li><strong>개인화된 AI 비서 구축:</strong> 제공된 가이드를 따라 "Hermes Agent"를 자신만의 필요에 맞게 개인화된 AI 비서로 만드는 방법을 배울 수 있습니다.</li>
+</ul>
+<h2>핵심 인사이트</h2>
+<p>이 영상은 복잡하게 느껴질 수 있는 AI 에이전트 구축 과정을 누구나 따라 할 수 있도록 상세하게 설명하여, 기술적 배경이 없더라도 자신만의 AI 비서를 직접 만들 수 있다는 실질적인 인사이트를 제공합니다. 이를 통해 AI 자동화 도구 도입의 진입 장벽을 낮추고 개인의 생산성을 향상시킬 수 있는 기회를 얻을 수 있습니다.</p>
+      </div>
+      
+      <div class="card-actions">
+        <a class="card-link" href="https://www.youtube.com/watch?v=gb5TlGw6Uks" target="_blank" rel="noopener">
+          ↗ 유튜브에서 보기
+        </a>
+        <button class="notebooklm-btn" data-url="https://www.youtube.com/watch?v=gb5TlGw6Uks" data-title="Hermes Agent: Zero to Personal AI Assistant (1 Hour Course)" onclick="makeNotebookLM(this)">
+          📓 NotebookLM
+        </button>
+      </div>
+    </div>
+  </article>
+  
+  <article class="card" data-channel="Nate Herk" data-title="this is the most powerful tool to give to claude code">
+    <a href="https://www.youtube.com/watch?v=YHk45NEpspE" target="_blank" rel="noopener">
+      <div class="card-thumb">
+        <img src="https://i.ytimg.com/vi/YHk45NEpspE/hqdefault.jpg" alt="This is The Most Powerful Tool to Give to Claude Code" loading="lazy"/>
+        <div class="play-overlay"><div class="play-btn">▶</div></div>
+      </div>
+    </a>
+    <div class="card-body">
+      <div class="card-channel">
+        <span class="channel-pill">Nate Herk</span>
+        <span class="badge-no-transcript">설명 기반</span>
+        <span class="card-date">2026-05-09</span>
+      </div>
+      <div class="card-title">This is The Most Powerful Tool to Give to Claude Code</div>
+      <button class="summary-toggle" onclick="toggleSummary(this)" id="btn-YHk45NEpspE">
+        📋 요약 보기 <span class="arrow">▾</span>
+      </button>
+      <div class="summary-content" id="summary-YHk45NEpspE">
+        <p>⚠️ 요약 생성 실패: 쿼터 초과</p>
+      </div>
+      
+      <div class="card-actions">
+        <a class="card-link" href="https://www.youtube.com/watch?v=YHk45NEpspE" target="_blank" rel="noopener">
+          ↗ 유튜브에서 보기
+        </a>
+        <button class="notebooklm-btn" data-url="https://www.youtube.com/watch?v=YHk45NEpspE" data-title="This is The Most Powerful Tool to Give to Claude Code" onclick="makeNotebookLM(this)">
+          📓 NotebookLM
+        </button>
+      </div>
+    </div>
+  </article>
+  
+  <article class="card" data-channel="Nicholas Puru" data-title="openclaw + hermes = 50% cheaper ai bill">
+    <a href="https://www.youtube.com/watch?v=qk0yiCS2nv0" target="_blank" rel="noopener">
+      <div class="card-thumb">
+        <img src="https://i.ytimg.com/vi/qk0yiCS2nv0/hqdefault.jpg" alt="OpenClaw + Hermes = 50% Cheaper AI Bill" loading="lazy"/>
+        <div class="play-overlay"><div class="play-btn">▶</div></div>
+      </div>
+    </a>
+    <div class="card-body">
+      <div class="card-channel">
+        <span class="channel-pill">Nicholas Puru</span>
+        <span class="badge-no-transcript">설명 기반</span>
+        <span class="card-date">2026-05-08</span>
+      </div>
+      <div class="card-title">OpenClaw + Hermes = 50% Cheaper AI Bill</div>
+      <button class="summary-toggle" onclick="toggleSummary(this)" id="btn-qk0yiCS2nv0">
+        📋 요약 보기 <span class="arrow">▾</span>
+      </button>
+      <div class="summary-content" id="summary-qk0yiCS2nv0">
+        <h2>핵심 요약</h2>
+<p>이 영상은 두 가지 AI 에이전트인 OpenClaw와 Hermes를 함께 사용하여 AI 비용을 최대 50%까지 절감하는 방법을 설명합니다. 단일 AI 에이전트의 한계를 지적하며, 각 에이전트의 강점을 활용해 상호 보완적인 방식으로 AI 작업을 처리함으로써 효율성과 비용 절감 효과를 극대화하는 전략을 제시합니다.</p>
+<h2>주요 포인트</h2>
+<ul>
+<li>단일 AI 에이전트만으로는 복잡한 비즈니스 프로세스를 효율적으로 처리하기 어렵고 비용 측면에서도 한계가 있습니다.</li>
+<li>OpenClaw는 특정 작업(예: 데이터 수집 및 실행)에, Hermes는 다른 유형의 작업(예: 기획 및 전략 수립)에 특화되어 있어 각자의 강점에 맞게 활용됩니다.</li>
+<li>강연자는 본인의 실제 AI 설정과 모델 선택을 공유하며, 두 에이전트가 어떻게 협력하여 복잡한 작업을 수행하는지 구체적으로 보여줍니다.</li>
+<li>"계획-실행-검토(plan-execute-review)"라는 명확한 프로세스를 통해 각 에이전트가 작업 흐름 속에서 어떤 역할을 하고 정보를 주고받는지 설명합니다.</li>
+</ul>
+<h2>핵심 인사이트</h2>
+<p>복잡한 AI 작업을 수행할 때는 단일 에이전트에 의존하기보다, 각기 다른 전문성을 가진 AI 에이전트들을 조합하여 역할 분담을 명확히 하면 시스템의 효율성을 극대화하고 운영 비용을 크게 절감할 수 있습니다.</p>
+      </div>
+      
+      <div class="card-actions">
+        <a class="card-link" href="https://www.youtube.com/watch?v=qk0yiCS2nv0" target="_blank" rel="noopener">
+          ↗ 유튜브에서 보기
+        </a>
+        <button class="notebooklm-btn" data-url="https://www.youtube.com/watch?v=qk0yiCS2nv0" data-title="OpenClaw + Hermes = 50% Cheaper AI Bill" onclick="makeNotebookLM(this)">
+          📓 NotebookLM
+        </button>
+      </div>
+    </div>
+  </article>
+  
+  <article class="card" data-channel="Nate Herk" data-title="overwhelmed by ai? just copy my tech stack">
+    <a href="https://www.youtube.com/watch?v=35WuZxbAY68" target="_blank" rel="noopener">
+      <div class="card-thumb">
+        <img src="https://i.ytimg.com/vi/35WuZxbAY68/hqdefault.jpg" alt="Overwhelmed By AI? Just Copy My Tech Stack" loading="lazy"/>
+        <div class="play-overlay"><div class="play-btn">▶</div></div>
+      </div>
+    </a>
+    <div class="card-body">
+      <div class="card-channel">
+        <span class="channel-pill">Nate Herk</span>
+        <span class="badge-no-transcript">설명 기반</span>
+        <span class="card-date">2026-05-08</span>
+      </div>
+      <div class="card-title">Overwhelmed By AI? Just Copy My Tech Stack</div>
+      <button class="summary-toggle" onclick="toggleSummary(this)" id="btn-35WuZxbAY68">
+        📋 요약 보기 <span class="arrow">▾</span>
+      </button>
+      <div class="summary-content" id="summary-35WuZxbAY68">
+        <p>⚠️ 요약 생성 실패: 쿼터 초과</p>
+      </div>
+      
+      <div class="card-actions">
+        <a class="card-link" href="https://www.youtube.com/watch?v=35WuZxbAY68" target="_blank" rel="noopener">
+          ↗ 유튜브에서 보기
+        </a>
+        <button class="notebooklm-btn" data-url="https://www.youtube.com/watch?v=35WuZxbAY68" data-title="Overwhelmed By AI? Just Copy My Tech Stack" onclick="makeNotebookLM(this)">
+          📓 NotebookLM
+        </button>
+      </div>
+    </div>
+  </article>
+  
+  <article class="card" data-channel="Nate Herk" data-title="claude just solved session limits">
+    <a href="https://www.youtube.com/watch?v=3QclAjmu5Tw" target="_blank" rel="noopener">
+      <div class="card-thumb">
+        <img src="https://i.ytimg.com/vi/3QclAjmu5Tw/hqdefault.jpg" alt="Claude Just Solved Session Limits" loading="lazy"/>
+        <div class="play-overlay"><div class="play-btn">▶</div></div>
+      </div>
+    </a>
+    <div class="card-body">
+      <div class="card-channel">
+        <span class="channel-pill">Nate Herk</span>
+        <span class="badge-no-transcript">설명 기반</span>
+        <span class="card-date">2026-05-07</span>
+      </div>
+      <div class="card-title">Claude Just Solved Session Limits</div>
+      <button class="summary-toggle" onclick="toggleSummary(this)" id="btn-3QclAjmu5Tw">
+        📋 요약 보기 <span class="arrow">▾</span>
+      </button>
+      <div class="summary-content" id="summary-3QclAjmu5Tw">
+        <p>⚠️ 요약 생성 실패: 쿼터 초과</p>
+      </div>
+      
+      <div class="card-actions">
+        <a class="card-link" href="https://www.youtube.com/watch?v=3QclAjmu5Tw" target="_blank" rel="noopener">
+          ↗ 유튜브에서 보기
+        </a>
+        <button class="notebooklm-btn" data-url="https://www.youtube.com/watch?v=3QclAjmu5Tw" data-title="Claude Just Solved Session Limits" onclick="makeNotebookLM(this)">
+          📓 NotebookLM
+        </button>
+      </div>
+    </div>
+  </article>
+  
+  <article class="card" data-channel="Nate Herk" data-title="master 97% of codex in 1 hour (full course)">
+    <a href="https://www.youtube.com/watch?v=3TdD8Qv5Tk8" target="_blank" rel="noopener">
+      <div class="card-thumb">
+        <img src="https://i.ytimg.com/vi/3TdD8Qv5Tk8/hqdefault.jpg" alt="Master 97% of Codex in 1 Hour (full course)" loading="lazy"/>
+        <div class="play-overlay"><div class="play-btn">▶</div></div>
+      </div>
+    </a>
+    <div class="card-body">
+      <div class="card-channel">
+        <span class="channel-pill">Nate Herk</span>
+        <span class="badge-no-transcript">설명 기반</span>
+        <span class="card-date">2026-05-06</span>
+      </div>
+      <div class="card-title">Master 97% of Codex in 1 Hour (full course)</div>
+      <button class="summary-toggle" onclick="toggleSummary(this)" id="btn-3TdD8Qv5Tk8">
+        📋 요약 보기 <span class="arrow">▾</span>
+      </button>
+      <div class="summary-content" id="summary-3TdD8Qv5Tk8">
+        <p>⚠️ 요약 생성 실패: 쿼터 초과</p>
+      </div>
+      
+      <div class="card-actions">
+        <a class="card-link" href="https://www.youtube.com/watch?v=3TdD8Qv5Tk8" target="_blank" rel="noopener">
+          ↗ 유튜브에서 보기
+        </a>
+        <button class="notebooklm-btn" data-url="https://www.youtube.com/watch?v=3TdD8Qv5Tk8" data-title="Master 97% of Codex in 1 Hour (full course)" onclick="makeNotebookLM(this)">
+          📓 NotebookLM
+        </button>
+      </div>
+    </div>
+  </article>
+  
+  <article class="card" data-channel="Nicholas Puru" data-title="how to use claude code completely free">
+    <a href="https://www.youtube.com/watch?v=0wH0xY6qP84" target="_blank" rel="noopener">
+      <div class="card-thumb">
+        <img src="https://i.ytimg.com/vi/0wH0xY6qP84/hqdefault.jpg" alt="How to Use Claude Code Completely FREE" loading="lazy"/>
+        <div class="play-overlay"><div class="play-btn">▶</div></div>
+      </div>
+    </a>
+    <div class="card-body">
+      <div class="card-channel">
+        <span class="channel-pill">Nicholas Puru</span>
+        <span class="badge-no-transcript">설명 기반</span>
+        <span class="card-date">2026-05-05</span>
+      </div>
+      <div class="card-title">How to Use Claude Code Completely FREE</div>
+      <button class="summary-toggle" onclick="toggleSummary(this)" id="btn-0wH0xY6qP84">
+        📋 요약 보기 <span class="arrow">▾</span>
+      </button>
+      <div class="summary-content" id="summary-0wH0xY6qP84">
+        <p>⚠️ 요약 생성 실패: 쿼터 초과</p>
+      </div>
+      
+      <div class="card-actions">
+        <a class="card-link" href="https://www.youtube.com/watch?v=0wH0xY6qP84" target="_blank" rel="noopener">
+          ↗ 유튜브에서 보기
+        </a>
+        <button class="notebooklm-btn" data-url="https://www.youtube.com/watch?v=0wH0xY6qP84" data-title="How to Use Claude Code Completely FREE" onclick="makeNotebookLM(this)">
+          📓 NotebookLM
+        </button>
+      </div>
+    </div>
+  </article>
+  
+  <article class="card" data-channel="Nate Herk" data-title="higgsfield just turned claude into a creative agency">
+    <a href="https://www.youtube.com/watch?v=xn6Z5PYyAIE" target="_blank" rel="noopener">
+      <div class="card-thumb">
+        <img src="https://i.ytimg.com/vi/xn6Z5PYyAIE/hqdefault.jpg" alt="Higgsfield Just Turned Claude Into a Creative Agency" loading="lazy"/>
+        <div class="play-overlay"><div class="play-btn">▶</div></div>
+      </div>
+    </a>
+    <div class="card-body">
+      <div class="card-channel">
+        <span class="channel-pill">Nate Herk</span>
+        <span class="badge-no-transcript">설명 기반</span>
+        <span class="card-date">2026-05-05</span>
+      </div>
+      <div class="card-title">Higgsfield Just Turned Claude Into a Creative Agency</div>
+      <button class="summary-toggle" onclick="toggleSummary(this)" id="btn-xn6Z5PYyAIE">
+        📋 요약 보기 <span class="arrow">▾</span>
+      </button>
+      <div class="summary-content" id="summary-xn6Z5PYyAIE">
+        <p>⚠️ 요약 생성 실패: 쿼터 초과</p>
+      </div>
+      
+      <div class="card-actions">
+        <a class="card-link" href="https://www.youtube.com/watch?v=xn6Z5PYyAIE" target="_blank" rel="noopener">
+          ↗ 유튜브에서 보기
+        </a>
+        <button class="notebooklm-btn" data-url="https://www.youtube.com/watch?v=xn6Z5PYyAIE" data-title="Higgsfield Just Turned Claude Into a Creative Agency" onclick="makeNotebookLM(this)">
+          📓 NotebookLM
+        </button>
+      </div>
+    </div>
+  </article>
+  
+  <article class="card" data-channel="Nicholas Puru" data-title="chatgpt recommends my business, here’s how">
+    <a href="https://www.youtube.com/watch?v=tb466sawkQM" target="_blank" rel="noopener">
+      <div class="card-thumb">
+        <img src="https://i.ytimg.com/vi/tb466sawkQM/hqdefault.jpg" alt="ChatGPT Recommends My Business, Here’s How" loading="lazy"/>
+        <div class="play-overlay"><div class="play-btn">▶</div></div>
+      </div>
+    </a>
+    <div class="card-body">
+      <div class="card-channel">
+        <span class="channel-pill">Nicholas Puru</span>
+        <span class="badge-no-transcript">설명 기반</span>
+        <span class="card-date">2026-05-05</span>
+      </div>
+      <div class="card-title">ChatGPT Recommends My Business, Here’s How</div>
+      <button class="summary-toggle" onclick="toggleSummary(this)" id="btn-tb466sawkQM">
+        📋 요약 보기 <span class="arrow">▾</span>
+      </button>
+      <div class="summary-content" id="summary-tb466sawkQM">
+        <p>⚠️ 요약 생성 실패: 쿼터 초과</p>
+      </div>
+      
+      <div class="card-actions">
+        <a class="card-link" href="https://www.youtube.com/watch?v=tb466sawkQM" target="_blank" rel="noopener">
+          ↗ 유튜브에서 보기
+        </a>
+        <button class="notebooklm-btn" data-url="https://www.youtube.com/watch?v=tb466sawkQM" data-title="ChatGPT Recommends My Business, Here’s How" onclick="makeNotebookLM(this)">
+          📓 NotebookLM
+        </button>
+      </div>
+    </div>
+  </article>
+  
+  <article class="card" data-channel="Nate Herk" data-title="building realistic voice agents has never been easier">
+    <a href="https://www.youtube.com/watch?v=-cdexJWN8YA" target="_blank" rel="noopener">
+      <div class="card-thumb">
+        <img src="https://i.ytimg.com/vi/-cdexJWN8YA/hqdefault.jpg" alt="Building Realistic Voice Agents Has Never Been Easier" loading="lazy"/>
+        <div class="play-overlay"><div class="play-btn">▶</div></div>
+      </div>
+    </a>
+    <div class="card-body">
+      <div class="card-channel">
+        <span class="channel-pill">Nate Herk</span>
+        <span class="badge-no-transcript">설명 기반</span>
+        <span class="card-date">2026-05-04</span>
+      </div>
+      <div class="card-title">Building Realistic Voice Agents Has Never Been Easier</div>
+      <button class="summary-toggle" onclick="toggleSummary(this)" id="btn--cdexJWN8YA">
+        📋 요약 보기 <span class="arrow">▾</span>
+      </button>
+      <div class="summary-content" id="summary--cdexJWN8YA">
+        <p>⚠️ 요약 생성 실패: 쿼터 초과</p>
+      </div>
+      
+      <div class="card-actions">
+        <a class="card-link" href="https://www.youtube.com/watch?v=-cdexJWN8YA" target="_blank" rel="noopener">
+          ↗ 유튜브에서 보기
+        </a>
+        <button class="notebooklm-btn" data-url="https://www.youtube.com/watch?v=-cdexJWN8YA" data-title="Building Realistic Voice Agents Has Never Been Easier" onclick="makeNotebookLM(this)">
+          📓 NotebookLM
+        </button>
+      </div>
+    </div>
+  </article>
+  
+  <article class="card" data-channel="Nate Herk" data-title="i tried 100+ claude code skills. these 6 are the best">
+    <a href="https://www.youtube.com/watch?v=eRS3CmvrOvA" target="_blank" rel="noopener">
+      <div class="card-thumb">
+        <img src="https://i.ytimg.com/vi/eRS3CmvrOvA/hqdefault.jpg" alt="I Tried 100+ Claude Code Skills. These 6 Are The Best" loading="lazy"/>
+        <div class="play-overlay"><div class="play-btn">▶</div></div>
+      </div>
+    </a>
+    <div class="card-body">
+      <div class="card-channel">
+        <span class="channel-pill">Nate Herk</span>
+        <span class="badge-no-transcript">설명 기반</span>
+        <span class="card-date">2026-05-03</span>
+      </div>
+      <div class="card-title">I Tried 100+ Claude Code Skills. These 6 Are The Best</div>
+      <button class="summary-toggle" onclick="toggleSummary(this)" id="btn-eRS3CmvrOvA">
+        📋 요약 보기 <span class="arrow">▾</span>
+      </button>
+      <div class="summary-content" id="summary-eRS3CmvrOvA">
+        <p>⚠️ 요약 생성 실패: 쿼터 초과</p>
+      </div>
+      
+      <div class="card-actions">
+        <a class="card-link" href="https://www.youtube.com/watch?v=eRS3CmvrOvA" target="_blank" rel="noopener">
+          ↗ 유튜브에서 보기
+        </a>
+        <button class="notebooklm-btn" data-url="https://www.youtube.com/watch?v=eRS3CmvrOvA" data-title="I Tried 100+ Claude Code Skills. These 6 Are The Best" onclick="makeNotebookLM(this)">
+          📓 NotebookLM
+        </button>
+      </div>
+    </div>
+  </article>
+  
+  <article class="card" data-channel="Nicholas Puru" data-title="claude code: from beginner to autonomous agents (full course)">
+    <a href="https://www.youtube.com/watch?v=ylZJn4o2UaI" target="_blank" rel="noopener">
+      <div class="card-thumb">
+        <img src="https://i.ytimg.com/vi/ylZJn4o2UaI/hqdefault.jpg" alt="Claude Code: From Beginner To Autonomous Agents (Full Course)" loading="lazy"/>
+        <div class="play-overlay"><div class="play-btn">▶</div></div>
+      </div>
+    </a>
+    <div class="card-body">
+      <div class="card-channel">
+        <span class="channel-pill">Nicholas Puru</span>
+        <span class="badge-no-transcript">설명 기반</span>
+        <span class="card-date">2026-05-02</span>
+      </div>
+      <div class="card-title">Claude Code: From Beginner To Autonomous Agents (Full Course)</div>
+      <button class="summary-toggle" onclick="toggleSummary(this)" id="btn-ylZJn4o2UaI">
+        📋 요약 보기 <span class="arrow">▾</span>
+      </button>
+      <div class="summary-content" id="summary-ylZJn4o2UaI">
+        <p>⚠️ 요약 생성 실패: 쿼터 초과</p>
+      </div>
+      
+      <div class="card-actions">
+        <a class="card-link" href="https://www.youtube.com/watch?v=ylZJn4o2UaI" target="_blank" rel="noopener">
+          ↗ 유튜브에서 보기
+        </a>
+        <button class="notebooklm-btn" data-url="https://www.youtube.com/watch?v=ylZJn4o2UaI" data-title="Claude Code: From Beginner To Autonomous Agents (Full Course)" onclick="makeNotebookLM(this)">
+          📓 NotebookLM
+        </button>
+      </div>
+    </div>
+  </article>
+  
+  <article class="card" data-channel="Nicholas Puru" data-title="i am switching to codex over claude code">
+    <a href="https://www.youtube.com/watch?v=AuoCFOEqS04" target="_blank" rel="noopener">
+      <div class="card-thumb">
+        <img src="https://i.ytimg.com/vi/AuoCFOEqS04/hqdefault.jpg" alt="I am Switching to Codex Over Claude Code" loading="lazy"/>
+        <div class="play-overlay"><div class="play-btn">▶</div></div>
+      </div>
+    </a>
+    <div class="card-body">
+      <div class="card-channel">
+        <span class="channel-pill">Nicholas Puru</span>
+        <span class="badge-no-transcript">설명 기반</span>
+        <span class="card-date">2026-05-01</span>
+      </div>
+      <div class="card-title">I am Switching to Codex Over Claude Code</div>
+      <button class="summary-toggle" onclick="toggleSummary(this)" id="btn-AuoCFOEqS04">
+        📋 요약 보기 <span class="arrow">▾</span>
+      </button>
+      <div class="summary-content" id="summary-AuoCFOEqS04">
+        <p>⚠️ 요약 생성 실패: 쿼터 초과</p>
+      </div>
+      
+      <div class="card-actions">
+        <a class="card-link" href="https://www.youtube.com/watch?v=AuoCFOEqS04" target="_blank" rel="noopener">
+          ↗ 유튜브에서 보기
+        </a>
+        <button class="notebooklm-btn" data-url="https://www.youtube.com/watch?v=AuoCFOEqS04" data-title="I am Switching to Codex Over Claude Code" onclick="makeNotebookLM(this)">
+          📓 NotebookLM
+        </button>
+      </div>
+    </div>
+  </article>
+  
+  <article class="card" data-channel="Nate Herk" data-title="build & sell claude code operating systems (2+ hour course)">
+    <a href="https://www.youtube.com/watch?v=bCljOfCH8Ms" target="_blank" rel="noopener">
+      <div class="card-thumb">
+        <img src="https://i.ytimg.com/vi/bCljOfCH8Ms/hqdefault.jpg" alt="Build & Sell Claude Code Operating Systems (2+ Hour Course)" loading="lazy"/>
+        <div class="play-overlay"><div class="play-btn">▶</div></div>
+      </div>
+    </a>
+    <div class="card-body">
+      <div class="card-channel">
+        <span class="channel-pill">Nate Herk</span>
+        <span class="badge-no-transcript">설명 기반</span>
+        <span class="card-date">2026-05-01</span>
+      </div>
+      <div class="card-title">Build & Sell Claude Code Operating Systems (2+ Hour Course)</div>
+      <button class="summary-toggle" onclick="toggleSummary(this)" id="btn-bCljOfCH8Ms">
+        📋 요약 보기 <span class="arrow">▾</span>
+      </button>
+      <div class="summary-content" id="summary-bCljOfCH8Ms">
+        <p>⚠️ 요약 생성 실패: 쿼터 초과</p>
+      </div>
+      
+      <div class="card-actions">
+        <a class="card-link" href="https://www.youtube.com/watch?v=bCljOfCH8Ms" target="_blank" rel="noopener">
+          ↗ 유튜브에서 보기
+        </a>
+        <button class="notebooklm-btn" data-url="https://www.youtube.com/watch?v=bCljOfCH8Ms" data-title="Build &amp; Sell Claude Code Operating Systems (2+ Hour Course)" onclick="makeNotebookLM(this)">
+          📓 NotebookLM
+        </button>
+      </div>
+    </div>
+  </article>
+  
+  <article class="card" data-channel="Nicholas Puru" data-title="everything claude code shipped in the last 90 days">
+    <a href="https://www.youtube.com/watch?v=gCizF3dtBXU" target="_blank" rel="noopener">
+      <div class="card-thumb">
+        <img src="https://i.ytimg.com/vi/gCizF3dtBXU/hqdefault.jpg" alt="Everything Claude Code Shipped in the Last 90 Days" loading="lazy"/>
+        <div class="play-overlay"><div class="play-btn">▶</div></div>
+      </div>
+    </a>
+    <div class="card-body">
+      <div class="card-channel">
+        <span class="channel-pill">Nicholas Puru</span>
+        <span class="badge-no-transcript">설명 기반</span>
+        <span class="card-date">2026-04-30</span>
+      </div>
+      <div class="card-title">Everything Claude Code Shipped in the Last 90 Days</div>
+      <button class="summary-toggle" onclick="toggleSummary(this)" id="btn-gCizF3dtBXU">
+        📋 요약 보기 <span class="arrow">▾</span>
+      </button>
+      <div class="summary-content" id="summary-gCizF3dtBXU">
+        <p>⚠️ 요약 생성 실패: 쿼터 초과</p>
+      </div>
+      
+      <div class="card-actions">
+        <a class="card-link" href="https://www.youtube.com/watch?v=gCizF3dtBXU" target="_blank" rel="noopener">
+          ↗ 유튜브에서 보기
+        </a>
+        <button class="notebooklm-btn" data-url="https://www.youtube.com/watch?v=gCizF3dtBXU" data-title="Everything Claude Code Shipped in the Last 90 Days" onclick="makeNotebookLM(this)">
+          📓 NotebookLM
+        </button>
+      </div>
+    </div>
+  </article>
+  
+  <article class="card" data-channel="Nate Herk" data-title="claude design 2 hour course (beginner to pro)">
+    <a href="https://www.youtube.com/watch?v=ovabeVoWrA0" target="_blank" rel="noopener">
+      <div class="card-thumb">
+        <img src="https://i.ytimg.com/vi/ovabeVoWrA0/hqdefault.jpg" alt="Claude Design 2 HOUR COURSE (Beginner to Pro)" loading="lazy"/>
+        <div class="play-overlay"><div class="play-btn">▶</div></div>
+      </div>
+    </a>
+    <div class="card-body">
+      <div class="card-channel">
+        <span class="channel-pill">Nate Herk</span>
+        <span class="badge-no-transcript">설명 기반</span>
+        <span class="card-date">2026-04-30</span>
+      </div>
+      <div class="card-title">Claude Design 2 HOUR COURSE (Beginner to Pro)</div>
+      <button class="summary-toggle" onclick="toggleSummary(this)" id="btn-ovabeVoWrA0">
+        📋 요약 보기 <span class="arrow">▾</span>
+      </button>
+      <div class="summary-content" id="summary-ovabeVoWrA0">
+        <p>⚠️ 요약 생성 실패: 쿼터 초과</p>
+      </div>
+      
+      <div class="card-actions">
+        <a class="card-link" href="https://www.youtube.com/watch?v=ovabeVoWrA0" target="_blank" rel="noopener">
+          ↗ 유튜브에서 보기
+        </a>
+        <button class="notebooklm-btn" data-url="https://www.youtube.com/watch?v=ovabeVoWrA0" data-title="Claude Design 2 HOUR COURSE (Beginner to Pro)" onclick="makeNotebookLM(this)">
+          📓 NotebookLM
+        </button>
+      </div>
+    </div>
+  </article>
+  
+  <article class="card" data-channel="Nate Herk" data-title="32 tricks to level up claude code in 16 mins">
+    <a href="https://www.youtube.com/watch?v=jqoFP9QapXI" target="_blank" rel="noopener">
+      <div class="card-thumb">
+        <img src="https://i.ytimg.com/vi/jqoFP9QapXI/hqdefault.jpg" alt="32 Tricks to Level Up Claude Code in 16 Mins" loading="lazy"/>
+        <div class="play-overlay"><div class="play-btn">▶</div></div>
+      </div>
+    </a>
+    <div class="card-body">
+      <div class="card-channel">
+        <span class="channel-pill">Nate Herk</span>
+        <span class="badge-no-transcript">설명 기반</span>
+        <span class="card-date">2026-04-27</span>
+      </div>
+      <div class="card-title">32 Tricks to Level Up Claude Code in 16 Mins</div>
+      <button class="summary-toggle" onclick="toggleSummary(this)" id="btn-jqoFP9QapXI">
+        📋 요약 보기 <span class="arrow">▾</span>
+      </button>
+      <div class="summary-content" id="summary-jqoFP9QapXI">
+        <p>⚠️ 요약 생성 실패: 쿼터 초과</p>
+      </div>
+      
+      <div class="card-actions">
+        <a class="card-link" href="https://www.youtube.com/watch?v=jqoFP9QapXI" target="_blank" rel="noopener">
+          ↗ 유튜브에서 보기
+        </a>
+        <button class="notebooklm-btn" data-url="https://www.youtube.com/watch?v=jqoFP9QapXI" data-title="32 Tricks to Level Up Claude Code in 16 Mins" onclick="makeNotebookLM(this)">
+          📓 NotebookLM
+        </button>
+      </div>
+    </div>
+  </article>
+  
+  <article class="card" data-channel="Nate Herk" data-title="claude code + playwright automates literally anything">
+    <a href="https://www.youtube.com/watch?v=J-6pnl5DQg8" target="_blank" rel="noopener">
+      <div class="card-thumb">
+        <img src="https://i.ytimg.com/vi/J-6pnl5DQg8/hqdefault.jpg" alt="Claude Code + Playwright Automates Literally Anything" loading="lazy"/>
+        <div class="play-overlay"><div class="play-btn">▶</div></div>
+      </div>
+    </a>
+    <div class="card-body">
+      <div class="card-channel">
+        <span class="channel-pill">Nate Herk</span>
+        <span class="badge-no-transcript">설명 기반</span>
+        <span class="card-date">2026-04-25</span>
+      </div>
+      <div class="card-title">Claude Code + Playwright Automates Literally Anything</div>
+      <button class="summary-toggle" onclick="toggleSummary(this)" id="btn-J-6pnl5DQg8">
+        📋 요약 보기 <span class="arrow">▾</span>
+      </button>
+      <div class="summary-content" id="summary-J-6pnl5DQg8">
+        <p>⚠️ 요약 생성 실패: 쿼터 초과</p>
+      </div>
+      
+      <div class="card-actions">
+        <a class="card-link" href="https://www.youtube.com/watch?v=J-6pnl5DQg8" target="_blank" rel="noopener">
+          ↗ 유튜브에서 보기
+        </a>
+        <button class="notebooklm-btn" data-url="https://www.youtube.com/watch?v=J-6pnl5DQg8" data-title="Claude Code + Playwright Automates Literally Anything" onclick="makeNotebookLM(this)">
+          📓 NotebookLM
+        </button>
+      </div>
+    </div>
+  </article>
+  
+  <article class="card" data-channel="Grace Leung" data-title="claude design + claude skills: automate your marketing (claude code)">
+    <a href="https://www.youtube.com/watch?v=Ph-maUAiSU8" target="_blank" rel="noopener">
+      <div class="card-thumb">
+        <img src="https://i.ytimg.com/vi/Ph-maUAiSU8/hqdefault.jpg" alt="Claude Design + Claude Skills: Automate Your Marketing (Claude Code)" loading="lazy"/>
+        <div class="play-overlay"><div class="play-btn">▶</div></div>
+      </div>
+    </a>
+    <div class="card-body">
+      <div class="card-channel">
+        <span class="channel-pill">Grace Leung</span>
+        <span class="badge-no-transcript">설명 기반</span>
+        <span class="card-date">2026-04-25</span>
+      </div>
+      <div class="card-title">Claude Design + Claude Skills: Automate Your Marketing (Claude Code)</div>
+      <button class="summary-toggle" onclick="toggleSummary(this)" id="btn-Ph-maUAiSU8">
+        📋 요약 보기 <span class="arrow">▾</span>
+      </button>
+      <div class="summary-content" id="summary-Ph-maUAiSU8">
+        <p>⚠️ 요약 생성 실패: 쿼터 초과</p>
+      </div>
+      
+      <div class="card-actions">
+        <a class="card-link" href="https://www.youtube.com/watch?v=Ph-maUAiSU8" target="_blank" rel="noopener">
+          ↗ 유튜브에서 보기
+        </a>
+        <button class="notebooklm-btn" data-url="https://www.youtube.com/watch?v=Ph-maUAiSU8" data-title="Claude Design + Claude Skills: Automate Your Marketing (Claude Code)" onclick="makeNotebookLM(this)">
+          📓 NotebookLM
+        </button>
+      </div>
+    </div>
+  </article>
+  
+  <article class="card" data-channel="Nate Herk" data-title="i tested gpt 5.5 vs opus 4.7: what you need to know">
+    <a href="https://www.youtube.com/watch?v=WX4rp-vP3zo" target="_blank" rel="noopener">
+      <div class="card-thumb">
+        <img src="https://i.ytimg.com/vi/WX4rp-vP3zo/hqdefault.jpg" alt="I Tested GPT 5.5 vs Opus 4.7: What You Need to Know" loading="lazy"/>
+        <div class="play-overlay"><div class="play-btn">▶</div></div>
+      </div>
+    </a>
+    <div class="card-body">
+      <div class="card-channel">
+        <span class="channel-pill">Nate Herk</span>
+        <span class="badge-no-transcript">설명 기반</span>
+        <span class="card-date">2026-04-23</span>
+      </div>
+      <div class="card-title">I Tested GPT 5.5 vs Opus 4.7: What You Need to Know</div>
+      <button class="summary-toggle" onclick="toggleSummary(this)" id="btn-WX4rp-vP3zo">
+        📋 요약 보기 <span class="arrow">▾</span>
+      </button>
+      <div class="summary-content" id="summary-WX4rp-vP3zo">
+        <p>⚠️ 요약 생성 실패: 쿼터 초과</p>
+      </div>
+      
+      <div class="card-actions">
+        <a class="card-link" href="https://www.youtube.com/watch?v=WX4rp-vP3zo" target="_blank" rel="noopener">
+          ↗ 유튜브에서 보기
+        </a>
+        <button class="notebooklm-btn" data-url="https://www.youtube.com/watch?v=WX4rp-vP3zo" data-title="I Tested GPT 5.5 vs Opus 4.7: What You Need to Know" onclick="makeNotebookLM(this)">
+          📓 NotebookLM
+        </button>
+      </div>
+    </div>
+  </article>
+  
+  <article class="card" data-channel="Nate Herk" data-title="claude video editing just became unrecognizable">
+    <a href="https://www.youtube.com/watch?v=Aw3BkmhYu4I" target="_blank" rel="noopener">
+      <div class="card-thumb">
+        <img src="https://i.ytimg.com/vi/Aw3BkmhYu4I/hqdefault.jpg" alt="Claude Video Editing Just Became Unrecognizable" loading="lazy"/>
+        <div class="play-overlay"><div class="play-btn">▶</div></div>
+      </div>
+    </a>
+    <div class="card-body">
+      <div class="card-channel">
+        <span class="channel-pill">Nate Herk</span>
+        <span class="badge-no-transcript">설명 기반</span>
+        <span class="card-date">2026-04-23</span>
+      </div>
+      <div class="card-title">Claude Video Editing Just Became Unrecognizable</div>
+      <button class="summary-toggle" onclick="toggleSummary(this)" id="btn-Aw3BkmhYu4I">
+        📋 요약 보기 <span class="arrow">▾</span>
+      </button>
+      <div class="summary-content" id="summary-Aw3BkmhYu4I">
+        <p>⚠️ 요약 생성 실패: 쿼터 초과</p>
+      </div>
+      
+      <div class="card-actions">
+        <a class="card-link" href="https://www.youtube.com/watch?v=Aw3BkmhYu4I" target="_blank" rel="noopener">
+          ↗ 유튜브에서 보기
+        </a>
+        <button class="notebooklm-btn" data-url="https://www.youtube.com/watch?v=Aw3BkmhYu4I" data-title="Claude Video Editing Just Became Unrecognizable" onclick="makeNotebookLM(this)">
+          📓 NotebookLM
+        </button>
+      </div>
+    </div>
+  </article>
+  
+  <article class="card" data-channel="Nate Herk" data-title="openai image 2 is nuts. here are 10 ways to use it.">
+    <a href="https://www.youtube.com/watch?v=GY-kAiZGLOw" target="_blank" rel="noopener">
+      <div class="card-thumb">
+        <img src="https://i.ytimg.com/vi/GY-kAiZGLOw/hqdefault.jpg" alt="OpenAI Image 2 is Nuts. Here are 10 Ways to Use it." loading="lazy"/>
+        <div class="play-overlay"><div class="play-btn">▶</div></div>
+      </div>
+    </a>
+    <div class="card-body">
+      <div class="card-channel">
+        <span class="channel-pill">Nate Herk</span>
+        <span class="badge-no-transcript">설명 기반</span>
+        <span class="card-date">2026-04-22</span>
+      </div>
+      <div class="card-title">OpenAI Image 2 is Nuts. Here are 10 Ways to Use it.</div>
+      <button class="summary-toggle" onclick="toggleSummary(this)" id="btn-GY-kAiZGLOw">
+        📋 요약 보기 <span class="arrow">▾</span>
+      </button>
+      <div class="summary-content" id="summary-GY-kAiZGLOw">
+        <p>⚠️ 요약 생성 실패: 쿼터 초과</p>
+      </div>
+      
+      <div class="card-actions">
+        <a class="card-link" href="https://www.youtube.com/watch?v=GY-kAiZGLOw" target="_blank" rel="noopener">
+          ↗ 유튜브에서 보기
+        </a>
+        <button class="notebooklm-btn" data-url="https://www.youtube.com/watch?v=GY-kAiZGLOw" data-title="OpenAI Image 2 is Nuts. Here are 10 Ways to Use it." onclick="makeNotebookLM(this)">
+          📓 NotebookLM
+        </button>
+      </div>
+    </div>
+  </article>
+  
+  <article class="card" data-channel="Nate Herk" data-title="claude design builds beautiful 3d websites instantly (full tutorial)">
+    <a href="https://www.youtube.com/watch?v=TcFeSjwTo7g" target="_blank" rel="noopener">
+      <div class="card-thumb">
+        <img src="https://i.ytimg.com/vi/TcFeSjwTo7g/hqdefault.jpg" alt="Claude Design Builds Beautiful 3D Websites Instantly (full tutorial)" loading="lazy"/>
+        <div class="play-overlay"><div class="play-btn">▶</div></div>
+      </div>
+    </a>
+    <div class="card-body">
+      <div class="card-channel">
+        <span class="channel-pill">Nate Herk</span>
+        <span class="badge-no-transcript">설명 기반</span>
+        <span class="card-date">2026-04-21</span>
+      </div>
+      <div class="card-title">Claude Design Builds Beautiful 3D Websites Instantly (full tutorial)</div>
+      <button class="summary-toggle" onclick="toggleSummary(this)" id="btn-TcFeSjwTo7g">
+        📋 요약 보기 <span class="arrow">▾</span>
+      </button>
+      <div class="summary-content" id="summary-TcFeSjwTo7g">
+        <p>⚠️ 요약 생성 실패: 쿼터 초과</p>
+      </div>
+      
+      <div class="card-actions">
+        <a class="card-link" href="https://www.youtube.com/watch?v=TcFeSjwTo7g" target="_blank" rel="noopener">
+          ↗ 유튜브에서 보기
+        </a>
+        <button class="notebooklm-btn" data-url="https://www.youtube.com/watch?v=TcFeSjwTo7g" data-title="Claude Design Builds Beautiful 3D Websites Instantly (full tutorial)" onclick="makeNotebookLM(this)">
+          📓 NotebookLM
+        </button>
+      </div>
+    </div>
+  </article>
+  
+</div>
+
+</main>
+
+<footer>
+  유튜브 구독 정리 · Gemini AI 요약 · 2026-05-13 06:00
+</footer>
+
+<script>
+function toggleSummary(btn) {
+  const id = btn.id.replace('btn-', 'summary-');
+  const box = document.getElementById(id);
+  box.classList.toggle('visible');
+  btn.classList.toggle('open');
+  btn.querySelector('.arrow').textContent = btn.classList.contains('open') ? '▴' : '▾';
+  btn.firstChild.textContent = btn.classList.contains('open') ? '📋 요약 닫기 ' : '📋 요약 보기 ';
+}
+function toggleTranscript(btn) {
+  const id = btn.id.replace('tbtn-', 'transcript-');
+  const box = document.getElementById(id);
+  box.classList.toggle('visible');
+  btn.classList.toggle('open');
+  btn.querySelector('.arrow').textContent = btn.classList.contains('open') ? '▴' : '▾';
+  btn.firstChild.textContent = btn.classList.contains('open') ? '📄 자막 닫기 ' : '📄 자막 전문 ';
+}
+function copyTranscript(id) {
+  const box = document.getElementById('transcript-' + id);
+  const text = box ? box.textContent : '';
+  const btn = document.getElementById('cpbtn-' + id);
+  const markCopied = () => {
+    if (!btn) return;
+    btn.textContent = '✅ 복사됨';
+    btn.classList.add('copied');
+    setTimeout(() => { btn.textContent = '📋 복사'; btn.classList.remove('copied'); }, 2000);
+  };
+  if (navigator.clipboard && window.isSecureContext) {
+    navigator.clipboard.writeText(text).then(markCopied).catch(() => fallbackCopy(text, markCopied));
+  } else {
+    fallbackCopy(text, markCopied);
+  }
+}
+function fallbackCopy(text, onSuccess) {
+  const ta = document.createElement('textarea');
+  ta.value = text;
+  ta.setAttribute('readonly', '');
+  ta.style.position = 'fixed';
+  ta.style.left = '-9999px';
+  document.body.appendChild(ta);
+  ta.select();
+  try { document.execCommand('copy'); onSuccess(); }
+  finally { document.body.removeChild(ta); }
+}
+function filterChannel(ch, btn) {
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.card').forEach(c => {
+    c.style.display = (ch === 'all' || c.dataset.channel === ch) ? '' : 'none';
+  });
+}
+function doSearch(q) {
+  const lq = q.toLowerCase();
+  document.querySelectorAll('.card').forEach(c => {
+    c.style.display = c.dataset.title.includes(lq) ? '' : 'none';
+  });
+}
+async function makeNotebookLM(btn) {
+  const url = btn.dataset.url;
+  const title = btn.dataset.title;
+  btn.disabled = true;
+  btn.innerHTML = '⏳ 처리 중...';
+  try {
+    const res = await fetch('/api/notebooklm', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({url, title})
+    });
+    const data = await res.json();
+    if (data.status === 'ok') {
+      btn.classList.add('success');
+      btn.innerHTML = '✅ 예약됨';
+    } else {
+      throw new Error(data.message || '요청 실패');
+    }
+  } catch (e) {
+    btn.classList.add('error');
+    btn.innerHTML = '❌ 실패';
+    setTimeout(() => {
+      btn.disabled = false;
+      btn.classList.remove('error');
+      btn.innerHTML = '📓 NotebookLM';
+    }, 3000);
+  }
+}
+</script>
+</body>
+</html>

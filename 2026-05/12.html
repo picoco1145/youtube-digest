@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>2026-05-12 — 유튜브 구독 정리</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --bg:#090e1a;--surface:#111827;--surface2:#1a2235;--border:#1e2d47;
+    --accent:#6c63ff;--accent2:#00d4ff;--text:#e8eaf0;--muted:#7a8499;--radius:14px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Pretendard',sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+  header{
+    background:linear-gradient(135deg,#0d1b3e,#1a0533);
+    border-bottom:1px solid var(--border);
+    padding:20px 40px;display:flex;align-items:center;justify-content:space-between;
+  }
+  .nav-back{color:var(--accent2);text-decoration:none;font-size:0.85rem;display:flex;align-items:center;gap:6px}
+  .nav-back:hover{color:#fff}
+  .date-badge{
+    font-size:1.4rem;font-weight:700;letter-spacing:-0.5px;
+    background:linear-gradient(90deg,var(--accent),var(--accent2));
+    -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  }
+  .count{font-size:0.85rem;color:var(--muted)}
+
+  main{max-width:900px;margin:0 auto;padding:32px 24px 80px}
+
+  /* ── 영상 카드 (가로형) ── */
+  .video-card{
+    background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);
+    overflow:hidden;margin-bottom:24px;
+    transition:border-color 0.2s,box-shadow 0.2s;
+  }
+  .video-card:hover{border-color:var(--accent);box-shadow:0 4px 24px rgba(108,99,255,0.15)}
+  .card-top{display:flex;gap:0}
+  .thumb-wrap{flex:0 0 240px;position:relative;overflow:hidden}
+  .thumb-wrap img{width:100%;height:100%;object-fit:cover;transition:transform 0.4s}
+  .video-card:hover .thumb-wrap img{transform:scale(1.05)}
+  .card-info{flex:1;padding:20px;display:flex;flex-direction:column;gap:10px}
+  .card-meta{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+  .ch-tag{
+    font-size:0.72rem;font-weight:600;padding:3px 12px;
+    background:linear-gradient(135deg,rgba(108,99,255,0.2),rgba(0,212,255,0.2));
+    border:1px solid rgba(108,99,255,0.3);border-radius:999px;color:var(--accent2);
+  }
+  .date-tag{font-size:0.72rem;color:var(--muted)}
+  .no-transcript{
+    font-size:0.68rem;padding:2px 8px;
+    background:rgba(255,180,0,0.12);border:1px solid rgba(255,180,0,0.25);
+    border-radius:999px;color:#ffa500;
+  }
+  .video-title{font-size:1rem;font-weight:600;line-height:1.4}
+  .yt-link{
+    display:inline-flex;align-items:center;gap:5px;
+    font-size:0.8rem;color:var(--accent);text-decoration:none;margin-top:auto;
+    transition:color 0.2s;
+  }
+  .yt-link:hover{color:var(--accent2)}
+
+  /* ── 요약 섹션 ── */
+  .summary-section{
+    border-top:1px solid var(--border);
+    background:var(--surface2);
+    padding:20px 24px;
+    font-size:0.85rem;line-height:1.7;color:#c5cad8;
+  }
+  .summary-section h2{font-size:0.82rem;color:var(--accent2);margin:12px 0 4px}
+  .summary-section h2:first-child{margin-top:0}
+  .summary-section ul{padding-left:18px}
+  .summary-section li{margin-bottom:5px}
+
+  /* ── 자막 섹션 ── */
+  .transcript-wrap{border-top:1px solid var(--border);padding:14px 24px;background:#0c1220}
+  .transcript-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:0}
+  .transcript-toggle{
+    background:none;border:none;color:var(--muted);font-size:0.8rem;
+    cursor:pointer;font-family:inherit;display:flex;align-items:center;gap:4px;padding:0;
+    transition:color 0.2s;
+  }
+  .transcript-toggle:hover{color:var(--text)}
+  .transcript-toggle .arr{transition:transform 0.2s;display:inline-block}
+  .transcript-toggle.open .arr{transform:rotate(180deg)}
+  .copy-btn{
+    background:rgba(108,99,255,0.1);border:1px solid rgba(108,99,255,0.3);border-radius:8px;
+    color:var(--accent2);font-size:0.72rem;padding:4px 12px;
+    cursor:pointer;font-family:inherit;transition:all 0.2s;
+  }
+  .copy-btn:hover{background:rgba(108,99,255,0.25);color:#fff}
+  .copy-btn.copied{background:rgba(0,200,100,0.2);border-color:rgba(0,200,100,0.4);color:#00c864}
+  .transcript-box{
+    display:none;margin-top:10px;
+    background:#080d18;border:1px solid var(--border);border-radius:10px;
+    padding:12px 14px;font-size:0.78rem;line-height:1.75;color:#8a95aa;
+    max-height:260px;overflow-y:auto;white-space:pre-wrap;word-break:break-word;
+    font-family:'Inter',monospace;
+  }
+  .transcript-box.visible{display:block;animation:fadeIn 0.2s ease}
+  .transcript-box::-webkit-scrollbar{width:4px}
+  .transcript-box::-webkit-scrollbar-thumb{background:var(--border);border-radius:4px}
+  @keyframes fadeIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}
+
+  footer{text-align:center;padding:24px;font-size:0.75rem;color:var(--muted);border-top:1px solid var(--border)}
+
+  @media(max-width:640px){
+    .card-top{flex-direction:column}
+    .thumb-wrap{flex:none;height:200px}
+    header{padding:16px}
+    main{padding:16px 12px 60px}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <a class="nav-back" href="../../index.html">← 대시보드로</a>
+  <div>
+    <div class="date-badge">2026-05-12</div>
+    <div class="count">2개 영상</div>
+  </div>
+  <div style="font-size:0.75rem;color:var(--muted)">2026-05-13 06:00 생성</div>
+</header>
+
+<main>
+  
+  <article class="video-card">
+    <div class="card-top">
+      <a class="thumb-wrap" href="https://www.youtube.com/watch?v=ZRb7D6R64hM" target="_blank" rel="noopener">
+        <img src="https://i.ytimg.com/vi/ZRb7D6R64hM/hqdefault.jpg" alt="Every Level of Claude Explained in 21 Minutes" loading="lazy"/>
+      </a>
+      <div class="card-info">
+        <div class="card-meta">
+          <span class="ch-tag">Nate Herk</span>
+          <span class="date-tag">2026-05-12</span>
+          <span class="no-transcript">설명 기반</span>
+        </div>
+        <div class="video-title">Every Level of Claude Explained in 21 Minutes</div>
+        <a class="yt-link" href="https://www.youtube.com/watch?v=ZRb7D6R64hM" target="_blank" rel="noopener">↗ 유튜브에서 보기</a>
+      </div>
+    </div>
+    <div class="summary-section">
+      <h2>핵심 요약</h2>
+<p>Nate Herk는 400시간 이상 Claude AI 모델을 사용한 경험을 바탕으로 Claude의 모든 '레벨'을 상세히 설명하는 영상을 제공합니다. 이 영상은 Claude의 다양한 측면과 기능을 심층적으로 분석하여 시청자가 모델을 포괄적으로 이해하고 효과적으로 활용할 수 있도록 돕습니다.</p>
+<h2>주요 포인트</h2>
+<ul>
+<li>Claude AI 모델의 심층적인 이해를 위한 '레벨별' 분석이 제공됩니다.</li>
+<li>400시간 이상 Claude를 활용한 전문가의 풍부한 경험과 실용적인 통찰을 공유합니다.</li>
+<li>Claude의 기능, 활용법, 그리고 각 레벨의 특징에 대한 상세한 설명을 다룹니다.</li>
+</ul>
+<h2>핵심 인사이트</h2>
+<p>Claude AI 모델의 복잡한 기능을 마스터하고 실제 활용 능력을 높이고자 하는 사용자들은 이 영상을 통해 전문가의 깊이 있는 지식과 실용적인 전략을 얻을 수 있습니다.</p>
+    </div>
+    
+  </article>
+  
+  <article class="video-card">
+    <div class="card-top">
+      <a class="thumb-wrap" href="https://www.youtube.com/watch?v=ZAaxx3qyT8g" target="_blank" rel="noopener">
+        <img src="https://i.ytimg.com/vi/ZAaxx3qyT8g/hqdefault.jpg" alt="Claude Code Just Got an Agent Dashboard" loading="lazy"/>
+      </a>
+      <div class="card-info">
+        <div class="card-meta">
+          <span class="ch-tag">Nate Herk</span>
+          <span class="date-tag">2026-05-12</span>
+          <span class="no-transcript">설명 기반</span>
+        </div>
+        <div class="video-title">Claude Code Just Got an Agent Dashboard</div>
+        <a class="yt-link" href="https://www.youtube.com/watch?v=ZAaxx3qyT8g" target="_blank" rel="noopener">↗ 유튜브에서 보기</a>
+      </div>
+    </div>
+    <div class="summary-section">
+      <h2>핵심 요약</h2>
+<p>Claude Code가 최근 'Agent View'라는 새로운 기능을 출시했습니다. 이 기능은 단일 터미널 탭에서 여러 세션을 효율적으로 실행하고 관리할 수 있는 방법을 제공합니다. 본 영상에서는 Nate Herk이 'Agent View'의 작동 방식과 활용법을 직접 시연합니다.</p>
+<h2>주요 포인트</h2>
+<ul>
+<li>Claude Code의 새로운 기능인 'Agent View'가 공식 출시되었습니다.</li>
+<li>'Agent View'는 사용자가 단일 터미널 탭에서 여러 개의 세션을 동시에 실행하고 관리할 수 있게 합니다.</li>
+<li>영상에서는 Nate Herk이 'Agent View'의 전반적인 기능과 사용 방법을 상세히 안내하고 시연합니다.</li>
+</ul>
+<h2>핵심 인사이트</h2>
+<p>'Agent View'를 통해 사용자들은 여러 Claude Code 세션을 한곳에서 통합 관리함으로써 작업 효율성을 크게 높이고 생산성을 향상시킬 수 있다는 점입니다.</p>
+    </div>
+    
+  </article>
+  
+</main>
+
+<footer>유튜브 구독 정리 · 2026-05-12 · 2026-05-13 06:00</footer>
+
+<script>
+function toggleT(btn) {
+  const id = btn.id.replace('tb-','tr-');
+  const box = document.getElementById(id);
+  box.classList.toggle('visible');
+  btn.classList.toggle('open');
+  btn.querySelector('.arr').textContent = btn.classList.contains('open') ? '▴' : '▾';
+  btn.firstChild.textContent = btn.classList.contains('open') ? '📄 자막 닫기 ' : '📄 자막 전문 ';
+}
+function copyT(id) {
+  const text = document.getElementById('tr-'+id)?.textContent || '';
+  const btn = document.getElementById('cb-'+id);
+  const markCopied = () => {
+    if (!btn) return;
+    btn.textContent = '✅ 복사됨'; btn.classList.add('copied');
+    setTimeout(() => { btn.textContent = '📋 복사'; btn.classList.remove('copied'); }, 2000);
+  };
+  if (navigator.clipboard && window.isSecureContext) {
+    navigator.clipboard.writeText(text).then(markCopied).catch(() => fallbackCopy(text, markCopied));
+  } else {
+    fallbackCopy(text, markCopied);
+  }
+}
+function fallbackCopy(text, onSuccess) {
+  const ta = document.createElement('textarea');
+  ta.value = text;
+  ta.setAttribute('readonly', '');
+  ta.style.position = 'fixed';
+  ta.style.left = '-9999px';
+  document.body.appendChild(ta);
+  ta.select();
+  try { document.execCommand('copy'); onSuccess(); }
+  finally { document.body.removeChild(ta); }
+}
+</script>
+</body>
+</html>
