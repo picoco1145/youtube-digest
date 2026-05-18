@@ -1671,33 +1671,16 @@ function doSearch(q) {
     c.style.display = c.dataset.title.includes(lq) ? '' : 'none';
   });
 }
-async function makeNotebookLM(btn) {
+function makeNotebookLM(btn) {
   const url = btn.dataset.url;
-  const title = btn.dataset.title;
-  btn.disabled = true;
-  btn.innerHTML = '⏳ 처리 중...';
-  try {
-    const res = await fetch('/api/notebooklm', {
-      method: 'POST',
-      headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify({url, title})
-    });
-    const data = await res.json();
-    if (data.status === 'ok') {
-      btn.classList.add('success');
-      btn.innerHTML = '✅ 예약됨';
-    } else {
-      throw new Error(data.message || '요청 실패');
-    }
-  } catch (e) {
-    btn.classList.add('error');
-    btn.innerHTML = '❌ 실패';
-    setTimeout(() => {
-      btn.disabled = false;
-      btn.classList.remove('error');
-      btn.innerHTML = '📓 NotebookLM';
-    }, 3000);
-  }
+  window.open('https://notebooklm.google.com/', '_blank');
+  navigator.clipboard.writeText(url).catch(() => {});
+  btn.classList.add('success');
+  btn.innerHTML = '✅ URL 복사됨';
+  setTimeout(() => {
+    btn.classList.remove('success');
+    btn.innerHTML = '📓 NotebookLM';
+  }, 3000);
 }
 </script>
 </body>
