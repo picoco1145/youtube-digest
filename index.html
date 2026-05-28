@@ -327,13 +327,13 @@
   </div>
   <div class="header-meta">
     <span>마지막 업데이트</span>
-    <span>2026-05-26 06:00</span>
+    <span>2026-05-28 18:00</span>
   </div>
 </header>
 
 <div class="stats-bar">
-  <div class="stat">📺 <strong>32</strong> 영상</div>
-  <div class="stat">📡 <strong>3</strong> 채널</div>
+  <div class="stat">📺 <strong>34</strong> 영상</div>
+  <div class="stat">📡 <strong>4</strong> 채널</div>
 </div>
 
 <div class="filter-area">
@@ -345,7 +345,9 @@
   <button class="filter-btn" onclick="filterChannel('Nate Herk', this)">Nate Herk</button>
   
   <button class="filter-btn" onclick="filterChannel('Nicholas Puru', this)">Nicholas Puru</button>
-  
+
+  <button class="filter-btn" onclick="filterChannel('greenkokki', this)">greenkokki 그코</button>
+
 </div>
 
 <div class="search-area">
@@ -355,7 +357,87 @@
 <main>
 
 <div class="grid" id="video-grid">
-  
+
+  <article class="card" data-channel="greenkokki" data-title="8분만에 배우는 클로드 업무활용법">
+    <a href="https://www.youtube.com/watch?v=NQP7pO86MOA" target="_blank" rel="noopener">
+      <div class="card-thumb">
+        <img src="https://i.ytimg.com/vi/NQP7pO86MOA/maxresdefault.jpg" alt="8분만에 배우는 클로드 업무활용법" loading="lazy"/>
+        <div class="play-overlay"><div class="play-btn">▶</div></div>
+      </div>
+    </a>
+    <div class="card-body">
+      <div class="card-channel">
+        <span class="channel-pill">greenkokki 그코</span>
+        <span class="card-date">2026-05-26</span>
+      </div>
+      <div class="card-title">8분만에 배우는 클로드 업무활용법</div>
+      <button class="summary-toggle" onclick="toggleSummary(this)" id="btn-NQP7pO86MOA">
+        📋 요약 보기 <span class="arrow">▾</span>
+      </button>
+      <div class="summary-content" id="summary-NQP7pO86MOA">
+        <h2>핵심 요약</h2>
+        <p>같은 업무도 AI 활용 방식에 따라 완료 시간이 크게 달라집니다. 이 영상은 Claude에게 일을 제대로 시키는 4가지 원칙을 회의록 정리 예시로 설명하며, 작업의 규모에 따라 클로드 채팅 → 클로드 프로젝트 → 클로드 코워크로 도구를 전환하는 전략을 8분 안에 압축해서 보여줍니다.</p>
+        <h2>주요 포인트</h2>
+        <ul>
+          <li>Claude 결과물의 품질을 좌우하는 4가지 핵심 요소(명확한 목표, 맥락 제공, 역할 설정, 반복 형식화)를 제시합니다.</li>
+          <li>단일 작업은 클로드 채팅으로, 반복 작업은 프로젝트 기능으로, 여러 작업 동시 처리는 코워크로 도구를 단계적으로 확장합니다.</li>
+          <li>회의록은 예시일 뿐, 보고서·자료 정리·이메일 등 모든 업무에 동일한 원칙이 적용됩니다.</li>
+          <li>Claude에게 "바로 정리하지 말고 애매한 거 먼저 물어봐"와 같이 프로세스 지시를 포함하면 결과물 품질이 크게 향상됩니다.</li>
+        </ul>
+        <h2>핵심 인사이트</h2>
+        <p>AI 활용 능력 격차는 도구 선택이 아니라 클로드에게 일을 맡기는 방식의 차이에서 비롯되며, 4가지 원칙만으로도 업무 속도를 크게 높일 수 있습니다.</p>
+      </div>
+      <div class="card-actions">
+        <a class="card-link" href="https://www.youtube.com/watch?v=NQP7pO86MOA" target="_blank" rel="noopener">
+          ↗ 유튜브에서 보기
+        </a>
+        <button class="notebooklm-btn" data-url="https://www.youtube.com/watch?v=NQP7pO86MOA" data-title="8분만에 배우는 클로드 업무활용법" onclick="makeNotebookLM(this)">
+          📓 NotebookLM
+        </button>
+      </div>
+    </div>
+  </article>
+
+  <article class="card" data-channel="greenkokki" data-title="20분만에 고수되는 클로드 코워크 사용법 (풀가이드)">
+    <a href="https://www.youtube.com/watch?v=OmFcaIb2gVc" target="_blank" rel="noopener">
+      <div class="card-thumb">
+        <img src="https://i.ytimg.com/vi/OmFcaIb2gVc/maxresdefault.jpg" alt="20분만에 고수되는 클로드 코워크 사용법 (풀가이드)" loading="lazy"/>
+        <div class="play-overlay"><div class="play-btn">▶</div></div>
+      </div>
+    </a>
+    <div class="card-body">
+      <div class="card-channel">
+        <span class="channel-pill">greenkokki 그코</span>
+        <span class="card-date">2026-05-23</span>
+      </div>
+      <div class="card-title">20분만에 고수되는 클로드 코워크 사용법 (풀가이드)</div>
+      <button class="summary-toggle" onclick="toggleSummary(this)" id="btn-OmFcaIb2gVc">
+        📋 요약 보기 <span class="arrow">▾</span>
+      </button>
+      <div class="summary-content" id="summary-OmFcaIb2gVc">
+        <h2>핵심 요약</h2>
+        <p>Claude Cowork(코워크)를 매번 새 채팅을 여는 도구가 아닌, 쓸수록 똑똑해지는 AI 인프라로 구축하는 방법을 블로그 운영 시스템을 직접 만들어가며 처음부터 끝까지 보여주는 풀가이드입니다. CLAUDE.md 설정부터 보이스·블로그·공유 스튜디오 3개를 구성하고, 명령어 4개만으로 주제 발굴부터 4개 채널 동시 배포까지 자동화하는 전체 사이클을 시연합니다.</p>
+        <h2>주요 포인트</h2>
+        <ul>
+          <li>CLAUDE.md 파일에 4가지 기본 규칙을 설정하고 memory.md를 연동하면 클로드가 프로젝트 전반의 맥락을 기억하는 지속적 AI 인프라가 만들어집니다.</li>
+          <li>보이스 스튜디오(글쓰기 톤 학습), 블로그 스튜디오(콘텐츠 제작), 공유 스튜디오(채널 배포) 3개를 분리 구성하여 역할별 전문화를 구현합니다.</li>
+          <li>주제 발굴 → 초안 작성 → 톤 검수 → 4개 채널 배포의 콘텐츠 사이클이 명령어 4개로 한 번에 실행됩니다.</li>
+          <li>블로그 예시를 넘어 어떤 반복 업무든 같은 방식으로 나만의 자동화 시스템으로 전환할 수 있습니다.</li>
+        </ul>
+        <h2>핵심 인사이트</h2>
+        <p>Claude Cowork의 핵심은 '채팅 도구'에서 '조직 인프라'로의 전환이며, 한 번 제대로 구축해두면 팀 전체의 업무 방식이 달라집니다.</p>
+      </div>
+      <div class="card-actions">
+        <a class="card-link" href="https://www.youtube.com/watch?v=OmFcaIb2gVc" target="_blank" rel="noopener">
+          ↗ 유튜브에서 보기
+        </a>
+        <button class="notebooklm-btn" data-url="https://www.youtube.com/watch?v=OmFcaIb2gVc" data-title="20분만에 고수되는 클로드 코워크 사용법 (풀가이드)" onclick="makeNotebookLM(this)">
+          📓 NotebookLM
+        </button>
+      </div>
+    </div>
+  </article>
+
   <article class="card" data-channel="Nate Herk" data-title="the playbook for a $100m ai agency">
     <a href="https://www.youtube.com/watch?v=8ktcSaSTvxk" target="_blank" rel="noopener">
       <div class="card-thumb">
