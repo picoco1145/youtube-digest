@@ -1842,16 +1842,38 @@ function doSearch(q) {
     c.style.display = c.dataset.title.includes(lq) ? '' : 'none';
   });
 }
-function makeNotebookLM(btn) {
+async function makeNotebookLM(btn) {
   const url = btn.dataset.url;
-  window.open('https://notebooklm.google.com/', '_blank');
-  navigator.clipboard.writeText(url).catch(() => {});
-  btn.classList.add('success');
-  btn.innerHTML = '✅ URL 복사됨';
-  setTimeout(() => {
-    btn.classList.remove('success');
-    btn.innerHTML = '📓 NotebookLM';
-  }, 3000);
+  const title = btn.dataset.title;
+  btn.disabled = true;
+  btn.innerHTML = '⏳ 요청 중...';
+  try {
+    const res = await fetch('/api/notebooklm', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({url, title})
+    });
+    const data = await res.json();
+    if (data.ok) {
+      btn.classList.add('success');
+      btn.innerHTML = '✅ 요청 전송됨';
+      setTimeout(() => {
+        btn.classList.remove('success');
+        btn.innerHTML = '📓 NotebookLM';
+        btn.disabled = false;
+      }, 4000);
+    } else {
+      throw new Error(data.error || 'failed');
+    }
+  } catch (e) {
+    btn.classList.add('error');
+    btn.innerHTML = '❌ 오류';
+    setTimeout(() => {
+      btn.classList.remove('error');
+      btn.innerHTML = '📓 NotebookLM';
+      btn.disabled = false;
+    }, 3000);
+  }
 }
 </script>
 </body>
