@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>2026-05-29 — 유튜브 구독 정리</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+  :root{--bg:#090e1a;--surface:#111827;--surface2:#1a2235;--border:#1e2d47;--accent:#6c63ff;--accent2:#00d4ff;--text:#e8eaf0;--muted:#7a8499;--radius:14px;}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Pretendard',sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+  header{background:linear-gradient(135deg,#0d1b3e,#1a0533);border-bottom:1px solid var(--border);padding:20px 40px;display:flex;align-items:center;justify-content:space-between;}
+  .nav-back{color:var(--accent2);text-decoration:none;font-size:0.85rem;display:flex;align-items:center;gap:6px}
+  .nav-back:hover{color:#fff}
+  .date-badge{font-size:1.4rem;font-weight:700;letter-spacing:-0.5px;background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+  .count{font-size:0.85rem;color:var(--muted)}
+  main{max-width:900px;margin:0 auto;padding:32px 24px 80px}
+  .video-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;margin-bottom:24px;transition:border-color 0.2s,box-shadow 0.2s;}
+  .video-card:hover{border-color:var(--accent);box-shadow:0 4px 24px rgba(108,99,255,0.15)}
+  .card-top{display:flex;gap:0}
+  .thumb-wrap{flex:0 0 240px;position:relative;overflow:hidden}
+  .thumb-wrap img{width:100%;height:100%;object-fit:cover;transition:transform 0.4s}
+  .video-card:hover .thumb-wrap img{transform:scale(1.05)}
+  .card-info{flex:1;padding:20px;display:flex;flex-direction:column;gap:10px}
+  .card-meta{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+  .ch-tag{font-size:0.72rem;font-weight:600;padding:3px 12px;background:linear-gradient(135deg,rgba(108,99,255,0.2),rgba(0,212,255,0.2));border:1px solid rgba(108,99,255,0.3);border-radius:999px;color:var(--accent2);}
+  .date-tag{font-size:0.72rem;color:var(--muted)}
+  .no-transcript{font-size:0.68rem;padding:2px 8px;background:rgba(255,180,0,0.12);border:1px solid rgba(255,180,0,0.25);border-radius:999px;color:#ffa500;}
+  .video-title{font-size:1rem;font-weight:600;line-height:1.4}
+  .yt-link{display:inline-flex;align-items:center;gap:5px;font-size:0.8rem;color:var(--accent);text-decoration:none;transition:color 0.2s;}
+  .yt-link:hover{color:var(--accent2)}
+  
+  .nlm-btn{display:inline-flex;align-items:center;gap:5px;font-size:0.8rem;color:#fff;
+    background:rgba(108,99,255,0.2);border:1px solid rgba(108,99,255,0.4);border-radius:8px;
+    padding:4px 12px;cursor:pointer;font-family:inherit;transition:all 0.2s;margin-left:8px;}
+  .nlm-btn:hover{background:rgba(108,99,255,0.45);}
+  .nlm-btn.copied{background:rgba(0,200,100,0.2);border-color:rgba(0,200,100,0.4);color:#00c864;}
+
+  .summary-section{border-top:1px solid var(--border);background:var(--surface2);padding:20px 24px;font-size:0.85rem;line-height:1.7;color:#c5cad8;}
+  .summary-section h2{font-size:0.82rem;color:var(--accent2);margin:12px 0 4px}
+  .summary-section h2:first-child{margin-top:0}
+  .summary-section ul{padding-left:18px}
+  .summary-section li{margin-bottom:5px}
+  .transcript-wrap{border-top:1px solid var(--border);padding:14px 24px;background:#0c1220}
+  .transcript-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:0}
+  .transcript-toggle{background:none;border:none;color:var(--muted);font-size:0.8rem;cursor:pointer;font-family:inherit;display:flex;align-items:center;gap:4px;padding:0;transition:color 0.2s;}
+  .transcript-toggle:hover{color:var(--text)}
+  .copy-btn{background:rgba(108,99,255,0.1);border:1px solid rgba(108,99,255,0.3);border-radius:8px;color:var(--accent2);font-size:0.72rem;padding:4px 12px;cursor:pointer;font-family:inherit;transition:all 0.2s;}
+  .copy-btn:hover{background:rgba(108,99,255,0.25);color:#fff}
+  .transcript-box{display:none;margin-top:10px;background:#080d18;border:1px solid var(--border);border-radius:10px;padding:12px 14px;font-size:0.78rem;line-height:1.75;color:#8a95aa;max-height:260px;overflow-y:auto;white-space:pre-wrap;word-break:break-word;}
+  .transcript-box.visible{display:block}
+  footer{text-align:center;padding:24px;font-size:0.75rem;color:var(--muted);border-top:1px solid var(--border)}
+  @media(max-width:640px){.card-top{flex-direction:column}.thumb-wrap{flex:none;height:200px}header{padding:16px}main{padding:16px 12px 60px}}
+</style>
+</head>
+<body>
+
+<header>
+  <a class="nav-back" href="../index.html">← 대시보드로</a>
+  <div>
+    <div class="date-badge">2026-05-29</div>
+    <div class="count">4개 영상</div>
+  </div>
+  <div style="font-size:0.75rem;color:var(--muted)">2026-05-30 06:01 생성</div>
+</header>
+
+<main>
+
+  <article class="video-card">
+    <div class="card-top">
+      <a class="thumb-wrap" href="https://www.youtube.com/watch?v=0WDkwMxj13s" target="_blank" rel="noopener">
+        <img src="https://i.ytimg.com/vi/0WDkwMxj13s/hqdefault.jpg" alt="I Turned Claude Opus 4.8 Into My Entire AI Operating System" loading="lazy"/>
+      </a>
+      <div class="card-info">
+        <div class="card-meta">
+          <span class="ch-tag">Nate Herk</span>
+          <span class="date-tag">2026-05-29</span>
+          <span class="no-transcript">설명 기반</span>
+        </div>
+        <div class="video-title">I Turned Claude Opus 4.8 Into My Entire AI Operating System</div>
+        <div style="display:flex;align-items:center;flex-wrap:wrap;gap:4px;margin-top:auto">
+          <a class="yt-link" href="https://www.youtube.com/watch?v=0WDkwMxj13s" target="_blank" rel="noopener">↗ 유튜브에서 보기</a>
+          <button class="nlm-btn" data-url="https://www.youtube.com/watch?v=0WDkwMxj13s">📓 NotebookLM</button>
+        </div>
+      </div>
+    </div>
+    <div class="summary-section">
+      <h2>핵심 요약</h2>
+<p>유튜버 네이트 허크(Nate Herk)는 새롭게 출시된 Claude Opus 4.8을 활용해 비즈니스 워크플로우를 일원화하고 관리하는 'AI 운영체제(AI OS)' 구축 방안을 제시합니다. 그는 AI OS 설계의 근간이 되는 '4C 프레임워크'(Context, Connections, Capabilities, Cadence)와 에이전트에게 안전하게 자율성을 부여하는 단계적 접근법인 '자전거 방법론(Bike Method)'을 설명합니다. 이를 통해 사용자가 개별 애플리케이션을 오가는 번거로움 없이 Claude Code 환경을 중심으로 모든 업무를 효율적으로 자동화할 수 있음을 보여줍니다.</p>
+<h2>주요 포인트</h2>
+<ul>
+<li>**4C 프레임워크 정의**: AI OS를 구축하기 위해 비즈니스 지식 데이터베이스(Context), 외부 도구 및 API 연동(Connections), 구체적인 실행 기술(Capabilities), 주기적인 자동화 실행 트리거(Cadence)를 체계적으로 구성해야 합니다.</li>
+<li>**Claude Code 기반의 업무 중심 이동**: 여러 비즈니스 툴을 직접 조작하는 대신 CLI 환경인 Claude Code 내에서 에이전트 스킬과 파일을 직접 관리하며 작업 효율성을 대폭 높입니다.</li>
+<li>**안전한 권한 위임을 위한 자전거 방법론(Bike Method)**: 에이전트에게 한 번에 모든 권한을 주는 대신, 보조 바퀴를 단 자전거를 타듯 단계적으로 자율성을 넓혀가며 자동화로 발생할 수 있는 비즈니스 리스크를 차단합니다.</li>
+<li>**Claude Opus 4.8의 성능 극대화**: 100만 토큰의 컨텍스트 창, 필요한 때에만 딥 러닝 추론을 작동하는 적응형 사고(Adaptive Thinking), 개선된 코딩 및 신뢰성을 바탕으로 복잡한 다단계 업무의 완전 자동화 가능성을 제시합니다.</li>
+</ul>
+    </div>
+  </article>
+  <article class="video-card">
+    <div class="card-top">
+      <a class="thumb-wrap" href="https://www.youtube.com/watch?v=q5lg3npxjAc" target="_blank" rel="noopener">
+        <img src="https://i.ytimg.com/vi/q5lg3npxjAc/hqdefault.jpg" alt="Opus 4.8 Just Dropped. Here's How To Actually Use It." loading="lazy"/>
+      </a>
+      <div class="card-info">
+        <div class="card-meta">
+          <span class="ch-tag">Nate Herk</span>
+          <span class="date-tag">2026-05-29</span>
+          <span class="no-transcript">설명 기반</span>
+        </div>
+        <div class="video-title">Opus 4.8 Just Dropped. Here's How To Actually Use It.</div>
+        <div style="display:flex;align-items:center;flex-wrap:wrap;gap:4px;margin-top:auto">
+          <a class="yt-link" href="https://www.youtube.com/watch?v=q5lg3npxjAc" target="_blank" rel="noopener">↗ 유튜브에서 보기</a>
+          <button class="nlm-btn" data-url="https://www.youtube.com/watch?v=q5lg3npxjAc">📓 NotebookLM</button>
+        </div>
+      </div>
+    </div>
+    <div class="summary-section">
+      <h2>핵심 요약</h2>
+<p>앤트로픽이 새롭게 출시한 Claude Opus 4.8은 코딩, 에이전트 워크플로우, 복잡한 추론 작업의 성능과 신뢰성을 대폭 향상시킨 AI 모델입니다. 이 영상은 동적 워크플로우, 조정 가능한 노력 수준(Thinking Effort), 정직성 향상 등 새로운 기능의 실질적인 활용법과 베스트 프랙티스를 설명합니다. 단순한 일회성 프롬프트 작성을 넘어 맥락과 역량을 갖춘 'AI 운영체제(OS)' 관점의 접근 방식을 제시합니다.</p>
+<h2>주요 포인트</h2>
+<ul>
+<li>**동적 워크플로우 지원:** 복잡한 작업을 세분화하여 병렬 에이전트를 가동하고 자율적으로 해결함으로써 대규모 코드 개발이나 마이그레이션을 효율적으로 지원합니다.</li>
+<li>**추론 노력 수준 조정:** 사용자의 필요에 따라 모델의 사고(Thinking) 수준을 조절하여, 단순 작업은 빠르게 처리하고 난해한 문제에는 깊은 추론 능력을 배분할 수 있습니다.</li>
+<li>**정직성 및 자가 수정 강화:** 환각 현상(Hallucination)과 숨겨진 결함을 스스로 분석하고 수정하는 능력이 크게 향상되어 사용자의 검토 리소스를 대폭 줄여줍니다.</li>
+<li>**동적인 메시지 API 제어:** 작업 중간에 프롬프트 캐시를 끊지 않고도 메시지 배열 내에서 설정이나 예산을 실시간으로 업데이트할 수 있는 유연성을 제공합니다.</li>
+<li>**가성비와 속도를 챙긴 패스트 모드:** 저렴한 비용으로 빠르게 결과를 받아볼 수 있는 패스트 모드 기능이 추가되어 다양한 시나리오에 맞춰 비용 효율적으로 사용 가능합니다.</li>
+</ul>
+    </div>
+  </article>
+  <article class="video-card">
+    <div class="card-top">
+      <a class="thumb-wrap" href="https://www.youtube.com/watch?v=Rx-pLwHaaLA" target="_blank" rel="noopener">
+        <img src="https://i.ytimg.com/vi/Rx-pLwHaaLA/hqdefault.jpg" alt="Claude Opus 4.8 Just Dropped And It's..." loading="lazy"/>
+      </a>
+      <div class="card-info">
+        <div class="card-meta">
+          <span class="ch-tag">Nicholas Puru</span>
+          <span class="date-tag">2026-05-29</span>
+          <span class="no-transcript">설명 기반</span>
+        </div>
+        <div class="video-title">Claude Opus 4.8 Just Dropped And It's...</div>
+        <div style="display:flex;align-items:center;flex-wrap:wrap;gap:4px;margin-top:auto">
+          <a class="yt-link" href="https://www.youtube.com/watch?v=Rx-pLwHaaLA" target="_blank" rel="noopener">↗ 유튜브에서 보기</a>
+          <button class="nlm-btn" data-url="https://www.youtube.com/watch?v=Rx-pLwHaaLA">📓 NotebookLM</button>
+        </div>
+      </div>
+    </div>
+    <div class="summary-section">
+      <h2>핵심 요약</h2>
+<p>이 영상은 최근 출시된 Anthropic의 Claude Opus 4.8 모델을 소개하고, AI 에이전트 개발 및 비즈니스 자동화 관점에서의 변화를 분석합니다. Nicholas Puru는 Opus 4.8의 강력해진 에이전트 추론 능력과 개선된 정직성을 평가하며, 이를 실무 워크플로우에 어떻게 활용할 수 있는지 설명합니다. 특히 대화 중간 시스템 메시지(Mid-conversation system messages) 기능과 비용 효율적인 패스트 모드(Fast Mode)가 개발자 및 자동화 에이전트 아키텍처에 미치는 지대한 영향력을 깊이 있게 다룹니다.</p>
+<h2>주요 포인트</h2>
+<ul>
+<li>**향상된 에이전트 추론과 정직성**: Opus 4.8은 복잡한 논리 및 코딩 작업에서 오류를 지적하는 능력이 고도화되었으며, 불확실할 경우 답변을 기권하는 등 에이전트 실행의 안정성이 크게 개선되었습니다.</li>
+<li>**대화 중간 시스템 메시지 지원**: 긴 대화나 워크플로우 진행 도중에 새로운 시스템 지시사항을 유연하게 주입할 수 있게 되어, 에이전트 상태(State) 제어와 동적 라우팅이 획기적으로 쉬워졌습니다.</li>
+<li>**속도와 비용을 모두 잡은 패스트 모드**: 이전 버전 대비 2.5배 빨라지고 3배 저렴해진 패스트 모드가 지원되어, 많은 토큰을 소모하는 복잡한 멀티 에이전트 시스템을 실제 비즈니스에 저비용으로 도입할 수 있습니다.</li>
+<li>**프롬프트 캐싱 완화**: 캐시가 적용되는 최소 토큰 기준이 1,024 토큰으로 낮아짐에 따라 잦은 API 호출을 수반하는 소형 에이전트 워크플로우에서도 비용과 속도 효율이 대폭 향상되었습니다.</li>
+<li>**자율형 에이전트 시스템 구축 전망**: Nicholas Puru는 이러한 성능 업그레이드가 Claude를 단순한 대화형 AI가 아니라 스스로 판단하고 개발 업무를 완수하는 완벽한 '에이전틱 운영체제(OS)'로 기능하게 만드는 중요한 전환점이라고 분석합니다.</li>
+</ul>
+    </div>
+  </article>
+  <article class="video-card">
+    <div class="card-top">
+      <a class="thumb-wrap" href="https://www.youtube.com/watch?v=jrf2FM3txRU" target="_blank" rel="noopener">
+        <img src="https://i.ytimg.com/vi/jrf2FM3txRU/hqdefault.jpg" alt="Opus 4.8 is Here.." loading="lazy"/>
+      </a>
+      <div class="card-info">
+        <div class="card-meta">
+          <span class="ch-tag">Nicholas Puru</span>
+          <span class="date-tag">2026-05-29</span>
+          <span class="no-transcript">설명 기반</span>
+        </div>
+        <div class="video-title">Opus 4.8 is Here..</div>
+        <div style="display:flex;align-items:center;flex-wrap:wrap;gap:4px;margin-top:auto">
+          <a class="yt-link" href="https://www.youtube.com/watch?v=jrf2FM3txRU" target="_blank" rel="noopener">↗ 유튜브에서 보기</a>
+          <button class="nlm-btn" data-url="https://www.youtube.com/watch?v=jrf2FM3txRU">📓 NotebookLM</button>
+        </div>
+      </div>
+    </div>
+    <div class="summary-section">
+      <h2>핵심 요약</h2>
+<p>Anthropic의 새로운 플래그십 AI 모델인 'Claude Opus 4.8' 출시에 관한 영상으로, Nicholas Puru는 이를 실용적이고 안정적인 엔터프라이즈급 업그레이드로 소개합니다. 이 모델은 성능 및 비용 효율성이 크게 개선되었으며, 환각 현상이 크게 줄어들어 신뢰할 수 있는 개발 및 대규모 작업 자동화에 매우 적합합니다. 아울러 향후 등장할 강력한 모델인 'Mythos'의 출시 예고 등 인공지능 업계의 향후 전망도 함께 다룹니다.</p>
+<h2>주요 포인트</h2>
+<ul>
+<li>**신뢰성 및 오답률 개선**: 이전 버전 대비 잘못된 정보를 제공하거나 검증되지 않은 코드를 생성할 확률(환각 현상)이 4배가량 감소하여 고도의 정밀한 작업이 가능해졌습니다.</li>
+<li>**병렬 에이전트 워크플로우**: 대규모 복잡한 프로젝트를 처리할 때 작업을 스스로 계획하고 수많은 하위 에이전트를 병렬로 실행시켜 결과를 직접 검증한 후 보고하는 기능이 도입되었습니다.</li>
+<li>**합리적인 가격 유지**: 성능과 효율성이 대폭 향상되었음에도 불구하고 이전 모델과 동일한 토큰당 비용(입력 $5/1M, 출력 $25/1M)을 유지하여 가성비가 개선되었습니다.</li>
+<li>**불필요한 토큰 소모 방지**: 이전 버전(4.7)에서 지적되었던 장황한 답변이나 불필요한 도구 호출을 줄여 비용 대비 효율을 극대화했습니다.</li>
+<li>**차세대 모델 'Mythos' 티저**: Opus 4.8이 안정적인 메인 작업 도구로 자리 잡는 한편, Anthropic은 조만간 훨씬 더 강력한 신규 모델인 'Mythos'를 출시할 것임을 예고했습니다.</li>
+</ul>
+    </div>
+  </article>
+</main>
+
+<footer>유튜브 구독 정리 · agy 요약 · 2026-05-30 06:01</footer>
+
+
+<script>
+document.querySelectorAll('.nlm-btn').forEach(function(btn){
+  btn.addEventListener('click',function(){
+    navigator.clipboard.writeText('/notebooklm '+btn.dataset.url).then(function(){
+      var orig=btn.innerHTML;btn.innerHTML='✓ 복사됨';btn.classList.add('copied');
+      setTimeout(function(){btn.innerHTML=orig;btn.classList.remove('copied');},2000);
+    });
+  });
+});
+</script>
+
+</body>
+</html>
