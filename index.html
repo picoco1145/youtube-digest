@@ -2100,6 +2100,7 @@ function doSearch(q) {
 }
 async function copyAndSendTG(btn) {
   const url = btn.dataset.url;
+  const title = btn.dataset.title || '';
   if (navigator.clipboard && window.isSecureContext) {
     navigator.clipboard.writeText(url).catch(() => {});
   } else {
@@ -2111,16 +2112,16 @@ async function copyAndSendTG(btn) {
   const orig = btn.innerHTML;
   btn.innerHTML = '⏳ 전송 중...'; btn.disabled = true;
   try {
-    const res = await fetch('https://api.telegram.org/bot8701930596:AAGkr4zXGwDNZ_XtGdq56WBBD8IVVBtqRGA/sendMessage', {
+    const res = await fetch('/api/send-telegram', {
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify({chat_id: 5915154652, text: url})
+      body: JSON.stringify({url, title})
     });
     const data = await res.json();
     if (data.ok) {
       btn.classList.add('sent'); btn.innerHTML = '✅ 복사+전송됨';
       setTimeout(() => { btn.classList.remove('sent'); btn.innerHTML = orig; btn.disabled = false; }, 3000);
-    } else throw new Error(data.description || 'failed');
+    } else throw new Error(data.error || 'failed');
   } catch (e) {
     btn.classList.add('tg-error'); btn.innerHTML = '❌ 오류';
     setTimeout(() => { btn.classList.remove('tg-error'); btn.innerHTML = orig; btn.disabled = false; }, 3000);
@@ -2133,6 +2134,7 @@ document.querySelectorAll('.card-actions').forEach(function(actions) {
   const btn = document.createElement('button');
   btn.className = 'copy-tg-btn';
   btn.dataset.url = refBtn.dataset.url;
+  btn.dataset.title = refBtn.dataset.title || '';
   btn.innerHTML = '📤 복사+TG';
   btn.onclick = function() { copyAndSendTG(this); };
   actions.appendChild(btn);
