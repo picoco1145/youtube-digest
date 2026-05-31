@@ -234,6 +234,25 @@
   .notebooklm-btn.success { background: rgba(0,200,100,0.15); border-color: rgba(0,200,100,0.4); color: #00c864; }
   .notebooklm-btn.error { background: rgba(255,80,80,0.15); border-color: rgba(255,80,80,0.4); color: #ff6060; }
 
+  /* ── Copy + Telegram 버튼 ── */
+  .copy-tg-btn {
+    background: rgba(0,212,255,0.1);
+    border: 1px solid rgba(0,212,255,0.3);
+    border-radius: 8px;
+    color: var(--accent2);
+    font-size: 0.72rem;
+    padding: 5px 10px;
+    cursor: pointer;
+    font-family: inherit;
+    transition: all 0.2s;
+    display: inline-flex; align-items: center; gap: 4px;
+    white-space: nowrap;
+  }
+  .copy-tg-btn:hover { background: rgba(0,212,255,0.25); border-color: var(--accent2); color: #fff; }
+  .copy-tg-btn:disabled { opacity: 0.6; cursor: not-allowed; }
+  .copy-tg-btn.sent { background: rgba(0,200,100,0.15); border-color: rgba(0,200,100,0.4); color: #00c864; }
+  .copy-tg-btn.tg-error { background: rgba(255,80,80,0.15); border-color: rgba(255,80,80,0.4); color: #ff6060; }
+
   /* ── No transcript badge ── */
   .badge-no-transcript {
     font-size: 0.68rem; padding: 2px 8px;
@@ -333,7 +352,7 @@
 
 <div class="stats-bar">
   <div class="stat">📺 <strong>41</strong> 영상</div>
-  <div class="stat">📡 <strong>4</strong> 채널</div>
+  <div class="stat">📡 <strong>5</strong> 채널</div>
 </div>
 
 <div class="filter-area">
@@ -347,6 +366,7 @@
   <button class="filter-btn" onclick="filterChannel('Nicholas Puru', this)">Nicholas Puru</button>
 
   <button class="filter-btn" onclick="filterChannel('greenkokki', this)">greenkokki 그코</button>
+  <button class="filter-btn" onclick="filterChannel('Dylan Davis', this)">Dylan Davis</button>
 
 </div>
 
@@ -2078,6 +2098,46 @@ function doSearch(q) {
     c.style.display = c.dataset.title.includes(lq) ? '' : 'none';
   });
 }
+async function copyAndSendTG(btn) {
+  const url = btn.dataset.url;
+  if (navigator.clipboard && window.isSecureContext) {
+    navigator.clipboard.writeText(url).catch(() => {});
+  } else {
+    const ta = document.createElement('textarea');
+    ta.value = url; ta.style.position = 'fixed'; ta.style.left = '-9999px';
+    document.body.appendChild(ta); ta.select();
+    try { document.execCommand('copy'); } finally { document.body.removeChild(ta); }
+  }
+  const orig = btn.innerHTML;
+  btn.innerHTML = '⏳ 전송 중...'; btn.disabled = true;
+  try {
+    const res = await fetch('https://api.telegram.org/bot8701930596:AAGkr4zXGwDNZ_XtGdq56WBBD8IVVBtqRGA/sendMessage', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({chat_id: 5915154652, text: url})
+    });
+    const data = await res.json();
+    if (data.ok) {
+      btn.classList.add('sent'); btn.innerHTML = '✅ 복사+전송됨';
+      setTimeout(() => { btn.classList.remove('sent'); btn.innerHTML = orig; btn.disabled = false; }, 3000);
+    } else throw new Error(data.description || 'failed');
+  } catch (e) {
+    btn.classList.add('tg-error'); btn.innerHTML = '❌ 오류';
+    setTimeout(() => { btn.classList.remove('tg-error'); btn.innerHTML = orig; btn.disabled = false; }, 3000);
+  }
+}
+
+document.querySelectorAll('.card-actions').forEach(function(actions) {
+  const refBtn = actions.querySelector('[data-url]');
+  if (!refBtn || actions.querySelector('.copy-tg-btn')) return;
+  const btn = document.createElement('button');
+  btn.className = 'copy-tg-btn';
+  btn.dataset.url = refBtn.dataset.url;
+  btn.innerHTML = '📤 복사+TG';
+  btn.onclick = function() { copyAndSendTG(this); };
+  actions.appendChild(btn);
+});
+
 async function makeNotebookLM(btn) {
   const url = btn.dataset.url;
   const title = btn.dataset.title;
