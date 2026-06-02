@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>2026-06-02 — 유튜브 구독 정리</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+  :root{--bg:#090e1a;--surface:#111827;--surface2:#1a2235;--border:#1e2d47;--accent:#6c63ff;--accent2:#00d4ff;--text:#e8eaf0;--muted:#7a8499;--radius:14px;}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Pretendard',sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+  header{background:linear-gradient(135deg,#0d1b3e,#1a0533);border-bottom:1px solid var(--border);padding:20px 40px;display:flex;align-items:center;justify-content:space-between;}
+  .nav-back{color:var(--accent2);text-decoration:none;font-size:0.85rem;display:flex;align-items:center;gap:6px}
+  .nav-back:hover{color:#fff}
+  .date-badge{font-size:1.4rem;font-weight:700;letter-spacing:-0.5px;background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+  .count{font-size:0.85rem;color:var(--muted)}
+  main{max-width:900px;margin:0 auto;padding:32px 24px 80px}
+  .video-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;margin-bottom:24px;transition:border-color 0.2s,box-shadow 0.2s;}
+  .video-card:hover{border-color:var(--accent);box-shadow:0 4px 24px rgba(108,99,255,0.15)}
+  .card-top{display:flex;gap:0}
+  .thumb-wrap{flex:0 0 240px;position:relative;overflow:hidden}
+  .thumb-wrap img{width:100%;height:100%;object-fit:cover;transition:transform 0.4s}
+  .video-card:hover .thumb-wrap img{transform:scale(1.05)}
+  .card-info{flex:1;padding:20px;display:flex;flex-direction:column;gap:10px}
+  .card-meta{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+  .ch-tag{font-size:0.72rem;font-weight:600;padding:3px 12px;background:linear-gradient(135deg,rgba(108,99,255,0.2),rgba(0,212,255,0.2));border:1px solid rgba(108,99,255,0.3);border-radius:999px;color:var(--accent2);}
+  .date-tag{font-size:0.72rem;color:var(--muted)}
+  .no-transcript{font-size:0.68rem;padding:2px 8px;background:rgba(255,180,0,0.12);border:1px solid rgba(255,180,0,0.25);border-radius:999px;color:#ffa500;}
+  .video-title{font-size:1rem;font-weight:600;line-height:1.4}
+  .yt-link{display:inline-flex;align-items:center;gap:5px;font-size:0.8rem;color:var(--accent);text-decoration:none;transition:color 0.2s;}
+  .yt-link:hover{color:var(--accent2)}
+  
+  .nlm-btn{display:inline-flex;align-items:center;gap:5px;font-size:0.8rem;color:#fff;
+    background:rgba(108,99,255,0.2);border:1px solid rgba(108,99,255,0.4);border-radius:8px;
+    padding:4px 12px;cursor:pointer;font-family:inherit;transition:all 0.2s;margin-left:8px;}
+  .nlm-btn:hover{background:rgba(108,99,255,0.45);}
+  .nlm-btn.copied{background:rgba(0,200,100,0.2);border-color:rgba(0,200,100,0.4);color:#00c864;}
+
+  .summary-section{border-top:1px solid var(--border);background:var(--surface2);padding:20px 24px;font-size:0.85rem;line-height:1.7;color:#c5cad8;}
+  .summary-section h2{font-size:0.82rem;color:var(--accent2);margin:12px 0 4px}
+  .summary-section h2:first-child{margin-top:0}
+  .summary-section ul{padding-left:18px}
+  .summary-section li{margin-bottom:5px}
+  .transcript-wrap{border-top:1px solid var(--border);padding:14px 24px;background:#0c1220}
+  .transcript-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:0}
+  .transcript-toggle{background:none;border:none;color:var(--muted);font-size:0.8rem;cursor:pointer;font-family:inherit;display:flex;align-items:center;gap:4px;padding:0;transition:color 0.2s;}
+  .transcript-toggle:hover{color:var(--text)}
+  .copy-btn{background:rgba(108,99,255,0.1);border:1px solid rgba(108,99,255,0.3);border-radius:8px;color:var(--accent2);font-size:0.72rem;padding:4px 12px;cursor:pointer;font-family:inherit;transition:all 0.2s;}
+  .copy-btn:hover{background:rgba(108,99,255,0.25);color:#fff}
+  .transcript-box{display:none;margin-top:10px;background:#080d18;border:1px solid var(--border);border-radius:10px;padding:12px 14px;font-size:0.78rem;line-height:1.75;color:#8a95aa;max-height:260px;overflow-y:auto;white-space:pre-wrap;word-break:break-word;}
+  .transcript-box.visible{display:block}
+  footer{text-align:center;padding:24px;font-size:0.75rem;color:var(--muted);border-top:1px solid var(--border)}
+  @media(max-width:640px){.card-top{flex-direction:column}.thumb-wrap{flex:none;height:200px}header{padding:16px}main{padding:16px 12px 60px}}
+</style>
+</head>
+<body>
+
+<header>
+  <a class="nav-back" href="../index.html">← 대시보드로</a>
+  <div>
+    <div class="date-badge">2026-06-02</div>
+    <div class="count">6개 영상</div>
+  </div>
+  <div style="font-size:0.75rem;color:var(--muted)">2026-06-03 06:02 생성</div>
+</header>
+
+<main>
+
+  <article class="video-card">
+    <div class="card-top">
+      <a class="thumb-wrap" href="https://www.youtube.com/watch?v=NHFbAg2b54U" target="_blank" rel="noopener">
+        <img src="https://i.ytimg.com/vi/NHFbAg2b54U/hqdefault.jpg" alt="100 Years of Artificial Intelligence Explained" loading="lazy"/>
+      </a>
+      <div class="card-info">
+        <div class="card-meta">
+          <span class="ch-tag">Nate Herk</span>
+          <span class="date-tag">2026-06-02</span>
+          <span class="no-transcript">설명 기반</span>
+        </div>
+        <div class="video-title">100 Years of Artificial Intelligence Explained</div>
+        <div style="display:flex;align-items:center;flex-wrap:wrap;gap:4px;margin-top:auto">
+          <a class="yt-link" href="https://www.youtube.com/watch?v=NHFbAg2b54U" target="_blank" rel="noopener">↗ 유튜브에서 보기</a>
+          <button class="nlm-btn" data-url="https://www.youtube.com/watch?v=NHFbAg2b54U">📓 NotebookLM</button>
+        </div>
+      </div>
+    </div>
+    <div class="summary-section">
+      <h2>핵심 요약</h2>
+<p>Nate Herk 채널에서 올린 영상으로, AI 탄생부터 현재까지 약 100년간의 파란만장한 역사와 중요 순간들을 훑어줌. 초기 전쟁통 속 침실 개발부터 시작해서 두 번의 혹독한 'AI 겨울'을 견뎌내며 성장한 과정을 핵심만 딱 골라 설명함. 옛날엔 버려졌던 기술들이 어떻게 지금의 개사기 AI 혁신을 이끌어냈는지 직관적으로 이해할 수 있는 내용임.</p>
+<h2>주요 포인트</h2>
+<ul>
+<li>**침실에서 시작된 AI의 서막**: 26세 청년이 침실에서 초기 기술을 만지작거리고 전쟁 중 코딩을 하면서 AI 역사가 시작됐음.</li>
+<li>**두 번의 혹독했던 AI 겨울**: 연구비 끊기고 관심 식으면서 AI 판 자체가 아예 망할 뻔했던 위기가 두 번이나 있었음.</li>
+<li>**버려졌던 기술들의 화려한 부활**: 당시 연구자들이 쓰레기라고 무시했던 접근법들이 결국엔 현대 AI를 지탱하는 핵심 뼈대가 됨.</li>
+<li>**인간 챔피언들을 울린 역사적 순간**: 체스나 바둑 세계 챔피언들이 AI한테 개박살나고 은퇴하게 만든 역사적 대결들을 짚어줌.</li>
+<li>**노코드 AI 전문가의 실무 분석**: n8n 등 자동화 교육을 주로 하는 Nate Herk 특유의 관점이 녹아있어 흐름을 이해하기 개편함.</li>
+</ul>
+    </div>
+  </article>
+  <article class="video-card">
+    <div class="card-top">
+      <a class="thumb-wrap" href="https://www.youtube.com/watch?v=BFgIEaYqp_g" target="_blank" rel="noopener">
+        <img src="https://i.ytimg.com/vi/BFgIEaYqp_g/hqdefault.jpg" alt="This is the EASIEST way to setup Hermes Agent" loading="lazy"/>
+      </a>
+      <div class="card-info">
+        <div class="card-meta">
+          <span class="ch-tag">Nicholas Puru</span>
+          <span class="date-tag">2026-06-02</span>
+          <span class="no-transcript">설명 기반</span>
+        </div>
+        <div class="video-title">This is the EASIEST way to setup Hermes Agent</div>
+        <div style="display:flex;align-items:center;flex-wrap:wrap;gap:4px;margin-top:auto">
+          <a class="yt-link" href="https://www.youtube.com/watch?v=BFgIEaYqp_g" target="_blank" rel="noopener">↗ 유튜브에서 보기</a>
+          <button class="nlm-btn" data-url="https://www.youtube.com/watch?v=BFgIEaYqp_g">📓 NotebookLM</button>
+        </div>
+      </div>
+    </div>
+    <div class="summary-section">
+      <h2>핵심 요약</h2>
+<p>Nous Research의 Hermes Agent를 복잡한 도커 설정 없이 단 한 줄의 터미널 명령어로 아주 쉽게 설치하는 방법을 알려주는 영상이다. 설치 후 포털을 통해 API 연동과 도구 설정을 원클릭으로 마쳐서, 백그라운드에서 동작하며 스킬을 스스로 학습하는 인공지능 에이전트를 세팅할 수 있다.</p>
+<h2>주요 포인트</h2>
+<ul>
+<li>터미널에 curl이나 powershell 명령어 한 줄만 입력하면 복잡한 설정 없이 바로 설치됨.</li>
+<li>`hermes setup --portal` 실행 후 열리는 웹 화면에서 OpenRouter API 연동과 도구 설정을 아주 쉽게 마칠 수 있음.</li>
+<li>백그라운드 프로세스로 돌아가기 때문에 이전 프로젝트 내용이나 대화 맥락을 계속 기억함.</li>
+<li>주어진 임무를 수행하면서 필요한 능력을 마크다운 형식의 '스킬(Skills)'로 자동 생성하여 자가 학습함.</li>
+<li>도커가 필요 없어서 저렴한 VPS나 로컬 컴퓨터(WSL2 등)에서도 가볍게 돌릴 수 있음.</li>
+</ul>
+    </div>
+  </article>
+  <article class="video-card">
+    <div class="card-top">
+      <a class="thumb-wrap" href="https://www.youtube.com/watch?v=5My8Bfi72c4" target="_blank" rel="noopener">
+        <img src="https://i.ytimg.com/vi/5My8Bfi72c4/hqdefault.jpg" alt="I Fixed Claude Being a Yes Man" loading="lazy"/>
+      </a>
+      <div class="card-info">
+        <div class="card-meta">
+          <span class="ch-tag">Nicholas Puru</span>
+          <span class="date-tag">2026-06-02</span>
+          <span class="no-transcript">설명 기반</span>
+        </div>
+        <div class="video-title">I Fixed Claude Being a Yes Man</div>
+        <div style="display:flex;align-items:center;flex-wrap:wrap;gap:4px;margin-top:auto">
+          <a class="yt-link" href="https://www.youtube.com/watch?v=5My8Bfi72c4" target="_blank" rel="noopener">↗ 유튜브에서 보기</a>
+          <button class="nlm-btn" data-url="https://www.youtube.com/watch?v=5My8Bfi72c4">📓 NotebookLM</button>
+        </div>
+      </div>
+    </div>
+    <div class="summary-section">
+      <h2>핵심 요약</h2>
+<p>클로드가 사용자의 의견에 무조건 동의하고 아첨하는 'Yes Man' 문제를 해결하기 위해 고안된 'Claude Council(클로드 의회)' 시스템을 소개함. 각기 다른 성향을 가진 5명의 AI 조언자들이 아이디어를 다각도로 검증하고, 동료 평가와 최종 의장 에이전트를 거쳐 객관적인 결론을 도출하는 방식임. 사용자가 중요한 결정을 내릴 때 필터링되지 않은 날카로운 피드백을 얻기 유용함.</p>
+<h2>주요 포인트</h2>
+<ul>
+<li>Claude가 사용자의 의견에 무작정 동의하여 객관적인 비판을 하지 못하는 한계를 해결함.</li>
+<li>반대론자, 제1원칙 분석가, 확장주의자, 제3자, 실행자 등 5가지 페르소나의 AI 조언자를 활용함.</li>
+<li>조언자들의 피드백을 5명의 피어 리뷰 에이전트가 다시 교차 검증하여 신뢰성을 높임.</li>
+<li>최종적으로 '의장' 에이전트가 모든 평가를 취합해 하나의 명확하고 객관적인 판결을 내림.</li>
+<li>새로운 기능 개발이나 채용 등 중요 비즈니스 의사결정에서 편향 없는 피드백을 받을 때 유용함.</li>
+</ul>
+    </div>
+  </article>
+  <article class="video-card">
+    <div class="card-top">
+      <a class="thumb-wrap" href="https://www.youtube.com/watch?v=G-IlVPyFfd4" target="_blank" rel="noopener">
+        <img src="https://i.ytimg.com/vi/G-IlVPyFfd4/hqdefault.jpg" alt="Stop Selling AI Automations, Sell THIS Instead" loading="lazy"/>
+      </a>
+      <div class="card-info">
+        <div class="card-meta">
+          <span class="ch-tag">Nicholas Puru</span>
+          <span class="date-tag">2026-06-02</span>
+          <span class="no-transcript">설명 기반</span>
+        </div>
+        <div class="video-title">Stop Selling AI Automations, Sell THIS Instead</div>
+        <div style="display:flex;align-items:center;flex-wrap:wrap;gap:4px;margin-top:auto">
+          <a class="yt-link" href="https://www.youtube.com/watch?v=G-IlVPyFfd4" target="_blank" rel="noopener">↗ 유튜브에서 보기</a>
+          <button class="nlm-btn" data-url="https://www.youtube.com/watch?v=G-IlVPyFfd4">📓 NotebookLM</button>
+        </div>
+      </div>
+    </div>
+    <div class="summary-section">
+      <h2>핵심 요약</h2>
+<p>유튜브 채널 Nicholas Puru의 영상에서는 단순한 'AI 자동화' 기술 자체를 판매하는 비즈니스의 한계를 지적하며, 기술(How)이 아닌 실질적인 비즈니스 결과(What)를 판매하라고 조언함. 고객은 AI 기술 자체보다 매출 증대나 리드 생성 같은 실질적인 문제 해결에만 관심이 있으므로 가치 제안의 초점을 완전히 바꿔야 한다는 거다.</p>
+<h2>주요 포인트</h2>
+<ul>
+<li>AI 자동화 툴 자체를 홍보하지 말고, 기업의 골칫거리를 해결해주는 결과(ROI)와 솔루션을 판매해야 됨.</li>
+<li>자신을 단순 'AI 에이전시'로 부르지 말고, AI를 도구로 활용해 압도적인 효율을 내는 '마케팅' 또는 '리드 생성 에이전시'로 포지셔닝할 것을 권장함.</li>
+<li>일회성 땜질식 자동화 구축에 머무르지 말고, 고객의 비즈니스 운영 체계를 완전히 혁신하는 '기반 인프라' 형태로 제안해야 함.</li>
+<li>고객 확보 시스템(Lead Gen)이나 콘텐츠 대량 생산처럼 기업들이 이미 예산을 쓰고 있는 검증된 니즈에 집중해야 됨.</li>
+<li>말로만 영업하려 하지 말고 잠재 고객을 위해 데모나 프로토타입을 미리 가볍게 빌드해서 가치를 선제적으로 증명하라고 조언함.</li>
+</ul>
+    </div>
+  </article>
+  <article class="video-card">
+    <div class="card-top">
+      <a class="thumb-wrap" href="https://www.youtube.com/watch?v=sJrz5Qokbbo" target="_blank" rel="noopener">
+        <img src="https://i.ytimg.com/vi/sJrz5Qokbbo/hqdefault.jpg" alt="Anthropic Just Told You How to Fix Claude Code (Most People Won’t Listen)" loading="lazy"/>
+      </a>
+      <div class="card-info">
+        <div class="card-meta">
+          <span class="ch-tag">Nicholas Puru</span>
+          <span class="date-tag">2026-06-02</span>
+          <span class="no-transcript">설명 기반</span>
+        </div>
+        <div class="video-title">Anthropic Just Told You How to Fix Claude Code (Most People Won’t Listen)</div>
+        <div style="display:flex;align-items:center;flex-wrap:wrap;gap:4px;margin-top:auto">
+          <a class="yt-link" href="https://www.youtube.com/watch?v=sJrz5Qokbbo" target="_blank" rel="noopener">↗ 유튜브에서 보기</a>
+          <button class="nlm-btn" data-url="https://www.youtube.com/watch?v=sJrz5Qokbbo">📓 NotebookLM</button>
+        </div>
+      </div>
+    </div>
+    <div class="summary-section">
+      <h2>핵심 요약</h2>
+<p>클로드 코드(Claude Code) 제대로 활용 못 해서 징징대는 애들이 천지인데, 해결책은 이미 공식 가이드에 다 나와있다셈. 핵심은 `/init`으로 `CLAUDE.md`를 활성화하고, 단순 챗봇이 아닌 하나의 똑똑한 개발 파트너처럼 세팅해서 쓰는 거임. 프로젝트 표준을 명확히 적어두고 컨텍스트를 잘 쪼개서 시켜야 클로드가 헛짓거리 안 하고 일 잘함.</p>
+<h2>주요 포인트</h2>
+<ul>
+<li>`/init` 명령어로 `CLAUDE.md` 파일부터 당장 만들고, 프로젝트 전용 코딩 표준이랑 아키텍처 가이드를 명확히 적어줘야 됨.</li>
+<li>한 번에 너무 큰 작업을 몽땅 해결하려 하지 말고, 작은 단위로 일을 쪼개서 지시해야 에러가 안 난다셈.</li>
+<li>매번 똑같은 일을 반복적으로 지시하지 말고 자주 쓰는 루틴은 가벼운 커스텀 스킬(Skills)로 만들어 쓰셈.</li>
+<li>클로드 코드를 단순 마법 도구로 보지 말고, 명확한 가이드라인과 철저한 컨텍스트 관리를 제공해야 시너지가 남.</li>
+</ul>
+    </div>
+  </article>
+  <article class="video-card">
+    <div class="card-top">
+      <a class="thumb-wrap" href="https://www.youtube.com/watch?v=hHAlOrqapeI" target="_blank" rel="noopener">
+        <img src="https://i.ytimg.com/vi/hHAlOrqapeI/hqdefault.jpg" alt="I Run 4 AIs at Once in Claude Cowork (Here's My Exact Setup)" loading="lazy"/>
+      </a>
+      <div class="card-info">
+        <div class="card-meta">
+          <span class="ch-tag">Dylan Davis</span>
+          <span class="date-tag">2026-06-02</span>
+          <span class="no-transcript">설명 기반</span>
+        </div>
+        <div class="video-title">I Run 4 AIs at Once in Claude Cowork (Here's My Exact Setup)</div>
+        <div style="display:flex;align-items:center;flex-wrap:wrap;gap:4px;margin-top:auto">
+          <a class="yt-link" href="https://www.youtube.com/watch?v=hHAlOrqapeI" target="_blank" rel="noopener">↗ 유튜브에서 보기</a>
+          <button class="nlm-btn" data-url="https://www.youtube.com/watch?v=hHAlOrqapeI">📓 NotebookLM</button>
+        </div>
+      </div>
+    </div>
+    <div class="summary-section">
+      <h2>핵심 요약</h2>
+<p>Claude Cowork 환경에서 부모 AI 아래에 여러 하위 에이전트(sub-agents)를 독립시켜 동시에 4개의 AI를 굴리는 효율적인 워크플로우를 소개한다. 여러 작업을 병렬 처리하여 연산 속도를 대폭 올리고, 각 에이전트마다 독립된 컨텍스트 영역을 쓰게 만들어 답변의 질을 유지하는 비법이다. 단, 각 작업이 서로 엮이지 않고 독립적이어야 효과가 극대화되며 최종 검증은 결국 인간의 몫이라는 점을 짚어준다.</p>
+<h2>주요 포인트</h2>
+<ul>
+<li>**하위 에이전트 분할 구동**: 부모 AI에게 명령을 내려 특정 역할에 특화된 하위 AI들을 독립적으로 쪼개서 병렬로 돌린다.</li>
+<li>**컨텍스트 창 병목 해결**: 하나의 AI에게 모든 업무를 몰아주면 컨텍스트가 가득 차서 답변 품질이 떨어지는데, 에이전트별로 독립된 컨텍스트를 주어 성능을 유지한다.</li>
+<li>**역할군 특화 및 속도 향상**: 이메일 작성, PDF 요약, 스프레드시트 관리 등 각각의 전담 에이전트에게 업무를 배분하여 작업 속도를 끌어올린다.</li>
+<li>**작업 독립성 필수**: 다중 에이전트 세팅이 제대로 굴러가려면 하나의 작업 결과가 다음 작업의 입력값으로 쓰이지 않는 완전한 독립형 업무여야 한다.</li>
+<li>**인간의 최종 판단과 검증**: 실행과 초안 작성은 AI가 빠르게 처리하지만, 결과물을 신뢰하고 검증하는 최종 판단의 주체는 결국 인간이며 이것이 새로운 병목이 된다.</li>
+</ul>
+    </div>
+  </article>
+</main>
+
+<footer>유튜브 구독 정리 · agy 요약 · 2026-06-03 06:02</footer>
+
+
+<script>
+document.querySelectorAll('.nlm-btn').forEach(function(btn){
+  btn.addEventListener('click',function(){
+    navigator.clipboard.writeText('/notebooklm '+btn.dataset.url).then(function(){
+      var orig=btn.innerHTML;btn.innerHTML='✓ 복사됨';btn.classList.add('copied');
+      setTimeout(function(){btn.innerHTML=orig;btn.classList.remove('copied');},2000);
+    });
+  });
+});
+</script>
+
+</body>
+</html>
