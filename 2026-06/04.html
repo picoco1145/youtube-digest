@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>2026-06-04 — 유튜브 구독 정리</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+  :root{--bg:#090e1a;--surface:#111827;--surface2:#1a2235;--border:#1e2d47;--accent:#6c63ff;--accent2:#00d4ff;--text:#e8eaf0;--muted:#7a8499;--radius:14px;}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Pretendard',sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+  header{background:linear-gradient(135deg,#0d1b3e,#1a0533);border-bottom:1px solid var(--border);padding:20px 40px;display:flex;align-items:center;justify-content:space-between;}
+  .nav-back{color:var(--accent2);text-decoration:none;font-size:0.85rem;display:flex;align-items:center;gap:6px}
+  .nav-back:hover{color:#fff}
+  .date-badge{font-size:1.4rem;font-weight:700;letter-spacing:-0.5px;background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+  .count{font-size:0.85rem;color:var(--muted)}
+  main{max-width:900px;margin:0 auto;padding:32px 24px 80px}
+  .video-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;margin-bottom:24px;transition:border-color 0.2s,box-shadow 0.2s;}
+  .video-card:hover{border-color:var(--accent);box-shadow:0 4px 24px rgba(108,99,255,0.15)}
+  .card-top{display:flex;gap:0}
+  .thumb-wrap{flex:0 0 240px;position:relative;overflow:hidden}
+  .thumb-wrap img{width:100%;height:100%;object-fit:cover;transition:transform 0.4s}
+  .video-card:hover .thumb-wrap img{transform:scale(1.05)}
+  .card-info{flex:1;padding:20px;display:flex;flex-direction:column;gap:10px}
+  .card-meta{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+  .ch-tag{font-size:0.72rem;font-weight:600;padding:3px 12px;background:linear-gradient(135deg,rgba(108,99,255,0.2),rgba(0,212,255,0.2));border:1px solid rgba(108,99,255,0.3);border-radius:999px;color:var(--accent2);}
+  .date-tag{font-size:0.72rem;color:var(--muted)}
+  .no-transcript{font-size:0.68rem;padding:2px 8px;background:rgba(255,180,0,0.12);border:1px solid rgba(255,180,0,0.25);border-radius:999px;color:#ffa500;}
+  .video-title{font-size:1rem;font-weight:600;line-height:1.4}
+  .yt-link{display:inline-flex;align-items:center;gap:5px;font-size:0.8rem;color:var(--accent);text-decoration:none;transition:color 0.2s;}
+  .yt-link:hover{color:var(--accent2)}
+  
+  .nlm-btn{display:inline-flex;align-items:center;gap:5px;font-size:0.8rem;color:#fff;
+    background:rgba(108,99,255,0.2);border:1px solid rgba(108,99,255,0.4);border-radius:8px;
+    padding:4px 12px;cursor:pointer;font-family:inherit;transition:all 0.2s;margin-left:8px;}
+  .nlm-btn:hover{background:rgba(108,99,255,0.45);}
+  .nlm-btn.copied{background:rgba(0,200,100,0.2);border-color:rgba(0,200,100,0.4);color:#00c864;}
+
+  .summary-section{border-top:1px solid var(--border);background:var(--surface2);padding:20px 24px;font-size:0.85rem;line-height:1.7;color:#c5cad8;}
+  .summary-section h2{font-size:0.82rem;color:var(--accent2);margin:12px 0 4px}
+  .summary-section h2:first-child{margin-top:0}
+  .summary-section ul{padding-left:18px}
+  .summary-section li{margin-bottom:5px}
+  .transcript-wrap{border-top:1px solid var(--border);padding:14px 24px;background:#0c1220}
+  .transcript-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:0}
+  .transcript-toggle{background:none;border:none;color:var(--muted);font-size:0.8rem;cursor:pointer;font-family:inherit;display:flex;align-items:center;gap:4px;padding:0;transition:color 0.2s;}
+  .transcript-toggle:hover{color:var(--text)}
+  .copy-btn{background:rgba(108,99,255,0.1);border:1px solid rgba(108,99,255,0.3);border-radius:8px;color:var(--accent2);font-size:0.72rem;padding:4px 12px;cursor:pointer;font-family:inherit;transition:all 0.2s;}
+  .copy-btn:hover{background:rgba(108,99,255,0.25);color:#fff}
+  .transcript-box{display:none;margin-top:10px;background:#080d18;border:1px solid var(--border);border-radius:10px;padding:12px 14px;font-size:0.78rem;line-height:1.75;color:#8a95aa;max-height:260px;overflow-y:auto;white-space:pre-wrap;word-break:break-word;}
+  .transcript-box.visible{display:block}
+  footer{text-align:center;padding:24px;font-size:0.75rem;color:var(--muted);border-top:1px solid var(--border)}
+  @media(max-width:640px){.card-top{flex-direction:column}.thumb-wrap{flex:none;height:200px}header{padding:16px}main{padding:16px 12px 60px}}
+</style>
+</head>
+<body>
+
+<header>
+  <a class="nav-back" href="../index.html">← 대시보드로</a>
+  <div>
+    <div class="date-badge">2026-06-04</div>
+    <div class="count">4개 영상</div>
+  </div>
+  <div style="font-size:0.75rem;color:var(--muted)">2026-06-05 06:01 생성</div>
+</header>
+
+<main>
+
+  <article class="video-card">
+    <div class="card-top">
+      <a class="thumb-wrap" href="https://www.youtube.com/watch?v=vfWTyEreOEc" target="_blank" rel="noopener">
+        <img src="https://i.ytimg.com/vi/vfWTyEreOEc/hqdefault.jpg" alt="I Tested Every Claude Code Feature, These 12 Are the Best" loading="lazy"/>
+      </a>
+      <div class="card-info">
+        <div class="card-meta">
+          <span class="ch-tag">Nate Herk</span>
+          <span class="date-tag">2026-06-04</span>
+          <span class="no-transcript">설명 기반</span>
+        </div>
+        <div class="video-title">I Tested Every Claude Code Feature, These 12 Are the Best</div>
+        <div style="display:flex;align-items:center;flex-wrap:wrap;gap:4px;margin-top:auto">
+          <a class="yt-link" href="https://www.youtube.com/watch?v=vfWTyEreOEc" target="_blank" rel="noopener">↗ 유튜브에서 보기</a>
+          <button class="nlm-btn" data-url="https://www.youtube.com/watch?v=vfWTyEreOEc">📓 NotebookLM</button>
+        </div>
+      </div>
+    </div>
+    <div class="summary-section">
+      <h2>핵심 요약</h2>
+<p>Anthropic의 CLI 기반 AI 에이전트인 Claude Code의 모든 기능을 직접 테스트하고, 지식 노동과 업무 자동화 관점에서 가장 쓸만한 12가지 베스트 기능을 정리한 영상이다. 단순 코딩을 넘어 실무 생산성을 극대화할 수 있는 기능들을 D티어부터 S티어까지 등급별로 맛깔나게 분류해서 보여준다. 500시간 이상 Claude 생태계를 굴려본 고수의 짬에서 나오는 실전 압축 팁들이 가득하다.</p>
+<h2>주요 포인트</h2>
+<ul>
+<li>터미널에서 대화하며 코드를 바로 수정하고 로컬 테스트까지 알아서 돌려보는 Claude Code의 핵심 워크플로우를 파헤침.</li>
+<li>개발자가 아닌 일반 자동화 작업자 관점에서도 유용한 기능들을 집중적으로 분석해서 티어를 매김.</li>
+<li>에이전트에게 커스텀 플레이북(SKILL.md)을 쥐여줘서 웹 스크래핑이나 PDF 생성 같은 복잡한 태스크를 학습시키는 기능을 고평가함.</li>
+<li>비용과 토큰 소모를 효율적으로 줄이면서 에이전트가 알아서 버그를 잡고 깃(Git) 커밋까지 완료하는 자율적인 에이전트 활용법을 소개함.</li>
+</ul>
+    </div>
+  </article>
+  <article class="video-card">
+    <div class="card-top">
+      <a class="thumb-wrap" href="https://www.youtube.com/watch?v=qhxeK8z9VL4" target="_blank" rel="noopener">
+        <img src="https://i.ytimg.com/vi/qhxeK8z9VL4/hqdefault.jpg" alt="The 4 AI Agency Offers Actually Working and Selling Right Now (Live Training)" loading="lazy"/>
+      </a>
+      <div class="card-info">
+        <div class="card-meta">
+          <span class="ch-tag">Nicholas Puru</span>
+          <span class="date-tag">2026-06-04</span>
+          <span class="no-transcript">설명 기반</span>
+        </div>
+        <div class="video-title">The 4 AI Agency Offers Actually Working and Selling Right Now (Live Training)</div>
+        <div style="display:flex;align-items:center;flex-wrap:wrap;gap:4px;margin-top:auto">
+          <a class="yt-link" href="https://www.youtube.com/watch?v=qhxeK8z9VL4" target="_blank" rel="noopener">↗ 유튜브에서 보기</a>
+          <button class="nlm-btn" data-url="https://www.youtube.com/watch?v=qhxeK8z9VL4">📓 NotebookLM</button>
+        </div>
+      </div>
+    </div>
+    <div class="summary-section">
+      <h2>핵심 요약</h2>
+<p>요즘 AI 에이전시 판도는 단순 자동화나 챗봇 판매에서 벗어나 진짜 매출을 꽂아주는 성과 중심 오퍼로 바뀌고 있다. 툴의 스펙을 자랑하기보다 고객이 원하는 결과(리드 생성, 비용 절감 등)를 직접 해결해 주는 게 핵심이다.</p>
+<h2>주요 포인트</h2>
+<ul>
+<li>옛날식 단순 챗봇이나 Zapier 연동 오퍼는 이제 약빨 다 떨어져서 안 팔린다.</li>
+<li>고객한테 AI 기술을 파는 게 아니라 매출 상승이나 리드 확보 같은 확실한 결과를 팔아야 딜이 성사된다.</li>
+<li>n8n이나 Claude Code 기반의 다단계 AI 에이전트 시스템 구축이 대세로 자리 잡았다.</li>
+<li>남들이 안 하는 틈새시장(의료, 이커머스 등)을 타겟팅해서 비싸게 팔고 경쟁자를 따돌려야 살아남는다.</li>
+</ul>
+    </div>
+  </article>
+  <article class="video-card">
+    <div class="card-top">
+      <a class="thumb-wrap" href="https://www.youtube.com/watch?v=Xgc_9SvCCjc" target="_blank" rel="noopener">
+        <img src="https://i.ytimg.com/vi/Xgc_9SvCCjc/hqdefault.jpg" alt="Claude Just Changed The Stock Market" loading="lazy"/>
+      </a>
+      <div class="card-info">
+        <div class="card-meta">
+          <span class="ch-tag">Nicholas Puru</span>
+          <span class="date-tag">2026-06-04</span>
+          <span class="no-transcript">설명 기반</span>
+        </div>
+        <div class="video-title">Claude Just Changed The Stock Market</div>
+        <div style="display:flex;align-items:center;flex-wrap:wrap;gap:4px;margin-top:auto">
+          <a class="yt-link" href="https://www.youtube.com/watch?v=Xgc_9SvCCjc" target="_blank" rel="noopener">↗ 유튜브에서 보기</a>
+          <button class="nlm-btn" data-url="https://www.youtube.com/watch?v=Xgc_9SvCCjc">📓 NotebookLM</button>
+        </div>
+      </div>
+    </div>
+    <div class="summary-section">
+      <h2>핵심 요약</h2>
+<p>앤트로픽이 클로드(Claude) AI 에이전트 기능을 내놓자마자 기존 SaaS랑 IT 주식들이 단체로 뚝배기 깨지고 폭락했다. 단순 API 제공을 넘어서 지 혼자 일 다 처리해버리는 솔루션이 나오니까 주식 시장 판도가 송두리째 흔들리는 중이다. AI가 소프트웨어 산업 자체를 대체할 거라는 공포가 시장을 지배하고 있다.</p>
+<h2>주요 포인트</h2>
+<ul>
+<li>앤트로픽이 자율형 AI 에이전트 발표하자마자 소프트웨어 및 금융 서비스 주식들이 단체로 떡락함.</li>
+<li>이번 사태로 관련 업계 시가총액이 무려 2,850억 달러(약 380조 원) 규모나 공중분해되며 시장에 충격을 줌.</li>
+<li>클로드가 실무형 완성 솔루션을 직접 서비스하니까 기존 구독형 소프트웨어 기업들의 미래가 심각하게 불투명해짐.</li>
+<li>투자자들은 AI 에이전트의 사기적인 자율 업무 능력을 보고 기존 SaaS 기업들의 밥줄이 끊길 것이라 판단해 탈출하는 중임.</li>
+</ul>
+    </div>
+  </article>
+  <article class="video-card">
+    <div class="card-top">
+      <a class="thumb-wrap" href="https://www.youtube.com/watch?v=5Xwt-texWhE" target="_blank" rel="noopener">
+        <img src="https://i.ytimg.com/vi/5Xwt-texWhE/hqdefault.jpg" alt="Codex Works Better When You Stop Treating It Like ChatGPT" loading="lazy"/>
+      </a>
+      <div class="card-info">
+        <div class="card-meta">
+          <span class="ch-tag">Dylan Davis</span>
+          <span class="date-tag">2026-06-04</span>
+          <span class="no-transcript">설명 기반</span>
+        </div>
+        <div class="video-title">Codex Works Better When You Stop Treating It Like ChatGPT</div>
+        <div style="display:flex;align-items:center;flex-wrap:wrap;gap:4px;margin-top:auto">
+          <a class="yt-link" href="https://www.youtube.com/watch?v=5Xwt-texWhE" target="_blank" rel="noopener">↗ 유튜브에서 보기</a>
+          <button class="nlm-btn" data-url="https://www.youtube.com/watch?v=5Xwt-texWhE">📓 NotebookLM</button>
+        </div>
+      </div>
+    </div>
+    <div class="summary-section">
+      <h2>핵심 요약</h2>
+<p>Codex는 ChatGPT 같은 대화형 챗봇이 아니라 코드 완성형 API에 가까우니까 ChatGPT 다루듯 쓰면 오히려 삽질하기 십상이다. 챗봇한테 대화로 징징대기보다는 파일 구조, 주석, 아키텍처 같은 구체적인 맥락(Context)을 쥐여주고 완성을 유도해야 제대로 돌아간다.</p>
+<h2>주요 포인트</h2>
+<ul>
+<li>ChatGPT는 자연스러운 대화에 강하지만, Codex는 체계적인 개발 작업을 수행하는 공학용 툴에 가깝다.</li>
+<li>AI한테 단순 텍스트로 질문하지 말고, 작업할 파일 구조나 문서 규칙 같은 컨텍스트를 제대로 꽂아줘야 한다.</li>
+<li>이전 맥락을 다 기억할 거라 착각하지 말고, 가이드라인이나 템플릿을 명확하게 제시해서 틀을 채우게 만들어야 한다.</li>
+<li>거대한 코드를 한 번에 짜달라고 징징대기보다는, 작은 단위로 쪼개서 점진적으로 빌드하고 고쳐나가는 게 낫다.</li>
+<li>코드를 바로 짜게 시키는 것보다 전체적인 설계(Plan)를 먼저 세워 조율한 뒤에 구현하게 유도하는 것이 훨씬 성능이 잘 나온다.</li>
+</ul>
+    </div>
+  </article>
+</main>
+
+<footer>유튜브 구독 정리 · agy 요약 · 2026-06-05 06:01</footer>
+
+
+<script>
+document.querySelectorAll('.nlm-btn').forEach(function(btn){
+  btn.addEventListener('click',function(){
+    navigator.clipboard.writeText('/notebooklm '+btn.dataset.url).then(function(){
+      var orig=btn.innerHTML;btn.innerHTML='✓ 복사됨';btn.classList.add('copied');
+      setTimeout(function(){btn.innerHTML=orig;btn.classList.remove('copied');},2000);
+    });
+  });
+});
+</script>
+
+</body>
+</html>
