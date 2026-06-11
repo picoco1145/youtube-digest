@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>2026-06-10 — 유튜브 구독 정리</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+  :root{--bg:#090e1a;--surface:#111827;--surface2:#1a2235;--border:#1e2d47;--accent:#6c63ff;--accent2:#00d4ff;--text:#e8eaf0;--muted:#7a8499;--radius:14px;}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Pretendard',sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+  header{background:linear-gradient(135deg,#0d1b3e,#1a0533);border-bottom:1px solid var(--border);padding:20px 40px;display:flex;align-items:center;justify-content:space-between;}
+  .nav-back{color:var(--accent2);text-decoration:none;font-size:0.85rem;display:flex;align-items:center;gap:6px}
+  .nav-back:hover{color:#fff}
+  .date-badge{font-size:1.4rem;font-weight:700;letter-spacing:-0.5px;background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+  .count{font-size:0.85rem;color:var(--muted)}
+  main{max-width:900px;margin:0 auto;padding:32px 24px 80px}
+  .video-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;margin-bottom:24px;transition:border-color 0.2s,box-shadow 0.2s;}
+  .video-card:hover{border-color:var(--accent);box-shadow:0 4px 24px rgba(108,99,255,0.15)}
+  .card-top{display:flex;gap:0}
+  .thumb-wrap{flex:0 0 240px;position:relative;overflow:hidden}
+  .thumb-wrap img{width:100%;height:100%;object-fit:cover;transition:transform 0.4s}
+  .video-card:hover .thumb-wrap img{transform:scale(1.05)}
+  .card-info{flex:1;padding:20px;display:flex;flex-direction:column;gap:10px}
+  .card-meta{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+  .ch-tag{font-size:0.72rem;font-weight:600;padding:3px 12px;background:linear-gradient(135deg,rgba(108,99,255,0.2),rgba(0,212,255,0.2));border:1px solid rgba(108,99,255,0.3);border-radius:999px;color:var(--accent2);}
+  .date-tag{font-size:0.72rem;color:var(--muted)}
+  .no-transcript{font-size:0.68rem;padding:2px 8px;background:rgba(255,180,0,0.12);border:1px solid rgba(255,180,0,0.25);border-radius:999px;color:#ffa500;}
+  .video-title{font-size:1rem;font-weight:600;line-height:1.4}
+  .yt-link{display:inline-flex;align-items:center;gap:5px;font-size:0.8rem;color:var(--accent);text-decoration:none;transition:color 0.2s;}
+  .yt-link:hover{color:var(--accent2)}
+  
+  .nlm-btn{display:inline-flex;align-items:center;gap:5px;font-size:0.8rem;color:#fff;
+    background:rgba(108,99,255,0.2);border:1px solid rgba(108,99,255,0.4);border-radius:8px;
+    padding:4px 12px;cursor:pointer;font-family:inherit;transition:all 0.2s;margin-left:8px;}
+  .nlm-btn:hover{background:rgba(108,99,255,0.45);}
+  .nlm-btn.copied{background:rgba(0,200,100,0.2);border-color:rgba(0,200,100,0.4);color:#00c864;}
+
+  .summary-section{border-top:1px solid var(--border);background:var(--surface2);padding:20px 24px;font-size:0.85rem;line-height:1.7;color:#c5cad8;}
+  .summary-section h2{font-size:0.82rem;color:var(--accent2);margin:12px 0 4px}
+  .summary-section h2:first-child{margin-top:0}
+  .summary-section ul{padding-left:18px}
+  .summary-section li{margin-bottom:5px}
+  .transcript-wrap{border-top:1px solid var(--border);padding:14px 24px;background:#0c1220}
+  .transcript-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:0}
+  .transcript-toggle{background:none;border:none;color:var(--muted);font-size:0.8rem;cursor:pointer;font-family:inherit;display:flex;align-items:center;gap:4px;padding:0;transition:color 0.2s;}
+  .transcript-toggle:hover{color:var(--text)}
+  .copy-btn{background:rgba(108,99,255,0.1);border:1px solid rgba(108,99,255,0.3);border-radius:8px;color:var(--accent2);font-size:0.72rem;padding:4px 12px;cursor:pointer;font-family:inherit;transition:all 0.2s;}
+  .copy-btn:hover{background:rgba(108,99,255,0.25);color:#fff}
+  .transcript-box{display:none;margin-top:10px;background:#080d18;border:1px solid var(--border);border-radius:10px;padding:12px 14px;font-size:0.78rem;line-height:1.75;color:#8a95aa;max-height:260px;overflow-y:auto;white-space:pre-wrap;word-break:break-word;}
+  .transcript-box.visible{display:block}
+  footer{text-align:center;padding:24px;font-size:0.75rem;color:var(--muted);border-top:1px solid var(--border)}
+  @media(max-width:640px){.card-top{flex-direction:column}.thumb-wrap{flex:none;height:200px}header{padding:16px}main{padding:16px 12px 60px}}
+</style>
+</head>
+<body>
+
+<header>
+  <a class="nav-back" href="../index.html">← 대시보드로</a>
+  <div>
+    <div class="date-badge">2026-06-10</div>
+    <div class="count">4개 영상</div>
+  </div>
+  <div style="font-size:0.75rem;color:var(--muted)">2026-06-11 06:26 생성</div>
+</header>
+
+<main>
+
+  <article class="video-card">
+    <div class="card-top">
+      <a class="thumb-wrap" href="https://www.youtube.com/watch?v=8QQ_INxAhRs" target="_blank" rel="noopener">
+        <img src="https://i.ytimg.com/vi/8QQ_INxAhRs/hqdefault.jpg" alt="I Turned Claude Fable Into The Ultimate Second Brain" loading="lazy"/>
+      </a>
+      <div class="card-info">
+        <div class="card-meta">
+          <span class="ch-tag">Nate Herk</span>
+          <span class="date-tag">2026-06-10</span>
+          <span class="no-transcript">설명 기반</span>
+        </div>
+        <div class="video-title">I Turned Claude Fable Into The Ultimate Second Brain</div>
+        <div style="display:flex;align-items:center;flex-wrap:wrap;gap:4px;margin-top:auto">
+          <a class="yt-link" href="https://www.youtube.com/watch?v=8QQ_INxAhRs" target="_blank" rel="noopener">↗ 유튜브에서 보기</a>
+          <button class="nlm-btn" data-url="https://www.youtube.com/watch?v=8QQ_INxAhRs">📓 NotebookLM</button>
+        </div>
+      </div>
+    </div>
+    <div class="summary-section">
+      <h2>핵심 요약</h2>
+<p>클로드(Claude)를 활용해 개인의 지식을 체계적으로 관리하는 최강의 세컨드 브레인 구축법을 소개함. 정보를 단순히 저장하는 것을 넘어 클로드 내에서 유기적으로 연결하고 활용하는 워크플로우를 보여준다. 복잡한 자료 정리와 아이디어 구체화를 자동화하여 생산성을 극대화하는 꿀팁을 다룬다.</p>
+<h2>주요 포인트</h2>
+<ul>
+<li>클로드를 단순한 대화형 AI가 아닌 개인 맞춤형 지식 저장소로 변환하는 방법 설명.</li>
+<li>다양한 정보와 노트를 효율적으로 정리하고 필요할 때 바로 꺼내 쓰는 구조 구축.</li>
+<li>세컨드 브레인을 통해 수작업을 줄이고 워크플로우를 자동화하여 시간 절약함.</li>
+<li>클로드의 강점을 활용해 지식 관리 시스템(PKM)을 한 단계 업그레이드하는 로드맵 제시.</li>
+</ul>
+    </div>
+  </article>
+  <article class="video-card">
+    <div class="card-top">
+      <a class="thumb-wrap" href="https://www.youtube.com/watch?v=dYrrEKXtttk" target="_blank" rel="noopener">
+        <img src="https://i.ytimg.com/vi/dYrrEKXtttk/hqdefault.jpg" alt="Claude Mythos is Finally Here." loading="lazy"/>
+      </a>
+      <div class="card-info">
+        <div class="card-meta">
+          <span class="ch-tag">Nate Herk</span>
+          <span class="date-tag">2026-06-10</span>
+          <span class="no-transcript">설명 기반</span>
+        </div>
+        <div class="video-title">Claude Mythos is Finally Here.</div>
+        <div style="display:flex;align-items:center;flex-wrap:wrap;gap:4px;margin-top:auto">
+          <a class="yt-link" href="https://www.youtube.com/watch?v=dYrrEKXtttk" target="_blank" rel="noopener">↗ 유튜브에서 보기</a>
+          <button class="nlm-btn" data-url="https://www.youtube.com/watch?v=dYrrEKXtttk">📓 NotebookLM</button>
+        </div>
+      </div>
+    </div>
+    <div class="summary-section">
+      <h2>핵심 요약</h2>
+<p>Anthropic이 차세대 모델군인 'Mythos-class'의 Claude Fable 5와 Claude Mythos 5를 발표했다는 소식이다. Nate Herk 채널에 따르면 Fable 5는 코딩과 비전 등에서 이전 모델을 아득히 뛰어넘는 성능을 보여주며 구독자들에게 우선 풀렸지만, 진짜 기본 모델인 Mythos 5는 파트너 전용으로 제한되어 있다. Anthropic이 강력한 성능 향상과 안전 정책 사이에서 균형을 맞추며 신중하게 모델을 롤아웃하는 중이다.</p>
+<h2>주요 포인트</h2>
+<ul>
+<li>Anthropic이 새로운 대형 모델 라인업인 Claude Fable 5와 Claude Mythos 5를 출시함.</li>
+<li>대중에게 제공되는 Fable 5는 강력한 안전 가드레일을 장착했으며, 현재 Pro, Max, Team 요금제에서 바로 사용 가능하다.</li>
+<li>Fable 5는 2026년 6월 22일까지는 무료로 사용해볼 수 있지만, 그 이후에는 사용량에 따른 크레딧 차감 제도로 전환될 예정이다.</li>
+<li>최상위 기본 모델인 Claude Mythos 5는 일반 공개를 하지 않고, 'Project Glasswing' 참여 파트너들에게만 제한적으로 제공함.</li>
+<li>Fable 5는 기존 Opus 4.8 대비 코딩, 이미지 인식(비전), 전문 지식 태스크 처리 능력이 대폭 향상됨.</li>
+</ul>
+    </div>
+  </article>
+  <article class="video-card">
+    <div class="card-top">
+      <a class="thumb-wrap" href="https://www.youtube.com/watch?v=KB2aTgqeUMM" target="_blank" rel="noopener">
+        <img src="https://i.ytimg.com/vi/KB2aTgqeUMM/hqdefault.jpg" alt="Mythos 5: Why the Public Version is a Lie" loading="lazy"/>
+      </a>
+      <div class="card-info">
+        <div class="card-meta">
+          <span class="ch-tag">Nicholas Puru</span>
+          <span class="date-tag">2026-06-10</span>
+          <span class="no-transcript">설명 기반</span>
+        </div>
+        <div class="video-title">Mythos 5: Why the Public Version is a Lie</div>
+        <div style="display:flex;align-items:center;flex-wrap:wrap;gap:4px;margin-top:auto">
+          <a class="yt-link" href="https://www.youtube.com/watch?v=KB2aTgqeUMM" target="_blank" rel="noopener">↗ 유튜브에서 보기</a>
+          <button class="nlm-btn" data-url="https://www.youtube.com/watch?v=KB2aTgqeUMM">📓 NotebookLM</button>
+        </div>
+      </div>
+    </div>
+    <div class="summary-section">
+      <h2>핵심 요약</h2>
+<p>앤트로픽이 대중한테 푼 Claude Fable 5의 실체는 내부 최고 존엄 모델인 Mythos 5의 성능을 꽁꽁 숨긴 반쪽짜리 버전에 불과하다는 폭로다. 겉으로는 대단한 성능인 척 홍보하지만 정작 딥한 코딩이나 보안 질문이 들어오면 하위 모델로 몰래 뺑뺑이 돌려서 대답하게 만든다. 결국 우리가 쓰는 대중용 버전은 마케팅용 껍데기일 뿐 진짜 성능은 철저히 통제당하고 있는 셈이다.</p>
+<h2>주요 포인트</h2>
+<ul>
+<li>앤트로픽은 해킹 취약점을 혼자서 다 털어버릴 수 있는 진짜 괴물급 내부 모델인 Mythos 5를 완성했으나 위험하다고 판단해 비공개함.</li>
+<li>대신 안전장치 떡칠한 Fable 5를 풀었는데, 이거 쓰다가 보안이나 민감한 코딩 질문 던지면 조용히 하위 모델(Opus 4.8)로 넘겨버림.</li>
+<li>사용자는 자기가 고성능 모델 쓰고 있는 줄 알지만 백그라운드에서는 땜빵용 하위 모델이 대답하고 있는 구조임.</li>
+<li>앤트로픽이 자랑하는 지리는 벤치마크 점수들도 실상은 대중은 구경도 못 하는 내부 제한 풀린 버전으로 뻥튀기한 결과물임.</li>
+<li>기업들이 안전이라는 핑계로 진짜 개쩌는 기술은 지들끼리만 독점하고 대중한테는 다운그레이드된 기만형 AI를 던져주고 있음.</li>
+</ul>
+    </div>
+  </article>
+  <article class="video-card">
+    <div class="card-top">
+      <a class="thumb-wrap" href="https://www.youtube.com/watch?v=7S-ecZEtsFA" target="_blank" rel="noopener">
+        <img src="https://i.ytimg.com/vi/7S-ecZEtsFA/hqdefault.jpg" alt="Claude’s New Mythos Is Here and Its’s INSANE" loading="lazy"/>
+      </a>
+      <div class="card-info">
+        <div class="card-meta">
+          <span class="ch-tag">Nicholas Puru</span>
+          <span class="date-tag">2026-06-10</span>
+          <span class="no-transcript">설명 기반</span>
+        </div>
+        <div class="video-title">Claude’s New Mythos Is Here and Its’s INSANE</div>
+        <div style="display:flex;align-items:center;flex-wrap:wrap;gap:4px;margin-top:auto">
+          <a class="yt-link" href="https://www.youtube.com/watch?v=7S-ecZEtsFA" target="_blank" rel="noopener">↗ 유튜브에서 보기</a>
+          <button class="nlm-btn" data-url="https://www.youtube.com/watch?v=7S-ecZEtsFA">📓 NotebookLM</button>
+        </div>
+      </div>
+    </div>
+    <div class="summary-section">
+      <h2>핵심 요약</h2>
+<p>앤트로픽이 새롭게 공개한 'Mythos' 아키텍처 기반의 Claude Fable 5 모델 출시 소식을 다루는 영상이다. 일반 공개용 Fable 5의 압도적인 성능을 소개하면서도, 민감한 작업 시 구버전인 Opus 4.8로 강제 우회되는 빡빡한 세이프가드 가드레일의 한계를 짚는다. 미친 성능의 에이전트 기능과 보안 제약 사이의 조율 과정을 분석한 내용이다.</p>
+<h2>주요 포인트</h2>
+<ul>
+<li>보안 전용 Mythos 5와 세이프가드를 씌워 일반 공개한 Fable 5 모델의 출시를 다룸.</li>
+<li>주요 코딩 및 분석 벤치마크에서 GPT-5.5와 Gemini 3.1 Pro를 누르고 최초로 90% 돌파함.</li>
+<li>Nicholas Puru가 펌웨어 개발 작업 중 보안 필터에 걸려 하위 모델로 자동 전환되는 실제 제약 사례를 지적함.</li>
+<li>복잡한 워크플로우를 스스로 해결하는 에이전트 능력이 대폭 향상되어 실무 효율이 극대화됨.</li>
+</ul>
+    </div>
+  </article>
+</main>
+
+<footer>유튜브 구독 정리 · agy 요약 · 2026-06-11 06:26</footer>
+
+
+<script>
+document.querySelectorAll('.nlm-btn').forEach(function(btn){
+  btn.addEventListener('click',function(){
+    navigator.clipboard.writeText('/notebooklm '+btn.dataset.url).then(function(){
+      var orig=btn.innerHTML;btn.innerHTML='✓ 복사됨';btn.classList.add('copied');
+      setTimeout(function(){btn.innerHTML=orig;btn.classList.remove('copied');},2000);
+    });
+  });
+});
+</script>
+
+</body>
+</html>
