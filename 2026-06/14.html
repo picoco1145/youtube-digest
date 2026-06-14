@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>2026-06-14 — 유튜브 구독 정리</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+  :root{--bg:#090e1a;--surface:#111827;--surface2:#1a2235;--border:#1e2d47;--accent:#6c63ff;--accent2:#00d4ff;--text:#e8eaf0;--muted:#7a8499;--radius:14px;}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Pretendard',sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+  header{background:linear-gradient(135deg,#0d1b3e,#1a0533);border-bottom:1px solid var(--border);padding:20px 40px;display:flex;align-items:center;justify-content:space-between;}
+  .nav-back{color:var(--accent2);text-decoration:none;font-size:0.85rem;display:flex;align-items:center;gap:6px}
+  .nav-back:hover{color:#fff}
+  .date-badge{font-size:1.4rem;font-weight:700;letter-spacing:-0.5px;background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+  .count{font-size:0.85rem;color:var(--muted)}
+  main{max-width:900px;margin:0 auto;padding:32px 24px 80px}
+  .video-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;margin-bottom:24px;transition:border-color 0.2s,box-shadow 0.2s;}
+  .video-card:hover{border-color:var(--accent);box-shadow:0 4px 24px rgba(108,99,255,0.15)}
+  .card-top{display:flex;gap:0}
+  .thumb-wrap{flex:0 0 240px;position:relative;overflow:hidden}
+  .thumb-wrap img{width:100%;height:100%;object-fit:cover;transition:transform 0.4s}
+  .video-card:hover .thumb-wrap img{transform:scale(1.05)}
+  .card-info{flex:1;padding:20px;display:flex;flex-direction:column;gap:10px}
+  .card-meta{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+  .ch-tag{font-size:0.72rem;font-weight:600;padding:3px 12px;background:linear-gradient(135deg,rgba(108,99,255,0.2),rgba(0,212,255,0.2));border:1px solid rgba(108,99,255,0.3);border-radius:999px;color:var(--accent2);}
+  .date-tag{font-size:0.72rem;color:var(--muted)}
+  .no-transcript{font-size:0.68rem;padding:2px 8px;background:rgba(255,180,0,0.12);border:1px solid rgba(255,180,0,0.25);border-radius:999px;color:#ffa500;}
+  .video-title{font-size:1rem;font-weight:600;line-height:1.4}
+  .yt-link{display:inline-flex;align-items:center;gap:5px;font-size:0.8rem;color:var(--accent);text-decoration:none;transition:color 0.2s;}
+  .yt-link:hover{color:var(--accent2)}
+  
+  .nlm-btn{display:inline-flex;align-items:center;gap:5px;font-size:0.8rem;color:#fff;
+    background:rgba(108,99,255,0.2);border:1px solid rgba(108,99,255,0.4);border-radius:8px;
+    padding:4px 12px;cursor:pointer;font-family:inherit;transition:all 0.2s;margin-left:8px;}
+  .nlm-btn:hover{background:rgba(108,99,255,0.45);}
+  .nlm-btn.copied{background:rgba(0,200,100,0.2);border-color:rgba(0,200,100,0.4);color:#00c864;}
+
+  .summary-section{border-top:1px solid var(--border);background:var(--surface2);padding:20px 24px;font-size:0.85rem;line-height:1.7;color:#c5cad8;}
+  .summary-section h2{font-size:0.82rem;color:var(--accent2);margin:12px 0 4px}
+  .summary-section h2:first-child{margin-top:0}
+  .summary-section ul{padding-left:18px}
+  .summary-section li{margin-bottom:5px}
+  .transcript-wrap{border-top:1px solid var(--border);padding:14px 24px;background:#0c1220}
+  .transcript-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:0}
+  .transcript-toggle{background:none;border:none;color:var(--muted);font-size:0.8rem;cursor:pointer;font-family:inherit;display:flex;align-items:center;gap:4px;padding:0;transition:color 0.2s;}
+  .transcript-toggle:hover{color:var(--text)}
+  .copy-btn{background:rgba(108,99,255,0.1);border:1px solid rgba(108,99,255,0.3);border-radius:8px;color:var(--accent2);font-size:0.72rem;padding:4px 12px;cursor:pointer;font-family:inherit;transition:all 0.2s;}
+  .copy-btn:hover{background:rgba(108,99,255,0.25);color:#fff}
+  .transcript-box{display:none;margin-top:10px;background:#080d18;border:1px solid var(--border);border-radius:10px;padding:12px 14px;font-size:0.78rem;line-height:1.75;color:#8a95aa;max-height:260px;overflow-y:auto;white-space:pre-wrap;word-break:break-word;}
+  .transcript-box.visible{display:block}
+  footer{text-align:center;padding:24px;font-size:0.75rem;color:var(--muted);border-top:1px solid var(--border)}
+  @media(max-width:640px){.card-top{flex-direction:column}.thumb-wrap{flex:none;height:200px}header{padding:16px}main{padding:16px 12px 60px}}
+</style>
+</head>
+<body>
+
+<header>
+  <a class="nav-back" href="../index.html">← 대시보드로</a>
+  <div>
+    <div class="date-badge">2026-06-14</div>
+    <div class="count">3개 영상</div>
+  </div>
+  <div style="font-size:0.75rem;color:var(--muted)">2026-06-15 06:01 생성</div>
+</header>
+
+<main>
+
+  <article class="video-card">
+    <div class="card-top">
+      <a class="thumb-wrap" href="https://www.youtube.com/watch?v=fg5XQkYHGBI" target="_blank" rel="noopener">
+        <img src="https://i.ytimg.com/vi/fg5XQkYHGBI/hqdefault.jpg" alt="Meta Just Dropped a FREE AI Employee in Your DMs" loading="lazy"/>
+      </a>
+      <div class="card-info">
+        <div class="card-meta">
+          <span class="ch-tag">Nicholas Puru</span>
+          <span class="date-tag">2026-06-14</span>
+          <span class="no-transcript">설명 기반</span>
+        </div>
+        <div class="video-title">Meta Just Dropped a FREE AI Employee in Your DMs</div>
+        <div style="display:flex;align-items:center;flex-wrap:wrap;gap:4px;margin-top:auto">
+          <a class="yt-link" href="https://www.youtube.com/watch?v=fg5XQkYHGBI" target="_blank" rel="noopener">↗ 유튜브에서 보기</a>
+          <button class="nlm-btn" data-url="https://www.youtube.com/watch?v=fg5XQkYHGBI">📓 NotebookLM</button>
+        </div>
+      </div>
+    </div>
+    <div class="summary-section">
+      <p>Authentication required. Please visit the URL to log in:</p>
+<p>https://accounts.google.com/o/oauth2/auth?access_type=offline&client_id=1071006060591-tmhssin2h21lcre235vtolojh4g403ep.apps.googleusercontent.com&code_challenge=iTTpKTfIpDe7vpE0-48SENpURu6FFeXLJ9Nx3vIIuO0&code_challenge_method=S256&prompt=consent&redirect_uri=https%3A%2F%2Fantigravity.google%2Foauth-callback&response_type=code&scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fcloud-platform+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fcclog+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fexperimentsandconfigs+openid&state=fxm1J2-7CCkZw3j0KNoR5w</p>
+<p>Waiting for authentication (timeout 30s)...</p>
+<p>Or, paste the authorization code here and press Enter:</p>
+<p>Error: authentication timed out.</p>
+    </div>
+  </article>
+  <article class="video-card">
+    <div class="card-top">
+      <a class="thumb-wrap" href="https://www.youtube.com/watch?v=zXADtOa_A_k" target="_blank" rel="noopener">
+        <img src="https://i.ytimg.com/vi/zXADtOa_A_k/hqdefault.jpg" alt="Government Just Banned Claude Fable 5 — Why You Need Local AI Now" loading="lazy"/>
+      </a>
+      <div class="card-info">
+        <div class="card-meta">
+          <span class="ch-tag">Nicholas Puru</span>
+          <span class="date-tag">2026-06-14</span>
+          <span class="no-transcript">설명 기반</span>
+        </div>
+        <div class="video-title">Government Just Banned Claude Fable 5 — Why You Need Local AI Now</div>
+        <div style="display:flex;align-items:center;flex-wrap:wrap;gap:4px;margin-top:auto">
+          <a class="yt-link" href="https://www.youtube.com/watch?v=zXADtOa_A_k" target="_blank" rel="noopener">↗ 유튜브에서 보기</a>
+          <button class="nlm-btn" data-url="https://www.youtube.com/watch?v=zXADtOa_A_k">📓 NotebookLM</button>
+        </div>
+      </div>
+    </div>
+    <div class="summary-section">
+      <h2>핵심 요약</h2>
+<p>미 정부가 국가 안보와 해킹 위협을 이유로 앤트로픽의 최신 고성능 모델인 '클로드 페이블 5'에 급작스럽게 수출 통제령을 때려버려서 서비스가 통째로 내려간 상태다. 대기업 클라우드 AI만 믿고 있다간 하루아침에 작업이 마비될 수 있다는 게 증명된 셈이다. 결국 규제나 차단 걱정 없이 내 컴퓨터에서 돌릴 수 있는 로컬 AI 구축이 필수인 시대가 왔다.</p>
+<h2>주요 포인트</h2>
+<ul>
+<li>**미 정부의 클로드 페이블 5 규제:** 앤트로픽이 신작 모델을 내놓자마자 미국 정부가 제로데이 취약점 탐지 등 해킹 악용 우려를 이유로 수출 통제 명령을 박아버림.</li>
+<li>**글로벌 서비스 중단 사태:** 국가별 접근 제한을 깔끔하게 나눌 방법이 없다 보니 앤트로픽 측에서 모델 서비스를 아예 내려버리는 초유의 사태가 터짐.</li>
+<li>**클라우드 의존의 위험성:** 대기업 클라우드 AI는 정부 규제나 기업 정책 한 방에 언제든 먹통이 될 수 있으므로 비즈니스 연속성에 치명적임.</li>
+<li>**로컬 AI 도입의 필요성:** 외부 네트워크 차단이나 규제 압박에서 자유롭고 오프라인에서도 돌아가는 로컬 AI를 백업으로 준비해 둬야 함.</li>
+<li>**향후 전망과 우려:** 규제가 풀려 클로드 페이블 5가 다시 출시되더라도 정부 입김 때문에 기능이 대폭 칼질당해 멍청해진 버전일 확률이 높음.</li>
+</ul>
+    </div>
+  </article>
+  <article class="video-card">
+    <div class="card-top">
+      <a class="thumb-wrap" href="https://www.youtube.com/watch?v=aHD-6knNRtI" target="_blank" rel="noopener">
+        <img src="https://i.ytimg.com/vi/aHD-6knNRtI/hqdefault.jpg" alt="Get the Best Way You Do a Task Out of Your Head and Into AI." loading="lazy"/>
+      </a>
+      <div class="card-info">
+        <div class="card-meta">
+          <span class="ch-tag">Dylan Davis</span>
+          <span class="date-tag">2026-06-14</span>
+          <span class="no-transcript">설명 기반</span>
+        </div>
+        <div class="video-title">Get the Best Way You Do a Task Out of Your Head and Into AI.</div>
+        <div style="display:flex;align-items:center;flex-wrap:wrap;gap:4px;margin-top:auto">
+          <a class="yt-link" href="https://www.youtube.com/watch?v=aHD-6knNRtI" target="_blank" rel="noopener">↗ 유튜브에서 보기</a>
+          <button class="nlm-btn" data-url="https://www.youtube.com/watch?v=aHD-6knNRtI">📓 NotebookLM</button>
+        </div>
+      </div>
+    </div>
+    <div class="summary-section">
+      <h2>핵심 요약</h2>
+<p>업무 노하우를 문서로 정리하는 대신 AI에 직접 이식해 업무를 자동화하거나 지원받는 새로운 업무 방식을 제안함. 판단이 많이 필요한 업무는 AI 인터뷰를 통해, 단순 반복 업무는 실제 예시를 보여주는 방식으로 AI에게 학습시켜 재사용 가능한 '스킬'로 만듦. 이를 통해 직원은 직접 일하는 실무자에서 AI 결과물을 검수하는 역할로 전환됨.</p>
+<h2>주요 포인트</h2>
+<ul>
+<li>기존의 수동적인 문서형 SOP 작성을 넘어서, 개인의 노하우를 AI 에이전트에게 직접 학습시켜 실행하게 만드는 패러다임 전환을 강조함.</li>
+<li>판단이 중요한 업무는 AI가 질문을 던져 사용자의 의사결정 논리를 뽑아내는 'AI 인터뷰' 방식을 사용함.</li>
+<li>단순 반복적인 작업은 실전 예시를 통해 실행 단계를 증명하고, 이를 기반으로 AI가 실행 가능한 '스킬'을 생성함.</li>
+<li>사용자의 지속적인 피드백을 통해 AI의 업무 스킬을 업데이트하고 고도화하는 자기 개선 루프를 구축함.</li>
+<li>결과적으로 직원의 역할은 실무 직접 수행에서 AI가 뱉어낸 결과물을 검수하고 품질을 관리하는 검토자로 진화함.</li>
+</ul>
+    </div>
+  </article>
+</main>
+
+<footer>유튜브 구독 정리 · agy 요약 · 2026-06-15 06:01</footer>
+
+
+<script>
+document.querySelectorAll('.nlm-btn').forEach(function(btn){
+  btn.addEventListener('click',function(){
+    navigator.clipboard.writeText('/notebooklm '+btn.dataset.url).then(function(){
+      var orig=btn.innerHTML;btn.innerHTML='✓ 복사됨';btn.classList.add('copied');
+      setTimeout(function(){btn.innerHTML=orig;btn.classList.remove('copied');},2000);
+    });
+  });
+});
+</script>
+
+</body>
+</html>
