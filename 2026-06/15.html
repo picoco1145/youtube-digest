@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>2026-06-15 — 유튜브 구독 정리</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+  :root{--bg:#090e1a;--surface:#111827;--surface2:#1a2235;--border:#1e2d47;--accent:#6c63ff;--accent2:#00d4ff;--text:#e8eaf0;--muted:#7a8499;--radius:14px;}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Pretendard',sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+  header{background:linear-gradient(135deg,#0d1b3e,#1a0533);border-bottom:1px solid var(--border);padding:20px 40px;display:flex;align-items:center;justify-content:space-between;}
+  .nav-back{color:var(--accent2);text-decoration:none;font-size:0.85rem;display:flex;align-items:center;gap:6px}
+  .nav-back:hover{color:#fff}
+  .date-badge{font-size:1.4rem;font-weight:700;letter-spacing:-0.5px;background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+  .count{font-size:0.85rem;color:var(--muted)}
+  main{max-width:900px;margin:0 auto;padding:32px 24px 80px}
+  .video-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;margin-bottom:24px;transition:border-color 0.2s,box-shadow 0.2s;}
+  .video-card:hover{border-color:var(--accent);box-shadow:0 4px 24px rgba(108,99,255,0.15)}
+  .card-top{display:flex;gap:0}
+  .thumb-wrap{flex:0 0 240px;position:relative;overflow:hidden}
+  .thumb-wrap img{width:100%;height:100%;object-fit:cover;transition:transform 0.4s}
+  .video-card:hover .thumb-wrap img{transform:scale(1.05)}
+  .card-info{flex:1;padding:20px;display:flex;flex-direction:column;gap:10px}
+  .card-meta{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+  .ch-tag{font-size:0.72rem;font-weight:600;padding:3px 12px;background:linear-gradient(135deg,rgba(108,99,255,0.2),rgba(0,212,255,0.2));border:1px solid rgba(108,99,255,0.3);border-radius:999px;color:var(--accent2);}
+  .date-tag{font-size:0.72rem;color:var(--muted)}
+  .no-transcript{font-size:0.68rem;padding:2px 8px;background:rgba(255,180,0,0.12);border:1px solid rgba(255,180,0,0.25);border-radius:999px;color:#ffa500;}
+  .video-title{font-size:1rem;font-weight:600;line-height:1.4}
+  .yt-link{display:inline-flex;align-items:center;gap:5px;font-size:0.8rem;color:var(--accent);text-decoration:none;transition:color 0.2s;}
+  .yt-link:hover{color:var(--accent2)}
+  
+  .nlm-btn{display:inline-flex;align-items:center;gap:5px;font-size:0.8rem;color:#fff;
+    background:rgba(108,99,255,0.2);border:1px solid rgba(108,99,255,0.4);border-radius:8px;
+    padding:4px 12px;cursor:pointer;font-family:inherit;transition:all 0.2s;margin-left:8px;}
+  .nlm-btn:hover{background:rgba(108,99,255,0.45);}
+  .nlm-btn.copied{background:rgba(0,200,100,0.2);border-color:rgba(0,200,100,0.4);color:#00c864;}
+
+  .summary-section{border-top:1px solid var(--border);background:var(--surface2);padding:20px 24px;font-size:0.85rem;line-height:1.7;color:#c5cad8;}
+  .summary-section h2{font-size:0.82rem;color:var(--accent2);margin:12px 0 4px}
+  .summary-section h2:first-child{margin-top:0}
+  .summary-section ul{padding-left:18px}
+  .summary-section li{margin-bottom:5px}
+  .transcript-wrap{border-top:1px solid var(--border);padding:14px 24px;background:#0c1220}
+  .transcript-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:0}
+  .transcript-toggle{background:none;border:none;color:var(--muted);font-size:0.8rem;cursor:pointer;font-family:inherit;display:flex;align-items:center;gap:4px;padding:0;transition:color 0.2s;}
+  .transcript-toggle:hover{color:var(--text)}
+  .copy-btn{background:rgba(108,99,255,0.1);border:1px solid rgba(108,99,255,0.3);border-radius:8px;color:var(--accent2);font-size:0.72rem;padding:4px 12px;cursor:pointer;font-family:inherit;transition:all 0.2s;}
+  .copy-btn:hover{background:rgba(108,99,255,0.25);color:#fff}
+  .transcript-box{display:none;margin-top:10px;background:#080d18;border:1px solid var(--border);border-radius:10px;padding:12px 14px;font-size:0.78rem;line-height:1.75;color:#8a95aa;max-height:260px;overflow-y:auto;white-space:pre-wrap;word-break:break-word;}
+  .transcript-box.visible{display:block}
+  footer{text-align:center;padding:24px;font-size:0.75rem;color:var(--muted);border-top:1px solid var(--border)}
+  @media(max-width:640px){.card-top{flex-direction:column}.thumb-wrap{flex:none;height:200px}header{padding:16px}main{padding:16px 12px 60px}}
+</style>
+</head>
+<body>
+
+<header>
+  <a class="nav-back" href="../index.html">← 대시보드로</a>
+  <div>
+    <div class="date-badge">2026-06-15</div>
+    <div class="count">3개 영상</div>
+  </div>
+  <div style="font-size:0.75rem;color:var(--muted)">2026-06-16 06:02 생성</div>
+</header>
+
+<main>
+
+  <article class="video-card">
+    <div class="card-top">
+      <a class="thumb-wrap" href="https://www.youtube.com/watch?v=3XIGcM7VICc" target="_blank" rel="noopener">
+        <img src="https://i.ytimg.com/vi/3XIGcM7VICc/hqdefault.jpg" alt="Learn These 6 AI Skills Now (Before AI Replaces You)" loading="lazy"/>
+      </a>
+      <div class="card-info">
+        <div class="card-meta">
+          <span class="ch-tag">Nate Herk</span>
+          <span class="date-tag">2026-06-15</span>
+          <span class="no-transcript">설명 기반</span>
+        </div>
+        <div class="video-title">Learn These 6 AI Skills Now (Before AI Replaces You)</div>
+        <div style="display:flex;align-items:center;flex-wrap:wrap;gap:4px;margin-top:auto">
+          <a class="yt-link" href="https://www.youtube.com/watch?v=3XIGcM7VICc" target="_blank" rel="noopener">↗ 유튜브에서 보기</a>
+          <button class="nlm-btn" data-url="https://www.youtube.com/watch?v=3XIGcM7VICc">📓 NotebookLM</button>
+        </div>
+      </div>
+    </div>
+    <div class="summary-section">
+      <h2>핵심 요약</h2>
+<p>AI한테 일자리 뺏기기 전에 무조건 배워야 할 6가지 생존용 AI 기술을 싹 정리해 줌. 단순 프롬프트 깎는 법이 아니라, 비즈니스 맥락이랑 실행력을 합쳐서 밥그릇 지키는 법을 다룸.</p>
+<h2>주요 포인트</h2>
+<ul>
+<li>**팀에서 AI 담당자 먹기**: 회사에서 AI 물어볼 때 니 이름 먼저 나오게 만들어서 대체 불가 인재로 포지셔닝해야 됨.</li>
+<li>**취향과 판단력(Taste & Judgment)**: AI가 뱉은 거 맹신하지 말고 퀄리티 필터링하는 안목이 진짜 실력임.</li>
+<li>**컨텍스트 엔지니어(Context Engineer)**: 단순 질문보다 니 뇌에 있는 데이터와 비즈니스 맥락을 AI한테 제대로 쑤셔 넣어주는 게 핵심임.</li>
+<li>**무조건 빠른 반복 속도(Iteration Speed)**: 완벽한 거 기획한다고 뻐기지 말고, 단축키랑 음성 입력 써서 작동하는 쓰레기(ugly version)라도 일단 빨리 만들고 고치는 게 장땡임.</li>
+<li>**자판기 vs 슬롯머신 구분**: 매번 수동으로 굴리지 말고 자동으로 돌아가게 만들고, AI가 진짜 필요한 곳(에이전트)과 굳이 안 써도 되는 일반 워크플로우를 분별해야 됨.</li>
+<li>**실업 보험(Unemployment Insurance) 들기**: AI 생산성 땡겨서 니 도메인 기반으로 사이드 프로젝트나 1인 서비스 같은 다중 수익원 뚫어놓고 밥줄 다각화하라는 소리임.</li>
+</ul>
+    </div>
+  </article>
+  <article class="video-card">
+    <div class="card-top">
+      <a class="thumb-wrap" href="https://www.youtube.com/watch?v=oruZKJyBhfE" target="_blank" rel="noopener">
+        <img src="https://i.ytimg.com/vi/oruZKJyBhfE/hqdefault.jpg" alt="The Ultimate Beginner’s Guide To Claude (2026)" loading="lazy"/>
+      </a>
+      <div class="card-info">
+        <div class="card-meta">
+          <span class="ch-tag">Nicholas Puru</span>
+          <span class="date-tag">2026-06-15</span>
+          <span class="no-transcript">설명 기반</span>
+        </div>
+        <div class="video-title">The Ultimate Beginner’s Guide To Claude (2026)</div>
+        <div style="display:flex;align-items:center;flex-wrap:wrap;gap:4px;margin-top:auto">
+          <a class="yt-link" href="https://www.youtube.com/watch?v=oruZKJyBhfE" target="_blank" rel="noopener">↗ 유튜브에서 보기</a>
+          <button class="nlm-btn" data-url="https://www.youtube.com/watch?v=oruZKJyBhfE">📓 NotebookLM</button>
+        </div>
+      </div>
+    </div>
+    <div class="summary-section">
+      <h2>핵심 요약</h2>
+<p>2026년 기준 Claude를 처음 쓰는 초보자들을 위해 핵심 기능과 실전 활용법을 빠르게 훑어주는 가이드다. 단순한 대화를 넘어 프로젝트 기능이나 아티팩트 등을 적극 활용해 업무 생산성을 뽑아내는 방법을 설명함. AI를 제대로 부려먹기 위한 필수 프롬프트 작성 팁도 같이 다룬다.</p>
+<h2>주요 포인트</h2>
+<ul>
+<li>2026년 버전 Claude의 최신 UI와 기본적인 사용 환경에 빠르게 적응하는 법을 알려줌</li>
+<li>원하는 답변을 한방에 얻기 위해 프롬프트에 구체적인 역할과 맥락(Context)을 부여하는 요령을 설명함</li>
+<li>프로젝트(Projects)와 아티팩트(Artifacts) 기능을 써서 자료를 체계적으로 관리하고 작업 효율을 높이는 팁을 전수함</li>
+<li>단순 질문 답변에 그치지 않고 일련의 워크플로우를 자동화하여 Claude를 개인 비서처럼 굴리는 활용법을 제시함</li>
+</ul>
+    </div>
+  </article>
+  <article class="video-card">
+    <div class="card-top">
+      <a class="thumb-wrap" href="https://www.youtube.com/watch?v=52-sCG5xLnk" target="_blank" rel="noopener">
+        <img src="https://i.ytimg.com/vi/52-sCG5xLnk/hqdefault.jpg" alt="Microsoft Just Created Their Own Openclaw!" loading="lazy"/>
+      </a>
+      <div class="card-info">
+        <div class="card-meta">
+          <span class="ch-tag">Nicholas Puru</span>
+          <span class="date-tag">2026-06-15</span>
+          <span class="no-transcript">설명 기반</span>
+        </div>
+        <div class="video-title">Microsoft Just Created Their Own Openclaw!</div>
+        <div style="display:flex;align-items:center;flex-wrap:wrap;gap:4px;margin-top:auto">
+          <a class="yt-link" href="https://www.youtube.com/watch?v=52-sCG5xLnk" target="_blank" rel="noopener">↗ 유튜브에서 보기</a>
+          <button class="nlm-btn" data-url="https://www.youtube.com/watch?v=52-sCG5xLnk">📓 NotebookLM</button>
+        </div>
+      </div>
+    </div>
+    <div class="summary-section">
+      <h2>핵심 요약</h2>
+<p>마이크로소프트가 빌드 2026에서 오픈소스 AI 에이전트 플랫폼인 'OpenClaw'를 전격 도입해 자사 에이전트 생태계를 확장한다고 발표함. 과거 보안 우려로 경계하던 입장을 바꿔, 안전한 샌드박스 환경을 제공하는 MXC SDK까지 자체 개발하며 기업용 도입에 박차를 가하는 중임. 크리에이터 Nicholas Puru는 이 소식을 다루며 MS가 오픈소스를 수용해 에이전트 생태계를 어떻게 바꿀지 분석함.</p>
+<h2>주요 포인트</h2>
+<ul>
+<li>원래 사티아 나델라는 OpenClaw를 보안 때문에 바이러스 취급하며 극도로 경계했었음.</li>
+<li>이번에 발표한 'Autopilot' 에이전트 카테고리의 첫 주자인 'Microsoft Scout'이 OpenClaw 기반으로 돌아감.</li>
+<li>안전한 구동을 위해 윈도우 환경 내에서 에이전트를 격리하는 'Microsoft Execution Containers(MXC)' SDK를 개발함.</li>
+<li>24시간 알아서 돌아가는 자율 에이전트 트렌드에서 MS가 오픈소스 진영을 품고 주도권을 쥐려는 전략으로 보임.</li>
+</ul>
+    </div>
+  </article>
+</main>
+
+<footer>유튜브 구독 정리 · agy 요약 · 2026-06-16 06:02</footer>
+
+
+<script>
+document.querySelectorAll('.nlm-btn').forEach(function(btn){
+  btn.addEventListener('click',function(){
+    navigator.clipboard.writeText('/notebooklm '+btn.dataset.url).then(function(){
+      var orig=btn.innerHTML;btn.innerHTML='✓ 복사됨';btn.classList.add('copied');
+      setTimeout(function(){btn.innerHTML=orig;btn.classList.remove('copied');},2000);
+    });
+  });
+});
+</script>
+
+</body>
+</html>
