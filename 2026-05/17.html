@@ -119,7 +119,7 @@
   <a class="nav-back" href="../../index.html">← 대시보드로</a>
   <div>
     <div class="date-badge">2026-05-17</div>
-    <div class="count">2개 영상</div>
+    <div class="count">3개 영상</div>
   </div>
   <div style="font-size:0.75rem;color:var(--muted)">2026-05-18 06:00 생성</div>
 </header>
@@ -193,6 +193,46 @@
       <button class="copy-btn" onclick="var b=this,t=b.nextElementSibling||b;navigator.clipboard.writeText(document.querySelector('#tr-9053lHTUM7Y').textContent).then(()=>{b.textContent='복사됨';setTimeout(()=>b.textContent='복사',2000)})">복사</button>
     </div>
     <pre class="transcript-box" id="tr-9053lHTUM7Y">이 남자는 영업의 신입니다. 매달일만 명예 잠재 고객을 자동으로 찾아내고 이메일 영업부터 팔로업까지 싹 다 자동화한 비즈니스 천재 파비안 마클 그가 공개한 인스타그램 자동 영업으로 월 1억 매출을 만드는 세 가지 필승 공식 저장하고 끝까지 보세요. 첫째 클로드에게 인스타그램을 싹사찌이 뒤지는 눈을 달아 주세요. 에피파이 커넥터를 연결하면 AI가 당신의 타겟 해시태그를 분석해 잠재 고객의 프로필을 수만 개씩 수집합니다. 당신이 잠든 사이에도 AI는 멈추지 않고 미드당 단돈 100원의 비용으로 가장 정확한 고객 리스트를 만들어 냅니다. 둘째, 24시간 쉬지 않는 전담 영업 사원을 고용하세요. 수집된 프로필에서 이메일을 찾아내는 것부터 개인화된 제한 메일을 보내는 것까지 클로드가 직접 처리합니다. 답장이 없는 고객에게는 알아서 팔로업 메일까지 보내기 때문에 당신은 미팅 예약이 잡혔다는 알림만 확인하면 됩니다. 셋째, 모든 현황을 한 눈에 보는 자동 대시보드를 구축하세요. 복잡한 엑셀 파일 대신 실시간으로 업데이트되는 HTML 대시보드로 리드 관리 현황을 확인하세요. 매일 아침 AI가 어제 하루 동안 몇 명의 고객을 만났고 어떤 성과를 냈는지 리포트로 보고하는 완벽한 자동화 제국이 완성됩니다. 위 내용을 더 자세히 알고 싶다면 댓글에 인스타그램 남겨 주세요. 26분짜리 영상을 모두 정리했습니다.이</pre>
+  </div>
+  </article>
+  <article class="video-card">
+    <div class="card-top">
+      <a class="thumb-wrap" href="https://www.youtube.com/watch?v=ueNx7Wj9Rx4" target="_blank" rel="noopener">
+        <img src="https://i.ytimg.com/vi/ueNx7Wj9Rx4/hqdefault.jpg" alt="Claude Confidently Skipped Half Your Document and Didn't Tell You" loading="lazy"/>
+      </a>
+      <div class="card-info">
+        <div class="card-meta">
+          <span class="ch-tag">Dylan Davis</span>
+          <span class="date-tag">2026-05-17</span>
+          
+        </div>
+        <div class="video-title">Claude Confidently Skipped Half Your Document and Didn't Tell You</div>
+        <div style="display:flex;align-items:center;flex-wrap:wrap;gap:4px;margin-top:auto">
+          <a class="yt-link" href="https://www.youtube.com/watch?v=ueNx7Wj9Rx4" target="_blank" rel="noopener">↗ 유튜브에서 보기</a>
+          <button class="nlm-btn" data-url="https://www.youtube.com/watch?v=ueNx7Wj9Rx4">📓 NotebookLM</button>
+        </div>
+      </div>
+    </div>
+    <div class="summary-section">
+      <h2>핵심 요약</h2>
+<p>긴 문서를 올리면 ChatGPT·Claude가 자신 있게 답하지만 실제로는 절반만 읽고도 말하지 않는 침묵 실패가 흔하다. desktop agent(Codex·Claude Co-work)에서 map → search → read의 3채팅 워크플로우로 이 약점을 우회하는 법을 설명한다.</p>
+<h2>주요 포인트</h2>
+<ul>
+<li>근본 문제는 AI의 머리(컨텍스트)가 50~60% 차면 지능이 급락한다는 것. 큰 파일은 에러로 거부하거나(좋은 경우) 다 받아놓고 일부만 읽은 부분적 답을 주는데(최악) 사용자는 다 읽은 줄 안다.</li>
+<li>파일 종류마다 머리를 채우는 정도가 다르다. 천 페이지라도 plain text는 가볍고, 깨끗한 PDF→슬라이드덱→스프레드시트→영상 순으로 빨리 찬다.</li>
+<li>토큰 한도는 모델뿐 아니라 어디서 쓰는지에 따라 다르다. Opus 4.7은 Claude Co-work에서 약 20만, Claude Code에서는 100만 토큰까지, GPT 5.5는 Codex에서 약 25.6만 토큰. Codex·Claude Code엔 토큰 미터가 있지만 Co-work엔 없다.</li>
+<li>3채팅 워크플로우(각 단계마다 새 대화로 머리를 비움): map(파일·섹션을 목차화하고 notes 작성) → search(map을 기준으로 핵심을 찾아 evidence 파일 생성) → read(map·notes·evidence로 정독 후 답변). 각 단계에 복붙용 프롬프트가 있다.</li>
+<li>desktop agent는 파일을 머리에 욱여넣는 대신 AI를 파일로 데려가 agentic하게 검색한다. 마지막 답변엔 주요 포인트마다 출처를 달고, 끝에 무엇을 신뢰할지·불확실한지·생략한 것을 알리는 macro audit을 붙이게 한다. 로컬 파일이 없으면 Google Drive·OneDrive·Dropbox 동기화로 데스크톱과 맞춘다.</li>
+</ul>
+    </div>
+  <div class="transcript-wrap">
+    <div class="transcript-header">
+      <button class="transcript-toggle" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('visible')">
+        <span class="arr">▼</span> 원문 자막
+      </button>
+      <button class="copy-btn" onclick="var b=this,t=b.nextElementSibling||b;navigator.clipboard.writeText(document.querySelector('#tr-ueNx7Wj9Rx4').textContent).then(()=>{b.textContent='복사됨';setTimeout(()=>b.textContent='복사',2000)})">복사</button>
+    </div>
+    <pre class="transcript-box" id="tr-ueNx7Wj9Rx4">Chat GPT and Claude can confidently skip half of your document and never tell you. If you're new here, I'm Dylan. I run an AI consultancy and this silent failure shows up in coaching sessions across nearly every industry I work with. You upload a long file into Chat GPT or Claude. You get a clean confident answer and you assume the model read everything. It usually didn't. I'll show you why this breaks down in a three chat workflow I use in desktop agents like Codex or Claude Cowork to work around this weakness. So, let's get into it. Now, this is the battle that we're all facing and it's something that we're likely going to continue facing until it's fundamentally fixed by the research labs like OpenAI, Google, and Anthropic. And that fundamental challenge is how much space is in AI's head and how much information we can put in there before its intelligence drops. And every single one of my clients that are doing meaningful work with AI hit this limit. And this manifests in three ways, especially if you're using the browser AIs. So, if you're using Chat GPT in the browser or Claude in the browser. The first one is you just give the AI a really large file, something that exceeds maybe 800 to 1,000 pages. When doing this, the AI may error out and say that it can't handle it. And the next one is if you give too many files to the AI. So, this could be Claude or GPT. If you give more than 10 files, it'll likely prevent you from putting any more files in. You can only do 10 at a time. And I'll talk a bit more about this later, but depending on the size of the file, you may be only get up to like three files or four files. But the thing here is these two are actually good use cases because the AI explicitly told you that it couldn't handle it. But the worst case, which happens way more often than you would expect, is the AI takes all of it and it gives you an answer back. But the issue is that answer, the AI only partially read the documents you provided, so the answer is likely only partially true. And this is the big thing that we want to avoid. I'm going to walk you through a three chat workflow that I use with Codex and Claude Cowork on my desktop to mitigate many of the failures that we see here. But before we get into that chat workflow, I want to walk you through more why this is such a problem. So, you've probably seen this chart many times in my previous videos. And what this chart shows is the drop-off of intelligence when you fill up the AI's head. So, on one axis, we have intelligence, low and high. On the other axis, we have how much space we filled up in the AI's head. Once you fill the AI's head up to around 50 to 60% depending on the model you're using, the intelligence drops like a rock. So, it's important to be aware of this so you don't necessarily have a long-running conversation that's too long or you put too many files in the AI's head in the wrong way where it tries to hold all of it in one spot and then answer your question at the same time. By doing that, you're going to get probably a poor answer. Quick pause in your regular programming. This video is brought to you by me, as always. Two quick things. First off, below is a 30-day AI insight series. You'll get 30 insights in your inbox for how you can apply AI to your business and your work. The second thing is if you'd like to work with me, below are a series of offerings to see if there's a good fit between the two of us. Now, let's get back to the video. And another important thing to call out here, it's not all file types are created equal. Some files are much smaller than others. So, if you have a plain text file, even if it's a thousand pages, if it's plain text, it's much smaller on the AI's head and it can hold that effectively. And as we go up these file types, it fills up the AI's head faster. So, if it's a clean PDF, that's okay. If it's a slide deck like a PowerPoint, that can fill up the AI's head pretty quickly depending on the complexity of the slides and how many there are. If it's a spreadsheet that has many columns, rows, and tabs, that again can fill up the AI's head really quickly. And videos are on the high end where if you put this in there, it probably can only hold maybe between a minute and 10 minutes of video depending on the model you're using. So, it's not just how many files, but also the type of file you're sharing with AI. And as I mentioned, different models can hold different amounts of information based off of the model you're using and also where you're using it as well, which is interesting. So, for example, if I'm using Opus 4.7, if I use it inside of Claude Cowork on the desktop agent, I likely have around 200,000 tokens that I can use. And a token basically is a part of a word. And if I'm using Opus 4.7 from Claude inside of Claude Code, I can switch on the ability to use a million tokens. So, it's not just the model you're using, but also where you're using that model. And then GPT 5.5, if you use t</pre>
   </div>
   </article>
 </main>

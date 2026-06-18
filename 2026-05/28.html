@@ -60,7 +60,7 @@
   <a class="nav-back" href="../index.html">← 대시보드로</a>
   <div>
     <div class="date-badge">2026-05-28</div>
-    <div class="count">1개 영상</div>
+    <div class="count">2개 영상</div>
   </div>
   <div style="font-size:0.75rem;color:var(--muted)">2026-05-29 06:00 생성</div>
 </header>
@@ -96,6 +96,46 @@
 <li>**광고 집행 및 스케일업:** 메타(Meta) 광고 플랫폼에 광고를 집행하여 성과가 가장 좋은 상위 3개 광고를 선별하고, 이에 집중 투자하여 6자리수(10만 달러) 이상의 비즈니스 수익을 창출했습니다.</li>
 </ul>
     </div>
+  </article>
+  <article class="video-card">
+    <div class="card-top">
+      <a class="thumb-wrap" href="https://www.youtube.com/watch?v=EX1Ys6rlbLc" target="_blank" rel="noopener">
+        <img src="https://i.ytimg.com/vi/EX1Ys6rlbLc/hqdefault.jpg" alt="You Set Up Claude Cowork in the Wrong Order" loading="lazy"/>
+      </a>
+      <div class="card-info">
+        <div class="card-meta">
+          <span class="ch-tag">Dylan Davis</span>
+          <span class="date-tag">2026-05-28</span>
+          
+        </div>
+        <div class="video-title">You Set Up Claude Cowork in the Wrong Order</div>
+        <div style="display:flex;align-items:center;flex-wrap:wrap;gap:4px;margin-top:auto">
+          <a class="yt-link" href="https://www.youtube.com/watch?v=EX1Ys6rlbLc" target="_blank" rel="noopener">↗ 유튜브에서 보기</a>
+          <button class="nlm-btn" data-url="https://www.youtube.com/watch?v=EX1Ys6rlbLc">📓 NotebookLM</button>
+        </div>
+      </div>
+    </div>
+    <div class="summary-section">
+      <h2>핵심 요약</h2>
+<p>Anthropic이 공개한 Claude Co-work 셋업의 네 계층(instructions → memory → skills → connectors)을 순서대로 설명한다. 대부분의 사람은 곧장 connectors로 건너뛰어 실패하는데, 모델이 아니라 셋업 순서가 문제다.</p>
+<h2>주요 포인트</h2>
+<ul>
+<li>1계층 instructions: Claude.md는 50~100줄로 작게 유지하고, 상세 내용 대신 다른 파일을 가리키는 pointer와 과거 실수에서 나온 critical gotchas만 담는다. 목차 역할의 map 파일을 만들어 AI가 관련 파일만 골라 읽게 한다(머리가 차면 멍청해지므로).</li>
+<li>2계층 memory: AI가 선호(예: 200단어 미만 짧은 이메일)와 사실(예: 클라이언트는 Acme, net 45 결제)을 기억한다. Claude.md에 자기 갱신 라인을 넣어 자율적으로 업데이트하되, "명확한 사실·규칙"만 추가하게 해 비대해지지 않게 한다.</li>
+<li>3계층 skills: skill.md가 필수이며 skill creator로 AI가 만든다. skill이 많아지면(20~50개) 전역이 아니라 특정 폴더에 묶어 AI가 헷갈리지 않게 한다. 작업을 AI와 직접 끝까지 해본 뒤(proof) skill로 캡처하는 것이 최선이다.</li>
+<li>4계층 connectors: 모두가 가장 먼저 뛰어드는 계층이지만 마지막에 해야 한다. connector는 skill·flow 안에 명시적으로 박아 넣어 실행 정확도를 높인다.</li>
+<li>connector는 한 번에 하나씩 연결하고 초반엔 모든 동작을 승인하며 다양한 입력으로 검증한다. AI가 일관되게 잘 해내 신뢰를 쌓은 뒤에 자율성을 점차 늘린다.</li>
+</ul>
+    </div>
+  <div class="transcript-wrap">
+    <div class="transcript-header">
+      <button class="transcript-toggle" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('visible')">
+        <span class="arr">▼</span> 원문 자막
+      </button>
+      <button class="copy-btn" onclick="var b=this,t=b.nextElementSibling||b;navigator.clipboard.writeText(document.querySelector('#tr-EX1Ys6rlbLc').textContent).then(()=>{b.textContent='복사됨';setTimeout(()=>b.textContent='복사',2000)})">복사</button>
+    </div>
+    <pre class="transcript-box" id="tr-EX1Ys6rlbLc">Let's say that you throw a big jar that Claude co-work and it breaks. You'll likely blame the model, but that's not where it broke. If you're new here, I'm Dylan. I run an AI consultancy and I've watched enough clients build these setups to know it's almost always the order, not the model. Anthropic, the company behind Claude, just published the four layers behind any serious setup. So, I'm going to walk you through them in order. And by the end, you'll know exactly which one you skipped and almost everyone skips at least one. So, let's get into it. Now, the setup that I'm going to walk you through is for a different types of situations. Most of you are either in the situation or will soon be in the situation in the coming weeks and months. And it manifests in two ways. Either you have tons and tons of files that are between small and medium in size. So, think five to maybe 50 pages in length for per document. And then maybe you have a couple hundred of those files within a given folder for a given task or topic. This in itself is extremely overwhelming for AI if not set up correctly. The other situation is where you have a few files, maybe 10 to 50 files, and those are maybe above 300 pages. So, there's a few of them, but they're enormous. Both of these situations AI really struggles with. But also at the same time, these are extremely valuable if you can set them up correctly because the AI doesn't decrease in value, it actually increases in value. And before you click away and think, "Oh, well, my setup's not that complex, so I don't need this." Right now, maybe your setup isn't that way, but most of the people I work with, they end up in this situation. Where in the beginning, their setup is very simple. It's just a few few files for a given activity. But over time, as they keep on doing that activity in that folder and weeks and months, etc., those files add up. And as they add up, their setup becomes more complex. And if they didn't set things up correctly in the beginning with the right infrastructure, i.e., the four layers I'm going to walk you through, the AI's intelligence degrades over time and it gets worse. But if done correctly in the beginning, the intelligence increases and it becomes more valuable to you. And that's what we want to focus on and that's what we want to mitigate in the beginning if you're not in the situation already. So, what are these four layers that Anthropic shared? Well, these are the four layers here. I'll walk you through in each in more detail, but as a quick summary, in first we have the instructions, and these aren't just prompts, they act more as guideposts to tell the AI where to look in the important rules. We'll talk more about that later. Then we have memory, and memory is where the AI can self-improve over time, remembering your preferences and facts associated with what you care about. And self-improve is important there, we'll talk more about that as well. Then we have skills, and we've already talked about skills in the past in previous videos, but these are basically systematized processes that we encapsulate into a folder that the AI can call at any given time and do that task perfectly to our standards. And then the fourth layer is connectors. Now, the issue with this is most people jump straight into the fourth layer right away, and that's connecting your AI to other systems. So, think your email, your calendar, etc. But if you add a bunch of connectors to your AI and you've skipped all these first three layers, there's a good chance that the AI is not going to effectively achieve the task the way you wanted it to, especially as the number of files in that folder s- So, let's walk through each one of these layers and how we can prepare for this. Quick pause in your regular programming. This video is brought to you by me, as always. Two things. First off, below is a 30-day AI insight series, completely free. You'll get 30 insights in your inbox of how you can apply AI to your business and your work. The second thing is if you'd like to work with me, below are a series of offerings to see if there's a good fit between the two of us. Now, let's get back to the video. Let's start with the first layer, which is instructions. So, in the blog post drafted by Anthropic, there's a quote in there that resonated with me. And in here it specifically talks about that root file, which is the claw.md file. So, if you're using Codelark, you're always going to have a claw.md in any given folder, cuz that's basically the system instructions, the thing that tells the AI what to do. The mistake people make here is in that file, they tend to have a really long file, so something that's 200-plus lines long. So, it has examples, instructions, all types of stuff. That's the first mistake you're making. The size of that file is critical, and you need to make sure it's extremely small. So, we want to keep it less than I'd say 100 to 50 lines. So, between 50 and 100 lines is the </pre>
+  </div>
   </article>
 </main>
 

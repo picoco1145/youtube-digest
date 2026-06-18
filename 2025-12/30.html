@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>2025-12-30 — 유튜브 구독 정리</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+  :root{--bg:#090e1a;--surface:#111827;--surface2:#1a2235;--border:#1e2d47;--accent:#6c63ff;--accent2:#00d4ff;--text:#e8eaf0;--muted:#7a8499;--radius:14px;}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Pretendard',sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+  header{background:linear-gradient(135deg,#0d1b3e,#1a0533);border-bottom:1px solid var(--border);padding:20px 40px;display:flex;align-items:center;justify-content:space-between;}
+  .nav-back{color:var(--accent2);text-decoration:none;font-size:0.85rem;display:flex;align-items:center;gap:6px}
+  .nav-back:hover{color:#fff}
+  .date-badge{font-size:1.4rem;font-weight:700;letter-spacing:-0.5px;background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+  .count{font-size:0.85rem;color:var(--muted)}
+  main{max-width:900px;margin:0 auto;padding:32px 24px 80px}
+  .video-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;margin-bottom:24px;transition:border-color 0.2s,box-shadow 0.2s;}
+  .video-card:hover{border-color:var(--accent);box-shadow:0 4px 24px rgba(108,99,255,0.15)}
+  .card-top{display:flex;gap:0}
+  .thumb-wrap{flex:0 0 240px;position:relative;overflow:hidden}
+  .thumb-wrap img{width:100%;height:100%;object-fit:cover;transition:transform 0.4s}
+  .video-card:hover .thumb-wrap img{transform:scale(1.05)}
+  .card-info{flex:1;padding:20px;display:flex;flex-direction:column;gap:10px}
+  .card-meta{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+  .ch-tag{font-size:0.72rem;font-weight:600;padding:3px 12px;background:linear-gradient(135deg,rgba(108,99,255,0.2),rgba(0,212,255,0.2));border:1px solid rgba(108,99,255,0.3);border-radius:999px;color:var(--accent2);}
+  .date-tag{font-size:0.72rem;color:var(--muted)}
+  .no-transcript{font-size:0.68rem;padding:2px 8px;background:rgba(255,180,0,0.12);border:1px solid rgba(255,180,0,0.25);border-radius:999px;color:#ffa500;}
+  .video-title{font-size:1rem;font-weight:600;line-height:1.4}
+  .yt-link{display:inline-flex;align-items:center;gap:5px;font-size:0.8rem;color:var(--accent);text-decoration:none;transition:color 0.2s;}
+  .yt-link:hover{color:var(--accent2)}
+  
+  .nlm-btn{display:inline-flex;align-items:center;gap:5px;font-size:0.8rem;color:#fff;
+    background:rgba(108,99,255,0.2);border:1px solid rgba(108,99,255,0.4);border-radius:8px;
+    padding:4px 12px;cursor:pointer;font-family:inherit;transition:all 0.2s;margin-left:8px;}
+  .nlm-btn:hover{background:rgba(108,99,255,0.45);}
+  .nlm-btn.copied{background:rgba(0,200,100,0.2);border-color:rgba(0,200,100,0.4);color:#00c864;}
+
+  .summary-section{border-top:1px solid var(--border);background:var(--surface2);padding:20px 24px;font-size:0.85rem;line-height:1.7;color:#c5cad8;}
+  .summary-section h2{font-size:0.82rem;color:var(--accent2);margin:12px 0 4px}
+  .summary-section h2:first-child{margin-top:0}
+  .summary-section ul{padding-left:18px}
+  .summary-section li{margin-bottom:5px}
+  .transcript-wrap{border-top:1px solid var(--border);padding:14px 24px;background:#0c1220}
+  .transcript-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:0}
+  .transcript-toggle{background:none;border:none;color:var(--muted);font-size:0.8rem;cursor:pointer;font-family:inherit;display:flex;align-items:center;gap:4px;padding:0;transition:color 0.2s;}
+  .transcript-toggle:hover{color:var(--text)}
+  .copy-btn{background:rgba(108,99,255,0.1);border:1px solid rgba(108,99,255,0.3);border-radius:8px;color:var(--accent2);font-size:0.72rem;padding:4px 12px;cursor:pointer;font-family:inherit;transition:all 0.2s;}
+  .copy-btn:hover{background:rgba(108,99,255,0.25);color:#fff}
+  .transcript-box{display:none;margin-top:10px;background:#080d18;border:1px solid var(--border);border-radius:10px;padding:12px 14px;font-size:0.78rem;line-height:1.75;color:#8a95aa;max-height:260px;overflow-y:auto;white-space:pre-wrap;word-break:break-word;}
+  .transcript-box.visible{display:block}
+  footer{text-align:center;padding:24px;font-size:0.75rem;color:var(--muted);border-top:1px solid var(--border)}
+  @media(max-width:640px){.card-top{flex-direction:column}.thumb-wrap{flex:none;height:200px}header{padding:16px}main{padding:16px 12px 60px}}
+</style>
+</head>
+<body>
+
+<header>
+  <a class="nav-back" href="../index.html">← 대시보드로</a>
+  <div>
+    <div class="date-badge">2025-12-30</div>
+    <div class="count">1개 영상</div>
+  </div>
+  <div style="font-size:0.75rem;color:var(--muted)">2026-06-19 06:12 생성</div>
+</header>
+
+<main>
+
+  <article class="video-card">
+    <div class="card-top">
+      <a class="thumb-wrap" href="https://www.youtube.com/watch?v=Dr3kvgEYIZI" target="_blank" rel="noopener">
+        <img src="https://i.ytimg.com/vi/Dr3kvgEYIZI/hqdefault.jpg" alt="Use AI Better Than 99% of People in 2026" loading="lazy"/>
+      </a>
+      <div class="card-info">
+        <div class="card-meta">
+          <span class="ch-tag">Grace Leung</span>
+          <span class="date-tag">2025-12-30</span>
+          
+        </div>
+        <div class="video-title">Use AI Better Than 99% of People in 2026</div>
+        <div style="display:flex;align-items:center;flex-wrap:wrap;gap:4px;margin-top:auto">
+          <a class="yt-link" href="https://www.youtube.com/watch?v=Dr3kvgEYIZI" target="_blank" rel="noopener">↗ 유튜브에서 보기</a>
+          <button class="nlm-btn" data-url="https://www.youtube.com/watch?v=Dr3kvgEYIZI">📓 NotebookLM</button>
+        </div>
+      </div>
+    </div>
+    <div class="summary-section">
+      <h2>핵심 요약</h2>
+<p>2026년 상위 1%처럼 AI를 쓰기 위한 단계별 경로를 제시하며, 효과적 프롬프트·모델 선택·컨텍스트 관리·검증·인간 협업·오케스트레이션·자동화까지 전 과정을 정리한다.</p>
+<h2>주요 포인트</h2>
+<ul>
+<li>효과적 프롬프트의 핵심 3요소는 명확한 과제(what)·관련 컨텍스트(why)·출력 형식(how)이며, 80% 작업은 이것으로 충분. few-shot, 관점 전환, 자기평가 루프, 역방향 프롬프팅 4가지 기법 추가</li>
+<li>모델은 전략적으로 선택: ChatGPT(넉넉한 한도의 만능 비서), Gemini(거대 컨텍스트·시각·구글 워크스페이스 통합), Claude(보이스·복잡한 지시·외부 연동). 한 모델을 30일 이상 익혀 직관을 쌓은 뒤 확장</li>
+<li>컨텍스트 관리 4기법: 시스템 프롬프트(커스텀 지침), 챗 메모리, 프로젝트 파일, 외부 커넥터로 반복 설명 제거</li>
+<li>검증 3단계: 출처 고정(직접 인용 요구), 체인 오브 검증(검증 질문 자체 생성·답변), 교차 모델 검증(다른 모델로 비판). AI는 확신에 차서 틀린다는 점을 경계</li>
+<li>인간+AI 협업으로 'YOU 팩터'(본인의 경험·실수·스토리)와 distinctiveness 체크리스트(AI 단어 제거·구체 사례 추가·패턴 깨기)로 차별화하고, 오케스트레이션과 3단계 자동화(스케줄 작업→노코드 자동화→AI 에이전트)로 확장</li>
+</ul>
+    </div>
+  <div class="transcript-wrap">
+    <div class="transcript-header">
+      <button class="transcript-toggle" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('visible')">
+        <span class="arr">▼</span> 원문 자막
+      </button>
+      <button class="copy-btn" onclick="var b=this,t=b.nextElementSibling||b;navigator.clipboard.writeText(document.querySelector('#tr-Dr3kvgEYIZI').textContent).then(()=>{b.textContent='복사됨';setTimeout(()=>b.textContent='복사',2000)})">복사</button>
+    </div>
+    <pre class="transcript-box" id="tr-Dr3kvgEYIZI">Most people are stuck on the wrong side of using AI without realizing it because AI model change new features every week. So people try everything and eventually get overwhelmed. I have been there before using ai, but never felt like I was truly getting the most out of it. So in this video, I'll share the path to get started with AI and which transform completely how I use it. Let's. The first part is learning how to communicate with AI and communication all starts with effective AI prompting. After spending two years prompting AI every day, the most critical components for an effective prompts are really these three. Clear tasks. The whats what exactly do you want? Is it a proposal, a landing page, a social visual? If you're confused, AI will get confused too. Relevant context, the why. What are the background details AI needs to understand your situation. Instead of brain dump everything to ai, think about why this context matters. Output format, the how, how a good output should look like for your task. A table? A word document file? Bullet points? So like this example about a performance review conversation, ChatGPT is still able to give us a decent response, but if we intentionally mention the clear tasks, the relevant context, the output format, you will see the response improved dramatically. Bonus tip is you can always let AI to ask you question to uncover what are the context that you should give in order for it to do its job. You can also add enhancement prompt elements like persona, examples, constraints for more precision control. But the core three elements I mentioned are all you need for 80% of task. Besides these core components, here are four more techniques, which are my favorite, and they apply to all sorts of tasks. Technique number one, few-shot prompting, giving examples. So when I ask Gemini to build a landing page with just a copy, it creates something decent, but looks standard. But what if I give two style screenshot examples this time to output transform dramatically capturing the exact premium aesthetic that I want and stand out. Technique Number two, perspective shifting, asking AI to shift its perspective and give you multiple angles on the same task, like this marketing landing page copy. We can ask AI to critique the same copy from the perspective of a business owner or from an enterprise executive. And then immediately you can identify weak points and compelling angles to emphasize Technique number 3, self evaluation loop. Like this task about a content strategy task. After AI give you a response, ask it to think deeply and create an internal quality rubric and critique the output against the standard. Immediately AI will return back a total of 10 pages, really detailed strategy document instead of a standard draft. Technique number four, reverse prompting. So give AI your desired output, and let it write the prompt for you. Like I can show Gemini a social visual that I love and ask it to reverse engineer the visual formula, and then I can reuse that prompt to generate new visuals in the same style. So instead of guessing what to ask for, show the results that you want. Another bonus tip. Use the official prompt optimizer. So different AI models have their own prompting rules. So you can go to the official prompt generator. Just describe what you want in plain language or your initial prompt so it would generate and optimize the prompt that works best with that model. I'll put all the links below. Now that you can communicate with AI. But here's where most people waste the time. They treat every AI the same. The truth is, yes, you don't need 20 AI tools, but you do need to choose AI models strategically. ChatGPT, Claude, Gemini, anyone of these models already handle 70% of what you need. So master one core model first and that expand when you actually need more specialized capabilities From my experience for ChatGPT is like your all-in-one AI assistant with generous usage limit that let you iterate without hitting capacity. It handles a right range of daily tasks from deep research, copywriting, creative idea generation, image generation, and even have a built-in agent mode for autonomous multi-step work, I find it best for high volume iteration and general purpose tasks where you don't need to worry about hitting the limits. As for gemini, I found it excels when things get big and when you need more visual impact. Its huge token context, window handles, super long reports, hour long recordings. It also has deep integration with Google Workspace and products. Just one click import and export. Its multi-model capability is also superior than other models, analyzing both visuals and audio at the same time. gemini image and video generation models also produce some of the most realistic outputs on the market at speed So I find it best to do large document analysis, building Google Workspace workflows, and create data visualization when you need both visual beauty and analytical</pre>
+  </div>
+  </article>
+</main>
+
+<footer>유튜브 구독 정리 · agy 요약 · 2026-06-19 06:12</footer>
+
+
+<script>
+document.querySelectorAll('.nlm-btn').forEach(function(btn){
+  btn.addEventListener('click',function(){
+    navigator.clipboard.writeText('/notebooklm '+btn.dataset.url).then(function(){
+      var orig=btn.innerHTML;btn.innerHTML='✓ 복사됨';btn.classList.add('copied');
+      setTimeout(function(){btn.innerHTML=orig;btn.classList.remove('copied');},2000);
+    });
+  });
+});
+</script>
+
+</body>
+</html>

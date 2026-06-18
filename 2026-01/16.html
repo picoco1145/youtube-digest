@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>2026-01-16 — 유튜브 구독 정리</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+  :root{--bg:#090e1a;--surface:#111827;--surface2:#1a2235;--border:#1e2d47;--accent:#6c63ff;--accent2:#00d4ff;--text:#e8eaf0;--muted:#7a8499;--radius:14px;}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Pretendard',sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+  header{background:linear-gradient(135deg,#0d1b3e,#1a0533);border-bottom:1px solid var(--border);padding:20px 40px;display:flex;align-items:center;justify-content:space-between;}
+  .nav-back{color:var(--accent2);text-decoration:none;font-size:0.85rem;display:flex;align-items:center;gap:6px}
+  .nav-back:hover{color:#fff}
+  .date-badge{font-size:1.4rem;font-weight:700;letter-spacing:-0.5px;background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+  .count{font-size:0.85rem;color:var(--muted)}
+  main{max-width:900px;margin:0 auto;padding:32px 24px 80px}
+  .video-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;margin-bottom:24px;transition:border-color 0.2s,box-shadow 0.2s;}
+  .video-card:hover{border-color:var(--accent);box-shadow:0 4px 24px rgba(108,99,255,0.15)}
+  .card-top{display:flex;gap:0}
+  .thumb-wrap{flex:0 0 240px;position:relative;overflow:hidden}
+  .thumb-wrap img{width:100%;height:100%;object-fit:cover;transition:transform 0.4s}
+  .video-card:hover .thumb-wrap img{transform:scale(1.05)}
+  .card-info{flex:1;padding:20px;display:flex;flex-direction:column;gap:10px}
+  .card-meta{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+  .ch-tag{font-size:0.72rem;font-weight:600;padding:3px 12px;background:linear-gradient(135deg,rgba(108,99,255,0.2),rgba(0,212,255,0.2));border:1px solid rgba(108,99,255,0.3);border-radius:999px;color:var(--accent2);}
+  .date-tag{font-size:0.72rem;color:var(--muted)}
+  .no-transcript{font-size:0.68rem;padding:2px 8px;background:rgba(255,180,0,0.12);border:1px solid rgba(255,180,0,0.25);border-radius:999px;color:#ffa500;}
+  .video-title{font-size:1rem;font-weight:600;line-height:1.4}
+  .yt-link{display:inline-flex;align-items:center;gap:5px;font-size:0.8rem;color:var(--accent);text-decoration:none;transition:color 0.2s;}
+  .yt-link:hover{color:var(--accent2)}
+  
+  .nlm-btn{display:inline-flex;align-items:center;gap:5px;font-size:0.8rem;color:#fff;
+    background:rgba(108,99,255,0.2);border:1px solid rgba(108,99,255,0.4);border-radius:8px;
+    padding:4px 12px;cursor:pointer;font-family:inherit;transition:all 0.2s;margin-left:8px;}
+  .nlm-btn:hover{background:rgba(108,99,255,0.45);}
+  .nlm-btn.copied{background:rgba(0,200,100,0.2);border-color:rgba(0,200,100,0.4);color:#00c864;}
+
+  .summary-section{border-top:1px solid var(--border);background:var(--surface2);padding:20px 24px;font-size:0.85rem;line-height:1.7;color:#c5cad8;}
+  .summary-section h2{font-size:0.82rem;color:var(--accent2);margin:12px 0 4px}
+  .summary-section h2:first-child{margin-top:0}
+  .summary-section ul{padding-left:18px}
+  .summary-section li{margin-bottom:5px}
+  .transcript-wrap{border-top:1px solid var(--border);padding:14px 24px;background:#0c1220}
+  .transcript-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:0}
+  .transcript-toggle{background:none;border:none;color:var(--muted);font-size:0.8rem;cursor:pointer;font-family:inherit;display:flex;align-items:center;gap:4px;padding:0;transition:color 0.2s;}
+  .transcript-toggle:hover{color:var(--text)}
+  .copy-btn{background:rgba(108,99,255,0.1);border:1px solid rgba(108,99,255,0.3);border-radius:8px;color:var(--accent2);font-size:0.72rem;padding:4px 12px;cursor:pointer;font-family:inherit;transition:all 0.2s;}
+  .copy-btn:hover{background:rgba(108,99,255,0.25);color:#fff}
+  .transcript-box{display:none;margin-top:10px;background:#080d18;border:1px solid var(--border);border-radius:10px;padding:12px 14px;font-size:0.78rem;line-height:1.75;color:#8a95aa;max-height:260px;overflow-y:auto;white-space:pre-wrap;word-break:break-word;}
+  .transcript-box.visible{display:block}
+  footer{text-align:center;padding:24px;font-size:0.75rem;color:var(--muted);border-top:1px solid var(--border)}
+  @media(max-width:640px){.card-top{flex-direction:column}.thumb-wrap{flex:none;height:200px}header{padding:16px}main{padding:16px 12px 60px}}
+</style>
+</head>
+<body>
+
+<header>
+  <a class="nav-back" href="../index.html">← 대시보드로</a>
+  <div>
+    <div class="date-badge">2026-01-16</div>
+    <div class="count">2개 영상</div>
+  </div>
+  <div style="font-size:0.75rem;color:var(--muted)">2026-06-19 06:12 생성</div>
+</header>
+
+<main>
+
+  <article class="video-card">
+    <div class="card-top">
+      <a class="thumb-wrap" href="https://www.youtube.com/watch?v=8nzt_xzsyq8" target="_blank" rel="noopener">
+        <img src="https://i.ytimg.com/vi/8nzt_xzsyq8/hqdefault.jpg" alt="NotebookLM is becoming the Most Essential AI Tool (7 Use Cases to Try!)" loading="lazy"/>
+      </a>
+      <div class="card-info">
+        <div class="card-meta">
+          <span class="ch-tag">Grace Leung</span>
+          <span class="date-tag">2026-01-16</span>
+          
+        </div>
+        <div class="video-title">NotebookLM is becoming the Most Essential AI Tool (7 Use Cases to Try!)</div>
+        <div style="display:flex;align-items:center;flex-wrap:wrap;gap:4px;margin-top:auto">
+          <a class="yt-link" href="https://www.youtube.com/watch?v=8nzt_xzsyq8" target="_blank" rel="noopener">↗ 유튜브에서 보기</a>
+          <button class="nlm-btn" data-url="https://www.youtube.com/watch?v=8nzt_xzsyq8">📓 NotebookLM</button>
+        </div>
+      </div>
+    </div>
+    <div class="summary-section">
+      <h2>핵심 요약</h2>
+<p>출처에 근거해 환각이 적은 Google NotebookLM이 이제 슬라이드·인포그래픽·영상·데이터 표까지 만드는 콘텐츠 시스템으로 진화했음을, 즉시 생산성을 높이는 7가지 활용법으로 소개한다.</p>
+<h2>주요 포인트</h2>
+<ul>
+<li>리서치+콘텐츠 제작 통합: 내장 research 기능으로 Forrester·Gartner 등 권위 있는 출처를 수집하고, '내가 물어야 할 질문'을 역으로 제안받아 사고를 점검한 뒤 슬라이드 덱(presenter slide, nano banana 이미지 모델) 생성</li>
+<li>흩어진 다양한 포맷 자료를 커스텀 페르소나(예: 성장 전략가)로 종합해 프로젝트 개요·SOP·로드맵 인포그래픽 등 내부용 콘텐츠로 출력, Google Drive 연동</li>
+<li>브랜드 캐릭터(예: 부엉이) 이미지를 소스로 올려 인포그래픽에 일관되게 활용. 단 얼굴·저작권 캐릭터는 안전 필터로 결과가 불안정하므로 일관성 필요 시 Gemini 앱/AI Studio 권장</li>
+<li>학습용으로 마인드맵, 팟캐스트형 오디오(인터랙티브 모드·모바일 앱), 그리고 같은 소스로 워크숍 개요·영상 강의·슬라이드·퀴즈까지 완전한 트레이닝 패키지 제작</li>
+<li>경쟁사 메시징을 data table로 구조화해 Google Sheets로 내보내고, 노트북 전체를 Gemini로 가져와 캔버스 모드에서 인터랙티브 랜딩페이지·대시보드로 변환(NotebookLM=두뇌, Gemini=빌더)</li>
+</ul>
+    </div>
+  <div class="transcript-wrap">
+    <div class="transcript-header">
+      <button class="transcript-toggle" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('visible')">
+        <span class="arr">▼</span> 원문 자막
+      </button>
+      <button class="copy-btn" onclick="var b=this,t=b.nextElementSibling||b;navigator.clipboard.writeText(document.querySelector('#tr-8nzt_xzsyq8').textContent).then(()=>{b.textContent='복사됨';setTimeout(()=>b.textContent='복사',2000)})">복사</button>
+    </div>
+    <pre class="transcript-box" id="tr-8nzt_xzsyq8">Google, NotebookLM has always been my favorite tool and it's becoming one of the most essential AI tools for so many people. It's grounded only answers from your sources. So minimal hallucination, and even if you have 50 sources, scatter across multiple formats, it synthesize them all and find linkage in minutes. And now it's a full content system turning your sources into slide decks, infographics, videos, data tables, and more. So in this video I'll show you seven ways to use NotebookLM so good that it can increase your work productivity immediately. Let's go so imagine you have high stake strategy presentation due tomorrow and over 30 industry reports to read. You just don't have time to go through all of them. But what if you let AI do deep research, synthesize them into ready to use presentation in minutes, and this is exactly where NotebookLM can help. For example, you need to present the content marketing trends for your annual strategy planning to your leadership. So first, let's create a new notebook. So there are three panels, the source sections to upload at least 50 sources. The chat panel to prompt with your sources, the studio panel to create content output with just one click. And if you don't have any sources, you can actually use the research functions, right inside NotebookLM which is a great help. So fast research is for quick scan for sources. The research does for full analysis with the report, and with much more sources. So one tip is you can prompt it with your research focus the prioritized, reputable source or any trustworthy source in your field, and most importantly, the timeframe for the source. Now, NotebookLM is planning the research, executing the step and generating the deep research report with all the source links. So it is using the authority source like Forrester, Gartner, that I specified. And you can just one click to input all these sources. Now the first thing is to ask some strategic question. And one that I like is actually ask it to propose question that you should be asking, like what are the five most important question a marketing leader should be asking about the content strategy this year? So rather than summarizing the information notebook, NotebookLM will distill the most critical priority to challenge your own thinking. And I really like this one. Are we producing enough "be the source" content to maintain the authority. Then I recommend you save it as a note for future reference, to keep them organized, even though notebookLM has built in chat history. Another one is the gap analysis question. So asking what are the missing sources to dive deeper, which could be critical for the strategy? Then it will give you the critical evaluation on the source quality and what are the missing pieces. So giving you a perspective you might not have considered yourself. Then we are ready to build a slide deck. And the tip is to first create a new notes called slide deck specification with the instructions, like the audience slide counts, structure, style, so it's like a reusable playbook that you can reference every time. Now copy this instruction. Click slide deck and pick presenter slide, which I recommend. So paste the specification prompt together with the content focus and click generate. And so you can see the generated deck will follow the specification that we set, the color scheme, the style, the content structure. And personally, I found the storytelling from NotebookLM slide deck is really great. It's powered by the nano banana image model that is superior. It's just very high quality and gives me lots of ideas on how I can present the messy information in a clear way. Now you have seen how NotebookLM handles research and content creation in one single workflow. And later in this video I'll show you how it becomes even more powerful when you combine it with Gemini that actually complement each other really well. So if you want to understand how different AI tools actually work together, then these free resource I created together with HubSpot called the "AI Toolkit I use every week" is what you need. You can find the link below. This guide breaks down my favorite use cases when using AI chat bots and tools like ChatGPT, Claude, Gemini, and Perplexity, the specific scenarios where each two shines and how they fit into my workflow. What I'm excited to share are the ready to use prompts for common work scenarios like audience research, strategy planning. They serve as starting points where you can customize for your own approach. you can download for free in the description below. And thank HubSpot for sponsoring this video. All right. NotebookLM can do research when you're starting from scratch. But what about when you already have the sources but scattered across different formats, documents, presentations, spreadsheets. And this is where NotebookLM becomes your custom AI expert, and turn these scattered notes in a set of ready to use professional content. So fo</pre>
+  </div>
+  </article>
+  <article class="video-card">
+    <div class="card-top">
+      <a class="thumb-wrap" href="https://www.youtube.com/watch?v=IRjtdoGW-KQ" target="_blank" rel="noopener">
+        <img src="https://i.ytimg.com/vi/IRjtdoGW-KQ/hqdefault.jpg" alt="이걸 진짜 푼다고? API 비용 0원 만드는 자동화 툴, 구독자 무료 배포! (클로드 코드, 제미나이, 코덱스, 커서.. 어디에서든 가능해요)" loading="lazy"/>
+      </a>
+      <div class="card-info">
+        <div class="card-meta">
+          <span class="ch-tag">소스놀이터</span>
+          <span class="date-tag">2026-01-16</span>
+          
+        </div>
+        <div class="video-title">이걸 진짜 푼다고? API 비용 0원 만드는 자동화 툴, 구독자 무료 배포! (클로드 코드, 제미나이, 코덱스, 커서.. 어디에서든 가능해요)</div>
+        <div style="display:flex;align-items:center;flex-wrap:wrap;gap:4px;margin-top:auto">
+          <a class="yt-link" href="https://www.youtube.com/watch?v=IRjtdoGW-KQ" target="_blank" rel="noopener">↗ 유튜브에서 보기</a>
+          <button class="nlm-btn" data-url="https://www.youtube.com/watch?v=IRjtdoGW-KQ">📓 NotebookLM</button>
+        </div>
+      </div>
+    </div>
+    <div class="summary-section">
+      <h2>핵심 요약</h2>
+<p>월 구독만으로 API 비용 0원으로 이미지를 무제한 생성하게 해주는 '소스놀이터 이미지 생성 도구'를 원격 MCP 서버로 직접 만들어 구독자에게 무료 배포하고, 바이브 코딩 노하우를 공유한 영상이다.</p>
+<h2>주요 포인트</h2>
+<ul>
+<li>챗GPT·클로드 사이에 중간 관리자(도우미) 웹사이트를 두어, 클로드가 주문서를 넘기면 챗GPT가 이미지를 뽑아 다시 클로드가 받는 구조로 약관 위반을 피함</li>
+<li>MCP 서버로 작동해 클로드 코드·커서·제미나이·코덱스 등 어디든 붙일 수 있고, 원격 MCP로 챗GPT에 직접 등록·OAuth 로그인 지원(현재 이미지만, 영상은 설계상 추후 지원)</li>
+<li>도구 전체와 샘플 디자인 마켓(이미지 24개)을 바이브 코딩으로 약 일주일·랜딩페이지는 약 3시간에 제작</li>
+<li>바이브 코딩 팁: 배포 환경(언어·버전·DB)을 구체적으로 명시, DB 스키마부터 구성, 클로드 코드와 코덱스를 번갈아 써서 한도 우회</li>
+<li>CLAUDE.md 안에 @AGENTS.md 한 줄을 넣어 클로드 코드와 코덱스의 지침 파일을 동기화하는 방법 소개</li>
+</ul>
+    </div>
+  <div class="transcript-wrap">
+    <div class="transcript-header">
+      <button class="transcript-toggle" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('visible')">
+        <span class="arr">▼</span> 원문 자막
+      </button>
+      <button class="copy-btn" onclick="var b=this,t=b.nextElementSibling||b;navigator.clipboard.writeText(document.querySelector('#tr-IRjtdoGW-KQ').textContent).then(()=>{b.textContent='복사됨';setTimeout(()=>b.textContent='복사',2000)})">복사</button>
+    </div>
+    <pre class="transcript-box" id="tr-IRjtdoGW-KQ">클로드 코드나 재미나 CLI, 코덱스 쓰실 때 이미지 생성. 어떻게 하시나요? 보통은 API 연결해서 쓰잖아요. 근데 이게 한 장 만들 때마다 돈이 나가요. 편하다고 막 쓰다 보면 어느새 몇 만 원이 훌쩍 깨지죠. 혹시 내 얘기네 싶으시다면 이번 영상 절대 놓치지 마세요. 월 구독만 하고 계시다면 이미지를 무제한으로 뽑을 수 있게 해 드렸거든요. 사실 이게 보통 도전이 아니었어요. 서비스 약관은 지키면서 무죄한 생성을 뚫는다는게 진짜 어렵거든요. 지금 보시는이 사이트가 바로 그걸 해결하려고 만든 곳입니다. 이미지랑 영상 생성을 아주 깔끔하게 관리할 수 있게 만들었죠. 단순 관리만 되냐고요?에 아니죠. MCP 서버로 작동하고 GPTS랑 연동도 착착됩니다. 심지어 원격 MCP랑 설치도 초간단 활용도는 완전 꿀이죠. 오스로그인도 당근 지원하고요. 그리고이 모든 걸 만드는데 딱 일주일 걸렸습니다. 바이브 코딩 덕분에 가능했죠. 예전 같으면 상상도 못 할 속도입니다.이 사이트 만들 때 꿀팁이랑 비하인드 스토리도 싹 다 풀어 드릴게요. 아까 원격 MCP 서버된다고 했죠? 자, 보세요. 채치T 채팅창에 쓱 끌어다 쓸 수 있습니다. 소스 놀이터 이미지 생성 도구 보이시나요? 이렇게 활용하는 건 아마 처음 보실걸요. 최근에야 풀린 기술이라 유튜브에서도 본 적 없으실 거예요. 보통은 구글 드라이브나 기타브 같은 유명한 애들만 연결됐잖아요. 근데 원격 MCP 서버는 이제 내가 만든 툴도 등록이 됩니다. 나만의 기능을 채치T에 심는다 이러면 진짜 활용법이 무한대로 늘어나는 거죠.이 이 모든 꿀팁들 오늘 영상에 꾹꾹 눌러담았습니다. 근데 사실이 모든 건 단순한 바람에서 시작됐어요. 월 구독 냈으면 이미지랑 영상 좀 만껏 만들고 싶다. 이걸 해결하기 위해 고민이 정말 많았어요. 처음엔 제가 좀 꼼수를 부려봤습니다. 클로드가 직접 로그인해서 다 하게 시키는 거죠. 야, 네가 가서 이미지랑 영상 다 만들어 와. 그럼 혼자서 브라우저 열고 로그인한 후 사람처럼 다 생성해 가지고 오는 겁니다. 이게 제일 편하고 완벽한 방법 같았습니다. 하지만 현실은 냉혹하더군요.이 방식은 약관 위반이었습니다. 영상 딱지 맞을 수 없잖아요. 그래서 며칠 머리를 싸매고 고민했죠. 결국 채피pt 클로드 사이에 중간 관리자를 두기로 했습니다. 그러니까 도우미를 만드는 거죠. 클로드가 주문서를이 도미한테 넘기면요. 채치T가 그걸 보고 이미지를 한 방에 와르르 뽑아내는 겁니다. 그걸 다시 클로드가 받아서 작업하고요. 완전 100% 자동은 아니지만이 정도면 정말 편해집니다. 프롬프트 고민할 필요도 없고요. 사인 이미지를 한 번에 쫙 뽑아내니까요. 마음에 안 들면 다시 뽑으면 그만입니다. 자, 그럼이 도움미를 어디에 만들까요? 처음엔 구글 드라이브를 생각했습니다. 근데 구글 드라이브는 권한 설정하고 세팅 과정이 꽤 복잡하더군요. 우리 구독자님들 스트레스 받겠더라고요. 그래서 그냥 제가 웹사이트를 하나 파 버렸습니다. 아까 보셨던 그 사이트입니다. 자, 이걸로 만든 결과물을 한번 같이 보실까요? 디자인 소스를 파는 마켓입니다. 수십개의 디자인 소스들을 볼 수 있죠. 여기 있는 이것들 전부 월 구독 안에서 무제 안으로 뽑은 겁니다. 아직 결제 기능은 없어요. 프런트엔드만 구성했거든요.이 웹사이트는이 도구를 보여 드리기 위해 샘플로 만든 겁니다. 이미지 만드는 시간까지 싹 합쳐서 약 세시간 걸렸습니다. 랜딩 페이지 치고 퀄리티가 꽤 괜찮죠? 여기 있는 이미지 상품이 총 24개인데요. 이거 그냥 유료 API로 돌렸으면 못해도 몇 천원은 깨졌을 겁니다. 이제 클로드 코드에서도 이미지 생성 아주 편하게 쓸 수 있겠네요. 진짜 대박인 점 하나 더 나중에 보시면 아시겠지만이 기능은 MCP로도 제공되거든요. 그래서 클로드 코드, 커서 재미나이, 코덱스 어디든 갖다 붙이면 다 작동합니다. 호환성이 좋죠. 지금은 이미지만 되지만요. 기본적으로 영상도 지원되도록 설계했습니다. MCP 기능이 열리면 영상도 가능할 수 있습니다.이 영상을 보시고 댓글 달아 주시면 바로 쓸 수 있게 세팅해 드리겠습니다. 대신 제 서버 용량이 좀 작아서 너무 많이 오시면 감당이 안 돼요. 그러니 가능한 범위에서 최대한 제공할 예정입니다. 물론 서포터즈 회원분들은 풀 기능으로 최대한 지원해 드리겠습니다. 그럼 이제이 도구를 일주일 동안 바이브 코딩으로 만들면서 이건 공유했으면 좋겠다 느낀 점 몇 가지 말씀드려 볼게요. 먼저 클로드 코드와 코덱스이 두 AI로 협업해서 만들었어요. 전 둘 다 20달러 구독을 하고 있습니다. 클로드 코드로 하다 제한 걸리면 코덱스가 바로 바톤 터치하는 거죠. 첫 시작인 코덱스로 했는데 역시 디자인이 엉망으로 나왔습니다. 그래서 랜딩 페이지 가이드 스킬 적용했죠. 그래서 지금의 디자인이 완성되었습니다. 그리고 보통 바이브 코딩할 때 그냥 작업하잖아요. 하지만 서비스 배포까지 미리 생각하는게 좋아요. 웹 호스팅, 클라우드 서버, 서버리스 서비스 등 배포할 서비스를 미리 지정해 두고 작업 환경을 확인하세요. 그리고 그 환경을 아주 구체적으로 적어 줘야 합니다. 언어는 뭔지, 버전은 뭔지, DB 종류와 버전은 뭔지 콕 집어서요. 안 그러면 내 컴에선 되는데 서버에선 안 될 수 있어요. 그럼 다시 코드 바로 잡느라 진땀 흘리게 됩니다. 순서도 중요합니다. 무조건 파일들을 올리기 앞서 DB 스키마를 받아 D부터 구성하세요. 잘 모르겠으면 AI한테 순서 물어보시고요. 아주 잘 알려 줄 겁니다. 우린 그저 방향키만 잘 잡으면 되는 거죠. 대신 내가 뭘 만들지는 확실히 알고 있어야 해요. 일을 잘 알고 시키는 대표가 지휘해야 생산성이 훨씬 좋잖아요. 그래서 우리도 그냥 시키기보다 그 과정을 제대로 숙지해야 합니다. 급하게 가려다 오히려 더 늦어질 수도 있거든요. 천천히 가더라도 한 방에 끝내는게 좋습니다. 그리고 클로드 코드와 코덱스를 동시 작업할 때 종종 말씀드린 사항이 있었죠. 바로 지침 파일 동기화입니다. 원래 얘네 둘은 서로 다른 지침서를 보거든요. 그래서 클로드 MD 파일 안에 코덱스 지침 파일인 골뱅이 에이전트 MD 딱 한 줄만 적으세요. 그럼 저 부분이 에이전트 MD 내용으로 대체됩니다. 파일은 클로드 MD인데 실제 내용은 에이전트 MD가 되는 거죠. 클로드 코드에서도 코덱스에서도 동일 지침이 적용됩니다. 그럼 직접 서버로가 볼까요? 먼저 댓글로 개정 신청해 주세요. 아이디랑 비번 보내 드릴게요. 명령 프롬프트에서 작업할 폴더로 이동한 뒤이 명령어를 실행하세요. 그럼 클로드 코드에 MCP 설치 완료됩니다. 다른 툴 쓰시면 댓글 참고 부탁드려요. 이제 클로드 코드 실행하시고 슬 MCP라고 입력해 보세요. 이미지 크리에이터 보이시나요? 선택하고 엔터 꾹. 메뉴가 뜨면 인증 진행합니다. 그럼 이미지 영상 프로젝트 매니저가 뜹니다. 받으신 계정으로 로그인하고 승인 누르면 끝입니다. 그럼 디자인 마켓을 만들어 볼까요? 작업 폴더에 지침 파일인 클로드 MD 파일을 생성한 상태에서 다음처럼 지침을 넣어 줬습니다. 웹 디자인 소스를 판매하는 프로젝트라고 설명하고 이미지 크리에이터 MCP쓰라고 하고 필요한 이미지들을이 MCP로 모두 구성해 달라고 했습니다. 나중에 이미지 생성되면 가지고 오라고 하고요. 그리고 디자인은 랜딩 페이지 가이드 스킬을 쓰라고 했습니다. 이제 클로드 코드를 실행하고 지침에 따라 작업 진행하라고 합시다. 참 빠뜨린게 있네요. 디자인 철학을 정하고 필요한 이미지 소스들을 이미지 생성 MCP로 등록해 달라고 했습니다. 이제 디자인 철학이 정해졌죠. 이미지 등록 중입니다. 먼저 프로젝트를 생성하네요. 그리고 그 프로젝트 아래에 이미지들을 생성하고 있습니다. 프롬프트와 이미지 비율 등을 알아서 세팅해 줍니다. 이제 모두 생성 완료되었군요. 로그인에서 확인해 보면 디자인 마켓 프로젝트가 보이고 내용을 확인해 보면 이미지들도 많이 보이네요. 이제 이미지를 생성해 볼까요? 이미지 생성은 채지T, 재미나이 등 어디서나 가능하게 할 예정입니다. 그래서 원격 MCP 서버를 구성했고 오스 구현하고 안전하게 토큰까지 마련해 뒀습니다. 이번에는 이미지 프로젝트 매니저라는 GPTS를 쓰겠습니다. 프로젝트 조회하고 이미지도 조회하라고 했습니다. 총 24개가 있다고 하죠. 그래서 이미지를 생성해서 업로드하라고 시켰습니다. 그럼 끝입니다. 이런 방식으로 모두 업로드하면 됩니다. 하다 보니 창을 분할하면 편하더라고요. 그리고 많이 시도하면 얘가 실수할 때가 있어요. 그래서 이미지 생성 후 링크 복사하여 전달하면 실수 없이 완벽히 업로드해 줍니다. 이런 식으로 모두 업로드하면 끝입니다.이 방식을 쓰면 월구독 플랜인 경우 무죄한 무료입니다. 또 이미지만 한 곳에 모아서 보고 재생성도 편해서 만족스러워요. 모두 생성 완료되었습니다. 이제 클로드 코드로 돌아와서 생성된 이미지들 확인해 보라고 하고 다운로드 해서 쓰라고 하면 됩니다. 조금 기다리니 최종 완료되었고요.이 디자인 마켓을 만드는데 약 3세시간 걸렸습니다. 최종 결과물을 볼까요? [음악] 여기 보이는 디자인 소스들 하나하나가 방금 생성한 것들입니다. 이번에는 다른 방식으로 작동시켜 볼게요. 채치T 설정에서 앱 누르고 고급 설정 누르고 개발자 모드를 활성화시켜 줍니다. 그럼 M 만들기를 할 수 있어요. 만들기 누르고 이름과 MCP 서버 URL 넣고 인증은 오스로 하고 클라이언트 아이디 적어 준 다음 만들기 누릅니다. 그럼 로그인 진행하죠. 제가 전달해 드릴 계정으로 로그인하고 승인 누릅니다. 그럼 연결되었다고 뜨죠? 이제 어디서나 이걸 쓸 수 있어요. 더하기 누르면 소스노리터 이미지 생성 도구가 보이죠? 이제 이걸 선택해서 마음껏 쓸 수 있는 겁니다. 프로젝트와 이미지 조회를 물어봤어요. 모두 생성된 상태라고 알려주죠. 그래서 자동차 홍보 웹사이트를 진행하자고 하고 필요한 이미지들은 알아서 다 등록하라고 합시다. 그럼 혼자서 모든 걸 진행하네요. 지금 하는이 작업들은 MCP만 지원되면 어디서든 가능해요. 클로드 코드에서도 가능하고 재미나이 코덱스에서도 가능해요. 퍼플렉시티는 맥인 경우 가능하고요. 곧 윈도우도 풀리겠죠. 앞으로 활용이 계속 더 넓어질 겁니다. 영상도 가능한데 이건 용량이 커서 서버 부하가 있어요. 그래서 우선 서포터즈 분</pre>
+  </div>
+  </article>
+</main>
+
+<footer>유튜브 구독 정리 · agy 요약 · 2026-06-19 06:12</footer>
+
+
+<script>
+document.querySelectorAll('.nlm-btn').forEach(function(btn){
+  btn.addEventListener('click',function(){
+    navigator.clipboard.writeText('/notebooklm '+btn.dataset.url).then(function(){
+      var orig=btn.innerHTML;btn.innerHTML='✓ 복사됨';btn.classList.add('copied');
+      setTimeout(function(){btn.innerHTML=orig;btn.classList.remove('copied');},2000);
+    });
+  });
+});
+</script>
+
+</body>
+</html>

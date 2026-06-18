@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>2026-03-28 — 유튜브 구독 정리</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+  :root{--bg:#090e1a;--surface:#111827;--surface2:#1a2235;--border:#1e2d47;--accent:#6c63ff;--accent2:#00d4ff;--text:#e8eaf0;--muted:#7a8499;--radius:14px;}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Pretendard',sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+  header{background:linear-gradient(135deg,#0d1b3e,#1a0533);border-bottom:1px solid var(--border);padding:20px 40px;display:flex;align-items:center;justify-content:space-between;}
+  .nav-back{color:var(--accent2);text-decoration:none;font-size:0.85rem;display:flex;align-items:center;gap:6px}
+  .nav-back:hover{color:#fff}
+  .date-badge{font-size:1.4rem;font-weight:700;letter-spacing:-0.5px;background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+  .count{font-size:0.85rem;color:var(--muted)}
+  main{max-width:900px;margin:0 auto;padding:32px 24px 80px}
+  .video-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;margin-bottom:24px;transition:border-color 0.2s,box-shadow 0.2s;}
+  .video-card:hover{border-color:var(--accent);box-shadow:0 4px 24px rgba(108,99,255,0.15)}
+  .card-top{display:flex;gap:0}
+  .thumb-wrap{flex:0 0 240px;position:relative;overflow:hidden}
+  .thumb-wrap img{width:100%;height:100%;object-fit:cover;transition:transform 0.4s}
+  .video-card:hover .thumb-wrap img{transform:scale(1.05)}
+  .card-info{flex:1;padding:20px;display:flex;flex-direction:column;gap:10px}
+  .card-meta{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+  .ch-tag{font-size:0.72rem;font-weight:600;padding:3px 12px;background:linear-gradient(135deg,rgba(108,99,255,0.2),rgba(0,212,255,0.2));border:1px solid rgba(108,99,255,0.3);border-radius:999px;color:var(--accent2);}
+  .date-tag{font-size:0.72rem;color:var(--muted)}
+  .no-transcript{font-size:0.68rem;padding:2px 8px;background:rgba(255,180,0,0.12);border:1px solid rgba(255,180,0,0.25);border-radius:999px;color:#ffa500;}
+  .video-title{font-size:1rem;font-weight:600;line-height:1.4}
+  .yt-link{display:inline-flex;align-items:center;gap:5px;font-size:0.8rem;color:var(--accent);text-decoration:none;transition:color 0.2s;}
+  .yt-link:hover{color:var(--accent2)}
+  
+  .nlm-btn{display:inline-flex;align-items:center;gap:5px;font-size:0.8rem;color:#fff;
+    background:rgba(108,99,255,0.2);border:1px solid rgba(108,99,255,0.4);border-radius:8px;
+    padding:4px 12px;cursor:pointer;font-family:inherit;transition:all 0.2s;margin-left:8px;}
+  .nlm-btn:hover{background:rgba(108,99,255,0.45);}
+  .nlm-btn.copied{background:rgba(0,200,100,0.2);border-color:rgba(0,200,100,0.4);color:#00c864;}
+
+  .summary-section{border-top:1px solid var(--border);background:var(--surface2);padding:20px 24px;font-size:0.85rem;line-height:1.7;color:#c5cad8;}
+  .summary-section h2{font-size:0.82rem;color:var(--accent2);margin:12px 0 4px}
+  .summary-section h2:first-child{margin-top:0}
+  .summary-section ul{padding-left:18px}
+  .summary-section li{margin-bottom:5px}
+  .transcript-wrap{border-top:1px solid var(--border);padding:14px 24px;background:#0c1220}
+  .transcript-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:0}
+  .transcript-toggle{background:none;border:none;color:var(--muted);font-size:0.8rem;cursor:pointer;font-family:inherit;display:flex;align-items:center;gap:4px;padding:0;transition:color 0.2s;}
+  .transcript-toggle:hover{color:var(--text)}
+  .copy-btn{background:rgba(108,99,255,0.1);border:1px solid rgba(108,99,255,0.3);border-radius:8px;color:var(--accent2);font-size:0.72rem;padding:4px 12px;cursor:pointer;font-family:inherit;transition:all 0.2s;}
+  .copy-btn:hover{background:rgba(108,99,255,0.25);color:#fff}
+  .transcript-box{display:none;margin-top:10px;background:#080d18;border:1px solid var(--border);border-radius:10px;padding:12px 14px;font-size:0.78rem;line-height:1.75;color:#8a95aa;max-height:260px;overflow-y:auto;white-space:pre-wrap;word-break:break-word;}
+  .transcript-box.visible{display:block}
+  footer{text-align:center;padding:24px;font-size:0.75rem;color:var(--muted);border-top:1px solid var(--border)}
+  @media(max-width:640px){.card-top{flex-direction:column}.thumb-wrap{flex:none;height:200px}header{padding:16px}main{padding:16px 12px 60px}}
+</style>
+</head>
+<body>
+
+<header>
+  <a class="nav-back" href="../index.html">← 대시보드로</a>
+  <div>
+    <div class="date-badge">2026-03-28</div>
+    <div class="count">1개 영상</div>
+  </div>
+  <div style="font-size:0.75rem;color:var(--muted)">2026-06-19 06:12 생성</div>
+</header>
+
+<main>
+
+  <article class="video-card">
+    <div class="card-top">
+      <a class="thumb-wrap" href="https://www.youtube.com/watch?v=yLXLHnD4fco" target="_blank" rel="noopener">
+        <img src="https://i.ytimg.com/vi/yLXLHnD4fco/hqdefault.jpg" alt="Claude Code: Build Your Full AI Marketing Team (Agents + Claude Skills)" loading="lazy"/>
+      </a>
+      <div class="card-info">
+        <div class="card-meta">
+          <span class="ch-tag">Grace Leung</span>
+          <span class="date-tag">2026-03-28</span>
+          
+        </div>
+        <div class="video-title">Claude Code: Build Your Full AI Marketing Team (Agents + Claude Skills)</div>
+        <div style="display:flex;align-items:center;flex-wrap:wrap;gap:4px;margin-top:auto">
+          <a class="yt-link" href="https://www.youtube.com/watch?v=yLXLHnD4fco" target="_blank" rel="noopener">↗ 유튜브에서 보기</a>
+          <button class="nlm-btn" data-url="https://www.youtube.com/watch?v=yLXLHnD4fco">📓 NotebookLM</button>
+        </div>
+      </div>
+    </div>
+    <div class="summary-section">
+      <h2>핵심 요약</h2>
+<p>Claude Code 안에서 비개발자도 처음부터 5개 에이전트와 12개 스킬로 구성된 완전한 AI 마케팅 팀을 구축하는 방법을, 가상의 여행 브랜드 Go Travel 사례로 단계별로 보여준다.</p>
+<h2>주요 포인트</h2>
+<ul>
+<li>AI 마케팅 팀 설계 4단계: ① 매주 하는 마케팅 업무를 정리, ② 반복 업무를 스킬로(워크플로 1개당 스킬 1개), ③ 비슷한 스킬을 겹치지 않는 에이전트 역할로 묶기, ④ 프로젝트 설정으로 에이전트와 스킬을 팀처럼 연결</li>
+<li>VS Code에 Anthropic 공식 Claude Code 확장을 설치하고, 브랜드 폴더에 context·SOP·템플릿 등 시스템 폴더와 작업 폴더를 구성한 뒤 CLAUDE.md(프로젝트 커스텀 지침)를 생성</li>
+<li>브랜드 템플릿을 참조시키는 방식으로 branded deck 스킬을, nano banana MCP(Gemini API)를 연결해 social creative 디자인 스킬을 만드는 등 12개 스킬을 제작</li>
+<li>슬래시 명령 /agents로 data analyst, content creator 등 5개 전용 에이전트를 만들고, CLAUDE.md에 에이전트 라우팅 규칙을 추가해 복잡한 캠페인(일본 벚꽃 캠페인)을 자동으로 협업 처리</li>
+<li>Notion 칸반 보드로 팀과 작업을 공유하고, /remote-control로 모바일(Claude 앱)에서 로컬 세션에 접속해 어디서나 AI 팀에 업무를 지시</li>
+</ul>
+    </div>
+  <div class="transcript-wrap">
+    <div class="transcript-header">
+      <button class="transcript-toggle" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('visible')">
+        <span class="arr">▼</span> 원문 자막
+      </button>
+      <button class="copy-btn" onclick="var b=this,t=b.nextElementSibling||b;navigator.clipboard.writeText(document.querySelector('#tr-yLXLHnD4fco').textContent).then(()=>{b.textContent='복사됨';setTimeout(()=>b.textContent='복사',2000)})">복사</button>
+    </div>
+    <pre class="transcript-box" id="tr-yLXLHnD4fco">Claude keeps getting succinctly powerful and unstoppable, and I really mean it as a claude power user. So what if you could turn Claude into a full AI marketing team that research, writes, analyze and design all working together? So in this video, I'll walk through step by step how to build this entire system from scratch, inside Claude Code, Even if you're not technical, let's go. To design your first AI marketing team in Claude, follow these four step. Step one, map your marketing function, what marketing tasks you actually do every week. Step two, turn each repeatable into a skill, ideally one skill per workflow. Step three, group similar skills into non-overlapping agent roles. So you have dedicated and focused agent that produce better work. Step four, connect agents and skills as a team, set up your project, so Claude knows who is on a team and when to use agents versus skills. So today we are building exactly that for a travel brand called Go Travel, five Agents, 12 Skills. And we are using Claude Code to build a whole thing. Of course, it might look different for your brand depending on your marketing focus, but same concept apply. For now there are three popular ways to use cloud code. Cloud code desktop, where you just switch to Claude code from the tab, an IDE like VS code or cursor or a terminal, which gives you the full power. So for this video, I'll be using VS code so we can see the files and folders side by side. So first download vs code and then on VS code go to extension, search for cloud code and install the one by Anthropic official. So once installed, click the Claude icon in your sidebar, log in with your Claude plan account. It will open your browser for login in and you'll be good to go. All right, so I already set up the brand folder called Go Travel. And inside you can see we have got folders for different departments like sales ops and marketing. So think of it like how a real business organized their work. But today we are focused on the marketing folder. So inside we'll set up two types of folder. So one I call the system folders like context, SOP templates. Those are reusable by your AI agents. And then the working folders, like Ads, pages, presentations. So when your agents produce work, everything goes here. Now a really important step is we need to first load some context inside the context folder, like your brand voice guide, style guide, product offerings, marketing strategy. So your agents are pre equipped things about your brand and it will make the whole difference. So other useful file, like the templates or SOPs. By the way, this is what we're covering in our AI growth system for marketing program inside our community, where you'll get all the templates and we go much deeper. So if you're interested, you can find the link below to join. Now open the project folder on VS Code. The very first step is to initial this project by creating the Claude MD file. So this is basically the custom instructions for your entire project, and you can let Claude to scan your folder and draft it for you. And immediately, we have this CLAUDE.md file created, but note, we will keep updating this file. So it is not like a one off process. Now another thing is to install the official scale. So these are the prebuilt Skills by anthropic, so you can use right away for your project. So first type the slash command plugin. We are gonna first add the official skills GitHub repository marketplace, and then go back to plugin search for document skills and click install. Now if you type the slash command and see all those scales, and that means you have successfully installed official skills pack. All right, let's build our first marketing team branded deck skills that every marketer needs. And for this one, we'll use what I call the reference based method. So you give Claude examples or templates of what goods look like And it studies the patterns Now to build a great deck creation skill that really follows your branded template. You need two things. First is the branded deck template and a detailed understanding of how that template works. So inside the templates folder, we already have an existing deck template. So this is the style that we want Claude to follow exactly. Then have clause analyze this template first and to generate the analysis report. So it will come back with a really detailed analysis. Now we are ready to create our first skill. So we will ask it to extend the official PowerPoint creation skill and generate a new branded deck skill based on the template and analysis report. And immediately we have our first skill. So Claude creates a new folder, called "Skills", and underneath we have the branded deck scale containing the assets and references. Now, whenever we want to create on-branded slide decks, we can just give it some background information and let Claude to create. So in this case, we wanted to create a campaign strategy deck for an upcoming summer campaign. So it will</pre>
+  </div>
+  </article>
+</main>
+
+<footer>유튜브 구독 정리 · agy 요약 · 2026-06-19 06:12</footer>
+
+
+<script>
+document.querySelectorAll('.nlm-btn').forEach(function(btn){
+  btn.addEventListener('click',function(){
+    navigator.clipboard.writeText('/notebooklm '+btn.dataset.url).then(function(){
+      var orig=btn.innerHTML;btn.innerHTML='✓ 복사됨';btn.classList.add('copied');
+      setTimeout(function(){btn.innerHTML=orig;btn.classList.remove('copied');},2000);
+    });
+  });
+});
+</script>
+
+</body>
+</html>

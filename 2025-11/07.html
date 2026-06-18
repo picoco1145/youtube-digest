@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>2025-11-07 — 유튜브 구독 정리</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+  :root{--bg:#090e1a;--surface:#111827;--surface2:#1a2235;--border:#1e2d47;--accent:#6c63ff;--accent2:#00d4ff;--text:#e8eaf0;--muted:#7a8499;--radius:14px;}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Pretendard',sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+  header{background:linear-gradient(135deg,#0d1b3e,#1a0533);border-bottom:1px solid var(--border);padding:20px 40px;display:flex;align-items:center;justify-content:space-between;}
+  .nav-back{color:var(--accent2);text-decoration:none;font-size:0.85rem;display:flex;align-items:center;gap:6px}
+  .nav-back:hover{color:#fff}
+  .date-badge{font-size:1.4rem;font-weight:700;letter-spacing:-0.5px;background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+  .count{font-size:0.85rem;color:var(--muted)}
+  main{max-width:900px;margin:0 auto;padding:32px 24px 80px}
+  .video-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;margin-bottom:24px;transition:border-color 0.2s,box-shadow 0.2s;}
+  .video-card:hover{border-color:var(--accent);box-shadow:0 4px 24px rgba(108,99,255,0.15)}
+  .card-top{display:flex;gap:0}
+  .thumb-wrap{flex:0 0 240px;position:relative;overflow:hidden}
+  .thumb-wrap img{width:100%;height:100%;object-fit:cover;transition:transform 0.4s}
+  .video-card:hover .thumb-wrap img{transform:scale(1.05)}
+  .card-info{flex:1;padding:20px;display:flex;flex-direction:column;gap:10px}
+  .card-meta{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+  .ch-tag{font-size:0.72rem;font-weight:600;padding:3px 12px;background:linear-gradient(135deg,rgba(108,99,255,0.2),rgba(0,212,255,0.2));border:1px solid rgba(108,99,255,0.3);border-radius:999px;color:var(--accent2);}
+  .date-tag{font-size:0.72rem;color:var(--muted)}
+  .no-transcript{font-size:0.68rem;padding:2px 8px;background:rgba(255,180,0,0.12);border:1px solid rgba(255,180,0,0.25);border-radius:999px;color:#ffa500;}
+  .video-title{font-size:1rem;font-weight:600;line-height:1.4}
+  .yt-link{display:inline-flex;align-items:center;gap:5px;font-size:0.8rem;color:var(--accent);text-decoration:none;transition:color 0.2s;}
+  .yt-link:hover{color:var(--accent2)}
+  
+  .nlm-btn{display:inline-flex;align-items:center;gap:5px;font-size:0.8rem;color:#fff;
+    background:rgba(108,99,255,0.2);border:1px solid rgba(108,99,255,0.4);border-radius:8px;
+    padding:4px 12px;cursor:pointer;font-family:inherit;transition:all 0.2s;margin-left:8px;}
+  .nlm-btn:hover{background:rgba(108,99,255,0.45);}
+  .nlm-btn.copied{background:rgba(0,200,100,0.2);border-color:rgba(0,200,100,0.4);color:#00c864;}
+
+  .summary-section{border-top:1px solid var(--border);background:var(--surface2);padding:20px 24px;font-size:0.85rem;line-height:1.7;color:#c5cad8;}
+  .summary-section h2{font-size:0.82rem;color:var(--accent2);margin:12px 0 4px}
+  .summary-section h2:first-child{margin-top:0}
+  .summary-section ul{padding-left:18px}
+  .summary-section li{margin-bottom:5px}
+  .transcript-wrap{border-top:1px solid var(--border);padding:14px 24px;background:#0c1220}
+  .transcript-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:0}
+  .transcript-toggle{background:none;border:none;color:var(--muted);font-size:0.8rem;cursor:pointer;font-family:inherit;display:flex;align-items:center;gap:4px;padding:0;transition:color 0.2s;}
+  .transcript-toggle:hover{color:var(--text)}
+  .copy-btn{background:rgba(108,99,255,0.1);border:1px solid rgba(108,99,255,0.3);border-radius:8px;color:var(--accent2);font-size:0.72rem;padding:4px 12px;cursor:pointer;font-family:inherit;transition:all 0.2s;}
+  .copy-btn:hover{background:rgba(108,99,255,0.25);color:#fff}
+  .transcript-box{display:none;margin-top:10px;background:#080d18;border:1px solid var(--border);border-radius:10px;padding:12px 14px;font-size:0.78rem;line-height:1.75;color:#8a95aa;max-height:260px;overflow-y:auto;white-space:pre-wrap;word-break:break-word;}
+  .transcript-box.visible{display:block}
+  footer{text-align:center;padding:24px;font-size:0.75rem;color:var(--muted);border-top:1px solid var(--border)}
+  @media(max-width:640px){.card-top{flex-direction:column}.thumb-wrap{flex:none;height:200px}header{padding:16px}main{padding:16px 12px 60px}}
+</style>
+</head>
+<body>
+
+<header>
+  <a class="nav-back" href="../index.html">← 대시보드로</a>
+  <div>
+    <div class="date-badge">2025-11-07</div>
+    <div class="count">1개 영상</div>
+  </div>
+  <div style="font-size:0.75rem;color:var(--muted)">2026-06-19 06:12 생성</div>
+</header>
+
+<main>
+
+  <article class="video-card">
+    <div class="card-top">
+      <a class="thumb-wrap" href="https://www.youtube.com/watch?v=zFcxA9T_BWs" target="_blank" rel="noopener">
+        <img src="https://i.ytimg.com/vi/zFcxA9T_BWs/hqdefault.jpg" alt="STOP Wasting Money on More AI Tools. Do THIS instead" loading="lazy"/>
+      </a>
+      <div class="card-info">
+        <div class="card-meta">
+          <span class="ch-tag">Grace Leung</span>
+          <span class="date-tag">2025-11-07</span>
+          
+        </div>
+        <div class="video-title">STOP Wasting Money on More AI Tools. Do THIS instead</div>
+        <div style="display:flex;align-items:center;flex-wrap:wrap;gap:4px;margin-top:auto">
+          <a class="yt-link" href="https://www.youtube.com/watch?v=zFcxA9T_BWs" target="_blank" rel="noopener">↗ 유튜브에서 보기</a>
+          <button class="nlm-btn" data-url="https://www.youtube.com/watch?v=zFcxA9T_BWs">📓 NotebookLM</button>
+        </div>
+      </div>
+    </div>
+    <div class="summary-section">
+      <h2>핵심 요약</h2>
+<p>AI 도구를 더 늘리지 말고 더 나은 시스템 사고가 필요하다는 메시지로, ChatGPT·Gemini·Claude·NotebookLM·Perplexity를 각 강점에 맞춰 조합하는 즐겨 쓰는 간단한 AI 워크플로들을 소개한다.</p>
+<h2>주요 포인트</h2>
+<ul>
+<li>도구를 특기별 전문가 팀으로 인식: ChatGPT(만능 비서), Gemini(통합 빌더), Claude(비주얼 전략가), Perplexity(전문 리서처), NotebookLM(지식 종합가). '이 작업에 맞는 도구는?'이 올바른 질문</li>
+<li>리서치+분석: ChatGPT 프로젝트에 브랜드 자료를 올려 그 안에서 deep research를 돌리고 결과를 다시 업로드해 자가 발전하는 브레인 구축. 또는 Perplexity로 출처를 직접 큐레이션하고 NotebookLM으로 환각 적게 분석(입력·출력 품질 모두 통제)</li>
+<li>전략적 시각화: Gemini의 거대 컨텍스트와 캔버스 모드로 리서치 보고서를 인포그래픽으로(다운로드 버튼까지 추가 가능), Claude는 더 전략적·정밀한 대시보드를 만들고 프로젝트에 템플릿으로 저장해 재사용</li>
+<li>에셋 제작: Claude의 SVG 아티팩트(Figma에서 완전 편집 가능한 벡터)로 소셜 비주얼 제작, Gemini 캔버스로 슬라이드 덱을 만들어 Google Slides로 내보내기(Gemini GEM으로 개요 생성 반자동화)</li>
+<li>NotebookLM+Gemini 조합으로 영상 강의·슬라이드·툴킷을 갖춘 완전한 트레이닝 패키지나 리서치 기반 랜딩페이지·피치덱 등 비즈니스 에셋을 몇 시간 만에 제작</li>
+</ul>
+    </div>
+  <div class="transcript-wrap">
+    <div class="transcript-header">
+      <button class="transcript-toggle" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('visible')">
+        <span class="arr">▼</span> 원문 자막
+      </button>
+      <button class="copy-btn" onclick="var b=this,t=b.nextElementSibling||b;navigator.clipboard.writeText(document.querySelector('#tr-zFcxA9T_BWs').textContent).then(()=>{b.textContent='복사됨';setTimeout(()=>b.textContent='복사',2000)})">복사</button>
+    </div>
+    <pre class="transcript-box" id="tr-zFcxA9T_BWs">We don't lack AI tools. We need better system thinking. More AI tools do not mean more productivity. Instead, we need to develop deeper expertise and build better AI workflows. So in this video, I'll share my favorite simple AI workflows using the most popular AI right now ChatGPT Gemini, Claude NotebookLM Perplexity, which will immediately improve your work productivity and quality. Let's go. Stop asking which AI is the best because in reality it doesn't exist. Instead think of them as your team of specialists with different strength. ChatGPT, the generalist assistant Gemini, the integrated builder Claude the visual strategist perplexity, the specialized researcher, NotebookLM, the knowledge synthesizer. Now the right question becomes, what is the right tool for this task? For this video, I've organized workflows into three core areas, research and analysis, strategic visualization, asset creation The goal is not about using all these tools. These are just starting point. And once you see how they connect, you will discover your own combination. First we search and analysis. This is where we need to find new information and make sense of it. For most people, we often start with ChatGPT deep research because that's the tool we are most familiar with But instead of just simply starting a deep research, there is a much better workflow. And this is my personal favorite. Let's say we're doing market research and strategy brainstorming about a furniture brand. The first step is not to do research yet. Instead, I always recommend creating a ChatGPT project so you can start building persistent knowledge by uploading background information like a brand overview document in this case. So the trick is to run the deep research inside this project, and it would be much better as now ChatGPT has all the important context and will generate a better and relevant research report about your target market and make recommendations. Then we can upload this report back to this brand project as part of the knowledge base. So essentially you are training this project with all the important research findings. Now you can even prompt it to get deeper insights and generate different strategy documents. So for example, a detail B2B buyer profile documents that contains your ideal customer profiles based on your research or a competitive positioning documents brand voice guide. And they will be all relevant to your brand because of the project context it has been trained on. Now you can repeat the same process, upload them back to this project, and build a powerful brain that is self-improving with more useful context. ******* And this is a strong foundation before you even start using ChatGPT for various tasks like content creation, image generation, I have another whole video on how I use this one single workflow to build a marketing system. I'll put the link below. Now what if you want total control and don't want AI to pick the sources for you? Here is what I love combining Perplexity and NotebookLM. Perplexity lets you curate the exact latest sources you want. And then NotebookLM only analyze what you import with minimal hallucination. So you control both the input and the output quality. So I'm doing competitive analysis about expense management tools. So first on perplexity, ask it to find the top 20 expense management platforms. Note, ask it, to just output the URLs only. So we can have a list of URLs that is ready to import back to NotebookLM. Then on NotebookLM, we can paste back this list and then import all of them. Now you can also configure the chat and then assign a persona to this notebook project. So perhaps a growth consultant specializing in market positioning. So all the response will have this persona embedded. Now let's ask it to analyze all these competitors homepage and identify the five most repeated value proposition so we can avoid them or enhance them further to find a differentiation. So here NotebookLM will act as the growth consultant, not just providing the insights on the overused messaging, but also the strategic opportunities as I have specified in the persona instruction. Now another useful features is the report generation. So here you can select and generate different types of report format. Besides the default building report template, it also will based on your sources and suggest other format for you like competitor analysis format in this case. And I'll suggest keeping the instructions unchanged. It has already incorporated the relevant context for you. And then just a minute, we have this report ready. It is super comprehensive with the side by side comparison. And the best thing is that all these information is now based on the latest competitor homepage sources that we have import. And so we can make sure this is highly accurate with minimal hallucination compared to a deep research report where you can't control the source quality and you can even just copy it and then create a Google docu</pre>
+  </div>
+  </article>
+</main>
+
+<footer>유튜브 구독 정리 · agy 요약 · 2026-06-19 06:12</footer>
+
+
+<script>
+document.querySelectorAll('.nlm-btn').forEach(function(btn){
+  btn.addEventListener('click',function(){
+    navigator.clipboard.writeText('/notebooklm '+btn.dataset.url).then(function(){
+      var orig=btn.innerHTML;btn.innerHTML='✓ 복사됨';btn.classList.add('copied');
+      setTimeout(function(){btn.innerHTML=orig;btn.classList.remove('copied');},2000);
+    });
+  });
+});
+</script>
+
+</body>
+</html>

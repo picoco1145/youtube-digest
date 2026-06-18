@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>2026-01-03 — 유튜브 구독 정리</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+  :root{--bg:#090e1a;--surface:#111827;--surface2:#1a2235;--border:#1e2d47;--accent:#6c63ff;--accent2:#00d4ff;--text:#e8eaf0;--muted:#7a8499;--radius:14px;}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Pretendard',sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+  header{background:linear-gradient(135deg,#0d1b3e,#1a0533);border-bottom:1px solid var(--border);padding:20px 40px;display:flex;align-items:center;justify-content:space-between;}
+  .nav-back{color:var(--accent2);text-decoration:none;font-size:0.85rem;display:flex;align-items:center;gap:6px}
+  .nav-back:hover{color:#fff}
+  .date-badge{font-size:1.4rem;font-weight:700;letter-spacing:-0.5px;background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+  .count{font-size:0.85rem;color:var(--muted)}
+  main{max-width:900px;margin:0 auto;padding:32px 24px 80px}
+  .video-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;margin-bottom:24px;transition:border-color 0.2s,box-shadow 0.2s;}
+  .video-card:hover{border-color:var(--accent);box-shadow:0 4px 24px rgba(108,99,255,0.15)}
+  .card-top{display:flex;gap:0}
+  .thumb-wrap{flex:0 0 240px;position:relative;overflow:hidden}
+  .thumb-wrap img{width:100%;height:100%;object-fit:cover;transition:transform 0.4s}
+  .video-card:hover .thumb-wrap img{transform:scale(1.05)}
+  .card-info{flex:1;padding:20px;display:flex;flex-direction:column;gap:10px}
+  .card-meta{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+  .ch-tag{font-size:0.72rem;font-weight:600;padding:3px 12px;background:linear-gradient(135deg,rgba(108,99,255,0.2),rgba(0,212,255,0.2));border:1px solid rgba(108,99,255,0.3);border-radius:999px;color:var(--accent2);}
+  .date-tag{font-size:0.72rem;color:var(--muted)}
+  .no-transcript{font-size:0.68rem;padding:2px 8px;background:rgba(255,180,0,0.12);border:1px solid rgba(255,180,0,0.25);border-radius:999px;color:#ffa500;}
+  .video-title{font-size:1rem;font-weight:600;line-height:1.4}
+  .yt-link{display:inline-flex;align-items:center;gap:5px;font-size:0.8rem;color:var(--accent);text-decoration:none;transition:color 0.2s;}
+  .yt-link:hover{color:var(--accent2)}
+  
+  .nlm-btn{display:inline-flex;align-items:center;gap:5px;font-size:0.8rem;color:#fff;
+    background:rgba(108,99,255,0.2);border:1px solid rgba(108,99,255,0.4);border-radius:8px;
+    padding:4px 12px;cursor:pointer;font-family:inherit;transition:all 0.2s;margin-left:8px;}
+  .nlm-btn:hover{background:rgba(108,99,255,0.45);}
+  .nlm-btn.copied{background:rgba(0,200,100,0.2);border-color:rgba(0,200,100,0.4);color:#00c864;}
+
+  .summary-section{border-top:1px solid var(--border);background:var(--surface2);padding:20px 24px;font-size:0.85rem;line-height:1.7;color:#c5cad8;}
+  .summary-section h2{font-size:0.82rem;color:var(--accent2);margin:12px 0 4px}
+  .summary-section h2:first-child{margin-top:0}
+  .summary-section ul{padding-left:18px}
+  .summary-section li{margin-bottom:5px}
+  .transcript-wrap{border-top:1px solid var(--border);padding:14px 24px;background:#0c1220}
+  .transcript-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:0}
+  .transcript-toggle{background:none;border:none;color:var(--muted);font-size:0.8rem;cursor:pointer;font-family:inherit;display:flex;align-items:center;gap:4px;padding:0;transition:color 0.2s;}
+  .transcript-toggle:hover{color:var(--text)}
+  .copy-btn{background:rgba(108,99,255,0.1);border:1px solid rgba(108,99,255,0.3);border-radius:8px;color:var(--accent2);font-size:0.72rem;padding:4px 12px;cursor:pointer;font-family:inherit;transition:all 0.2s;}
+  .copy-btn:hover{background:rgba(108,99,255,0.25);color:#fff}
+  .transcript-box{display:none;margin-top:10px;background:#080d18;border:1px solid var(--border);border-radius:10px;padding:12px 14px;font-size:0.78rem;line-height:1.75;color:#8a95aa;max-height:260px;overflow-y:auto;white-space:pre-wrap;word-break:break-word;}
+  .transcript-box.visible{display:block}
+  footer{text-align:center;padding:24px;font-size:0.75rem;color:var(--muted);border-top:1px solid var(--border)}
+  @media(max-width:640px){.card-top{flex-direction:column}.thumb-wrap{flex:none;height:200px}header{padding:16px}main{padding:16px 12px 60px}}
+</style>
+</head>
+<body>
+
+<header>
+  <a class="nav-back" href="../index.html">← 대시보드로</a>
+  <div>
+    <div class="date-badge">2026-01-03</div>
+    <div class="count">1개 영상</div>
+  </div>
+  <div style="font-size:0.75rem;color:var(--muted)">2026-06-19 06:12 생성</div>
+</header>
+
+<main>
+
+  <article class="video-card">
+    <div class="card-top">
+      <a class="thumb-wrap" href="https://www.youtube.com/watch?v=ICbQmkoH7qM" target="_blank" rel="noopener">
+        <img src="https://i.ytimg.com/vi/ICbQmkoH7qM/hqdefault.jpg" alt="n8n, 오팔은 이제 놔주세요. 2026년 쇼츠 자동화는 '이것'으로 종결!" loading="lazy"/>
+      </a>
+      <div class="card-info">
+        <div class="card-meta">
+          <span class="ch-tag">소스놀이터</span>
+          <span class="date-tag">2026-01-03</span>
+          
+        </div>
+        <div class="video-title">n8n, 오팔은 이제 놔주세요. 2026년 쇼츠 자동화는 '이것'으로 종결!</div>
+        <div style="display:flex;align-items:center;flex-wrap:wrap;gap:4px;margin-top:auto">
+          <a class="yt-link" href="https://www.youtube.com/watch?v=ICbQmkoH7qM" target="_blank" rel="noopener">↗ 유튜브에서 보기</a>
+          <button class="nlm-btn" data-url="https://www.youtube.com/watch?v=ICbQmkoH7qM">📓 NotebookLM</button>
+        </div>
+      </div>
+    </div>
+    <div class="summary-section">
+      <h2>핵심 요약</h2>
+<p>n8n·오팔 대신 클로드 코드·코덱스·안티그래비티 같은 바이브 코딩 툴로 쇼츠를 자동 생성하는 방법을 공개하며, 캐릭터·배경 일관성을 유지하는 것이 핵심이라고 강조한 영상이다.</p>
+<h2>주요 포인트</h2>
+<ul>
+<li>약 20분이면 영상 하나가 나오며, 기준 캐릭터·배경 이미지를 미리 정하고 단계마다 컨펌·개입해 처음 느낌을 끝까지 유지하는 것이 최대 장점</li>
+<li>안티그래비티는 이미지 생성이 공짜라 첫 이미지 단계에 활용, 영상은 Veo 3 MCP를 수동 설치(공식 주소를 주고 자동 설치 요청)</li>
+<li>안티그래비티는 프론트엔드는 훌륭하나 그 외 능력은 클로드 코드·코덱스만 못하고 불안정·사용 제한에 걸려, 클로드 코드로 대체하니 에러를 한 방에 해결</li>
+<li>'나라별 의상 소개' 8초짜리 영상 4개를 한복·중국·일본 기모노·미국 콘셉트로 음성까지 단 한 번에 완성</li>
+<li>장면이 따로 노는 버전과 쭉 이어지는 버전 둘 다 지원하도록 지침을 개선, 개와 고양이가 밥 먹는 30초 실사 쇼츠도 제작</li>
+</ul>
+    </div>
+  <div class="transcript-wrap">
+    <div class="transcript-header">
+      <button class="transcript-toggle" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('visible')">
+        <span class="arr">▼</span> 원문 자막
+      </button>
+      <button class="copy-btn" onclick="var b=this,t=b.nextElementSibling||b;navigator.clipboard.writeText(document.querySelector('#tr-ICbQmkoH7qM').textContent).then(()=>{b.textContent='복사됨';setTimeout(()=>b.textContent='복사',2000)})">복사</button>
+    </div>
+    <pre class="transcript-box" id="tr-ICbQmkoH7qM">바이브 코딩 툴로 쇼츠 자동화에 성공했어요. 이제 10분마다 영상 하나가 뚝딱 만들어집니다. 보통 구글 58이나 N8에 많이 쓰시죠?이 방법은 다릅니다. 똑똑한 LLM 모델이 창의적으로 자유롭게 만들어 주거든요. 가장 큰 장점은 바로 일관성. 캐릭터랑 배경이 중간에 바뀌면 이상하잖아요. 이건 미리 기준 캐릭터와 배경 이미지들을 정해 두고 단계마다 개입해서 처음 느낌 그대로 끝까지 유지해 줍니다.이 모든 방법을 지금 싹 다 공개할게요. 여러분만의 영상 철학이 있으신가요? 그럼 지침만 살짝 편집해 보세요. 그대로 반영됩니다. 진짜 편하고 앞으로의 발전 가능성도 상당해요. 놓치면 후회하니까 영상 끝까지 꼭 봐 주세요. 그럼 시작합니다. 요즘 엠파이나 오팔로 쇼츠 자동화하는 영상 본 적 있어? 근데 솔직히 말해서 클로드 코드나 코덱스 안티그래비티가 더 잘할 수 있지 않을까? 걔네는 기능 제한도 없고 대용량 작업도 거든하잖아. 그럼 직접 시도해 볼까? 먼저 영상을 만들려면 일단 이미지 생성이 필요해. 영상의 첫 시작을 이미지로 딱 잡는 거지. 그런데 대박인 건 구글 안티 그래비티는 이미지 생성이 공짜야. 그럼 툴은 이걸로 확정. 영상은 베어 3로 만들고 싶은데 찾아보니 MCP가 몇 개 있더라고. 이걸 쓰면 영상 생성도 가능해진다는 말씀. 근데 여기서 끝이 아니야. 영상은 뭐다? 일관성이 생명이야. 고양이 영상인데 갑자기 사자가 튀어나오면 안 되잖아. 그래서 캐릭터 이미지를 확실히 정해야 해. 정해야 할 건 더 있어. 장소도 정하고 분위기랑 스타일도 딱 잡아야겠지. 자,이 정도만 생각하고 그럼 바로 시작해 볼까? 구글 안티그래비티 작동. 이제 베어 3 MCP를 설치할 거야. 오른쪽 상단에 더보기 아이콘 클릭, mcp 서버 클릭. 자동 설치 가능한 목록이 나올 거야. 근데 우리가 설치할 건 여기 없어. 그래서 수동 설치 들어가야 해. 매니저 MCP 서버 누르고 뷰로 컨피그 클릭. 여기서 내용을 직접 편집할 수 있어. 그런데 우리는 지금 똑똑한 바이브 코딩 툴 쓰잖아. 그럼 자동 설치로 되지 않을까? MCP 공식 주소 넣고 미리 조사한 내용도 함께 넣었어. 그리고 알아서 설치해 달라고 했지. 와! 스스로 설치 진행하고 있어. 드디어 완료. 새로 고침 눌러 볼까? 어, 에러가 떴네.이 에러 문구 복사에서 다시 전달해 봐야겠어. 이제 정상 설치 완료. 이렇게 자동 설치가 되는 거 보니까 안티그래비티 컴퓨터 조작 능력이 이전 제미나이 모델보다 더 좋아진 것 같아. 왼쪽 탐색기 봐봐. 새 폴더 생겼지? 이게 방금 설치한 MCP야. 그리고 이제 지침 넣어 줄게. 오른쪽 상단에 더보기 아이콘 클릭. 커스터마이제이션 클릭. 그러면 룰즈가 보이지? 룰즈 눌러서 들어가자. 여기에 지침을 넣어 주면 돼. 나는 글로벌로 넣어 줬어. 근데 여러분은 워크스페이스 클릭해서 지침을 넣도록 추천할게. 그럼 현재 프로젝트에 대해서만 지침 적용되거든.이 지침에는 뭐가 들어 있냐면 내가 미리 세팅해 둔 값들. 그러니까 처음부터 헤매지 말라고 기본 세팅을 다 깔아둔 거야. 그리고 이곳에 영상 제작 매뉴얼도 담겨 있어. 이제 AI가이 지침에 따라 영상 제작할 거야. 자, 이제 쇼츠 주제 알려주고 분량도 같이 전달했어. 종종 쇼츠에 나왔던 거 있잖아. 나라별 의상 소개 영상. 이걸로 해 볼게. 오, 대본이랑 스토리 나왔어. 나한테 컨펌 받는 중. 그리고 이렇게 4계공 모델 이미지 완성. 다음은 영상 제작 단계야. 왼쪽 탐색기에서 프로그래스 MD 파일 열어 보면 현재 진행 상황 체크 가능해. 어, 근데 계속 에러 뜨네. 안티그래비티 나온지 좀 됐는데 아직 불안정한 면이 있나 봐. 조금 있다가 다시 시작해 볼게. 그런데 몇 번 시도하다가 결국 사용 제한에 걸렸어. 확실히 구글 안티그래비티는 프론트 핸드는 훌륭한데 그 외 능력은 클로드 코드나 코덱스만큼은 아닌 듯해 이제 클로드 코드로 대체해 볼게. 기존 지침을 클로드 MD 파일에 싹 정리해 넣었어. 나노바나 프로는 원래 스킬이었으니까 점클로드 폴더 아래 스킬즈 폴더에 넣었지. 지침 다시 읽으라 하고 현재 상황 파악해 보라 했어. 그랬더니 전체 폴더를 꼼꼼히 확인하네. 현 상황도 아주 정확히 알려주고 에러 상황도 이미 알고 있어. 그리고 고디어 에러를 한 방에 해결해 줬어. 그렇게 8초 분량 영상네 개를 모두 완성했어. 중간에 미국 영상에 오류가 있었는데 미국 모델 얼굴이라 정책 제한에 걸린 거야. 그래서 다시 이미지 뽑아서 영상을 만들었어. 그럼 지침에 따라 영상을 합치기 시작했지. 이제 완성됐고 그 결과물을 볼게. 천 미약 대한민국. 우아함은 시대를 타지 않죠. 바람결에 흑날리는 한복의 자태를 보세요. 대륙의 화려함. 중국. 붉은빛의 강력함이 시선을 압도합니다. 찬란한 역사를 입은 모덜룩. 섬세한 디테일. 일본 패턴 하나하나에 장인의 숨결이 서여 있습니다. 전통 기모노의 휙한 변신, 자유의 상징, 미국 개청 정신이 패션이 되었습니다. 가장 클래식한 것이 가장 트렌디하니까요. 사진에서 음성까지 완벽하고 사이즈도 딱 쇼츠 사이즈야. 중간에 에러 잡느라 힘들긴 했지만 영상 자체는 한 번에 완성됐어. 별로라고 할 수도 있지만 이건 단 한 번의 시도로 만든 거야. 그러니 좋은 스토리랑 이미지 잘 준비하면 훨씬 좋은 영상이 나올 거야. N8엔 이런 거 말고 클로드 코드로도 분명 가능해 보였는데 역시 생각대로 최상의 결과를 보여줬어. 근데 이번 영상은 장면들이 다 따로 놀잖아. 난 쭉 이어지는 영상을 만들고 싶어. 그래서 두 가지 버전 모두 지원하도록 지침을 개선했어. 개와 고양이가 밥 먹는 30초 영상 만들어 줘. 먼저 이미지를 뽑고 나한테 확인을 요청하고 있어. 중요한 건 내가 직접 컨펌해야 하거든. 근데 그림이 좀 애니풍이네. 난 진짜처럼 느껴지는 실사를 원하거든. 그래서 다시 만들려고 했어. 결과가 나왔고 이번엔 마음에 들어. 이제 30초에 맞춰서 여러 장면으로 나누고 대본을 쫙 뽑아 줬어. 다음으로 캐릭터랑 배경 합쳐서 각 장면을 그리기 시작해. 이제 각 장면의 이미지가 완성되었어. 다음은 드디어 영상 생성 단계. 영상이 모두 완성되었고 마지막에 합체까지 하고 나면 30초짜리 쇼츠 영상 완성. 결과물 한번 볼까? 100점은 아니지만 스토리랑 프롬프트를 잘 다듬으면 훨씬 좋아질 것 같지 않아? 한 20분 정도면 영상 하나가 나오는 것 같아. 물론 내가 쇼츠 유튜버는 아니지만 이번 프로젝트는 만족스러워. 그리고 이건 순전히 우리 구독자님들을 위해 만든 거야. 이러다 나도 채널 하나 팔지도 몰라. 이제이 방법을 더 업그레이드 해 보고 싶은데 그러려면 강한 동기가 필요해. 그래서 좋아요랑 구독 부탁할게. 여러분의 응원이 정말 필요하거든. 그리고 영상 끝까지 봐 줘서 고마워. 소스노리터 채널이 돌아가는 엔진은 바로 끝까지 봐주는 우리 구독자분들이야. 이제 난 더 심박한 영상을 고민하러 갈게. M.</pre>
+  </div>
+  </article>
+</main>
+
+<footer>유튜브 구독 정리 · agy 요약 · 2026-06-19 06:12</footer>
+
+
+<script>
+document.querySelectorAll('.nlm-btn').forEach(function(btn){
+  btn.addEventListener('click',function(){
+    navigator.clipboard.writeText('/notebooklm '+btn.dataset.url).then(function(){
+      var orig=btn.innerHTML;btn.innerHTML='✓ 복사됨';btn.classList.add('copied');
+      setTimeout(function(){btn.innerHTML=orig;btn.classList.remove('copied');},2000);
+    });
+  });
+});
+</script>
+
+</body>
+</html>

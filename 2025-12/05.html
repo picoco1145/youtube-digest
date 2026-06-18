@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>2025-12-05 — 유튜브 구독 정리</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+  :root{--bg:#090e1a;--surface:#111827;--surface2:#1a2235;--border:#1e2d47;--accent:#6c63ff;--accent2:#00d4ff;--text:#e8eaf0;--muted:#7a8499;--radius:14px;}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Pretendard',sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+  header{background:linear-gradient(135deg,#0d1b3e,#1a0533);border-bottom:1px solid var(--border);padding:20px 40px;display:flex;align-items:center;justify-content:space-between;}
+  .nav-back{color:var(--accent2);text-decoration:none;font-size:0.85rem;display:flex;align-items:center;gap:6px}
+  .nav-back:hover{color:#fff}
+  .date-badge{font-size:1.4rem;font-weight:700;letter-spacing:-0.5px;background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+  .count{font-size:0.85rem;color:var(--muted)}
+  main{max-width:900px;margin:0 auto;padding:32px 24px 80px}
+  .video-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;margin-bottom:24px;transition:border-color 0.2s,box-shadow 0.2s;}
+  .video-card:hover{border-color:var(--accent);box-shadow:0 4px 24px rgba(108,99,255,0.15)}
+  .card-top{display:flex;gap:0}
+  .thumb-wrap{flex:0 0 240px;position:relative;overflow:hidden}
+  .thumb-wrap img{width:100%;height:100%;object-fit:cover;transition:transform 0.4s}
+  .video-card:hover .thumb-wrap img{transform:scale(1.05)}
+  .card-info{flex:1;padding:20px;display:flex;flex-direction:column;gap:10px}
+  .card-meta{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+  .ch-tag{font-size:0.72rem;font-weight:600;padding:3px 12px;background:linear-gradient(135deg,rgba(108,99,255,0.2),rgba(0,212,255,0.2));border:1px solid rgba(108,99,255,0.3);border-radius:999px;color:var(--accent2);}
+  .date-tag{font-size:0.72rem;color:var(--muted)}
+  .no-transcript{font-size:0.68rem;padding:2px 8px;background:rgba(255,180,0,0.12);border:1px solid rgba(255,180,0,0.25);border-radius:999px;color:#ffa500;}
+  .video-title{font-size:1rem;font-weight:600;line-height:1.4}
+  .yt-link{display:inline-flex;align-items:center;gap:5px;font-size:0.8rem;color:var(--accent);text-decoration:none;transition:color 0.2s;}
+  .yt-link:hover{color:var(--accent2)}
+  
+  .nlm-btn{display:inline-flex;align-items:center;gap:5px;font-size:0.8rem;color:#fff;
+    background:rgba(108,99,255,0.2);border:1px solid rgba(108,99,255,0.4);border-radius:8px;
+    padding:4px 12px;cursor:pointer;font-family:inherit;transition:all 0.2s;margin-left:8px;}
+  .nlm-btn:hover{background:rgba(108,99,255,0.45);}
+  .nlm-btn.copied{background:rgba(0,200,100,0.2);border-color:rgba(0,200,100,0.4);color:#00c864;}
+
+  .summary-section{border-top:1px solid var(--border);background:var(--surface2);padding:20px 24px;font-size:0.85rem;line-height:1.7;color:#c5cad8;}
+  .summary-section h2{font-size:0.82rem;color:var(--accent2);margin:12px 0 4px}
+  .summary-section h2:first-child{margin-top:0}
+  .summary-section ul{padding-left:18px}
+  .summary-section li{margin-bottom:5px}
+  .transcript-wrap{border-top:1px solid var(--border);padding:14px 24px;background:#0c1220}
+  .transcript-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:0}
+  .transcript-toggle{background:none;border:none;color:var(--muted);font-size:0.8rem;cursor:pointer;font-family:inherit;display:flex;align-items:center;gap:4px;padding:0;transition:color 0.2s;}
+  .transcript-toggle:hover{color:var(--text)}
+  .copy-btn{background:rgba(108,99,255,0.1);border:1px solid rgba(108,99,255,0.3);border-radius:8px;color:var(--accent2);font-size:0.72rem;padding:4px 12px;cursor:pointer;font-family:inherit;transition:all 0.2s;}
+  .copy-btn:hover{background:rgba(108,99,255,0.25);color:#fff}
+  .transcript-box{display:none;margin-top:10px;background:#080d18;border:1px solid var(--border);border-radius:10px;padding:12px 14px;font-size:0.78rem;line-height:1.75;color:#8a95aa;max-height:260px;overflow-y:auto;white-space:pre-wrap;word-break:break-word;}
+  .transcript-box.visible{display:block}
+  footer{text-align:center;padding:24px;font-size:0.75rem;color:var(--muted);border-top:1px solid var(--border)}
+  @media(max-width:640px){.card-top{flex-direction:column}.thumb-wrap{flex:none;height:200px}header{padding:16px}main{padding:16px 12px 60px}}
+</style>
+</head>
+<body>
+
+<header>
+  <a class="nav-back" href="../index.html">← 대시보드로</a>
+  <div>
+    <div class="date-badge">2025-12-05</div>
+    <div class="count">1개 영상</div>
+  </div>
+  <div style="font-size:0.75rem;color:var(--muted)">2026-06-19 06:12 생성</div>
+</header>
+
+<main>
+
+  <article class="video-card">
+    <div class="card-top">
+      <a class="thumb-wrap" href="https://www.youtube.com/watch?v=ZeMm6ZmiXeM" target="_blank" rel="noopener">
+        <img src="https://i.ytimg.com/vi/ZeMm6ZmiXeM/hqdefault.jpg" alt="AI Search: Make Your Brand the #1 Choice (Copy These SEO Methods)" loading="lazy"/>
+      </a>
+      <div class="card-info">
+        <div class="card-meta">
+          <span class="ch-tag">Grace Leung</span>
+          <span class="date-tag">2025-12-05</span>
+          
+        </div>
+        <div class="video-title">AI Search: Make Your Brand the #1 Choice (Copy These SEO Methods)</div>
+        <div style="display:flex;align-items:center;flex-wrap:wrap;gap:4px;margin-top:auto">
+          <a class="yt-link" href="https://www.youtube.com/watch?v=ZeMm6ZmiXeM" target="_blank" rel="noopener">↗ 유튜브에서 보기</a>
+          <button class="nlm-btn" data-url="https://www.youtube.com/watch?v=ZeMm6ZmiXeM">📓 NotebookLM</button>
+        </div>
+      </div>
+    </div>
+    <div class="summary-section">
+      <h2>핵심 요약</h2>
+<p>AI 검색에서 브랜드를 1순위로 만들기 위해, AI가 콘텐츠를 사랑하고·브랜드를 신뢰하며·사이트를 거부하지 않게 하는 세 가지 관계를 데이터 우선 접근으로 최적화하는 6가지 방법을 Semrush를 활용해 소개한다.</p>
+<h2>주요 포인트</h2>
+<ul>
+<li>데이터 우선, AI 다음 원칙. Semrush One의 전통 SEO 툴킷과 AI Visibility 툴킷을 사용하며, Google 순위와 AI 인용 사이에 강한 상관관계가 있어 전통 SEO 최적화가 첫 quick win</li>
+<li>AI가 콘텐츠를 사랑하게: keyword gap 분석으로 경쟁사 대비 누락 키워드를 찾고, Keyword Strategy Builder로 토픽 클러스터를 구축해 특정 분야의 권위를 학습시킴. 사용자 질문은 keyword magic tool과 prompt research(1억+ 프롬프트 DB)로 발굴</li>
+<li>경쟁사가 인용되는 토픽·출처를 역설계하고, 인용된 소스를 NotebookLM에 넣어 AI 검색 최적화 콘텐츠 지침과 초안을 생성(자기 경험·관점은 반드시 추가)</li>
+<li>AI가 신뢰하게: brand performance로 share of voice·감성을 추적하고, top citations에서 영향력 있는 제3자 매체와 Reddit·YouTube·LinkedIn 같은 소셜 채널을 찾아 오프사이트 권위 신호 구축(아웃리치 시 진짜 가치 제공)</li>
+<li>AI가 거부하지 않게: 사이트 감사로 robots.txt의 AI 봇 차단 여부(예: Gemini 차단), 평평한 사이트 구조와 크롤 깊이 3 이하, 누락된 스키마 마크업을 점검·수정</li>
+</ul>
+    </div>
+  <div class="transcript-wrap">
+    <div class="transcript-header">
+      <button class="transcript-toggle" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('visible')">
+        <span class="arr">▼</span> 원문 자막
+      </button>
+      <button class="copy-btn" onclick="var b=this,t=b.nextElementSibling||b;navigator.clipboard.writeText(document.querySelector('#tr-ZeMm6ZmiXeM').textContent).then(()=>{b.textContent='복사됨';setTimeout(()=>b.textContent='복사',2000)})">복사</button>
+    </div>
+    <pre class="transcript-box" id="tr-ZeMm6ZmiXeM">AI search is not the future. It is now, but AI doesn't just find your content. It actively decided whether to recommend your brand or ignore it completely. So we have to rethink the whole optimization process, like building three kinds of relationships with AI. First, make AI love your content so it use them as source. And second, make AI trust your brand so it recommends you. And third, make AI not hate your site so it doesn't reject you. In this video, I partnered with Semrush to show you how to optimize all three relationships with six methods that you can copy right away. Let's go. To do real SEO optimization data is a must. So that's why the methods I'm going to show you follow this key strategy data first, ai. Second, I know we all use ai, but without the data, you are simply guessing. For this video demo, I'll be using Semrush One, a new solution that combines two toolkits. The traditional SEO toolkit that gives you keyword research And the AI visibility toolkit, it shows you how your brand If you want to follow along, there is a link in the description where you can sign up to get an exclusive 14 day free trial. All right. The first relationship, make AI love your content. AI ignores you because you are irrelevant. So the first quick win is to optimize the traditional seo ranking. Yes, traditional search. So study shows that there is a strong correlations between Google rankings and AI citations. Like in my case, I have a blog ranked for the keyword on organic search, It's also being cited on Google AI Mode. So for example, I am optimizing type dream.com, an AI website builder. So first we can just quickly check is domain overview and semrush now also includes this AI visibility score and the breakdown of both the brand mentions and cited pages across different AI search engines. Just scroll down. You can also see the snapshot of the top sources for both AI search and Google search. And meaning for this brand. There's still loss of AI optimization opportunities. Now, instead of just looking at your own ranked keywords, use the keyword gap analysis under the SEO toolkit. Insert a competitor, pick one that has a similar product, offering and audience for more relevant analysis. So it will tell you what is missing, where search engines already associate your competitors with the niche but not you. So here you'll see a list of shared keywords, and there's so many keywords, but that doesn't mean we need to follow every one of them. So there are two ways to get a more target list. So first way is to filter by a topic keyword. And so perhaps in this case that is website builder. So you will have a much more meaningful scope where you can do a deeper analysis. And the second way is to filter by position. So for example, filter only the page two to page three, ranked keywords to get a list of high potential keywords. As for the search volume and keyword difficulty, they can be a good reference. But don't get too obsessed, but focus on those relevant to your target ICP and business. AI search is about context, not just volume. And then export this list of potential keywords. So how do we know exactly what are the areas to improve? And so we need to use perplexity Comet. If you prefer other agent AI browser, that's fine. So just upload this list of keywords and ask it to review the search result page. Browse through each of the top ranked keywords and our page to identify a list of optimization areas that we can follow in order to improve our own ranking. And this is one of the best ways of using AI for SEO because this is low risk and highly automated. So it will return all the key findings and then comes up with a content optimization checklist, breakdown by each keyword. Now you still need to validate the output, but this will give you a strong starting point about the directions and immediate improvement areas. A bonus tip is try to update any outdated statistic at new perspective, and then refresh your publish day. AI rewards, content, freshness, and all these small updates will signal your content is current and relevant. Now what if your website is fairly new and doesn't even have existing content to optimize? The quick win here is not starting creating content yet, but to know which topics to prioritize first. AI is based on probability of words, and that means when your brand is being associated in a certain topic, keywords more often. You are literally training the AI that you own certain expertise in that area and willing to cite you more as a source. So the SEO toolkit has a feature called Keyword strategy Builder. So it will base on your seed keyword and help you to map out all those potential and relevant topic cluster. Let's say the keyword is AI website builder. So after a few minutes, it analyze almost 2000 keywords and generate these topical overview. And don't underestimate this kind of planning because topic cluster can train AI to recognize that you have an authority in these areas. So it </pre>
+  </div>
+  </article>
+</main>
+
+<footer>유튜브 구독 정리 · agy 요약 · 2026-06-19 06:12</footer>
+
+
+<script>
+document.querySelectorAll('.nlm-btn').forEach(function(btn){
+  btn.addEventListener('click',function(){
+    navigator.clipboard.writeText('/notebooklm '+btn.dataset.url).then(function(){
+      var orig=btn.innerHTML;btn.innerHTML='✓ 복사됨';btn.classList.add('copied');
+      setTimeout(function(){btn.innerHTML=orig;btn.classList.remove('copied');},2000);
+    });
+  });
+});
+</script>
+
+</body>
+</html>

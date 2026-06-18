@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>2026-03-14 — 유튜브 구독 정리</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+  :root{--bg:#090e1a;--surface:#111827;--surface2:#1a2235;--border:#1e2d47;--accent:#6c63ff;--accent2:#00d4ff;--text:#e8eaf0;--muted:#7a8499;--radius:14px;}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Pretendard',sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+  header{background:linear-gradient(135deg,#0d1b3e,#1a0533);border-bottom:1px solid var(--border);padding:20px 40px;display:flex;align-items:center;justify-content:space-between;}
+  .nav-back{color:var(--accent2);text-decoration:none;font-size:0.85rem;display:flex;align-items:center;gap:6px}
+  .nav-back:hover{color:#fff}
+  .date-badge{font-size:1.4rem;font-weight:700;letter-spacing:-0.5px;background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+  .count{font-size:0.85rem;color:var(--muted)}
+  main{max-width:900px;margin:0 auto;padding:32px 24px 80px}
+  .video-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;margin-bottom:24px;transition:border-color 0.2s,box-shadow 0.2s;}
+  .video-card:hover{border-color:var(--accent);box-shadow:0 4px 24px rgba(108,99,255,0.15)}
+  .card-top{display:flex;gap:0}
+  .thumb-wrap{flex:0 0 240px;position:relative;overflow:hidden}
+  .thumb-wrap img{width:100%;height:100%;object-fit:cover;transition:transform 0.4s}
+  .video-card:hover .thumb-wrap img{transform:scale(1.05)}
+  .card-info{flex:1;padding:20px;display:flex;flex-direction:column;gap:10px}
+  .card-meta{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+  .ch-tag{font-size:0.72rem;font-weight:600;padding:3px 12px;background:linear-gradient(135deg,rgba(108,99,255,0.2),rgba(0,212,255,0.2));border:1px solid rgba(108,99,255,0.3);border-radius:999px;color:var(--accent2);}
+  .date-tag{font-size:0.72rem;color:var(--muted)}
+  .no-transcript{font-size:0.68rem;padding:2px 8px;background:rgba(255,180,0,0.12);border:1px solid rgba(255,180,0,0.25);border-radius:999px;color:#ffa500;}
+  .video-title{font-size:1rem;font-weight:600;line-height:1.4}
+  .yt-link{display:inline-flex;align-items:center;gap:5px;font-size:0.8rem;color:var(--accent);text-decoration:none;transition:color 0.2s;}
+  .yt-link:hover{color:var(--accent2)}
+  
+  .nlm-btn{display:inline-flex;align-items:center;gap:5px;font-size:0.8rem;color:#fff;
+    background:rgba(108,99,255,0.2);border:1px solid rgba(108,99,255,0.4);border-radius:8px;
+    padding:4px 12px;cursor:pointer;font-family:inherit;transition:all 0.2s;margin-left:8px;}
+  .nlm-btn:hover{background:rgba(108,99,255,0.45);}
+  .nlm-btn.copied{background:rgba(0,200,100,0.2);border-color:rgba(0,200,100,0.4);color:#00c864;}
+
+  .summary-section{border-top:1px solid var(--border);background:var(--surface2);padding:20px 24px;font-size:0.85rem;line-height:1.7;color:#c5cad8;}
+  .summary-section h2{font-size:0.82rem;color:var(--accent2);margin:12px 0 4px}
+  .summary-section h2:first-child{margin-top:0}
+  .summary-section ul{padding-left:18px}
+  .summary-section li{margin-bottom:5px}
+  .transcript-wrap{border-top:1px solid var(--border);padding:14px 24px;background:#0c1220}
+  .transcript-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:0}
+  .transcript-toggle{background:none;border:none;color:var(--muted);font-size:0.8rem;cursor:pointer;font-family:inherit;display:flex;align-items:center;gap:4px;padding:0;transition:color 0.2s;}
+  .transcript-toggle:hover{color:var(--text)}
+  .copy-btn{background:rgba(108,99,255,0.1);border:1px solid rgba(108,99,255,0.3);border-radius:8px;color:var(--accent2);font-size:0.72rem;padding:4px 12px;cursor:pointer;font-family:inherit;transition:all 0.2s;}
+  .copy-btn:hover{background:rgba(108,99,255,0.25);color:#fff}
+  .transcript-box{display:none;margin-top:10px;background:#080d18;border:1px solid var(--border);border-radius:10px;padding:12px 14px;font-size:0.78rem;line-height:1.75;color:#8a95aa;max-height:260px;overflow-y:auto;white-space:pre-wrap;word-break:break-word;}
+  .transcript-box.visible{display:block}
+  footer{text-align:center;padding:24px;font-size:0.75rem;color:var(--muted);border-top:1px solid var(--border)}
+  @media(max-width:640px){.card-top{flex-direction:column}.thumb-wrap{flex:none;height:200px}header{padding:16px}main{padding:16px 12px 60px}}
+</style>
+</head>
+<body>
+
+<header>
+  <a class="nav-back" href="../index.html">← 대시보드로</a>
+  <div>
+    <div class="date-badge">2026-03-14</div>
+    <div class="count">1개 영상</div>
+  </div>
+  <div style="font-size:0.75rem;color:var(--muted)">2026-06-19 06:12 생성</div>
+</header>
+
+<main>
+
+  <article class="video-card">
+    <div class="card-top">
+      <a class="thumb-wrap" href="https://www.youtube.com/watch?v=l1y3IeC_eJ0" target="_blank" rel="noopener">
+        <img src="https://i.ytimg.com/vi/l1y3IeC_eJ0/hqdefault.jpg" alt="Claude Cowork + Skills is Your NEW Content System" loading="lazy"/>
+      </a>
+      <div class="card-info">
+        <div class="card-meta">
+          <span class="ch-tag">Grace Leung</span>
+          <span class="date-tag">2026-03-14</span>
+          
+        </div>
+        <div class="video-title">Claude Cowork + Skills is Your NEW Content System</div>
+        <div style="display:flex;align-items:center;flex-wrap:wrap;gap:4px;margin-top:auto">
+          <a class="yt-link" href="https://www.youtube.com/watch?v=l1y3IeC_eJ0" target="_blank" rel="noopener">↗ 유튜브에서 보기</a>
+          <button class="nlm-btn" data-url="https://www.youtube.com/watch?v=l1y3IeC_eJ0">📓 NotebookLM</button>
+        </div>
+      </div>
+    </div>
+    <div class="summary-section">
+      <h2>핵심 요약</h2>
+<p>Claude Cowork와 Claude Code를 활용해 하나의 프로젝트 폴더에서 콘텐츠 재가공, 캐러셀, 광고 크리에이티브, 블로그까지 다양한 채널 콘텐츠를 한 시스템으로 자동 생산하는 콘텐츠 시스템 구축법을 카페 브랜드 Goldie Coffee 사례로 소개한다.</p>
+<h2>주요 포인트</h2>
+<ul>
+<li>콘텐츠 시스템의 3대 구성요소: 컨텍스트 레이어(브랜드 지식·보이스), 스킬 레이어(재사용 지침), 오케스트레이션 레이어(도구가 연결된 Claude), 그리고 스프레드시트(content planner)로 전체를 통제</li>
+<li>가장 ROI 높은 작업인 콘텐츠 재가공부터 시작: Cowork가 자동으로 병렬 에이전트를 띄워 블로그 3개를 9개 게시물과 6개 비주얼로 재가공</li>
+<li>캐러셀은 style library(스타일 가이드)를 참조해 23개 비주얼을 생성하고, /schedule로 매주 금요일 9시 자동 실행 예약(단, Claude 데스크톱이 켜져 있어야 함)</li>
+<li>완성물은 Python 스크립트와 Notion MCP로 Notion 콘텐츠 캘린더에 업로드, 광고는 제품 레퍼런스 이미지로 캠페인당 5개씩 총 25개 광고 크리에이티브 생성</li>
+<li>블로그는 AI 검색 최적화 스킬로 작성 후 WordPress MCP를 통해 헤더 이미지와 함께 초안으로 자동 발행. 단, 로고·태그라인 등은 아직 수정 필요하며 사람의 최종 검토를 권장</li>
+</ul>
+    </div>
+  <div class="transcript-wrap">
+    <div class="transcript-header">
+      <button class="transcript-toggle" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('visible')">
+        <span class="arr">▼</span> 원문 자막
+      </button>
+      <button class="copy-btn" onclick="var b=this,t=b.nextElementSibling||b;navigator.clipboard.writeText(document.querySelector('#tr-l1y3IeC_eJ0').textContent).then(()=>{b.textContent='복사됨';setTimeout(()=>b.textContent='복사',2000)})">복사</button>
+    </div>
+    <pre class="transcript-box" id="tr-l1y3IeC_eJ0">If you a marketer, you know how much of the week goes into just creating content, but today we are going to change that. I'll show you how to build your content system using Claude work and Claude code that handles repurposing carousel post as, as your content, and even your content calendar. All from one single project folder, multiple platforms, but one system. Let's go. Every content system should have at least three core components. The context layer, this is your brand knowledge, your voice, your audience, your products. This is what makes the output sounds like you. The skill layer, the reusable instructions that tells the system how to execute specific task. The orchestration layer Claude with your tools connected, reading your inputs, running the right skills, and pushing content outputs. And the whole system can be controlled with something as simple as just a spreadsheet. For this demo, the brand is called Goldie Coffee, which is a specialty cafe brand, and inside we have three parts, what I call the system folder that store the useful brand context, the skills just for this project and a script folder. And then your working folder for your marketing content like Ads, SEO, social, and most importantly, the Cloud MD file. That is the system prompt for this project and the content planner Excel, which I'll explain in a minute. And by the way, this is what we are covering inside our AI growth System for marketing program. You will learn the complete setup and get all the templates to design your own. So if you're interested, you can find a link below to join. Now before we even get started, Claude Cowork doesn't automatically read the project level skills like Claude Code does. So you will want to add these instructions to your Claude.MD file to point it to your skill folder, or if you want this to apply across all your projects, you can just set it once on the settings, cowork global instructions, using the same Prompt instruction. So either method will work. Okay. Our first use case is the one every marketer deal with content repurposing, and there is a reason we start here. This is the highest ROI task because you are not creating anything new. You are just unlocking more value from content you have already made. And using just one system, you can turn one piece of content into multiple formats. So here inside the social input folder. So we already have three blog posts that we want to repurpose. So think of this where you put all the files as part of the input for AI to process and to create or repurpose content to multiple formats as the outputs. Now on Claude cowork pick the same project folder. So we will use this prompt to ask it, to read the blog content and then repurposing them into different social content since we will also generate visuals. So make sure you also install the nano banana MCP so it is now loading the relevant context, including the Claude.MD file, as well as the project specific skills and the post creation framework. And you'll notice it spinning up parallel agents automatically. So that is cowork doing it for you. So 99% of time you don't need to create subagent manually inside Claude cowork. And pretty quickly it comes back with a total 9 posts and six visuals all repurpose from the same set of sources. So each post indicate the source use, the format and even the hook and also the visual direction in case you need to pass to a teammate to handle the visual. And also the LinkedIn posts with the post structure and hook extracted from the framework and the newsletter draft with the subject line options and suggested CTA. Of course, we still need to review it to make sure it aligns with our voice before publishing. Now for the social visuals, they are also pretty decent and they're generated to align with the post content, and I have intentionally asked it to exclude the text. And all of these files are saved at inside the output folder. And so this is the power of setting up your content system right from the beginning to keep everything organized. So we just saw how this content system can do and everything we set up lives right inside Claude cowork. And if you want to take this further, I recommend this free resource from HubSpot, the Claude Cowork Stack 12 advanced Prompt to replace a week of work. It's a great compliment to what I cover in this video. This is the resource that gives you 12 structure prompts built specifically for how Cowork works with your files and connectors, which is very helpful for your content workflows like the content performance analyzer, competitive intelligence report, content repurposing pipeline. What I particularly like is how these prompts are all designed around the most common workflows every marketers would need, and a great inspiration to design my own Claude skills and prompts. So start with the templates and then adapt them for your specific workflows so you can build your own marketing prompts and skill library over time. You can</pre>
+  </div>
+  </article>
+</main>
+
+<footer>유튜브 구독 정리 · agy 요약 · 2026-06-19 06:12</footer>
+
+
+<script>
+document.querySelectorAll('.nlm-btn').forEach(function(btn){
+  btn.addEventListener('click',function(){
+    navigator.clipboard.writeText('/notebooklm '+btn.dataset.url).then(function(){
+      var orig=btn.innerHTML;btn.innerHTML='✓ 복사됨';btn.classList.add('copied');
+      setTimeout(function(){btn.innerHTML=orig;btn.classList.remove('copied');},2000);
+    });
+  });
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>2025-10-25 — 유튜브 구독 정리</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+  :root{--bg:#090e1a;--surface:#111827;--surface2:#1a2235;--border:#1e2d47;--accent:#6c63ff;--accent2:#00d4ff;--text:#e8eaf0;--muted:#7a8499;--radius:14px;}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Pretendard',sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+  header{background:linear-gradient(135deg,#0d1b3e,#1a0533);border-bottom:1px solid var(--border);padding:20px 40px;display:flex;align-items:center;justify-content:space-between;}
+  .nav-back{color:var(--accent2);text-decoration:none;font-size:0.85rem;display:flex;align-items:center;gap:6px}
+  .nav-back:hover{color:#fff}
+  .date-badge{font-size:1.4rem;font-weight:700;letter-spacing:-0.5px;background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+  .count{font-size:0.85rem;color:var(--muted)}
+  main{max-width:900px;margin:0 auto;padding:32px 24px 80px}
+  .video-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;margin-bottom:24px;transition:border-color 0.2s,box-shadow 0.2s;}
+  .video-card:hover{border-color:var(--accent);box-shadow:0 4px 24px rgba(108,99,255,0.15)}
+  .card-top{display:flex;gap:0}
+  .thumb-wrap{flex:0 0 240px;position:relative;overflow:hidden}
+  .thumb-wrap img{width:100%;height:100%;object-fit:cover;transition:transform 0.4s}
+  .video-card:hover .thumb-wrap img{transform:scale(1.05)}
+  .card-info{flex:1;padding:20px;display:flex;flex-direction:column;gap:10px}
+  .card-meta{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+  .ch-tag{font-size:0.72rem;font-weight:600;padding:3px 12px;background:linear-gradient(135deg,rgba(108,99,255,0.2),rgba(0,212,255,0.2));border:1px solid rgba(108,99,255,0.3);border-radius:999px;color:var(--accent2);}
+  .date-tag{font-size:0.72rem;color:var(--muted)}
+  .no-transcript{font-size:0.68rem;padding:2px 8px;background:rgba(255,180,0,0.12);border:1px solid rgba(255,180,0,0.25);border-radius:999px;color:#ffa500;}
+  .video-title{font-size:1rem;font-weight:600;line-height:1.4}
+  .yt-link{display:inline-flex;align-items:center;gap:5px;font-size:0.8rem;color:var(--accent);text-decoration:none;transition:color 0.2s;}
+  .yt-link:hover{color:var(--accent2)}
+  
+  .nlm-btn{display:inline-flex;align-items:center;gap:5px;font-size:0.8rem;color:#fff;
+    background:rgba(108,99,255,0.2);border:1px solid rgba(108,99,255,0.4);border-radius:8px;
+    padding:4px 12px;cursor:pointer;font-family:inherit;transition:all 0.2s;margin-left:8px;}
+  .nlm-btn:hover{background:rgba(108,99,255,0.45);}
+  .nlm-btn.copied{background:rgba(0,200,100,0.2);border-color:rgba(0,200,100,0.4);color:#00c864;}
+
+  .summary-section{border-top:1px solid var(--border);background:var(--surface2);padding:20px 24px;font-size:0.85rem;line-height:1.7;color:#c5cad8;}
+  .summary-section h2{font-size:0.82rem;color:var(--accent2);margin:12px 0 4px}
+  .summary-section h2:first-child{margin-top:0}
+  .summary-section ul{padding-left:18px}
+  .summary-section li{margin-bottom:5px}
+  .transcript-wrap{border-top:1px solid var(--border);padding:14px 24px;background:#0c1220}
+  .transcript-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:0}
+  .transcript-toggle{background:none;border:none;color:var(--muted);font-size:0.8rem;cursor:pointer;font-family:inherit;display:flex;align-items:center;gap:4px;padding:0;transition:color 0.2s;}
+  .transcript-toggle:hover{color:var(--text)}
+  .copy-btn{background:rgba(108,99,255,0.1);border:1px solid rgba(108,99,255,0.3);border-radius:8px;color:var(--accent2);font-size:0.72rem;padding:4px 12px;cursor:pointer;font-family:inherit;transition:all 0.2s;}
+  .copy-btn:hover{background:rgba(108,99,255,0.25);color:#fff}
+  .transcript-box{display:none;margin-top:10px;background:#080d18;border:1px solid var(--border);border-radius:10px;padding:12px 14px;font-size:0.78rem;line-height:1.75;color:#8a95aa;max-height:260px;overflow-y:auto;white-space:pre-wrap;word-break:break-word;}
+  .transcript-box.visible{display:block}
+  footer{text-align:center;padding:24px;font-size:0.75rem;color:var(--muted);border-top:1px solid var(--border)}
+  @media(max-width:640px){.card-top{flex-direction:column}.thumb-wrap{flex:none;height:200px}header{padding:16px}main{padding:16px 12px 60px}}
+</style>
+</head>
+<body>
+
+<header>
+  <a class="nav-back" href="../index.html">← 대시보드로</a>
+  <div>
+    <div class="date-badge">2025-10-25</div>
+    <div class="count">1개 영상</div>
+  </div>
+  <div style="font-size:0.75rem;color:var(--muted)">2026-06-19 06:12 생성</div>
+</header>
+
+<main>
+
+  <article class="video-card">
+    <div class="card-top">
+      <a class="thumb-wrap" href="https://www.youtube.com/watch?v=WYGT89BRwq0" target="_blank" rel="noopener">
+        <img src="https://i.ytimg.com/vi/WYGT89BRwq0/hqdefault.jpg" alt="디자인에서 ~ 오피스 프로그램까지! 클로드 SKILL로 다 해봤습니다 이거 대박인데?" loading="lazy"/>
+      </a>
+      <div class="card-info">
+        <div class="card-meta">
+          <span class="ch-tag">소스놀이터</span>
+          <span class="date-tag">2025-10-25</span>
+          
+        </div>
+        <div class="video-title">디자인에서 ~ 오피스 프로그램까지! 클로드 SKILL로 다 해봤습니다 이거 대박인데?</div>
+        <div style="display:flex;align-items:center;flex-wrap:wrap;gap:4px;margin-top:auto">
+          <a class="yt-link" href="https://www.youtube.com/watch?v=WYGT89BRwq0" target="_blank" rel="noopener">↗ 유튜브에서 보기</a>
+          <button class="nlm-btn" data-url="https://www.youtube.com/watch?v=WYGT89BRwq0">📓 NotebookLM</button>
+        </div>
+      </div>
+    </div>
+    <div class="summary-section">
+      <h2>핵심 요약</h2>
+<p>새로 나온 클로드 SKILL로 디자인·문서·오피스 프로그램까지 다 만들어 보며, 스킬의 최대 강점은 MCP의 과도한 토큰 문제를 해결하면서 MCP 기능을 상당 부분 대체한다는 점이라고 강조한 영상이다.</p>
+<h2>주요 포인트</h2>
+<ul>
+<li>스킬은 말로 "공식 사이트 조사해서 다 설치해"라고 하면 15개를 자동 설치, 워드·PDF·PPT·엑셀 등은 클로드 코드에선 별도 설치 필요</li>
+<li>알고리즘 아트로 썸네일 배경 패턴 생성, PPT 스킬로 파워포인트, 캔버스 디자인+테마 팩토리로 PDF를 세 가지 테마(테크 이노베이션·오션 뎁스·미드나이트 갤럭시)로 확장</li>
+<li>핵심 장점은 토큰 효율: MCP는 9개 설치 시 켜자마자 컨텍스트의 약 38%를 차지하지만, 스킬은 발동 조건만 로드해 평소 거의 안 먹고 발동 시에만 토큰 사용</li>
+<li>웹 테스트 스킬이 플레이라이트 브라우저를 MCP 없이 직접 제어해, 상당수 MCP를 스킬로 대체 가능(다만 둘은 목적이 다르고 MCP 특화 기능도 존재)</li>
+<li>엑셀 스킬로 조회·필터링·차트 기능이 포함된 엑셀 파일 제작, MCP 빌더·스킬 크리에이터로 직접 MCP·스킬 제작도 가능</li>
+</ul>
+    </div>
+  <div class="transcript-wrap">
+    <div class="transcript-header">
+      <button class="transcript-toggle" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('visible')">
+        <span class="arr">▼</span> 원문 자막
+      </button>
+      <button class="copy-btn" onclick="var b=this,t=b.nextElementSibling||b;navigator.clipboard.writeText(document.querySelector('#tr-WYGT89BRwq0').textContent).then(()=>{b.textContent='복사됨';setTimeout(()=>b.textContent='복사',2000)})">복사</button>
+    </div>
+    <pre class="transcript-box" id="tr-WYGT89BRwq0">새로 나온 클로드 스킬. 이거 아주 좋네요. 이건 알고리즘 아트 스킬로 만든 거예요. 그리고 PPT 스킬로 파워포인트 파일도 뚝딱 만들었고요. 디자인 철학이 담긴 PDF 파일도 만들고이 파일의 테마 팩토리 스킬을 더해서 세 가지 테마로 확장까지 했습니다. 심지어 엑셀 스킬로 프로그램 기능이 포함된 엑셀 파일도 만들었어요. 또 AI로 브라우저 자동 제어도 가능했습니다. MCP 없이도 가능하더군요. 그런데 파헤쳐 보면 더 놀라운게 있습니다. 끝까지 보시고 꿀팁 가져가시길 바랍니다. 그럼 시작합니다. 스킬즈를 처음 봤을 때 이거 물건이다. 소리 질렀어요. 왜냐고요? 전문가 스킬을 쉽게 써서 아니었어요. 사실 그건 MCP로도 어느 정도 되거든요. 제가 주목한 건 MCP의 최대 약점 바로 과도한 토큰 문제를 해결했다는 점이에요. 그리고 MCP 기능을 대체할 수 있다는 거죠. 조금 아는 분들은 엥 MCP 대체 안 되는데라고 하실 수 있어요. 하지만 구동 원리를 파헤치면 무릎을 탁 치게 될 겁니다. 헛 다 되는구나. 우선 기본 스킬부터 설치해 볼까요? 공식 홈페이지에는 파일 다운 받고 점클로드 아래 스킬즈 폴더에 넣으라고 되어 있어요. 근데 그딴 거 필요 없습니다. MCP도 말로 설치했잖아요. 스킬즈도 말로 설치합시다. 공식 설치법 조사해 줘. 스킬즈 공식 사이트 알려 줘. 여기 있는 거 싹 다 설치해. 그냥 이게 끝이에요. 15개 스킬을 찾았다고 하죠. 설치 완료되었습니다. 이제 마음껏 쓸 수 있어요. MCP보다 설치가 훨씬 쉽죠? 그럼 15개 스킬을 한번 살펴볼까요? 먼저 워드, PDF, PPT, 엑셀 파일을 만들 수 있어요. 클로드 웹에서는 이것들이 기본 설치이지만 클로드 코드에선 따로 설치가 필요해요. 그리고이 외에도 스킬이 많습니다. 마치 디자이너를 고용하듯 디자인 스킬을 설치할 수 있고 개발자 스킬, 비즈니스용 스킬 등이 제공되죠. 이것들을 설치만 하면 모든 노하우가 전부 내 것이 됩니다. 또 MCP처럼 직접 스킬을 만들어 볼 수 있죠. 이미 많은 분들이 스킬을 만들어 공개하고 있습니다.이 사이트에서는 누군가가 만든 약 50개의 스킬이 존재합니다. 공개된지 얼마 지나지 않았는데도 이렇게나 많다고요. 앞으로의 발전이 아주 기대됩니다. 그럼 클로드에서 제공하는 기본 스킬들 살펴볼까요? 먼저 알고리즘 아트라는게 있어요. 이걸로 특수 효과가 들어간 배경 이미지를 만들 수 있죠. 유튜브 썸네일 배경 패턴 총개. 사이즈는 1280720 이렇게 요청했어요. 알고리즘마트 스킬을 실행한다고 뜨죠? 조금 기다리면 열 개가 모두 생성됩니다. 첫 번째 걸 열어보니 이런 배경 패턴이 나왔네요. 옵션 몇 개를 바꾸면 디자인이 달라지죠. 컬러도 바꿀 수 있고요. 이건 두 번째 패턴입니다. 옵션을 바꾸는게 꽤 재밌네요. 마우스 오른쪽 클릭하고 다른 이름으로 저장 누르면 이미지로 다운로드 됩니다. 열어보면 잘 저장됐죠? 총 열 개 만들어 달라고 했었죠? 지금 하나씩 열어보는 중인데 뭔가 생각지 못했던 패턴들을 볼 수 있어 좋군요.이 배경 이미지들을 어떻게 활용할 수 있을까 생각 중입니다. 그런데 웹 테스트 스킬이 있었죠? 이건 플레이라이트 브라우저를 쓰는 거예요. 이것으로 알고리즘 아트를 실행해 보는 건 어떨까요? 1번 패턴을 브라우저로 열고 이미지로 저장해 줘. ppt 이미지로 쓸 거야. 이렇게 지시했습니다. 스킬이 실행 중이죠. 조금 있으니 웹브라우저가 뜹니다. 저 지금 아무것도 안 건드리고 있어요. 마우스, 키보드에 손도 안 댔는데 혼자서 브라우저를 조작하고 있군요. 마치 플레이라이트 MCP를 쓰는 것과 똑같습니다. 이미지를 저장했고 위치를 알려 주네요. 들어가 보니 잘 다운로드 되어 있습니다. 열어보면 이런 느낌의 이미지군요. 이번에는 PPT 스킬 사용해 볼까요?이 이미지 사용해서 스킬즈 소개하는 PPT 총 다섯 개 페이지로 만들어 줘. 그러자 PPT 스킬이 발동. 중간에 브라우저도 깔고 필요한 모듈이 있으면 알아서 자동 설치해요. 조금 기다리니 드디어 완료. 알고리즘 아트로 만든 이미지가 배경으로 딱 들어갔군요. PPT 파일이니까 원하는 부분을 수정하기도 편하죠. 생산성이 정말 좋네요. 자, 스킬을 몇 개 봤는데요. 더 보기 전에 토큰 얘기를 해 볼게요. AI는 토큰 사용량이 많아지면 성능이 뚝 떨어져요. 갑자기 똑똑한 친구가 바보가 되는 느낌. 그래서 토큰 사용 비율이 높아져도 성능이 좋은 LM이 좋은 평가를 받게 됩니다. 최대 컨텍스트가 크면 더 덩치 큰 프로그램을 쉽게 만들 수 있습니다. 그런데 적다면 덩치 큰 프로그램의 전체 코드를 다 보지 못합니다. 그럼 모르는 부분은 임의로 판단해 버리죠. 당연히 오류가 나게 됩니다. 그래서 바이브 코딩을 하면 처음에는 너무 잘 만드는데 덩치가 커지면 에러가 막 터지는 거죠. 이와 같은 원리로 토큰을 많이 쓰면 코딩할 때 성능 하락의 폭이 심해집니다. 그런데 MCP가 토큰 소모가 심해요. MCP 쓰면 마치 날개를 단듯 꿀템을 장착할 수 있는데 그 이면에 이런 어두운 점도 있어요. 클로드 코드에서 슬래시 컨텍스트라고 입력하면 토큰 사용 현황이 나와요. 보이시나요? MCP가 무려 38%를 차지하고 있죠. 클로드 코드를 켜자마자 이만큼 먹는 거예요. 지금 아홉 개의 MCP가 설치되어 있는데 토큰 소모가 심하군요. 그래서 MCP는 꼭 필요한 것만 최소로 설치해야 합니다. 그런데 스킬즈는 다릅니다. 클로드 코드를 켜도 스킬 하나의 백토큰 그 정도밖에 안 먹어요. 거의 안 쓰는 거죠. 처음에는 발동 조건만 로드하기 때문에 그래요. 대신 스킬을 발동하면 그제서야 토큰을 씁니다. 엄청 효율적이지 않나요? 안 쓰는데도 토큰 먹는 MCP랑은 차원이 다르죠.이 이게 최대 장점이에요. 앞서 우리가 웹 테스트 스킬로 브라우저 제어했었죠. 이게 플레이라이트 MCP랑 거의 똑같은 기능이거든요. 그러니까 스킬로 MCP를 어느 정도 대체할 수 있습니다. 토크은 적게 쓰면서도 MCP 기능은 그대로 아주 멋진 일이죠. 물론 스킬즈의 장점을 어필하고 있지만 따라올 수 없는 MCP의 특화 기능들도 있습니다. 둘은 목적이 다르죠. 대신 우리가 쓰고 있는 상당수의 MCP들은 스킬즈로 대체 가능하다는 점 꼭 기억하세요. 자, 그럼 다른 스킬도 좀 더 소개해 드릴게요. 앞서 설치한 스킬 중 하나인 캔버스 디자인 스킬을 한번 써 볼게요. 스킬즈를 먼저 조사하고 캔버스 디자인으로 PDF 파일을 만들려고 시켰어요. 그러면 캔버스 디자인 스킬과 PDF 스킬이 두 가지를 동시에 쓰게 돼요. 캔버스 디자인이 활성화됐네요. 카이로라는 모듈을 설치하고 있어요. 디자인 철학을 바탕으로 PDF를 만들고 있대요. 드디어 완성됐습니다. 폴더에 들어가 볼까요? 여기 PDF 파일이 보이네요. 와, 꽤 그럴싸하게 디자인이 됐는데요. 다음은 테마 팩토리 스킬입니다.이 스킬을 써서 PDF를 세 가지 테마로 다시 만들어 달라고 했어요. 테마가 총 열 가지나 있다고 하는군요. 그중 세 가지를 제한해 줬고 그걸로 해 달라고 했습니다. 자, 금방 완료됐네요. 폴더를 확인해 보니 PDF 파일죠. 테크 이노베이션 테마 파일부터 열어 볼까요? 오, 괜찮은데요. 이번엔 오션 댑스 테마입니다. 마지막으로 미드나이트 갤럭시 테마입니다. 이야, 이거 완전 디자이너가 된 느낌인데요. 스킬이 제대로 장착된 것 같네요. 여러분들도이 스킬즈를 그냥 이론으로만 보지 마시고 꼭 직접 써 보시길 추천드려요. 그래야이 강력한 스킬이 진짜 내 것이 되거든요. 이번엔 엑셀 스킬을 좀 써 보고 싶었어요. 단순한 엑셀 말고요. 프로그램 기능까지 넣을 수 있을까? 이게 궁금해진 거죠. 그래서 엑셀 하나 만들어 줘. 조회 기능이랑 필터링 기능도 꼭 넣어 줘라고 지시했습니다. 데이터만 저장하는게 아니에요. 기능도 넣어 달라고 한 거죠. 드디어 완성이 됐습니다. 와, 결과가 훌륭한데요. 탭이 여섯 개 있고요. 필터링 기능도 제대로 작동합니다. 심지어 차트까지 보여 주네요. 기대 이상인데요. 굳이 엑셀 MCP를 안 써도 되겠어요. 토큰도 아끼면서 아주 원활하게 쓸 수 있겠네요. 자, 여기까지 잘 따라오셨나요? 그렇다면 총 15개의 스킬이 설치되었을 겁니다. 보여 드리지 않은 것 중에 MCP 빌더라는게 있어요. 이건 MCP 제작을 도와주는 스킬입니다. 유용한 프로그램을 만들었는데 MCP로 만들고 싶다면 이걸 쓰면 되겠죠? 그리고 스킬 크리에이터도 있습니다. 이걸 쓰면 나만의 스킬을 뚝딱 만들 수 있어요. 이외에도 구글링 등으로 조사해 보시면 지금도 많은 분들이 스킬을 만들어 공개하고 있습니다. 활용이 아주 커지고 있군요. 아주 기대됩니다. 여러 가지 스킬을 써 보시고 혹은 직접 만들어 보신 후에 댓글로 공유도 부탁드릴게요. 그럼 흥미롭고 심박한 영상이 계속됩니다.</pre>
+  </div>
+  </article>
+</main>
+
+<footer>유튜브 구독 정리 · agy 요약 · 2026-06-19 06:12</footer>
+
+
+<script>
+document.querySelectorAll('.nlm-btn').forEach(function(btn){
+  btn.addEventListener('click',function(){
+    navigator.clipboard.writeText('/notebooklm '+btn.dataset.url).then(function(){
+      var orig=btn.innerHTML;btn.innerHTML='✓ 복사됨';btn.classList.add('copied');
+      setTimeout(function(){btn.innerHTML=orig;btn.classList.remove('copied');},2000);
+    });
+  });
+});
+</script>
+
+</body>
+</html>

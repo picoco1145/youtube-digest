@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>2025-11-21 — 유튜브 구독 정리</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+  :root{--bg:#090e1a;--surface:#111827;--surface2:#1a2235;--border:#1e2d47;--accent:#6c63ff;--accent2:#00d4ff;--text:#e8eaf0;--muted:#7a8499;--radius:14px;}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Pretendard',sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+  header{background:linear-gradient(135deg,#0d1b3e,#1a0533);border-bottom:1px solid var(--border);padding:20px 40px;display:flex;align-items:center;justify-content:space-between;}
+  .nav-back{color:var(--accent2);text-decoration:none;font-size:0.85rem;display:flex;align-items:center;gap:6px}
+  .nav-back:hover{color:#fff}
+  .date-badge{font-size:1.4rem;font-weight:700;letter-spacing:-0.5px;background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+  .count{font-size:0.85rem;color:var(--muted)}
+  main{max-width:900px;margin:0 auto;padding:32px 24px 80px}
+  .video-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;margin-bottom:24px;transition:border-color 0.2s,box-shadow 0.2s;}
+  .video-card:hover{border-color:var(--accent);box-shadow:0 4px 24px rgba(108,99,255,0.15)}
+  .card-top{display:flex;gap:0}
+  .thumb-wrap{flex:0 0 240px;position:relative;overflow:hidden}
+  .thumb-wrap img{width:100%;height:100%;object-fit:cover;transition:transform 0.4s}
+  .video-card:hover .thumb-wrap img{transform:scale(1.05)}
+  .card-info{flex:1;padding:20px;display:flex;flex-direction:column;gap:10px}
+  .card-meta{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+  .ch-tag{font-size:0.72rem;font-weight:600;padding:3px 12px;background:linear-gradient(135deg,rgba(108,99,255,0.2),rgba(0,212,255,0.2));border:1px solid rgba(108,99,255,0.3);border-radius:999px;color:var(--accent2);}
+  .date-tag{font-size:0.72rem;color:var(--muted)}
+  .no-transcript{font-size:0.68rem;padding:2px 8px;background:rgba(255,180,0,0.12);border:1px solid rgba(255,180,0,0.25);border-radius:999px;color:#ffa500;}
+  .video-title{font-size:1rem;font-weight:600;line-height:1.4}
+  .yt-link{display:inline-flex;align-items:center;gap:5px;font-size:0.8rem;color:var(--accent);text-decoration:none;transition:color 0.2s;}
+  .yt-link:hover{color:var(--accent2)}
+  
+  .nlm-btn{display:inline-flex;align-items:center;gap:5px;font-size:0.8rem;color:#fff;
+    background:rgba(108,99,255,0.2);border:1px solid rgba(108,99,255,0.4);border-radius:8px;
+    padding:4px 12px;cursor:pointer;font-family:inherit;transition:all 0.2s;margin-left:8px;}
+  .nlm-btn:hover{background:rgba(108,99,255,0.45);}
+  .nlm-btn.copied{background:rgba(0,200,100,0.2);border-color:rgba(0,200,100,0.4);color:#00c864;}
+
+  .summary-section{border-top:1px solid var(--border);background:var(--surface2);padding:20px 24px;font-size:0.85rem;line-height:1.7;color:#c5cad8;}
+  .summary-section h2{font-size:0.82rem;color:var(--accent2);margin:12px 0 4px}
+  .summary-section h2:first-child{margin-top:0}
+  .summary-section ul{padding-left:18px}
+  .summary-section li{margin-bottom:5px}
+  .transcript-wrap{border-top:1px solid var(--border);padding:14px 24px;background:#0c1220}
+  .transcript-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:0}
+  .transcript-toggle{background:none;border:none;color:var(--muted);font-size:0.8rem;cursor:pointer;font-family:inherit;display:flex;align-items:center;gap:4px;padding:0;transition:color 0.2s;}
+  .transcript-toggle:hover{color:var(--text)}
+  .copy-btn{background:rgba(108,99,255,0.1);border:1px solid rgba(108,99,255,0.3);border-radius:8px;color:var(--accent2);font-size:0.72rem;padding:4px 12px;cursor:pointer;font-family:inherit;transition:all 0.2s;}
+  .copy-btn:hover{background:rgba(108,99,255,0.25);color:#fff}
+  .transcript-box{display:none;margin-top:10px;background:#080d18;border:1px solid var(--border);border-radius:10px;padding:12px 14px;font-size:0.78rem;line-height:1.75;color:#8a95aa;max-height:260px;overflow-y:auto;white-space:pre-wrap;word-break:break-word;}
+  .transcript-box.visible{display:block}
+  footer{text-align:center;padding:24px;font-size:0.75rem;color:var(--muted);border-top:1px solid var(--border)}
+  @media(max-width:640px){.card-top{flex-direction:column}.thumb-wrap{flex:none;height:200px}header{padding:16px}main{padding:16px 12px 60px}}
+</style>
+</head>
+<body>
+
+<header>
+  <a class="nav-back" href="../index.html">← 대시보드로</a>
+  <div>
+    <div class="date-badge">2025-11-21</div>
+    <div class="count">1개 영상</div>
+  </div>
+  <div style="font-size:0.75rem;color:var(--muted)">2026-06-19 06:12 생성</div>
+</header>
+
+<main>
+
+  <article class="video-card">
+    <div class="card-top">
+      <a class="thumb-wrap" href="https://www.youtube.com/watch?v=ZbeWyaWUq4M" target="_blank" rel="noopener">
+        <img src="https://i.ytimg.com/vi/ZbeWyaWUq4M/hqdefault.jpg" alt="Google AI Just Powered Up Your Marketing Team Massively" loading="lazy"/>
+      </a>
+      <div class="card-info">
+        <div class="card-meta">
+          <span class="ch-tag">Grace Leung</span>
+          <span class="date-tag">2025-11-21</span>
+          
+        </div>
+        <div class="video-title">Google AI Just Powered Up Your Marketing Team Massively</div>
+        <div style="display:flex;align-items:center;flex-wrap:wrap;gap:4px;margin-top:auto">
+          <a class="yt-link" href="https://www.youtube.com/watch?v=ZbeWyaWUq4M" target="_blank" rel="noopener">↗ 유튜브에서 보기</a>
+          <button class="nlm-btn" data-url="https://www.youtube.com/watch?v=ZbeWyaWUq4M">📓 NotebookLM</button>
+        </div>
+      </div>
+    </div>
+    <div class="summary-section">
+      <h2>핵심 요약</h2>
+<p>빠르게 진화하는 Google AI 스택과 Gemini를 기능이 아닌 방법론과 핵심 활용 사례 중심으로, 전략가·데이터 분석가·크리에이티브 디렉터·빌더 4개 마케팅 역할에 맞춰 일상 업무에 적용하는 법을 보여준다.</p>
+<h2>주요 포인트</h2>
+<ul>
+<li>마케팅 전략가: Gemini deep research(자체 소스 업로드 가능)와 NotebookLM의 종합 능력을 결합해 출처에 근거한 go-to-market 전략 문서를 만들고, 캔버스 모드로 발표 덱까지 Google Slides로 내보내기</li>
+<li>데이터 분석가: NotebookLM이 Google Sheets 임포트를 지원해 예산·캠페인 결과·전략 문서를 교차 참조하며 환각 최소화로 상관 분석. Gemini로 messy 데이터에서 인터랙티브 대시보드 생성</li>
+<li>크리에이티브 디렉터: Mixboard(비주얼 브레인스토밍·믹스앤매치), Whisk(subject·scene·style 3요소 조합·precise reference로 캐릭터 일관성·애니메이션), Pomelli(웹사이트에서 브랜드 DNA 추출해 소셜 에셋), Google AI Studio의 Imagen 4 Ultra(고해상도 이미지), Google Flow의 VEO(ingredients-to-video로 제품 광고 영상)</li>
+<li>카피라이팅은 브랜드 보이스 문서를 넣은 Gemini GEM으로 일관성 유지</li>
+<li>AI 빌더: Google Opal(노코드 멀티스텝 워크플로, 예: content campaign generator)과 Google AI Studio(커스텀 마케팅 도구 제작 후 Google Cloud에 원클릭 배포)로 워크플로를 반복 가능한 시스템으로 전환</li>
+</ul>
+    </div>
+  <div class="transcript-wrap">
+    <div class="transcript-header">
+      <button class="transcript-toggle" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('visible')">
+        <span class="arr">▼</span> 원문 자막
+      </button>
+      <button class="copy-btn" onclick="var b=this,t=b.nextElementSibling||b;navigator.clipboard.writeText(document.querySelector('#tr-ZbeWyaWUq4M').textContent).then(()=>{b.textContent='복사됨';setTimeout(()=>b.textContent='복사',2000)})">복사</button>
+    </div>
+    <pre class="transcript-box" id="tr-ZbeWyaWUq4M">Google Gemini is getting incredibly powerful and Google AI Stack is evolving fast, but AI models get obsolete. So that's why we should not just focus on features, but the methodology and the fundamental use cases. So in this video, I'll show you how to use Google AI Stack and Gemini for day-to-day marketing tasks with this principle in mind, let's go. So here is our AI marketing assistant team with four key marketing functions, the AI marketing strategist, the AI data analyst, the AI creative director, and copywriter, the AI builder. Now, this is not about replacing marketers, it's always about AI + human. So think of them as your assistant handling 80% of tasks so you can focus on high impact strategy. First, our AI marketing strategist. We all know that great marketing start with a solid strategy. And to do this, we are pairing the powerful research capabilities of Gemini with the incredible synthesis power of NotebookLM. For example, I'm planning to go to market strategy for an online cross platform launch. So on Gemini, turn on deep research. A good news is now Gemini allows you to use your own sources or upload your own files as part of the deep research process. Then it will give you really detailed research report about your target audience, key market players, pricing models, prioritize marketing channels, and we can just export it to a Google document and specify our project name that is ready to import back to NotebookLM. A quick pro tip here is you can now perform this deep research directly right inside notebookLM and import all original sources there. But either way, the principle and goal is the same. That is to build a centralized knowledge base for strategy. Then on NotebookLM, import additional sources like online learning market trends, popular course topic, and very important is to also upload our own product overview as part of the sources. Then we can configure the chat with the marketing strategist persona from more relevant response. Once all the sources are import, then we can create a report using the built-in studio feature. For this use case, we'll just create our own report with a custom prompt. That is the go-to market strategy document. So you can see the final report includes the positioning, pricing strategy, channel recommendations, budget allocations for the strategy plan. And this is why I like Noble LM, because it only use the sources I have import. And so the strategy recommendations are grounded in what it knows about the products. But we are not done yet because oftentimes we have to present the strategy to the team. So we can first import back this strategy document. So only select this source and then ask it to create a 15 slide presentation outline. Then on Gemini turn on canvas mode, paste back this presentation outline, and ask it to create the actual presentation deck with the color scheme. And the best thing is you can just click here to export it directly to Google's Slides, or just download it as a pdf file. And then you can make final edits in a Google slide, perhaps insert images, update a cover background, and then pretty quickly you have a ready to present deck, which is based on the research and on brand tone. So we have the strategy plan, but in marketing we still need an AI data analyst. So we need to measure performance and see what is actually happening. And that's why NotebookLM is so useful here as it now support Google Sheets import that lets you dig through all those numbers and find the real answers. So probably if you're marketers, you know, we all need to deal with different types of spreadsheets, marketing budgets, campaign results, sales pipelines. And the best thing is you can now input all these to NotebookLM. And this is a game changer because we can also upload our strategy document and then cross-referencing and do correlation analysis with minimal hallucination and find meaningful linkage between these data sources. So for example, we can ask it to base on these performance data if we are ready to hit the launch KPI outlined in the strategy. And give the rationale so it would give you detailed analysis and propose what data might still be needed to determine the campaign success. Or you can just select relevant data sets and ask, which channels and content type combinations generate leads at the lowest cost and then it will find a relevant linkage for you. You could even upload customer data along with campaign performance to identify high value segment or personalization opportunities. So using this approach, you can do different meaningful correlation analysis from different angles and dig through the data and find the answers for your business questions. Besides digging through the data. We can also ask Gemini to build the visualization from these messy data sets. Just upload the data sets and then ask it to create a ready to share interactive dashboard, including the business question that you want it to focus on. So immediately you</pre>
+  </div>
+  </article>
+</main>
+
+<footer>유튜브 구독 정리 · agy 요약 · 2026-06-19 06:12</footer>
+
+
+<script>
+document.querySelectorAll('.nlm-btn').forEach(function(btn){
+  btn.addEventListener('click',function(){
+    navigator.clipboard.writeText('/notebooklm '+btn.dataset.url).then(function(){
+      var orig=btn.innerHTML;btn.innerHTML='✓ 복사됨';btn.classList.add('copied');
+      setTimeout(function(){btn.innerHTML=orig;btn.classList.remove('copied');},2000);
+    });
+  });
+});
+</script>
+
+</body>
+</html>

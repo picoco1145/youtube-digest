@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>2026-05-18 — 유튜브 구독 정리</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+  :root{--bg:#090e1a;--surface:#111827;--surface2:#1a2235;--border:#1e2d47;--accent:#6c63ff;--accent2:#00d4ff;--text:#e8eaf0;--muted:#7a8499;--radius:14px;}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Pretendard',sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+  header{background:linear-gradient(135deg,#0d1b3e,#1a0533);border-bottom:1px solid var(--border);padding:20px 40px;display:flex;align-items:center;justify-content:space-between;}
+  .nav-back{color:var(--accent2);text-decoration:none;font-size:0.85rem;display:flex;align-items:center;gap:6px}
+  .nav-back:hover{color:#fff}
+  .date-badge{font-size:1.4rem;font-weight:700;letter-spacing:-0.5px;background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+  .count{font-size:0.85rem;color:var(--muted)}
+  main{max-width:900px;margin:0 auto;padding:32px 24px 80px}
+  .video-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;margin-bottom:24px;transition:border-color 0.2s,box-shadow 0.2s;}
+  .video-card:hover{border-color:var(--accent);box-shadow:0 4px 24px rgba(108,99,255,0.15)}
+  .card-top{display:flex;gap:0}
+  .thumb-wrap{flex:0 0 240px;position:relative;overflow:hidden}
+  .thumb-wrap img{width:100%;height:100%;object-fit:cover;transition:transform 0.4s}
+  .video-card:hover .thumb-wrap img{transform:scale(1.05)}
+  .card-info{flex:1;padding:20px;display:flex;flex-direction:column;gap:10px}
+  .card-meta{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+  .ch-tag{font-size:0.72rem;font-weight:600;padding:3px 12px;background:linear-gradient(135deg,rgba(108,99,255,0.2),rgba(0,212,255,0.2));border:1px solid rgba(108,99,255,0.3);border-radius:999px;color:var(--accent2);}
+  .date-tag{font-size:0.72rem;color:var(--muted)}
+  .no-transcript{font-size:0.68rem;padding:2px 8px;background:rgba(255,180,0,0.12);border:1px solid rgba(255,180,0,0.25);border-radius:999px;color:#ffa500;}
+  .video-title{font-size:1rem;font-weight:600;line-height:1.4}
+  .yt-link{display:inline-flex;align-items:center;gap:5px;font-size:0.8rem;color:var(--accent);text-decoration:none;transition:color 0.2s;}
+  .yt-link:hover{color:var(--accent2)}
+  
+  .nlm-btn{display:inline-flex;align-items:center;gap:5px;font-size:0.8rem;color:#fff;
+    background:rgba(108,99,255,0.2);border:1px solid rgba(108,99,255,0.4);border-radius:8px;
+    padding:4px 12px;cursor:pointer;font-family:inherit;transition:all 0.2s;margin-left:8px;}
+  .nlm-btn:hover{background:rgba(108,99,255,0.45);}
+  .nlm-btn.copied{background:rgba(0,200,100,0.2);border-color:rgba(0,200,100,0.4);color:#00c864;}
+
+  .summary-section{border-top:1px solid var(--border);background:var(--surface2);padding:20px 24px;font-size:0.85rem;line-height:1.7;color:#c5cad8;}
+  .summary-section h2{font-size:0.82rem;color:var(--accent2);margin:12px 0 4px}
+  .summary-section h2:first-child{margin-top:0}
+  .summary-section ul{padding-left:18px}
+  .summary-section li{margin-bottom:5px}
+  .transcript-wrap{border-top:1px solid var(--border);padding:14px 24px;background:#0c1220}
+  .transcript-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:0}
+  .transcript-toggle{background:none;border:none;color:var(--muted);font-size:0.8rem;cursor:pointer;font-family:inherit;display:flex;align-items:center;gap:4px;padding:0;transition:color 0.2s;}
+  .transcript-toggle:hover{color:var(--text)}
+  .copy-btn{background:rgba(108,99,255,0.1);border:1px solid rgba(108,99,255,0.3);border-radius:8px;color:var(--accent2);font-size:0.72rem;padding:4px 12px;cursor:pointer;font-family:inherit;transition:all 0.2s;}
+  .copy-btn:hover{background:rgba(108,99,255,0.25);color:#fff}
+  .transcript-box{display:none;margin-top:10px;background:#080d18;border:1px solid var(--border);border-radius:10px;padding:12px 14px;font-size:0.78rem;line-height:1.75;color:#8a95aa;max-height:260px;overflow-y:auto;white-space:pre-wrap;word-break:break-word;}
+  .transcript-box.visible{display:block}
+  footer{text-align:center;padding:24px;font-size:0.75rem;color:var(--muted);border-top:1px solid var(--border)}
+  @media(max-width:640px){.card-top{flex-direction:column}.thumb-wrap{flex:none;height:200px}header{padding:16px}main{padding:16px 12px 60px}}
+</style>
+</head>
+<body>
+
+<header>
+  <a class="nav-back" href="../index.html">← 대시보드로</a>
+  <div>
+    <div class="date-badge">2026-05-18</div>
+    <div class="count">1개 영상</div>
+  </div>
+  <div style="font-size:0.75rem;color:var(--muted)">2026-06-19 06:12 생성</div>
+</header>
+
+<main>
+
+  <article class="video-card">
+    <div class="card-top">
+      <a class="thumb-wrap" href="https://www.youtube.com/watch?v=EHieVGlkpmg" target="_blank" rel="noopener">
+        <img src="https://i.ytimg.com/vi/EHieVGlkpmg/hqdefault.jpg" alt="노트북LM과 제미나이 잼스의 압도적인 활용법 4가지" loading="lazy"/>
+      </a>
+      <div class="card-info">
+        <div class="card-meta">
+          <span class="ch-tag">greenkokki 그코</span>
+          <span class="date-tag">2026-05-18</span>
+          
+        </div>
+        <div class="video-title">노트북LM과 제미나이 잼스의 압도적인 활용법 4가지</div>
+        <div style="display:flex;align-items:center;flex-wrap:wrap;gap:4px;margin-top:auto">
+          <a class="yt-link" href="https://www.youtube.com/watch?v=EHieVGlkpmg" target="_blank" rel="noopener">↗ 유튜브에서 보기</a>
+          <button class="nlm-btn" data-url="https://www.youtube.com/watch?v=EHieVGlkpmg">📓 NotebookLM</button>
+        </div>
+      </div>
+    </div>
+    <div class="summary-section">
+      <h2>핵심 요약</h2>
+<p>노트북LM(사실 기반 분석)과 제미나이 잼스(역할·톤 고정)를 결합해 자영업자·프리랜서를 위한 컨설턴트·회원 케어·학습자료·응대 매니저 시스템을 만드는 4가지 시나리오를 다룬다.</p>
+<h2>주요 포인트</h2>
+<ul>
+<li>카페 컨설턴트: 매출·리뷰·인스타 자료를 노트북LM에 올려 출처가 검증되는 사실 분석을 뽑고, 그 결과를 잼스에 붙여 매주 같은 톤의 액션을 받는다.</li>
+<li>필라테스 회원 케어: 회원 한 줄만 입력하면 5분짜리 맞춤 자세 스크립트를 만들고 노트북LM 오디오 오버뷰로 팟캐스트화, 잼스로 회원별 메일 초안까지 자동화한다.</li>
+<li>온라인 클래스: 교재 하나로 슬라이드·마인드맵·퀴즈를 한 번에 생성하고(범위·핵심 개념 명시가 중요), 강사 톤의 24시간 보조 튜터까지 공유한다.</li>
+<li>공방 응대 매니저: 잘 쓴 답변 메일 10~20개에서 인사·마무리 말투 패턴을 추출해 가이드로 만들고, 가격표·AS 정책과 함께 잼에 넣어 메일을 자동 분류·답변한다.</li>
+<li>핵심은 공들여 한 번 잘 만든 시스템이 꾸준히 그 이상의 가치를 만든다는 점이다.</li>
+</ul>
+    </div>
+  <div class="transcript-wrap">
+    <div class="transcript-header">
+      <button class="transcript-toggle" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('visible')">
+        <span class="arr">▼</span> 원문 자막
+      </button>
+      <button class="copy-btn" onclick="var b=this,t=b.nextElementSibling||b;navigator.clipboard.writeText(document.querySelector('#tr-EHieVGlkpmg').textContent).then(()=>{b.textContent='복사됨';setTimeout(()=>b.textContent='복사',2000)})">복사</button>
+    </div>
+    <pre class="transcript-box" id="tr-EHieVGlkpmg">먼저 빠르게 보여 드릴 건 우리 가의 약점을 분석해 주는 AI 컨설턴트입니다. 사장님인데 지난 3개월치 무리 가게 데이터 분석해 [음악] 줘. 데이터만 던지면 실제 우리 가게에 대해 당장 해결해야 할 문제점과 구체적인 실행 솔루션까지 제한합니다. [음악] 이미 다른 영상에서 비슷한 활용법을 많이 보셨을 거예요. 근데 진짜 중요한 건 그래서 어떻게 내 상황에 [음악] 적용하는지입니다.이 영상에서는 실제 시나리오네 가지를 통해 어떤 데이터를 준비해서 어떻게 처음부터 끝까지 활용하는지 노트북에과 재미나이 잼스로 [음악] 내 퇴근 시간을 줄여줄 나만의 비서를 만드는 방법을 알려 드릴게요. 영상 시작 전에 이런 영상을 [음악] 앞으로도 기대하신다면 좋아요와 응원 댓글도 부탁드립니다. 바로 시작할게요. 첫 번째 시나리오는 망원동에서 1인 카페를 운영하시는 사장님 입장에서 시작해 보겠습니다. 매월 매출 데이터, 네이버 리뷰, 인스타 인사이트 이런 자료들이 각각 다른 곳에 있다 보니 한 눈에 안 들어옵니다. 그리고 매주 이번 주 우리 가게의 약점이 뭐지?이 이 질문을 같은 톤으로 분석해 주는 전담 컨설턴트가 있으면 좋겠는데 매주 사람한테 맡기면 비용 부담이 크잖아요. 그래서 오늘 만들어 볼게 바로 노트북에 자료과 잼스를 결합한 나만의 가게 전담 컨설턴트입니다. 먼저 노트북에 방문해서 오른쪽 상단에 새로 만들기를 클릭하세요. 소스 추가 창이 뜨면 다음 예제로 준비한 세 가지 자료를 한 번에 업로드 할게요. 첫 번째는 매출 데이터 3개월치 매출 CSV 파일이에요. 포스 시스템이나 카드 매출에서 엑셀로 다운받을 수 있습니다. 두 번째는 네이버 리뷰 캡처. 지난 3개월치 리뷰를 스크린샷으로 모아서 PDF 한 개로 만들어서 올리면 됩니다. 세 번째는 인스타 인사이트. 인스타 비즈니스 계정에서 비슷한 인사이트 데이터를 PDF로 받을 수 있어요.이 세 가지를 드래그 앤드롭브로 한 번에 업로드 할게요. 참고로이 영상에서 소개하는 시나리오가 모두에게 해당되진 않을 거예요. 하지만 데이터를 일상이나 업무에 어떻게 적용하는지 그 흐름만 이해하면 본인 상황에 맞는 아이디어를 충분히 얻으실 수 있습니다. 사용한 자료는 영상 아래 그린코끼리 무료 포럼에서 받으실 수 있어요. 이제 노트북에 LM의 진짜 가치를 보여 드릴게요. 채팅창에 다음 프롬프트를 입력 후 요청할게요. 참고로 재미나이 안에서도 노트북에 추가해서 분석 요청을 할 수 있어요. 근데 그렇게 하면 재미나이가 자기 출론력을 섞어서 답하기 때문에 출처 검증이 약해집니다.이 과정은 사실 기반 분석이 가장 중요하기에 노트북에서 요청할게요. 결과를 보시면 각 답변마다 번호가 붙어 있고이 번호를 클릭하면 실제 자료에 어느 부분에서 가져왔는지 바로 확인할 수 있습니다. 이게 노트북의 핵심이에요. AI가 만들어 낸 추측이 아니라 내 자료 안에 실제로 있는 사실이라는 걸 바로 검증할 수 있어요. 여기서 끝나면 일회성 분석에 그칩니다. 매주 같은 톤으로 같은 관점으로 분석해 주는 전담 컨설턴트를 만들어 볼게요. 재미나이로 이동하세요. [목을 가다듬음] 왼쪽 사이드바에서 잼스 메뉴를 클릭합니다. 새 잼 버튼을 클릭하세요. 이름은 망원카페 전담 컨설턴트로 입력하고 요청 사항 영역에 미리 준비한 내용을 붙여 넣을게요. 준비한 지침을 빠르게 살펴보면 첫 번째로 먼저 컨설턴트라는 정체성을 정의했어요. 두 번째는 단순히 분석해 줘가 아니라 구체적으로 원하는 역할 다섯 가지를 명시했어요. 마지막 세 번째는 말투와 함께 재미나이가 데이터에 없는 내용을 지어내지 않도록 추측을 금지하도록 명시했어요. 그럼 오른쪽 상단에 저장 버튼을 클릭하세요. 이제이 잼은 앞으로 매주 같은 인격, 같은 톤으로 사장님과 대화할 준비가 됐습니다. 채팅 시작 버튼을 클릭하세요. 이제 재미 준비됐으니 실제로 일을 시켜 볼 차례예요. 먼저 노트북 LM에서 받은 분석 결과로 돌아가서 아래 복사 아이콘을 클릭해서 복사하세요. 다시 만들었던 재미나이 잼스로 이동하세요. 이렇게 간단하게 요청할게요. 참고로 잼스 지침에서 이미 역할이랑 말투를 다 세팅해 놨기 때문에 채팅창에서는 그냥 사장님이 직원한테 말 걸듯이 자연스럽게 요청하면 됩니다. 사장님이 하로 시작하면 잼스가 본인 역할을 한 번 더 기억하고 답하기 시작하게 됩니다. 그럼 제출해 볼게요. 결과를 보시면 추상적인 일반론이 아니라 우리 가게 데이터를 근거로 이번 주에 당장 시도해 볼 수 있는 구체적인 액션을 확인할 수 있어요.이 이 시스템의 진짜 가치는 한 만들어 두고 계속 쓸 수 있다는 거예요. 루틴은 두 단계로 정리됩니다. 1단계는 데이터 분석이 필요한 부분은 노트북에 모든 자료를 추가한 뒤, 객관적 사실을 추출한 뒤 복사하세요.이 단계는 만들어 놓은 잼수로 이동한 뒤 복사한 내용을 붙여 넣어서 분석 요청하고 원하는 인사이트를 얻으면 됩니다. 이렇게 간단하게 나만의 컨설턴트 파트너가 생기게 됩니다. 두 번째 시나리오는 1인 필라테스 스튜디오를 운영하시는 강사님 입장에서 시작해 보겠습니다. 배원들이 수업 외에도 집에서 자세 가이드를 들으면 정말 좋은데 매번 회원 한 명 한 명에게 글로 써서 보내기엔 시간이 너무 부족합니다. 그래서 이번에 만들어 볼게 회원 출퇴근길이나 산책길에들을 수 있는 5분짜리 맞춤 팟캐스트와 회원 줄만 입력하면 한 번에 나오는 메일 초항까지이 두 가지를 자동으로 만드는 시스템이에요. 먼저 노트북에 방문해서 새 노트북을 만들어 주세요. 이름은 필라테스 회원케어로 입력하겠습니다. 이름을 변경하셨으면 소스 추가 버튼을 클릭하세요.이 이곳에 미리 준비한 세 가지 예제 자료를 업로드 할게요. 첫 번째는 강사 본인이 정리한 자세 교정 노트, 평소 회원들 가르치면서 정리해 온 거북모, 라운드 숄더, 골반 틀어짐 같은 주요 자세, 이슈별, 가이드 문서입니다. 두 번째는 운동학, 해부학, 추천 자료. 평소 강사님이 참고하는 신뢰할 만한 책이나 논문에서 필요한 부분만 발표해서 PDF로 만든 문서입니다. 세 번째는 회원별 진단 기록. 이건 민감함 개인 정보를 제외한 뒤 진단한 기록 정보를 기반으로 만든 문서입니다. 이제 회원 맞춤 스크립트를 생성하는 단계예요. 근데 그전에 한 가지 짚고 가겠습니다. 매번 회원이 바뀔 때마다 이런 스크립트 만들어 줘 하면서 긴 프롬프트를 반복 입력하면 회원 다섯 명만 돼도 손이 너무 많이 갑니다. 그래서 노트북에 LM에 있는 채팅 맞춤 설정 기능을 활용할 거예요. 노트북램 화면에서 오른쪽 상단에 노트북 구성 아이콘을 클릭하세요. 대화 목표, 스타일 또는 역할정적인 영역에서 맞춤 버튼을 클릭합니다. 입력창에 다음 내용을 붙여 놓겠습니다. 시간을 효율적으로 단축하는 핵심은 이런 맞춤 설정을 할 때 한 번에 원하는 결과가 제대로 나오게 신경 써서 설정하는 것입니다. 처음엔 시간이 소요될지 몰라도 이후에는 시간이 확 줄어들 것입니다. 그럼 저장하기 위해 저장 버튼을 누르세요. 이제 채팅창에 다음과 같이 입력할게요. 수민 거북몽 라운드 숄더 사무직 9시간 좌식 3개월 긴 프롬프트는 채팅 설정에 다 들어가 있으니까 회원만 한 줄로 던지면 됩니다. 그럼 제출해 볼게요. 결과를 보시면이 회원님의 자세 이슈에 맞춰 5분 분량 스크립트가 완성돼서 나옵니다. 각 부분마다 출처 번호가 붙어 있어서 어떤 자료를 기반했는지도 확인할 수 있으니까 신뢰할 수 있는 스크립트로 만들어진 걸 알 수 있어요. 그럼 이제이 스크립트를 오디오 팟캐스트로 변환해 볼게요. 먼저 여기 스크립트 아래 복사 아이콘을 눌러서 복사하세요. 노트북의 무측 패널에서 AI 오디오디오 오버뷰에서 맞춤 설정 아이콘을 클릭하세요. 여기서 먼저 원하는 형식을 선택하면 되는데 회원 케어 용이기 때문에 심층 분석을 그대로 선택할게요. 왜냐하면 요약은 너무 짧고 비평은 회원에게 비판적으로 들릴 수 있고 토론은 가벼운 느낌이 강하기 때문입니다. 다음 옵션으로 언어는 한국어로 유지하고 길이는 짧게와 기본값 옵션 중에서 짧게를 선택할게요. 여기가 가장 중요한데요. 이곳에 복사했던 스크립트를 붙여 넣으세요. 여기에 집중할 부분을 입력하지 않으면 단순히 업로드된 소스를 기반으로 생성이 되기 때문에 오디오 팟캐스트로 생성하고 싶은 부분을 명확하게 입력해 줘야 합니다. 그럼 생성 버튼을 눌러서 생성할게요. 시간이 다소 걸리고 기다려 주시면 되겠습니다. 생성된 오디오를 짧게만 들어 볼게요. 안녕하세요. 수민 회원님. 오늘 출근길 어떠셨나요? 매일 아침 그 IT 회사로 향하시면 발걸음이 막 가볍지만은 않으실 텐데 어 오늘만큼은 저희가 준비한이 짧은 가이드와 함께 조금 더 산뜻하게 시작하셨으면 좋겠습니다. 네. 오디오를 공유하려면 오른쪽에서 생성된 오디오에 더보기 아이콘을 누르세요. 공유를 누르세요.이 노트북 공유 링크를 클릭하세요. 노트북 엑세스 옵션을 클릭하고 링크를 공유했을 때 쉽게 엑세스 할 수 있도록 링크가 있는 모든 사용자로 변경하세요. 저장 버튼을 누르세요. 링크 복사를 누르세요. 그럼 이제 한 번에 여러 회원들에게 보낼 메일 작성을 전담하는 비서 재미나이잼을 만들어 볼게요. 재미나이로 이동해서 왼쪽 사이드바의 잼스를 클릭하고 새 잼 버튼을 누르세요. 이름은 필라테스 회원 메일 비서로 입력합니다. 지침 영역에 준비한 내용을 붙여 놓고 먼저 같이 보겠습니다.이 잼 지침의 구조는 첫 번째 시나리오에서 만든 카페 컨설턴트 잼이랑 거의 똑같습니다. 정체성, 매일 작성 규칙, 톤, 금지 사항. 이번에 새로 들어간게 입력 형식과 출력 형식이에요. 입력 형식을 미리 정해 두는 이유는 매번 회원 정보를 길게 설명할 필요 없게 축약된 한 줄로도 재미 바로 알아듣게 만들기 위함입니다. 출력 형식도 미리 정해 두면 회원 다섯 명 메일을 한 번에 요청해서 나올 때 구분선 없이 다 섞여서 나오는 일이 없게 됩니다. 회원별로 깔끔하게 분리돼서 나와요. 그럼 오른쪽 상단에 저장 버튼을 클릭 후 생성되면 채팅 시작 버튼을 누르세요. 채팅창에 이렇게 입력해 볼게요. 그냥 회원 이름, 이슈, 다음 수업 일정만 한 줄씩 적은 것입니다. 다른 설명은 하나도 없습니다. 그럼 제출해 볼게요. 결과적으로 요청에 맞춰 다음 수업 일정과 함께 개인화된 이메일 초안이 빠르게 완성되었어요. 이제 강사님이 할 일은 각 메일을 복사해서 지에 붙여 놓고 오디오 </pre>
+  </div>
+  </article>
+</main>
+
+<footer>유튜브 구독 정리 · agy 요약 · 2026-06-19 06:12</footer>
+
+
+<script>
+document.querySelectorAll('.nlm-btn').forEach(function(btn){
+  btn.addEventListener('click',function(){
+    navigator.clipboard.writeText('/notebooklm '+btn.dataset.url).then(function(){
+      var orig=btn.innerHTML;btn.innerHTML='✓ 복사됨';btn.classList.add('copied');
+      setTimeout(function(){btn.innerHTML=orig;btn.classList.remove('copied');},2000);
+    });
+  });
+});
+</script>
+
+</body>
+</html>

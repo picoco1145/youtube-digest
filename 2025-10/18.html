@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>2025-10-18 — 유튜브 구독 정리</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+  :root{--bg:#090e1a;--surface:#111827;--surface2:#1a2235;--border:#1e2d47;--accent:#6c63ff;--accent2:#00d4ff;--text:#e8eaf0;--muted:#7a8499;--radius:14px;}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Pretendard',sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+  header{background:linear-gradient(135deg,#0d1b3e,#1a0533);border-bottom:1px solid var(--border);padding:20px 40px;display:flex;align-items:center;justify-content:space-between;}
+  .nav-back{color:var(--accent2);text-decoration:none;font-size:0.85rem;display:flex;align-items:center;gap:6px}
+  .nav-back:hover{color:#fff}
+  .date-badge{font-size:1.4rem;font-weight:700;letter-spacing:-0.5px;background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+  .count{font-size:0.85rem;color:var(--muted)}
+  main{max-width:900px;margin:0 auto;padding:32px 24px 80px}
+  .video-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;margin-bottom:24px;transition:border-color 0.2s,box-shadow 0.2s;}
+  .video-card:hover{border-color:var(--accent);box-shadow:0 4px 24px rgba(108,99,255,0.15)}
+  .card-top{display:flex;gap:0}
+  .thumb-wrap{flex:0 0 240px;position:relative;overflow:hidden}
+  .thumb-wrap img{width:100%;height:100%;object-fit:cover;transition:transform 0.4s}
+  .video-card:hover .thumb-wrap img{transform:scale(1.05)}
+  .card-info{flex:1;padding:20px;display:flex;flex-direction:column;gap:10px}
+  .card-meta{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+  .ch-tag{font-size:0.72rem;font-weight:600;padding:3px 12px;background:linear-gradient(135deg,rgba(108,99,255,0.2),rgba(0,212,255,0.2));border:1px solid rgba(108,99,255,0.3);border-radius:999px;color:var(--accent2);}
+  .date-tag{font-size:0.72rem;color:var(--muted)}
+  .no-transcript{font-size:0.68rem;padding:2px 8px;background:rgba(255,180,0,0.12);border:1px solid rgba(255,180,0,0.25);border-radius:999px;color:#ffa500;}
+  .video-title{font-size:1rem;font-weight:600;line-height:1.4}
+  .yt-link{display:inline-flex;align-items:center;gap:5px;font-size:0.8rem;color:var(--accent);text-decoration:none;transition:color 0.2s;}
+  .yt-link:hover{color:var(--accent2)}
+  
+  .nlm-btn{display:inline-flex;align-items:center;gap:5px;font-size:0.8rem;color:#fff;
+    background:rgba(108,99,255,0.2);border:1px solid rgba(108,99,255,0.4);border-radius:8px;
+    padding:4px 12px;cursor:pointer;font-family:inherit;transition:all 0.2s;margin-left:8px;}
+  .nlm-btn:hover{background:rgba(108,99,255,0.45);}
+  .nlm-btn.copied{background:rgba(0,200,100,0.2);border-color:rgba(0,200,100,0.4);color:#00c864;}
+
+  .summary-section{border-top:1px solid var(--border);background:var(--surface2);padding:20px 24px;font-size:0.85rem;line-height:1.7;color:#c5cad8;}
+  .summary-section h2{font-size:0.82rem;color:var(--accent2);margin:12px 0 4px}
+  .summary-section h2:first-child{margin-top:0}
+  .summary-section ul{padding-left:18px}
+  .summary-section li{margin-bottom:5px}
+  .transcript-wrap{border-top:1px solid var(--border);padding:14px 24px;background:#0c1220}
+  .transcript-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:0}
+  .transcript-toggle{background:none;border:none;color:var(--muted);font-size:0.8rem;cursor:pointer;font-family:inherit;display:flex;align-items:center;gap:4px;padding:0;transition:color 0.2s;}
+  .transcript-toggle:hover{color:var(--text)}
+  .copy-btn{background:rgba(108,99,255,0.1);border:1px solid rgba(108,99,255,0.3);border-radius:8px;color:var(--accent2);font-size:0.72rem;padding:4px 12px;cursor:pointer;font-family:inherit;transition:all 0.2s;}
+  .copy-btn:hover{background:rgba(108,99,255,0.25);color:#fff}
+  .transcript-box{display:none;margin-top:10px;background:#080d18;border:1px solid var(--border);border-radius:10px;padding:12px 14px;font-size:0.78rem;line-height:1.75;color:#8a95aa;max-height:260px;overflow-y:auto;white-space:pre-wrap;word-break:break-word;}
+  .transcript-box.visible{display:block}
+  footer{text-align:center;padding:24px;font-size:0.75rem;color:var(--muted);border-top:1px solid var(--border)}
+  @media(max-width:640px){.card-top{flex-direction:column}.thumb-wrap{flex:none;height:200px}header{padding:16px}main{padding:16px 12px 60px}}
+</style>
+</head>
+<body>
+
+<header>
+  <a class="nav-back" href="../index.html">← 대시보드로</a>
+  <div>
+    <div class="date-badge">2025-10-18</div>
+    <div class="count">1개 영상</div>
+  </div>
+  <div style="font-size:0.75rem;color:var(--muted)">2026-06-19 06:12 생성</div>
+</header>
+
+<main>
+
+  <article class="video-card">
+    <div class="card-top">
+      <a class="thumb-wrap" href="https://www.youtube.com/watch?v=3SaO0H-6KgU" target="_blank" rel="noopener">
+        <img src="https://i.ytimg.com/vi/3SaO0H-6KgU/hqdefault.jpg" alt="20 WAYS to use ChatGPT like the TOP 1%" loading="lazy"/>
+      </a>
+      <div class="card-info">
+        <div class="card-meta">
+          <span class="ch-tag">Grace Leung</span>
+          <span class="date-tag">2025-10-18</span>
+          
+        </div>
+        <div class="video-title">20 WAYS to use ChatGPT like the TOP 1%</div>
+        <div style="display:flex;align-items:center;flex-wrap:wrap;gap:4px;margin-top:auto">
+          <a class="yt-link" href="https://www.youtube.com/watch?v=3SaO0H-6KgU" target="_blank" rel="noopener">↗ 유튜브에서 보기</a>
+          <button class="nlm-btn" data-url="https://www.youtube.com/watch?v=3SaO0H-6KgU">📓 NotebookLM</button>
+        </div>
+      </div>
+    </div>
+    <div class="summary-section">
+      <h2>핵심 요약</h2>
+<p>ChatGPT를 상위 1% 사용자처럼 쓰는 20가지 강력한 방법을 소개하며, 앱 연동·캔버스·이미지/영상 생성·프로젝트·에이전트·메모리·커스텀 GPT까지 일상 업무 임팩트를 극대화하는 법을 다룬다.</p>
+<h2>주요 포인트</h2>
+<ul>
+<li>앱 연동: Canva 앱으로 발표 자료를 편집 가능한 디자인으로 생성, Figma 앱으로 고객 여정 맵·체크아웃 플로 등 다이어그램 제작</li>
+<li>캔버스 모드 활용: 자기비판(internal rubric) 기법으로 환영 이메일 시퀀스·콘텐츠 품질을 끌어올리고, 데이터셋을 한 페이지 대시보드 데이터 스토리로 변환하며, 웹페이지에 임베드할 인터랙티브 위젯 코드 생성</li>
+<li>이미지·영상 생성: Meta 광고 라이브러리에서 성공 패턴을 역방향 프롬프팅으로 추출해 자사 제품 광고 크리에이티브 제작, Sora 2로 제품 이미지를 시네마틱 영상으로 생성(5점 체크리스트로 프롬프트 고도화, Cameo 기능)</li>
+<li>ChatGPT 프로젝트로 브랜드 보이스 가이드(자신의 잘된 콘텐츠 샘플을 ZIP으로 분석해 생성)를 넣은 콘텐츠 엔진 구축, 프로젝트 전용 메모리로 과거 대화 컨텍스트 활용</li>
+<li>에이전트 모드로 서브레딧·YouTube 모니터링해 사업 기회 리포트를 정기 자동 생성, 계정 메모리+스케줄로 ChatGPT Pulse를 직접 구현, @CMO 같은 트리거 키워드로 페르소나 저장, study mode·voice mode 역할극·챗 브랜칭(what if 분기 탐색)·커스텀 GPT로 드림 AI 코치 제작</li>
+</ul>
+    </div>
+  <div class="transcript-wrap">
+    <div class="transcript-header">
+      <button class="transcript-toggle" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('visible')">
+        <span class="arr">▼</span> 원문 자막
+      </button>
+      <button class="copy-btn" onclick="var b=this,t=b.nextElementSibling||b;navigator.clipboard.writeText(document.querySelector('#tr-3SaO0H-6KgU').textContent).then(()=>{b.textContent='복사됨';setTimeout(()=>b.textContent='복사',2000)})">복사</button>
+    </div>
+    <pre class="transcript-box" id="tr-3SaO0H-6KgU">ChatGPT just becomes so much more powerful, your unfair advantage for thinking, creating, and executing faster. So in this video I'll share 20 really powerful ways to use ChatGPT. So well that will immediately put you in the top 1% user and how you can maximize this power to make a true impact on your day-to-day work. Let's go. So one of the most useful features that ChatGPT recently add is the apps in ChatGPT Where now you can directly connect to tools like Canva on ChatGPT, and this is absolute a game changer. So first go to settings and under apps and connectors, pick Canva and connect ChatGPT to a Canva account. Now, let's say we have this deep research report and we want to create beautiful presentation. We can first ask Chad to draft a presentation outline for us. So utilizing this creative writing power to draft a narrative for each slide And then turn on the Canva app and ask it to create a presentation based on this generated outline. And you can see it's now calling Canva. And just within a minute we have all the presentation design ready. So just pick the one that you like and view it, and you can click here to add it on Canva. And this is really good. The presentation flow and copy is basically following ChatGPT and I like how they're all editable and you can select any elements, even the chart and updated value, and it's ready to present on Canvas as well. And so this is one of the most useful way of using the chat apps. So ChatGPT, just become your designer and that's just a start. It can also become your process builder and help you to create clean and professional diagrams directly on Figma. So let's say we are launching a new campaign and we want to visualize a complete customer journey map for this launch. So first we can give all the details to ChatGPT and then ask it to design the journey flow and output as a visual flow chart structure. So ChatGPT will outline the key touch points for your campaign from start to finish. And now the magic happens when we can just turn on Figma and ask it to create a user flow diagram based on this outline process. And this will be very useful and serve just like a holistic action map for your whole sales funnel about areas you need to focus and share for team communication. And as you optimize your funnel based on data, you will know exactly what are the steps that you need to take action. Or maybe you are optimizing a checkout flow with decision branching. Just ask ChatGPT design and create the flowchart on Figma. And this is really a game changer. And save you time designing whatever the business or marketing process is So we have mapped out our visual strategy. But what about crafting the perfect message? And that's why ChatGPT canvas mode is so useful. It's just like the collaborative space where we are building this together and there is a trick. So we will make ChatGPT critique its own work to deliver a world class results. So let's say you're designing a welcome email sequence for new subscribers for your free ebook. Then instead just simply asking ChatGPT to draft you the sequence first turn on canvas mode and include what the sequence should look like in your prompts. Now before submitting, add one more step. So ask ChatGPT to self-reflect, and this is one of the opens AI official prompting tips have it define what a world-class welcome sequence looks like with an internal rubric, then iterate to get the best possible results. I encourage you to try this method because the results would be much better and more thoughtful. I just copied examples from the official guide only making a field twig, so I'll put the prompt snippet below so you can try it. And what makes Canvas so powerful is collaborative feel where you can adjust anything like the length, the tone, or select any part of the text and prompt it for the changes. And when you are done. Just export to any format, like a word document, PDF, and then it is ready to refine or share with your team. Creating content is powerful, but a top 1% knows that the most persuasive story always utilize visualization. ChatGPT isn't just for making basic charts. It can create a compelling one page data story that your team will actually understand So for example, I have this digital marketing campaign data sets. It's all dummy data. It has like 8000 thousand roles. And whenever you are doing this kind of data analysis, I highly encourage you to turn on thinking mode, to make sure it think deeply. And now turn on canvas mode. And then use this prompt to ask it to create a one page custom dashboard that summarize the most important insights for the team. And so you are not just asking ChatGPT to analyze the data, but also ask it to present a compelling data story to your audience. So Canvas is useful to help you present any data story building useful dashboard, like in this case, summarizing the key findings, giving actionable recommendations, and not just for dataset, maybe you have a super long industry re</pre>
+  </div>
+  </article>
+</main>
+
+<footer>유튜브 구독 정리 · agy 요약 · 2026-06-19 06:12</footer>
+
+
+<script>
+document.querySelectorAll('.nlm-btn').forEach(function(btn){
+  btn.addEventListener('click',function(){
+    navigator.clipboard.writeText('/notebooklm '+btn.dataset.url).then(function(){
+      var orig=btn.innerHTML;btn.innerHTML='✓ 복사됨';btn.classList.add('copied');
+      setTimeout(function(){btn.innerHTML=orig;btn.classList.remove('copied');},2000);
+    });
+  });
+});
+</script>
+
+</body>
+</html>

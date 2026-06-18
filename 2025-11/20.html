@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>2025-11-20 — 유튜브 구독 정리</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+  :root{--bg:#090e1a;--surface:#111827;--surface2:#1a2235;--border:#1e2d47;--accent:#6c63ff;--accent2:#00d4ff;--text:#e8eaf0;--muted:#7a8499;--radius:14px;}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Pretendard',sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+  header{background:linear-gradient(135deg,#0d1b3e,#1a0533);border-bottom:1px solid var(--border);padding:20px 40px;display:flex;align-items:center;justify-content:space-between;}
+  .nav-back{color:var(--accent2);text-decoration:none;font-size:0.85rem;display:flex;align-items:center;gap:6px}
+  .nav-back:hover{color:#fff}
+  .date-badge{font-size:1.4rem;font-weight:700;letter-spacing:-0.5px;background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+  .count{font-size:0.85rem;color:var(--muted)}
+  main{max-width:900px;margin:0 auto;padding:32px 24px 80px}
+  .video-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;margin-bottom:24px;transition:border-color 0.2s,box-shadow 0.2s;}
+  .video-card:hover{border-color:var(--accent);box-shadow:0 4px 24px rgba(108,99,255,0.15)}
+  .card-top{display:flex;gap:0}
+  .thumb-wrap{flex:0 0 240px;position:relative;overflow:hidden}
+  .thumb-wrap img{width:100%;height:100%;object-fit:cover;transition:transform 0.4s}
+  .video-card:hover .thumb-wrap img{transform:scale(1.05)}
+  .card-info{flex:1;padding:20px;display:flex;flex-direction:column;gap:10px}
+  .card-meta{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+  .ch-tag{font-size:0.72rem;font-weight:600;padding:3px 12px;background:linear-gradient(135deg,rgba(108,99,255,0.2),rgba(0,212,255,0.2));border:1px solid rgba(108,99,255,0.3);border-radius:999px;color:var(--accent2);}
+  .date-tag{font-size:0.72rem;color:var(--muted)}
+  .no-transcript{font-size:0.68rem;padding:2px 8px;background:rgba(255,180,0,0.12);border:1px solid rgba(255,180,0,0.25);border-radius:999px;color:#ffa500;}
+  .video-title{font-size:1rem;font-weight:600;line-height:1.4}
+  .yt-link{display:inline-flex;align-items:center;gap:5px;font-size:0.8rem;color:var(--accent);text-decoration:none;transition:color 0.2s;}
+  .yt-link:hover{color:var(--accent2)}
+  
+  .nlm-btn{display:inline-flex;align-items:center;gap:5px;font-size:0.8rem;color:#fff;
+    background:rgba(108,99,255,0.2);border:1px solid rgba(108,99,255,0.4);border-radius:8px;
+    padding:4px 12px;cursor:pointer;font-family:inherit;transition:all 0.2s;margin-left:8px;}
+  .nlm-btn:hover{background:rgba(108,99,255,0.45);}
+  .nlm-btn.copied{background:rgba(0,200,100,0.2);border-color:rgba(0,200,100,0.4);color:#00c864;}
+
+  .summary-section{border-top:1px solid var(--border);background:var(--surface2);padding:20px 24px;font-size:0.85rem;line-height:1.7;color:#c5cad8;}
+  .summary-section h2{font-size:0.82rem;color:var(--accent2);margin:12px 0 4px}
+  .summary-section h2:first-child{margin-top:0}
+  .summary-section ul{padding-left:18px}
+  .summary-section li{margin-bottom:5px}
+  .transcript-wrap{border-top:1px solid var(--border);padding:14px 24px;background:#0c1220}
+  .transcript-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:0}
+  .transcript-toggle{background:none;border:none;color:var(--muted);font-size:0.8rem;cursor:pointer;font-family:inherit;display:flex;align-items:center;gap:4px;padding:0;transition:color 0.2s;}
+  .transcript-toggle:hover{color:var(--text)}
+  .copy-btn{background:rgba(108,99,255,0.1);border:1px solid rgba(108,99,255,0.3);border-radius:8px;color:var(--accent2);font-size:0.72rem;padding:4px 12px;cursor:pointer;font-family:inherit;transition:all 0.2s;}
+  .copy-btn:hover{background:rgba(108,99,255,0.25);color:#fff}
+  .transcript-box{display:none;margin-top:10px;background:#080d18;border:1px solid var(--border);border-radius:10px;padding:12px 14px;font-size:0.78rem;line-height:1.75;color:#8a95aa;max-height:260px;overflow-y:auto;white-space:pre-wrap;word-break:break-word;}
+  .transcript-box.visible{display:block}
+  footer{text-align:center;padding:24px;font-size:0.75rem;color:var(--muted);border-top:1px solid var(--border)}
+  @media(max-width:640px){.card-top{flex-direction:column}.thumb-wrap{flex:none;height:200px}header{padding:16px}main{padding:16px 12px 60px}}
+</style>
+</head>
+<body>
+
+<header>
+  <a class="nav-back" href="../index.html">← 대시보드로</a>
+  <div>
+    <div class="date-badge">2025-11-20</div>
+    <div class="count">1개 영상</div>
+  </div>
+  <div style="font-size:0.75rem;color:var(--muted)">2026-06-19 06:12 생성</div>
+</header>
+
+<main>
+
+  <article class="video-card">
+    <div class="card-top">
+      <a class="thumb-wrap" href="https://www.youtube.com/watch?v=HnCLlKQnYiQ" target="_blank" rel="noopener">
+        <img src="https://i.ytimg.com/vi/HnCLlKQnYiQ/hqdefault.jpg" alt="구글 안티그래비티 & 제미나이 3.0, 20년차 개발자의 솔직 후기! 와 이건 좀 사기 아닌가요?" loading="lazy"/>
+      </a>
+      <div class="card-info">
+        <div class="card-meta">
+          <span class="ch-tag">소스놀이터</span>
+          <span class="date-tag">2025-11-20</span>
+          
+        </div>
+        <div class="video-title">구글 안티그래비티 & 제미나이 3.0, 20년차 개발자의 솔직 후기! 와 이건 좀 사기 아닌가요?</div>
+        <div style="display:flex;align-items:center;flex-wrap:wrap;gap:4px;margin-top:auto">
+          <a class="yt-link" href="https://www.youtube.com/watch?v=HnCLlKQnYiQ" target="_blank" rel="noopener">↗ 유튜브에서 보기</a>
+          <button class="nlm-btn" data-url="https://www.youtube.com/watch?v=HnCLlKQnYiQ">📓 NotebookLM</button>
+        </div>
+      </div>
+    </div>
+    <div class="summary-section">
+      <h2>핵심 요약</h2>
+<p>20년차 개발자가 구글 안티그래비티와 제미나이 3.0을 직접 써본 솔직 후기로, 여러 AI와 디자인 대결을 벌인 끝에 제미나이 3.0 사용 시 안티그래비티가 현시점 최선의 선택이라고 평가한 영상이다.</p>
+<h2>주요 포인트</h2>
+<ul>
+<li>제미나이 3.0은 웹 개발 사람 평가에서 2위 그룹과 약 100점 차, 시각적 이해력은 2등(소넷 4.5)의 약 2배, 박사급 2,500문제 추론 테스트에서도 격차로 앞섬</li>
+<li>제미나이 CLI 3버전은 울트라 플랜만 가능(웨이트리스트), 커서에서는 프리뷰로 사용 가능하나 컨텍스트가 100만 토큰 중 20만으로 제한됨</li>
+<li>막혔던 3D 레이싱 게임을 제미나이 3프로로 시도, 프롬프트 끝에 '싱크하드(think hard)'를 넣으니 심층 사고가 작동해 멈춤 문제를 해결(스스로 추론 깊이를 정하는 LLM)</li>
+<li>제미나이 소개 페이지 디자인 대결: 커서·컴포저·클로드 코드 모두 평범/취향 아님으로 평가, 안티그래비티가 완성도가 가장 높음</li>
+<li>안티그래비티는 VS Code 기반이라 커서와 닮았고 클로드·GPT도 무료 제공, 계획/패스트 모드와 Ctrl+E 에이전트 매니저로 여러 에이전트를 동시 운용</li>
+</ul>
+    </div>
+  <div class="transcript-wrap">
+    <div class="transcript-header">
+      <button class="transcript-toggle" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('visible')">
+        <span class="arr">▼</span> 원문 자막
+      </button>
+      <button class="copy-btn" onclick="var b=this,t=b.nextElementSibling||b;navigator.clipboard.writeText(document.querySelector('#tr-HnCLlKQnYiQ').textContent).then(()=>{b.textContent='복사됨';setTimeout(()=>b.textContent='복사',2000)})">복사</button>
+    </div>
+    <pre class="transcript-box" id="tr-HnCLlKQnYiQ">구글에서 공개한 소개 영상 말고 진짜 후기를 넣고 싶었습니다. 그래서 다른 AI로는 못 했던 부분을 시켜봤고요. 여러 AI들과 디자인 대결도 진행했죠. 새로 나온 구글 안티그래비티 찐 후기도 담았습니다. 끝까지 보시면 다 얻어가실 수 있습니다. 그럼 시작합니다. [음악] 재미나이 2.5 버전이 나온지 5개월 만에 제미나이 3.0 버전이 발표됐습니다. 직접 써 보기 전에 뭐가 달라졌는지 특징부터 쏙쏙 뽑아 볼게요. 먼저 웹 개발 실력부터 볼까요?이 테스트는 사람이 직접 눈으로 보고 채점한 거예요. 단순히 버그가 없다. 성능이 좋다 수준이 아니고요. 오, 디자인 예쁜데 구조가 아주 깔끔해. 이거 진짜 쓸 만한데 이렇게 철저히 사람의 느낌으로 평가한 거죠. 그런데 점수를 보시면 재미나이 3.0 버전이 두 번째 그룹과 무려 100점 정도 차이 나죠.이 이 정도면 사람들이 봤을 때 와 이게 확실히 더 좋다라고 느꼈다는 뜻이에요. 왜 그럴까요?이 버전은 눈이 엄청 좋거든요. 시각적 이해력이 뛰어나다는 거죠.이 결과를 보면 그 이유를 딱 알 수 있어요. 이건 앱이나 웹 화면 캡처를 보여주고이 버튼은 무슨 기능이야? 화면 구성이 어때? 하고 물어보는 테스트예요. 한마디로 본 걸 얼마나 찰떡같이 이해하는지 보는 거죠. 그런데 다른 모델들이랑 격차가 아주 커요. 2등인 손에 4.5 버전보다 점수가 두 배 정도나 높네요.이 정도면 구글이 작정하고 화면 보는 전용 엔진을 따로 만들었다고 봐야죠. 그래서이 다음 결과도 고개가 끄덕여집니다. 재미나이 3.0 버전이랑 출론 모델인 재미나이 3 딥크가 다른 애들을 완전히 압도하거든요. 눈이 워낙 좋으니까 그걸 바탕으로 성능도 확실히 앞서 나가는 거죠. 그럼 머리 쓰는 출론 능력은 어떨까요? 이건 무려 2,500개의 박사금 문제를 풀게시킨 겁니다. 여러 분야를 아우르는 종합둔 테스트라고 보면 됩니다. 출론 능력도 정말 중요하잖아요. 여기서도 점수 차이가 꽤 의미 있게 벌어집니다. 하지만 저는 이런 숫자들을 100% 믿진 않아요. 막상 직접 써 보면 느낌이 다를 때가 많으니까요. 그래서 직접 써 봤습니다. 처음엔 재미나 CLI로 시도해 봤어요. 근데 좀 아쉬운 점이 있네요. 울트라플랫만 3버전을 쓸 수 있더라고요. 프로나 무료 사용자는 대기해야 한대요. 그래서 저도 얼른 신청했습니다. 영상 댓글에 웨이트리스트 URL 남겨 둘게요. 하지만 여기서 포기할 순 없죠. 커서를 열어 보니까 오, 재미나이 3%가 보이네요. 지금은 프리뷰 버전이고요. 최대 컨텍스트는 20만 토큰이에요. 실제론 100만 토큰을 지원한다는데 지금은 제한이 좀 걸렸나 봐요. 근데 100만 토큰의 성능까지 좋으면 와, 이건 진짜 코딩계의 혁신이죠. 지금 3D 레이싱 시뮬레이션 게임을 열었는데요. 지난 영상에서 테스트했던 그 소스예요. 이게 단순한 게임이 아니거든요. 현실 물리 법칙이 적용된 시뮬레이션이죠. 그래서 난이도가 꽤 높아요. 예전에 재미나icli로는 한 개였잖아요. 결국 코덱스까지 썼다가 멈췄었죠. 그때 코덱스가 느려도 성능은 좋다는 걸 재발견했고요. 이제이 막힌 상황을 재미나이 3 버전으로 뚫어 보겠습니다. 일단 제미나이 3프로 선택한 후 소스부터 파악하게 했고요. 게임 실행해 달라고 하니까 플레이라이트를 딱 띄워 주네요. 브라우저 컨트롤 이거 커서 최신 기능이죠. 근데 게임을 해 보면 두 가지 문제가 있어요. 직진만 해도 차가 막 흔들려요. 그리고 일정 시간 지나면 갑자기 멈추고요. 재미나이 3%로 몇 번 고쳐봤는데 아쉽게도 해결이 안 되더라고요. 그래서 이번엔 묘수를 썼습니다. 프롬프트 끝에 싱크하드라고 넣었죠. 오, 그러니까 꽤 오래 작동하네요. 재미나의 삶도 싱크하드가 먹히나 봐요. 심층 사고라고 뜨는 거 보이시죠? 이걸 보니 알겠네요. 재미나이 3은 스스로 추론 깊이를 결정하는 LM이라는 걸요. 앞으로 어려운 문제는이 키워드 꼭 써야겠어요. 그리고 이번에는 성공했습니다. 차량 흔들림은 좀 남았지만 그래도 이제 멈추지는 않네요. 코덱스보다 엄청나게 뛰어나진 않더라도 체감상 확실히 더 좋은 느낌은 들어요. 물론 잠깐 써 본 거라 여러분의 찐 평가가 필요합니다. 자, 이번엔 프론트 핸드 디자인에 도전해 볼까요? 벤치마크를 보니 디자인 실력이 뛰어나더라고요. 그래서 제가 직접 검증해 보려고 합니다. 요즘 커서에서 플랜 모드 지원하는 거 아시죠? 여기서 재미나이 3을 선택하고 재미나이 소개 페이지 하나 만들어 줘라고 시켰습니다. 플랜 모드가 뚝딱 끝나면 투두 리스트가 떠요. 이제 빌드 버튼을 눌러 볼까요? 작업은 누구한테 맡기냐고요? 이번에도 재미나이 3한테 시킬 겁니다. 원페이지 사이트라 그런지 금방 만드네요. 결과물을 한번 볼까요? 음. 전체적으로 다크 스타일이군요. 근데 메뉴 부분이 살짝 어색하지 않나요? 솔직히 말하면 그냥 평범한 스타일이네요. 방금 본 건 커서에서 돌린 결과였고요. 이번에 새로 나온 구글 안티그래비티에서는 또 완전 다른 결과가 나왔어요. 이건 잠시 후에 공개할게요. 자, 이제 커서의 컴포저로 넘어가 보겠습니다. 컴포저 요즘 꽤 핫하죠? 최상급까진 아니어도 속도가 진짜 예술이죠. 성능은 좀 떨어지지만 그래도 보통 이상은 하죠. 이번엔 컴포저로 똑같이 해 봤어요. 아까랑 완벽히 같은 프롬프트죠. 오, 얘는 리액트를 활용하네요. 물론 에러가 한번 뜨긴 했어요. 하지만 수정 딱 한 번으로 완성. 정말 빠르죠? 자, 결과물 궁금하시죠? 한번 볼까요? 보시다시피 카드 스타일로 나왔어요. 아이콘도 아주 적극적으로 썼고요. 음, 솔직히 제 취향은 아니에요. 좀 가벼운 디자인 느낌입니다. 그래도 나름 개성 있게 잘 뽑았죠.이 이 결과물이 어떤지는 여러분이 직접 판단해 주세요. 근데 클로드 코드는 어떨지 궁금해지는군요. 해 볼까요? 먼저 커서 안에서 터미널을 열었습니다. 여기서 클로드 코드를 실행할 건데요. 이게 참 좋은 점이 있어요. 클로드뿐만 아니라 제미나이, 코덱스 같은 모델들도 여기서 다 따로따로 열 수 있거든요. 커서의 편리한 기능은 그대로 쓰면서 원하는 CLI2를 굴리는 거죠. 최근에는이 방식을 선호해요. 자, 아까랑 완전 똑같은 프롬프트를 던졌습니다. 과연 결과는 어떨까요? 오, 그래도 디자인은 꽤 깔끔하게 뽑혔네요. 그런데 뭔가 좀 익숙하지 않나요? 클로드는 항상 느낌이 비슷하더라고요. 특히 저 아이콘들 딱 봐도 나 클로드야 하는 것 같죠. 나쁘진 않은데 솔직히 말해서 최상의 디자인이라고 하기엔 좀 아쉽습니다. 주인공은 보통 마지막에 등장하죠. 안티그래비티를 써 봅시다. 지금 무료로 풀려 있으니이시기 놓치지 마시고요. 자, 홈페이지에서 다운받고 바로 설치 들어갑니다. 설치가 다 끝나고 실행하면 중간에 구글 로그인도 요구하죠. 어떤가요? 뭔가 엄청 익숙하지 않나요? 맞습니다. 커서와 느낌이 진짜 비슷해요. 왜냐하면 둘 다 vs 코드를 베이스로 만들었기 때문입니다. 그래서 형제처럼 닮은 거죠. 사용법도 비슷해요. 먼저 작업할 프로젝트 폴더를 선택해 줍니다. 그럼 이제 저 폴더 안에 파일들이 생성되겠죠? 그리고 중요한 거 오른쪽을 한번 보세요. 에이전트 탭이 있죠? 여기에서 프롬프트를 던질 거예요. 모델에서 제미나이 산프로 하이를 선택했고요. 흥미로운 건 클로드 소액과 GPT도 보입니다. 야, 이것도 무료로 제공하네요. 프롬프트를 넣고 모드를 보면 계획 모드와 패스트 모드가 보이죠? 패스트 모드는 실행 모드라 보면 되고요. 계획 모드에 두고 실행합시다. 계획 결과가 MD 파일로 나왔고 테스크를 누르면 작업 리스트도 보이군요. 첫 공개인데도 완성도가 상당해요. 진행 과정을 보면 커서나 클로드 코드처럼 작동합니다. 특이한 건 중간에 브라우저가 떠서 안티그래비티 브라우저 익스텐션을 설치하라고 하네요. 설치가 끝나면 AI가이 브라우저를 제어합니다. AI가 조작하는 동안에는 이런 느낌으로 브라우저 스타일이 바뀌어요. 이제 결과를 볼까요? 역시 커서에서처럼 다크 스타일이고요. 하지만 완성도가 더 높습니다. 재미나이 3.0을 쓰실 경우 지금 시점에서는 커서보다 안티그래비티가 훨씬 나은 선택입니다. 그리고 안티 그래v비티에는 에이전트 매니저가 있어요. 컨트롤 E를 누르면 창이 뜨고요. 여기서 에이전트를 여러 개 생성하여 각각 다른 작업을 시킬 수 있습니다. 이제 내용을 더 풍부하게 만들기 위해 조사 작업을 시켰어요. 그러자 에이전트가 하나 생성되어 작업이 진행됩니다. 그리고 다시 평가와 개선 방향을 제시해 달라고 했습니다. 이제 새로운 에이전트가 생겼죠. 중간에 인간의 개입이 필요하면 이렇게 알림 표시가 뜹니다. 지금 평가 및 개선 리포트가 나왔네요. 결과물을 다시 볼까요? 이제 디자인 완성도가 훨씬 좋아졌습니다. 만족스러운데요. 안티그래비티가 클로드 코드와 커서의 장점을 조합한 느낌입니다. 에이전트 개념이 기존에 있었지만 이걸 UI로 통합하여 편의성도 상당히 좋아졌고요. 이번에 재미나이 업데이트가 확실히 의미 있는 단계로 보입니다. 놀랍긴 한데 잠시 써 본 거라 평가는 더 뒤로 미루고자 합니다. 그럼 흥미롭고 심박한 영상이 계속됩니다.</pre>
+  </div>
+  </article>
+</main>
+
+<footer>유튜브 구독 정리 · agy 요약 · 2026-06-19 06:12</footer>
+
+
+<script>
+document.querySelectorAll('.nlm-btn').forEach(function(btn){
+  btn.addEventListener('click',function(){
+    navigator.clipboard.writeText('/notebooklm '+btn.dataset.url).then(function(){
+      var orig=btn.innerHTML;btn.innerHTML='✓ 복사됨';btn.classList.add('copied');
+      setTimeout(function(){btn.innerHTML=orig;btn.classList.remove('copied');},2000);
+    });
+  });
+});
+</script>
+
+</body>
+</html>

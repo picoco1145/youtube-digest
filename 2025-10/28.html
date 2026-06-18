@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>2025-10-28 — 유튜브 구독 정리</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+  :root{--bg:#090e1a;--surface:#111827;--surface2:#1a2235;--border:#1e2d47;--accent:#6c63ff;--accent2:#00d4ff;--text:#e8eaf0;--muted:#7a8499;--radius:14px;}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Pretendard',sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+  header{background:linear-gradient(135deg,#0d1b3e,#1a0533);border-bottom:1px solid var(--border);padding:20px 40px;display:flex;align-items:center;justify-content:space-between;}
+  .nav-back{color:var(--accent2);text-decoration:none;font-size:0.85rem;display:flex;align-items:center;gap:6px}
+  .nav-back:hover{color:#fff}
+  .date-badge{font-size:1.4rem;font-weight:700;letter-spacing:-0.5px;background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+  .count{font-size:0.85rem;color:var(--muted)}
+  main{max-width:900px;margin:0 auto;padding:32px 24px 80px}
+  .video-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;margin-bottom:24px;transition:border-color 0.2s,box-shadow 0.2s;}
+  .video-card:hover{border-color:var(--accent);box-shadow:0 4px 24px rgba(108,99,255,0.15)}
+  .card-top{display:flex;gap:0}
+  .thumb-wrap{flex:0 0 240px;position:relative;overflow:hidden}
+  .thumb-wrap img{width:100%;height:100%;object-fit:cover;transition:transform 0.4s}
+  .video-card:hover .thumb-wrap img{transform:scale(1.05)}
+  .card-info{flex:1;padding:20px;display:flex;flex-direction:column;gap:10px}
+  .card-meta{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+  .ch-tag{font-size:0.72rem;font-weight:600;padding:3px 12px;background:linear-gradient(135deg,rgba(108,99,255,0.2),rgba(0,212,255,0.2));border:1px solid rgba(108,99,255,0.3);border-radius:999px;color:var(--accent2);}
+  .date-tag{font-size:0.72rem;color:var(--muted)}
+  .no-transcript{font-size:0.68rem;padding:2px 8px;background:rgba(255,180,0,0.12);border:1px solid rgba(255,180,0,0.25);border-radius:999px;color:#ffa500;}
+  .video-title{font-size:1rem;font-weight:600;line-height:1.4}
+  .yt-link{display:inline-flex;align-items:center;gap:5px;font-size:0.8rem;color:var(--accent);text-decoration:none;transition:color 0.2s;}
+  .yt-link:hover{color:var(--accent2)}
+  
+  .nlm-btn{display:inline-flex;align-items:center;gap:5px;font-size:0.8rem;color:#fff;
+    background:rgba(108,99,255,0.2);border:1px solid rgba(108,99,255,0.4);border-radius:8px;
+    padding:4px 12px;cursor:pointer;font-family:inherit;transition:all 0.2s;margin-left:8px;}
+  .nlm-btn:hover{background:rgba(108,99,255,0.45);}
+  .nlm-btn.copied{background:rgba(0,200,100,0.2);border-color:rgba(0,200,100,0.4);color:#00c864;}
+
+  .summary-section{border-top:1px solid var(--border);background:var(--surface2);padding:20px 24px;font-size:0.85rem;line-height:1.7;color:#c5cad8;}
+  .summary-section h2{font-size:0.82rem;color:var(--accent2);margin:12px 0 4px}
+  .summary-section h2:first-child{margin-top:0}
+  .summary-section ul{padding-left:18px}
+  .summary-section li{margin-bottom:5px}
+  .transcript-wrap{border-top:1px solid var(--border);padding:14px 24px;background:#0c1220}
+  .transcript-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:0}
+  .transcript-toggle{background:none;border:none;color:var(--muted);font-size:0.8rem;cursor:pointer;font-family:inherit;display:flex;align-items:center;gap:4px;padding:0;transition:color 0.2s;}
+  .transcript-toggle:hover{color:var(--text)}
+  .copy-btn{background:rgba(108,99,255,0.1);border:1px solid rgba(108,99,255,0.3);border-radius:8px;color:var(--accent2);font-size:0.72rem;padding:4px 12px;cursor:pointer;font-family:inherit;transition:all 0.2s;}
+  .copy-btn:hover{background:rgba(108,99,255,0.25);color:#fff}
+  .transcript-box{display:none;margin-top:10px;background:#080d18;border:1px solid var(--border);border-radius:10px;padding:12px 14px;font-size:0.78rem;line-height:1.75;color:#8a95aa;max-height:260px;overflow-y:auto;white-space:pre-wrap;word-break:break-word;}
+  .transcript-box.visible{display:block}
+  footer{text-align:center;padding:24px;font-size:0.75rem;color:var(--muted);border-top:1px solid var(--border)}
+  @media(max-width:640px){.card-top{flex-direction:column}.thumb-wrap{flex:none;height:200px}header{padding:16px}main{padding:16px 12px 60px}}
+</style>
+</head>
+<body>
+
+<header>
+  <a class="nav-back" href="../index.html">← 대시보드로</a>
+  <div>
+    <div class="date-badge">2025-10-28</div>
+    <div class="count">1개 영상</div>
+  </div>
+  <div style="font-size:0.75rem;color:var(--muted)">2026-06-19 06:12 생성</div>
+</header>
+
+<main>
+
+  <article class="video-card">
+    <div class="card-top">
+      <a class="thumb-wrap" href="https://www.youtube.com/watch?v=m-5DjcgFmfQ" target="_blank" rel="noopener">
+        <img src="https://i.ytimg.com/vi/m-5DjcgFmfQ/hqdefault.jpg" alt="Master Claude Skills in 18 Minutes | Claude Skills Explained" loading="lazy"/>
+      </a>
+      <div class="card-info">
+        <div class="card-meta">
+          <span class="ch-tag">Grace Leung</span>
+          <span class="date-tag">2025-10-28</span>
+          
+        </div>
+        <div class="video-title">Master Claude Skills in 18 Minutes | Claude Skills Explained</div>
+        <div style="display:flex;align-items:center;flex-wrap:wrap;gap:4px;margin-top:auto">
+          <a class="yt-link" href="https://www.youtube.com/watch?v=m-5DjcgFmfQ" target="_blank" rel="noopener">↗ 유튜브에서 보기</a>
+          <button class="nlm-btn" data-url="https://www.youtube.com/watch?v=m-5DjcgFmfQ">📓 NotebookLM</button>
+        </div>
+      </div>
+    </div>
+    <div class="summary-section">
+      <h2>핵심 요약</h2>
+<p>MCP에 버금가는 게임체인저인 Claude 스킬(에이전트 스킬)이 무엇이고 왜 중요한지 설명하고, 오늘 바로 즉시 성과를 내는 사용·제작법을 18분 안에 정리한다.</p>
+<h2>주요 포인트</h2>
+<ul>
+<li>스킬은 'Claude에게 작업 방식을 가르치는 재사용 지침 매뉴얼'로, 컨텍스트에 따라 어디서나 자동 실행됨. 프로젝트 커스텀 지침과 달리 이식 가능(portable)하고 쌓아 쓸 수 있음(stackable)</li>
+<li>생태계 구분: Claude=두뇌, 스킬=지침 매뉴얼, MCP=외부 도구, 프로젝트=이들을 결합하는 작업 공간. 경쟁이 아니라 함께 쓰는 빌딩 블록</li>
+<li>스킬 3종류: 공식 스킬(설정의 capabilities에서 code execution·file creation 켜고 필요한 것만 활성화), 커스텀 스킬(skill-creator로 비개발자도 제작), 커뮤니티 스킬(보안 주의). 자동 트리거가 불안정하므로 계정 레벨 커스텀 지침에 '관련 스킬을 항상 고려하라'를 추가 권장</li>
+<li>커스텀 스킬 제작 3가지 방법: ① 공식 스킬을 확장(예: 브랜드 템플릿으로 branded deck), ② 기존 워크플로/프로젝트를 스킬로 패키징(MCP 도구는 꼭 필요한 것만 선별), ③ 여러 스킬을 처음부터 만들어 프로젝트에서 MCP와 함께 사용</li>
+<li>스킬이 필요한지 판단하는 3가지 질문: 같은 지침을 3번 이상 반복하는가, 실제 사람을 교육해야 할 과정인가, 매번 품질·형식 일관성이 필요한가. MCP 도구 변경에 대비한 백업 플랜을 넣고 한 스킬에 도구를 너무 많이 쓰지 말 것</li>
+</ul>
+    </div>
+  <div class="transcript-wrap">
+    <div class="transcript-header">
+      <button class="transcript-toggle" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('visible')">
+        <span class="arr">▼</span> 원문 자막
+      </button>
+      <button class="copy-btn" onclick="var b=this,t=b.nextElementSibling||b;navigator.clipboard.writeText(document.querySelector('#tr-m-5DjcgFmfQ').textContent).then(()=>{b.textContent='복사됨';setTimeout(()=>b.textContent='복사',2000)})">복사</button>
+    </div>
+    <pre class="transcript-box" id="tr-m-5DjcgFmfQ">Claude skills or agent skills. This is something I have been waiting for a long time, and honestly, I'm so excited because these has a huge potential and such a game changer, just like MCP in changing how we design AI workflows or AI agents. And not just within Claude, other AI models might likely adopt similar concepts. So in this video I explain what skills actually is, why this is another game changer, and most importantly, how you can start using them today to get immediate results. Let's go. So what is Claude skills? Really, the official definitions is very confusing. The easiest way to think of it is reusable instructions manual that Teach Claude how you want task to be done, what tools to use, what standard to follow so it execute automatically anytime, anywhere when you need it. Before Claude skills. When you execute repetitive tasks like writing, marketing, emails that follow your brand voice or process, you will have to repeat the same instructions in every single chat. This is inconsistent and time consuming. Now, you might be think, just use a Claude project with custom instructions, right? Yes, 100% and this is what most people are already doing, but there are still two fundamental limitations. First, these instructions are not portable. Imagine next time when you're doing another campaign, you either have to execute inside this project or you repeat all the instructions again. And second, it's not stackable. Imagine you have a specialized project for copywriting and other project for campaign analysis. You can't just combine them together for a new task. They operate in complete isolation. And so you have to build so many different projects, which might actually end up with overlapping workflows. And that's why the solution Claude skills. So instead of embedding all these workflow instructions and resources inside a project, you extract them out and package them into what they call the fancy term skills and make them available at the account level, including the web app, Claude code, or Claude API. So once you understand this, you can have so many kinds of user manual, perhaps an email writing manual, market research manual, design template manual, and they can be used all together as well. And that is why this is a game changer, as now you have way more flexibility and portability of these skills for your workflow or agent design. Now another big confusion is between skills and MCP and projects. And someone might tell you skills is just Anthropic's way to fix the MCP problems. And this is a big misconception. If you view it under the lens of Claude's, ecosystem, Claude itself is the brain. The core intelligence that make decisions. skills are the instruction manual, the reusable instructions for how specific tasks should be done. MCP provides the tools, the actual capabilities to do things outside of Claude's knowledge, like creating a file, calling a database. Projects are the dedicated workspace where you can combine skills. MCP tools and background knowledge for specific ongoing work. And this is exactly what makes this Claude ecosystem so powerful. You can mix and match based on what your specific workflow needs. Not every workflows needs all these components. They are not competing. They are building blocks and are designed to be coexist, to build powerful workflows or agents. Basically there are three types of skills you can use with Claude. For this video demo, I'll be using the Claude web application. First, the official skills by Antrhopic these are ready to use skills built right inside Claude. Just go to settings under capabilities here. You will control what capabilities Claude will use in the chat, but first you have to make sure code execution and file creation has been turned on in order to use skills. Then you will see a list of predefined skills. I do not recommend you turn them on all at once. Just pick the one that you are really gonna use, because more skills might confuse Claude when executing the workflow. Besides the official skills created by Anthropic, they're also skills created by Anthropic's partner like Notion. So you can check out the official GitHub repository and scroll down to partner skills where you can download the skills and use them on Claude so I will put the link in the description. And second custom skills. So these are your own creation. It can be your own workflow instructions, resource template, or even coding script. You prepare your own skill file according to the official format, and you activate them by uploading the skill file. You can also turn on and use the official skill called “skill-creator” to create your custom skill if you’re a non-technical. This is how you personalize Claude to your way of working, and I'll show you how in just a minute. Third is Community-created skills. So there is also a growing ecosystem of skills created by other Claude user, but you want to be cautious about security when using these community skills. **** And </pre>
+  </div>
+  </article>
+</main>
+
+<footer>유튜브 구독 정리 · agy 요약 · 2026-06-19 06:12</footer>
+
+
+<script>
+document.querySelectorAll('.nlm-btn').forEach(function(btn){
+  btn.addEventListener('click',function(){
+    navigator.clipboard.writeText('/notebooklm '+btn.dataset.url).then(function(){
+      var orig=btn.innerHTML;btn.innerHTML='✓ 복사됨';btn.classList.add('copied');
+      setTimeout(function(){btn.innerHTML=orig;btn.classList.remove('copied');},2000);
+    });
+  });
+});
+</script>
+
+</body>
+</html>

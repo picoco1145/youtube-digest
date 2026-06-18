@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>2026-02-06 — 유튜브 구독 정리</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+  :root{--bg:#090e1a;--surface:#111827;--surface2:#1a2235;--border:#1e2d47;--accent:#6c63ff;--accent2:#00d4ff;--text:#e8eaf0;--muted:#7a8499;--radius:14px;}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Pretendard',sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+  header{background:linear-gradient(135deg,#0d1b3e,#1a0533);border-bottom:1px solid var(--border);padding:20px 40px;display:flex;align-items:center;justify-content:space-between;}
+  .nav-back{color:var(--accent2);text-decoration:none;font-size:0.85rem;display:flex;align-items:center;gap:6px}
+  .nav-back:hover{color:#fff}
+  .date-badge{font-size:1.4rem;font-weight:700;letter-spacing:-0.5px;background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+  .count{font-size:0.85rem;color:var(--muted)}
+  main{max-width:900px;margin:0 auto;padding:32px 24px 80px}
+  .video-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;margin-bottom:24px;transition:border-color 0.2s,box-shadow 0.2s;}
+  .video-card:hover{border-color:var(--accent);box-shadow:0 4px 24px rgba(108,99,255,0.15)}
+  .card-top{display:flex;gap:0}
+  .thumb-wrap{flex:0 0 240px;position:relative;overflow:hidden}
+  .thumb-wrap img{width:100%;height:100%;object-fit:cover;transition:transform 0.4s}
+  .video-card:hover .thumb-wrap img{transform:scale(1.05)}
+  .card-info{flex:1;padding:20px;display:flex;flex-direction:column;gap:10px}
+  .card-meta{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+  .ch-tag{font-size:0.72rem;font-weight:600;padding:3px 12px;background:linear-gradient(135deg,rgba(108,99,255,0.2),rgba(0,212,255,0.2));border:1px solid rgba(108,99,255,0.3);border-radius:999px;color:var(--accent2);}
+  .date-tag{font-size:0.72rem;color:var(--muted)}
+  .no-transcript{font-size:0.68rem;padding:2px 8px;background:rgba(255,180,0,0.12);border:1px solid rgba(255,180,0,0.25);border-radius:999px;color:#ffa500;}
+  .video-title{font-size:1rem;font-weight:600;line-height:1.4}
+  .yt-link{display:inline-flex;align-items:center;gap:5px;font-size:0.8rem;color:var(--accent);text-decoration:none;transition:color 0.2s;}
+  .yt-link:hover{color:var(--accent2)}
+  
+  .nlm-btn{display:inline-flex;align-items:center;gap:5px;font-size:0.8rem;color:#fff;
+    background:rgba(108,99,255,0.2);border:1px solid rgba(108,99,255,0.4);border-radius:8px;
+    padding:4px 12px;cursor:pointer;font-family:inherit;transition:all 0.2s;margin-left:8px;}
+  .nlm-btn:hover{background:rgba(108,99,255,0.45);}
+  .nlm-btn.copied{background:rgba(0,200,100,0.2);border-color:rgba(0,200,100,0.4);color:#00c864;}
+
+  .summary-section{border-top:1px solid var(--border);background:var(--surface2);padding:20px 24px;font-size:0.85rem;line-height:1.7;color:#c5cad8;}
+  .summary-section h2{font-size:0.82rem;color:var(--accent2);margin:12px 0 4px}
+  .summary-section h2:first-child{margin-top:0}
+  .summary-section ul{padding-left:18px}
+  .summary-section li{margin-bottom:5px}
+  .transcript-wrap{border-top:1px solid var(--border);padding:14px 24px;background:#0c1220}
+  .transcript-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:0}
+  .transcript-toggle{background:none;border:none;color:var(--muted);font-size:0.8rem;cursor:pointer;font-family:inherit;display:flex;align-items:center;gap:4px;padding:0;transition:color 0.2s;}
+  .transcript-toggle:hover{color:var(--text)}
+  .copy-btn{background:rgba(108,99,255,0.1);border:1px solid rgba(108,99,255,0.3);border-radius:8px;color:var(--accent2);font-size:0.72rem;padding:4px 12px;cursor:pointer;font-family:inherit;transition:all 0.2s;}
+  .copy-btn:hover{background:rgba(108,99,255,0.25);color:#fff}
+  .transcript-box{display:none;margin-top:10px;background:#080d18;border:1px solid var(--border);border-radius:10px;padding:12px 14px;font-size:0.78rem;line-height:1.75;color:#8a95aa;max-height:260px;overflow-y:auto;white-space:pre-wrap;word-break:break-word;}
+  .transcript-box.visible{display:block}
+  footer{text-align:center;padding:24px;font-size:0.75rem;color:var(--muted);border-top:1px solid var(--border)}
+  @media(max-width:640px){.card-top{flex-direction:column}.thumb-wrap{flex:none;height:200px}header{padding:16px}main{padding:16px 12px 60px}}
+</style>
+</head>
+<body>
+
+<header>
+  <a class="nav-back" href="../index.html">← 대시보드로</a>
+  <div>
+    <div class="date-badge">2026-02-06</div>
+    <div class="count">1개 영상</div>
+  </div>
+  <div style="font-size:0.75rem;color:var(--muted)">2026-06-19 06:12 생성</div>
+</header>
+
+<main>
+
+  <article class="video-card">
+    <div class="card-top">
+      <a class="thumb-wrap" href="https://www.youtube.com/watch?v=l_Iy4ZCK1lY" target="_blank" rel="noopener">
+        <img src="https://i.ytimg.com/vi/l_Iy4ZCK1lY/hqdefault.jpg" alt="Claude Cowork Just Changed How You Do Marketing" loading="lazy"/>
+      </a>
+      <div class="card-info">
+        <div class="card-meta">
+          <span class="ch-tag">Grace Leung</span>
+          <span class="date-tag">2026-02-06</span>
+          
+        </div>
+        <div class="video-title">Claude Cowork Just Changed How You Do Marketing</div>
+        <div style="display:flex;align-items:center;flex-wrap:wrap;gap:4px;margin-top:auto">
+          <a class="yt-link" href="https://www.youtube.com/watch?v=l_Iy4ZCK1lY" target="_blank" rel="noopener">↗ 유튜브에서 보기</a>
+          <button class="nlm-btn" data-url="https://www.youtube.com/watch?v=l_Iy4ZCK1lY">📓 NotebookLM</button>
+        </div>
+      </div>
+    </div>
+    <div class="summary-section">
+      <h2>핵심 요약</h2>
+<p>Claude의 chat·Cowork·Code를 용도별로 조합해 마케팅 워크플로 전체를 시스템화하는 6가지 방법을 소개하며, 특히 비개발자용 Cowork의 로컬 파일 접근과 병렬 에이전트 실행이 주는 변화를 강조한다.</p>
+<h2>주요 포인트</h2>
+<ul>
+<li>용도 구분: chat은 브레인스토밍·기획, Cowork는 업무 실행(비개발자용 Claude Code), Claude Code는 제작·구축용. 핵심은 하나만 고르지 말고 상황에 맞게 함께 쓰는 것</li>
+<li>Cowork의 가장 큰 강점은 엔드투엔드 실행: 파일을 로컬 폴더에 넣고 프롬프트 하나로 결과물 완성. Claude 프로젝트를 Cowork에 그대로 옮겨 동일 워크플로를 로컬에서 실행 가능</li>
+<li>병렬 에이전트로 캠페인 크리에이티브를 한 번에 대량 생성(제품당 3개 변형), 로컬의 방대한 데이터셋(예: Lenny 팟캐스트 전사본 전체)을 분석해 스프레드시트·대시보드·전략 덱을 한 번에 산출</li>
+<li>Claude in Chrome MCP와 커스텀 스킬을 결합해 라이브 웹사이트를 실시간 분석하는 Landing Page Audit 스킬, Google AI Mode 검색 결과 추적 스킬 등 브라우저 에이전트 활용</li>
+<li>스킬·명령·에이전트·MCP를 묶어 Plugin으로 패키징하면 팀원과 전체 셋업을 통째로 공유 가능(명령은 수동 트리거, 스킬은 컨텍스트에 따라 자동 트리거)</li>
+</ul>
+    </div>
+  <div class="transcript-wrap">
+    <div class="transcript-header">
+      <button class="transcript-toggle" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('visible')">
+        <span class="arr">▼</span> 원문 자막
+      </button>
+      <button class="copy-btn" onclick="var b=this,t=b.nextElementSibling||b;navigator.clipboard.writeText(document.querySelector('#tr-l_Iy4ZCK1lY').textContent).then(()=>{b.textContent='복사됨';setTimeout(()=>b.textContent='복사',2000)})">복사</button>
+    </div>
+    <pre class="transcript-box" id="tr-l_Iy4ZCK1lY">Claude can now work on your computer like a real teammate, reading your files, creating deliverables, running multiple tasks at once. And when you combine Claude chat bot, cowork and Claudeer, you are building an entire marketing workflow system. So in this video, I want to watch you through six ways. These can completely change how you do marketing. Let's go. Right now there are many ways to access Claude and it can get confusing. For now, we have two main official ways to use Claude locally, Claude desktop and Claude code terminal. And under Claude desktop, they still have three work modes, Claude chat cowork and Claude Code desktop. They all run Claude, but they work differently. Claude chat is like where you chat. Brainstorm organized projects with Claude, everything is still stored in Anthropic's cloud and this is your planning and brainstorming space. Cowork is basically Claude Code for non-technical. It used the same agent engine that is for task execution. It has local file access, can run parallel agents. It is designed to do work end to end. So think of it as a AI digital teammate. Claude Code Desktop. This is the Claude code without terminal more powerful than cowork. And this gives you 95% of the same Claude Code power and on the side Claude code terminal. This is the full Claude Code experience and it's the most powerful and give you the most customization control. So use chat for thinking and brainstorming, CoWork for getting work done and Claude Code for creating and building. And the real magic is not to pick either one of them, but to use them together when they make sense. For most of us, you probably already have different Claude projects set up with the custom instructions, project files, brand guidelines. But every time you're still uploading, copying the output. And so the biggest unlock of cowork in your workflow is executing end-to-end. You could just drop the file in a local folder, hit one prompt, and the deliverable is done. And let me show you with a strategy deck building use case. So once you on Claude Desktop, you will see there three sections. Chat, cowork Claude code. So for example, on Claude chat, we have these Claude projects to generate a strategy slide deck from any given materials and transform it into a ready to present slide deck. So we have the custom instructions that contains the workflow details and a project context file, like the presentation templates, brand guidelines. And now, if you want to replicate these same workflow and work locally on your computer, the easiest way is to click here and add this Claude projects to CoWork. So what it does is it will add the project instructions and files to the chat. Or another tip, or another tip is you can just directly add from the Claude core interface. So first, let's pick the working folder. So Claude will only use and save files to this working folder. So let's say we want to save it to the strategy deck folder. Now let's say we have this call transcript. Instead of uploading it to cowork, I highly recommend just putting it in the working folder as local file system access is exactly the biggest selling point of cowork. And you can put whatever relevant materials like the project brief, guidelines, templates for Claude to access and then use this prompt to ask it, to generate the slide deck. And then the magic happens as it will follow the exact same workflow as you set in that Claude project. But everything will be saved locally. And here you'll see the to-do list process tracker, which is the big highlight of Claude agentic system. So Claude will be the main agent and plan the sub-tasks itself and execute them one by one. And here you will see all the files that are being used at and generate in the process. And also it shows all the context and relevant skills that Claude is loading to complete this task. So in this case, that is the official PowerPoint skills. And immediately the deck is ready and saved it in this folder. So it follows exactly the same template set from that Claude project. The slide structure sections with content tailored for this brand only. So although there's still things that just are not yet finalized, this will save you lots of time in getting the first draft. *** Now this is just one powerful way of using Claude CoWork for your daily marketing tasks. And if you want to get more inspiration, I recommend this free resource, the Claude CoWork stack 12 advanced Prompts to replace the week of work. You can find the link below. This resource will give you ready to use prompts for cowork covering most common marketing tasks from content performance analysis, competitive intelligence, to email outreach, and full marketing campaign builders. These are not just basic prompts, they are structures specifically for how cowork operates with your files and connectors, so you can put them to work immediately. And what I've found useful is using these as starting templates and adjust for my needs, and</pre>
+  </div>
+  </article>
+</main>
+
+<footer>유튜브 구독 정리 · agy 요약 · 2026-06-19 06:12</footer>
+
+
+<script>
+document.querySelectorAll('.nlm-btn').forEach(function(btn){
+  btn.addEventListener('click',function(){
+    navigator.clipboard.writeText('/notebooklm '+btn.dataset.url).then(function(){
+      var orig=btn.innerHTML;btn.innerHTML='✓ 복사됨';btn.classList.add('copied');
+      setTimeout(function(){btn.innerHTML=orig;btn.classList.remove('copied');},2000);
+    });
+  });
+});
+</script>
+
+</body>
+</html>
