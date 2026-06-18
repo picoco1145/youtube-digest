@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>2026-06-18 — 유튜브 구독 정리</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+  :root{--bg:#090e1a;--surface:#111827;--surface2:#1a2235;--border:#1e2d47;--accent:#6c63ff;--accent2:#00d4ff;--text:#e8eaf0;--muted:#7a8499;--radius:14px;}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Pretendard',sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+  header{background:linear-gradient(135deg,#0d1b3e,#1a0533);border-bottom:1px solid var(--border);padding:20px 40px;display:flex;align-items:center;justify-content:space-between;}
+  .nav-back{color:var(--accent2);text-decoration:none;font-size:0.85rem;display:flex;align-items:center;gap:6px}
+  .nav-back:hover{color:#fff}
+  .date-badge{font-size:1.4rem;font-weight:700;letter-spacing:-0.5px;background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+  .count{font-size:0.85rem;color:var(--muted)}
+  main{max-width:900px;margin:0 auto;padding:32px 24px 80px}
+  .video-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;margin-bottom:24px;transition:border-color 0.2s,box-shadow 0.2s;}
+  .video-card:hover{border-color:var(--accent);box-shadow:0 4px 24px rgba(108,99,255,0.15)}
+  .card-top{display:flex;gap:0}
+  .thumb-wrap{flex:0 0 240px;position:relative;overflow:hidden}
+  .thumb-wrap img{width:100%;height:100%;object-fit:cover;transition:transform 0.4s}
+  .video-card:hover .thumb-wrap img{transform:scale(1.05)}
+  .card-info{flex:1;padding:20px;display:flex;flex-direction:column;gap:10px}
+  .card-meta{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+  .ch-tag{font-size:0.72rem;font-weight:600;padding:3px 12px;background:linear-gradient(135deg,rgba(108,99,255,0.2),rgba(0,212,255,0.2));border:1px solid rgba(108,99,255,0.3);border-radius:999px;color:var(--accent2);}
+  .date-tag{font-size:0.72rem;color:var(--muted)}
+  .no-transcript{font-size:0.68rem;padding:2px 8px;background:rgba(255,180,0,0.12);border:1px solid rgba(255,180,0,0.25);border-radius:999px;color:#ffa500;}
+  .video-title{font-size:1rem;font-weight:600;line-height:1.4}
+  .yt-link{display:inline-flex;align-items:center;gap:5px;font-size:0.8rem;color:var(--accent);text-decoration:none;transition:color 0.2s;}
+  .yt-link:hover{color:var(--accent2)}
+  
+  .nlm-btn{display:inline-flex;align-items:center;gap:5px;font-size:0.8rem;color:#fff;
+    background:rgba(108,99,255,0.2);border:1px solid rgba(108,99,255,0.4);border-radius:8px;
+    padding:4px 12px;cursor:pointer;font-family:inherit;transition:all 0.2s;margin-left:8px;}
+  .nlm-btn:hover{background:rgba(108,99,255,0.45);}
+  .nlm-btn.copied{background:rgba(0,200,100,0.2);border-color:rgba(0,200,100,0.4);color:#00c864;}
+
+  .summary-section{border-top:1px solid var(--border);background:var(--surface2);padding:20px 24px;font-size:0.85rem;line-height:1.7;color:#c5cad8;}
+  .summary-section h2{font-size:0.82rem;color:var(--accent2);margin:12px 0 4px}
+  .summary-section h2:first-child{margin-top:0}
+  .summary-section ul{padding-left:18px}
+  .summary-section li{margin-bottom:5px}
+  .transcript-wrap{border-top:1px solid var(--border);padding:14px 24px;background:#0c1220}
+  .transcript-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:0}
+  .transcript-toggle{background:none;border:none;color:var(--muted);font-size:0.8rem;cursor:pointer;font-family:inherit;display:flex;align-items:center;gap:4px;padding:0;transition:color 0.2s;}
+  .transcript-toggle:hover{color:var(--text)}
+  .copy-btn{background:rgba(108,99,255,0.1);border:1px solid rgba(108,99,255,0.3);border-radius:8px;color:var(--accent2);font-size:0.72rem;padding:4px 12px;cursor:pointer;font-family:inherit;transition:all 0.2s;}
+  .copy-btn:hover{background:rgba(108,99,255,0.25);color:#fff}
+  .transcript-box{display:none;margin-top:10px;background:#080d18;border:1px solid var(--border);border-radius:10px;padding:12px 14px;font-size:0.78rem;line-height:1.75;color:#8a95aa;max-height:260px;overflow-y:auto;white-space:pre-wrap;word-break:break-word;}
+  .transcript-box.visible{display:block}
+  footer{text-align:center;padding:24px;font-size:0.75rem;color:var(--muted);border-top:1px solid var(--border)}
+  @media(max-width:640px){.card-top{flex-direction:column}.thumb-wrap{flex:none;height:200px}header{padding:16px}main{padding:16px 12px 60px}}
+</style>
+</head>
+<body>
+
+<header>
+  <a class="nav-back" href="../index.html">← 대시보드로</a>
+  <div>
+    <div class="date-badge">2026-06-18</div>
+    <div class="count">5개 영상</div>
+  </div>
+  <div style="font-size:0.75rem;color:var(--muted)">2026-06-19 02:37 생성</div>
+</header>
+
+<main>
+
+  <article class="video-card">
+    <div class="card-top">
+      <a class="thumb-wrap" href="https://www.youtube.com/watch?v=DTCyvo6cC54" target="_blank" rel="noopener">
+        <img src="https://i.ytimg.com/vi/DTCyvo6cC54/hqdefault.jpg" alt="Every Level of a Claude Second Brain Explained" loading="lazy"/>
+      </a>
+      <div class="card-info">
+        <div class="card-meta">
+          <span class="ch-tag">Nate Herk</span>
+          <span class="date-tag">2026-06-18</span>
+          
+        </div>
+        <div class="video-title">Every Level of a Claude Second Brain Explained</div>
+        <div style="display:flex;align-items:center;flex-wrap:wrap;gap:4px;margin-top:auto">
+          <a class="yt-link" href="https://www.youtube.com/watch?v=DTCyvo6cC54" target="_blank" rel="noopener">↗ 유튜브에서 보기</a>
+          <button class="nlm-btn" data-url="https://www.youtube.com/watch?v=DTCyvo6cC54">📓 NotebookLM</button>
+        </div>
+      </div>
+    </div>
+    <div class="summary-section">
+      <h2>핵심 요약</h2>
+<p>AI '제2의 뇌'를 5단계로 설명한다. 핵심은 데이터가 곧 나만의 해자(moat)라는 것, 그리고 나중에 "어떻게 꺼내 쓸지(질문)"를 역설계해 폴더·라우팅 구조를 짜야 에이전트가 환각 없이 정확히 찾아낸다는 점이다.</p>
+<h2>주요 포인트</h2>
+<ul>
+<li>제2의 뇌 = 마크다운 파일·폴더 구조. 클로드코드뿐 아니라 코덱스·헤르메스 등 어떤 에이전트와도 호환</li>
+<li>핵심 질문은 "에이전트가, 그리고 내가 그걸 다시 찾을 수 있는가" — 아니라면 라우팅/폴더 설계가 잘못된 것</li>
+<li>거꾸로 설계: 미래에 데이터를 어떻게 활용할지 먼저 정하고 그에 맞춰 저장</li>
+<li>단순 링크 모음 → 클러스터 → 관계 매핑(relationship mapping)으로 단계적 진화</li>
+</ul>
+    </div>
+  <div class="transcript-wrap">
+    <div class="transcript-header">
+      <button class="transcript-toggle" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('visible')">
+        <span class="arr">▼</span> 원문 자막
+      </button>
+      <button class="copy-btn" onclick="var b=this,t=b.nextElementSibling||b;navigator.clipboard.writeText(document.querySelector('#tr-DTCyvo6cC54').textContent).then(()=>{b.textContent='복사됨';setTimeout(()=>b.textContent='복사',2000)})">복사</button>
+    </div>
+    <pre class="transcript-box" id="tr-DTCyvo6cC54">Today I'm going to explain the different levels of building your own AI second brain. You can see here we have a visual of three very different types of data. This one is where we have our context really starting to form and we're starting to see some relationships and we're starting to see some different nodes and entities form. And then as we continue to scale this up, add more knowledge, more knowledge, more relationships, we start to get something that looks a little bit more like this where we have clearly different clusters and inside of all of these nodes, we can see how they relate to each other. And then over here, we're taking all of those relationships a step further, and we're able to then start to see how everything really pieces together rather than just having files that sort of link back to each other. This is relationship mapping. And so really, the idea of an AI second brain has blown up because we're all trying to get as much information out of our heads into our systems as possible. That's the true value. Your moat is your data. It's your IP. But the process of organizing that into a system so that you can use it with a bunch of different AI models and so that it can actually recall things in a way that makes sense rather than just hallucinating or spending a bunch of your time and tokens trying to look through everything. That's the issue. So clearly all of this is my real data and this is what the actual project looks like. It is my Herku project. I have a bunch of folders and files here and at the end of the day that's basically all it is. It is markdown files that are organized in a way that I understand and that my agents understand. And so yes, I'm going to walk you guys through what I have here and how it works. But I also have this other project where I'm going to show you if you're starting from scratch or if you feel like maybe you're in between level two and three, how we can actually look at the differences and what it might look like to scale up your own systems and start to add context in different ways. So super excited to dig into this today and I don't want to waste any of your guys' time. So let's just start looking at these five levels and how they differ. All right, so every level of a claude code second brain and I'm going to be obviously kind of referring to cla code a lot, but keep in mind this can be used with any AI model. I use my second brain all the time with codecs as well. I use it with Hermes agent. This can be used by different agent harnesses because it's just files and folders. So what is the actual job of a second brain? A lot of people probably define this differently, but the way that I think about it is that it's a place for me to save notes, meeting recordings, ClickUp threads, stuff like that. I can save it there, and then it helps me basically ingest it and get it into the right spots so that it can actually find it later. And so that's really the thing to think about is can your agent find it again? and could you find it again? Because if the answer is no, then you probably don't have the right routing or folder architecture set up, which is what I'm here to talk about today. And one other sort of mindset thing that I want to get out there before we dive into these five levels is that you kind of have to work backwards. You want to reverse engineer based on the question. So, this will start to make more sense as we get into it. But really, what you should be thinking about is how do I want to use this data in the future? Because how it's going to be accessed and recalled determines the way that you put it in in the first place. For example, a basketball hoop and a basketball. We know what shape the hoop is and we know that the ball needs to go through. So why would we ever design the ball to be a giant square because it just wouldn't fit through the hoop. So that would make no sense. So you need to start with the end in mind a little bit. Once again, I will show you exactly what I mean by that as we continue on. Because remember, we're trying to get to the point where your second brain knows everything about your business, about you, your relationships. It knows everything to the point where it probably can recall stuff better than you can because it has a better memory and it can search through things way faster than you can. So, we've got five different levels to talk about and they each kind of have different questions. So, level one is, can you find the file or the info by looking for an exact word or name? Level two is, can you pull everything on a certain topic together? Level three is, I searched for different words than I wrote. So, semantic search, you're searching for meaning rather than an exact word match. And then trace relationship chains. Can you ask about topic X? And then trace that all the way back to topic A. And then level five is just kind of making this whole second brain thing super autonomous to the point that you don't ev</pre>
+  </div>
+  </article>
+  <article class="video-card">
+    <div class="card-top">
+      <a class="thumb-wrap" href="https://www.youtube.com/watch?v=Wfyd2DWyg2k" target="_blank" rel="noopener">
+        <img src="https://i.ytimg.com/vi/Wfyd2DWyg2k/hqdefault.jpg" alt="Claude Code Doesn’t Matter. THIS Does" loading="lazy"/>
+      </a>
+      <div class="card-info">
+        <div class="card-meta">
+          <span class="ch-tag">Nicholas Puru</span>
+          <span class="date-tag">2026-06-18</span>
+          
+        </div>
+        <div class="video-title">Claude Code Doesn’t Matter. THIS Does</div>
+        <div style="display:flex;align-items:center;flex-wrap:wrap;gap:4px;margin-top:auto">
+          <a class="yt-link" href="https://www.youtube.com/watch?v=Wfyd2DWyg2k" target="_blank" rel="noopener">↗ 유튜브에서 보기</a>
+          <button class="nlm-btn" data-url="https://www.youtube.com/watch?v=Wfyd2DWyg2k">📓 NotebookLM</button>
+        </div>
+      </div>
+    </div>
+    <div class="summary-section">
+      <h2>핵심 요약</h2>
+<p>도구(클로드코드·코덱스·헤르메스)는 끊임없이 바뀌므로, 도구에 종속되지 않는 'tool-proof' 셋업을 폴더로 구축하라. 파일·규칙·스킬·연결을 폴더에 모아두면 새 도구가 나와도 그 폴더만 열어 그대로 이어 쓸 수 있다.</p>
+<h2>주요 포인트</h2>
+<ul>
+<li>2개 레이어: 위=엔진(클로드·코덱스·제미나이, 계속 교체·빌려 쓰는 것) / 아래=내 폴더(파일·규칙·스킬·연결=내 자산)</li>
+<li>엔진을 좇지 말고 폴더에 투자 → 도구 전환이 '며칠'에서 '10분 결정'으로</li>
+<li>같은 프롬프트·폴더로 클로드와 코덱스 양쪽에서 동일 결과(실제 고객 주간 리포트) 시연</li>
+<li>로컬 모델·백업 클라우드 모델을 갖추는 것의 중요성도 강조</li>
+</ul>
+    </div>
+  <div class="transcript-wrap">
+    <div class="transcript-header">
+      <button class="transcript-toggle" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('visible')">
+        <span class="arr">▼</span> 원문 자막
+      </button>
+      <button class="copy-btn" onclick="var b=this,t=b.nextElementSibling||b;navigator.clipboard.writeText(document.querySelector('#tr-Wfyd2DWyg2k').textContent).then(()=>{b.textContent='복사됨';setTimeout(()=>b.textContent='복사',2000)})">복사</button>
+    </div>
+    <pre class="transcript-box" id="tr-Wfyd2DWyg2k">Every couple of months, a new AI tool drops, and you're restarting from zero. You learn cursor, and then Claude came out. You learn Claude code, and then Codex came out. You then learn Codex, and now Hermes agent is the one that everybody, including myself, is talking about. And every single time, you're rebuilding your setup, your prompts, your workflows, like the months that you just spent never even happened. What if I told you it didn't have to be that way? So, this is Claude on the left, Codex on the right. We have the same prompt, the same client, the same result. Now, both of them, they just built a weekly report for a real client of mine with a red warning at the top that I never even asked for. So, I didn't teach Codex anything about this client. It just read my folder. Every skill that I built over the last year, it just transferred from one rival AI to another one in a few seconds. So, there's no rebuilding, there's no relearning, and that's because what I've been actually building wasn't a Claude or code thing. It was something that works in every AI tool that exists. So, in this video, I'm going to show you exactly how to set this up, prove it in two rival tools side by side, and give you the four habits that make this work in whatever drops next. Now, the whole setup is going to be in a repo inside of the free school community. Link will be down below in the description. Let's get into it. So, let me just quickly preface that no, you did not waste your time learning all of these tools. And the reason is one idea. So, if you take one thing from this video, take this. You need to be building tool-proof. Now, tool-proof, this means that the things you make with AI, like your files or any of your rules or your custom skills, none of it belongs to one application. So, when a new tool blows up, and another one will, you don't start over, and you don't relearn anything. You take the exact same setup, you open it with the new tool, and you just keep working. So, switching becomes a 10-minute decision instead of days of moving everything over, transferring all that stuff. It's very monotonous. And this isn't a trick. Like, it's how these tools were built to work, and most people just never use it. So, first, let me just show you the picture that made this actually click for me, and then we'll prove it live on a real client example. All right, so here's the picture. Everything in your AI setup, it lives in one of two different layers. So, the top layer is the engine. So, we have Claude Code, Code X, Claude Co-work, Hermes Agent, Gemini CLI. Now, this layer, it changes constantly. It's inevitable. So, a new model may drop or the benchmarks may reshuffle and whatever is the best engine today, it probably won't be in the next 3 months. So, you're never going to be winning by chasing this layer. Nobody can and it's built to just keep on moving. Now, the bottom layer, this is your folder. So, normal folder on your computer and inside of it, there's four things. So, we first have your files, the actual work. So, your rules file, how you want the work done, your skills being the next one. So, the repeatable jobs that you have taught it and each one is just a small text file of instructions. And we have your connections. This is just the outside applications that your AI is allowed to be using. So, things like your email, your calendar, your Google Drive, whatever it may be, Slack. Now, the line between those two layers, this is the entire point of it. So, you rent the top layer. So, it belongs to Anthropic or Open AI or Google, even local models. And using local models is becoming ever so more important and having these backup cloud models, for example, just because I mean, just the other day, the government has just shut down one of the best AI models in the world, Fable 5. So, having a local model is going to be very important in the coming months. Now, beyond that, you own the bottom layer. So, this is sitting on your computer. It's not going anywhere whatsoever and every hour that you have put into Claude Code went into building it. And the engine, it never owned any of it. Okay. Now, why would a rival company's tool be able to run your setup? Because under the hood, these tools are actually more alike than different. So, they open a local folder on a computer. They read a rules file when they start off. Claude is then going to call that file Claude.md. Almost everyone else is going to be calling it agents.md. And a single line in one file is pointing it at the other one. So, you only ever write your rules once. So, they run skills and the skill format is just an open standard now. The same file works across tools. Additionally, they're able to reach your other applications through something called MCP. We're probably all familiar with it by now. It's just one shared plug that Anthropic started and OpenAI and Google both adopted and pretty much everyone else in the world. There's also CLIs. This is another</pre>
+  </div>
+  </article>
+  <article class="video-card">
+    <div class="card-top">
+      <a class="thumb-wrap" href="https://www.youtube.com/watch?v=3vgagGeGg1E" target="_blank" rel="noopener">
+        <img src="https://i.ytimg.com/vi/3vgagGeGg1E/hqdefault.jpg" alt="Never Use AI Without This.." loading="lazy"/>
+      </a>
+      <div class="card-info">
+        <div class="card-meta">
+          <span class="ch-tag">Nicholas Puru</span>
+          <span class="date-tag">2026-06-18</span>
+          
+        </div>
+        <div class="video-title">Never Use AI Without This..</div>
+        <div style="display:flex;align-items:center;flex-wrap:wrap;gap:4px;margin-top:auto">
+          <a class="yt-link" href="https://www.youtube.com/watch?v=3vgagGeGg1E" target="_blank" rel="noopener">↗ 유튜브에서 보기</a>
+          <button class="nlm-btn" data-url="https://www.youtube.com/watch?v=3vgagGeGg1E">📓 NotebookLM</button>
+        </div>
+      </div>
+    </div>
+    <div class="summary-section">
+      <h2>핵심 요약</h2>
+<p>큰 결정을 AI 단일 답변으로 내리지 말 것. AI는 사용자에게 동조하는 편향이 있다. "서로 반대하는 5명의 조언자" 프롬프트로 AI가 스스로 논쟁하게 만들어, 1분 만에 모든 각도에서 결정을 압박 테스트하라.</p>
+<h2>주요 포인트</h2>
+<ul>
+<li>5인 자문단: 회의론자(리스크)·숫자형(ROI)·성장형(놓친 상방)·완전 외부인(맥락 0)·실행가(월요일에 당장 뭘 할지)</li>
+<li>의장(chairman)이 5명 의견을 종합해 한 줄 평결 + 첫 행동을 제시</li>
+<li>설정·버튼이 아니라 한 줄 프롬프트를 붙여넣기만 하면 됨</li>
+<li>이를 자동화한 'AI 포커스그룹'은 댓글 "need"로 제공</li>
+</ul>
+    </div>
+  <div class="transcript-wrap">
+    <div class="transcript-header">
+      <button class="transcript-toggle" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('visible')">
+        <span class="arr">▼</span> 원문 자막
+      </button>
+      <button class="copy-btn" onclick="var b=this,t=b.nextElementSibling||b;navigator.clipboard.writeText(document.querySelector('#tr-3vgagGeGg1E').textContent).then(()=>{b.textContent='복사됨';setTimeout(()=>b.textContent='복사',2000)})">복사</button>
+    </div>
+    <pre class="transcript-box" id="tr-3vgagGeGg1E">Never ever ever make a big decision off a single AI answer, at least not without this one secret setting. So, here's the problem. You ask ChatGPT what to do and it just agrees with you. It tells you what you want to hear. You then feel validated and the next thing you know, you've sunk 50 grand into the wrong hire or partnership that you cannot get out of. So, instead, you flip this on and you make it argue with itself before you risk a single dollar. Here's how. It's not a [music] buried setting, it's one line that you paste in. So, open up ChatGPT or Claude and drop in the decision that you are stuck on and add this. [music] Act as five advisors who disagree, a skeptic hunting for what will go wrong, a numbers person who only cares about return on investment, a growth person chasing the upside everyone is missing, a total outsider with zero context, and a doer who only asks what I do Monday morning. Now, each one is going to be arguing their case and then a chairman weighs all five and it gives me one verdict and the first move to make. From there, just hit enter and read the output. The skeptic, he flags the risk that your gut has glossed over. The numbers guy, he kills the bad math and you get a straight answer instead of just a cheerleader. And like magic, if you run every big call through those five, the decision that you had agonized over for a week, it gets pressure tested from every single angle in under a minute. So, that's just the quick version. I built the full AI focus group that runs all five automatically and it hands you a one-page verdict to keep. Just comment "need" and I'll send it over to you.</pre>
+  </div>
+  </article>
+  <article class="video-card">
+    <div class="card-top">
+      <a class="thumb-wrap" href="https://www.youtube.com/watch?v=rEEilFUusqk" target="_blank" rel="noopener">
+        <img src="https://i.ytimg.com/vi/rEEilFUusqk/hqdefault.jpg" alt="ChatGPT & Claude Are Built to Give You the Average Answer" loading="lazy"/>
+      </a>
+      <div class="card-info">
+        <div class="card-meta">
+          <span class="ch-tag">Dylan Davis</span>
+          <span class="date-tag">2026-06-18</span>
+          
+        </div>
+        <div class="video-title">ChatGPT & Claude Are Built to Give You the Average Answer</div>
+        <div style="display:flex;align-items:center;flex-wrap:wrap;gap:4px;margin-top:auto">
+          <a class="yt-link" href="https://www.youtube.com/watch?v=rEEilFUusqk" target="_blank" rel="noopener">↗ 유튜브에서 보기</a>
+          <button class="nlm-btn" data-url="https://www.youtube.com/watch?v=rEEilFUusqk">📓 NotebookLM</button>
+        </div>
+      </div>
+    </div>
+    <div class="summary-section">
+      <h2>핵심 요약</h2>
+<p>ChatGPT·클로드는 기본적으로 "평균(가장 흔한) 답"을 주도록 설계돼 있다. 학습용으론 괜찮지만 차별화엔 함정이다. 의도적으로 평균에서 벗어나 '전문가가 줄 답'을 끌어내는 법을 단계별로 소개한다.</p>
+<h2>주요 포인트</h2>
+<ul>
+<li>가장 쉬운 법: "대부분이 떠올릴 흔한 답"과 "대부분이 놓치는 전문가 답" 두 개를 동시에 요구(구체적·실행가능하게)</li>
+<li>평균이 아닌 곡선 바깥(outlier)에 경쟁 레버리지가 있음</li>
+<li>3단계 심화: 단순 / 내가 주제를 알 때 / 모를 때</li>
+<li>주제를 알면 AI 출력이 평균인지 직접 판별해 더 밀어붙일 수 있음</li>
+</ul>
+    </div>
+  <div class="transcript-wrap">
+    <div class="transcript-header">
+      <button class="transcript-toggle" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('visible')">
+        <span class="arr">▼</span> 원문 자막
+      </button>
+      <button class="copy-btn" onclick="var b=this,t=b.nextElementSibling||b;navigator.clipboard.writeText(document.querySelector('#tr-rEEilFUusqk').textContent).then(()=>{b.textContent='복사됨';setTimeout(()=>b.textContent='복사',2000)})">복사</button>
+    </div>
+    <pre class="transcript-box" id="tr-rEEilFUusqk">Both Chat GPT and Claude are built to give you the average answer, the middle of everything that they've read. And that's fine when you're just learning stuff. But it's often a trap when you're trying to stand out, because everyone else gets the same answer that you do. If you're new here, I'm Dylan. I run an AI consultancy. And the business owners and executives I coach keep settling for average without even realizing that that is happening. So today I'll show you how to pull these models off of the average on purpose. And we'll start with the simplest version. Then we'll go deeper. And how we go deeper depends on whether you already know the topic or not. So, let's get into it. So this is the nature of how AI responds to you. When you ask it a question, especially if it's a general question or a general prompt, it's going to default to the most common answer. So you're going to land somewhere in this pile of average, somewhere in this larger grouping. And this is completely okay, like I mentioned previously, if you're just trying to learn. But if you're trying to stand out and make a big decision, you want to push for outliers. So you want to sit on the outside of the curve, not in the center. Reason being is this is where leverage sits for people that are trying to compete with other businesses or their peers. So the skill is no longer getting an AI to give you an answer. Where the skill sits is being able to pull the AI out of the average into the space where an expert would think and give you an answer on. So you can get outlier answers. So I'm going to walk you through a variety of ways of how we can get the AI to move from the average to be an outlier. Now note that these are just a few. There are many. And I'll walk you through three phases. The simple approach, the approach where you know the topic, and the approach where you don't. So the first one is the simplest thing you could do right now. And that's basically asking the AI to give you two answers. Now here's a simple prompt that you can use, and the AI is going to give us two answers. So the first one is the most common answer most people would land on. So this is the average. But right after that, I want the AI to give me the expert answer. And there I'm saying I want you to give me the answer a top expert would give that most people miss. And not just that, but the second answer should also be specific and something I can actually use. And the second piece is key because we want to make sure that the answer is specific and actionable for our specific task. So, this is the easiest place to start of all the different things I'm going to talk through. Quick pause in your regular programming. This video is brought to you by me, as always. Two quick things. First off, below is the 30-day AI Insight Series, completely free. You'll get 30 insights in your inbox of how you can apply AI to your business and your work. The second thing is if you want somebody like me in your business helping you leverage AI, there's a series of offerings below to see if there's a good fit for the two of us. Now, let's get back to the video. The next one is when you actually know the topic. You're somewhat of an expert in the space, so you can judge the AI's output to see if it's average or not. In a simple example we're going to use here is say you're hiring for a new employee. You've hired a ton in the past, you know how to hire effectively, but you want to get AI's perspective on this specific hire. So, a general approach here that's going to give you an average output is simply asking the AI, "Should I hire this person?" based off the job description and the transcript. The AI will read the information, take your prompt, and give you probably a list of pros and cons, which is okay, but it's average. So, instead, there are three ways we can improve this. The first way we're going to improve it is having the AI give us a list of factors that it can rank against the criteria we care about. So, in this prompt, we're simply stating to the AI that I just interviewed a candidate for this role. The transcript and job description are below. And this is important because we always want to share context with AI. And we're then asking the AI to list out the six things a strong hiring manager weighs in this situation. And when judging the candidate and listing out those six factors, I want you to include ones that most people overlook. And not just listing them, but I also want you to tell me which factor I should care most about in my specific situation for my team. So, this is the first way we can improve the AI to move it out of the average into the outlier space. The second way is actually doing an interview. So, this is a great way for you to give more context to the AI so it can give you an even more targeted answer that's more effective for you. So, this prompt is very straightforward. We're saying, "Before you weigh in, so before you give me a response, I want you to a</pre>
+  </div>
+  </article>
+  <article class="video-card">
+    <div class="card-top">
+      <a class="thumb-wrap" href="https://www.youtube.com/watch?v=K_VRY1MkkFI" target="_blank" rel="noopener">
+        <img src="https://i.ytimg.com/vi/K_VRY1MkkFI/hqdefault.jpg" alt="클로드를 천재로 만드는 5가지 방법" loading="lazy"/>
+      </a>
+      <div class="card-info">
+        <div class="card-meta">
+          <span class="ch-tag">AIMAX_PD</span>
+          <span class="date-tag">2026-06-18</span>
+          
+        </div>
+        <div class="video-title">클로드를 천재로 만드는 5가지 방법</div>
+        <div style="display:flex;align-items:center;flex-wrap:wrap;gap:4px;margin-top:auto">
+          <a class="yt-link" href="https://www.youtube.com/watch?v=K_VRY1MkkFI" target="_blank" rel="noopener">↗ 유튜브에서 보기</a>
+          <button class="nlm-btn" data-url="https://www.youtube.com/watch?v=K_VRY1MkkFI">📓 NotebookLM</button>
+        </div>
+      </div>
+    </div>
+    <div class="summary-section">
+      <h2>핵심 요약</h2>
+<p>1년간 클로드만 파고든 제임스 블루가 공개한, 평범한 답변을 전문가급 결과물로 바꾸는 클로드 5공식.</p>
+<h2>주요 포인트</h2>
+<ul>
+<li>답 대신 "내가 다 파악할 때까지 나를 인터뷰하라"고 시켜 15개 질문으로 맥락 확보</li>
+<li>재무이사·고객·이사진 3개 시점으로 결과물을 냉정히 검증</li>
+<li>한 번에 뽑지 말고 브리프→리서치→최종 4단계로 분할 빌드</li>
+<li>복잡한 프로젝트는 클로드에 통째로 던져 의존성·병목·우선순위 분해</li>
+<li>프로젝트 기능으로 역할·회사 맥락을 저장(6개월 일한 팀원처럼)</li>
+</ul>
+    </div>
+  <div class="transcript-wrap">
+    <div class="transcript-header">
+      <button class="transcript-toggle" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('visible')">
+        <span class="arr">▼</span> 원문 자막
+      </button>
+      <button class="copy-btn" onclick="var b=this,t=b.nextElementSibling||b;navigator.clipboard.writeText(document.querySelector('#tr-K_VRY1MkkFI').textContent).then(()=>{b.textContent='복사됨';setTimeout(()=>b.textContent='복사',2000)})">복사</button>
+    </div>
+    <pre class="transcript-box" id="tr-K_VRY1MkkFI">이 남자는 클로드 천재입니다. 지난 1년간 클로드만 파고들어서 평범한 답변을 전문가급 결과물로 묶꿔 버리는 제임스 블루. 그가 공개한 당신의 해체 불가능한 인재로 만들어 줄 다섯 가지 클로드 필승 공식 저장하고 끝까지 보세요. 첫째, 클로드에게 당신을 먼저 인터뷰하라고 시키세요. 부작정 마케팅 전략을 짜 달라고 하면 뻔한 답변만 나옵니다. 대신 모든 정보를 파악할 때까지 나에게 질문을 던지라고 명령하면 15개의 정교한 질문을 통해 당신의 비즈니스 맥락을 완벽하게 이해할 맞춤형 전략을 내놓습니다. 둘째, 세 가지 시점으로 결과물을 냉정하게 검토하세요. 내 눈에는 완벽해 보여도 재무 이사, 고객, 그리고 까다로운 이사진의 눈은 다릅니다. 각자의 입장에서 논리적과 비용 리스크를 지적하게 만들면 단 10분 만에 어떤 공격에도 무너지지 않는 완벽한 기획서가 완성됩니다. 셋째, 문서를 한 번에 뽑지 말고네 단계로 나누어서 빌드하세요. 초안을 바로 쓰게 하지 말고 브리프, 리서치, 최종환까지 단계별로 검증해야 합니다.이 이 과정을 거치면 15페이지짜리 대형 제한소도 마치 전문 팀이 일주일 내내린 것 같은 압도적인 퀄리티로 탄생합니다. 넷째, 복잡한 프로젝트의 뼈대를 AI로 분해하세요. 어디서부터 시작할지 막막할 때 전체 범위를 클로드에게 던져주고 업무 간의 의전성을 분석하게 해야 됩니다. 단 90초 만에 병목 구간을 찾아내고 지금 당장 실행해야 할 핵심 과제를 우선 순위로 정리해 줍니다. 다섯째, 클로드 프로젝트 기능을 활용해 정보를 저장하세요. 매번 당신의 역할과 회사 배경을 설명하느라 시간을 버리는 건 아마추아입니다. 고정된 맥락을 미리 설정해 두면 클로드는 이미 당신의 팀원으로 6개월간 일한 사람처럼 당신의 의도를 정확하게 읽고 결과물을 만들어낸 1분짜리 영상 내용을 추가로 더 정리했습니다.이 이 정리번 궁금하신 분들은 구독하시고 본문을 확인해 주세요.</pre>
+  </div>
+  </article>
+</main>
+
+<footer>유튜브 구독 정리 · agy 요약 · 2026-06-19 02:37</footer>
+
+
+<script>
+document.querySelectorAll('.nlm-btn').forEach(function(btn){
+  btn.addEventListener('click',function(){
+    navigator.clipboard.writeText('/notebooklm '+btn.dataset.url).then(function(){
+      var orig=btn.innerHTML;btn.innerHTML='✓ 복사됨';btn.classList.add('copied');
+      setTimeout(function(){btn.innerHTML=orig;btn.classList.remove('copied');},2000);
+    });
+  });
+});
+</script>
+
+</body>
+</html>
