@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>2026-06-20 — 유튜브 구독 정리</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+  :root{--bg:#090e1a;--surface:#111827;--surface2:#1a2235;--border:#1e2d47;--accent:#6c63ff;--accent2:#00d4ff;--text:#e8eaf0;--muted:#7a8499;--radius:14px;}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Pretendard',sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+  header{background:linear-gradient(135deg,#0d1b3e,#1a0533);border-bottom:1px solid var(--border);padding:20px 40px;display:flex;align-items:center;justify-content:space-between;}
+  .nav-back{color:var(--accent2);text-decoration:none;font-size:0.85rem;display:flex;align-items:center;gap:6px}
+  .nav-back:hover{color:#fff}
+  .date-badge{font-size:1.4rem;font-weight:700;letter-spacing:-0.5px;background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+  .count{font-size:0.85rem;color:var(--muted)}
+  main{max-width:900px;margin:0 auto;padding:32px 24px 80px}
+  .video-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;margin-bottom:24px;transition:border-color 0.2s,box-shadow 0.2s;}
+  .video-card:hover{border-color:var(--accent);box-shadow:0 4px 24px rgba(108,99,255,0.15)}
+  .card-top{display:flex;gap:0}
+  .thumb-wrap{flex:0 0 240px;position:relative;overflow:hidden}
+  .thumb-wrap img{width:100%;height:100%;object-fit:cover;transition:transform 0.4s}
+  .video-card:hover .thumb-wrap img{transform:scale(1.05)}
+  .card-info{flex:1;padding:20px;display:flex;flex-direction:column;gap:10px}
+  .card-meta{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+  .ch-tag{font-size:0.72rem;font-weight:600;padding:3px 12px;background:linear-gradient(135deg,rgba(108,99,255,0.2),rgba(0,212,255,0.2));border:1px solid rgba(108,99,255,0.3);border-radius:999px;color:var(--accent2);}
+  .date-tag{font-size:0.72rem;color:var(--muted)}
+  .no-transcript{font-size:0.68rem;padding:2px 8px;background:rgba(255,180,0,0.12);border:1px solid rgba(255,180,0,0.25);border-radius:999px;color:#ffa500;}
+  .video-title{font-size:1rem;font-weight:600;line-height:1.4}
+  .yt-link{display:inline-flex;align-items:center;gap:5px;font-size:0.8rem;color:var(--accent);text-decoration:none;transition:color 0.2s;}
+  .yt-link:hover{color:var(--accent2)}
+  
+  .nlm-btn{display:inline-flex;align-items:center;gap:5px;font-size:0.8rem;color:#fff;
+    background:rgba(108,99,255,0.2);border:1px solid rgba(108,99,255,0.4);border-radius:8px;
+    padding:4px 12px;cursor:pointer;font-family:inherit;transition:all 0.2s;margin-left:8px;}
+  .nlm-btn:hover{background:rgba(108,99,255,0.45);}
+  .nlm-btn.copied{background:rgba(0,200,100,0.2);border-color:rgba(0,200,100,0.4);color:#00c864;}
+
+  .summary-section{border-top:1px solid var(--border);background:var(--surface2);padding:20px 24px;font-size:0.85rem;line-height:1.7;color:#c5cad8;}
+  .summary-section h2{font-size:0.82rem;color:var(--accent2);margin:12px 0 4px}
+  .summary-section h2:first-child{margin-top:0}
+  .summary-section ul{padding-left:18px}
+  .summary-section li{margin-bottom:5px}
+  .transcript-wrap{border-top:1px solid var(--border);padding:14px 24px;background:#0c1220}
+  .transcript-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:0}
+  .transcript-toggle{background:none;border:none;color:var(--muted);font-size:0.8rem;cursor:pointer;font-family:inherit;display:flex;align-items:center;gap:4px;padding:0;transition:color 0.2s;}
+  .transcript-toggle:hover{color:var(--text)}
+  .copy-btn{background:rgba(108,99,255,0.1);border:1px solid rgba(108,99,255,0.3);border-radius:8px;color:var(--accent2);font-size:0.72rem;padding:4px 12px;cursor:pointer;font-family:inherit;transition:all 0.2s;}
+  .copy-btn:hover{background:rgba(108,99,255,0.25);color:#fff}
+  .transcript-box{display:none;margin-top:10px;background:#080d18;border:1px solid var(--border);border-radius:10px;padding:12px 14px;font-size:0.78rem;line-height:1.75;color:#8a95aa;max-height:260px;overflow-y:auto;white-space:pre-wrap;word-break:break-word;}
+  .transcript-box.visible{display:block}
+  footer{text-align:center;padding:24px;font-size:0.75rem;color:var(--muted);border-top:1px solid var(--border)}
+  @media(max-width:640px){.card-top{flex-direction:column}.thumb-wrap{flex:none;height:200px}header{padding:16px}main{padding:16px 12px 60px}}
+</style>
+</head>
+<body>
+
+<header>
+  <a class="nav-back" href="../index.html">← 대시보드로</a>
+  <div>
+    <div class="date-badge">2026-06-20</div>
+    <div class="count">2개 영상</div>
+  </div>
+  <div style="font-size:0.75rem;color:var(--muted)">2026-06-20 11:28 생성</div>
+</header>
+
+<main>
+
+  <article class="video-card">
+    <div class="card-top">
+      <a class="thumb-wrap" href="https://www.youtube.com/watch?v=EuzYhzB0vbI" target="_blank" rel="noopener">
+        <img src="https://i.ytimg.com/vi/EuzYhzB0vbI/hqdefault.jpg" alt="Finally. Agent Loops Clearly Explained." loading="lazy"/>
+      </a>
+      <div class="card-info">
+        <div class="card-meta">
+          <span class="ch-tag">Nate Herk</span>
+          <span class="date-tag">2026-06-20</span>
+          
+        </div>
+        <div class="video-title">Finally. Agent Loops Clearly Explained.</div>
+        <div style="display:flex;align-items:center;flex-wrap:wrap;gap:4px;margin-top:auto">
+          <a class="yt-link" href="https://www.youtube.com/watch?v=EuzYhzB0vbI" target="_blank" rel="noopener">↗ 유튜브에서 보기</a>
+          <button class="nlm-btn" data-url="https://www.youtube.com/watch?v=EuzYhzB0vbI">📓 NotebookLM</button>
+        </div>
+      </div>
+    </div>
+    <div class="summary-section">
+      <h2>핵심 요약</h2>
+<p>이제 코딩 에이전트에게 직접 프롬프트를 쓰는 시대는 가고, 프롬프트를 자동으로 날려주는 루프를 설계해야 하는 시대다. 루프는 트리거, 액션, 정지 조건으로 구성되며 에이전트가 목표를 달성할 때까지 스스로 검증하고 반복하게 만든다. 다만 덮어놓고 에이전트를 24시간 돌리기만 하면 버그와 문제만 키우게 되므로, 자신에게 맞는 검증 방식과 실행 주기를 설계하는 것이 중요하다.</p>
+<h2>주요 포인트</h2>
+<ul>
+<li>코딩 에이전트에 직접 프롬프팅하는 것보다 에이전트를 작동시키는 루프 시스템을 설계하는 것이 대세다.</li>
+<li>루프는 트리거, 액션, 정지 조건의 세 가지 요소로 구성되는 재귀적 목표 달성 과정이다.</li>
+<li>핵심은 객관적인 목표(Goal) 설정과 에이전트가 완료 여부를 판단하고 반복할 수 있게 하는 검증(Verification)이다.</li>
+<li>무작정 에이전트 군단을 24시간 돌리면 버그만 늘어날 수 있으니 상황에 맞게 주기적 또는 이벤트 기반으로 루프를 돌려야 효율적이다.</li>
+</ul>
+    </div>
+  <div class="transcript-wrap">
+    <div class="transcript-header">
+      <button class="transcript-toggle" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('visible')">
+        <span class="arr">▼</span> 원문 자막
+      </button>
+      <button class="copy-btn" onclick="var b=this,t=b.nextElementSibling||b;navigator.clipboard.writeText(document.querySelector('#tr-EuzYhzB0vbI').textContent).then(()=>{b.textContent='복사됨';setTimeout(()=>b.textContent='복사',2000)})">복사</button>
+    </div>
+    <pre class="transcript-box" id="tr-EuzYhzB0vbI">Right here, I've got four different agents that are looping, calling other sub agents, and writing all these prompts for me, and designing systems for me. But, is this actually productive, or is that just a cool demo? Here's your monthly reminder that you shouldn't be prompting coding agents anymore. You should be designing loops that prompt your agents. Boris Cherny and Peter Steinberg publicly said they no longer prompt their coding agents. They write loops. A loop is three things: a trigger, an action, and a stop condition. If you're still writing loops that prompt coding agents, you're falling behind. You need to build a meta agent that infers what loops you would have wanted based on your vibe, and then write those loops. We're seeing a ton of talk about agent loops, loop engineering, whatever you want to call it. So, I wanted to make a video to clear up what that actually means. Because I think that everyone kind of has their own spin and a different definition of what this is, and it applies to everyone very, very differently. I think that this definition sums it up pretty well. Loop engineering is replacing yourself as the person who prompts the agent. You design the system that does that instead. A loop here can be thought of as a recursive goal, where you define a purpose, and the AI iterates until complete. And there's really two most important pillars of that in my mind, which are the goal. What is the actual objective? Something typically that's objective, not subjective. And then verification. How does the agent know what that stop condition is? How does it check and iterate? So, anyways, if you take all that advice, and then you start doing stuff like this, and designing swarms and fleets of agents that constantly run 24/7, then you need to think about what are you actually doing here? And is this actually moving the needle? So, first of all, I thought to myself, how do I actually use agent loops? Because when you read some of those tweets that I just showed earlier in this video, you kind of think to yourself, okay, if I'm not having five agents that are continuously around the clock orchestrating five of their own agents, then I'm falling behind, or I'm not using my cloud subscription in the best way. And I think that that's very false. Because if you don't understand what you're doing, then you're probably just going to scale problems, and you're going to have a ton of bugs and a ton of things that you're going to have to fix later. And also, not all of us are in a scenario where having agents work 24/7 around the clock actually benefits us. For example, I don't. I have agents that do things on a certain cadence and I have agents that do things based on certain event actions, but just having them do 24/7 work for me isn't helpful. I think if I was working with a team on a codebase and we were building a product and we were constantly iterating and pulling in different things, then it would maybe make more sense, but for me, that doesn't apply. So, I just wanted to come in here, explain this as simple as I can, and hopefully shed some light on where you guys can start applying loops into your workflows and why and how. So, I actually built an agent loop for this HTML that we're going to look at today, and it basically went through a ton of different sources. It checked 45 sources, whether that was articles, YouTube video transcripts, X posts. It looked through a ton of stuff, and then it kept looping on this until it had a good idea of what to build. And then once it built this HTML, this wasn't V1. This was probably V7. It had to keep checking, screenshotting, reviewing, iterating, and then it finally said, "Okay, we're done. This is what we got." So, let me walk through this with you guys. An agent loop is just an AI that reasons on what to do, acts on what to do, starts implementing, and then it observes the result. And it will do that over and over and over until some sort of goal is met, until it knows we've hit the stop criteria, this is good, I'm going to stop now. And a really simple visual that I like to think about is AI is never perfect, right? It's never going to one-shot something and you just accept that final output. And so, if we have attempts on the x-axis and we have quality on the y-axis, let's think about this. On attempt one, if you are just giving your agent some sort of simple task, maybe you get to like, let's just say attempt one, you get to 50%, and then you look at that and say, "Okay, here are some changes to make." And then by attempt two, maybe you bump up another five or 10%. And every time that you give more feedback and iterate, you just kind of keep moving up on quality until you hit somewhere where you're okay with that, 90, 95%. And so, the whole idea is why don't we outsource this part, this feedback and iteration loop, to an agent rather than having the human do that? Cuz this is going to happen either way. So, if we have an agent do that instead of a h</pre>
+  </div>
+  </article>
+  <article class="video-card">
+    <div class="card-top">
+      <a class="thumb-wrap" href="https://www.youtube.com/watch?v=vKPcAtKSZU0" target="_blank" rel="noopener">
+        <img src="https://i.ytimg.com/vi/vKPcAtKSZU0/hqdefault.jpg" alt="This Claude Agent Does EVERYTHING For You" loading="lazy"/>
+      </a>
+      <div class="card-info">
+        <div class="card-meta">
+          <span class="ch-tag">Nicholas Puru</span>
+          <span class="date-tag">2026-06-20</span>
+          
+        </div>
+        <div class="video-title">This Claude Agent Does EVERYTHING For You</div>
+        <div style="display:flex;align-items:center;flex-wrap:wrap;gap:4px;margin-top:auto">
+          <a class="yt-link" href="https://www.youtube.com/watch?v=vKPcAtKSZU0" target="_blank" rel="noopener">↗ 유튜브에서 보기</a>
+          <button class="nlm-btn" data-url="https://www.youtube.com/watch?v=vKPcAtKSZU0">📓 NotebookLM</button>
+        </div>
+      </div>
+    </div>
+    <div class="summary-section">
+      <h2>핵심 요약</h2>
+<p>비즈니스 정보를 미리 학습시켜 뉴스레터 작성부터 고객 리드 발굴까지 알아서 다 처리하는 단 하나의 통합 AI 시스템을 구축하는 방법이다. ChatGPT나 Claude 프로젝트 기능을 활용해 회사 정보와 소통 방식을 한 번만 입력해 두면 다른 유료 툴이나 추가 고용 없이도 업무를 해결할 수 있다. 어시스턴트 여러 개를 전문 AI 팀으로 자동 라우팅해 주는 전체 시스템 가이드는 댓글에 "need"를 남기면 제공받을 수 있다.</p>
+<h2>주요 포인트</h2>
+<ul>
+<li>이메일, 리드 발굴, 콘텐츠 제작 등 업무마다 다른 AI 툴을 쓰며 매번 비즈니스를 구구절절 설명하는 낭비를 해결함.</li>
+<li>하나의 챗창에서 뉴스레터 작성과 리드 발굴 등 전혀 다른 성격의 작업을 요청해도 AI가 알아서 역할을 판단해 처리함.</li>
+<li>ChatGPT나 Claude 프로젝트에 판매 상품, 타겟 고객, 소통 방식 등 비즈니스 정보를 입력하는 것으로 쉽게 세팅할 수 있음.</li>
+<li>한 번 설정해 두면 실제 팀원이 작업한 것처럼 자연스러운 결과물을 내놓으며 기존 유료 툴이나 인력 대체가 가능함.</li>
+<li>이 어시스턴트를 전문 AI 팀으로 연결해 주는 전체 빌드 가이드는 영상 댓글에 "need"를 입력해 DM으로 받아볼 수 있음.</li>
+</ul>
+    </div>
+  <div class="transcript-wrap">
+    <div class="transcript-header">
+      <button class="transcript-toggle" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('visible')">
+        <span class="arr">▼</span> 원문 자막
+      </button>
+      <button class="copy-btn" onclick="var b=this,t=b.nextElementSibling||b;navigator.clipboard.writeText(document.querySelector('#tr-vKPcAtKSZU0').textContent).then(()=>{b.textContent='복사됨';setTimeout(()=>b.textContent='복사',2000)})">복사</button>
+    </div>
+    <pre class="transcript-box" id="tr-vKPcAtKSZU0">I've just built one AI system that does basically everything inside of my business and it replaced every other AI tool that I was already paying for. And no, this isn't some complicated coder thing. So, here's the problem it fixes. Most people have one tool for emails, another one for finding leads, another one for content. And you're just re-explaining your business every single [music] time. So, instead, I built one AI system that already knows my business and I just tell it what I need. So, watch this. I type, "Write this week's newsletter." and it writes the whole thing in my voice and then I could type in the same chat, "Find me 50 new leads in my area." and it's done. So, it figures out which job it is and it just handles it. And here's how you could build your own. Open up ChatGPT or Claude, start a new project and paste in everything about your business. So, what you sell, who you sell to, and how you talk to your customers. That is it. So, every time you ask for something, you get an answer back like it actually came from someone on your team. You set this up just once and from then on, anything that you would normally buy a tool for or hire someone for, you just ask. Now, I put together the full build that turns this one assistant into an entire team where every task is getting routed to the right specialist all automatically. [music] Comment "need" and I'll DM it straight to you.</pre>
+  </div>
+  </article>
+</main>
+
+<footer>유튜브 구독 정리 · agy 요약 · 2026-06-20 11:28</footer>
+
+
+<script>
+document.querySelectorAll('.nlm-btn').forEach(function(btn){
+  btn.addEventListener('click',function(){
+    navigator.clipboard.writeText('/notebooklm '+btn.dataset.url).then(function(){
+      var orig=btn.innerHTML;btn.innerHTML='✓ 복사됨';btn.classList.add('copied');
+      setTimeout(function(){btn.innerHTML=orig;btn.classList.remove('copied');},2000);
+    });
+  });
+});
+</script>
+
+</body>
+</html>
