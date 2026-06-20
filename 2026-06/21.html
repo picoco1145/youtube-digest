@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>2026-06-21 — 유튜브 구독 정리</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+  :root{--bg:#090e1a;--surface:#111827;--surface2:#1a2235;--border:#1e2d47;--accent:#6c63ff;--accent2:#00d4ff;--text:#e8eaf0;--muted:#7a8499;--radius:14px;}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Pretendard',sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+  header{background:linear-gradient(135deg,#0d1b3e,#1a0533);border-bottom:1px solid var(--border);padding:20px 40px;display:flex;align-items:center;justify-content:space-between;}
+  .nav-back{color:var(--accent2);text-decoration:none;font-size:0.85rem;display:flex;align-items:center;gap:6px}
+  .nav-back:hover{color:#fff}
+  .date-badge{font-size:1.4rem;font-weight:700;letter-spacing:-0.5px;background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+  .count{font-size:0.85rem;color:var(--muted)}
+  main{max-width:900px;margin:0 auto;padding:32px 24px 80px}
+  .video-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;margin-bottom:24px;transition:border-color 0.2s,box-shadow 0.2s;}
+  .video-card:hover{border-color:var(--accent);box-shadow:0 4px 24px rgba(108,99,255,0.15)}
+  .card-top{display:flex;gap:0}
+  .thumb-wrap{flex:0 0 240px;position:relative;overflow:hidden}
+  .thumb-wrap img{width:100%;height:100%;object-fit:cover;transition:transform 0.4s}
+  .video-card:hover .thumb-wrap img{transform:scale(1.05)}
+  .card-info{flex:1;padding:20px;display:flex;flex-direction:column;gap:10px}
+  .card-meta{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+  .ch-tag{font-size:0.72rem;font-weight:600;padding:3px 12px;background:linear-gradient(135deg,rgba(108,99,255,0.2),rgba(0,212,255,0.2));border:1px solid rgba(108,99,255,0.3);border-radius:999px;color:var(--accent2);}
+  .date-tag{font-size:0.72rem;color:var(--muted)}
+  .no-transcript{font-size:0.68rem;padding:2px 8px;background:rgba(255,180,0,0.12);border:1px solid rgba(255,180,0,0.25);border-radius:999px;color:#ffa500;}
+  .video-title{font-size:1rem;font-weight:600;line-height:1.4}
+  .yt-link{display:inline-flex;align-items:center;gap:5px;font-size:0.8rem;color:var(--accent);text-decoration:none;transition:color 0.2s;}
+  .yt-link:hover{color:var(--accent2)}
+  
+  .nlm-btn{display:inline-flex;align-items:center;gap:5px;font-size:0.8rem;color:#fff;
+    background:rgba(108,99,255,0.2);border:1px solid rgba(108,99,255,0.4);border-radius:8px;
+    padding:4px 12px;cursor:pointer;font-family:inherit;transition:all 0.2s;margin-left:8px;}
+  .nlm-btn:hover{background:rgba(108,99,255,0.45);}
+  .nlm-btn.copied{background:rgba(0,200,100,0.2);border-color:rgba(0,200,100,0.4);color:#00c864;}
+
+  .summary-section{border-top:1px solid var(--border);background:var(--surface2);padding:20px 24px;font-size:0.85rem;line-height:1.7;color:#c5cad8;}
+  .summary-section h2{font-size:0.82rem;color:var(--accent2);margin:12px 0 4px}
+  .summary-section h2:first-child{margin-top:0}
+  .summary-section ul{padding-left:18px}
+  .summary-section li{margin-bottom:5px}
+  .transcript-wrap{border-top:1px solid var(--border);padding:14px 24px;background:#0c1220}
+  .transcript-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:0}
+  .transcript-toggle{background:none;border:none;color:var(--muted);font-size:0.8rem;cursor:pointer;font-family:inherit;display:flex;align-items:center;gap:4px;padding:0;transition:color 0.2s;}
+  .transcript-toggle:hover{color:var(--text)}
+  .copy-btn{background:rgba(108,99,255,0.1);border:1px solid rgba(108,99,255,0.3);border-radius:8px;color:var(--accent2);font-size:0.72rem;padding:4px 12px;cursor:pointer;font-family:inherit;transition:all 0.2s;}
+  .copy-btn:hover{background:rgba(108,99,255,0.25);color:#fff}
+  .transcript-box{display:none;margin-top:10px;background:#080d18;border:1px solid var(--border);border-radius:10px;padding:12px 14px;font-size:0.78rem;line-height:1.75;color:#8a95aa;max-height:260px;overflow-y:auto;white-space:pre-wrap;word-break:break-word;}
+  .transcript-box.visible{display:block}
+  footer{text-align:center;padding:24px;font-size:0.75rem;color:var(--muted);border-top:1px solid var(--border)}
+  @media(max-width:640px){.card-top{flex-direction:column}.thumb-wrap{flex:none;height:200px}header{padding:16px}main{padding:16px 12px 60px}}
+</style>
+</head>
+<body>
+
+<header>
+  <a class="nav-back" href="../index.html">← 대시보드로</a>
+  <div>
+    <div class="date-badge">2026-06-21</div>
+    <div class="count">2개 영상</div>
+  </div>
+  <div style="font-size:0.75rem;color:var(--muted)">2026-06-21 06:01 생성</div>
+</header>
+
+<main>
+
+  <article class="video-card">
+    <div class="card-top">
+      <a class="thumb-wrap" href="https://www.youtube.com/watch?v=oDtnQdhbF6w" target="_blank" rel="noopener">
+        <img src="https://i.ytimg.com/vi/oDtnQdhbF6w/hqdefault.jpg" alt="This New AI Handles Your ENTIRE Projects For You" loading="lazy"/>
+      </a>
+      <div class="card-info">
+        <div class="card-meta">
+          <span class="ch-tag">Nicholas Puru</span>
+          <span class="date-tag">2026-06-21</span>
+          
+        </div>
+        <div class="video-title">This New AI Handles Your ENTIRE Projects For You</div>
+        <div style="display:flex;align-items:center;flex-wrap:wrap;gap:4px;margin-top:auto">
+          <a class="yt-link" href="https://www.youtube.com/watch?v=oDtnQdhbF6w" target="_blank" rel="noopener">↗ 유튜브에서 보기</a>
+          <button class="nlm-btn" data-url="https://www.youtube.com/watch?v=oDtnQdhbF6w">📓 NotebookLM</button>
+        </div>
+      </div>
+    </div>
+    <div class="summary-section">
+      <h2>핵심 요약</h2>
+<p>단 한 줄의 명령어로 전체 프로젝트를 처음부터 끝까지 알아서 해결해 주는 새로운 AI 툴 'Skywork'를 소개하는 영상이다. 사용자가 원하는 결과만 설명하면 배경에서 리서치, 보고서 작성, 슬라이드 제작 등의 복잡한 작업을 한 번에 끝내준다. 기존의 여러 생산성 툴들을 탭 하나로 전부 대체할 수 있어 귀찮은 업무를 대폭 줄여준다.</p>
+<h2>주요 포인트</h2>
+<ul>
+<li>'Skywork'는 자잘한 작업이 아니라 프로젝트 전체를 처음부터 끝까지 알아서 완료해 주는 AI임.</li>
+<li>"경쟁사 3곳 조사해서 보고서 쓰고 슬라이드로 만들어라" 같은 지시 한 문장이면 배경에서 동시에 작업을 수행함.</li>
+<li>몇 분 만에 진짜 클릭 가능한 출처가 담긴 리서치 보고서와 바로 클라이언트에게 보낼 수 있는 슬라이드 덱을 완성해 줌.</li>
+<li>주간 실적 정리나 송장 처리처럼 시간 잡아먹는 반복 업무도 원하는 결과만 설명하면 알아서 처리함.</li>
+<li>리서치 도구, Canva, Gamma, 스프레드시트 등의 개별 앱들을 브라우저 탭 하나로 깔끔하게 대체할 수 있음.</li>
+</ul>
+    </div>
+  <div class="transcript-wrap">
+    <div class="transcript-header">
+      <button class="transcript-toggle" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('visible')">
+        <span class="arr">▼</span> 원문 자막
+      </button>
+      <button class="copy-btn" onclick="var b=this,t=b.nextElementSibling||b;navigator.clipboard.writeText(document.querySelector('#tr-oDtnQdhbF6w').textContent).then(()=>{b.textContent='복사됨';setTimeout(()=>b.textContent='복사',2000)})">복사</button>
+    </div>
+    <pre class="transcript-box" id="tr-oDtnQdhbF6w">I think I just found the first AI that actually finishes work for you. It's called Skywork, and instead of it doing just one tiny task at a time, it runs a whole project start to finish. So, watch this. I can just type one instruction to research my top three competitors, write me a report, and then turn it into a slide deck. That's it. It's one sentence, [music] and it spits it off, and it does all three at once in the background. So, the research, the report, [music] and the slides, all while I was just sitting here doing nothing. Now, minutes later, it hands me back a full research report with real clickable sources and a finished [music] deck that I can send a client today. It's the same deal for your weekly numbers, your invoices, or whatever is eating your whole afternoon. You just describe the outcome, and it does the work for you. So, that's your research tool, Canva, Gamma, and your spreadsheet app all replaced by one tab. Come in Skywork, and I'll send you the free link plus a code for 20% off.</pre>
+  </div>
+  </article>
+  <article class="video-card">
+    <div class="card-top">
+      <a class="thumb-wrap" href="https://www.youtube.com/watch?v=EPEI-IIPu4E" target="_blank" rel="noopener">
+        <img src="https://i.ytimg.com/vi/EPEI-IIPu4E/hqdefault.jpg" alt="Even the People Who Build Claude Don't Trust Its Answers" loading="lazy"/>
+      </a>
+      <div class="card-info">
+        <div class="card-meta">
+          <span class="ch-tag">Dylan Davis</span>
+          <span class="date-tag">2026-06-21</span>
+          
+        </div>
+        <div class="video-title">Even the People Who Build Claude Don't Trust Its Answers</div>
+        <div style="display:flex;align-items:center;flex-wrap:wrap;gap:4px;margin-top:auto">
+          <a class="yt-link" href="https://www.youtube.com/watch?v=EPEI-IIPu4E" target="_blank" rel="noopener">↗ 유튜브에서 보기</a>
+          <button class="nlm-btn" data-url="https://www.youtube.com/watch?v=EPEI-IIPu4E">📓 NotebookLM</button>
+        </div>
+      </div>
+    </div>
+    <div class="summary-section">
+      <h2>핵심 요약</h2>
+<p>클로드를 만드는 앤트로픽 직원들조차 AI 답변을 그대로 믿지 않고 시스템을 통해 검증해서 쓴다. AI가 틀린 답을 내놓는 원인은 크게 의도 오해, 구버전 파일 참조, 엉뚱한 경로 탐색 등 3가지다. 이를 해결하기 위해 예방, 검증, 보호 3단계에 걸친 5가지 실전 꿀팁을 제시한다.</p>
+<h2>주요 포인트</h2>
+<ul>
+<li>AI가 뻘짓하는 주원인은 질문자 의도를 짐작해서 넘겨짚거나, 파일 명칭이 꼬여서 구버전을 긁어오거나, 하위 폴더에 정신 팔려 엉뚱한 곳을 뒤지기 때문임.</li>
+<li>**예방(Prevention)**: 질문할 때 말을 구체적으로 하고, 여러 버전의 파일이 엉켜 있을 때는 기준이 되는 단 하나의 소스(One source of truth)만 쓰게 정리해야 됨.</li>
+<li>**검증(Checking)**: AI가 문서에서 정보 추출할 때 팩트 체크가 가능하도록 근거 본문(영수증)을 같이 적어내라고 굴려야 됨.</li>
+<li>**보호(Protection)**: 리스크가 크거나 자동화하려는 중요한 일은 다른 AI한테 교차 검증(세컨 의견)을 받거나, 이미 정답을 아는 문제로 AI 테스트를 돌려봐야 안전함.</li>
+</ul>
+    </div>
+  <div class="transcript-wrap">
+    <div class="transcript-header">
+      <button class="transcript-toggle" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('visible')">
+        <span class="arr">▼</span> 원문 자막
+      </button>
+      <button class="copy-btn" onclick="var b=this,t=b.nextElementSibling||b;navigator.clipboard.writeText(document.querySelector('#tr-EPEI-IIPu4E').textContent).then(()=>{b.textContent='복사됨';setTimeout(()=>b.textContent='복사',2000)})">복사</button>
+    </div>
+    <pre class="transcript-box" id="tr-EPEI-IIPu4E">Even the people who build Claude don't trust it blindly. Anthropic runs nearly all of their data questions through AI. So they built a system to keep it honest. Then they published the whole thing for us to see. So I read it from top to bottom and pulled out the five tactics that work right inside of your regular Claude or ChatGPT chat. If you're new here, I'm Dylan. I run an AI consultancy. And no question comes up more often than this one, which is the answer looks right, but can I trust it? That's what this whole video is about. So let's get into it. So when interacting with AI, there are three primary ways that I can give you a wrong answer. I'll walk you through what they are here, but then I'll walk you through the five tactics of how we can fix these. So the first one is that the AI guessed what you meant. So it misinterpreted your words. This is probably one of the most common that I see my clients run into. The next two are in relation to when you're using something like Claude co-work or Codex on your desktop, a desktop agent. And this specific issue is when AI pulls old information. This is when you have a bunch of different files that are named differently, but maybe it's like V1, V2, V3, etc. And then the final one is when the AI looks in the wrong place. So maybe you open Claude co-work or Codex through a certain folder, and it has a bunch of subfolders in there, and it gets distracted by a certain subfolder when it's supposed to be looking at another. And these are the primary sources as to why AI gives you the wrong answers over time. Also, as a quick side note, if you would like to read this blog post yourself, this is the post that I was referring to that Anthropic released. And you can read through this to see exactly how they're improving the accuracy of AI back, especially in relation to it retrieving data. Now let's jump into the five tactics that I pulled out of here. We can break our five tactics into three phases. So the first phase is prevention. So this is before you ever interact with AI at all. And again, I'll walk you through all these five tactics in more detail, but I just want to categorize these so you know where they sit. So the first one is prevention. So that's going to be being more specific with your words. And also using one source of truth when you have multiple versions. The The one is checking. So this is when anytime AI extracts information from a document for you, you always want it to provide proof so you can check it, and that's going to be our receipt. And then finally is protection. So, these are for the high-stakes tasks. Either it's something that has a lot of legal liability, financial liability, or brand reputation, or it could be something that you're trying to completely automate with AI. Both of which have different tactics of how we approach them. One is getting a second opinion from a different AI, or having AI test on known answers to see its performance. So, those are the phases: prevention, checking, and protecting. Quick pause in your regular programming. This video is brought to you by me, as always. Two quick things. First off, below is a 30-day AI Insight series, completely free. You'll get 30 insights in your inbox of how you can apply AI to your business and your work. The second thing is if you'd like to work with me, below are some offerings to see if there's a good fit between the two of us. Now, let's get back to the video. We'll start with the first tactic. This is around the prevention phase. And again, this is one of the most common issues I see my clients run into when they get wrong answers from AI, and it's because they gave it vague terminology when they were asking it to do something for them. Here's a prime example. When you ask AI, "Show me our top customers." Now, top is tricky here. How do we define top? We could define it in different ways. We could top could be by spend, it could be by recency, it could be by number of orders, or their brand. Now, when the AI interprets top, it may pick the wrong category. It picks it and then gives you an answer and it's wrong. So, the way that we can avoid this is when you use terminology that actually matters for the AI to decide, we need to be specific on what that means to us. So, this is the first part of tactic one. So, instead of it trying to determine what it is, if it's spend, recency, etc., we need to be specific. So, here in this case, we're saying top is our highest revenue clients in the last 12 months. So, this is the first part of tactic one, and that's ensuring that when we prompt AI, we're specific on the words that we're using and what it means. Now, you might not necessarily always know when to actually specify a certain word. So, we can have AI assist us in this process as well. So, here's a prompt that I recommend you copying and pasting and putting into your instructions or a skill for a task that's related to AI extracting information, and you've seen it commonly get</pre>
+  </div>
+  </article>
+</main>
+
+<footer>유튜브 구독 정리 · agy 요약 · 2026-06-21 06:01</footer>
+
+
+<script>
+document.querySelectorAll('.nlm-btn').forEach(function(btn){
+  btn.addEventListener('click',function(){
+    navigator.clipboard.writeText('/notebooklm '+btn.dataset.url).then(function(){
+      var orig=btn.innerHTML;btn.innerHTML='✓ 복사됨';btn.classList.add('copied');
+      setTimeout(function(){btn.innerHTML=orig;btn.classList.remove('copied');},2000);
+    });
+  });
+});
+</script>
+
+</body>
+</html>
