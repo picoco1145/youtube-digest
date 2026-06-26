@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>2026-06-24 — 유튜브 구독 정리</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+  :root{--bg:#090e1a;--surface:#111827;--surface2:#1a2235;--border:#1e2d47;--accent:#6c63ff;--accent2:#00d4ff;--text:#e8eaf0;--muted:#7a8499;--radius:14px;}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Pretendard',sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+  header{background:linear-gradient(135deg,#0d1b3e,#1a0533);border-bottom:1px solid var(--border);padding:20px 40px;display:flex;align-items:center;justify-content:space-between;}
+  .nav-back{color:var(--accent2);text-decoration:none;font-size:0.85rem;display:flex;align-items:center;gap:6px}
+  .nav-back:hover{color:#fff}
+  .date-badge{font-size:1.4rem;font-weight:700;letter-spacing:-0.5px;background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+  .count{font-size:0.85rem;color:var(--muted)}
+  main{max-width:900px;margin:0 auto;padding:32px 24px 80px}
+  .video-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;margin-bottom:24px;transition:border-color 0.2s,box-shadow 0.2s;}
+  .video-card:hover{border-color:var(--accent);box-shadow:0 4px 24px rgba(108,99,255,0.15)}
+  .card-top{display:flex;gap:0}
+  .thumb-wrap{flex:0 0 240px;position:relative;overflow:hidden}
+  .thumb-wrap img{width:100%;height:100%;object-fit:cover;transition:transform 0.4s}
+  .video-card:hover .thumb-wrap img{transform:scale(1.05)}
+  .card-info{flex:1;padding:20px;display:flex;flex-direction:column;gap:10px}
+  .card-meta{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+  .ch-tag{font-size:0.72rem;font-weight:600;padding:3px 12px;background:linear-gradient(135deg,rgba(108,99,255,0.2),rgba(0,212,255,0.2));border:1px solid rgba(108,99,255,0.3);border-radius:999px;color:var(--accent2);}
+  .date-tag{font-size:0.72rem;color:var(--muted)}
+  .no-transcript{font-size:0.68rem;padding:2px 8px;background:rgba(255,180,0,0.12);border:1px solid rgba(255,180,0,0.25);border-radius:999px;color:#ffa500;}
+  .video-title{font-size:1rem;font-weight:600;line-height:1.4}
+  .yt-link{display:inline-flex;align-items:center;gap:5px;font-size:0.8rem;color:var(--accent);text-decoration:none;transition:color 0.2s;}
+  .yt-link:hover{color:var(--accent2)}
+  
+  .nlm-btn{display:inline-flex;align-items:center;gap:5px;font-size:0.8rem;color:#fff;
+    background:rgba(108,99,255,0.2);border:1px solid rgba(108,99,255,0.4);border-radius:8px;
+    padding:4px 12px;cursor:pointer;font-family:inherit;transition:all 0.2s;margin-left:8px;}
+  .nlm-btn:hover{background:rgba(108,99,255,0.45);}
+  .nlm-btn.copied{background:rgba(0,200,100,0.2);border-color:rgba(0,200,100,0.4);color:#00c864;}
+
+  .summary-section{border-top:1px solid var(--border);background:var(--surface2);padding:20px 24px;font-size:0.85rem;line-height:1.7;color:#c5cad8;}
+  .summary-section h2{font-size:0.82rem;color:var(--accent2);margin:12px 0 4px}
+  .summary-section h2:first-child{margin-top:0}
+  .summary-section ul{padding-left:18px}
+  .summary-section li{margin-bottom:5px}
+  .transcript-wrap{border-top:1px solid var(--border);padding:14px 24px;background:#0c1220}
+  .transcript-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:0}
+  .transcript-toggle{background:none;border:none;color:var(--muted);font-size:0.8rem;cursor:pointer;font-family:inherit;display:flex;align-items:center;gap:4px;padding:0;transition:color 0.2s;}
+  .transcript-toggle:hover{color:var(--text)}
+  .copy-btn{background:rgba(108,99,255,0.1);border:1px solid rgba(108,99,255,0.3);border-radius:8px;color:var(--accent2);font-size:0.72rem;padding:4px 12px;cursor:pointer;font-family:inherit;transition:all 0.2s;}
+  .copy-btn:hover{background:rgba(108,99,255,0.25);color:#fff}
+  .transcript-box{display:none;margin-top:10px;background:#080d18;border:1px solid var(--border);border-radius:10px;padding:12px 14px;font-size:0.78rem;line-height:1.75;color:#8a95aa;max-height:260px;overflow-y:auto;white-space:pre-wrap;word-break:break-word;}
+  .transcript-box.visible{display:block}
+  footer{text-align:center;padding:24px;font-size:0.75rem;color:var(--muted);border-top:1px solid var(--border)}
+  @media(max-width:640px){.card-top{flex-direction:column}.thumb-wrap{flex:none;height:200px}header{padding:16px}main{padding:16px 12px 60px}}
+</style>
+</head>
+<body>
+
+<header>
+  <a class="nav-back" href="../index.html">← 대시보드로</a>
+  <div>
+    <div class="date-badge">2026-06-24</div>
+    <div class="count">3개 영상</div>
+  </div>
+  <div style="font-size:0.75rem;color:var(--muted)">2026-06-26 09:54 생성</div>
+</header>
+
+<main>
+
+  <article class="video-card">
+    <div class="card-top">
+      <a class="thumb-wrap" href="https://www.youtube.com/watch?v=jrnxOBOW6LQ" target="_blank" rel="noopener">
+        <img src="https://i.ytimg.com/vi/jrnxOBOW6LQ/hqdefault.jpg" alt="Claude Just Changed Accounting Forever (Tutorial)" loading="lazy"/>
+      </a>
+      <div class="card-info">
+        <div class="card-meta">
+          <span class="ch-tag">Nicholas Puru</span>
+          <span class="date-tag">2026-06-24</span>
+          
+        </div>
+        <div class="video-title">Claude Just Changed Accounting Forever (Tutorial)</div>
+        <div style="display:flex;align-items:center;flex-wrap:wrap;gap:4px;margin-top:auto">
+          <a class="yt-link" href="https://www.youtube.com/watch?v=jrnxOBOW6LQ" target="_blank" rel="noopener">↗ 유튜브에서 보기</a>
+          <button class="nlm-btn" data-url="https://www.youtube.com/watch?v=jrnxOBOW6LQ">📓 NotebookLM</button>
+        </div>
+      </div>
+    </div>
+    <div class="summary-section">
+      <h2>핵심 요약</h2>
+<p>클로드가 회계 법인의 기존 소프트웨어에 직접 연동돼서 스케줄대로 자동 작업하게 됨으로써 세무 시즌의 판도가 바뀌었다. 데이터 입력이나 서류 요청 같은 노가다 업무를 AI 에이전트가 다 처리해 주기 때문에 인력 낭비를 줄이고 고부가가치 업무에 집중할 수 있다. 개별 툴을 파편적으로 쓰는 게 아니라 기존 시스템 위에 얹어서 전체 과정을 끝까지 돌리는 게 핵심이다.</p>
+<h2>주요 포인트</h2>
+<ul>
+<li>세무 자동화는 클로드와 툴 연결(1단계), 에이전트 구축(2단계), 단일 대시보드 통합(3단계)으로 진행됨.</li>
+<li>기존의 수많은 AI 툴들은 각각 따로 놀아서 데이터가 격리되고 결국 사람이 직접 값을 복사해 옮겨야 했음.</li>
+<li>이 시스템은 기존 소프트웨어 위에서 작동하며 전체 프로세스를 처음부터 끝까지 알아서 해결함.</li>
+<li>잡무를 AI가 다 가져가니까 파트너급 인력들이 세무 대행 대신 돈이 더 되는 경영 자문 업무를 할 수 있게 됨.</li>
+</ul>
+    </div>
+  <div class="transcript-wrap">
+    <div class="transcript-header">
+      <button class="transcript-toggle" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('visible')">
+        <span class="arr">▼</span> 원문 자막
+      </button>
+      <button class="copy-btn" onclick="var b=this,t=b.nextElementSibling||b;navigator.clipboard.writeText(document.querySelector('#tr-jrnxOBOW6LQ').textContent).then(()=>{b.textContent='복사됨';setTimeout(()=>b.textContent='복사',2000)})">복사</button>
+    </div>
+    <pre class="transcript-box" id="tr-jrnxOBOW6LQ">Claude just changed tax season forever and it's because it can now plug directly into the software that accounting firm already runs. QuickBooks, their practice manager, their tax software, and actually do the work on a schedule [music] instead of just chatting about it. I've been building these systems for firms all year and it's completely changed what a firm can handle without having to hire for. So, I'm going to be showing you how to build it in three levels. Level one, we just get set up and connect Claude to the firm's tools. Level two, we build the agents that kill the tax season grind and so the month end closing, the document intake, and the tax organizer. And level three, we put it all into just one dashboard that your whole team logs into and runs the firm from. Now, even if you've never built anything before, you will be able to follow along because all we're doing is just speaking to Claude. Let's get into it. Now, just some quick context on why this matters is because if you do run a firm, you're living it right now. The grunt work, like the data entry or chasing documents, re-keying numbers between your systems, it eats your most expensive people. You cannot hire your way out because the talent is not there. So, your partners, they are effectively just staying buried in compliance work instead of the advisory work that actually bills three to five times more. [music] AI, it takes the grunt work off the table, so that is effectively solving the hiring problem. That frees your partners, that's the whole game. Now, if you've already tried to fix this with AI, you've probably hit the wall where the market is completely flooded with AI accounting tools [music] that are so sloppy. One does your bookkeeping, another one does your close, one does your work papers, and tools like Doc-it or TrueGage or Digits, they're good at their one thing, but every one of them is its own island. So, your data, it ends up siloed across five different logins and your team's just right back to just copying numbers between tools by hand. This space is just completely cluttered with point solutions. And on top of that, the biggest AI bookkeeper raised $90 million and they shut down this year. The problem was never the AI. It's just that a tool that does one thing cannot run a firm. What we build, it isn't a tool that you bolt on. It sits on top of the software that you already use and it runs the whole process end to end for you. Now, every firm that we do this for, it talked the same way. We do a quick audit that ranks every process by the dollars that it is bleeding, so we know exactly what to build first, and I'm not walking you through that today exactly. I'm just going to be building what we almost always end up installing. I know the first thing in your head, is it safe to just let AI near a tax return? Hold that thought, because there's one rule that we set in the next 60 seconds that makes this whole thing safe, and I'll show you the agent that actually caught a real mistake because of it. So, watch for it. Level one. Now, a firm often runs on three different things. QuickBooks, obviously for their books, and that's most firms where QuickBooks just owns about 80% of this market. A practice manager, and that's just going to be tracking every job. So, different things like Carbon, Canopy, whatever you use. Honestly, a ton of smaller firms that we've worked with just run a spreadsheet, so that's what I'm going to be using here. It's the same idea. And tax software. Now, most firms, they run Drake, and this one's on ProConnect. So, for Claude to actually help, it's going to do need two different things. One, it needs access to all that stuff, and two, it needs the rules for what it is allowed to do. So, it needs the permissions. And access, it's actually way simpler than people think. It's just one real connection, and then the rest is Claude just able to read off of my computer. Let me show you. So, the only real connection that we're going to be utilizing here is QuickBooks. So, I'm going to add it into Claude's settings. We'll pull up our connectors. All we have to do from here is just sign in through Intuit, and then that's the real secure login. So, my password, it's never actually going to be touching Claude. So, we just have to authorize it, and boom, we're connected. Now, everything else Claude is just going to be reading right off of my computer. So, a spreadsheet, and that's the firm's job board, and the folder where the documents land. That's the whole integration people are often scared of. It's just one login and two files. That's about it. Now that I have my connections established, like QuickBooks for example, I'm now inside of Claude Code. I'm just using the IDE Cursor to actually open up Claude Code, but you can also be using the Claude web app. You can use just a browser-based version. Whatever is going to be fine. So, I have created this folder called tax. So, I'm going to actually paste in is to </pre>
+  </div>
+  </article>
+  <article class="video-card">
+    <div class="card-top">
+      <a class="thumb-wrap" href="https://www.youtube.com/watch?v=_Yx-gBjB0l8" target="_blank" rel="noopener">
+        <img src="https://i.ytimg.com/vi/_Yx-gBjB0l8/hqdefault.jpg" alt="This ChatGPT Trick Gets You FREE Google Traffic" loading="lazy"/>
+      </a>
+      <div class="card-info">
+        <div class="card-meta">
+          <span class="ch-tag">Nicholas Puru</span>
+          <span class="date-tag">2026-06-24</span>
+          
+        </div>
+        <div class="video-title">This ChatGPT Trick Gets You FREE Google Traffic</div>
+        <div style="display:flex;align-items:center;flex-wrap:wrap;gap:4px;margin-top:auto">
+          <a class="yt-link" href="https://www.youtube.com/watch?v=_Yx-gBjB0l8" target="_blank" rel="noopener">↗ 유튜브에서 보기</a>
+          <button class="nlm-btn" data-url="https://www.youtube.com/watch?v=_Yx-gBjB0l8">📓 NotebookLM</button>
+        </div>
+      </div>
+    </div>
+    <div class="summary-section">
+      <h2>핵심 요약</h2>
+<p>구글 검색의 약 25%가 이미지 검색인데, 대부분의 사이트가 이미지 파일명이나 Alt 텍스트를 비워둬서 검색 노출 기회를 날리고 있다. ChatGPT로 이미지를 만들고 이에 맞는 SEO 친화적 파일명과 Alt 텍스트까지 뽑아내서 사이트에 적용하면 공짜 구글 트래픽을 달달하게 빨 수 있다. AI 이미지 자체보다 페이지 맥락에 맞게 이름과 설명을 제대로 최적화해 주는 게 핵심이다.</p>
+<h2>주요 포인트</h2>
+<ul>
+<li>구글 검색의 4분의 1은 이미지 검색에서 일어나며, 구글은 이미지 자체를 보지 못해 파일명과 Alt 텍스트를 읽고 판단함</li>
+<li>대부분의 비즈니스는 이미지 파일명을 수정하지 않거나 Alt 텍스트를 비워둬서 검색 노출 기회를 완전히 놓치고 있음</li>
+<li>ChatGPT를 활용해 비즈니스용 이미지를 무료로 생성하고, 해당 이미지에 딱 맞는 SEO용 파일명과 Alt 텍스트를 같이 요청함</li>
+<li>다운로드한 이미지 이름을 ChatGPT가 짜준 파일명으로 바꾸고 Alt 텍스트를 그대로 입력해서 사이트에 업로드함</li>
+<li>AI 이미지가 만능은 아니지만, 설명과 파일명이 제대로 최적화된 이미지는 구글이 딱 좋아하는 형태라 무료 트래픽을 가져다줌</li>
+</ul>
+    </div>
+  <div class="transcript-wrap">
+    <div class="transcript-header">
+      <button class="transcript-toggle" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('visible')">
+        <span class="arr">▼</span> 원문 자막
+      </button>
+      <button class="copy-btn" onclick="var b=this,t=b.nextElementSibling||b;navigator.clipboard.writeText(document.querySelector('#tr-_Yx-gBjB0l8').textContent).then(()=>{b.textContent='복사됨';setTimeout(()=>b.textContent='복사',2000)})">복사</button>
+    </div>
+    <pre class="transcript-box" id="tr-_Yx-gBjB0l8">Give me 60 seconds and I will show you a free AI trick that gets [music] your business more customers without adding new software, without adding a designer, without hiring an SEO agency, just using ChatGPT and you've already got it. Almost a quarter of every Google search happens in Google images. But Google cannot actually see your photos, so it reads the file name in the alt text behind them [music] and most businesses just upload theirs as IMG_4821 with the alt text left blank. So your business is invisible and 62% of shoppers will buy a product that they find through a search like that. So watch this. I go into ChatGPT and I tell it to make an image for my business, like a photo for my services page. Right away, it generates one for me for completely free. I then ask ChatGPT to give that image an SEO-friendly file name and the alt text to match it. So it writes both of them, I download it, rename it exactly what GPT gave me and I paste [music] that alt text in when I upload it to my site. And now Google can finally read it and as long as it matches the page, it starts showing up when people search. Now an AI image won't match magically rank on its own, but a named, described image that fits your page is exactly what Google is looking for and it's free traffic that you are leaving on the table right now. So if you want the exact prompt that I used to make ChatGPT create and optimize a whole batch of images at once, comment need and I'll DM it to you.</pre>
+  </div>
+  </article>
+  <article class="video-card">
+    <div class="card-top">
+      <a class="thumb-wrap" href="https://www.youtube.com/watch?v=OQ3QgQ7xKKg" target="_blank" rel="noopener">
+        <img src="https://i.ytimg.com/vi/OQ3QgQ7xKKg/hqdefault.jpg" alt="300억 회사 대표의 AI 수익화 방법" loading="lazy"/>
+      </a>
+      <div class="card-info">
+        <div class="card-meta">
+          <span class="ch-tag">AIMAX_PD</span>
+          <span class="date-tag">2026-06-24</span>
+          
+        </div>
+        <div class="video-title">300억 회사 대표의 AI 수익화 방법</div>
+        <div style="display:flex;align-items:center;flex-wrap:wrap;gap:4px;margin-top:auto">
+          <a class="yt-link" href="https://www.youtube.com/watch?v=OQ3QgQ7xKKg" target="_blank" rel="noopener">↗ 유튜브에서 보기</a>
+          <button class="nlm-btn" data-url="https://www.youtube.com/watch?v=OQ3QgQ7xKKg">📓 NotebookLM</button>
+        </div>
+      </div>
+    </div>
+    <div class="summary-section">
+      <h2>핵심 요약</h2>
+<p>월 매출 300억 공기 필터 회사 대표 데이비드가 공개한, 남들이 기피하는 지루한 업무를 활용한 네 가지 AI 수익화 필승 공식이다. 기업들이 싫어하는 반복 업무나 기술적 장벽, 리스크 관리 영역을 AI와 전문 지식으로 해결해 고정 수익을 창출하는 방법들을 다룬다.</p>
+<h2>주요 포인트</h2>
+<ul>
+<li>**반복적인 기장 및 급여 관리 공략**: 기업이 꺼리는 회계 기장과 급여 처리는 AI가 가장 잘하는 분야며, 한 번 맡기면 평생 고정 수익을 주는 황금 고객이 된다.</li>
+<li>**기업용 소프트웨어 세팅 및 교육 가이드**: ERP나 협업툴 도입에 어려움을 겪는 중소기업을 대상으로 세팅과 사용법 교육을 제공해 안정적인 수익을 올린다.</li>
+<li>**파트타임 경영 고문 서비스**: 고액 임원을 고용하기 힘든 대표들에게 지식을 쪼개어 빌려주며, AI 분석을 통해 혼자 다수의 회사를 관리하고 원격 고수익을 달성한다.</li>
+<li>**리스크 관리 전문가 활동**: KC 인증이나 세무 환급 등 실수 시 막대한 벌금이 따르는 S급 시장에서 인증 및 법적 규제 준수를 대행한다.</li>
+</ul>
+    </div>
+  <div class="transcript-wrap">
+    <div class="transcript-header">
+      <button class="transcript-toggle" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('visible')">
+        <span class="arr">▼</span> 원문 자막
+      </button>
+      <button class="copy-btn" onclick="var b=this,t=b.nextElementSibling||b;navigator.clipboard.writeText(document.querySelector('#tr-OQ3QgQ7xKKg').textContent).then(()=>{b.textContent='복사됨';setTimeout(()=>b.textContent='복사',2000)})">복사</button>
+    </div>
+    <pre class="transcript-box" id="tr-OQ3QgQ7xKKg">이 남자는 지루한 비즈니스로 돈을 쓸어담습니다. 월 매출 300억의 공기 필터 회사를 운영하며 단지 서류 검토 하나 해 주는 일에 4,500만 원을 흔쾌히 지불하는 데이비드. 그가 공개한 남들이 거덜떠 보지 않는 지루한 일로 돈을 복사하는네 가지 필승 공식 저장하고 끝까지 보세요. 첫째, 기업들이 하기 싫어하는 반복적인 기장과 급여 관리를 공략하세요. 회계 기장과 급여 처리 달 반복되고 서류가 산더미 같은 일은 AI가 가장 잘하는 분야입니다. 고객은이 일을 직접 하는 것을 끔찍하게 싫어하기 때문에 한번 당신을 믿고 맡기면 평생 고정 수익을 가져다 주는 황금 고객이 됩니다. 둘째, 기업용 소프트웨어를 대신 세팅해 주는 가이드가 되세요. ERP나 협업툴 같은 도구는 너무 어려워서 비싼 돈을 내고도 못 쓰는 중소 기업이 수두룩합니다. 소프트웨어를 직접 개발할 필요 없이 남이 만든 제품을 잘 쓰게 교육만 해 줘도 이미 관객이 꽉찬 공연장에서 장사하는 것처럼 안정적인 수익을 얻을 수 있습니다. 셋째, 당신의 전문 지식을 파트타임 경령 고문으로 렌탈하세요. 연봉 수억 원이 넘는 임원을 고용할 수 없는 대표들에게 당신의 두뇌를 여러 회사에 쪼개어 빌려 주는 것입니다. AI를 활용해 분석 시간을 단축하면 혼자서 다섯 개 이상의 회사를 동시에 관리하며 원격으로 업대 연봉을 달성하는 것이 가능해집니다. 넷째, KC 인증이나 세모안급 같은 리스크 관리 전문가가 되세요. 제품 인증이나 법적 규제, 준수처럼 실수하면 수천만 원의 별금을 내야 하는 영역이 바로 돈이 굴러다니는 S급 시장입니다. 15분짜리 인터뷰 연상 내용을 모두 정리했습니다.</pre>
+  </div>
+  </article>
+</main>
+
+<footer>유튜브 구독 정리 · agy 요약 · 2026-06-26 09:54</footer>
+
+
+<script>
+document.querySelectorAll('.nlm-btn').forEach(function(btn){
+  btn.addEventListener('click',function(){
+    navigator.clipboard.writeText('/notebooklm '+btn.dataset.url).then(function(){
+      var orig=btn.innerHTML;btn.innerHTML='✓ 복사됨';btn.classList.add('copied');
+      setTimeout(function(){btn.innerHTML=orig;btn.classList.remove('copied');},2000);
+    });
+  });
+});
+</script>
+
+</body>
+</html>

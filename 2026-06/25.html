@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>2026-06-25 — 유튜브 구독 정리</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+  :root{--bg:#090e1a;--surface:#111827;--surface2:#1a2235;--border:#1e2d47;--accent:#6c63ff;--accent2:#00d4ff;--text:#e8eaf0;--muted:#7a8499;--radius:14px;}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Pretendard',sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+  header{background:linear-gradient(135deg,#0d1b3e,#1a0533);border-bottom:1px solid var(--border);padding:20px 40px;display:flex;align-items:center;justify-content:space-between;}
+  .nav-back{color:var(--accent2);text-decoration:none;font-size:0.85rem;display:flex;align-items:center;gap:6px}
+  .nav-back:hover{color:#fff}
+  .date-badge{font-size:1.4rem;font-weight:700;letter-spacing:-0.5px;background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+  .count{font-size:0.85rem;color:var(--muted)}
+  main{max-width:900px;margin:0 auto;padding:32px 24px 80px}
+  .video-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;margin-bottom:24px;transition:border-color 0.2s,box-shadow 0.2s;}
+  .video-card:hover{border-color:var(--accent);box-shadow:0 4px 24px rgba(108,99,255,0.15)}
+  .card-top{display:flex;gap:0}
+  .thumb-wrap{flex:0 0 240px;position:relative;overflow:hidden}
+  .thumb-wrap img{width:100%;height:100%;object-fit:cover;transition:transform 0.4s}
+  .video-card:hover .thumb-wrap img{transform:scale(1.05)}
+  .card-info{flex:1;padding:20px;display:flex;flex-direction:column;gap:10px}
+  .card-meta{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+  .ch-tag{font-size:0.72rem;font-weight:600;padding:3px 12px;background:linear-gradient(135deg,rgba(108,99,255,0.2),rgba(0,212,255,0.2));border:1px solid rgba(108,99,255,0.3);border-radius:999px;color:var(--accent2);}
+  .date-tag{font-size:0.72rem;color:var(--muted)}
+  .no-transcript{font-size:0.68rem;padding:2px 8px;background:rgba(255,180,0,0.12);border:1px solid rgba(255,180,0,0.25);border-radius:999px;color:#ffa500;}
+  .video-title{font-size:1rem;font-weight:600;line-height:1.4}
+  .yt-link{display:inline-flex;align-items:center;gap:5px;font-size:0.8rem;color:var(--accent);text-decoration:none;transition:color 0.2s;}
+  .yt-link:hover{color:var(--accent2)}
+  
+  .nlm-btn{display:inline-flex;align-items:center;gap:5px;font-size:0.8rem;color:#fff;
+    background:rgba(108,99,255,0.2);border:1px solid rgba(108,99,255,0.4);border-radius:8px;
+    padding:4px 12px;cursor:pointer;font-family:inherit;transition:all 0.2s;margin-left:8px;}
+  .nlm-btn:hover{background:rgba(108,99,255,0.45);}
+  .nlm-btn.copied{background:rgba(0,200,100,0.2);border-color:rgba(0,200,100,0.4);color:#00c864;}
+
+  .summary-section{border-top:1px solid var(--border);background:var(--surface2);padding:20px 24px;font-size:0.85rem;line-height:1.7;color:#c5cad8;}
+  .summary-section h2{font-size:0.82rem;color:var(--accent2);margin:12px 0 4px}
+  .summary-section h2:first-child{margin-top:0}
+  .summary-section ul{padding-left:18px}
+  .summary-section li{margin-bottom:5px}
+  .transcript-wrap{border-top:1px solid var(--border);padding:14px 24px;background:#0c1220}
+  .transcript-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:0}
+  .transcript-toggle{background:none;border:none;color:var(--muted);font-size:0.8rem;cursor:pointer;font-family:inherit;display:flex;align-items:center;gap:4px;padding:0;transition:color 0.2s;}
+  .transcript-toggle:hover{color:var(--text)}
+  .copy-btn{background:rgba(108,99,255,0.1);border:1px solid rgba(108,99,255,0.3);border-radius:8px;color:var(--accent2);font-size:0.72rem;padding:4px 12px;cursor:pointer;font-family:inherit;transition:all 0.2s;}
+  .copy-btn:hover{background:rgba(108,99,255,0.25);color:#fff}
+  .transcript-box{display:none;margin-top:10px;background:#080d18;border:1px solid var(--border);border-radius:10px;padding:12px 14px;font-size:0.78rem;line-height:1.75;color:#8a95aa;max-height:260px;overflow-y:auto;white-space:pre-wrap;word-break:break-word;}
+  .transcript-box.visible{display:block}
+  footer{text-align:center;padding:24px;font-size:0.75rem;color:var(--muted);border-top:1px solid var(--border)}
+  @media(max-width:640px){.card-top{flex-direction:column}.thumb-wrap{flex:none;height:200px}header{padding:16px}main{padding:16px 12px 60px}}
+</style>
+</head>
+<body>
+
+<header>
+  <a class="nav-back" href="../index.html">← 대시보드로</a>
+  <div>
+    <div class="date-badge">2026-06-25</div>
+    <div class="count">4개 영상</div>
+  </div>
+  <div style="font-size:0.75rem;color:var(--muted)">2026-06-26 09:54 생성</div>
+</header>
+
+<main>
+
+  <article class="video-card">
+    <div class="card-top">
+      <a class="thumb-wrap" href="https://www.youtube.com/watch?v=S2ME69hra-k" target="_blank" rel="noopener">
+        <img src="https://i.ytimg.com/vi/S2ME69hra-k/hqdefault.jpg" alt="Why Watching AI Videos Isn't Enough" loading="lazy"/>
+      </a>
+      <div class="card-info">
+        <div class="card-meta">
+          <span class="ch-tag">Nate Herk</span>
+          <span class="date-tag">2026-06-25</span>
+          <span class="no-transcript">설명 기반</span>
+        </div>
+        <div class="video-title">Why Watching AI Videos Isn't Enough</div>
+        <div style="display:flex;align-items:center;flex-wrap:wrap;gap:4px;margin-top:auto">
+          <a class="yt-link" href="https://www.youtube.com/watch?v=S2ME69hra-k" target="_blank" rel="noopener">↗ 유튜브에서 보기</a>
+          <button class="nlm-btn" data-url="https://www.youtube.com/watch?v=S2ME69hra-k">📓 NotebookLM</button>
+        </div>
+      </div>
+    </div>
+    <div class="summary-section">
+      <h2>핵심 요약</h2>
+<p>요즘 유튜브에 넘쳐나는 AI 튜토리얼이나 화려한 데모 영상만 멍하니 보는 걸로는 네 실력이 절대 안 는다. 기술이 워낙 빨리 변하고 툴도 계속 바뀌기 때문에, 직접 코드를 짜고 시스템을 구축해보는 실전 경험이 필수다. 눈으로만 보는 소극적인 시청을 넘어 직접 부딪히고 만들어봐야 진짜 AI 실력이 된다.</p>
+<h2>주요 포인트</h2>
+<ul>
+<li>**눈팅만으로는 부족함**: 화려한 AI 데모나 트렌드 영상을 보는 것과, 실제 비즈니스에 쓸 수 있는 시스템을 구축하는 것 사이에는 엄청난 갭이 존재한다.</li>
+<li>**직접 만드는 삽질의 중요성**: Claude, n8n 등 아무리 좋은 툴이 있어도 직접 워크플로우를 설계하고 에러를 해결해보는 과정 없이는 자기 것이 안 된다.</li>
+<li>**도구가 아닌 문제 해결에 집중**: AI 툴은 계속 변하므로 특정 플랫폼 사용법보다는 AI를 활용해 문제를 해결하는 논리적 설계력을 키워야 한다.</li>
+<li>**실전 배포 및 시스템화**: 단순한 프롬프트 입력을 넘어 에이전트 루프를 설계하고 실제 호스팅 및 서비스로 배포까지 해보는 실행력이 핵심이다.</li>
+</ul>
+    </div>
+  </article>
+  <article class="video-card">
+    <div class="card-top">
+      <a class="thumb-wrap" href="https://www.youtube.com/watch?v=i5owDT8pges" target="_blank" rel="noopener">
+        <img src="https://i.ytimg.com/vi/i5owDT8pges/hqdefault.jpg" alt="Secret Fix For Claude Usage Limits" loading="lazy"/>
+      </a>
+      <div class="card-info">
+        <div class="card-meta">
+          <span class="ch-tag">Nicholas Puru</span>
+          <span class="date-tag">2026-06-25</span>
+          
+        </div>
+        <div class="video-title">Secret Fix For Claude Usage Limits</div>
+        <div style="display:flex;align-items:center;flex-wrap:wrap;gap:4px;margin-top:auto">
+          <a class="yt-link" href="https://www.youtube.com/watch?v=i5owDT8pges" target="_blank" rel="noopener">↗ 유튜브에서 보기</a>
+          <button class="nlm-btn" data-url="https://www.youtube.com/watch?v=i5owDT8pges">📓 NotebookLM</button>
+        </div>
+      </div>
+    </div>
+    <div class="summary-section">
+      <h2>핵심 요약</h2>
+<p>클로드 쓸 때 사용 제한에 걸리는 진짜 이유는 코드 몇 줄 바꾸려고 전체 파일을 다 다시 쓰고 구구절절 설명하기 때문이다. 해결법은 Claude.md 파일이나 프롬프트에 수정된 코드 블록만 출력하고 설명은 생략하라고 한 줄만 써두는 거다. 이렇게 하면 출력 토큰이 급감해서 제한 없이 쾌적하게 코딩할 수 있다.</p>
+<h2>주요 포인트</h2>
+<ul>
+<li>클로드(특히 Opus)는 고작 두 줄 고치려고 전체 파일 수백 줄을 다 복사해서 다시 써버리는 버릇이 있어 사용 제한을 빨리 채우게 됨.</li>
+<li>해결책은 채팅 시작할 때 "수정된 코드 블록만 출력하고 전체 파일 재작성 및 설명은 생략하라"고 명령하는 것뿐임.</li>
+<li>이 팁을 적용하면 400줄짜리 전체 코드 대신 바뀐 5줄만 딱 받아볼 수 있어서 출력 토큰 낭비가 사라짐.</li>
+<li>이렇게 해도 클로드의 추론(Reasoning) 능력은 깎이지 않고, 쓸데없는 텍스트 출력 비용만 줄여줌.</li>
+<li>더 효율적으로 쓰려면 쉬운 작업은 Sonnet이나 Haiku로 돌리고, 진짜 빡센 작업만 Opus에 맡기는 라우팅 방식을 쓰면 됨.</li>
+</ul>
+    </div>
+  <div class="transcript-wrap">
+    <div class="transcript-header">
+      <button class="transcript-toggle" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('visible')">
+        <span class="arr">▼</span> 원문 자막
+      </button>
+      <button class="copy-btn" onclick="var b=this,t=b.nextElementSibling||b;navigator.clipboard.writeText(document.querySelector('#tr-i5owDT8pges').textContent).then(()=>{b.textContent='복사됨';setTimeout(()=>b.textContent='복사',2000)})">복사</button>
+    </div>
+    <pre class="transcript-box" id="tr-i5owDT8pges">I have stopped hitting my Claude code usage limits. Here's how. So, it all comes down to just entering one line, but the real reason that you are blowing through your Opus 4.8 max limits is because Opus rewrites as an entire file just [music] to change two lines. So, every token that it prints back, you are paying for, and it loves to reprint your whole script plus a paragraph just explaining what it did. So, here's the fix. Open your Claude.md file or just paste this at the start of your chat. Tell it to output only the modified code block, no full file rewrites, no setup guides, no explanations unless you ask for them. That is it. It's all just one line, and now instead of reprinting 400 lines, Claude hands you the five that actually changed. So, your output tokens, it'll drop off of a cliff. Now, this will not stop Opus from thinking hard. It'll still reason through any tough problems. [music] It just stops you from paying to reprint code that you already have. Now, if you want to go further, the real money saver is routing. So, sending your small tasks to Sonnet or Haiku, and save Opus 4.8 for the hard stuff. If you want my full Claude.md setup, the exact paste in line plus the routing setup that picks the cheapest model for each task, comment me and I'll send it over to you.</pre>
+  </div>
+  </article>
+  <article class="video-card">
+    <div class="card-top">
+      <a class="thumb-wrap" href="https://www.youtube.com/watch?v=PeEaxqUq6EQ" target="_blank" rel="noopener">
+        <img src="https://i.ytimg.com/vi/PeEaxqUq6EQ/hqdefault.jpg" alt="Stop Letting AI Guess What “On Brand” Means" loading="lazy"/>
+      </a>
+      <div class="card-info">
+        <div class="card-meta">
+          <span class="ch-tag">Dylan Davis</span>
+          <span class="date-tag">2026-06-25</span>
+          
+        </div>
+        <div class="video-title">Stop Letting AI Guess What “On Brand” Means</div>
+        <div style="display:flex;align-items:center;flex-wrap:wrap;gap:4px;margin-top:auto">
+          <a class="yt-link" href="https://www.youtube.com/watch?v=PeEaxqUq6EQ" target="_blank" rel="noopener">↗ 유튜브에서 보기</a>
+          <button class="nlm-btn" data-url="https://www.youtube.com/watch?v=PeEaxqUq6EQ">📓 NotebookLM</button>
+        </div>
+      </div>
+    </div>
+    <div class="summary-section">
+      <h2>핵심 요약</h2>
+<p>AI에게 브랜드 스타일을 매번 알아서 추측하게 만들면 색상이나 폰트가 미세하게 어긋나 결국 사람이 손으로 다시 고쳐야 하는 불상사가 생김. 이를 해결하려면 Anthropic이 권장하는 방식대로 브랜드의 정확한 미적 요소를 AI의 '스킬(Skill)'에 임베딩해두고 항상 지키게 해야 한다. 스킬은 단순 프로젝트와 달리 하위 폴더에 코드까지 담을 수 있어 픽셀 단위로 완벽하게 일관된 브랜드 아웃풋을 뽑아낼 수 있음.</p>
+<h2>주요 포인트</h2>
+<ul>
+<li>AI한테 가이드라인 없이 결과물을 뽑아달라고 하면 브랜드 색상이나 폰트를 대충 추측해서 삑사리(?)를 냄.</li>
+<li>해결책은 브랜드 색상, 폰트, 로고 등을 매번 따로 입력하지 말고 AI의 '스킬(Skill)'에 박아두고 매번 자동 적용시키는 거임.</li>
+<li>단순 파일만 참고하는 '프로젝트'와 달리, '스킬'은 코드 폴더를 포함할 수 있어서 픽셀 수준으로 딱 들어맞는 정밀한 브랜드 레이아웃 구현이 가능함.</li>
+<li>제안서, 프레젠테이션, 보고서 등 아웃풋 포맷마다 각각 맞춤형 브랜딩 스킬을 따로 파서 굴리는 게 가장 효율적임.</li>
+<li>스킬에 브랜드 요소를 이식할 때 가장 퀄리티 좋은 소스는 마케팅 팀이 이미 뽑아놓은 브랜드 가이드 PDF와 로고 원본 에셋 폴더다.</li>
+</ul>
+    </div>
+  <div class="transcript-wrap">
+    <div class="transcript-header">
+      <button class="transcript-toggle" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('visible')">
+        <span class="arr">▼</span> 원문 자막
+      </button>
+      <button class="copy-btn" onclick="var b=this,t=b.nextElementSibling||b;navigator.clipboard.writeText(document.querySelector('#tr-PeEaxqUq6EQ').textContent).then(()=>{b.textContent='복사됨';setTimeout(()=>b.textContent='복사',2000)})">복사</button>
+    </div>
+    <pre class="transcript-box" id="tr-PeEaxqUq6EQ">You ask AI to build you a presentation or a document and it comes back close to your brand, but it's the wrong color blue. The font isn't yours and the logo is missing. So once again, you're fixing it by hand. Now AI can already see your brand and it can read your colors, your fonts, all that stuff from the documents you provide it. The problem is you're making it guess. If you're new here, I'm Dylan. I run an AI consultancy and clients ask me to fix this type of stuff all the time. So today I'm going to show you the approach recommended by Anthropic, the company that created Claude. And all you need to do is save your exact colors, fonts, logos, any other aesthetics into rules that the AI can follow every single time. So every proposal, every deck is on brand automatically. So let's get into it. So the trick to getting AI to be consistent with your brand is quite simple, but there are a series of steps you need to follow in a certain order to make sure that it is consistent. Now the trick here is embedding your brand into a skill. Instead of a prompt in a project, you want to use a skill. So this is in Claude or in codeex from OpenAI or even chat between the browser from OpenAI if you're using the team's account. Now quickly before we get into the details, what is the difference between a project and a skill? Simply put, a project is a series of instructions with maybe some context files AI can reference. But a skill on the other hand is a series of instructions as well as subfolders that the AI can reference when doing a certain task. And in those subfolders could be code. And that's the key differentiator between the two. Especially when it comes to branding because when you have the AI create the skill for you and embed the code, it can be a pixel perfect match for what you expect your brand to look like in a presentation, a document, whatever else. And that's exactly where we're using skills here. So in this case, we're going to create a skill that's going to embed our branding into it. So our colors, our our fonts, our logos, etc. And then we're going to have different skills for different output formats. So our branding for proposals is probably slightly different than presentations which may be slightly different from reports, onepagers, etc. So we want to have a different skill for each type of output format. Now when creating these skills, there are three ways we can get our branding into them. And I here are the three that I've seen most frequently and I've ranked them from best to okay. So the best option is if you have a marketing team or a marketing person that's already created brand guidelines. So this is like likely a PDF with a bunch of information around what your brand is. What's an extra bonus here is that if they have a folder as well with all of your assets, so all your logos and all those things, if you have that information, this is the best starting point. The next one is if you have a presentation or a file or whatever you're trying to mimic. So if you have a proposal, a contract, a presentation that you feel represents your brand perfectly. So it has your colors, your fonts, your logos, all that stuff, and you think it looks great, that's a good starting point. And then the final one, if you have either of those two, you can go to your website and you can use a tool like Firecrawl to extract your branding from your site and pass that off to AI. And I'll quickly show you how to do that. So this here is Firecrawl. So once you've signed up for it, it's free. You can sign up for it and you want to click this little icon here, which is web scraping. Once you're here, you want to put in your company domain. So you can see I put in apple.com here. And once you've put this in, you want to select this little drop down and it's going to be defaulted to markdown. You want to select branding instead. So down here, you select branding. Select unselect markdown. And once you've done this, you'll select scrape. After you're finished, it's going to give you back something like this where it's going to have the domain that you scraped. It's also going to have the logos on that site. It's going to have the theme, the colors, all the colors, the fonts, typography, all this types of stuff. And from this, all you need to do is download this as a JSON. So you can see this little button here that says JSON. Select that. Download it. Don't worry about what that means in the formatting because the AI understands. Once you've downloaded it, that's going to be your third option. You could pass that off to an AI and it can grab your branding from there. Quick pause and regular programming. This video is brought to you by me as always. Two quick things. First off, Blow is a 30-day AI insight series, completely free. You'll get 30 insights in your inbox of how you can apply AI to your business and your work. The second thing is if you'd like somebody like me in your business helping you leverage AI more effec</pre>
+  </div>
+  </article>
+  <article class="video-card">
+    <div class="card-top">
+      <a class="thumb-wrap" href="https://www.youtube.com/watch?v=UhCmg5oqRBg" target="_blank" rel="noopener">
+        <img src="https://i.ytimg.com/vi/UhCmg5oqRBg/hqdefault.jpg" alt="컨텐츠 천재가 클로드로 직원 만드는 법" loading="lazy"/>
+      </a>
+      <div class="card-info">
+        <div class="card-meta">
+          <span class="ch-tag">AIMAX_PD</span>
+          <span class="date-tag">2026-06-25</span>
+          
+        </div>
+        <div class="video-title">컨텐츠 천재가 클로드로 직원 만드는 법</div>
+        <div style="display:flex;align-items:center;flex-wrap:wrap;gap:4px;margin-top:auto">
+          <a class="yt-link" href="https://www.youtube.com/watch?v=UhCmg5oqRBg" target="_blank" rel="noopener">↗ 유튜브에서 보기</a>
+          <button class="nlm-btn" data-url="https://www.youtube.com/watch?v=UhCmg5oqRBg">📓 NotebookLM</button>
+        </div>
+      </div>
+    </div>
+    <div class="summary-section">
+      <h2>핵심 요약</h2>
+<p>콘텐츠 마케팅 전문가가 클로드를 연봉 1억 수준의 자동화 비서로 활용하는 6단계 가이드를 소개함. 비판적 피드백 설정부터 이메일, 데이터 관리, 디자인, SNS 업로드까지 자동화하여 비즈니스 레버리지를 극대화하는 법을 담았음. 이 모든 과정을 하나의 워크플로우로 묶어 생산성을 올리는 게 핵심임.</p>
+<h2>주요 포인트</h2>
+<ul>
+<li>클로드가 내 아이디어의 약점을 날카롭게 지적하게 해 상위 1% 전략을 만드는 스파링 파트너로 설정함.</li>
+<li>Gmail과 연결해 긴급 메일을 선별하고 답장 초안을 1초 만에 완성해 업무를 위임함.</li>
+<li>에어테이블 연동으로 채팅창에서 프로젝트 데이터를 바로 묻고 업데이트함.</li>
+<li>클로드 안에서 캔바 템플릿을 골라 브랜드 홍보물 디자인을 즉석에서 자동화함.</li>
+<li>자동화 툴로 페이스북, 인스타그램 등 최대 20개 SNS 계정에 바로 업로드하고 비용을 아낌.</li>
+<li>메일 분석부터 SNS 게시 및 기록까지 전체 과정을 하나의 워크플로우로 묶어 비즈니스 레버리지를 일으킴.</li>
+</ul>
+    </div>
+  <div class="transcript-wrap">
+    <div class="transcript-header">
+      <button class="transcript-toggle" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('visible')">
+        <span class="arr">▼</span> 원문 자막
+      </button>
+      <button class="copy-btn" onclick="var b=this,t=b.nextElementSibling||b;navigator.clipboard.writeText(document.querySelector('#tr-UhCmg5oqRBg').textContent).then(()=>{b.textContent='복사됨';setTimeout(()=>b.textContent='복사',2000)})">복사</button>
+    </div>
+    <pre class="transcript-box" id="tr-UhCmg5oqRBg">이 여자는 천재입니다. 수백만 달러의 AI 기업을 매각하고 단 30일 만에 3,200만 뷰를 만들어낸 콘텐츠 마케팅의 신 그녀가 공개한 클로드를 연봉 1억 비서로 만든 여섯 단계의 자동화 가이드 저장하고 지금 바로 따라하세요. 첫째, 나를 비판하는 스파링 파트너로 설정하세요. 설정에서 내 아이디어에 무조건 동의하지 말고 약정과 누락된 데이터를 날카롭게 지적해 달라고 주문하세요.이 지침 하나로 당신의 전략은 상위 1%의 날카로움을 갖게 됩니다. 둘째, Gma을 연결해 업무를 위임하세요. 클로드가 수백개의 메일을 읽고 긴급한 것만 골라내어 답장 초항까지 1초 만에 완성해 줍니다. 셋째, 에어트블로 데이터 관리를 끝내세요. 번거롭게 툴을 옮겨 다닐 필요 없이 채팅창에서 프로젝트 상황을 묻고 바로 업데이트해서 시간을 아끼세요. 넷째, 캠바로 디자인을 자동하세요. 클러드 안에서 캔바 템플릿을 고르고 브랜드 메시지를 넣는 홍보물을 즉석에서 만들어 낼 수 있습니다. 다섯째, 자동화 직원으로 SNS에 직시 개시하세요. 반든 디자인을 페이스북이나 인스타그램에 바로 업로드하고 팟보다 60% 저렴하게 20개의 계정을 한 번에 관리하세요. 여섯째,이 모든 과정을 하나로 묶은 워크플로우를 구축하세요. 메일 분석부터 디자인 제작 SNS KC와 결과 기록까지 클로드 하나로 끝내는 것이 진짜 비즈니스 레버리지입니다. 영상을 다 담기엔 시간이 부족합니다.이 이 내용 정리온이 임금하신 분들은이 채널을 구독후 본문을 확인해 주세요.</pre>
+  </div>
+  </article>
+</main>
+
+<footer>유튜브 구독 정리 · agy 요약 · 2026-06-26 09:54</footer>
+
+
+<script>
+document.querySelectorAll('.nlm-btn').forEach(function(btn){
+  btn.addEventListener('click',function(){
+    navigator.clipboard.writeText('/notebooklm '+btn.dataset.url).then(function(){
+      var orig=btn.innerHTML;btn.innerHTML='✓ 복사됨';btn.classList.add('copied');
+      setTimeout(function(){btn.innerHTML=orig;btn.classList.remove('copied');},2000);
+    });
+  });
+});
+</script>
+
+</body>
+</html>

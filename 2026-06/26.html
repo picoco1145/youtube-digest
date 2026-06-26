@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>2026-06-26 — 유튜브 구독 정리</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+  :root{--bg:#090e1a;--surface:#111827;--surface2:#1a2235;--border:#1e2d47;--accent:#6c63ff;--accent2:#00d4ff;--text:#e8eaf0;--muted:#7a8499;--radius:14px;}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Pretendard',sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+  header{background:linear-gradient(135deg,#0d1b3e,#1a0533);border-bottom:1px solid var(--border);padding:20px 40px;display:flex;align-items:center;justify-content:space-between;}
+  .nav-back{color:var(--accent2);text-decoration:none;font-size:0.85rem;display:flex;align-items:center;gap:6px}
+  .nav-back:hover{color:#fff}
+  .date-badge{font-size:1.4rem;font-weight:700;letter-spacing:-0.5px;background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+  .count{font-size:0.85rem;color:var(--muted)}
+  main{max-width:900px;margin:0 auto;padding:32px 24px 80px}
+  .video-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;margin-bottom:24px;transition:border-color 0.2s,box-shadow 0.2s;}
+  .video-card:hover{border-color:var(--accent);box-shadow:0 4px 24px rgba(108,99,255,0.15)}
+  .card-top{display:flex;gap:0}
+  .thumb-wrap{flex:0 0 240px;position:relative;overflow:hidden}
+  .thumb-wrap img{width:100%;height:100%;object-fit:cover;transition:transform 0.4s}
+  .video-card:hover .thumb-wrap img{transform:scale(1.05)}
+  .card-info{flex:1;padding:20px;display:flex;flex-direction:column;gap:10px}
+  .card-meta{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+  .ch-tag{font-size:0.72rem;font-weight:600;padding:3px 12px;background:linear-gradient(135deg,rgba(108,99,255,0.2),rgba(0,212,255,0.2));border:1px solid rgba(108,99,255,0.3);border-radius:999px;color:var(--accent2);}
+  .date-tag{font-size:0.72rem;color:var(--muted)}
+  .no-transcript{font-size:0.68rem;padding:2px 8px;background:rgba(255,180,0,0.12);border:1px solid rgba(255,180,0,0.25);border-radius:999px;color:#ffa500;}
+  .video-title{font-size:1rem;font-weight:600;line-height:1.4}
+  .yt-link{display:inline-flex;align-items:center;gap:5px;font-size:0.8rem;color:var(--accent);text-decoration:none;transition:color 0.2s;}
+  .yt-link:hover{color:var(--accent2)}
+  
+  .nlm-btn{display:inline-flex;align-items:center;gap:5px;font-size:0.8rem;color:#fff;
+    background:rgba(108,99,255,0.2);border:1px solid rgba(108,99,255,0.4);border-radius:8px;
+    padding:4px 12px;cursor:pointer;font-family:inherit;transition:all 0.2s;margin-left:8px;}
+  .nlm-btn:hover{background:rgba(108,99,255,0.45);}
+  .nlm-btn.copied{background:rgba(0,200,100,0.2);border-color:rgba(0,200,100,0.4);color:#00c864;}
+
+  .summary-section{border-top:1px solid var(--border);background:var(--surface2);padding:20px 24px;font-size:0.85rem;line-height:1.7;color:#c5cad8;}
+  .summary-section h2{font-size:0.82rem;color:var(--accent2);margin:12px 0 4px}
+  .summary-section h2:first-child{margin-top:0}
+  .summary-section ul{padding-left:18px}
+  .summary-section li{margin-bottom:5px}
+  .transcript-wrap{border-top:1px solid var(--border);padding:14px 24px;background:#0c1220}
+  .transcript-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:0}
+  .transcript-toggle{background:none;border:none;color:var(--muted);font-size:0.8rem;cursor:pointer;font-family:inherit;display:flex;align-items:center;gap:4px;padding:0;transition:color 0.2s;}
+  .transcript-toggle:hover{color:var(--text)}
+  .copy-btn{background:rgba(108,99,255,0.1);border:1px solid rgba(108,99,255,0.3);border-radius:8px;color:var(--accent2);font-size:0.72rem;padding:4px 12px;cursor:pointer;font-family:inherit;transition:all 0.2s;}
+  .copy-btn:hover{background:rgba(108,99,255,0.25);color:#fff}
+  .transcript-box{display:none;margin-top:10px;background:#080d18;border:1px solid var(--border);border-radius:10px;padding:12px 14px;font-size:0.78rem;line-height:1.75;color:#8a95aa;max-height:260px;overflow-y:auto;white-space:pre-wrap;word-break:break-word;}
+  .transcript-box.visible{display:block}
+  footer{text-align:center;padding:24px;font-size:0.75rem;color:var(--muted);border-top:1px solid var(--border)}
+  @media(max-width:640px){.card-top{flex-direction:column}.thumb-wrap{flex:none;height:200px}header{padding:16px}main{padding:16px 12px 60px}}
+</style>
+</head>
+<body>
+
+<header>
+  <a class="nav-back" href="../index.html">← 대시보드로</a>
+  <div>
+    <div class="date-badge">2026-06-26</div>
+    <div class="count">1개 영상</div>
+  </div>
+  <div style="font-size:0.75rem;color:var(--muted)">2026-06-26 09:54 생성</div>
+</header>
+
+<main>
+
+  <article class="video-card">
+    <div class="card-top">
+      <a class="thumb-wrap" href="https://www.youtube.com/watch?v=iTY8Q449YNQ" target="_blank" rel="noopener">
+        <img src="https://i.ytimg.com/vi/iTY8Q449YNQ/hqdefault.jpg" alt="I asked Claude Code to make me as much money as possible" loading="lazy"/>
+      </a>
+      <div class="card-info">
+        <div class="card-meta">
+          <span class="ch-tag">Nate Herk</span>
+          <span class="date-tag">2026-06-26</span>
+          
+        </div>
+        <div class="video-title">I asked Claude Code to make me as much money as possible</div>
+        <div style="display:flex;align-items:center;flex-wrap:wrap;gap:4px;margin-top:auto">
+          <a class="yt-link" href="https://www.youtube.com/watch?v=iTY8Q449YNQ" target="_blank" rel="noopener">↗ 유튜브에서 보기</a>
+          <button class="nlm-btn" data-url="https://www.youtube.com/watch?v=iTY8Q449YNQ">📓 NotebookLM</button>
+        </div>
+      </div>
+    </div>
+    <div class="summary-section">
+      <h2>핵심 요약</h2>
+<p>Claude Code는 기본적으로 돈을 벌어다 주는 게 아니라 겉보기에만 생산적인 느낌을 주도록 설계되어 있어 돈과 시간을 버리기 쉽다. 이를 해결하기 위해 사용자의 소득을 3배로 늘려준 4가지 성능 업그레이드 팁을 소개한다. 첫 번째 해결책은 사용자의 의견에 묻지도 따지지도 않고 무조건 동의만 하는 Claude의 고질적인 버릇을 뜯어고치는 것이다.</p>
+<h2>주요 포인트</h2>
+<ul>
+<li>Claude Code는 성능은 좋지만 기본 설정이 수익 극대화가 아니라 단순히 일하는 느낌을 주는 데 최적화되어 있다.</li>
+<li>소득을 높이려면 작업물의 퀄리티를 올리고 제작 속도를 단축해야 하는데, Claude의 기본 한계가 이를 가로막는다.</li>
+<li>사용자의 말에 영혼 없이 동의하기, 있지도 않은 기능 거짓말하기 등 Claude의 나쁜 습관들이 효율을 갉아먹는다.</li>
+<li>코드를 직접 수정할 필요 없이 프롬프트와 스킬을 업그레이드하는 4가지 방법으로 모든 문제를 해결할 수 있다.</li>
+<li>첫 번째 업그레이드는 사용자가 제안하는 모든 의견에 무조건 찬성하고 칭찬만 해대는 Claude의 입을 막는 것이다.</li>
+</ul>
+    </div>
+  <div class="transcript-wrap">
+    <div class="transcript-header">
+      <button class="transcript-toggle" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('visible')">
+        <span class="arr">▼</span> 원문 자막
+      </button>
+      <button class="copy-btn" onclick="var b=this,t=b.nextElementSibling||b;navigator.clipboard.writeText(document.querySelector('#tr-iTY8Q449YNQ').textContent).then(()=>{b.textContent='복사됨';setTimeout(()=>b.textContent='복사',2000)})">복사</button>
+    </div>
+    <pre class="transcript-box" id="tr-iTY8Q449YNQ">So, I figured out how to turn Claude Code into the best business partner I could ask for. And I made three times more money in the past 30 days. You see, Claude has these problems that a lot of people don't ever notice. And every one of those is costing you time and money on stuff that's never going to work. So, what I did is I built a set of four upgrades to fix every one of those issues. So, these four upgrades turn Claude into something that actually makes you money instead of just wasting your time. And it doesn't matter if you're trying to build an app or you're running an agency or you're doing AI consulting. This works for anything that you want to do inside of Claude code. So, in this video, I'm going to show you guys the four upgrades and exactly how you can use them to make more money. So, let's get into it. Claude has a few habits that quietly work against what you're trying to do. Little things that you might not think twice about. So, think about how most people use Claude. You open it up, you type what you want, you get an answer, and you just kind of assume that that is the best possible answer that you could have gotten because, you know, Claude code is one of the best AI tools out there, and the models underneath it, like Opus, are super super smart. So, it's very easy to just trust what it says. But there are these errors that are baked into Claude's design that make your results worse than they should be. So by default, Claude is tuned to make you feel productive. It is not tuned to make you money. And these are two completely different things. And every one of those design errors is costing you money because your income is basically capped by two things. The first one is the quality of your output. And the second one is how fast you can produce it. So the better the output you get and the faster you get it, the more money you can make. I'm sure we can all think of many specific moments where it felt like Claude was just trying to get us to spend more tokens or was lying to us about features that it had built or you know you feel like you're just repeating yourself a ton. But the good news is you don't need to go rewrite Claude's codebase to fix any of these things. You literally just need these four upgrades. And before I started using these, I remember launching promotions that did not do very well at all or shipping automations that were silently failing or pushing out websites or apps with a ton of bugs. So that's basically the whole arc. But before we get into the first upgrade, if you want to get these prompts and skills and see how your results get better, then you can get them for completely free inside of my free school community. The link for that is in the description. Okay, so the first upgrade fixes the biggest one, which is just Claude agreeing with everything you say. I mean, haven't you guys ever noticed that you tell Claude you want to do something and it pretty much will always say like, "Hey, that's a great idea. You're really smart." Because it wants you to like it. But then what actually happens if you say like, "You know what? I changed my mind." It will once again come back and say, "You know what? You're really smart. I'm glad you changed your mind. That's a great idea and it's getting better over time as the models are just getting smarter and smarter. But this is actually documented. Researchers call it sycopant which is just a fancy word for AI being a yes man. There's a study also called elephant which measures exactly this. And they found that AI models fail to push back on the way you frame something about 88% of the time and for humans it's around 60%. And it actually gets worse the more the model knows about you. Researchers at MIT and Penn State found that the personalization and memory features tend to make the model more agreeable over a long conversation. And so that's tough because basically the longer you work with it and the more you use it, which is what we all really should be trying to do, the better it gets at telling you what you want to hear. So this is a pretty simple fix. You ask Claude to start challenging you and pushing back and playing devil's advocate before it builds anything or before it approves any plan. And that's the whole idea behind a skill that I built called roast. It basically pulls Claude out of agreement mode and it forces it to stress test your idea and its own work instead of just approving everything. So basically what roast does is it spins up a whole council of personas and they attack it from different angles. You've got a contrarian whose only job is to find fatal flaws. We've got an expansionist who's looking for the biggest upside. We've got a first principles thinker who's working with no outside context, just pure logic. We've got a deep researcher that actually goes in and pulls out a bunch of real market data and competitor pricing off the web. And then we have the buyer who actually role plays being your custom</pre>
+  </div>
+  </article>
+</main>
+
+<footer>유튜브 구독 정리 · agy 요약 · 2026-06-26 09:54</footer>
+
+
+<script>
+document.querySelectorAll('.nlm-btn').forEach(function(btn){
+  btn.addEventListener('click',function(){
+    navigator.clipboard.writeText('/notebooklm '+btn.dataset.url).then(function(){
+      var orig=btn.innerHTML;btn.innerHTML='✓ 복사됨';btn.classList.add('copied');
+      setTimeout(function(){btn.innerHTML=orig;btn.classList.remove('copied');},2000);
+    });
+  });
+});
+</script>
+
+</body>
+</html>
