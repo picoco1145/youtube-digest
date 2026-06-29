@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>2026-06-30 — 유튜브 구독 정리</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+  :root{--bg:#090e1a;--surface:#111827;--surface2:#1a2235;--border:#1e2d47;--accent:#6c63ff;--accent2:#00d4ff;--text:#e8eaf0;--muted:#7a8499;--radius:14px;}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Pretendard',sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+  header{background:linear-gradient(135deg,#0d1b3e,#1a0533);border-bottom:1px solid var(--border);padding:20px 40px;display:flex;align-items:center;justify-content:space-between;}
+  .nav-back{color:var(--accent2);text-decoration:none;font-size:0.85rem;display:flex;align-items:center;gap:6px}
+  .nav-back:hover{color:#fff}
+  .date-badge{font-size:1.4rem;font-weight:700;letter-spacing:-0.5px;background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+  .count{font-size:0.85rem;color:var(--muted)}
+  main{max-width:900px;margin:0 auto;padding:32px 24px 80px}
+  .video-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;margin-bottom:24px;transition:border-color 0.2s,box-shadow 0.2s;}
+  .video-card:hover{border-color:var(--accent);box-shadow:0 4px 24px rgba(108,99,255,0.15)}
+  .card-top{display:flex;gap:0}
+  .thumb-wrap{flex:0 0 240px;position:relative;overflow:hidden}
+  .thumb-wrap img{width:100%;height:100%;object-fit:cover;transition:transform 0.4s}
+  .video-card:hover .thumb-wrap img{transform:scale(1.05)}
+  .card-info{flex:1;padding:20px;display:flex;flex-direction:column;gap:10px}
+  .card-meta{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+  .ch-tag{font-size:0.72rem;font-weight:600;padding:3px 12px;background:linear-gradient(135deg,rgba(108,99,255,0.2),rgba(0,212,255,0.2));border:1px solid rgba(108,99,255,0.3);border-radius:999px;color:var(--accent2);}
+  .date-tag{font-size:0.72rem;color:var(--muted)}
+  .no-transcript{font-size:0.68rem;padding:2px 8px;background:rgba(255,180,0,0.12);border:1px solid rgba(255,180,0,0.25);border-radius:999px;color:#ffa500;}
+  .video-title{font-size:1rem;font-weight:600;line-height:1.4}
+  .yt-link{display:inline-flex;align-items:center;gap:5px;font-size:0.8rem;color:var(--accent);text-decoration:none;transition:color 0.2s;}
+  .yt-link:hover{color:var(--accent2)}
+  
+  .nlm-btn{display:inline-flex;align-items:center;gap:5px;font-size:0.8rem;color:#fff;
+    background:rgba(108,99,255,0.2);border:1px solid rgba(108,99,255,0.4);border-radius:8px;
+    padding:4px 12px;cursor:pointer;font-family:inherit;transition:all 0.2s;margin-left:8px;}
+  .nlm-btn:hover{background:rgba(108,99,255,0.45);}
+  .nlm-btn.copied{background:rgba(0,200,100,0.2);border-color:rgba(0,200,100,0.4);color:#00c864;}
+
+  .summary-section{border-top:1px solid var(--border);background:var(--surface2);padding:20px 24px;font-size:0.85rem;line-height:1.7;color:#c5cad8;}
+  .summary-section h2{font-size:0.82rem;color:var(--accent2);margin:12px 0 4px}
+  .summary-section h2:first-child{margin-top:0}
+  .summary-section ul{padding-left:18px}
+  .summary-section li{margin-bottom:5px}
+  .transcript-wrap{border-top:1px solid var(--border);padding:14px 24px;background:#0c1220}
+  .transcript-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:0}
+  .transcript-toggle{background:none;border:none;color:var(--muted);font-size:0.8rem;cursor:pointer;font-family:inherit;display:flex;align-items:center;gap:4px;padding:0;transition:color 0.2s;}
+  .transcript-toggle:hover{color:var(--text)}
+  .copy-btn{background:rgba(108,99,255,0.1);border:1px solid rgba(108,99,255,0.3);border-radius:8px;color:var(--accent2);font-size:0.72rem;padding:4px 12px;cursor:pointer;font-family:inherit;transition:all 0.2s;}
+  .copy-btn:hover{background:rgba(108,99,255,0.25);color:#fff}
+  .transcript-box{display:none;margin-top:10px;background:#080d18;border:1px solid var(--border);border-radius:10px;padding:12px 14px;font-size:0.78rem;line-height:1.75;color:#8a95aa;max-height:260px;overflow-y:auto;white-space:pre-wrap;word-break:break-word;}
+  .transcript-box.visible{display:block}
+  footer{text-align:center;padding:24px;font-size:0.75rem;color:var(--muted);border-top:1px solid var(--border)}
+  @media(max-width:640px){.card-top{flex-direction:column}.thumb-wrap{flex:none;height:200px}header{padding:16px}main{padding:16px 12px 60px}}
+</style>
+</head>
+<body>
+
+<header>
+  <a class="nav-back" href="../index.html">← 대시보드로</a>
+  <div>
+    <div class="date-badge">2026-06-30</div>
+    <div class="count">2개 영상</div>
+  </div>
+  <div style="font-size:0.75rem;color:var(--muted)">2026-06-30 06:01 생성</div>
+</header>
+
+<main>
+
+  <article class="video-card">
+    <div class="card-top">
+      <a class="thumb-wrap" href="https://www.youtube.com/watch?v=XOCruXFJZ_s" target="_blank" rel="noopener">
+        <img src="https://i.ytimg.com/vi/XOCruXFJZ_s/hqdefault.jpg" alt="GLM 5.2 + Claude Code = Opus-Level Coding for Almost $0" loading="lazy"/>
+      </a>
+      <div class="card-info">
+        <div class="card-meta">
+          <span class="ch-tag">Nicholas Puru</span>
+          <span class="date-tag">2026-06-30</span>
+          
+        </div>
+        <div class="video-title">GLM 5.2 + Claude Code = Opus-Level Coding for Almost $0</div>
+        <div style="display:flex;align-items:center;flex-wrap:wrap;gap:4px;margin-top:auto">
+          <a class="yt-link" href="https://www.youtube.com/watch?v=XOCruXFJZ_s" target="_blank" rel="noopener">↗ 유튜브에서 보기</a>
+          <button class="nlm-btn" data-url="https://www.youtube.com/watch?v=XOCruXFJZ_s">📓 NotebookLM</button>
+        </div>
+      </div>
+    </div>
+    <div class="summary-section">
+      <h2>핵심 요약</h2>
+<p>최근 출시된 오픈소스 AI 모델인 GLM 5.2는 클로드 오푸스(Opus)급 성능을 보여주면서도 비용은 거의 공짜 수준으로 저렴하다. 클로드 코드(Claude Code) 등에서 구동 가능하며, 가끔 오류가 나긴 해도 가성비가 워낙 압도적이라 일상 코딩 작업에서 최우선으로 쓰게 된다. 오픈소스라 갑작스러운 서비스 중단 리스크가 없고 100만 토큰의 대용량 메모리까지 지원해서 프로젝트 전체를 기억하는 게 큰 장점이다.</p>
+<h2>주요 포인트</h2>
+<ul>
+<li>클로드 오푸스 대비 5분의 1 이하 가격인데도 일반적인 코딩 작업에서는 오푸스와 성능 차이를 느끼기 힘들다.</li>
+<li>앤트로픽의 Fable 5가 규제로 하루아침에 꺼진 사례처럼 폐쇄형 모델은 중단 리스크가 크지만, 오픈소스인 GLM 5.2는 그럴 걱정이 없다.</li>
+<li>총 7,000억 개(700B) 매개변수 중 작업당 400억 개(40B)만 활성화하는 스마트한 구조 덕분에 구동 비용이 매우 싸다.</li>
+<li>100만 토큰의 컨텍스트 창을 지원하므로 프로젝트 코드를 끝까지 잊지 않고 머릿속에 담아둔 채 작업한다.</li>
+<li>단순 토이 프로젝트가 아니라 실무에서 쓸 수 있는 브랜드 협찬 CRM 개발 같은 실제 작업에 직접 투입해 성능을 검증했다.</li>
+</ul>
+    </div>
+  <div class="transcript-wrap">
+    <div class="transcript-header">
+      <button class="transcript-toggle" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('visible')">
+        <span class="arr">▼</span> 원문 자막
+      </button>
+      <button class="copy-btn" onclick="var b=this,t=b.nextElementSibling||b;navigator.clipboard.writeText(document.querySelector('#tr-XOCruXFJZ_s').textContent).then(()=>{b.textContent='복사됨';setTimeout(()=>b.textContent='복사',2000)})">복사</button>
+    </div>
+    <pre class="transcript-box" id="tr-XOCruXFJZ_s">Okay, I'm just going to say the AI that I reach for first right now is not Opus. It's a free open source model that just came out some days ago. It's called GLM 5.2. And for most of what I throw at it all day, it is so close to the model that cost me five times more that I genuinely cannot tell them apart. And most importantly, it can run in cloud code and codecs. And right now, there's a ton of noise about it. Everyone is calling it the open-source Opus Killer. And I'm not going to add to that. I just used it for a few days on real work, the actual stuff that I do. So, here's my honest answer right up front before any of it. On most of the stuff that I built and threw at it, you genuinely could not tell me which one the cheap open- source one actually built and which one came from the one that actually cost me five times more. They are that close. I will say that Opus only really pulls ahead on the hardest, the longest jobs. And yeah, GLM did break on me a couple of times along the way. But for most of my day at a tiny fraction of the price, it's now the thing that I reach for first. So, the one question for this whole video is very simple. Can the cheap open- source one actually keep up with the expensive one? Let me show you exactly what I found. So, really quick, let me just preface what this thing even is because there's two things about it that truly matters here. First, obviously, it's open source. The model itself, it's out in the open. Anyone can download it and build on top of it. So, a model this good, it's just put out there for literally anybody to have. That almost never happens. And this matters more than this actually sounds because just the other week, one of Enthropic's most powerful models, Fable 5, got switched off overnight from the government. it's completely gone. Nobody who was building on it had a say. And that's the risk with a closed model that you do not own. An open-source one, on the other hand, like GLM 5.2, once it is out, nobody can take this back. Number two, it's built to be cheap. So, this is a huge model. There's over 700 billion parameters under the hood, but it's smart about it. So, for any one task, it only switches on a small piece of itself, about 40 billion. And that's the main reason it's so cheap to actually run. And beyond that, it can hold about a million tokens at once. So, it keeps your entire project in its head instead of just forgetting the start by the time that it reaches the end. So, that's the pitch with this. It's open. It's cheap to run. It's genuinely capable, and it has a big memory. But, I didn't really care about any of that until I gave it something real to build. So, that's what I did. Let me show you that. I didn't want to just build a to-do app or just some toy that's idealistic and not really helpful. I wanted something that I would actually use. So, I gave it a real job, and that was just to build me a sponsorship CRM. So there's a place to actually track our brand deals, who I'm talking to, what they're paying, what I owe them, the whole pipeline. So the kind of thing that you would normally pay for or build yourself over a weekend, and that is what GLM gave me back. So look at this. Like this is a real application. It's got a pipeline board. It's got deals moving across stages. We have the lead negotiating one live. And each card's got the brand, has the money, the due date, whether they've paid or not. And there's a dashboard with the totals 69,000 in pipeline all added up correctly. And with this, it actually works. So I can grab a deal. I can even drag it across to a new stage and watch like it just remembers with this. So I can refresh the page. It's all still there. Saved it. And none of this is just a mockup. Like this is a working tool inside of our team. And it seated it with eight real looking deals. So it actually feels alive the second that you open it. With that said, here's my honest measure for the whole video. Opus. I give Opus the exact same job. In Opus' version, it did come out a little nicer. So, it's darker. The spacing is a touch cleaner. Feels slightly more like a designer touched it, which isn't the most important thing. That's just aesthetics. If you put them side by side, Opus wins on looks, just by a hair, I would say. But GLM, it was definitely more complete and it did everything that I asked for. It works. And the part that truly matters is the whole application start to finish, it was about 300,000 tokens of work. And on GLM, that came out to around 40 cents. So, the same build on Opus that was about $3. So, for a result this close, that's the moment that it stopped being just a toy and something that's idealistic for me. By the way, if you guys want to build the exact same thing, I dropped a free guide inside of our community with the full setup and every prompt that I use today so you can follow along start to finish. Plenty of other stuff in there, too. It's free. Link in the description. Make sure to check</pre>
+  </div>
+  </article>
+  <article class="video-card">
+    <div class="card-top">
+      <a class="thumb-wrap" href="https://www.youtube.com/watch?v=6N592sQljbU" target="_blank" rel="noopener">
+        <img src="https://i.ytimg.com/vi/6N592sQljbU/hqdefault.jpg" alt="Claude and ChatGPT Gets Smarter When You Change This One Setting" loading="lazy"/>
+      </a>
+      <div class="card-info">
+        <div class="card-meta">
+          <span class="ch-tag">Dylan Davis</span>
+          <span class="date-tag">2026-06-30</span>
+          
+        </div>
+        <div class="video-title">Claude and ChatGPT Gets Smarter When You Change This One Setting</div>
+        <div style="display:flex;align-items:center;flex-wrap:wrap;gap:4px;margin-top:auto">
+          <a class="yt-link" href="https://www.youtube.com/watch?v=6N592sQljbU" target="_blank" rel="noopener">↗ 유튜브에서 보기</a>
+          <button class="nlm-btn" data-url="https://www.youtube.com/watch?v=6N592sQljbU">📓 NotebookLM</button>
+        </div>
+      </div>
+    </div>
+    <div class="summary-section">
+      <h2>핵심 요약</h2>
+<p>AI한테 질문했는데 뻔한 답변만 나오는 건 프롬프트 문제가 아니라 네가 안 건드린 설정 두 개 때문이다. AI 모델 종류와 그 모델의 추론(노력) 수준 설정을 바꿔야 복잡한 작업도 제대로 처리한다. 기본값인 instant나 Sonnet만 쓰지 말고 작업 난이도에 맞춰 모델과 노력 수준을 올려서 써야 퀄리티가 나옴.</p>
+<h2>주요 포인트</h2>
+<ul>
+<li>AI 답변이 구린 건 프롬프트 탓이 아니라 모델 종류와 추론 수준(Reasoning Level) 설정 문제임.</li>
+<li>ChatGPT의 instant나 Claude의 Sonnet 같은 기본 설정은 간단한 작업에만 쓸만함.</li>
+<li>모델 성능은 소형, 중형, 대형으로 나뉘는데, 복잡한 작업에는 대형 모델(Opus 등)을 골라야 함.</li>
+<li>모델만 고를 게 아니라 AI가 얼마나 머리 굴릴지 결정하는 effort level(추론 수준)도 Max나 High로 올려야 퀄리티가 직접적으로 상승함.</li>
+</ul>
+    </div>
+  <div class="transcript-wrap">
+    <div class="transcript-header">
+      <button class="transcript-toggle" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('visible')">
+        <span class="arr">▼</span> 원문 자막
+      </button>
+      <button class="copy-btn" onclick="var b=this,t=b.nextElementSibling||b;navigator.clipboard.writeText(document.querySelector('#tr-6N592sQljbU').textContent).then(()=>{b.textContent='복사됨';setTimeout(()=>b.textContent='복사',2000)})">복사</button>
+    </div>
+    <pre class="transcript-box" id="tr-6N592sQljbU">I'm guessing you ran into the situation, where you ask Claude or ChatGPT for something and it hands you back a bland generic answer. So, you rewrite the prompt, you try again and decide the AI just can't do this. Usually, it isn't what you typed and it isn't the tool. It's a setting that you've never touched. If you're new here, I'm Dylan. I run an AI consultancy and when somebody brings me work that AI got wrong, the first thing that I check are two settings, not the prompt. So, that's what I want to walk you through today. What these two settings are and do, as well as how to pick the right one for any task. So, let's get into it. When working with new clients, when they bring an issue to me with AI, the first thing I do is have them share their screen with me and I look at exactly which model they're using and which reasoning level associated to the model is being leveraged. And these are the two settings we're going to focus on here today. And for some of you that are more advanced in your usage, this might be obvious. For many people out there, it's not. And you usually accept the default of what the provider gives to you. So, if I open up ChatGPT or Claude right now, you likely, if you've not changed this, have instant enabled for ChatGPT and you likely have Sonnet enabled for Claude. Those are okay for some tasks, but for more of the complex tasks, they're not. So, you might assume that AI is bad at this task, but you probably have chosen the wrong model with the wrong reasoning level. What do I mean by that? Well, there's different models you can choose from for each provider and each model has a different level of intelligence. So, you have small models, medium models and large models. That equates to their intelligence, but you don't just choose the model, you can also choose how hard that model tries and that's what the reasoning level is. So, if you have a big model set to a low level of reasoning, it's going to try its minimal amount of effort, but if you switch that to the max, it's going to try its hardest to achieve that task. And this will directly correlate to quality for some situations. Now, how do we know where to choose the model? So, if I look at Claude and I look at the right hand side, most of the time, if you're in Gemini, Claude, ChatGPT, it doesn't matter, it's going to be on the right hand side. And it's going to be a drop down that has a name and usually a version number. So for Claude, it's usually going to set you to Sonnet. But you can see we have Opus, Sonnet, Haiku, etc. Again, most of the time, you're going to likely spend most of your time on Sonnet for medium tasks, which we'll talk about later. But for the high end tasks, the difficult tasks, you're going to want to go to Opus. In addition to the model choice, you can see here we have the effort level. So if I hover over this, you can see we have low, medium, high, and max. This is the amount of effort the AI is going to put towards that task. And if I choose Opus and I go back here, you can see under effort there's a new option here called max. So that's going to be extra extra thinking. So it's even more. That's for Claude. If I go to ChatGPT, they make it a little bit easier. So they just have instant, which is usually what you're going to be defaulted to. But then you have other levels as well. So you have medium, high, extra high, and pro extended. Depending on the plan that you have, you might not necessarily have pro extended. But if you do, I would actually recommend avoiding it because it tends to be overkill for most tasks. And then we have the models down here. We have 5.5, 5.4, etc. And that's where you can find both your models and your reasoning levels for both ChatGPT and Claude. So the very first thing you need to do is simply just don't accept the defaults. And the reason these providers, OpenAI and Anthropic, default you to a low model with low reasoning effort is for two reasons. One is they want you to have a good experience with speed, so the AI responds quickly. But the second one is it saves them money because they don't have to necessarily run their GPUs for long periods of time. Now the question we want to ask ourselves is which tasks are best suited for which models and reasoning levels. Quick pause and now we're going to programming. This video is brought to you by me, as always. Two quick things. First off, below is a 30-day AI insight series, completely free. You'll get 30 insights in your inbox if I can apply AI to your business and your work. The second thing is if you'd like to work with me, below are a series of offerings to see if there's a good fit between the two of us. Now, let's get back to the video. Well, in my head and what I talk to my clients about, there are three flavors of this. We have quick, medium, and high. So with quick tasks, these are the fast things you can do probably within 30 seconds to a minute yourself without AI's assistance. When you use AI, you can use a sma</pre>
+  </div>
+  </article>
+</main>
+
+<footer>유튜브 구독 정리 · agy 요약 · 2026-06-30 06:01</footer>
+
+
+<script>
+document.querySelectorAll('.nlm-btn').forEach(function(btn){
+  btn.addEventListener('click',function(){
+    navigator.clipboard.writeText('/notebooklm '+btn.dataset.url).then(function(){
+      var orig=btn.innerHTML;btn.innerHTML='✓ 복사됨';btn.classList.add('copied');
+      setTimeout(function(){btn.innerHTML=orig;btn.classList.remove('copied');},2000);
+    });
+  });
+});
+</script>
+
+</body>
+</html>

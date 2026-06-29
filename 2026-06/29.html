@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>2026-06-29 — 유튜브 구독 정리</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+  :root{--bg:#090e1a;--surface:#111827;--surface2:#1a2235;--border:#1e2d47;--accent:#6c63ff;--accent2:#00d4ff;--text:#e8eaf0;--muted:#7a8499;--radius:14px;}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Pretendard',sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+  header{background:linear-gradient(135deg,#0d1b3e,#1a0533);border-bottom:1px solid var(--border);padding:20px 40px;display:flex;align-items:center;justify-content:space-between;}
+  .nav-back{color:var(--accent2);text-decoration:none;font-size:0.85rem;display:flex;align-items:center;gap:6px}
+  .nav-back:hover{color:#fff}
+  .date-badge{font-size:1.4rem;font-weight:700;letter-spacing:-0.5px;background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+  .count{font-size:0.85rem;color:var(--muted)}
+  main{max-width:900px;margin:0 auto;padding:32px 24px 80px}
+  .video-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;margin-bottom:24px;transition:border-color 0.2s,box-shadow 0.2s;}
+  .video-card:hover{border-color:var(--accent);box-shadow:0 4px 24px rgba(108,99,255,0.15)}
+  .card-top{display:flex;gap:0}
+  .thumb-wrap{flex:0 0 240px;position:relative;overflow:hidden}
+  .thumb-wrap img{width:100%;height:100%;object-fit:cover;transition:transform 0.4s}
+  .video-card:hover .thumb-wrap img{transform:scale(1.05)}
+  .card-info{flex:1;padding:20px;display:flex;flex-direction:column;gap:10px}
+  .card-meta{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+  .ch-tag{font-size:0.72rem;font-weight:600;padding:3px 12px;background:linear-gradient(135deg,rgba(108,99,255,0.2),rgba(0,212,255,0.2));border:1px solid rgba(108,99,255,0.3);border-radius:999px;color:var(--accent2);}
+  .date-tag{font-size:0.72rem;color:var(--muted)}
+  .no-transcript{font-size:0.68rem;padding:2px 8px;background:rgba(255,180,0,0.12);border:1px solid rgba(255,180,0,0.25);border-radius:999px;color:#ffa500;}
+  .video-title{font-size:1rem;font-weight:600;line-height:1.4}
+  .yt-link{display:inline-flex;align-items:center;gap:5px;font-size:0.8rem;color:var(--accent);text-decoration:none;transition:color 0.2s;}
+  .yt-link:hover{color:var(--accent2)}
+  
+  .nlm-btn{display:inline-flex;align-items:center;gap:5px;font-size:0.8rem;color:#fff;
+    background:rgba(108,99,255,0.2);border:1px solid rgba(108,99,255,0.4);border-radius:8px;
+    padding:4px 12px;cursor:pointer;font-family:inherit;transition:all 0.2s;margin-left:8px;}
+  .nlm-btn:hover{background:rgba(108,99,255,0.45);}
+  .nlm-btn.copied{background:rgba(0,200,100,0.2);border-color:rgba(0,200,100,0.4);color:#00c864;}
+
+  .summary-section{border-top:1px solid var(--border);background:var(--surface2);padding:20px 24px;font-size:0.85rem;line-height:1.7;color:#c5cad8;}
+  .summary-section h2{font-size:0.82rem;color:var(--accent2);margin:12px 0 4px}
+  .summary-section h2:first-child{margin-top:0}
+  .summary-section ul{padding-left:18px}
+  .summary-section li{margin-bottom:5px}
+  .transcript-wrap{border-top:1px solid var(--border);padding:14px 24px;background:#0c1220}
+  .transcript-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:0}
+  .transcript-toggle{background:none;border:none;color:var(--muted);font-size:0.8rem;cursor:pointer;font-family:inherit;display:flex;align-items:center;gap:4px;padding:0;transition:color 0.2s;}
+  .transcript-toggle:hover{color:var(--text)}
+  .copy-btn{background:rgba(108,99,255,0.1);border:1px solid rgba(108,99,255,0.3);border-radius:8px;color:var(--accent2);font-size:0.72rem;padding:4px 12px;cursor:pointer;font-family:inherit;transition:all 0.2s;}
+  .copy-btn:hover{background:rgba(108,99,255,0.25);color:#fff}
+  .transcript-box{display:none;margin-top:10px;background:#080d18;border:1px solid var(--border);border-radius:10px;padding:12px 14px;font-size:0.78rem;line-height:1.75;color:#8a95aa;max-height:260px;overflow-y:auto;white-space:pre-wrap;word-break:break-word;}
+  .transcript-box.visible{display:block}
+  footer{text-align:center;padding:24px;font-size:0.75rem;color:var(--muted);border-top:1px solid var(--border)}
+  @media(max-width:640px){.card-top{flex-direction:column}.thumb-wrap{flex:none;height:200px}header{padding:16px}main{padding:16px 12px 60px}}
+</style>
+</head>
+<body>
+
+<header>
+  <a class="nav-back" href="../index.html">← 대시보드로</a>
+  <div>
+    <div class="date-badge">2026-06-29</div>
+    <div class="count">3개 영상</div>
+  </div>
+  <div style="font-size:0.75rem;color:var(--muted)">2026-06-30 06:01 생성</div>
+</header>
+
+<main>
+
+  <article class="video-card">
+    <div class="card-top">
+      <a class="thumb-wrap" href="https://www.youtube.com/watch?v=Tj3018n5MVg" target="_blank" rel="noopener">
+        <img src="https://i.ytimg.com/vi/Tj3018n5MVg/hqdefault.jpg" alt="Stanford's Method Turns Claude Into a PHD Level Research Team" loading="lazy"/>
+      </a>
+      <div class="card-info">
+        <div class="card-meta">
+          <span class="ch-tag">Nate Herk</span>
+          <span class="date-tag">2026-06-29</span>
+          
+        </div>
+        <div class="video-title">Stanford's Method Turns Claude Into a PHD Level Research Team</div>
+        <div style="display:flex;align-items:center;flex-wrap:wrap;gap:4px;margin-top:auto">
+          <a class="yt-link" href="https://www.youtube.com/watch?v=Tj3018n5MVg" target="_blank" rel="noopener">↗ 유튜브에서 보기</a>
+          <button class="nlm-btn" data-url="https://www.youtube.com/watch?v=Tj3018n5MVg">📓 NotebookLM</button>
+        </div>
+      </div>
+    </div>
+    <div class="summary-section">
+      <h2>핵심 요약</h2>
+<p>스탠포드 대학의 STORM 방법론을 적용해 클로드의 조사 능력을 PHD급 연구팀 수준으로 올려주는 무료 스킬을 소개한다. 단일 프롬프트의 한계를 극복하기 위해 5가지 관점의 에이전트들이 서로의 맹점을 보완하며 연구를 진행한다. 1차 조사 후 팩트 체크와 검증 과정을 거쳐 신뢰할 수 있는 고품질 HTML 브리핑 보고서를 뽑아내는 방식이다.</p>
+<h2>주요 포인트</h2>
+<ul>
+<li>스탠포드 STORM 방법론은 피어 리뷰 테스트 결과 타 연구 방식 대비 25% 더 조직적인 글을 뽑아내는 것으로 검증됨.</li>
+<li>실무자, 학자, 회의론자, 경제학자, 역사학자 등 5개의 고유한 페르소나 에이전트가 협업해 다각도로 자료를 털어옴.</li>
+<li>교차 검증 시스템을 통해 잘못된 정보를 교정하거나 신뢰성 낮은 소스를 알아서 걸러낸 뒤 V2 보고서를 완성함.</li>
+<li>클로드의 순정 기능인 딥 리서치(Deep Research) 결과물과 비교했을 때 출처 인용이 훨씬 풍부하고 보고서 구성도 압도적으로 탄탄함.</li>
+</ul>
+    </div>
+  <div class="transcript-wrap">
+    <div class="transcript-header">
+      <button class="transcript-toggle" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('visible')">
+        <span class="arr">▼</span> 원문 자막
+      </button>
+      <button class="copy-btn" onclick="var b=this,t=b.nextElementSibling||b;navigator.clipboard.writeText(document.querySelector('#tr-Tj3018n5MVg').textContent).then(()=>{b.textContent='복사됨';setTimeout(()=>b.textContent='복사',2000)})">복사</button>
+    </div>
+    <pre class="transcript-box" id="tr-Tj3018n5MVg">So Stanford has a research method called storm, which has actually been shown in peer-reviewed testing to produce articles 25% more organized than the next best method. So I put all of those storm principles into my own Claude skill, which I'm going to give you guys for completely free, and you end up with the result that looks like this. It is an HTML briefing that has been put together by five different perspectives of agents, and it has been verified. Meaning if I scroll down to the bottom, you can see that the different perspectives are giving analysis on each parts of the report. But at the very bottom, you can see that we have different sources that have been confirmed, corrected, or demoted. Meaning on the first pass, the briefing would have had information in here that just wasn't correct. But because our skill works in all this verification, on V2, we can have a lot more faith in this output. So the whole idea of storm is that instead of just shooting off one prompt and having one angle of research, we are utilizing a bunch of different angles. Because if you just send off one prompt to Claude, there's going to be a bunch of blind spots in that research plan. So storm utilizes these five perspectives. We've got a practitioner, an academic, a skeptic, an economist, and a historian. And each angle finds a hole that the other angles miss. And this whole idea of having different agents kind of like role-play their own personalities and their own, you know, backgrounds with different areas of expertise, is really, really beneficial. If you've seen other videos where I've talked about something like the roast skill, or how I like to use agent teams to basically be a council, it's really, really helpful to identify different perspectives and, like I said, find holes that the other angles are going to miss. And so let me just show you a real quick example of why that's so beneficial. So Claude code natively has a feature called deep research, which launched with the dynamic workflows. So if you come into Claude and you do a deep research command like this, you will basically be able to enter a research topic and it will spin up a dynamic workflow, which will kick off hundreds of agents in the background. I think in this example, there was 103 different agents running. So this will give you a pretty solid deep research report. As you can see here at the bottom, it didn't actually give me any output, it just internalized all that. So I said, "Where's the report?" It gave me this markdown file, which is decent, but it's really not that thorough, and there's not as many sources as we'd like. There's only two up here, and then there's a few more unconfirmed down here at the bottom, as well as some open questions. And then I took this exact prompt that I asked in the deep research, and I put it into a Storm skill. So, I said, "Hey, Storm research, do this." And it said, "Okay, cool. Here's the topic. I'm going to run the Storm pipeline now. I ran these five agents." As you can see, the practitioner, the academic, the skeptic, the economist, and the historian were converging all of that stuff together, we're seeing where they disagree, and then we're going to run six more agents, which are going to verify all those facts that you just found. Verification's done, and now you have this HTML report, which is consistently going to look like this every time with a 60-second summary key findings. And all of these key findings are also ranked by reliability. You can see right here, reliability high, nine out of 10. This one was supported by the academic and the skeptic, and it was challenged by the practitioner and the economist. And it goes like this throughout the rest of the entire HTML report here. It also calls out the assumption that this briefing rests on and the missing six lens. All five lenses look at the firm from the owner's chair, adoption rates, productivity, ROI. None of them sat in the seat of the customer or the frontline employee. So, that's the missing sixth lens here, and I would then just say, "Okay, cool. Spin up that sixth lens, and run a V3 of this HTML report." And then it gives us really practical takeaways here. And what's cool about this is compared to something like the deep research, which is just going to basically give you a brain dump of a bunch of stats it found, the Storm research can really be tailored towards you. You can go into the skill and say, "Hey, here's what I'm doing. Here's my business. Here's what our goals are." Every time you run a Storm research report, make it tailored towards us, you know, what do we actually want to do differently now that you've understood all of this new data and research. And so, in this specific example with the deep research and the Storm, I put this into Codex, so a completely different AI model, and I said, "Hey, which one's better?" And it came back and said the HTML briefing is better. It's got better evidence quality, it's much stronger, it</pre>
+  </div>
+  </article>
+  <article class="video-card">
+    <div class="card-top">
+      <a class="thumb-wrap" href="https://www.youtube.com/watch?v=ymnCet4KOAw" target="_blank" rel="noopener">
+        <img src="https://i.ytimg.com/vi/ymnCet4KOAw/hqdefault.jpg" alt="This Secret Claude Skill Can Predict Your Customers" loading="lazy"/>
+      </a>
+      <div class="card-info">
+        <div class="card-meta">
+          <span class="ch-tag">Nicholas Puru</span>
+          <span class="date-tag">2026-06-29</span>
+          
+        </div>
+        <div class="video-title">This Secret Claude Skill Can Predict Your Customers</div>
+        <div style="display:flex;align-items:center;flex-wrap:wrap;gap:4px;margin-top:auto">
+          <a class="yt-link" href="https://www.youtube.com/watch?v=ymnCet4KOAw" target="_blank" rel="noopener">↗ 유튜브에서 보기</a>
+          <button class="nlm-btn" data-url="https://www.youtube.com/watch?v=ymnCet4KOAw">📓 NotebookLM</button>
+        </div>
+      </div>
+    </div>
+    <div class="summary-section">
+      <h2>핵심 요약</h2>
+<p>Claude를 이용해 1,000명의 가상 고객으로 구성된 포커스 그룹 시뮬레이션을 만들고 비즈니스 결정을 예측하는 무료 AI 기술이다. 신규 서비스나 가격 인상 같은 결정을 내리기 전에 가상 고객들이 진짜 사람처럼 토론하게 만들어 반응을 미리 볼 수 있다. 코딩 없이 질문만 던지면 시뮬레이션이 돌아가고 결과 보고서까지 깔끔하게 뽑아주니 아주 유용함.</p>
+<h2>주요 포인트</h2>
+<ul>
+<li>성격과 기억을 가진 1,000명의 가상 고객으로 포커스 그룹 시뮬레이션을 구축함.</li>
+<li>가격을 200달러에서 300달러로 올리는 등의 질문을 던지면 가상 고객들이 진짜 댓글창처럼 치열하게 토론함.</li>
+<li>코딩 필요 없이 질문만 던지고 시뮬레이션을 실행하면 가장 가능성 높은 결과를 정리한 보고서를 전달해 줌.</li>
+<li>실제 리스크를 감수하기 전에 가상 포커스 그룹을 통해 결정의 성패를 미리 테스트해볼 수 있음.</li>
+<li>직접 세팅해보고 싶으면 채널 댓글로 "need"라고 달면 전체 셋업 가이드를 보내준다고 함.</li>
+</ul>
+    </div>
+  <div class="transcript-wrap">
+    <div class="transcript-header">
+      <button class="transcript-toggle" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('visible')">
+        <span class="arr">▼</span> 원문 자막
+      </button>
+      <button class="copy-btn" onclick="var b=this,t=b.nextElementSibling||b;navigator.clipboard.writeText(document.querySelector('#tr-ymnCet4KOAw').textContent).then(()=>{b.textContent='복사됨';setTimeout(()=>b.textContent='복사',2000)})">복사</button>
+    </div>
+    <pre class="transcript-box" id="tr-ymnCet4KOAw">This free AI skill can basically predict the future of your business before it happens. It builds you a focus group inside of a simulation. [music] So, a thousand fake customers, each one with their own personality, their own opinions, and their own memory. And then it lets them argue and react to your decision just like real people would. So, let's say you're about to launch a new service or push a price increase. [music] Now, instead of guessing whether or not it'll work, you just type, "Will raising my price from $200 to $300 lose me customers?" And then [music] these thousand AI people will debate it just like a real comment section. Some love it, some actually talk the other AIs into changing their minds, [music] and at the end it hands you a plain report on what is most likely to happen. You don't need how to code to install this. Literally, you just [music] ask it a question and you let the simulation run. So, before you bet your revenue on a gut feeling, you let a fake focus group take [music] the hit first. If you want to set this up for yourself, just comment "need" and I'll send you the entire setup guide.</pre>
+  </div>
+  </article>
+  <article class="video-card">
+    <div class="card-top">
+      <a class="thumb-wrap" href="https://www.youtube.com/watch?v=hpongtDwDOU" target="_blank" rel="noopener">
+        <img src="https://i.ytimg.com/vi/hpongtDwDOU/hqdefault.jpg" alt="클로드로 고객센터 만드는법" loading="lazy"/>
+      </a>
+      <div class="card-info">
+        <div class="card-meta">
+          <span class="ch-tag">AIMAX_PD</span>
+          <span class="date-tag">2026-06-29</span>
+          
+        </div>
+        <div class="video-title">클로드로 고객센터 만드는법</div>
+        <div style="display:flex;align-items:center;flex-wrap:wrap;gap:4px;margin-top:auto">
+          <a class="yt-link" href="https://www.youtube.com/watch?v=hpongtDwDOU" target="_blank" rel="noopener">↗ 유튜브에서 보기</a>
+          <button class="nlm-btn" data-url="https://www.youtube.com/watch?v=hpongtDwDOU">📓 NotebookLM</button>
+        </div>
+      </div>
+    </div>
+    <div class="summary-section">
+      <h2>핵심 요약</h2>
+<p>클로드 코드를 써서 비싼 CRM 대신 10분 만에 풀스택 고객 관리 시스템을 만드는 자동화 공식이다. 자연어 설계부터 서버 배포, 메일 연동, 백그라운드 자동화, MCP 서버 외부 연동까지 핵심 단계를 압축해서 설명함.</p>
+<h2>주요 포인트</h2>
+<ul>
+<li>자연어 기반 설계: 복잡한 코딩 없이 말로 설명하면 클로드가 웹 앱 아키텍처를 바로 짜줌.</li>
+<li>Railway 서버 배포: 24시간 가동되는 서버에 인스턴스를 올려 팀원들과 실시간 라이브 시스템을 공유함.</li>
+<li>Resend API 연동: 리드 상태가 변경될 때마다 서버가 자동으로 이메일을 발송하는 워크플로우를 구현함.</li>
+<li>백그라운드 자동화: 접속하지 않아도 60초마다 데이터를 스스로 감시하고 로직을 수행하는 엔진을 구축함.</li>
+<li>MCP 서버 통합: 구글 미트나 파이썬 같은 외부 데이터를 연결해 확장성을 무한대로 넓힘.</li>
+</ul>
+    </div>
+  <div class="transcript-wrap">
+    <div class="transcript-header">
+      <button class="transcript-toggle" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('visible')">
+        <span class="arr">▼</span> 원문 자막
+      </button>
+      <button class="copy-btn" onclick="var b=this,t=b.nextElementSibling||b;navigator.clipboard.writeText(document.querySelector('#tr-hpongtDwDOU').textContent).then(()=>{b.textContent='복사됨';setTimeout(()=>b.textContent='복사',2000)})">복사</button>
+    </div>
+    <pre class="transcript-box" id="tr-hpongtDwDOU">이 남자는 시스템 천재입니다. 비싼 구동료의 고객 관리 툴을 모두 해지하고 클로드 코드로 단 10분 만에 풀스택 CRM을 구축해낸 브랜드 조이. 그가 공개한 서버 배포터 API 연동까지 이어지는 6단계 자동화 공식 쉬우니까 저장하고 따라해 보세요. 첫째, 자연어 기반의 풀스택 설계를 시작하세요. 복잡한 수동 코딩 없이 구현하고 싶은 기능을 말로 설명하며 클로드가 웹 어플리케이션의 전체 아키텍처를 즉시 생성합니다. 둘째, 레이웨이 클로드로 인스턴스를 배포하세요. 로컬 환경을 넘어 24시간 가동되는 서버에 앱을 올려 팀원 전체가 공유하는 실시간 라이브 시스템을 구축합니다. 셋째, 리센드 API로 트랜잭션 메일의 시스템을 연동하세요. 리드 상태가 변경될 때마다 서버가 자동으로 이메일을 발송하는 워크플로우를 소스 코드 레벨에서부터 구현할 수 있습니다. 넷째, 백그라운드 자동화 엔진을 구축하세요. 사용자가 접속하지 않아도 서버가 스스로 데이터를 감시하고 60초마다 로직을 수행하는 강력한 자동화 환경이 완성됩니다. 다섯째, MCP 서버를 통해 외브툴과 통합하세요. 구글 밑트나 파동 같은 외브 데이터 소스를 연결해 시스템의 확장성을 무한대로 넓히는 것이 핵심입니다. 14분짜리 영상 내용을 자세히 정리했습니다. 자료 궁금하신 분들은이 채널을 구독후 본문을 확인해 주세요.</pre>
+  </div>
+  </article>
+</main>
+
+<footer>유튜브 구독 정리 · agy 요약 · 2026-06-30 06:01</footer>
+
+
+<script>
+document.querySelectorAll('.nlm-btn').forEach(function(btn){
+  btn.addEventListener('click',function(){
+    navigator.clipboard.writeText('/notebooklm '+btn.dataset.url).then(function(){
+      var orig=btn.innerHTML;btn.innerHTML='✓ 복사됨';btn.classList.add('copied');
+      setTimeout(function(){btn.innerHTML=orig;btn.classList.remove('copied');},2000);
+    });
+  });
+});
+</script>
+
+</body>
+</html>
