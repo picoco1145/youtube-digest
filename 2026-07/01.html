@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>2026-07-01 — 유튜브 구독 정리</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+  :root{--bg:#090e1a;--surface:#111827;--surface2:#1a2235;--border:#1e2d47;--accent:#6c63ff;--accent2:#00d4ff;--text:#e8eaf0;--muted:#7a8499;--radius:14px;}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Pretendard',sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+  header{background:linear-gradient(135deg,#0d1b3e,#1a0533);border-bottom:1px solid var(--border);padding:20px 40px;display:flex;align-items:center;justify-content:space-between;}
+  .nav-back{color:var(--accent2);text-decoration:none;font-size:0.85rem;display:flex;align-items:center;gap:6px}
+  .nav-back:hover{color:#fff}
+  .date-badge{font-size:1.4rem;font-weight:700;letter-spacing:-0.5px;background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+  .count{font-size:0.85rem;color:var(--muted)}
+  main{max-width:900px;margin:0 auto;padding:32px 24px 80px}
+  .video-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;margin-bottom:24px;transition:border-color 0.2s,box-shadow 0.2s;}
+  .video-card:hover{border-color:var(--accent);box-shadow:0 4px 24px rgba(108,99,255,0.15)}
+  .card-top{display:flex;gap:0}
+  .thumb-wrap{flex:0 0 240px;position:relative;overflow:hidden}
+  .thumb-wrap img{width:100%;height:100%;object-fit:cover;transition:transform 0.4s}
+  .video-card:hover .thumb-wrap img{transform:scale(1.05)}
+  .card-info{flex:1;padding:20px;display:flex;flex-direction:column;gap:10px}
+  .card-meta{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+  .ch-tag{font-size:0.72rem;font-weight:600;padding:3px 12px;background:linear-gradient(135deg,rgba(108,99,255,0.2),rgba(0,212,255,0.2));border:1px solid rgba(108,99,255,0.3);border-radius:999px;color:var(--accent2);}
+  .date-tag{font-size:0.72rem;color:var(--muted)}
+  .no-transcript{font-size:0.68rem;padding:2px 8px;background:rgba(255,180,0,0.12);border:1px solid rgba(255,180,0,0.25);border-radius:999px;color:#ffa500;}
+  .video-title{font-size:1rem;font-weight:600;line-height:1.4}
+  .yt-link{display:inline-flex;align-items:center;gap:5px;font-size:0.8rem;color:var(--accent);text-decoration:none;transition:color 0.2s;}
+  .yt-link:hover{color:var(--accent2)}
+  
+  .nlm-btn{display:inline-flex;align-items:center;gap:5px;font-size:0.8rem;color:#fff;
+    background:rgba(108,99,255,0.2);border:1px solid rgba(108,99,255,0.4);border-radius:8px;
+    padding:4px 12px;cursor:pointer;font-family:inherit;transition:all 0.2s;margin-left:8px;}
+  .nlm-btn:hover{background:rgba(108,99,255,0.45);}
+  .nlm-btn.copied{background:rgba(0,200,100,0.2);border-color:rgba(0,200,100,0.4);color:#00c864;}
+
+  .summary-section{border-top:1px solid var(--border);background:var(--surface2);padding:20px 24px;font-size:0.85rem;line-height:1.7;color:#c5cad8;}
+  .summary-section h2{font-size:0.82rem;color:var(--accent2);margin:12px 0 4px}
+  .summary-section h2:first-child{margin-top:0}
+  .summary-section ul{padding-left:18px}
+  .summary-section li{margin-bottom:5px}
+  .transcript-wrap{border-top:1px solid var(--border);padding:14px 24px;background:#0c1220}
+  .transcript-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:0}
+  .transcript-toggle{background:none;border:none;color:var(--muted);font-size:0.8rem;cursor:pointer;font-family:inherit;display:flex;align-items:center;gap:4px;padding:0;transition:color 0.2s;}
+  .transcript-toggle:hover{color:var(--text)}
+  .copy-btn{background:rgba(108,99,255,0.1);border:1px solid rgba(108,99,255,0.3);border-radius:8px;color:var(--accent2);font-size:0.72rem;padding:4px 12px;cursor:pointer;font-family:inherit;transition:all 0.2s;}
+  .copy-btn:hover{background:rgba(108,99,255,0.25);color:#fff}
+  .transcript-box{display:none;margin-top:10px;background:#080d18;border:1px solid var(--border);border-radius:10px;padding:12px 14px;font-size:0.78rem;line-height:1.75;color:#8a95aa;max-height:260px;overflow-y:auto;white-space:pre-wrap;word-break:break-word;}
+  .transcript-box.visible{display:block}
+  footer{text-align:center;padding:24px;font-size:0.75rem;color:var(--muted);border-top:1px solid var(--border)}
+  @media(max-width:640px){.card-top{flex-direction:column}.thumb-wrap{flex:none;height:200px}header{padding:16px}main{padding:16px 12px 60px}}
+</style>
+</head>
+<body>
+
+<header>
+  <a class="nav-back" href="../index.html">← 대시보드로</a>
+  <div>
+    <div class="date-badge">2026-07-01</div>
+    <div class="count">3개 영상</div>
+  </div>
+  <div style="font-size:0.75rem;color:var(--muted)">2026-07-02 06:01 생성</div>
+</header>
+
+<main>
+
+  <article class="video-card">
+    <div class="card-top">
+      <a class="thumb-wrap" href="https://www.youtube.com/watch?v=1eXWLMJuK2I" target="_blank" rel="noopener">
+        <img src="https://i.ytimg.com/vi/1eXWLMJuK2I/hqdefault.jpg" alt="It Just Replaced My Marketing Team, Here's How" loading="lazy"/>
+      </a>
+      <div class="card-info">
+        <div class="card-meta">
+          <span class="ch-tag">Nicholas Puru</span>
+          <span class="date-tag">2026-07-01</span>
+          
+        </div>
+        <div class="video-title">It Just Replaced My Marketing Team, Here's How</div>
+        <div style="display:flex;align-items:center;flex-wrap:wrap;gap:4px;margin-top:auto">
+          <a class="yt-link" href="https://www.youtube.com/watch?v=1eXWLMJuK2I" target="_blank" rel="noopener">↗ 유튜브에서 보기</a>
+          <button class="nlm-btn" data-url="https://www.youtube.com/watch?v=1eXWLMJuK2I">📓 NotebookLM</button>
+        </div>
+      </div>
+    </div>
+    <div class="summary-section">
+      <h2>핵심 요약</h2>
+<p>'Love our'는 소규모 비즈니스의 일상적인 마케팅 디자인 작업을 알아서 처리해 주는 AI 디자인 에이전트다. 브랜드의 로고, 색상, 폰트를 활용해 한 달 치 소셜 미디어 게시물과 광고 시안을 한 번에 뽑아준다. 텍스트 수정이나 반복적인 리사이징 작업까지 자동화할 수 있어 마케팅 공수를 획기적으로 줄여준다.</p>
+<h2>주요 포인트</h2>
+<ul>
+<li>비즈니스 소개글만 입력하면 브랜드 가이드라인에 맞춘 한 달 분량의 마케팅 콘텐츠를 알아서 기획하고 제작함.</li>
+<li>폰트 생성기 기능으로 커스텀 타이포 스타일을 만들어 모든 시안에 일관되게 적용해 줌.</li>
+<li>문구나 날짜가 바뀌어도 이미지를 새로 만들 필요 없이 텍스트 입력만으로 캔버스에서 즉시 업데이트 가능함.</li>
+<li>플랫폼별 크기 조정 같은 반복적인 업무를 한 번 가르쳐 놓으면 알아서 자동 실행하는 스마트한 스킬을 지원함.</li>
+</ul>
+    </div>
+  <div class="transcript-wrap">
+    <div class="transcript-header">
+      <button class="transcript-toggle" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('visible')">
+        <span class="arr">▼</span> 원문 자막
+      </button>
+      <button class="copy-btn" onclick="var b=this,t=b.nextElementSibling||b;navigator.clipboard.writeText(document.querySelector('#tr-1eXWLMJuK2I').textContent).then(()=>{b.textContent='복사됨';setTimeout(()=>b.textContent='복사',2000)})">복사</button>
+    </div>
+    <pre class="transcript-box" id="tr-1eXWLMJuK2I">Love our just ran my entire month of marketing. It's basically just an AI design agent that runs the daily design work of a small business marketing team. You just tell it what your business does and it plans and produces your whole month. So social media posts, any ads, promos, all on one brand in one canvas. So say it's the start of the month. You type, "Give me this month's Instagram post plus a weekend promo ad for my coffee shop." And it lays out the whole batch already on brand. It pulls your logo, your colors, and fonts from your brand kit, so every post, every ad, [music] every promo looks like it came from the same team. Because now it did. If you want your headlines to actually have a nice look, the font generator it builds you a custom type style and it locks it across everything. So the whole month stays consistent. [music] And when your promo copy changes, like any new dates or any new offers, you don't redo the graphic. You just type, "Edit text." [music] Type the new line and it updates instantly. If you have a wrong product in the shot, then you can just swap that element right on the canvas. Now this [music] part though, it'll save you hours. So with the create skill, you teach Love our one repetitive job once, like resizing this promo for all three platforms, [music] and it runs on demand every time after. That could be a full month of marketing planned and on brand done by one person in an afternoon. Comment brand and I'll send you more information.</pre>
+  </div>
+  </article>
+  <article class="video-card">
+    <div class="card-top">
+      <a class="thumb-wrap" href="https://www.youtube.com/watch?v=3Ba6dllQ3lE" target="_blank" rel="noopener">
+        <img src="https://i.ytimg.com/vi/3Ba6dllQ3lE/hqdefault.jpg" alt="혼자 바이브 코딩으로 A4 5,600장 분량의 프로그램을 만든 썰" loading="lazy"/>
+      </a>
+      <div class="card-info">
+        <div class="card-meta">
+          <span class="ch-tag">소스놀이터</span>
+          <span class="date-tag">2026-07-01</span>
+          
+        </div>
+        <div class="video-title">혼자 바이브 코딩으로 A4 5,600장 분량의 프로그램을 만든 썰</div>
+        <div style="display:flex;align-items:center;flex-wrap:wrap;gap:4px;margin-top:auto">
+          <a class="yt-link" href="https://www.youtube.com/watch?v=3Ba6dllQ3lE" target="_blank" rel="noopener">↗ 유튜브에서 보기</a>
+          <button class="nlm-btn" data-url="https://www.youtube.com/watch?v=3Ba6dllQ3lE">📓 NotebookLM</button>
+        </div>
+      </div>
+    </div>
+    <div class="summary-section">
+      <h2>핵심 요약</h2>
+<p>AI 코딩으로 간단한 데모나 MVP는 만들기 쉽지만 대형 프로그램은 결국 유지보수 단계에서 무너지기 십상이다. 저자는 에이전트 작업 규칙 문서화, 테스트 코드 축적, 서브 에이전트 교차 검토로 이 벽을 넘었다. 여기에 자동 업데이트와 클라우드플레어 배포 분리, 에러로그 수집까지 붙여 혼자서 17만 줄 규모의 프로그램을 안정적으로 완성했다.</p>
+<h2>주요 포인트</h2>
+<ul>
+<li>AI가 폭주해서 코드를 망치지 않도록 건드릴 수 있는 범위와 금지 영역을 지정한 안전장치(문서)부터 만들었다.</li>
+<li>기능을 한 번에 크게 만들지 않고 잘게 쪼갰으며, 기존 기능이 망가지는 걸 막기 위해 테스트 코드를 계속 쌓았다.</li>
+<li>코드를 짠 AI는 편향될 수 있으므로, 깨끗한 상태의 서브 에이전트에게 교차 검토(감사)를 맡겨 코드 품질을 끌어올렸다.</li>
+<li>실서비스 운영을 위해 자동 업데이트를 구축하되, 서버 트래픽 비용을 아끼려고 대용량 파일 배포는 클라우드플레어로 분리했다.</li>
+<li>사용자가 겪는 오류를 추측으로 고치지 않고 확실히 잡을 수 있도록 에러로그 전송 기능을 만들어 유지보수 벽을 해결했다.</li>
+</ul>
+    </div>
+  <div class="transcript-wrap">
+    <div class="transcript-header">
+      <button class="transcript-toggle" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('visible')">
+        <span class="arr">▼</span> 원문 자막
+      </button>
+      <button class="copy-btn" onclick="var b=this,t=b.nextElementSibling||b;navigator.clipboard.writeText(document.querySelector('#tr-3Ba6dllQ3lE').textContent).then(()=>{b.textContent='복사됨';setTimeout(()=>b.textContent='복사',2000)})">복사</button>
+    </div>
+    <pre class="transcript-box" id="tr-3Ba6dllQ3lE">요즘 AI 코딩으로 MVP 하나 만드는 건 정말 쉬워졌습니다. MVP는 최소기능 제품 쉽게 말해 일단 돌아가는 첫 버전입니다. 문제는 그다음입니다. 기능이 하나씩 쌓이고 로그인 파일 처리 업데이트 보안 테스트가 붙는 순간부터 난이도가 완전히 달라집니다. 랩 조사에 따르면 기업들의 85%가 코드 작성은 쉬운데 그걸 검수하느라 너무 많은 시간이 든다고 도로합니다. 또 MET 실험에서는 숙련된 오픈소스 개발자들이 AI를 쓰면 빨라질 거라고 예상했지만 실제 결과는 오히려 작업 시간이 19% 늘어난 것으로 나왔습니다. 그러니까 많은 사람들이 이렇게 말합니다. AI로 데모 앱은 만들 수 있어도 큰 프로그램은 결국 유지보수에서 무너진다. 저도 그 말이 왜 나오는지 직접 겪어 봤습니다. 그런데 저는 그 구간을 넘어서 혼자 바이브 코딩으로 총 17만 줄 책 19권 A4 56,600장 분량의 프로그램까지 만들었습니다. 오늘은 AI 코딩으로 작은 MVP를 넘어 대형 프로그램까지 가면 실제로 어떤 벽을 만나고 저는 그걸 어떻게 넘었는지 이야기해 보겠습니다. 처음 목표는 단순했습니다. 오픈클로처럼 AI가 직접 일을 처리하는 도구를 제가 쓰는 월 구독 플랜 안에서 자유롭게 굴리고 싶었습니다. 그러니까 소널은 그냥 채팅하는 AI가 아니라 오픈 클로나 헤르메스 에이전트처럼 실제 작업을 처리하는 실행형 에이전트를 목표로 한 겁니다. 실행형 에이전트는 쉽게 말해 AI가 말만 하는게 아니라 파일을 만들고 명령을 실행하고 작업 결과를 다시 확인하는 구조입니다. 저는 거기에 코딩 능력까지 제대로 붙이고 싶었습니다. 그리고 텔레그램으로 어디서든 편하게 제어하고 싶었습니다. 그런데 여기서부터 일이 커졌습니다. 체포트 하면 몇 개 만들면 끝날 줄 알았는데 AI 연결, 작업 기업 보안, 업데이트 에러 처리 테스트 코드가 계속 따라붙었습니다. 나중에는 코덱스와 클로드 코드를 동시에 지원하고 윈도우와 맥OS까지 커버하게 됐습니다. 결국 처음엔 체포트 하나이었는데 지금은 AI를 계속 찍어내고 굴리는 체포 공장 같은 프로그램이 됐습니다. 그런데 그 과정에 어려움이 있었죠. AI가 코드를 못 짜서 힘든게 아니었습니다. 진짜 문제는 AI가 너무 빨리 만들다가 건드리면 안 되는 곳까지 건드린다는 것이었습니다. 그래서 저는 AI에게 코드를 더 많이 시키기 전에 먼저 울타리 붙어 쳤습니다. 어디까지 고쳐도 되는지 어디는 절대 건드리면 안 되는지 정해 둔 겁니다. 쉽게 말해 AI에게 공급만 준게 아니라 안전모와 작업 규칙까지 같이 준 셈입니다. 그러니까 한해 엔지니어링 체계를 잡은 거죠. 한에서는 쉽게 말해 AI가 마음대로 날뛰지 않고 정해진 작업장 안에서 일하게 만드는 안전 장치입니다. 저는 에이전트 포딩 MD라는 문서를 만들고 AI가 어디를 건드려도 되는지 어디는 절대 건드리면 안 되는지 계속 알려졌습니다. 자주 실수하는 부분은 잘 작동하는 모범 코드를 남겨 두고 AI가 세 코드를 만들 때마다 그걸 참고하게 했습니다. 쉽게 말해이 문서를 AI가 반드시 따라야 할 기억 장치처럼 쓴 겁니다. 그리고 기능을 한 번에 크게 만들지 않고 작은 작업 단위로 쪼겠습니다. AI에게 코딩만 시킨게 아니라 검토하고 수정하고 검증하게 했습니다. 그런데 코드가 길어질수록 작은 수정 하나에도 실수가 많아졌습니다. 그래서 테스트 코드에 신경을 쓰기 시작했습니다. 새 기능을 넣을 때마다 기존 기능이 그대로 잘 작동하는지 확인할 수 있도록 테스트 케이스를 계속 쌓아갔죠. 테스트 케이스는 쉽게 말해 프로그램이 선을 넘지 않도록 확인하는 점검표입니다. 덕분에 새로 만든 코드가 기존에 잘되던 기능을 깨뜨렸을 때 훨씬 빨리 알아차릴 수 있었습니다. 한편 서브 에이전트도 적극적으로 활용했습니다. 복잡한 코드를 수정한 뒤에는 다른 AI에게 다시 검토를 맡겼죠. 제가 작업하던 AI는 앞에 대화와 수정 가장에 영향을 받을 수 있지만 서브 에이전트는 상대적으로 깨끗한 상태에서 코드를 봅니다. 그래서 선익변 없이이 수정이 정말 맞는지 도치 문제는 없는지 다시 확인하는 역할에 좋았습니다. 쉽게 말해 AI가 코드를 만들고 또 다른 AI가 감사를 보는 구조를 만든 겁니다. 서브 에이전트를 거치고 안 거치고간에 코드 품질 차이가 꽤 컸습니다. 또는 봇이 실제 서비스 단계로 넘어가면서 또 하나 꼭 필요한게 생겼습니다. 바로 업데이트 시스템입니다. 처음에는 세 버전이 나올 때마다 다시 다운로드해서 설치해 주세요라고 안내하면 될 줄 알았습니다. 그런데 사용자가 늘어나면서 그렇게 할 수 없었습니다. 몇 번 새로 설치하라고 하면 사용자도 불편하고 저도 버전 관리를 감당하기 어려워집니다. 그래서 버전 기반 업데이트 시스템을 만들었습니다. 현재 버전이 무엇인지 확인하고 새 버전이 있으면 자동으로 내려받아 업데이트 할 수 있게 한 겁니다. 이걸 만들고 나니 새로운 기능을 배포하는 속도도 훨씬 빨라졌습니다. 하지만 여기서 또 현실적인 문제가 생겼습니다. 업데이트 파일을 운영 서버에서 그대로 배포하면 다운로드 트래픽 때문에 서버 비용이 빠르게 늘어날 수 있었습니다. 몇 개 버전만 보관해도 파일 용량이 금방 몇 기가 단위로 커졌고 사용자가 다운로드 할 때마다 네트워크 비용이 쌓이는 구조였습니다. 그래서 업데이트 파일은 클라우드 플레이어 쪽으로 분리했습니다. 운영 서버는 핵심 기능을 처리하고 큰 파일 다운로드는 클라우드 플레이어를 통해 처리하게 만든 겁니다. 이렇게 하니 서버 비용 부담을 크게 줄이면서도 사용자에게는 더 안정적으로 업데이트를 제공할 수 있었죠. 이때 느낀게 있습니다. 실제 서비스는 기능만 잘 만들면 끝나는게 아닙니다. 업데이트, 배포 비용, 다운로드 속도, 실패 처리까지 같이 설계해야 비로소 운영 가능한 프로그램이 됩니다. 또 오래 왔던 문제 중 하나는 에러 수정이었습니다. 사용자가 이런 오류가 납니다라고 알려줘도 그 말만으로는 정확한 원인을 알기 어려웠습니다. 커트로 보이는 증상만 듣고 고치려면 거의 추측에 가까웠거든요. 그래서 에러로그 전송 기능을 만들었습니다. 에러로그는 쉽게 말해 프로그램이 어디서 어떻게 문제가 생겼는지 알려주는 사고 기록지입니다. 지금은 문제가 생겼을 때 사용자가 에러 로그만 보내주면 어떤 상황에서 어떤 부분이 실패했는지 훨씬 빠르게 봐갈 수 있습니다. 이런 체계를 만들고 나서야 에러 수정 속도 다시 올라갔습니다. 또 하나의 큰 문제는 실행 속도였습니다. 처음에는 파이썬으로 빠르게 만들었습니다. 파이썬은 개발 속도가 빠르기 때문에 초기에는 정말 편했습니다. 그런데 코드가 쌓이고 기능이 많아지면서 점점 실행 속도가 답답해졌습니다. 그래서 속도가 중요한 핵심 부분은 발선에서 고어로 옮겼습니다. 고는 실행 속도와 배포면에서 유리해서 시스템이 커진 뒤에는 훨씬 안정적으로 느껴졌죠. 또 코드 유출 문제도 신경 써야 했습니다. 처음에는 코드를 많이 공개했지만 AI 코딩이 쉬워진 시대에는 누군가가 구조를 보고 비슷하게 복지하는 속도도 굉장히 빨라졌습니다. 그래서 핵심 로직은 사용자의 PC에 그대로 두지 않고 서버에서 실행되도록 바꿨습니다. 여기서 또 다른 문제가 나왔습니다. 실제 서버를 운영하기 시작하니 해킹 시도가 계속 들어왔습니다. 그래서 단순히 기능을 만드는 것뿐 아니라 보완전 점검도 반복해서 해야 했죠. 결국 실비스 단계에 들어가면 개발자가 신경 써야 할 일이 완전히 달라집니다. 처음에는 기능을 빨리 만드는 것이 중요했다면 나중에는 안전하게 고치고 빠르게 원인을 찾고 안정적으로 운영하는 것이 더 중요해졌습니다. 그래서 코드가 쌓일수록 개발 속도는 자연스럽게 느려졌습니다. 하지만 그건 나쁜 신호만은 아닙니다. 그만큼 소봇이 탄순한 실험용 앱을 넘어서 실제로 운영해야 하는 프로그램이 되어 가고 있다는 뜻이었습니다. 혹시 프로젝트가 점점 커지고 있다면 꼭 기억하셔야 할게 있어요. 파일 하나하나의 크기도 확인해야 한다는 점입니다. 저의 경우 어느 순간 파일 하나가 400k바를 넘었습니다. 그때부터 이상하게 AI가 실수를 자주하기 시작했습니다. 나중에 보니 이유가 있었어요. AI가 그 파일을 잃는 순간 코드를 작성하기도 전에 이미 컨텍스트의 절반 이상을 써 버리고 있었던 겁니다. 컨텍스트는 쉽게 말해 AI가 한 번에 펼쳐 놓고 볼 수 있는 책상 같은 공간입니다. 그 책상 위에 너무 큰 파일 하나가 올라가 있으면 정작금 고쳐야 할 내용이나 주변 구조를 볼 공간이 부족해집니다. 그래서 저는 큰 파일을 여러 개의 작은 파일로 쪼겠습니다. 역할별로 나누고 AI가 필요한 부분만 볼 수 있게 만든 겁니다. 그 단계를 넘어서니 다시 개발 속도가 빨라졌습니다. 여기서 중요한 걸 배웠죠. 프로젝트가 커지다 보면 어느 순간 벽에 부딪칩니다. 그때 그냥 처음부터 다시 만들까 하는 생각이 들 수 있어요. 하지만 그 벽을 넘어서면 단순히 코드만 더 쓴게 아니라 큰 프로젝트를 다루는 실력이 한 단계 올라갑니다. 극복했다는 건 결국 해결책을 찾았다는 뜻이고 그만큼 내가 더 큰 규모를 감당할 수 있게 됐다는 뜻입니다. 또 하나 중요한게 있습니다. AI가 작업한 내용과 설계한 내용을 저도 같이 이해하고 있어야 한다는 점입니다. AI가이 부분이 문제입니다. 지금 구조는 이렇게 되어 있습니다라고 설명하면 그냥 믿고 넘기면 안 됩니다. 최소한 큰 흐름은 사람이 같이 알고 있어야 합니다. 왜냐하면 AI는 아주 복잡한 코드는 잘 짜면서도 가끔 너무 기본적인 상황을 놓치기 때문입니다. 쉽게 말해 어려운 수학 문제는 푸는데 사실적인 앞뒤 관계를 착각할 때가 많아요. 예를 들어 이런 식입니다. 집 앞에 있는 주유소에 차로 기름을 넣으러 가야 하는 상황이라고 해 보겠습니다. 그런데 AI가 가까우니까 걸어가세요라고 답하는 겁니다. 주유소가 가까운 건 맞아요. 하지만 차 없이 걸어가면 차에 기름을 넣을 수 없잖아요. AI도 가끔 이런 식으로 부분적으로는 맞는 말을 하지만 전체 상황을 놓칠 때가 있습니다. 그래서 큰 프로젝트에서는 AI가 하는 작업을 사람도 같이 이해해야 합니다. 그래야 AI가 말도 안 되는 방향으로 가려고 할 때 중간에서 막을 수 있습니다. 결국 AI에게 맡긴다는 건 손을 놓는다는 뜻이 아닙니다. AI는 빠르게 만들고 사람은 방향과 구조와 최종 판단을 잡아주는 역할을 해야 합니다. 그런데 이렇게 구조를 작본니 소보스</pre>
+  </div>
+  </article>
+  <article class="video-card">
+    <div class="card-top">
+      <a class="thumb-wrap" href="https://www.youtube.com/watch?v=rLp-xO2NWuo" target="_blank" rel="noopener">
+        <img src="https://i.ytimg.com/vi/rLp-xO2NWuo/hqdefault.jpg" alt="클로드로 고단가 웹사이트 제작법" loading="lazy"/>
+      </a>
+      <div class="card-info">
+        <div class="card-meta">
+          <span class="ch-tag">AIMAX_PD</span>
+          <span class="date-tag">2026-07-01</span>
+          
+        </div>
+        <div class="video-title">클로드로 고단가 웹사이트 제작법</div>
+        <div style="display:flex;align-items:center;flex-wrap:wrap;gap:4px;margin-top:auto">
+          <a class="yt-link" href="https://www.youtube.com/watch?v=rLp-xO2NWuo" target="_blank" rel="noopener">↗ 유튜브에서 보기</a>
+          <button class="nlm-btn" data-url="https://www.youtube.com/watch?v=rLp-xO2NWuo">📓 NotebookLM</button>
+        </div>
+      </div>
+    </div>
+    <div class="summary-section">
+      <h2>핵심 요약</h2>
+<p>클로드 AI를 활용해 기존에 18시간 걸리던 랜딩 페이지 구축 작업을 단 1시간 만에 끝내고 고수익을 창출하는 6단계 공식이다. 타겟 분석부터 논리 설계, 카피라이팅, 디자인 자동화, 권위 확보까지 AI를 극대화해 고단가 클라이언트를 잡는 방법을 다룬다.</p>
+<h2>주요 포인트</h2>
+<ul>
+<li>**고객 문제 해킹**: 클로드를 통해 레딧과 쿼라 데이터를 분석하고 타겟 오디언스가 밤새 고민하는 5가지 핵심 문제를 찾아냄.</li>
+<li>**유니크 메커니즘 설계**: 고객이 미처 몰랐던 문제 원인을 예리하게 지적하고 오직 내 제품만이 해결할 수 있다는 논리를 구축함.</li>
+<li>**구어체 리라이팅**: AI 특유의 딱딱한 문장을 사람의 영혼이 담긴 친근한 구어체 카피로 수정하여 신뢰도를 높임.</li>
+<li>**헤드라인 비교 테스트**: 임팩트 있는 헤드라인 시안 두 개를 만들어 A/B 테스트를 진행하고 실제 판매 확률이 가장 높은 안을 선정함.</li>
+<li>**디자인 자동화**: 검증된 랜딩 페이지 구조를 클로드에 학습시켜 코드를 생성하고 클릭 몇 번으로 작동하는 사이트를 완성함.</li>
+<li>**전문가 프레임워크 활용**: 업워크 유명 전문가들의 작업 방식을 벤치마킹하여 초보자도 고단가 클라이언트를 설득할 수 있는 권위를 확보함.</li>
+</ul>
+    </div>
+  <div class="transcript-wrap">
+    <div class="transcript-header">
+      <button class="transcript-toggle" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('visible')">
+        <span class="arr">▼</span> 원문 자막
+      </button>
+      <button class="copy-btn" onclick="var b=this,t=b.nextElementSibling||b;navigator.clipboard.writeText(document.querySelector('#tr-rLp-xO2NWuo').textContent).then(()=>{b.textContent='복사됨';setTimeout(()=>b.textContent='복사',2000)})">복사</button>
+    </div>
+    <pre class="transcript-box" id="tr-rLp-xO2NWuo">이 남자는 AI로 돈 복사합니다. 원래 18시간 걸리던 작업을 클로드 AI로 한시간 만에 끝내고 단 하루 만에 400만 원의 수익을 올린 야쿠 페이퍼트. 그가 공개한 돈복사 랜딩 페이지 구축 여섯 단계 공식 저장하고 끝까지 보세요. 첫째, 고객의 뇌속을 먼저 해킹하세요. 클로드로 레딕과 쿼라의 데이터를 끌고 모아 타겟 오디언스가 밤에 잠 못 자고 고민하는 다섯 가지 핵심 문제를 정확히 찾아내야 합니다. 둘째, 나만의 유니크 메커니즘을 만드세요. 단순히 좋다는 말이 아니라 고객이 미쳐 몰랐던 문제의 원인을 지적하고 오직 내 제품만이 그 문제를 해결할 수 있는 논리를 설계하세요. 셋째, AI가 쓴 딱딱한 문장을 사람의 영혼이 담긴 구어체로 리라이팅하여 잃는 순간 신뢰도가 생기도록 카페를 수정해야 합니다. 넷째, 헤드라인 무기로 테스트하세요. 가장 임팩트 있는 문장의 두 가지를 만들어 비교 테스트하고 실제 판매로 이어질 확률이 가장 높은 안을 골라내는 과정이 필수입니다. 다섯째, 클로드 코드로 디자인을 자동화하세요. 유명 렌딩 페이지의 구조를 클로드에게 학습시키고 코드를 생성한 뒤 클릭 몇 번으로 실제 작동하는 웹사이트를 완성할 수 있습니다. 여섯째 거인의 어깨 위에 올라타세요. 어버크 프로필의 유명 전문가들의 프레임워크를 기반으로 작업 판단을 점을 강조하여 초보자가 고단가 클라이언트를 잡을 수 있는 권위를 확보하. 영상만 봐서는 이해가 잘 안 되실 거예요. 37분짜리 영상 내용을 정리했습니다.</pre>
+  </div>
+  </article>
+</main>
+
+<footer>유튜브 구독 정리 · agy 요약 · 2026-07-02 06:01</footer>
+
+
+<script>
+document.querySelectorAll('.nlm-btn').forEach(function(btn){
+  btn.addEventListener('click',function(){
+    navigator.clipboard.writeText('/notebooklm '+btn.dataset.url).then(function(){
+      var orig=btn.innerHTML;btn.innerHTML='✓ 복사됨';btn.classList.add('copied');
+      setTimeout(function(){btn.innerHTML=orig;btn.classList.remove('copied');},2000);
+    });
+  });
+});
+</script>
+
+</body>
+</html>
