@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>2026-07-06 — 유튜브 구독 정리</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+  :root{--bg:#090e1a;--surface:#111827;--surface2:#1a2235;--border:#1e2d47;--accent:#6c63ff;--accent2:#00d4ff;--text:#e8eaf0;--muted:#7a8499;--radius:14px;}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Pretendard',sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+  header{background:linear-gradient(135deg,#0d1b3e,#1a0533);border-bottom:1px solid var(--border);padding:20px 40px;display:flex;align-items:center;justify-content:space-between;}
+  .nav-back{color:var(--accent2);text-decoration:none;font-size:0.85rem;display:flex;align-items:center;gap:6px}
+  .nav-back:hover{color:#fff}
+  .date-badge{font-size:1.4rem;font-weight:700;letter-spacing:-0.5px;background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+  .count{font-size:0.85rem;color:var(--muted)}
+  main{max-width:900px;margin:0 auto;padding:32px 24px 80px}
+  .video-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;margin-bottom:24px;transition:border-color 0.2s,box-shadow 0.2s;}
+  .video-card:hover{border-color:var(--accent);box-shadow:0 4px 24px rgba(108,99,255,0.15)}
+  .card-top{display:flex;gap:0}
+  .thumb-wrap{flex:0 0 240px;position:relative;overflow:hidden}
+  .thumb-wrap img{width:100%;height:100%;object-fit:cover;transition:transform 0.4s}
+  .video-card:hover .thumb-wrap img{transform:scale(1.05)}
+  .card-info{flex:1;padding:20px;display:flex;flex-direction:column;gap:10px}
+  .card-meta{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+  .ch-tag{font-size:0.72rem;font-weight:600;padding:3px 12px;background:linear-gradient(135deg,rgba(108,99,255,0.2),rgba(0,212,255,0.2));border:1px solid rgba(108,99,255,0.3);border-radius:999px;color:var(--accent2);}
+  .date-tag{font-size:0.72rem;color:var(--muted)}
+  .no-transcript{font-size:0.68rem;padding:2px 8px;background:rgba(255,180,0,0.12);border:1px solid rgba(255,180,0,0.25);border-radius:999px;color:#ffa500;}
+  .video-title{font-size:1rem;font-weight:600;line-height:1.4}
+  .yt-link{display:inline-flex;align-items:center;gap:5px;font-size:0.8rem;color:var(--accent);text-decoration:none;transition:color 0.2s;}
+  .yt-link:hover{color:var(--accent2)}
+  
+  .nlm-btn{display:inline-flex;align-items:center;gap:5px;font-size:0.8rem;color:#fff;
+    background:rgba(108,99,255,0.2);border:1px solid rgba(108,99,255,0.4);border-radius:8px;
+    padding:4px 12px;cursor:pointer;font-family:inherit;transition:all 0.2s;margin-left:8px;}
+  .nlm-btn:hover{background:rgba(108,99,255,0.45);}
+  .nlm-btn.copied{background:rgba(0,200,100,0.2);border-color:rgba(0,200,100,0.4);color:#00c864;}
+
+  .summary-section{border-top:1px solid var(--border);background:var(--surface2);padding:20px 24px;font-size:0.85rem;line-height:1.7;color:#c5cad8;}
+  .summary-section h2{font-size:0.82rem;color:var(--accent2);margin:12px 0 4px}
+  .summary-section h2:first-child{margin-top:0}
+  .summary-section ul{padding-left:18px}
+  .summary-section li{margin-bottom:5px}
+  .transcript-wrap{border-top:1px solid var(--border);padding:14px 24px;background:#0c1220}
+  .transcript-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:0}
+  .transcript-toggle{background:none;border:none;color:var(--muted);font-size:0.8rem;cursor:pointer;font-family:inherit;display:flex;align-items:center;gap:4px;padding:0;transition:color 0.2s;}
+  .transcript-toggle:hover{color:var(--text)}
+  .copy-btn{background:rgba(108,99,255,0.1);border:1px solid rgba(108,99,255,0.3);border-radius:8px;color:var(--accent2);font-size:0.72rem;padding:4px 12px;cursor:pointer;font-family:inherit;transition:all 0.2s;}
+  .copy-btn:hover{background:rgba(108,99,255,0.25);color:#fff}
+  .transcript-box{display:none;margin-top:10px;background:#080d18;border:1px solid var(--border);border-radius:10px;padding:12px 14px;font-size:0.78rem;line-height:1.75;color:#8a95aa;max-height:260px;overflow-y:auto;white-space:pre-wrap;word-break:break-word;}
+  .transcript-box.visible{display:block}
+  footer{text-align:center;padding:24px;font-size:0.75rem;color:var(--muted);border-top:1px solid var(--border)}
+  @media(max-width:640px){.card-top{flex-direction:column}.thumb-wrap{flex:none;height:200px}header{padding:16px}main{padding:16px 12px 60px}}
+</style>
+</head>
+<body>
+
+<header>
+  <a class="nav-back" href="../index.html">← 대시보드로</a>
+  <div>
+    <div class="date-badge">2026-07-06</div>
+    <div class="count">4개 영상</div>
+  </div>
+  <div style="font-size:0.75rem;color:var(--muted)">2026-07-07 06:01 생성</div>
+</header>
+
+<main>
+
+  <article class="video-card">
+    <div class="card-top">
+      <a class="thumb-wrap" href="https://www.youtube.com/watch?v=ag8z3hK55Lc" target="_blank" rel="noopener">
+        <img src="https://i.ytimg.com/vi/ag8z3hK55Lc/hqdefault.jpg" alt="The Cheapest AI Just Beat Opus & GPT-5.5" loading="lazy"/>
+      </a>
+      <div class="card-info">
+        <div class="card-meta">
+          <span class="ch-tag">Nicholas Puru</span>
+          <span class="date-tag">2026-07-06</span>
+          
+        </div>
+        <div class="video-title">The Cheapest AI Just Beat Opus & GPT-5.5</div>
+        <div style="display:flex;align-items:center;flex-wrap:wrap;gap:4px;margin-top:auto">
+          <a class="yt-link" href="https://www.youtube.com/watch?v=ag8z3hK55Lc" target="_blank" rel="noopener">↗ 유튜브에서 보기</a>
+          <button class="nlm-btn" data-url="https://www.youtube.com/watch?v=ag8z3hK55Lc">📓 NotebookLM</button>
+        </div>
+      </div>
+    </div>
+    <div class="summary-section">
+      <h2>핵심 요약</h2>
+<p>가성비 개쩌는 MiniMax M3가 출시됐는데 코딩, 100만 컨텍스트, 멀티모달을 다 지원하면서 가격은 거의 공짜 수준이다. 빡센 게임 빌드 테스트를 시켜보니까 지 혼자 에러 복구하고 모바일 화면 테스트까지 돌리는 기염을 토했다. 성능도 Opus나 GPT-5.5 급으로 잘 나와서 일상 작업의 80%는 그냥 이거 쓰는 게 개이득이다.</p>
+<h2>주요 포인트</h2>
+<ul>
+<li>MiniMax M3는 코딩 능력, 100만 토큰 컨텍스트, 멀티모달을 다 때려 박았는데 실행 비용이 깡패 수준으로 저렴함.</li>
+<li>빡센 아케이드 게임 제작을 시켰더니 스스로 에러를 복구하고 헤드리스 브라우저랑 아이폰 뷰포트에서 터치 작동 테스트까지 알아서 검증함.</li>
+<li>SWE Bench Pro 59%, MCP Atlas 74% 등 각종 벤치마크에서 기존 대장급인 Opus 4.7 등을 이겨버릴 정도로 뛰어난 성능을 보여줌.</li>
+<li>Opus 4.8이나 GPT 5.5도 좋긴 한데 가성비 생각하면 일상 개발 업무의 80%는 Hermes 안에서 M3 쓰는 게 훨씬 스마트한 선택임.</li>
+</ul>
+    </div>
+  <div class="transcript-wrap">
+    <div class="transcript-header">
+      <button class="transcript-toggle" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('visible')">
+        <span class="arr">▼</span> 원문 자막
+      </button>
+      <button class="copy-btn" onclick="var b=this,t=b.nextElementSibling||b;navigator.clipboard.writeText(document.querySelector('#tr-ag8z3hK55Lc').textContent).then(()=>{b.textContent='복사됨';setTimeout(()=>b.textContent='복사',2000)})">복사</button>
+    </div>
+    <pre class="transcript-box" id="tr-ag8z3hK55Lc">MiniMax M3 just launched and it might be the most important model release of the year for one reason that almost nobody is talking about. It is the first model to bring all three of the big things to the open world at once. Frontier level coding, a 1 million token context window, and fully multimodal all-in-one model. And the insane part is that it costs almost nothing to run. So, I did the obvious thing. I took a pretty brutal and complex build and I just gave it a MiniMax M3. Now, one of the tests that I'm providing it, I wanted a real one-shot build with just 100 different ways to be doing it poorly, so I asked for a game. So, what I'm saying is build a complete polished arcade game. I'm going to run this off, but just so you know what I actually asked for, it's just going to be a neon wave survival shooter. So, the whole thing in one HTML file, no libraries, no build steps. So, it has to just be run by just double-clicking it. So, it's going to be 60 frames a second on a canvas. So, as you would expect, we're running this with MiniMax M3 on high, but we're also going to be comparing this with Opus 4.8. Now, we have M3. It took the most steps of the three. So, there's 17 steps here, and at one point a step failed and it just recovered on its own and it kept on going. But, watch what it did at the end. So, it tested its own game in a real headless browser. There's zero errors, and then it checked it on a phone screen, too. So, an iPhone viewport just to make sure that the touch controls actually worked. Nobody told it to do that. The cheapest model in this entire test is the one that checked its own work the hardest. And on M3's $20 plan, it's just a simple rounding error, so it's literally just pennies where you'd have to do this hundreds of times to even make a dent. So, on SWE Bench Pro, which is just real-world software engineering, it hits 59% on Terminal Bench, that's 66. On MCP Atlas, which is basically how well it uses tools, 74% and on Browse Comp, which is just web research, it scores an 83.5 and that actually beats Opus 4.7's 79. Opus 4.8, GPT 5.5, it's fantastic, it's fast, it's clean. I still reach for it when I'm already living in it, But the truth for maybe about 80% of what I actually do in a day, M3 inside of Hermes is the smart move here.</pre>
+  </div>
+  </article>
+  <article class="video-card">
+    <div class="card-top">
+      <a class="thumb-wrap" href="https://www.youtube.com/watch?v=7gmSMFVTRs0" target="_blank" rel="noopener">
+        <img src="https://i.ytimg.com/vi/7gmSMFVTRs0/hqdefault.jpg" alt="5 Secret Claude Hacks You NEED To Know" loading="lazy"/>
+      </a>
+      <div class="card-info">
+        <div class="card-meta">
+          <span class="ch-tag">Nicholas Puru</span>
+          <span class="date-tag">2026-07-06</span>
+          
+        </div>
+        <div class="video-title">5 Secret Claude Hacks You NEED To Know</div>
+        <div style="display:flex;align-items:center;flex-wrap:wrap;gap:4px;margin-top:auto">
+          <a class="yt-link" href="https://www.youtube.com/watch?v=7gmSMFVTRs0" target="_blank" rel="noopener">↗ 유튜브에서 보기</a>
+          <button class="nlm-btn" data-url="https://www.youtube.com/watch?v=7gmSMFVTRs0">📓 NotebookLM</button>
+        </div>
+      </div>
+    </div>
+    <div class="summary-section">
+      <h2>핵심 요약</h2>
+<p>클로드 쓸 때 작업 능률이랑 답변 퀄리티 떡상시키는 5가지 개꿀팁이다. 말투 복사하는 미러부터 툴 만들어주는 아티팩트, 전문가 빙의하는 페르소나, 알아서 질문 던지는 인터뷰, 구라 잡아내는 자신감 검증까지 알차게 구성되어 있음. 이거만 잘 써먹어도 클로드를 로봇 티 안 나는 개사기 개인 비서로 굴릴 수 있다.</p>
+<h2>주요 포인트</h2>
+<ul>
+<li>**미러(Mirror)**: 프롬프트 앞에 명령어 넣고 니가 쓴 글 붙여넣으면 클로드가 니 말투 복사해서 메일이나 글을 로봇 같지 않게 써줌.</li>
+<li>**아티팩트(Artifacts)**: 채팅방 안에서 바로 굴릴 수 있는 계산기나 대시보드 같은 미니 앱을 뚝딱 만들어줌.</li>
+<li>**페르소나(Persona)**: 15년 차 CFO 같은 구체적인 전문가 컨셉 잡고 질문 던지면 뜬구름 잡는 소리 치우고 존나 뾰족한 현업 답변 내놓음.</li>
+<li>**인터뷰(Interview)**: 본 질문 들어가기 전에 필요한 질문부터 하라고 시키면 지레짐작해서 헛소리 안 하고 딱 맞는 답 뽑아낼 수 있음.</li>
+<li>**자신감(Confidence)**: 답변 신뢰도를 스스로 평가하게 해서 소설 쓴 것 같은 부분에 표시하게 해줌. 이거 쓰면 낚일 일 없음.</li>
+</ul>
+    </div>
+  <div class="transcript-wrap">
+    <div class="transcript-header">
+      <button class="transcript-toggle" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('visible')">
+        <span class="arr">▼</span> 원문 자막
+      </button>
+      <button class="copy-btn" onclick="var b=this,t=b.nextElementSibling||b;navigator.clipboard.writeText(document.querySelector('#tr-7gmSMFVTRs0').textContent).then(()=>{b.textContent='복사됨';setTimeout(()=>b.textContent='복사',2000)})">복사</button>
+    </div>
+    <pre class="transcript-box" id="tr-7gmSMFVTRs0">클로드와 관련된 다섯 가지 비밀 코드를 알려드립니다. 첫 번째는 거울입니다. 직접 작성한 내용 중 몇 가지만 붙여넣으면 됩니다 . 프롬프트 앞에 {슬래시} 미러를 붙이면 클로드가 원래대로 쓰는 대신 당신의 목소리로 써줍니다 . 그래서 여러분의 이메일이나 게시글이 더 이상 로봇처럼 들리지 않게 됩니다. 두 번째는 유물입니다. 프롬프트에 이것을 추가하기만 하면 클로드가 채팅 내에서 바로 작동하는 도구를 만들어 줄 것입니다. 그래서 클릭해서 사용할 수 있는 계산기, 대시보드, 심지어 추적기까지 갖출 수 있습니다 . 세 번째는 페르소나입니다. 프롬프트 앞에 이 내용을 넣고 , 계약업체 비용 절감에 15년간 매진한 CFO처럼 아주 구체적인 전문가를 묘사하셨네요 . 그러면 클로드는 일반적인 조언을 해주는 대신, 바로 그 사람의 입장에서 답변을 해줄 겁니다 . 네 번째는 인터뷰입니다. 중요한 요청을 하기 전에 이 내용을 먼저 적어두면 , 클로드는 당신이 무슨 뜻인지 추측해서 애매한 답변을 주는 대신, 요청에 필요한 질문을 먼저 할 겁니다. 그리고 다섯 번째는 자신감입니다. 답변 뒤에 이 내용을 입력하면 클로드가 각 주장에 대한 확신도를 평가하고, 지어낸 것일 가능성이 있는 부분에 표시를 해두어 확신에 찬 잘못된 [음악] 답변에 따라 행동하는 일이 없도록 해줍니다. 댓글로 필요한 사항을 알려주시면, 제가 제 사업에서 Claude를 어떻게 활용하는지 보내드리겠습니다.</pre>
+  </div>
+  </article>
+  <article class="video-card">
+    <div class="card-top">
+      <a class="thumb-wrap" href="https://www.youtube.com/watch?v=odbWTtwt99o" target="_blank" rel="noopener">
+        <img src="https://i.ytimg.com/vi/odbWTtwt99o/hqdefault.jpg" alt="Claude Code + /Loops= The New Way to Use AI" loading="lazy"/>
+      </a>
+      <div class="card-info">
+        <div class="card-meta">
+          <span class="ch-tag">Nicholas Puru</span>
+          <span class="date-tag">2026-07-06</span>
+          
+        </div>
+        <div class="video-title">Claude Code + /Loops= The New Way to Use AI</div>
+        <div style="display:flex;align-items:center;flex-wrap:wrap;gap:4px;margin-top:auto">
+          <a class="yt-link" href="https://www.youtube.com/watch?v=odbWTtwt99o" target="_blank" rel="noopener">↗ 유튜브에서 보기</a>
+          <button class="nlm-btn" data-url="https://www.youtube.com/watch?v=odbWTtwt99o">📓 NotebookLM</button>
+        </div>
+      </div>
+    </div>
+    <div class="summary-section">
+      <h2>핵심 요약</h2>
+<p>이제 코딩 에이전트에 일일이 프롬프트 치는 시대는 가고, AI가 알아서 계속 작동하는 '루프(Loops)' 설계가 대세다. 단 하나의 지시만 던져두면 끝날 때까지 혼자 일해서 결과를 가져오는데, Claude Code 등 최신 툴에 탑재되어 코딩 판을 완전히 바꾸는 중이다. 다만 제어 잘못하면 비용 폭탄 맞으니 안전하게 굴리는 법을 꼭 알아야 한다.</p>
+<h2>주요 포인트</h2>
+<ul>
+<li>AI한테 지시 하나만 내리고 냅두면 끝까지 혼자 작업하는 '루프' 방식이 새로운 메타로 떠오름.</li>
+<li>Claude Code 개발자인 Boris Cherny나 Andre Karpathy 같은 네임드들도 이미 루프 돌려두고 꿀 빠는 중임.</li>
+<li>예전부터 있던 'Ralph loop' 개념이 Anthropic에 의해 Claude Code 내 공식 명령어 2개로 깔끔하게 구현됨.</li>
+<li>밤새 루프가 헛돌아서 API 비용 폭탄 맞지 않으려면 안전장치를 어떻게 설정하는지가 핵심임.</li>
+</ul>
+    </div>
+  <div class="transcript-wrap">
+    <div class="transcript-header">
+      <button class="transcript-toggle" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('visible')">
+        <span class="arr">▼</span> 원문 자막
+      </button>
+      <button class="copy-btn" onclick="var b=this,t=b.nextElementSibling||b;navigator.clipboard.writeText(document.querySelector('#tr-odbWTtwt99o').textContent).then(()=>{b.textContent='복사됨';setTimeout(()=>b.textContent='복사',2000)})">복사</button>
+    </div>
+    <pre class="transcript-box" id="tr-odbWTtwt99o">Right now there's a tweet from Peter Steinberger with over 8 million views saying that you shouldn't be prompting coding agents anymore and instead you should be designing loops that prompt your agents and there's dozens of other examples from other really big names in the space including the team at Anthropic just preaching about using this method and that it is a meta. It all sounds like jargon but I'm telling you it is not. You give the AI just one instruction, you walk away and it keeps working on its own until the whole job is done. That is what a loop is and it's the biggest jump in how you use AI since people started using it to write code. Now there is one catch with this and it's the thing that everyone worries about. You set it up wrong and it'll run all night and quietly run up a bill. So I'm going to show you exactly how to stop and prevent that so by the end of this you can leave one running and actually trust it to handle much more work for you. Now first before you write this off as just more AI hype, look at who's actually doing it. So Peter Steinberger, he obviously built Open Claw one of the biggest open source AI agents out there. So it's coming from someone who builds the real thing. We have Boris Cherny the creator of Claude Code. He says he barely prompts anymore. He just sets up loops and then loops do the prompting. He says that's basically his whole job now. Andre Karpathy who you might know from OpenAI and Tesla recently just moved over into Anthropic. Let a coding agent loop on its own for about two days. It ran around 700 experiments by itself and came back with about 20 real improvements. Nobody sat there watching it. Even the CEO of Shopify ran one of these overnight and he woke up with real gains in his own product. Now this isn't even brand new. People have been doing a rough version of this for a while. There's even a nickname for it. It's called the Ralph loop and it's just running the same instruction over and over until the job is done. So the idea has been proven for actually quite a while now. It just didn't have a button but now it does. Anthropic built it straight into Claude Code with two simple commands and we're going to be using both today. If you don't know me, my name is Nick. I've been running Claude Code across my businesses for a long time now and the looping part, it's the new piece for me and it's changed how I work more than any new model has and even if you've never opened Claude Code in your life, you will be able to follow along with all of it. The idea matters more than the tool. So, let's first start with what a loop actually is because once this clicks, the rest is going to be very easy for you. Now, when you use AI the normal way, you are the one keeping it going. So, you ask, you then read what comes back, and you point out what is wrong, then you have to ask again. So, you're effectively the engine in this situation, and the second you stop typing, of course, it all stops as well. A loop, however, it changes who is actually running that engine, where you set the goal once, and then the system from there can take over. So, it does a bit of work, and then it checks its own result, it sees what is still off, it fixes it, and it runs again. So, it goes like act, check, then the fixing, and the repeating over and over on its own until your goal is actually met. So, that's the whole idea, instead of you prompting it again and again, it prompts itself. So, really, a loop is just two things, a goal, and a way to check whether it is there yet. So, hold on to that because everything else is going to hang onto that core premise. So, let's jump in, try running one, but before we do that, we have to do one quick bit of setup because it's the whole reason this actually works. So, for a loop to check a webpage, it has to be able to open one, and out of the box, Claude Code cannot do that. So, I had to give it access to a browser tool. Unless I'm using computer use, but using other features like Playwright or anything else is going to be much more practical, and you just add it with a single command, and you only have to do this once. So, I already have this connected, and the easiest way to actually set this up is just asking Claude to set it up for you, or you can navigate into the terminal, and you just type out Claude MCP add Playwright. And by the way, for all these commands and all the prompts that I'm going to be using and anything else, it's going to be inside of my free school community. Link will be down below in the description. All right, you can see file modified, looks like everything ran correctly, so we can just close this out. Now, I'm going to type a {slash} goal, and we're going to enter this prompt to build a sales analytics dashboard in one HTML file. Read the sales data and show the KPI cards, a bar chart of the revenue by month, and a sortable table of the top products. Keep going until it loads in the browser with no console errors. Every </pre>
+  </div>
+  </article>
+  <article class="video-card">
+    <div class="card-top">
+      <a class="thumb-wrap" href="https://www.youtube.com/watch?v=qKfR5_IK1gI" target="_blank" rel="noopener">
+        <img src="https://i.ytimg.com/vi/qKfR5_IK1gI/hqdefault.jpg" alt="클로드로 유튜브 씹어먹기" loading="lazy"/>
+      </a>
+      <div class="card-info">
+        <div class="card-meta">
+          <span class="ch-tag">AIMAX_PD</span>
+          <span class="date-tag">2026-07-06</span>
+          
+        </div>
+        <div class="video-title">클로드로 유튜브 씹어먹기</div>
+        <div style="display:flex;align-items:center;flex-wrap:wrap;gap:4px;margin-top:auto">
+          <a class="yt-link" href="https://www.youtube.com/watch?v=qKfR5_IK1gI" target="_blank" rel="noopener">↗ 유튜브에서 보기</a>
+          <button class="nlm-btn" data-url="https://www.youtube.com/watch?v=qKfR5_IK1gI">📓 NotebookLM</button>
+        </div>
+      </div>
+    </div>
+    <div class="summary-section">
+      <h2>핵심 요약</h2>
+<p>셰인 호머스가 공개한 클로드 AI 기반 유튜브 수익화 채널 구축 공식이다. 잘 나가는 소형 채널의 검증된 아이디어를 바탕으로, 독보적인 정보와 자연스러운 구어체 대본을 더해 유튜브를 자동화하는 전략임.</p>
+<h2>주요 포인트</h2>
+<ul>
+<li>구독자 3만 이하 채널에서 조회수 10만 이상 터진 주제를 찾아 자기만의 방식으로 업그레이드함.</li>
+<li>클릭과 시청 유지를 위해 제목, 썸네일, 인트로 3가지를 클로드로 한 번에 세트로 설계함.</li>
+<li>썸네일 구도와 카피는 클로드한테 맡기고, 이미지 생성은 챗GPT로 뽑아서 고퀄리티로 만듦.</li>
+<li>단순 짜깁기 정보가 아니라 실제 검증된 리스트나 성공 사례 같은 나만의 '알파' 데이터를 무조건 박아 넣음.</li>
+<li>키보드 대신 AI와 직접 음성 대화로 스크립트를 짜서 자연스러운 본인 말투를 대본에 녹여냄.</li>
+</ul>
+    </div>
+  <div class="transcript-wrap">
+    <div class="transcript-header">
+      <button class="transcript-toggle" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('visible')">
+        <span class="arr">▼</span> 원문 자막
+      </button>
+      <button class="copy-btn" onclick="var b=this,t=b.nextElementSibling||b;navigator.clipboard.writeText(document.querySelector('#tr-qKfR5_IK1gI').textContent).then(()=>{b.textContent='복사됨';setTimeout(()=>b.textContent='복사',2000)})">복사</button>
+    </div>
+    <pre class="transcript-box" id="tr-qKfR5_IK1gI">이 남자는 AI 유튜브 수익화 천재입니다. 단 하나의 영상으로 에센스 수익만 8,500만 원을 벌어들이고 수강생들에게 총 1억 달러의 수익을 알려준 셰인 호머스. 그가 공개한 클로드 AI로 활용해 돈 복사하는 유튜브 채널 구축 6단계 공식 저장하고 끝까지 보세요. 첫째, 아이콘 법칙으로 이길 수밖에 없는 주제를 찾으세요. 구독자 3만 명 이하의 작은 채널에서 조회수 10만회를 넘긴 검증된 아이디어를 찾아 나만의 방식으로 업그레이드 하는 것이 시작입니다. 둘째, 제목과 썸네일, 인트로 등 동시에 설계하세요. 클로드에게이 세 가지를 한 번에 기획하게 만들어 시청자가 클릭하고 끝까지 보게 만드는 강력한 연결 고리를 구축해야 합니다. 셋째, 썸네일의 뇌는 클로드에게, 몸통은 이미지에게 맡기세요. 클로드로 시선을 끄는 구도와 문구를 기획하고 채pt로 이미지를 뽑아내면 초보자도 80점 이상의 고퀄리티 썸네일을 만들 수 있습니다. 넷째, 당신만의 독보적 정보인 알파를 반드시 넣으세요. 단순히 AI가 긁어온 정보가 아니라 실제 검증된 리스트나 성공 사례 같은 나만의 데이터를 추가해야 시청자의 신뢰를 얻고 수익화가 가능합니다. 다섯째, 음성 대화로 스크립트를 쓰세요. 키보드 대신 AI에게 직접 말을 걸어 본인의 말투와 철학을 녹여내면 기계적인 느낌이 싹 사라진 자연스러운 대본이 완성됩니다. 25분짜리 영상 내용을 모두 정리했습니다. 이런 유튜브 수익과 자동화 이야기가 도움됐다면이 채널을 구독하시고 본문을 확인해 주세요.</pre>
+  </div>
+  </article>
+</main>
+
+<footer>유튜브 구독 정리 · agy 요약 · 2026-07-07 06:01</footer>
+
+
+<script>
+document.querySelectorAll('.nlm-btn').forEach(function(btn){
+  btn.addEventListener('click',function(){
+    navigator.clipboard.writeText('/notebooklm '+btn.dataset.url).then(function(){
+      var orig=btn.innerHTML;btn.innerHTML='✓ 복사됨';btn.classList.add('copied');
+      setTimeout(function(){btn.innerHTML=orig;btn.classList.remove('copied');},2000);
+    });
+  });
+});
+</script>
+
+</body>
+</html>

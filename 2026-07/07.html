@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>2026-07-07 — 유튜브 구독 정리</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+  :root{--bg:#090e1a;--surface:#111827;--surface2:#1a2235;--border:#1e2d47;--accent:#6c63ff;--accent2:#00d4ff;--text:#e8eaf0;--muted:#7a8499;--radius:14px;}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Pretendard',sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+  header{background:linear-gradient(135deg,#0d1b3e,#1a0533);border-bottom:1px solid var(--border);padding:20px 40px;display:flex;align-items:center;justify-content:space-between;}
+  .nav-back{color:var(--accent2);text-decoration:none;font-size:0.85rem;display:flex;align-items:center;gap:6px}
+  .nav-back:hover{color:#fff}
+  .date-badge{font-size:1.4rem;font-weight:700;letter-spacing:-0.5px;background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+  .count{font-size:0.85rem;color:var(--muted)}
+  main{max-width:900px;margin:0 auto;padding:32px 24px 80px}
+  .video-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;margin-bottom:24px;transition:border-color 0.2s,box-shadow 0.2s;}
+  .video-card:hover{border-color:var(--accent);box-shadow:0 4px 24px rgba(108,99,255,0.15)}
+  .card-top{display:flex;gap:0}
+  .thumb-wrap{flex:0 0 240px;position:relative;overflow:hidden}
+  .thumb-wrap img{width:100%;height:100%;object-fit:cover;transition:transform 0.4s}
+  .video-card:hover .thumb-wrap img{transform:scale(1.05)}
+  .card-info{flex:1;padding:20px;display:flex;flex-direction:column;gap:10px}
+  .card-meta{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+  .ch-tag{font-size:0.72rem;font-weight:600;padding:3px 12px;background:linear-gradient(135deg,rgba(108,99,255,0.2),rgba(0,212,255,0.2));border:1px solid rgba(108,99,255,0.3);border-radius:999px;color:var(--accent2);}
+  .date-tag{font-size:0.72rem;color:var(--muted)}
+  .no-transcript{font-size:0.68rem;padding:2px 8px;background:rgba(255,180,0,0.12);border:1px solid rgba(255,180,0,0.25);border-radius:999px;color:#ffa500;}
+  .video-title{font-size:1rem;font-weight:600;line-height:1.4}
+  .yt-link{display:inline-flex;align-items:center;gap:5px;font-size:0.8rem;color:var(--accent);text-decoration:none;transition:color 0.2s;}
+  .yt-link:hover{color:var(--accent2)}
+  
+  .nlm-btn{display:inline-flex;align-items:center;gap:5px;font-size:0.8rem;color:#fff;
+    background:rgba(108,99,255,0.2);border:1px solid rgba(108,99,255,0.4);border-radius:8px;
+    padding:4px 12px;cursor:pointer;font-family:inherit;transition:all 0.2s;margin-left:8px;}
+  .nlm-btn:hover{background:rgba(108,99,255,0.45);}
+  .nlm-btn.copied{background:rgba(0,200,100,0.2);border-color:rgba(0,200,100,0.4);color:#00c864;}
+
+  .summary-section{border-top:1px solid var(--border);background:var(--surface2);padding:20px 24px;font-size:0.85rem;line-height:1.7;color:#c5cad8;}
+  .summary-section h2{font-size:0.82rem;color:var(--accent2);margin:12px 0 4px}
+  .summary-section h2:first-child{margin-top:0}
+  .summary-section ul{padding-left:18px}
+  .summary-section li{margin-bottom:5px}
+  .transcript-wrap{border-top:1px solid var(--border);padding:14px 24px;background:#0c1220}
+  .transcript-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:0}
+  .transcript-toggle{background:none;border:none;color:var(--muted);font-size:0.8rem;cursor:pointer;font-family:inherit;display:flex;align-items:center;gap:4px;padding:0;transition:color 0.2s;}
+  .transcript-toggle:hover{color:var(--text)}
+  .copy-btn{background:rgba(108,99,255,0.1);border:1px solid rgba(108,99,255,0.3);border-radius:8px;color:var(--accent2);font-size:0.72rem;padding:4px 12px;cursor:pointer;font-family:inherit;transition:all 0.2s;}
+  .copy-btn:hover{background:rgba(108,99,255,0.25);color:#fff}
+  .transcript-box{display:none;margin-top:10px;background:#080d18;border:1px solid var(--border);border-radius:10px;padding:12px 14px;font-size:0.78rem;line-height:1.75;color:#8a95aa;max-height:260px;overflow-y:auto;white-space:pre-wrap;word-break:break-word;}
+  .transcript-box.visible{display:block}
+  footer{text-align:center;padding:24px;font-size:0.75rem;color:var(--muted);border-top:1px solid var(--border)}
+  @media(max-width:640px){.card-top{flex-direction:column}.thumb-wrap{flex:none;height:200px}header{padding:16px}main{padding:16px 12px 60px}}
+</style>
+</head>
+<body>
+
+<header>
+  <a class="nav-back" href="../index.html">← 대시보드로</a>
+  <div>
+    <div class="date-badge">2026-07-07</div>
+    <div class="count">1개 영상</div>
+  </div>
+  <div style="font-size:0.75rem;color:var(--muted)">2026-07-07 06:01 생성</div>
+</header>
+
+<main>
+
+  <article class="video-card">
+    <div class="card-top">
+      <a class="thumb-wrap" href="https://www.youtube.com/watch?v=w5un2wibzYI" target="_blank" rel="noopener">
+        <img src="https://i.ytimg.com/vi/w5un2wibzYI/hqdefault.jpg" alt="You Don't Need Better AI. You Need a Better Setup." loading="lazy"/>
+      </a>
+      <div class="card-info">
+        <div class="card-meta">
+          <span class="ch-tag">Dylan Davis</span>
+          <span class="date-tag">2026-07-07</span>
+          
+        </div>
+        <div class="video-title">You Don't Need Better AI. You Need a Better Setup.</div>
+        <div style="display:flex;align-items:center;flex-wrap:wrap;gap:4px;margin-top:auto">
+          <a class="yt-link" href="https://www.youtube.com/watch?v=w5un2wibzYI" target="_blank" rel="noopener">↗ 유튜브에서 보기</a>
+          <button class="nlm-btn" data-url="https://www.youtube.com/watch?v=w5un2wibzYI">📓 NotebookLM</button>
+        </div>
+      </div>
+    </div>
+    <div class="summary-section">
+      <h2>핵심 요약</h2>
+<p>남들도 다 똑같은 AI 모델 쓰니까 모델 성능이나 프롬프트만으로는 경쟁에서 차별화하기 힘들다. 진짜 차이를 만드는 건 네가 일하는 방식과 고유한 맥락을 AI에 학습시키는 '더 나은 셋업'이다. 결국 너만의 고유한 컨텍스트(Context)를 제공하는 게 핵심이다.</p>
+<h2>주요 포인트</h2>
+<ul>
+<li>경쟁자나 너나 똑같은 비용 내고 똑같은 날에 업그레이드된 AI 모델을 쓰기 때문에 모델 자체로는 차별화가 불가능하다.</li>
+<li>AI 모델이 점점 똑똑해지면서 프롬프트 엔지니어링의 가치는 떨어지고 있으며, 남의 프롬프트는 금방 베낄 수 있다.</li>
+<li>결국 AI 성능의 핵심은 나만의 독특한 일 처리 방식과 맥락인 '컨텍스트'를 얼마나 잘 제공하느냐에 달려있다.</li>
+<li>기술적으로 'demonstrated execution(업무 수행 방식)'이라 불리는 너만의 일하는 방식을 셋업하는 게 진짜 경쟁력이다.</li>
+</ul>
+    </div>
+  <div class="transcript-wrap">
+    <div class="transcript-header">
+      <button class="transcript-toggle" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('visible')">
+        <span class="arr">▼</span> 원문 자막
+      </button>
+      <button class="copy-btn" onclick="var b=this,t=b.nextElementSibling||b;navigator.clipboard.writeText(document.querySelector('#tr-w5un2wibzYI').textContent).then(()=>{b.textContent='복사됨';setTimeout(()=>b.textContent='복사',2000)})">복사</button>
+    </div>
+    <pre class="transcript-box" id="tr-w5un2wibzYI">Your biggest competitor pays for the exact same model that you do. And when a smarter model ships, you both get the same model on the same day. If you're new here, I'm Dylan. I run an AI consultancy. And when I sit down with owners and executives one-on-one, the ones getting the real results are never the ones with a better model. They're the ones with a better setup. So, in this video, I'll show you the one input your competitor can't copy and the four-step flywheel that turns your calls, your wins, and your fixes into an AI that gets smarter every time that you use it. So, let's get into it. Now, here's the trap that most people fall into. All of us have access to the same models. So, Gemini, ChatGPT, Claude, when you pay, you get access. But, so do your competitors. And depending on your level, so if you're an employee, that would be another employee. But, if you're an executive or a business owner, you're competing against other companies. And the issue with this is that if you're not feeding it the right information, then oftentimes when you ask the AI to do something for you, you give it similar data, and it's going to then give you similar outputs. So, what's happening is many people that are using models in a poor way, they're all converging on average, which sure gives you some leverage, but it doesn't differentiate you between you and your competitors. And that's what we're trying to avoid in this video, is not being sucked into the average. Now, when getting answers from AI, there are three things you're going to give it. One of which is truly unique, the other two, not so much. So, the first one is the model. So, you choose the model and you choose the reasoning level for that model to go to do a task for your or to give you an answer. This can be rented by everybody. So, everybody gets access to the same models. They just have to choose the right one. That's the first one. The next one is the prompt. It might come as a surprise to some of you, but the value in a prompt is becoming less and less valuable as the models become more and more intelligent because these AIs don't need as much instruction. They just need really rich context. So, your prompts aren't going to separate you from your peers or your competitors. And also, they could be easily copied within a week or two if after somebody kind of gets to that same conclusion you did. That's the second one. And the third one is context, and that's where it's truly unique. And not any context, but specific context to you and how you work and your company works. This is what matters, and this is what we're going to focus on to really separate ourselves from our peers and our competitors. Now, what do I mean by context? I specifically mean how you work, and there's a technical term for this called demonstrated execution. This is a fancy way of basically saying how you work and the associated nuance and subtlety to that. So, I'm going to give you some examples. So, the first example here could be a sentence that you used in a pitch to a prospect that turned them from a maybe to a yes. We want to solidify that and codify into AI so we can repurpose it for future conversations. Another one is from your experience, you know which jobs to take on for new clients and which not to based off of the cost for you because maybe some jobs are more costly than others. Another good example that's more generic is corrections. So, when AI gives you something back, you make a series of corrections to it. And if those corrections aren't solidified into the AI going forward, it's going to make those same mistakes. And then finally, this is probably one of the biggest ones that a lot of people have is rules that are inside of your head but not documented anywhere. And we need to get these out of your head and into AI. An example for this could be maybe you take no rush jobs in December for whatever reason. Quick pause and we're going to programming. This video is brought to you by me, as always. Two quick things. First off, below is a 30-day [snorts] AI insight series, completely free. You'll get 30 insights in your inbox of how you can apply AI to your business and your work. The second thing is if you'd like to work with me, below are series of offerings to see if there's a good fit between the two of us. Now, let's go back to the video. And as you can see, the context here is very nuanced and subtle. It's not just a bunch of documents. Reason being is oftentimes when people think about context, they think about just documents they have for their business, which can be useful in some use cases. But for recurring tasks where you're trying to create more leverage from AI and separate yourself from your peers and your competitors, you want the right context, not just a bunch of context. An example that I often see is people have a bunch of files, and in these files, there could be some files that are 2 years old and no longer relevant. Other files that are 40 pages l</pre>
+  </div>
+  </article>
+</main>
+
+<footer>유튜브 구독 정리 · agy 요약 · 2026-07-07 06:01</footer>
+
+
+<script>
+document.querySelectorAll('.nlm-btn').forEach(function(btn){
+  btn.addEventListener('click',function(){
+    navigator.clipboard.writeText('/notebooklm '+btn.dataset.url).then(function(){
+      var orig=btn.innerHTML;btn.innerHTML='✓ 복사됨';btn.classList.add('copied');
+      setTimeout(function(){btn.innerHTML=orig;btn.classList.remove('copied');},2000);
+    });
+  });
+});
+</script>
+
+</body>
+</html>
