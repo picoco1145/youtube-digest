@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>2026-07-08 — 유튜브 구독 정리</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+  :root{--bg:#090e1a;--surface:#111827;--surface2:#1a2235;--border:#1e2d47;--accent:#6c63ff;--accent2:#00d4ff;--text:#e8eaf0;--muted:#7a8499;--radius:14px;}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Pretendard',sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+  header{background:linear-gradient(135deg,#0d1b3e,#1a0533);border-bottom:1px solid var(--border);padding:20px 40px;display:flex;align-items:center;justify-content:space-between;}
+  .nav-back{color:var(--accent2);text-decoration:none;font-size:0.85rem;display:flex;align-items:center;gap:6px}
+  .nav-back:hover{color:#fff}
+  .date-badge{font-size:1.4rem;font-weight:700;letter-spacing:-0.5px;background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+  .count{font-size:0.85rem;color:var(--muted)}
+  main{max-width:900px;margin:0 auto;padding:32px 24px 80px}
+  .video-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;margin-bottom:24px;transition:border-color 0.2s,box-shadow 0.2s;}
+  .video-card:hover{border-color:var(--accent);box-shadow:0 4px 24px rgba(108,99,255,0.15)}
+  .card-top{display:flex;gap:0}
+  .thumb-wrap{flex:0 0 240px;position:relative;overflow:hidden}
+  .thumb-wrap img{width:100%;height:100%;object-fit:cover;transition:transform 0.4s}
+  .video-card:hover .thumb-wrap img{transform:scale(1.05)}
+  .card-info{flex:1;padding:20px;display:flex;flex-direction:column;gap:10px}
+  .card-meta{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+  .ch-tag{font-size:0.72rem;font-weight:600;padding:3px 12px;background:linear-gradient(135deg,rgba(108,99,255,0.2),rgba(0,212,255,0.2));border:1px solid rgba(108,99,255,0.3);border-radius:999px;color:var(--accent2);}
+  .date-tag{font-size:0.72rem;color:var(--muted)}
+  .no-transcript{font-size:0.68rem;padding:2px 8px;background:rgba(255,180,0,0.12);border:1px solid rgba(255,180,0,0.25);border-radius:999px;color:#ffa500;}
+  .video-title{font-size:1rem;font-weight:600;line-height:1.4}
+  .yt-link{display:inline-flex;align-items:center;gap:5px;font-size:0.8rem;color:var(--accent);text-decoration:none;transition:color 0.2s;}
+  .yt-link:hover{color:var(--accent2)}
+  
+  .nlm-btn{display:inline-flex;align-items:center;gap:5px;font-size:0.8rem;color:#fff;
+    background:rgba(108,99,255,0.2);border:1px solid rgba(108,99,255,0.4);border-radius:8px;
+    padding:4px 12px;cursor:pointer;font-family:inherit;transition:all 0.2s;margin-left:8px;}
+  .nlm-btn:hover{background:rgba(108,99,255,0.45);}
+  .nlm-btn.copied{background:rgba(0,200,100,0.2);border-color:rgba(0,200,100,0.4);color:#00c864;}
+
+  .summary-section{border-top:1px solid var(--border);background:var(--surface2);padding:20px 24px;font-size:0.85rem;line-height:1.7;color:#c5cad8;}
+  .summary-section h2{font-size:0.82rem;color:var(--accent2);margin:12px 0 4px}
+  .summary-section h2:first-child{margin-top:0}
+  .summary-section ul{padding-left:18px}
+  .summary-section li{margin-bottom:5px}
+  .transcript-wrap{border-top:1px solid var(--border);padding:14px 24px;background:#0c1220}
+  .transcript-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:0}
+  .transcript-toggle{background:none;border:none;color:var(--muted);font-size:0.8rem;cursor:pointer;font-family:inherit;display:flex;align-items:center;gap:4px;padding:0;transition:color 0.2s;}
+  .transcript-toggle:hover{color:var(--text)}
+  .copy-btn{background:rgba(108,99,255,0.1);border:1px solid rgba(108,99,255,0.3);border-radius:8px;color:var(--accent2);font-size:0.72rem;padding:4px 12px;cursor:pointer;font-family:inherit;transition:all 0.2s;}
+  .copy-btn:hover{background:rgba(108,99,255,0.25);color:#fff}
+  .transcript-box{display:none;margin-top:10px;background:#080d18;border:1px solid var(--border);border-radius:10px;padding:12px 14px;font-size:0.78rem;line-height:1.75;color:#8a95aa;max-height:260px;overflow-y:auto;white-space:pre-wrap;word-break:break-word;}
+  .transcript-box.visible{display:block}
+  footer{text-align:center;padding:24px;font-size:0.75rem;color:var(--muted);border-top:1px solid var(--border)}
+  @media(max-width:640px){.card-top{flex-direction:column}.thumb-wrap{flex:none;height:200px}header{padding:16px}main{padding:16px 12px 60px}}
+</style>
+</head>
+<body>
+
+<header>
+  <a class="nav-back" href="../index.html">← 대시보드로</a>
+  <div>
+    <div class="date-badge">2026-07-08</div>
+    <div class="count">3개 영상</div>
+  </div>
+  <div style="font-size:0.75rem;color:var(--muted)">2026-07-09 06:01 생성</div>
+</header>
+
+<main>
+
+  <article class="video-card">
+    <div class="card-top">
+      <a class="thumb-wrap" href="https://www.youtube.com/watch?v=7LNtq6CuFhc" target="_blank" rel="noopener">
+        <img src="https://i.ytimg.com/vi/7LNtq6CuFhc/hqdefault.jpg" alt="How to Use AI in Your Business" loading="lazy"/>
+      </a>
+      <div class="card-info">
+        <div class="card-meta">
+          <span class="ch-tag">Nicholas Puru</span>
+          <span class="date-tag">2026-07-08</span>
+          
+        </div>
+        <div class="video-title">How to Use AI in Your Business</div>
+        <div style="display:flex;align-items:center;flex-wrap:wrap;gap:4px;margin-top:auto">
+          <a class="yt-link" href="https://www.youtube.com/watch?v=7LNtq6CuFhc" target="_blank" rel="noopener">↗ 유튜브에서 보기</a>
+          <button class="nlm-btn" data-url="https://www.youtube.com/watch?v=7LNtq6CuFhc">📓 NotebookLM</button>
+        </div>
+      </div>
+    </div>
+    <div class="summary-section">
+      <h2>핵심 요약</h2>
+<p>비즈니스에 AI를 적용하려면 먼저 'AI 우선순위 매트릭스'부터 그려야 됨. 업무 시간과 반복성을 기준으로 평가해서 우측 상단에 있는 놈부터 조져야 실패 안 함. 이 핵심 작업 하나만 AI로 넘겨도 매주 하루는 꽁으로 번다는 소리임.</p>
+<h2>주요 포인트</h2>
+<ul>
+<li>매주 팀이 반복하는 업무(제안서 작성, 데이터 입력 등)를 전부 적어봐라.</li>
+<li>각 업무가 먹는 '시간'과 '반복성'을 기준으로 점수를 매김.</li>
+<li>세로축은 소요 시간, 가로축은 반복성으로 두고 사분면 상자를 그림.</li>
+<li>시간도 오지게 먹고 씹사기급으로 반복적인 '우측 상단' 작업부터 무조건 먼저 자동화해라.</li>
+<li>엉뚱한 것부터 자동화하다가 고장 나서 때려치우는 실수를 하지 말아야 됨.</li>
+<li>첫 업무를 AI로 넘겨서 하루 여유 생기면, 그다음 아래 상자에 있는 업무로 넘어가면 됨.</li>
+</ul>
+    </div>
+  <div class="transcript-wrap">
+    <div class="transcript-header">
+      <button class="transcript-toggle" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('visible')">
+        <span class="arr">▼</span> 원문 자막
+      </button>
+      <button class="copy-btn" onclick="var b=this,t=b.nextElementSibling||b;navigator.clipboard.writeText(document.querySelector('#tr-7LNtq6CuFhc').textContent).then(()=>{b.textContent='복사됨';setTimeout(()=>b.textContent='복사',2000)})">복사</button>
+    </div>
+    <pre class="transcript-box" id="tr-7LNtq6CuFhc">It pisses me off that you still will not use AI in your business. And every week that [music] you wait, that is money walking out the door. So, let me fix that for you. I've set this up in more than 60 businesses, and the first move is always the same. It's called the AI priority matrix. It's just a 5-minute audit that tells you the one process to hand to AI first, the one that pays you back [music] the fastest. So, first, write down every task that your team repeats every single [music] week. So, proposals, or chasing invoices, data entry, or even lead research. And then, you score each one on two different things. How many hours it actually eats, and how repetitive [music] it is, meaning the same steps are done every single time. And now, you just draw one simple box. So, the hours it eats going up, and how repetitive going [music] across, and you drop every single task in. Now, anything that lands top right, high hours, totally repetitive, [music] that is your first automation. Do not start anywhere else. And that's the mistake that everyone makes. They automate something completely random, it breaks, and they quit, and their team never even uses it. So, you start with that one task, you hand it to AI, and you free up a full day before you touch anything else. And then, you just move to the next box down. This is the exact first step that I run before automating anything in my business, and it's why their back office runs on half the hours it used to. Comment "need," and I'll send you a step-by-step video breakdown on how to set this up for your business.</pre>
+  </div>
+  </article>
+  <article class="video-card">
+    <div class="card-top">
+      <a class="thumb-wrap" href="https://www.youtube.com/watch?v=dgv8UiyyV6M" target="_blank" rel="noopener">
+        <img src="https://i.ytimg.com/vi/dgv8UiyyV6M/hqdefault.jpg" alt="90%가 모르는 클로드 영상제작 자동화하기 | 클로드 X 힉스필드 MCP (+스킬제공)" loading="lazy"/>
+      </a>
+      <div class="card-info">
+        <div class="card-meta">
+          <span class="ch-tag">greenkokki 그코</span>
+          <span class="date-tag">2026-07-08</span>
+          
+        </div>
+        <div class="video-title">90%가 모르는 클로드 영상제작 자동화하기 | 클로드 X 힉스필드 MCP (+스킬제공)</div>
+        <div style="display:flex;align-items:center;flex-wrap:wrap;gap:4px;margin-top:auto">
+          <a class="yt-link" href="https://www.youtube.com/watch?v=dgv8UiyyV6M" target="_blank" rel="noopener">↗ 유튜브에서 보기</a>
+          <button class="nlm-btn" data-url="https://www.youtube.com/watch?v=dgv8UiyyV6M">📓 NotebookLM</button>
+        </div>
+      </div>
+    </div>
+    <div class="summary-section">
+      <h2>핵심 요약</h2>
+<p>클로드와 힉스필드(Higgsfield) MCP를 연동해 몇 마디 프롬프트만으로 고품질 영상을 자동 제작하는 방법을 다룬다. 기획과 제어는 클로드가 담당하고 실제 영상 생성은 힉스필드가 처리하는 방식임. 전용 스킬을 쓰면 스토리보드 단계에서 미리 수정이 가능해 크레딧 낭비 없이 효율적으로 작업할 수 있다.</p>
+<h2>주요 포인트</h2>
+<ul>
+<li>클로드의 판단력과 힉스필드의 영상 생성 기능을 결합해 시너지를 냄.</li>
+<li>힉스필드 MCP 주소를 클로드 커넥터에 등록하는 간단한 연동 과정을 거침.</li>
+<li>greenkokki 채널에서 제공하는 전용 스킬을 클로드에 등록해 자동화 워크플로우를 실행함.</li>
+<li>영상 생성 전에 스토리보드를 먼저 검토하게 하여 불필요한 크레딧 낭비를 예방함.</li>
+<li>힉스필드 모델 설정, 해상도 등에 따라 달라지는 소모 크레딧을 미리 알려줘서 관리하기 편함.</li>
+</ul>
+    </div>
+  <div class="transcript-wrap">
+    <div class="transcript-header">
+      <button class="transcript-toggle" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('visible')">
+        <span class="arr">▼</span> 원문 자막
+      </button>
+      <button class="copy-btn" onclick="var b=this,t=b.nextElementSibling||b;navigator.clipboard.writeText(document.querySelector('#tr-dgv8UiyyV6M').textContent).then(()=>{b.textContent='복사됨';setTimeout(()=>b.textContent='복사',2000)})">복사</button>
+    </div>
+    <pre class="transcript-box" id="tr-dgv8UiyyV6M">홍보 영상 만들자. 브랜드 이름은 하루 공방이고 제작한 제품들로 홍보하는 영상을 원해 [음악] 로고와 제품 이미지는 함께 제공할게. 영상 길이는 10초짜리가 좋고 영상 비율은 16대9 비율로 제작하고 분위기는 시네마틱한 [음악] 스타일이 좋아. 어떠신가요?이 영상에서는 필드와 연동된 클로드에서 몇 마디만으로이 정도 수준의 고품질 영상을 함께 만들어 볼 것입니다. 참고로이 영상에서 사용한 클로드 스킬은 [음악] 누구든지 설치해서 사용할 수 있도록 제공해 드립니다. 그럼 바로 시작할게요. 실제로 쓸 만한 영상 하나를 만들려면 어떤 과정이 필요할까요? 먼저 기획을 잡고 관련 이미지를 생성해서 장면별 스토리보드를 만들고 각 장면을 영상으로 뽑은 뒤 마지막에 합치는 작업까지. 최소한이 과정은 다 거쳐야 비로소 쓸 만한 영상 하나가 나옵니다. 문제는 이걸 매번 사람이 다 하면 시간이 너무 오래 걸린다는 거죠. 그래서이 영상에서는 역할을 나눕니다. 기획하고 판단하고이 복잡한 순서를 단계별로 끌고 가는 두뇌. 이건 클로드가 담당합니다. 여기에 클로드 스킬을 활용하면 반복되는이 과정을 매번 알아서 진행합니다. 대신 클로드가 못 하는게 있어요. 바로 이미지를 생성하고 영상을 만드는 일입니다. 이건 필드가 채워줍니다. 최근 익스필드가 MCP를 제공하면서 클로드와 연동이 가능해졌거든요. 정리하면 두뇌는 클로드, 생성은 필드. 여기서 나오는 시너지가 엄청납니다. 먼저 익스필드에 방문했고 관련 링크는 영상 아래 남겨 놓았으니 참고하세요. 익스필드에 가입한 뒤 상단에 MCP 메뉴를 클릭하세요. 여기 나오는 옵션 중에서 왼편에서 MCP를 선택하고 오른편에서 클로드를 선택하세요. 결과로 나오는 익스필드 주소를 클릭해서 복사하세요. 이제 클로드로 이동해서 익스필드를 연동할게요. 왼쪽 메뉴 중 사용자 지정을 클릭하세요. 커넥터 메뉴를 클릭한 뒤 오른쪽 상단에 추가 버튼을 클릭하고 커스텀 커넥터 추가를 클릭하세요. 여기 이름에는 먼저 픽스필드라고 입력할게요. 아래 원격 MCP 서버 주소에는 복사했던 익스필드 주소를 붙여 넣으세요. 완료했다면 추가 버튼을 클릭하세요. 연결하기 위해 연결 버튼을 클릭하세요. 기존에 필드에 로그인된 상태면 엑세스 관련 권한 팝업이 나옵니다. 허용 버튼을 클릭하세요. 결과적으로 클로드와 익스필드 연동이 완료됩니다. 연동된 필드를 확인하기 위해 사용자 지정을 클릭한 뒤 커넥터를 클릭하세요. 여기 연결된 익스필드의 확인이 가능하고 클릭하세요. 그러면 현재 클로드 안에서 익스필드에 어떤 기능들을 바로 사용할 수 있는지 모두 확인이 가능합니다. 정말 많은 일들이 가능하고 현재 엑세스 권한을 보면 모든 도구 기능은 실행하기 전에 사용자 승인이 필요하다고 설정되어 있습니다. 그대로 유지해서 사용해도 되고 저는 빠르게 진행하며 보여 드리기 위해 모든 도구 기능을 항상 허용하겠습니다. 확인 후 창을 닫아 주세요. 이제 제가 만든 스킬을 추가할 차례입니다. 여기서 추가할 파일은 영상 아래 남겨 놓았으니 필요하면 참고하시기 바랍니다. 메뉴에서 사용자 지정을 클릭하세요. 스킬 메뉴를 선택한 뒤 오른쪽 상단에 추가 버튼을 클릭하고 스킬 업로드를 클릭하세요. 이곳에 스킬 파일을 드래그 앤드롭브로 추가하세요. 이렇게 바로 추가되었고 클릭해 볼게요. 여기 스킬 내용을 확인할 수 있으니 궁금하면 직접 확인해 보면 되겠습니다. 그리고 추가 팁으로이 영상에서 어떻게 진행되는지 살펴보고 자신의 상황에 맞게이 스킬을 직접 편집해서 사용하거나 클로드로 편집 기능을 통해 필요에 맞게 요청해서 자유롭게 편집해 보면 되겠습니다. 그럼 스킬을 직접 실행해서 어떻게 진행되는지 보여 주면서 영상을 만들어 보겠습니다. 먼저 예제 시나리오를 간단하게 설명해 드릴게요. 하루 공방이라는 브랜드로 도자기를 홍보하기 위한 10초짜리 영상을 만들려고 합니다. 실제 브랜드를 운영하고 있는 중이기에 로고와 관련 제품 이미지들이 준비되어 있습니다. 클로드 채팅 창에 먼저 스필드 홍보 영상 만들자라고 입력할게요. 첫 단계로 뭘 홍보하는 영상인지 물어보고 로고나 관련 제품 이미지가 있는지 질문합니다. 답변으로 하루 공방이라는 도자기를 홍보하는 영상이고 로고와 제품 이미지를 직접 올렸다고 입력할게요. 그리고 준비한 실제 로고와 관련 제품 이미지를 채팅창에 업로드할게요. 여기서는 간단하게 입력했지만 어떤 홍보 영상인지 최대한 구체적으로 입력하면 클로드가 자세히 이해하는데 도움이 됩니다. 그럼 답변하겠습니다. 아래는 필드가 직접 읽을 수 있도록 필드 전용 업로드 창을 통해 업로드했던 이미지들을 다시 업로드할게요. 업로드가 완료되어 레디라는 표시가 나오면 채팅창에 업로드 완료라고 입력한 뒤 요청할게요. 다음 단계로 일반 텍스트로 질문을 받거나 선택형 카드로 질문을 받을 수 있습니다. 먼저 영상끼리는 10초로 선택하고 화면 비율은 16대구로 선택하고 무드 및 스타일은 시네마틱으로 선택할게요. 참고로 여기서 물어보는 선택지 옵션들은 제가 미리 스킬을 통해 설정해 놓은 옵션들입니다. 무드 및 스타일 옵션 같은 경우는 본인이 생각하는 옵션 외에 다른 방향이 있다면 자유롭게 입력해서 답해도 좋을 것 같습니다. 선택한 옵션들을 토대로 스토리보드가 완성되었습니다. 아직 영상을 만들기 전이라이 스토리보드를 미리 보고 고치고 싶은 부분이 있으면 지금 자유롭게 요청하면 됩니다.이 단계가 왜 중요하냐면요. 그냥 영상부터 뽑았다가 마음에 안 들어서 다시 뽑으면 그때마다 크레딧이 또 나갑니다. 그래서 스토리보드에서 영상의 전체 느낌을 미리 잡고 고칠 부분을 먼저 반영해 두면 크레딧 낭비 없이 더 완성도 높은 영상을 뽑을 수 있습니다. 저는 여기서 승인하고 영상 생성 단계로 넘어갈게요. 다음 단계는 현재 익스필드에 있는 크레딧 잔액과 크레딧이 얼마나 들지 예상 비용이 나오는 단계입니다.이 이 단계를 통해 진행하는 과정에서 발생하는 크레딧 소모량을 미리 알 수 있도록 했습니다. 참고로이 스킬은 기본 설정이 시덴스 2.0 모델에 해상도는 풀 HD로 설정했는데요. 어떤 모델을 사용하고 몇 초짜리 영상을 만들고 어떤 해상도로 생성하냐에 따라서 크레딧 비용은 천차만별입니다. 그러므로 본인의 필요에 맞게 변경 요청하거나 스킬을 수정해서 기본 설정 옵션을 변경해도 되겠습니다. 그럼 진행해 볼게요. 여기까지 스킬을 통해 진행한 단계를 빠르게 정리해 볼게요. 첫 단계로 처음에 홍보 영상을 만들자고 시작했습니다. 두 번째로 어떤 홍보 영상을 만들고 싶은지와 함께 관련 로고와 이미지를 제공했습니다. 세 번째로 원하는 영상끼리, 화면 비율 그리고 무드 및 스타일을 선택했습니다.네 번째로 제공한 스토리보드를 확인했고 마지막 다섯 번째 단계로 영상 생성 옵션을 확인한 뒤 결과적으로 영상 생성을 완료했습니다. 하지만이 스킬은 아직 완벽하지 않다고 생각합니다. 그래서이 스킬을 큰 틀 정도로 생각하시고 각자만의 상황과 필요에 따라 스킬을 편집해서 완성도 높은 영상을 생성하시기 바랍니다. 마지막으로 한글자막 오버레이 시트가 나옵니다. 영상을 보면 한글이 따로 안 들어간 걸 알 수 있을 거예요. 이유가 있는데요. 아직 영상 생성에 한글을 구현하는게 완벽하지 않기도 하고 원하지 않는 자리에 텍스트가 박히면 그걸 지우려고 또 새로 뽑아야 합니다. 그때마다 크레딧이 낭비되기 때문에이 스킬에는 아예 한글이 생성되지 않도록 설정해 뒀습니다. 대신 이렇게 구간별로 추천 한글 카피와 추천하는 위치를 표로 뽑아 주는데요.이 이 중에서 원하는 걸 직접 골라놓거나 준비해 둔 원하는 문구를 직접 넣는 것이 크레딧도 아끼고 완성도 더 높일 수 있습니다. 그럼 먼저이 영상을 다운받을게요. 버튼을 클릭한 뒤 링크를 열어 주세요. 오른쪽 하단 메뉴 아이콘을 클릭하고 다운로드를 눌러 저장하세요. 영상을 편집하기 위해 캡커스로 이동할게요. 만약 다른 영상 편집 도구를 이용하고 있다면 자유롭게 활용해도 되겠고 없다면 채널에서 제공하는 캡컷 관련 영상을 참고해 보세요. 캡컷 기본 화면으로 넘어왔습니다. 이곳에 먼저 다운받은 영상을 추가할게요. 추가한 영상을 아래 타임라인에 드래그해서 추가하세요. 먼저 컵이 나올 때 텍스트를 추가하기 위해 재생 헤드를 해당 구간에 옮길게요. 상단에 텍스트 메뉴를 클릭한 뒤 기본 텍스트에서 플러스 아이콘을 클릭해서 추가할게요. 추가된 텍스트를 타임라인에서 클릭하고 컵 구간에서만 나오도록 막대를 줄일게요. 이제 텍스트를 수정하기 위해 오른쪽 상단에 입력창에서 자유롭게 변경하세요. 글자 크기는 5 정도로 줄이고 문자 강력은 -2 정도, 줄 간격은 4 정도로 변경할게요. 정렬은 왼쪽으로 변경하고 위치는 왼쪽에 배치할게요. 이제 텍스트의 움직임을 추가하기 위해 오른쪽 상단에 애니메이션 탭을 클릭하세요. 등장하는 인탭에서 일반 페이드인을 선택할게요. 아래 길이는 1초 정도로 늘릴게요. 설정했다면 재생해 보겠습니다. 이번에는 꽃병이 나오는 구간에 이전에 만든 텍스트를 복재해서 동일한 방식으로 추가해 볼게요. 마지막으로 로고가 나오는 장면에서 상단에 오늘의 그릇을 만듭니다라고 텍스트를 추가해 볼게요. 추가한 텍스트에서 색상을 로고와 동일하게 변경할게요. 애니메이션 탭에서는 슬라이드 라이즈 효과를 찾아서 적용한 뒤 길이는 1.5초로 늘릴게요. 여기까지 만든 영상을 다시 한번 재생해 볼게요. [음악] 이렇게 간단히 기본 텍스트만 필요에 맞게 더해도 영상의 완성도를 높여 볼 수 있습니다. 완성했다면 오른쪽 상단에 내보내기 버튼을 클릭하세요. 내보내기 버튼을 한 번 더 클릭해서 영상을 다운받으면 되겠습니다. 마지막으로 이렇게 제작한 영상을 활용하는 팁 하나를 더 드릴게요. 이전 클로드 디자인을 활용하는 영상에서 동일한 하루 공방이라는 브랜드로 웹사이트를 빠르게 제작했는데요.이 웹사이트를 제작한 클로드 디자인 편집 화면에서 이렇게 다운받은 영상 파일을 업로드하고 히어로 섹션 배경에 어울리게 삽입해 달라는 요청을 했습니다. 결과적으로 한 층 더 업그레이드된 고품질 사이트가 완성되었습니다. 클로드 디자인에서 한 번에 요청해서이 모든 걸 제작되게 만들 수도 있지만 중간에 검토 과정 없이 진행하면 [음악] 그만큼 크레딧을 낭비할 확률도 높습니다. 그래서 이런 방식의 홈페이지도 [음악] 제작해 보고 싶다면 먼저 이전 영상을 통해 사이트를 제작하세요. 그</pre>
+  </div>
+  </article>
+  <article class="video-card">
+    <div class="card-top">
+      <a class="thumb-wrap" href="https://www.youtube.com/watch?v=0pGWs6kVALI" target="_blank" rel="noopener">
+        <img src="https://i.ytimg.com/vi/0pGWs6kVALI/hqdefault.jpg" alt="클로드 페이블5 미쳤음" loading="lazy"/>
+      </a>
+      <div class="card-info">
+        <div class="card-meta">
+          <span class="ch-tag">AIMAX_PD</span>
+          <span class="date-tag">2026-07-08</span>
+          
+        </div>
+        <div class="video-title">클로드 페이블5 미쳤음</div>
+        <div style="display:flex;align-items:center;flex-wrap:wrap;gap:4px;margin-top:auto">
+          <a class="yt-link" href="https://www.youtube.com/watch?v=0pGWs6kVALI" target="_blank" rel="noopener">↗ 유튜브에서 보기</a>
+          <button class="nlm-btn" data-url="https://www.youtube.com/watch?v=0pGWs6kVALI">📓 NotebookLM</button>
+        </div>
+      </div>
+    </div>
+    <div class="summary-section">
+      <h2>핵심 요약</h2>
+<p>클로드 페이블 5의 자율 기능을 써서 잠자는 동안에도 일하는 비즈니스 시스템 만드는 방법이다. 무한루프 명령어, 스킬 교육, 비전 활용, 메모리 구축 등 4가지 전략으로 효율 극대화가 가능하다. 이대로 따라 하면 며칠 걸릴 노가다 작업도 순식간에 끝내버릴 수 있다.</p>
+<h2>주요 포인트</h2>
+<ul>
+<li>슬래시루프 명령어를 써서 멈추지 않고 스스로 작동하는 자율 루프 시스템을 구축함</li>
+<li>피드백을 줄 때마다 스스로 진화하고 영원히 써먹는 업무 스킬을 클로드에게 가르침</li>
+<li>디자인 시안이나 스크린샷만 던져줘도 UI 문제점을 찾아내는 압도적인 시각 분석 능력을 활용함</li>
+<li>로컬 폴더에 비즈니스 지도와 매뉴얼을 저장해 나만의 컨텍스트와 메모리 시스템을 구축함</li>
+</ul>
+    </div>
+  <div class="transcript-wrap">
+    <div class="transcript-header">
+      <button class="transcript-toggle" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('visible')">
+        <span class="arr">▼</span> 원문 자막
+      </button>
+      <button class="copy-btn" onclick="var b=this,t=b.nextElementSibling||b;navigator.clipboard.writeText(document.querySelector('#tr-0pGWs6kVALI').textContent).then(()=>{b.textContent='복사됨';setTimeout(()=>b.textContent='복사',2000)})">복사</button>
+    </div>
+    <pre class="transcript-box" id="tr-0pGWs6kVALI">이 남자는 클로드에 미쳤습니다. 몇 주가 걸리던 작업을 단 며칠 만에 끝내버릴 클로드 페이블 5의 자율 기능을 활용해 잠자는 동안에도 일하는 시스템을 구축한 마케팅 에이전시 대표. 그가 공개한 클로드 페이블로 비즈니스 효율을 극대하는네 가지 필수 전략 저장하고 따라입어. 첫째, 무한루프 명령어로 자율 시스템을 만드세요. 슬래시루프 명령어를 사용하면 클로드가 시장 조사나 이메일 관리 같은 반복 업무를 멈추지 않고 스스로 수행하며 최상의 결과물을 만들어 냅니다. 둘째, 재용 가능한 업무 스킬을 클로드에게 교육하세요. 한 번만 가르치면 영원히 사용하는 업무 레시피를 만들고 피드백을 줄 때마다 스스로 진화하여 다음 작업의 퀄리티를 높이는 지능형 비서를 두게 됩니다. 셋째, 압도적인 비전 기능에 적극적으로 활용하세요. 스크린샷이나 디자인 시안을 보여주는 것만으로도 사용자 인터페이스의 문제점을 찾아내고 정밀한 수정을 제한하는 최첨단 시각 분석 능력을 경험해 보세요. 넷째, 나만의 컨텍스트와 메모리 시스템을 구축하세요. 로컬 폴더에 비즈니스 지도와 업무 매뉴얼을 저장해 클로드가 당신의 사업을 완벽히 이해하고 의사 결정을 돕는 전략적 파트너가 되게 만들어야 합니다. 20분짜리 클로드 페이블 5 활용법을 모두 정리했습니다.이 이 내용 궁금하신 분들은 채널을 구독하고 본문을 확인해 주세요.</pre>
+  </div>
+  </article>
+</main>
+
+<footer>유튜브 구독 정리 · agy 요약 · 2026-07-09 06:01</footer>
+
+
+<script>
+document.querySelectorAll('.nlm-btn').forEach(function(btn){
+  btn.addEventListener('click',function(){
+    navigator.clipboard.writeText('/notebooklm '+btn.dataset.url).then(function(){
+      var orig=btn.innerHTML;btn.innerHTML='✓ 복사됨';btn.classList.add('copied');
+      setTimeout(function(){btn.innerHTML=orig;btn.classList.remove('copied');},2000);
+    });
+  });
+});
+</script>
+
+</body>
+</html>

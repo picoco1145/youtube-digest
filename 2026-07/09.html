@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>2026-07-09 — 유튜브 구독 정리</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+  :root{--bg:#090e1a;--surface:#111827;--surface2:#1a2235;--border:#1e2d47;--accent:#6c63ff;--accent2:#00d4ff;--text:#e8eaf0;--muted:#7a8499;--radius:14px;}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Pretendard',sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+  header{background:linear-gradient(135deg,#0d1b3e,#1a0533);border-bottom:1px solid var(--border);padding:20px 40px;display:flex;align-items:center;justify-content:space-between;}
+  .nav-back{color:var(--accent2);text-decoration:none;font-size:0.85rem;display:flex;align-items:center;gap:6px}
+  .nav-back:hover{color:#fff}
+  .date-badge{font-size:1.4rem;font-weight:700;letter-spacing:-0.5px;background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+  .count{font-size:0.85rem;color:var(--muted)}
+  main{max-width:900px;margin:0 auto;padding:32px 24px 80px}
+  .video-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;margin-bottom:24px;transition:border-color 0.2s,box-shadow 0.2s;}
+  .video-card:hover{border-color:var(--accent);box-shadow:0 4px 24px rgba(108,99,255,0.15)}
+  .card-top{display:flex;gap:0}
+  .thumb-wrap{flex:0 0 240px;position:relative;overflow:hidden}
+  .thumb-wrap img{width:100%;height:100%;object-fit:cover;transition:transform 0.4s}
+  .video-card:hover .thumb-wrap img{transform:scale(1.05)}
+  .card-info{flex:1;padding:20px;display:flex;flex-direction:column;gap:10px}
+  .card-meta{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+  .ch-tag{font-size:0.72rem;font-weight:600;padding:3px 12px;background:linear-gradient(135deg,rgba(108,99,255,0.2),rgba(0,212,255,0.2));border:1px solid rgba(108,99,255,0.3);border-radius:999px;color:var(--accent2);}
+  .date-tag{font-size:0.72rem;color:var(--muted)}
+  .no-transcript{font-size:0.68rem;padding:2px 8px;background:rgba(255,180,0,0.12);border:1px solid rgba(255,180,0,0.25);border-radius:999px;color:#ffa500;}
+  .video-title{font-size:1rem;font-weight:600;line-height:1.4}
+  .yt-link{display:inline-flex;align-items:center;gap:5px;font-size:0.8rem;color:var(--accent);text-decoration:none;transition:color 0.2s;}
+  .yt-link:hover{color:var(--accent2)}
+  
+  .nlm-btn{display:inline-flex;align-items:center;gap:5px;font-size:0.8rem;color:#fff;
+    background:rgba(108,99,255,0.2);border:1px solid rgba(108,99,255,0.4);border-radius:8px;
+    padding:4px 12px;cursor:pointer;font-family:inherit;transition:all 0.2s;margin-left:8px;}
+  .nlm-btn:hover{background:rgba(108,99,255,0.45);}
+  .nlm-btn.copied{background:rgba(0,200,100,0.2);border-color:rgba(0,200,100,0.4);color:#00c864;}
+
+  .summary-section{border-top:1px solid var(--border);background:var(--surface2);padding:20px 24px;font-size:0.85rem;line-height:1.7;color:#c5cad8;}
+  .summary-section h2{font-size:0.82rem;color:var(--accent2);margin:12px 0 4px}
+  .summary-section h2:first-child{margin-top:0}
+  .summary-section ul{padding-left:18px}
+  .summary-section li{margin-bottom:5px}
+  .transcript-wrap{border-top:1px solid var(--border);padding:14px 24px;background:#0c1220}
+  .transcript-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:0}
+  .transcript-toggle{background:none;border:none;color:var(--muted);font-size:0.8rem;cursor:pointer;font-family:inherit;display:flex;align-items:center;gap:4px;padding:0;transition:color 0.2s;}
+  .transcript-toggle:hover{color:var(--text)}
+  .copy-btn{background:rgba(108,99,255,0.1);border:1px solid rgba(108,99,255,0.3);border-radius:8px;color:var(--accent2);font-size:0.72rem;padding:4px 12px;cursor:pointer;font-family:inherit;transition:all 0.2s;}
+  .copy-btn:hover{background:rgba(108,99,255,0.25);color:#fff}
+  .transcript-box{display:none;margin-top:10px;background:#080d18;border:1px solid var(--border);border-radius:10px;padding:12px 14px;font-size:0.78rem;line-height:1.75;color:#8a95aa;max-height:260px;overflow-y:auto;white-space:pre-wrap;word-break:break-word;}
+  .transcript-box.visible{display:block}
+  footer{text-align:center;padding:24px;font-size:0.75rem;color:var(--muted);border-top:1px solid var(--border)}
+  @media(max-width:640px){.card-top{flex-direction:column}.thumb-wrap{flex:none;height:200px}header{padding:16px}main{padding:16px 12px 60px}}
+</style>
+</head>
+<body>
+
+<header>
+  <a class="nav-back" href="../index.html">← 대시보드로</a>
+  <div>
+    <div class="date-badge">2026-07-09</div>
+    <div class="count">1개 영상</div>
+  </div>
+  <div style="font-size:0.75rem;color:var(--muted)">2026-07-09 06:01 생성</div>
+</header>
+
+<main>
+
+  <article class="video-card">
+    <div class="card-top">
+      <a class="thumb-wrap" href="https://www.youtube.com/watch?v=J0h3yuCnXqk" target="_blank" rel="noopener">
+        <img src="https://i.ytimg.com/vi/J0h3yuCnXqk/hqdefault.jpg" alt="An AI Agent Is Just a Folder With 3 Things Inside It" loading="lazy"/>
+      </a>
+      <div class="card-info">
+        <div class="card-meta">
+          <span class="ch-tag">Dylan Davis</span>
+          <span class="date-tag">2026-07-09</span>
+          
+        </div>
+        <div class="video-title">An AI Agent Is Just a Folder With 3 Things Inside It</div>
+        <div style="display:flex;align-items:center;flex-wrap:wrap;gap:4px;margin-top:auto">
+          <a class="yt-link" href="https://www.youtube.com/watch?v=J0h3yuCnXqk" target="_blank" rel="noopener">↗ 유튜브에서 보기</a>
+          <button class="nlm-btn" data-url="https://www.youtube.com/watch?v=J0h3yuCnXqk">📓 NotebookLM</button>
+        </div>
+      </div>
+    </div>
+    <div class="summary-section">
+      <h2>핵심 요약</h2>
+<p>AI 에이전트는 생각보다 복잡하지 않고 3가지 요소가 들어있는 폴더와 같다. 단순 질문에 답만 하는 챗봇과 달리, 에이전트는 사용자를 대신해 스스로 실제 업무를 수행함. 지침(프롬프트), 외부 시스템 연결, 트리거만 갖추면 ChatGPT나 Claude 같은 기존 AI 서비스에서도 쉽게 만들 수 있다.</p>
+<h2>주요 포인트</h2>
+<ul>
+<li>챗봇은 단순히 질문에 답만 하지만, 에이전트는 여러 단계를 거쳐 사용자 대신 실제로 일을 해줌.</li>
+<li>에이전트는 지침(프롬프트/스킬), 외부 시스템 연결(데이터 읽기/쓰기), 트리거(시간/이벤트/수동)라는 3가지 기본 요소로 구성됨.</li>
+<li>연체 송장 목록을 가져와 순위를 매기고 안내 이메일 초안을 작성하여 발송하는 과정을 예시로 에이전트의 작동 방식을 보여줌.</li>
+<li>복잡하게 생각할 필요 없이 기존에 사용하던 AI 구독 서비스 안에서 누구나 직접 에이전트를 빌드할 수 있음.</li>
+</ul>
+    </div>
+  <div class="transcript-wrap">
+    <div class="transcript-header">
+      <button class="transcript-toggle" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('visible')">
+        <span class="arr">▼</span> 원문 자막
+      </button>
+      <button class="copy-btn" onclick="var b=this,t=b.nextElementSibling||b;navigator.clipboard.writeText(document.querySelector('#tr-J0h3yuCnXqk').textContent).then(()=>{b.textContent='복사됨';setTimeout(()=>b.textContent='복사',2000)})">복사</button>
+    </div>
+    <pre class="transcript-box" id="tr-J0h3yuCnXqk">One researcher counted over 200 definitions of what an AI agent is. So, if you're confused, you're in good company. Also, if you're new here, I'm Dylan. I run an AI consultancy. And lately, that's the question I hear most when working with both executives and business owners. I keep seeing my clients overwhelmed by this. But an agent is way simpler than it sounds. It's just a folder with three things inside of it. And they're already inside of your existing AI subscriptions, such as ChatGPT and Claude. So, by the end of this video, you'll see just how easy it is to actually build one yourself. So, let's get into it. Now, at the highest of levels, if we had to define the difference between an agent and a simple chatbot, that would come down to what the AI does when you ask it to do something. So, if you're using a chatbot, likely all that's going to happen is you ask it a question and then gives you an answer. The steps that happen between you asking the question and it giving you an answer are likely minimal and simple. But for an agent, when you trigger an agent, it takes many different steps, and oftentimes it does work on your behalf. So, this is the simple place we're going to start at the macro level. A chatbot basically answers questions, an agent does work. Now, as I walk through this in detail, I want to do it through an example. So, the example we're going to use here is overdue invoices. So, all of us have clients that tend to delay their payment. And we're going to walk through the three parts that make up an agent and how to build one using this example. Our agent, in this case, is going to pull list of customers that are overdue in their payment. After that, it's going to rank them based on the worst offenders. It'll then draft a series of nudge emails on our behalf, and then we'll simply send those emails that the AI has drafted for us. So, it's doing all this work for us autonomously. That's the agentic part, and that's our example. So, what makes up an agent? Simply put, an agent is a folder with three things. And that folder is going to include instructions, which could be a simple prompt or a skill. In addition to that, it's going to have connections to other systems so it can read and write information from other places. And then finally, it's going to have a trigger, a thing that makes it start. And that could be time-based, event-based, or manual where you just click a button. These are the three simple things that make up an agent. Quick pause in irregular programming. This video is brought to you by me, as always. Two quick things. First off, below is a 30-day AI insight series, completely free. You'll get 30 insights in your inbox of how you can apply AI to your business and your work. The second thing is if you like to work with me, below are a series of offerings to see if there's a good fit for the two of us. Now, let's go back to the video. Now, the home and where this lives will vary depending on where you're using the tool. So, if you're using ChatGPT and Claude in the browser, that's going to be likely in a place like a project or potentially a skill where all these things are housed and connected. Outside of that, we also have desktop tools like Claude co-worker Codex where it can be literally a folder on your computer. So, in your document section, your desktop section, whatever else, it's a folder and it has these three things inside of it. An important thing to note about agents is often times agents are most useful when they're applied to a recurring task. So, something that you do on a recurring basis. We'll come back to that later. Now, if these are the three things that make up an agent, let's walk through each one in more detail seeing how it fits to our example. So, our first piece are the instructions of the brief. So, again, this could be a skill inside of Claude or in ChatGPT or it could be just a system instruction or a prompt that we use inside of a project. In this case, we're just using a simple prompt. So, this prompt here is telling the AI, "I want you to find every customer who's past the 30-day mark of paying me. After that, I want you to rank them based off of the most to least overdue. Then draft a series of short nudge emails on my behalf. And then here where it says my tone of voice, this here could be a skill. And that skill could understand exactly how we like to write these emails based off of previous sent emails in regards to this use case. After that, we then at the end say, "If anything is past 60 days for overdue, then I want you to be a little bit more intense in the way that you write your email to get them to pay." So, this is our very first part of an agent, the instructions telling it what we want it to do, why we want it to do it, and how we want it to do it. The next part is going to be the connection, so allowing the AI to connect to other systems. In this case, we could have the AI connect to our email, our calendar, and our accounting</pre>
+  </div>
+  </article>
+</main>
+
+<footer>유튜브 구독 정리 · agy 요약 · 2026-07-09 06:01</footer>
+
+
+<script>
+document.querySelectorAll('.nlm-btn').forEach(function(btn){
+  btn.addEventListener('click',function(){
+    navigator.clipboard.writeText('/notebooklm '+btn.dataset.url).then(function(){
+      var orig=btn.innerHTML;btn.innerHTML='✓ 복사됨';btn.classList.add('copied');
+      setTimeout(function(){btn.innerHTML=orig;btn.classList.remove('copied');},2000);
+    });
+  });
+});
+</script>
+
+</body>
+</html>
