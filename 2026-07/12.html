@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>2026-07-12 — 유튜브 구독 정리</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+  :root{--bg:#090e1a;--surface:#111827;--surface2:#1a2235;--border:#1e2d47;--accent:#6c63ff;--accent2:#00d4ff;--text:#e8eaf0;--muted:#7a8499;--radius:14px;}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Pretendard',sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+  header{background:linear-gradient(135deg,#0d1b3e,#1a0533);border-bottom:1px solid var(--border);padding:20px 40px;display:flex;align-items:center;justify-content:space-between;}
+  .nav-back{color:var(--accent2);text-decoration:none;font-size:0.85rem;display:flex;align-items:center;gap:6px}
+  .nav-back:hover{color:#fff}
+  .date-badge{font-size:1.4rem;font-weight:700;letter-spacing:-0.5px;background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+  .count{font-size:0.85rem;color:var(--muted)}
+  main{max-width:900px;margin:0 auto;padding:32px 24px 80px}
+  .video-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;margin-bottom:24px;transition:border-color 0.2s,box-shadow 0.2s;}
+  .video-card:hover{border-color:var(--accent);box-shadow:0 4px 24px rgba(108,99,255,0.15)}
+  .card-top{display:flex;gap:0}
+  .thumb-wrap{flex:0 0 240px;position:relative;overflow:hidden}
+  .thumb-wrap img{width:100%;height:100%;object-fit:cover;transition:transform 0.4s}
+  .video-card:hover .thumb-wrap img{transform:scale(1.05)}
+  .card-info{flex:1;padding:20px;display:flex;flex-direction:column;gap:10px}
+  .card-meta{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+  .ch-tag{font-size:0.72rem;font-weight:600;padding:3px 12px;background:linear-gradient(135deg,rgba(108,99,255,0.2),rgba(0,212,255,0.2));border:1px solid rgba(108,99,255,0.3);border-radius:999px;color:var(--accent2);}
+  .date-tag{font-size:0.72rem;color:var(--muted)}
+  .no-transcript{font-size:0.68rem;padding:2px 8px;background:rgba(255,180,0,0.12);border:1px solid rgba(255,180,0,0.25);border-radius:999px;color:#ffa500;}
+  .video-title{font-size:1rem;font-weight:600;line-height:1.4}
+  .yt-link{display:inline-flex;align-items:center;gap:5px;font-size:0.8rem;color:var(--accent);text-decoration:none;transition:color 0.2s;}
+  .yt-link:hover{color:var(--accent2)}
+  
+  .nlm-btn{display:inline-flex;align-items:center;gap:5px;font-size:0.8rem;color:#fff;
+    background:rgba(108,99,255,0.2);border:1px solid rgba(108,99,255,0.4);border-radius:8px;
+    padding:4px 12px;cursor:pointer;font-family:inherit;transition:all 0.2s;margin-left:8px;}
+  .nlm-btn:hover{background:rgba(108,99,255,0.45);}
+  .nlm-btn.copied{background:rgba(0,200,100,0.2);border-color:rgba(0,200,100,0.4);color:#00c864;}
+
+  .summary-section{border-top:1px solid var(--border);background:var(--surface2);padding:20px 24px;font-size:0.85rem;line-height:1.7;color:#c5cad8;}
+  .summary-section h2{font-size:0.82rem;color:var(--accent2);margin:12px 0 4px}
+  .summary-section h2:first-child{margin-top:0}
+  .summary-section ul{padding-left:18px}
+  .summary-section li{margin-bottom:5px}
+  .transcript-wrap{border-top:1px solid var(--border);padding:14px 24px;background:#0c1220}
+  .transcript-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:0}
+  .transcript-toggle{background:none;border:none;color:var(--muted);font-size:0.8rem;cursor:pointer;font-family:inherit;display:flex;align-items:center;gap:4px;padding:0;transition:color 0.2s;}
+  .transcript-toggle:hover{color:var(--text)}
+  .copy-btn{background:rgba(108,99,255,0.1);border:1px solid rgba(108,99,255,0.3);border-radius:8px;color:var(--accent2);font-size:0.72rem;padding:4px 12px;cursor:pointer;font-family:inherit;transition:all 0.2s;}
+  .copy-btn:hover{background:rgba(108,99,255,0.25);color:#fff}
+  .transcript-box{display:none;margin-top:10px;background:#080d18;border:1px solid var(--border);border-radius:10px;padding:12px 14px;font-size:0.78rem;line-height:1.75;color:#8a95aa;max-height:260px;overflow-y:auto;white-space:pre-wrap;word-break:break-word;}
+  .transcript-box.visible{display:block}
+  footer{text-align:center;padding:24px;font-size:0.75rem;color:var(--muted);border-top:1px solid var(--border)}
+  @media(max-width:640px){.card-top{flex-direction:column}.thumb-wrap{flex:none;height:200px}header{padding:16px}main{padding:16px 12px 60px}}
+</style>
+</head>
+<body>
+
+<header>
+  <a class="nav-back" href="../index.html">← 대시보드로</a>
+  <div>
+    <div class="date-badge">2026-07-12</div>
+    <div class="count">3개 영상</div>
+  </div>
+  <div style="font-size:0.75rem;color:var(--muted)">2026-07-12 06:03 생성</div>
+</header>
+
+<main>
+
+  <article class="video-card">
+    <div class="card-top">
+      <a class="thumb-wrap" href="https://www.youtube.com/watch?v=4fKn9O-YhtI" target="_blank" rel="noopener">
+        <img src="https://i.ytimg.com/vi/4fKn9O-YhtI/hqdefault.jpg" alt="OpenArt Director: The New Way to Make AI Videos" loading="lazy"/>
+      </a>
+      <div class="card-info">
+        <div class="card-meta">
+          <span class="ch-tag">Nate Herk</span>
+          <span class="date-tag">2026-07-12</span>
+          
+        </div>
+        <div class="video-title">OpenArt Director: The New Way to Make AI Videos</div>
+        <div style="display:flex;align-items:center;flex-wrap:wrap;gap:4px;margin-top:auto">
+          <a class="yt-link" href="https://www.youtube.com/watch?v=4fKn9O-YhtI" target="_blank" rel="noopener">↗ 유튜브에서 보기</a>
+          <button class="nlm-btn" data-url="https://www.youtube.com/watch?v=4fKn9O-YhtI">📓 NotebookLM</button>
+        </div>
+      </div>
+    </div>
+    <div class="summary-section">
+      <h2>핵심 요약</h2>
+<p>OpenArt가 채팅으로 비디오 전체를 연출하는 '바이브 디렉팅' 기능을 새로 출시했음. 캐릭터, 목소리, 스타일의 일관성을 유지하면서 최대 5분짜리 영화 같은 영상을 한 번에 만들 수 있는 툴이다. 단순한 영상 생성을 넘어 AI 비디오 제작 방식을 완전히 바꿔버릴 혁신작임.</p>
+<h2>주요 포인트</h2>
+<ul>
+<li>귀찮게 클립 하나씩 만드는 대신 채팅으로 비디오 전체를 조율할 수 있음</li>
+<li>아이디어 설명, 스토리 수정, 캐릭터나 속도 조절 등을 하면 디렉터가 일관성 유지하면서 전체 프로젝트를 다시 빌드함</li>
+<li>캐릭터 비주얼, 목소리, 아트 스타일까지 전부 똑같이 유지해 줘서 이질감이 없음</li>
+<li>한 방에 최대 5분짜리 시네마틱 비디오를 뽑아낼 수 있는 게 개꿀임</li>
+<li>콘텐츠 제작하는 갤러들이라면 OpenArt Director는 무조건 찍먹해보는 걸 추천함</li>
+</ul>
+    </div>
+  <div class="transcript-wrap">
+    <div class="transcript-header">
+      <button class="transcript-toggle" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('visible')">
+        <span class="arr">▼</span> 원문 자막
+      </button>
+      <button class="copy-btn" onclick="var b=this,t=b.nextElementSibling||b;navigator.clipboard.writeText(document.querySelector('#tr-4fKn9O-YhtI').textContent).then(()=>{b.textContent='복사됨';setTimeout(()=>b.textContent='복사',2000)})">복사</button>
+    </div>
+    <pre class="transcript-box" id="tr-4fKn9O-YhtI">AI video just changed forever because OpenArt just launched a new category called vibe directing. Instead of generating one clip at a time, you direct an entire video just through chat. So, you describe the idea, you refine the story, change the characters, adjust the pacing, and director rebuilds the whole project while keeping everything consistent. The characters, the voices, even the style stays the same. And it can generate up to 5 minutes of cinematic video in a single go. So, this isn't just another AI video generator, it's a completely new way to create videos. If you make any kind of content, I'd seriously recommend trying OpenArt Director. Just comment vibe and I'll send you the link.</pre>
+  </div>
+  </article>
+  <article class="video-card">
+    <div class="card-top">
+      <a class="thumb-wrap" href="https://www.youtube.com/watch?v=Dcc3CaC_oWQ" target="_blank" rel="noopener">
+        <img src="https://i.ytimg.com/vi/Dcc3CaC_oWQ/hqdefault.jpg" alt="Use Fable 5 + GPT 5.6 Together for 10x Better Outputs" loading="lazy"/>
+      </a>
+      <div class="card-info">
+        <div class="card-meta">
+          <span class="ch-tag">Nicholas Puru</span>
+          <span class="date-tag">2026-07-12</span>
+          
+        </div>
+        <div class="video-title">Use Fable 5 + GPT 5.6 Together for 10x Better Outputs</div>
+        <div style="display:flex;align-items:center;flex-wrap:wrap;gap:4px;margin-top:auto">
+          <a class="yt-link" href="https://www.youtube.com/watch?v=Dcc3CaC_oWQ" target="_blank" rel="noopener">↗ 유튜브에서 보기</a>
+          <button class="nlm-btn" data-url="https://www.youtube.com/watch?v=Dcc3CaC_oWQ">📓 NotebookLM</button>
+        </div>
+      </div>
+    </div>
+    <div class="summary-section">
+      <h2>핵심 요약</h2>
+<p>Fable 5를 프로젝트 관리자, ChatGPT 5.6을 엔지니어로 협업시켜 10배 더 나은 결과물을 뽑아내는 방식이다. 하나의 AI에게 모든 걸 맡기지 않고 역할을 분담하여 효율을 극대화하고 사용량 제한을 피할 수 있다. Claude Code에 Codex 플러그인을 설치하고 연동해 실행한다.</p>
+<h2>주요 포인트</h2>
+<ul>
+<li>Fable 5는 기획 및 관리를 맡고 ChatGPT 5.6은 실제 빌드를 담당해 협업한다.</li>
+<li>세팅을 위해 ChatGPT Codex, Claude Code, 그리고 GitHub에서 Claude Code용 Codex 플러그인을 받아야 한다.</li>
+<li>Claude Code에 프롬프트를 붙여넣어 루트 스킬을 설치한 뒤 `{슬래시} 루트`를 입력해 작동시킨다.</li>
+<li>Fable이 유저 인터뷰로 계획을 세워 GPT 5.6에 넘기면, GPT 5.6이 배포 전 최종 검토를 수행한다.</li>
+</ul>
+    </div>
+  <div class="transcript-wrap">
+    <div class="transcript-header">
+      <button class="transcript-toggle" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('visible')">
+        <span class="arr">▼</span> 원문 자막
+      </button>
+      <button class="copy-btn" onclick="var b=this,t=b.nextElementSibling||b;navigator.clipboard.writeText(document.querySelector('#tr-Dcc3CaC_oWQ').textContent).then(()=>{b.textContent='복사됨';setTimeout(()=>b.textContent='복사',2000)})">복사</button>
+    </div>
+    <pre class="transcript-box" id="tr-Dcc3CaC_oWQ">이제 ChatGPT 5.6과 Fable 5를 함께 실행할 수 있습니다. Fable은 관리자 역할을 하고 ChatGPT는 엔지니어 역할을 하게 되며, 이를 통해 10 배 더 나은 결과를 얻고 사용량 제한에 도달하는 것을 방지할 수 있습니다. 그래서 이제는 하나의 AI에게 모든 것을 계획, 구축, 테스트 및 수정하도록 맡기는 대신 , 각 모델에 서로 다른 작업을 부여하게 될 것입니다. 그러니까 Fable 5가 프로젝트를 관리하고 ChatGPT 5.6이 빌드를 담당하는 거죠. 이를 설정하려면 두 가지 다른 것이 필요합니다. 그러므로 ChatGPT Codex가 필요합니다. 데스크톱 애플리케이션을 사용해도 되고, 당연히 Claude Code도 필요합니다. 그다음에는 GitHub로 이동하여 Claude Code용 Codex 플러그인을 설치하면 됩니다. 그 다음에는 페이지를 아래로 스크롤하여 이 간단한 지침을 따르거나, 이 내용을 모두 복사하거나, GitHub 링크를 가져와서 Claude Code에게 주고 "이 모든 것을 설치해 주세요"라고 말할 수도 있습니다 . 다음으로, Claude Code를 실행하고 이 프롬프트를 붙여넣으세요. 지금 화면에 보이는 내용을 저장해서 스크린샷을 찍으시거나, 댓글에 "필요해요"라고 남겨주시면 제가 보내드리겠습니다 . 이제 해당 프롬프트가 입력되면 루트 스킬이 설치되고, 그 후에는 {슬래시} 루트를 입력하기만 하면 됩니다. 그러면 Fable이 사용자를 인터뷰하고 계획을 생성한 다음 GPT 5.6에 전달하고, GPT 5.6은 배포 전에 작업을 검토합니다 . 이 모든 것을 포함한 전체 설정과 두 모델을 함께 사용하는 다양한 활용 사례를 원하시면 댓글에 "필요해요"라고 남겨주세요. 바로 보내 드리겠습니다.</pre>
+  </div>
+  </article>
+  <article class="video-card">
+    <div class="card-top">
+      <a class="thumb-wrap" href="https://www.youtube.com/watch?v=nlXCH8-TN1c" target="_blank" rel="noopener">
+        <img src="https://i.ytimg.com/vi/nlXCH8-TN1c/hqdefault.jpg" alt="ChatGPT Isn't a Chatbot Anymore (Meet ChatGPT Work)" loading="lazy"/>
+      </a>
+      <div class="card-info">
+        <div class="card-meta">
+          <span class="ch-tag">Dylan Davis</span>
+          <span class="date-tag">2026-07-12</span>
+          
+        </div>
+        <div class="video-title">ChatGPT Isn't a Chatbot Anymore (Meet ChatGPT Work)</div>
+        <div style="display:flex;align-items:center;flex-wrap:wrap;gap:4px;margin-top:auto">
+          <a class="yt-link" href="https://www.youtube.com/watch?v=nlXCH8-TN1c" target="_blank" rel="noopener">↗ 유튜브에서 보기</a>
+          <button class="nlm-btn" data-url="https://www.youtube.com/watch?v=nlXCH8-TN1c">📓 NotebookLM</button>
+        </div>
+      </div>
+    </div>
+    <div class="summary-section">
+      <h2>핵심 요약</h2>
+<p>ChatGPT가 단순 챗봇을 넘어 사용자가 던진 작업을 백그라운드에서 스스로 수행하고 결과물을 완성해 오는 'ChatGPT Work' 기능을 출시했다. 기존 개발자용 툴인 Codex 기능을 ChatGPT와 통합한 것으로, 질문 답변 형식을 벗어나 완성된 보고서나 스프레드시트 등을 알아서 만들어준다. 특히 데스크톱 앱을 통해 컴퓨터의 파일과 폴더에 직접 접근할 수 있게 되면서 강력한 생산성을 보여준다.</p>
+<h2>주요 포인트</h2>
+<ul>
+<li>ChatGPT 상단에 'Work' 탭이 새로 추가되어 단순 질문 대신 전체 업무를 통째로 위임할 수 있게 됨</li>
+<li>사용자가 감시하지 않아도 AI가 알아서 몇 시간 동안 일한 뒤 스프레드시트, 보고서, 덱 등 완성본을 가져옴</li>
+<li>기존 개발자용 도구였던 Codex 기능을 ChatGPT와 결합하여 'ChatGPT Work'라는 단일 슈퍼 앱으로 통합함</li>
+<li>현재 Pro, Enterprise, edu 유저가 쓸 수 있으며 Plus, Business 및 무료 사용자에게도 순차적으로 풀릴 예정임</li>
+<li>데스크톱 앱을 사용하면 로컬 컴퓨터의 파일과 폴더에 직접 접근할 수 있어 연동성과 활용도가 대폭 늘어남</li>
+</ul>
+    </div>
+  <div class="transcript-wrap">
+    <div class="transcript-header">
+      <button class="transcript-toggle" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('visible')">
+        <span class="arr">▼</span> 원문 자막
+      </button>
+      <button class="copy-btn" onclick="var b=this,t=b.nextElementSibling||b;navigator.clipboard.writeText(document.querySelector('#tr-nlXCH8-TN1c').textContent).then(()=>{b.textContent='복사됨';setTimeout(()=>b.textContent='복사',2000)})">복사</button>
+    </div>
+    <pre class="transcript-box" id="tr-nlXCH8-TN1c">Only a few days ago, ChatGPT quietly stopped being a chatbot for everyone. There's a new tab at the top that says work, and millions of people will likely click it for the first time this week. Because until this week, that capability was baked into a tool called Codex. And Codex sounded like it was built for programmers. So, few ChatGPT users ever touched it. But here's actually what changed with that capability {slash} tool. Is instead of typing a question and getting back an answer, similar to ChatGPT, instead with this tool, you hand it a whole job or task. It'll go off and work on that for hours without you having to watch it. It'll then come back with finished work, such as spreadsheets, reports, decks, all types of things. And it's already included in what you're paying for. If you're new here, I'm Dylan. I run an AI consultancy. And I've spent the last few months moving my clients onto this exact tool, back when it still had the scary name of Codex. So, in this video, I'll show you the four settings to get it right before your first task. And then the five places this tool gets its true power. So, let's get into it. Now, the big news here is that OpenAI has combined Codex with ChatGPT into a single super app they're calling ChatGPT Work. And this is now available on Mac, Windows, and chat.openai.com. It's specifically right now available for Pro, Enterprise, and {dot} edu users. And then probably in the next week or so, it'll be available for Business and Plus. And then finally for the free users, they'll get access eventually with smaller models. Now, and the way you can see this is if you simply go to chat.openai.com, you log into your account, you'll see that there's a new toggle here for work. So, we have chat and work. The slight difference between the two is that when you look at work, you have a few additional options. So, we have choose and a project, so you can work inside of a project here. And I'll talk specifically about why this matters for the desktop app in a second. We then have plugins where different systems AI can access and use, which it has always had, but again, this is slightly different for the desktop app. Then we have some suggestions here of how we could use this based off of what OpenAI thinks is suitable for the systems in the work we have currently. Now, what's novel here and why is there so much leverage that can be created by using this tool? Well, the true power sits inside the desktop app. So, the first thing you need to do is download the ChatGPT desktop app. Once you've downloaded it, it's going to look something like this where you have the app and then there's a series of things that are new here. The primary thing that's different between the browser and the desktop app is AI's ability to access files and folders on your computer. It seems like a small thing, but it's a huge lift in the value that you can get from these tools. Now, all of these folders here on the left-hand side, these are actual folders on my computer. So, health is a folder on my computer I've opened here. And the way that I would do that is if I go to health here, I have a series of options. I can choose previous folders I've already done or I can add a new project. When I say new project, we can start from scratch or we can use an existing folder. I'd recommend using an existing folder for most of your specific tasks. So, when you do use an existing folder, it then shows you all the different folders you can choose from. Once you've selected a folder, you can select it and click open and it'll show you something like this where you have the folder you selected. Now, in doing this, there's a series of steps you need to make sure that your setup is done effectively. Quick pause your video. If you're enjoying this, you're going to enjoy two other things. First off, below is a 30-day AI insight series, completely free. You'll get 30 insights in your inbox of how you can apply AI to your business and your work. The second thing is if you'd like to work with me, below are a series of offerings to see if there's a good fit between the two of us. Now, let's go back to the video. The first thing is that when you open a folder, that folder should be dedicated to a given task. A common mistake I see a tons of people make is they open up their downloads folder or their documents folder or even their overall desktop. And when they do that, that folder has tons of things that are unrelated to each other and it's overwhelming for the AI, which reduces the quality of the output from it. So, when you create new folders on your computer, specifically that are going to be used in relation to ChatGPT work, you need to make sure that those folders are scoped to a given task and a given topic because a focused AI is a smart AI. Remember that. That's the first step in our setup. The second one is choosing the right model for the job. And right now, since these new models, GPT-5.6, Sol, Tera, and Luna, are so toke</pre>
+  </div>
+  </article>
+</main>
+
+<footer>유튜브 구독 정리 · agy 요약 · 2026-07-12 06:03</footer>
+
+
+<script>
+document.querySelectorAll('.nlm-btn').forEach(function(btn){
+  btn.addEventListener('click',function(){
+    navigator.clipboard.writeText('/notebooklm '+btn.dataset.url).then(function(){
+      var orig=btn.innerHTML;btn.innerHTML='✓ 복사됨';btn.classList.add('copied');
+      setTimeout(function(){btn.innerHTML=orig;btn.classList.remove('copied');},2000);
+    });
+  });
+});
+</script>
+
+</body>
+</html>

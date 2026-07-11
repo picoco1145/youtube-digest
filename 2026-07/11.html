@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>2026-07-11 — 유튜브 구독 정리</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+  :root{--bg:#090e1a;--surface:#111827;--surface2:#1a2235;--border:#1e2d47;--accent:#6c63ff;--accent2:#00d4ff;--text:#e8eaf0;--muted:#7a8499;--radius:14px;}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Pretendard',sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+  header{background:linear-gradient(135deg,#0d1b3e,#1a0533);border-bottom:1px solid var(--border);padding:20px 40px;display:flex;align-items:center;justify-content:space-between;}
+  .nav-back{color:var(--accent2);text-decoration:none;font-size:0.85rem;display:flex;align-items:center;gap:6px}
+  .nav-back:hover{color:#fff}
+  .date-badge{font-size:1.4rem;font-weight:700;letter-spacing:-0.5px;background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+  .count{font-size:0.85rem;color:var(--muted)}
+  main{max-width:900px;margin:0 auto;padding:32px 24px 80px}
+  .video-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;margin-bottom:24px;transition:border-color 0.2s,box-shadow 0.2s;}
+  .video-card:hover{border-color:var(--accent);box-shadow:0 4px 24px rgba(108,99,255,0.15)}
+  .card-top{display:flex;gap:0}
+  .thumb-wrap{flex:0 0 240px;position:relative;overflow:hidden}
+  .thumb-wrap img{width:100%;height:100%;object-fit:cover;transition:transform 0.4s}
+  .video-card:hover .thumb-wrap img{transform:scale(1.05)}
+  .card-info{flex:1;padding:20px;display:flex;flex-direction:column;gap:10px}
+  .card-meta{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+  .ch-tag{font-size:0.72rem;font-weight:600;padding:3px 12px;background:linear-gradient(135deg,rgba(108,99,255,0.2),rgba(0,212,255,0.2));border:1px solid rgba(108,99,255,0.3);border-radius:999px;color:var(--accent2);}
+  .date-tag{font-size:0.72rem;color:var(--muted)}
+  .no-transcript{font-size:0.68rem;padding:2px 8px;background:rgba(255,180,0,0.12);border:1px solid rgba(255,180,0,0.25);border-radius:999px;color:#ffa500;}
+  .video-title{font-size:1rem;font-weight:600;line-height:1.4}
+  .yt-link{display:inline-flex;align-items:center;gap:5px;font-size:0.8rem;color:var(--accent);text-decoration:none;transition:color 0.2s;}
+  .yt-link:hover{color:var(--accent2)}
+  
+  .nlm-btn{display:inline-flex;align-items:center;gap:5px;font-size:0.8rem;color:#fff;
+    background:rgba(108,99,255,0.2);border:1px solid rgba(108,99,255,0.4);border-radius:8px;
+    padding:4px 12px;cursor:pointer;font-family:inherit;transition:all 0.2s;margin-left:8px;}
+  .nlm-btn:hover{background:rgba(108,99,255,0.45);}
+  .nlm-btn.copied{background:rgba(0,200,100,0.2);border-color:rgba(0,200,100,0.4);color:#00c864;}
+
+  .summary-section{border-top:1px solid var(--border);background:var(--surface2);padding:20px 24px;font-size:0.85rem;line-height:1.7;color:#c5cad8;}
+  .summary-section h2{font-size:0.82rem;color:var(--accent2);margin:12px 0 4px}
+  .summary-section h2:first-child{margin-top:0}
+  .summary-section ul{padding-left:18px}
+  .summary-section li{margin-bottom:5px}
+  .transcript-wrap{border-top:1px solid var(--border);padding:14px 24px;background:#0c1220}
+  .transcript-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:0}
+  .transcript-toggle{background:none;border:none;color:var(--muted);font-size:0.8rem;cursor:pointer;font-family:inherit;display:flex;align-items:center;gap:4px;padding:0;transition:color 0.2s;}
+  .transcript-toggle:hover{color:var(--text)}
+  .copy-btn{background:rgba(108,99,255,0.1);border:1px solid rgba(108,99,255,0.3);border-radius:8px;color:var(--accent2);font-size:0.72rem;padding:4px 12px;cursor:pointer;font-family:inherit;transition:all 0.2s;}
+  .copy-btn:hover{background:rgba(108,99,255,0.25);color:#fff}
+  .transcript-box{display:none;margin-top:10px;background:#080d18;border:1px solid var(--border);border-radius:10px;padding:12px 14px;font-size:0.78rem;line-height:1.75;color:#8a95aa;max-height:260px;overflow-y:auto;white-space:pre-wrap;word-break:break-word;}
+  .transcript-box.visible{display:block}
+  footer{text-align:center;padding:24px;font-size:0.75rem;color:var(--muted);border-top:1px solid var(--border)}
+  @media(max-width:640px){.card-top{flex-direction:column}.thumb-wrap{flex:none;height:200px}header{padding:16px}main{padding:16px 12px 60px}}
+</style>
+</head>
+<body>
+
+<header>
+  <a class="nav-back" href="../index.html">← 대시보드로</a>
+  <div>
+    <div class="date-badge">2026-07-11</div>
+    <div class="count">4개 영상</div>
+  </div>
+  <div style="font-size:0.75rem;color:var(--muted)">2026-07-12 06:03 생성</div>
+</header>
+
+<main>
+
+  <article class="video-card">
+    <div class="card-top">
+      <a class="thumb-wrap" href="https://www.youtube.com/watch?v=jdbOVepEtUE" target="_blank" rel="noopener">
+        <img src="https://i.ytimg.com/vi/jdbOVepEtUE/hqdefault.jpg" alt="Claude Code for Non-Coders (6 Hour Course)" loading="lazy"/>
+      </a>
+      <div class="card-info">
+        <div class="card-meta">
+          <span class="ch-tag">Nate Herk</span>
+          <span class="date-tag">2026-07-11</span>
+          
+        </div>
+        <div class="video-title">Claude Code for Non-Coders (6 Hour Course)</div>
+        <div style="display:flex;align-items:center;flex-wrap:wrap;gap:4px;margin-top:auto">
+          <a class="yt-link" href="https://www.youtube.com/watch?v=jdbOVepEtUE" target="_blank" rel="noopener">↗ 유튜브에서 보기</a>
+          <button class="nlm-btn" data-url="https://www.youtube.com/watch?v=jdbOVepEtUE">📓 NotebookLM</button>
+        </div>
+      </div>
+    </div>
+    <div class="summary-section">
+      <h2>핵심 요약</h2>
+<p>비전공자도 코딩 없이 AI 에이전트나 자동화를 직접 만들 수 있게 도와주는 꿀강의다. 앤트로픽 제품 중 챗봇이나 Co-work보다 Claude Code가 훨씬 강력해서 혼자서도 팀 단위의 생산성을 낼 수 있다. 코딩 몰라도 AI 네이티브가 되어 생산성을 극대화할 수 있다.</p>
+<h2>주요 포인트</h2>
+<ul>
+<li>비전공자 출신인 Nate가 소규모 AI 팀으로 여러 사업을 운영하며 느낀 생산성 혁신을 전수함.</li>
+<li>앤트로픽 제품은 챗봇(Chat), 협업용(Co-work), 개발용(Code) 세 가지로 분류됨.</li>
+<li>협업용인 Co-work조차 개발자 몇 명이 Claude Code를 써서 단 일주일 만에 개발함.</li>
+<li>Claude Code가 가장 강력한 도구라 코딩 몰라도 에이전트와 자동화 구축에 필수임.</li>
+</ul>
+    </div>
+  <div class="transcript-wrap">
+    <div class="transcript-header">
+      <button class="transcript-toggle" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('visible')">
+        <span class="arr">▼</span> 원문 자막
+      </button>
+      <button class="copy-btn" onclick="var b=this,t=b.nextElementSibling||b;navigator.clipboard.writeText(document.querySelector('#tr-jdbOVepEtUE').textContent).then(()=>{b.textContent='복사됨';setTimeout(()=>b.textContent='복사',2000)})">복사</button>
+    </div>
+    <pre class="transcript-box" id="tr-jdbOVepEtUE">In this course, I'm going to take you from a complete beginner to someone who is AI native and can build automations, AI agents, literally anything that you can describe, you're going to be able to build by the end of this course. These are the topics that I'm going to cover with you guys. So, feel free to skip around to whatever pies your interest, but I'm going to go through all of this in order, and I'm going to do real examples and step-by-step builds throughout. So, don't want to waste any time. Let's just jump straight in. So, this whole course is basically assuming that you know nothing and that you don't have a technical background, which if you guys don't know who I am, my name is Nate and I do not have a technical background. But, I've been able to do some pretty incredible things with AI in the past couple years. I've got multiple different businesses that are based on content, education, certifications, events, consulting, and all of that is powered by a small team who is really, really good at using AI. The whole idea is that one person can do the work that it used to take teams. And I felt that ROI myself. And if you guys haven't, by the end of this video, you will have a very clear path to feeling that ROI and having AI systems that help you do more and that will eventually become the baseline. So, it's great to be getting ahead of this stuff. Okay, so first things first, what is Claude Code? Because I know the word code probably intimidates a lot of people. If you've never coded before, you don't have to code. So, Anthropic, that's the company that is behind this ecosystem, right? Um, the cloud models, Claude Chat, that is probably what a lot of you guys are used to. So, there's basically these three products. The first one is Claude chat and that is where you can talk to Claude in the web or wherever you want to do it on your phone and you just talk to that large language model the AI model and you get an answer. So kind of like a a chatbot. Then we've got Cloud Co-work which is kind of like the next step up. Fun fact, Cloud Co-work the entire product was built using cloud code by a few engineers. It would have taken the team weeks and weeks and much larger team but they were able to ship this in like a week with a few engineers. So very very cool. And cloud co-work is much more for kind of like your knowledge workers, your managers. It's much more of a simple interface to do simple automations and stuff, but cloud code is just the most powerful. And the cool thing about cloud code is like I said, you don't need to know how to code at all. And so I really don't ever use cloud co-work even though you could argue a lot of the stuff that I do in cloud code could be used in co-work. code is just way more powerful and it's where I see the future as far as thinking about building your own agents and just having things that are a lot more agentic for you. So those are kind of the three products, but what's cool about it is they're not that different to actually use. So if you learn one really well, you're going to be able to transfer those skills wherever you go. So don't feel like you're locking in by choosing one of these products. That's why I choose the most powerful product. So if I open the Claude desktop app, what do we see right here? This is Claude chat. You know, I can come in here and I can say, "Hi, Claude." and it can kind of understand a little bit about me. It can see my preferences. Obviously, it knows my name, but this isn't where you're going to get real work done. This is where people are kind of treating this as like a Google search engine or they're connecting their Gmail and helping it, you know, having it help them write email drafts and stuff like that, but it's not true agentic power. And this is Claude Code. What do you see? It's a very similar interface. You just talk to it in chat, but now what happens is it's able to access your local files. As you can see here, I can choose a folder to actually work within, whether that's my desktop or my downloads or my Herk 2, which is kind of my AI operating system, which is a term I might throw out a little bit today. Don't worry about it too much. At the end of this video, I'm going to show you a full course around how to actually build your own AI operating system, but this comes first. The whole point here is that Claude Code is able to work inside of local files as well as touch anything out there online. It can touch your Gmail, your Slack, your CRM. It can touch anything online, but it can also touch your local files, which is really, really important. And the other cool thing to note is that when you're in cloud chat, you know how you guys probably are aware of models like Opus or Sonnet regardless of the model or even Fable. Now, Claude Code is powered by all of those same models. So inside of cloud code, you still use sonnet or haiku or opus or fable, but the code aspect is basically just enthropic saying, "Hey, because y</pre>
+  </div>
+  </article>
+  <article class="video-card">
+    <div class="card-top">
+      <a class="thumb-wrap" href="https://www.youtube.com/watch?v=AZXV1zzuFuQ" target="_blank" rel="noopener">
+        <img src="https://i.ytimg.com/vi/AZXV1zzuFuQ/hqdefault.jpg" alt="ClickUp Brain2: The AI That Replaces All Your Software" loading="lazy"/>
+      </a>
+      <div class="card-info">
+        <div class="card-meta">
+          <span class="ch-tag">Nate Herk</span>
+          <span class="date-tag">2026-07-11</span>
+          
+        </div>
+        <div class="video-title">ClickUp Brain2: The AI That Replaces All Your Software</div>
+        <div style="display:flex;align-items:center;flex-wrap:wrap;gap:4px;margin-top:auto">
+          <a class="yt-link" href="https://www.youtube.com/watch?v=AZXV1zzuFuQ" target="_blank" rel="noopener">↗ 유튜브에서 보기</a>
+          <button class="nlm-btn" data-url="https://www.youtube.com/watch?v=AZXV1zzuFuQ">📓 NotebookLM</button>
+        </div>
+      </div>
+    </div>
+    <div class="summary-section">
+      <h2>핵심 요약</h2>
+<p>ClickUp의 새로운 AI 기능인 Brain 2는 협업 툴 내부의 모든 데이터와 맥락을 완벽히 파악하고 있는 강력한 비서다. 간단한 프롬프트 한 줄만으로 애니메이션이 들어간 고품질 투자 피치덱을 순식간에 만들 수 있다. 또한, 24시간 상주하며 클릭업 내의 정보를 검색하고 소통하는 맞춤형 슈퍼 에이전트를 직접 구축해 부려먹을 수 있다.</p>
+<h2>주요 포인트</h2>
+<ul>
+<li>ClickUp은 프로젝트 관리와 Slack의 커뮤니케이션 기능을 완전히 대체하는 툴이며, 이번 Brain 2 기능으로 활용도가 극대화됨.</li>
+<li>사용자가 평소 좋아하는 다양한 언어 모델을 자유롭게 전환해가며 사용할 수 있는 슈퍼컴퓨터 같은 환경을 제공함.</li>
+<li>한 줄짜리 명령만 내려도 애니메이션 효과까지 들어간 고품질 슬라이드 쇼를 뚝딱 만들어낼 정도로 강력함.</li>
+<li>ClickUp 내부 데이터의 컨텍스트를 통째로 쥐고 있는 24시간 맞춤형 슈퍼 에이전트를 생성해 태그(@)로 호출하며 업무를 자동화할 수 있음.</li>
+</ul>
+    </div>
+  <div class="transcript-wrap">
+    <div class="transcript-header">
+      <button class="transcript-toggle" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('visible')">
+        <span class="arr">▼</span> 원문 자막
+      </button>
+      <button class="copy-btn" onclick="var b=this,t=b.nextElementSibling||b;navigator.clipboard.writeText(document.querySelector('#tr-AZXV1zzuFuQ').textContent).then(()=>{b.textContent='복사됨';setTimeout(()=>b.textContent='복사',2000)})">복사</button>
+    </div>
+    <pre class="transcript-box" id="tr-AZXV1zzuFuQ">ClickUp is the software to replace all software, which I think is pretty funny, but it's very true. If you guys have been following me for a while, you know that I've been using ClickUp for a long time. Everything that I do with my team lives in ClickUp, all of our communication, project management, and everything that I was doing with my clients back when I was running the agency day-to-day, we were also using ClickUp. So, basically, it had replaced Slack as well as project management tools for us. So, if you're already using ClickUp, you have to try this new feature called Brain 2. But, if you don't already use ClickUp, then Brain 2 is an amazing reason to check it out. It's kind of like a supercomputer that can do a ton of cool stuff, and they also have a bunch of super agents inside of it. And, you can switch between the different chat models that you probably already use and love every single day. Right here, you can see that I've used Brain myself to look through everything that's going on in our business, our projects, and then create me a monthly presentation for the team. So, what that could look like is me asking Brain to create an investor presentation pitch deck for our text-to-speech startup called Glydo, and I told it to just use mock data, but make sure that it's professional and engaging. And just like that, we have the deck, which I can open up full screen right here. And as I start to navigate through here, you can see that we also have animations. So, it's not just a static slide deck. We get to actually go through and we feel the animations. And think about the fact that this was just a one-sentence prompt. If we really started to put more and more data into this thing, it would be really solid. And this right here is just one of the many use cases of Brain 2. So, it's not just a chatbot, like I said, it can do things and you can build your own super agents inside of it. And what I think is really cool about the super agents is that they're 24/7. You can tag them in ClickUp, you know, you can @ message them and they'll wake up and respond to you. They can search through everything, which is why, in my opinion, it's a lot cooler that ClickUp is doing this compared to something like just chucking an open claw or a Hermes agent into ClickUp, because these agents in ClickUp already have full context and can search through everything. So, right now, because you're watching this video, you can claim this super awesome offer that is on screen right now by using the link in the description.</pre>
+  </div>
+  </article>
+  <article class="video-card">
+    <div class="card-top">
+      <a class="thumb-wrap" href="https://www.youtube.com/watch?v=jEa_rEUL-vA" target="_blank" rel="noopener">
+        <img src="https://i.ytimg.com/vi/jEa_rEUL-vA/hqdefault.jpg" alt="I Combined GPT 5.6 Sol + Fable 5 (INSANE Results)" loading="lazy"/>
+      </a>
+      <div class="card-info">
+        <div class="card-meta">
+          <span class="ch-tag">Nicholas Puru</span>
+          <span class="date-tag">2026-07-11</span>
+          
+        </div>
+        <div class="video-title">I Combined GPT 5.6 Sol + Fable 5 (INSANE Results)</div>
+        <div style="display:flex;align-items:center;flex-wrap:wrap;gap:4px;margin-top:auto">
+          <a class="yt-link" href="https://www.youtube.com/watch?v=jEa_rEUL-vA" target="_blank" rel="noopener">↗ 유튜브에서 보기</a>
+          <button class="nlm-btn" data-url="https://www.youtube.com/watch?v=jEa_rEUL-vA">📓 NotebookLM</button>
+        </div>
+      </div>
+    </div>
+    <div class="summary-section">
+      <h2>핵심 요약</h2>
+<p>오픈AI의 새로운 최고 성능 모델인 GPT 5.6 Soul을 개발자로, 앤트로픽의 Claude Fable 5를 관리자로 묶어 AI 협업 팀을 구성했다. 이 팀은 로그인, AI 바이어 롤플레잉, 채점 기능이 들어간 상용 영업 연습용 앱을 단 2시간 만에 빌드하고 배포하는 데 성공했다. 특히 개발 중에 스스로 보안 취약점을 발견하고 직접 패치까지 해내는 놀라운 성능을 보여줬다.</p>
+<h2>주요 포인트</h2>
+<ul>
+<li>이번에 나온 GPT 5.6 라인업은 Luna(가성비), Terra(기본형), Soul(플래그십)의 3가지 모델로 구성되어 있다.</li>
+<li>Fable 5와 Soul 중 누가 더 나은지 비교하기보다 Fable 5를 매니저로, Soul을 엔지니어로 조합해 시너지를 냈다.</li>
+<li>단순한 토이 프로젝트가 아닌 월 55달러짜리 실제 서비스인 Kendo와 유사한 실사용 비즈니스 앱을 타겟으로 개발했다.</li>
+<li>개발 진행 과정에서 배포 시 치명적일 뻔했던 여러 개의 보안 취약점을 AI 팀이 직접 찾아내고 자체 패치까지 완료했다.</li>
+</ul>
+    </div>
+  <div class="transcript-wrap">
+    <div class="transcript-header">
+      <button class="transcript-toggle" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('visible')">
+        <span class="arr">▼</span> 원문 자막
+      </button>
+      <button class="copy-btn" onclick="var b=this,t=b.nextElementSibling||b;navigator.clipboard.writeText(document.querySelector('#tr-jEa_rEUL-vA').textContent).then(()=>{b.textContent='복사됨';setTimeout(()=>b.textContent='복사',2000)})">복사</button>
+    </div>
+    <pre class="transcript-box" id="tr-jEa_rEUL-vA">GPT 5.6 is hands-down the best model on the planet right now. Open AI just dropped their latest fleet of models and every other AI channel is filming the exact same video right now. Soul versus Claude Fable 5, who wins that? So, instead I made them co-workers. Anthropic's Claude Fable 5 as the engineer manager, and then Open AI's brand new Soul as the engineer. Just one team running inside of my Claude code instance on my machine, and just giving it one job, and that is to be building me a real commercial product that my business actually needs. What I got back was a full application live on the internet with real logins, real AI, the kind of software that companies are charging $55 a seat for, genuinely replacing something that we needed internally. Now, while I was using Fable and Soul together, there were several security holes that they found, and then they patched up themselves that genuinely would have been extremely detrimental if we were to go live. And there was plenty of other insane results from combining these two that I'll show you in this video. Now, some quick context. GPT's 5.6 it just landed yesterday. So, there's three models within this. There's Luna, this is the cheap one. That's the fast one as well. Terra, this is effectively the workhorse. And then there's Soul. Soul is their flagship, it's the one with the benchmarks that everybody is just screaming about on the internet. Pretty much everyone is asking the same question, is Soul better than Fable 5? And I think fundamentally that's a wrong question because the people who actually run these models for work, they've been saying the same sentence all week. Claude Fable 5 should be the manager, and Soul should do the building. Everybody keeps saying it, nobody's wired it up, handed it a real job, and show you what happens. So, that's what I'm doing right now. All right. Now, first, what do you even give a team of AI models that are more or less superintelligent? Well, I didn't want it to be just a to-do app or anything that simple. A toy build, it just proves nothing, and nobody needs another one of those. So, this is Kendo. It's a real product that I found on X. So, sales teams, they just use it to let reps practice calls against an AI buyer that pushes back like a real prospect, and then it scores the rep on how that call actually went. So, it runs about $55 per seat per month, 100 on the top plan. So, I genuinely need something like this for my team. I'm training reps right now and practice calls are the thing that actually makes a rep better as you would expect. But, I figured myself, why would I pay that when I could just be building it myself in probably about 2 hours. So, that became the new job. So, this build will be consisting of real logins. It'll have a live role play against an AI buyer, some custom personas, some real scoring, and it's all going to be deployed to a real URL. Now, as I mentioned earlier, Fable is going to be the manager, but you might be asking, why make Cloud Fable 5 the boss instead of just letting Soul build everything alone? There's actually two documents that are directly answering that and almost nobody has read them. So, the first is Anthropic's own description of Fable 5. They said it plans across stages, it delegates to sub agents, it checks its own work. And if you read that slowly, that is not a description of a coder. That is a job description for an engineering manager, and Anthropic, they said it themselves. The second is Soul's safety testing. Then we have Meter, which is just an independent lab that evaluates these models before they ever release, and it measured how often Soul cheats, gaming the test instead of doing the work. And we have the highest rate of any public model they have ever assessed. And OpenAI's own system card admits that it sometimes takes actions that nobody had asked for. So, deleting infrastructure, sometimes fabricating results. So, every company on Earth has met this employee. It's brilliant, it's fast, it cuts corners when nobody's looking. You don't fire that person, they're too good. You put a manager over them who's going to be reviewing everything before it ships. So, no, this is not a gimmick, it is the correct org chart. Now, setting all of this up, it really only takes a few minutes, and I'm going to be using a terminal in this specific instance. So, Soul, it's going to be running through Codex, OpenAI's command line coding tool. So, we just have to open a terminal and one command can install this. So, the first thing I'm just going to to throw in inside of my terminal, npm install g openai-codex@latest. From there, we'll just give the Codex login, we'll provide our API key, and we'll just say Codex. And again, I'll have the full setup guide available for completely free inside of my free school community. Now, officially Soul, it comes with Codex on every paid ChatGPT plan plus and up with message limits. But, it is rolling out account by account and mine it </pre>
+  </div>
+  </article>
+  <article class="video-card">
+    <div class="card-top">
+      <a class="thumb-wrap" href="https://www.youtube.com/watch?v=vTUAFE1fNY0" target="_blank" rel="noopener">
+        <img src="https://i.ytimg.com/vi/vTUAFE1fNY0/hqdefault.jpg" alt="5 Hidden Claude Features You NEED To Know" loading="lazy"/>
+      </a>
+      <div class="card-info">
+        <div class="card-meta">
+          <span class="ch-tag">Nicholas Puru</span>
+          <span class="date-tag">2026-07-11</span>
+          
+        </div>
+        <div class="video-title">5 Hidden Claude Features You NEED To Know</div>
+        <div style="display:flex;align-items:center;flex-wrap:wrap;gap:4px;margin-top:auto">
+          <a class="yt-link" href="https://www.youtube.com/watch?v=vTUAFE1fNY0" target="_blank" rel="noopener">↗ 유튜브에서 보기</a>
+          <button class="nlm-btn" data-url="https://www.youtube.com/watch?v=vTUAFE1fNY0">📓 NotebookLM</button>
+        </div>
+      </div>
+    </div>
+    <div class="summary-section">
+      <h2>핵심 요약</h2>
+<p>클로드를 사용할 때 대부분이 모르는 5가지 숨겨진 꿀기능을 소개한다. 되감기, 파일 직접 생성, 분석 도구, 확장 생각, AI 도구 제작을 통해 업무 생산성을 크게 높일 수 있다. 이 기능들을 잘 활용하면 클로드를 단순한 챗봇 이상으로 써먹을 수 있다.</p>
+<h2>주요 포인트</h2>
+<ul>
+<li>**되감기(Rewind)**: 클로드가 삼천포로 빠지면 새 채팅 파지 말고 이전 메시지를 수정해서 다시 대답하게 만들면 됨</li>
+<li>**실제 파일 다운로드**: 결과물 복붙하지 말고 엑셀이나 워드 파일로 달라고 하면 포맷이랑 수식 다 들어간 진짜 파일을 만들어 줌</li>
+<li>**분석 도구(Analysis Tool)**: 복잡한 계산할 때 "use the analysis tool" 붙여주면 직접 코딩해서 계산하니까 정확도가 올라감</li>
+<li>**확장 생각(Extended Thinking)**: 이 옵션을 켜두면 클로드가 첫 마디 뱉기 전에 미리 논리적으로 깊게 추론하고 대답해서 답변 퀄리티가 확 살아남</li>
+<li>**AI 미니 앱 제작**: 코딩 한 줄 없이 리드 메일 점수 매기고 답장 써주는 실용적인 AI 앱을 채팅창 안에서 뚝딱 만들어 줌</li>
+</ul>
+    </div>
+  <div class="transcript-wrap">
+    <div class="transcript-header">
+      <button class="transcript-toggle" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('visible')">
+        <span class="arr">▼</span> 원문 자막
+      </button>
+      <button class="copy-btn" onclick="var b=this,t=b.nextElementSibling||b;navigator.clipboard.writeText(document.querySelector('#tr-vTUAFE1fNY0').textContent).then(()=>{b.textContent='복사됨';setTimeout(()=>b.textContent='복사',2000)})">복사</button>
+    </div>
+    <pre class="transcript-box" id="tr-vTUAFE1fNY0">Here are five hidden Claude features that 99% of people never even [music] find. Number one is rewind. So, when Claude goes off the rails, do not just start a new chat. You just hover over your one earlier message, you edit it, and then Claude is able to re-answer from that exact spot. So, now you can keep everything good, and you can delete the one wrong turn. Number two is real files. So, don't just copy its answer out. Tell Claude to give it to you as an Excel file or a Word document, and it will build you an actual downloadable file, formulas and formatting included. Number three is the analysis tool. So, when you hand it numbers, just add "use the analysis tool", and then Claude it will write and it will run real code on your data instead of eyeballing it. So, the math is actually going to be right. Number four is extended thinking. So, on any hard decisions, switch this on and Claude will reason through the whole thing right before it answers instead of blurting the first thing out, and the answer it comes back noticeably sharper. And number five is AI tools. So, you can just ask Claude to build you a little application right inside of the chat that uses AI inside of it. So, you can paste [music] a lead's email, and it will score them, and then draft a reply. So, you'll get a real clickable tool with no code and zero setup. Just comment "need" and I'll send you exactly how I use all five inside of my business.</pre>
+  </div>
+  </article>
+</main>
+
+<footer>유튜브 구독 정리 · agy 요약 · 2026-07-12 06:03</footer>
+
+
+<script>
+document.querySelectorAll('.nlm-btn').forEach(function(btn){
+  btn.addEventListener('click',function(){
+    navigator.clipboard.writeText('/notebooklm '+btn.dataset.url).then(function(){
+      var orig=btn.innerHTML;btn.innerHTML='✓ 복사됨';btn.classList.add('copied');
+      setTimeout(function(){btn.innerHTML=orig;btn.classList.remove('copied');},2000);
+    });
+  });
+});
+</script>
+
+</body>
+</html>
