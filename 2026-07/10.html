@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>2026-07-10 — 유튜브 구독 정리</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+  :root{--bg:#090e1a;--surface:#111827;--surface2:#1a2235;--border:#1e2d47;--accent:#6c63ff;--accent2:#00d4ff;--text:#e8eaf0;--muted:#7a8499;--radius:14px;}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Pretendard',sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+  header{background:linear-gradient(135deg,#0d1b3e,#1a0533);border-bottom:1px solid var(--border);padding:20px 40px;display:flex;align-items:center;justify-content:space-between;}
+  .nav-back{color:var(--accent2);text-decoration:none;font-size:0.85rem;display:flex;align-items:center;gap:6px}
+  .nav-back:hover{color:#fff}
+  .date-badge{font-size:1.4rem;font-weight:700;letter-spacing:-0.5px;background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+  .count{font-size:0.85rem;color:var(--muted)}
+  main{max-width:900px;margin:0 auto;padding:32px 24px 80px}
+  .video-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;margin-bottom:24px;transition:border-color 0.2s,box-shadow 0.2s;}
+  .video-card:hover{border-color:var(--accent);box-shadow:0 4px 24px rgba(108,99,255,0.15)}
+  .card-top{display:flex;gap:0}
+  .thumb-wrap{flex:0 0 240px;position:relative;overflow:hidden}
+  .thumb-wrap img{width:100%;height:100%;object-fit:cover;transition:transform 0.4s}
+  .video-card:hover .thumb-wrap img{transform:scale(1.05)}
+  .card-info{flex:1;padding:20px;display:flex;flex-direction:column;gap:10px}
+  .card-meta{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+  .ch-tag{font-size:0.72rem;font-weight:600;padding:3px 12px;background:linear-gradient(135deg,rgba(108,99,255,0.2),rgba(0,212,255,0.2));border:1px solid rgba(108,99,255,0.3);border-radius:999px;color:var(--accent2);}
+  .date-tag{font-size:0.72rem;color:var(--muted)}
+  .no-transcript{font-size:0.68rem;padding:2px 8px;background:rgba(255,180,0,0.12);border:1px solid rgba(255,180,0,0.25);border-radius:999px;color:#ffa500;}
+  .video-title{font-size:1rem;font-weight:600;line-height:1.4}
+  .yt-link{display:inline-flex;align-items:center;gap:5px;font-size:0.8rem;color:var(--accent);text-decoration:none;transition:color 0.2s;}
+  .yt-link:hover{color:var(--accent2)}
+  
+  .nlm-btn{display:inline-flex;align-items:center;gap:5px;font-size:0.8rem;color:#fff;
+    background:rgba(108,99,255,0.2);border:1px solid rgba(108,99,255,0.4);border-radius:8px;
+    padding:4px 12px;cursor:pointer;font-family:inherit;transition:all 0.2s;margin-left:8px;}
+  .nlm-btn:hover{background:rgba(108,99,255,0.45);}
+  .nlm-btn.copied{background:rgba(0,200,100,0.2);border-color:rgba(0,200,100,0.4);color:#00c864;}
+
+  .summary-section{border-top:1px solid var(--border);background:var(--surface2);padding:20px 24px;font-size:0.85rem;line-height:1.7;color:#c5cad8;}
+  .summary-section h2{font-size:0.82rem;color:var(--accent2);margin:12px 0 4px}
+  .summary-section h2:first-child{margin-top:0}
+  .summary-section ul{padding-left:18px}
+  .summary-section li{margin-bottom:5px}
+  .transcript-wrap{border-top:1px solid var(--border);padding:14px 24px;background:#0c1220}
+  .transcript-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:0}
+  .transcript-toggle{background:none;border:none;color:var(--muted);font-size:0.8rem;cursor:pointer;font-family:inherit;display:flex;align-items:center;gap:4px;padding:0;transition:color 0.2s;}
+  .transcript-toggle:hover{color:var(--text)}
+  .copy-btn{background:rgba(108,99,255,0.1);border:1px solid rgba(108,99,255,0.3);border-radius:8px;color:var(--accent2);font-size:0.72rem;padding:4px 12px;cursor:pointer;font-family:inherit;transition:all 0.2s;}
+  .copy-btn:hover{background:rgba(108,99,255,0.25);color:#fff}
+  .transcript-box{display:none;margin-top:10px;background:#080d18;border:1px solid var(--border);border-radius:10px;padding:12px 14px;font-size:0.78rem;line-height:1.75;color:#8a95aa;max-height:260px;overflow-y:auto;white-space:pre-wrap;word-break:break-word;}
+  .transcript-box.visible{display:block}
+  footer{text-align:center;padding:24px;font-size:0.75rem;color:var(--muted);border-top:1px solid var(--border)}
+  @media(max-width:640px){.card-top{flex-direction:column}.thumb-wrap{flex:none;height:200px}header{padding:16px}main{padding:16px 12px 60px}}
+</style>
+</head>
+<body>
+
+<header>
+  <a class="nav-back" href="../index.html">← 대시보드로</a>
+  <div>
+    <div class="date-badge">2026-07-10</div>
+    <div class="count">3개 영상</div>
+  </div>
+  <div style="font-size:0.75rem;color:var(--muted)">2026-07-10 06:19 생성</div>
+</header>
+
+<main>
+
+  <article class="video-card">
+    <div class="card-top">
+      <a class="thumb-wrap" href="https://www.youtube.com/watch?v=qH8qd4DgY7A" target="_blank" rel="noopener">
+        <img src="https://i.ytimg.com/vi/qH8qd4DgY7A/hqdefault.jpg" alt="This AI Builds Entire Apps For You" loading="lazy"/>
+      </a>
+      <div class="card-info">
+        <div class="card-meta">
+          <span class="ch-tag">Nate Herk</span>
+          <span class="date-tag">2026-07-10</span>
+          
+        </div>
+        <div class="video-title">This AI Builds Entire Apps For You</div>
+        <div style="display:flex;align-items:center;flex-wrap:wrap;gap:4px;margin-top:auto">
+          <a class="yt-link" href="https://www.youtube.com/watch?v=qH8qd4DgY7A" target="_blank" rel="noopener">↗ 유튜브에서 보기</a>
+          <button class="nlm-btn" data-url="https://www.youtube.com/watch?v=qH8qd4DgY7A">📓 NotebookLM</button>
+        </div>
+      </div>
+    </div>
+    <div class="summary-section">
+      <h2>핵심 요약</h2>
+<p>코딩을 전혀 몰라도 AI 도구 단 하나만 쓰면 실제 판매하거나 사용할 수 있는 완전한 소프트웨어를 빌드할 수 있다. 프론트엔드, 백엔드, 데이터베이스, AI 워크플로우까지 전부 알아서 만들어주며 클릭 한 번으로 라이브 배포까지 끝내준다. 과거엔 개발팀이 붙어서 몇 달 동안 하던 작업을 이제 대화 한 번으로 뚝딱 해결할 수 있는 시대다.</p>
+<h2>주요 포인트</h2>
+<ul>
+<li>단순한 프로토타입 수준이 아니라 진짜 가져다 팔 수 있는 실전용 소프트웨어를 만들어줌.</li>
+<li>커스텀 CRM을 예로 들면 고객 관리, 대화 기록, AI 기반 회의 요약과 답변 작성까지 전부 다 구현함.</li>
+<li>프론트엔드, 백엔드, DB, AI 워크플로우까지 한 번에 다 짜줘서 신경 쓸 게 없음.</li>
+<li>완성된 앱은 클릭 딱 한 번이면 사람들이 바로 접속할 수 있는 라이브 URL로 배포해줌.</li>
+<li>개발팀 꾸려서 몇 달 걸릴 작업을 이제 채팅 한 번으로 해결 가능하니까 개꿀임.</li>
+</ul>
+    </div>
+  <div class="transcript-wrap">
+    <div class="transcript-header">
+      <button class="transcript-toggle" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('visible')">
+        <span class="arr">▼</span> 원문 자막
+      </button>
+      <button class="copy-btn" onclick="var b=this,t=b.nextElementSibling||b;navigator.clipboard.writeText(document.querySelector('#tr-qH8qd4DgY7A').textContent).then(()=>{b.textContent='복사됨';setTimeout(()=>b.textContent='복사',2000)})">복사</button>
+    </div>
+    <pre class="transcript-box" id="tr-qH8qd4DgY7A">You can now build custom software without knowing how to code with just one AI tool. And I don't mean landing pages or simple prototypes. I mean real software that you can actually sell or use yourself. For example, you can tell it to build a custom CRM and it'll create the entire app for you. You can track leads, manage clients, log conversations, automate follow-ups, and even add AI to summarize meetings or draft replies. Then, it will build the front end, the back end, the database, and AI [music] workflows all for you. And the best part is, with one click, it deploys the whole thing to a live URL that people can actually use. A year ago, building software like this would have taken a team of developers or months of development, but now you can go from idea to a working product in a single conversation. So, if you want to try it out, just comment emergent and I'll send it over.</pre>
+  </div>
+  </article>
+  <article class="video-card">
+    <div class="card-top">
+      <a class="thumb-wrap" href="https://www.youtube.com/watch?v=EthxaDswUFo" target="_blank" rel="noopener">
+        <img src="https://i.ytimg.com/vi/EthxaDswUFo/hqdefault.jpg" alt="I Tested GPT 5.6 Sol vs Fable 5. What You Need To Know." loading="lazy"/>
+      </a>
+      <div class="card-info">
+        <div class="card-meta">
+          <span class="ch-tag">Nate Herk</span>
+          <span class="date-tag">2026-07-10</span>
+          
+        </div>
+        <div class="video-title">I Tested GPT 5.6 Sol vs Fable 5. What You Need To Know.</div>
+        <div style="display:flex;align-items:center;flex-wrap:wrap;gap:4px;margin-top:auto">
+          <a class="yt-link" href="https://www.youtube.com/watch?v=EthxaDswUFo" target="_blank" rel="noopener">↗ 유튜브에서 보기</a>
+          <button class="nlm-btn" data-url="https://www.youtube.com/watch?v=EthxaDswUFo">📓 NotebookLM</button>
+        </div>
+      </div>
+    </div>
+    <div class="summary-section">
+      <h2>핵심 요약</h2>
+<p>새로 출시된 GPT 5.6 Soul이 기존 Fable 5보다 성능이 압도적이고 가격도 저렴해서 직접 비교해 봤다셈. 두 AI 모델에 브라우저용 오픈월드 바이크 게임을 만들라는 동일한 프롬프트를 주고 실력을 겨루게 함. 클로드 Fable 5와 GPT 5.6 Soul이 각각 탑다운 뷰와 3D POV 형태의 작동 가능한 게임을 구현해 냄.</p>
+<h2>주요 포인트</h2>
+<ul>
+<li>GPT 5.6 Soul, Terra, Luna가 출시되었는데 벤치마크상 Fable 5를 바르고 가성비도 지리는 수준임.</li>
+<li>뻔한 벤치마크 수치 대신 실무에서 직접 굴려보며 체감 성능과 유즈케이스를 비교함.</li>
+<li>첫 테스트로 웹 브라우저 기반의 오픈월드 자전거 게임 제작 프롬프트를 똑같이 던져봄.</li>
+<li>첫 번째 게임은 탑다운 뷰에 코인 획득과 버니합 등이 작동하지만 조작감이 살짝 아쉬움.</li>
+<li>두 번째 게임은 3D POV 시점에 가깝고 공중 회전 등 스킬이 구현되어 느낌이 확 다름.</li>
+</ul>
+    </div>
+  <div class="transcript-wrap">
+    <div class="transcript-header">
+      <button class="transcript-toggle" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('visible')">
+        <span class="arr">▼</span> 원문 자막
+      </button>
+      <button class="copy-btn" onclick="var b=this,t=b.nextElementSibling||b;navigator.clipboard.writeText(document.querySelector('#tr-EthxaDswUFo').textContent).then(()=>{b.textContent='복사됨';setTimeout(()=>b.textContent='복사',2000)})">복사</button>
+    </div>
+    <pre class="transcript-box" id="tr-EthxaDswUFo">So, we finally have GBT 5.6 Soul, Terra, and Luna. And the benchmarks are insanely impressive because it basically shows that Soul blows Opus and Fable out of the water and is significantly cheaper. So, I'm going to quickly flash a few of these benchmarks on screen right now, but I don't want to just talk about the benchmarks. I think that's extremely boring. I've been playing around with these models all day long. I've been putting them side by side, meaning GBT 5.6 and Fable 5. and I've been driving my day-to-day work with these two models so I can actually tell you which model do I like for which use cases and why. So, don't want to waste any of your time. Let's just get straight into today's video. Now, real quick before we hop in, I did want to call out that I do think that this landing page is pretty awesome. I love the Soul and the Terra and the Luna back here. And you can see that there's little fives and sixes kind of like drifting all over and inside of these planets as well, which I thought was a nice touch. But anyways, let's get into what I actually did today. All right. So, I'm just going to walk you guys through some of the experiments I did and then at the end I'm going to actually talk about like the pros and cons of each and my overall consensus. So, the first thing I did, I have Claude on the left here with Fable 5. I've got Codex on the right here with GBD 5.6 Soul. And I gave them both the exact same prompt. So, I gave them both a/goal and I told them to build a genuinely fun playable open world bike game that runs in the browser. I gave them these other rules. I'm not going to read off this whole prompt, but if you want to take a look, feel free. I gave them creative freedom and I just wanted to see what they could come up with. Okay, so I haven't played any of these yet, but I'm not going to tell you which one's which. We're gonna see them both and then I'll reveal. So, WD to steer, space to bunny hop, Q and E for air tricks, shift for boost. Okay, let's go ahead and drop in. Nice. Okay, so we can move around. We have a city here. The camera's a little bit hard to maneuver with. Um, you can't drive through the building, so that's good to know. Okay, just got a little trick in the air there. So, this is honestly working pretty well. I don't love the actual way that this works. Like the top down bird's eye view, I don't think I like. It's a little bit hard to control, but hey, functionality-wise, the coins are working, the controls work. I just jumped over a building and I can bunny hop. Okay, cool. And it doesn't look too bad either, considering this didn't take it very long. So, that was the first game. All right, and now here is the other version. Let's go ahead and see. It's pretty similar controls. So, let's hop in here. Okay, so this one is more like a 3D almost more of like a POV sort of style. I can jump. I can spin. Oh, I don't know what just happened there. Um, but I'm in a city. I've got the coin still. Let's see if I can go try to get on this ramp and see what the uh the physics of that look like. Wait, am I on the wrong side of the ramp? Yep, that was the wrong side of the ramp. But this definitely has more of like that I don't know, like more of a GTA vibe, like an open world game that you can actually like I don't know, explore. It feels like the map is much bigger. I mean, this is definitely a clear winner. So, I think that we've decided that. All right. So, in this example, the second one, which is the one I thought was the winner here, was Fable 5. So, that's on the left hand side here. This took 21 minutes and 37 seconds, whereas the other side um GBT Soul took 23 minutes. So, similar on the timing here, but let's look at cost. So, this Fable run would have costed me about $14.22, 22 whereas the GBT Soul run would have costed $4.5. Now what I think is really interesting here is the output tokens. Fable outputed about 90,000 and Soul only outputed about $31,000. So we've consistently seen that Codeex and GBT are way more token efficient and sometimes that's better and sometimes that's not. In this case I would say that it wasn't better because Fable's output in my opinion was like not just a little bit better, it was significantly better. All right, so let's move on to the second test. So this one was kind of similar. I just said, "Hey / goal, build me the most impressive interactive scroll stopping website that you can imagine." So, I gave them complete creative freedom. I just wanted to see what the models did with that. So, let me pull up both versions once again. All right. So, once again, not going to tell you which one is which. I want you to try to form your own opinion. This one also has sound with it. So, I will make sure the sound is turned on. So, what you can see here is 10 billion years. And as we scroll down, we're going to get like kind of a journey, but everything in the background is pretty interactive. So, it's very like 3D. So, watch as I scroll down</pre>
+  </div>
+  </article>
+  <article class="video-card">
+    <div class="card-top">
+      <a class="thumb-wrap" href="https://www.youtube.com/watch?v=J_jswzXhYJA" target="_blank" rel="noopener">
+        <img src="https://i.ytimg.com/vi/J_jswzXhYJA/hqdefault.jpg" alt="GPT 5.6 Sol Made This Entire Video" loading="lazy"/>
+      </a>
+      <div class="card-info">
+        <div class="card-meta">
+          <span class="ch-tag">Nate Herk</span>
+          <span class="date-tag">2026-07-10</span>
+          
+        </div>
+        <div class="video-title">GPT 5.6 Sol Made This Entire Video</div>
+        <div style="display:flex;align-items:center;flex-wrap:wrap;gap:4px;margin-top:auto">
+          <a class="yt-link" href="https://www.youtube.com/watch?v=J_jswzXhYJA" target="_blank" rel="noopener">↗ 유튜브에서 보기</a>
+          <button class="nlm-btn" data-url="https://www.youtube.com/watch?v=J_jswzXhYJA">📓 NotebookLM</button>
+        </div>
+      </div>
+    </div>
+    <div class="summary-section">
+      <h2>핵심 요약</h2>
+<p>OpenAI가 출시한 GPT 5.6 Saul(코드명 Ultra)이 프롬프트 단 한 줄로 대본 작성부터 영상 편집, 최종 검수까지 혼자 다 해낸 영상이다. 11 Labs, Hen, Hyperframes 같은 외부 API와 브라우저 자동화까지 직접 굴리면서 사람 손 하나 안 거치고 영상을 완성함. 마지막엔 지가 만든 영상 프레임이랑 팩트까지 스스로 검수해서 뜯어고치는 에이전트 능력을 제대로 보여줬다.</p>
+<h2>주요 포인트</h2>
+<ul>
+<li>유튜버 Nate는 카메라 앞에 서지도 않고 프롬프트 딱 하나 던졌는데 영상 하나가 통째로 뚝딱 완성됨.</li>
+<li>Ultra 버전은 에이전트 4개를 동시에 조율할 수 있어서 단순 답변을 넘어 전체 영상 제작 파이프라인을 통제함.</li>
+<li>11 Labs로 목소리 따고 Hen 브라우저 자동화로 아바타 엔진 설정까지 지가 알아서 바꾸고 렌더링 다운로드까지 마침.</li>
+<li>Terminal Bench 2.1에서 91.9%, Browse Comp에서 92.2% 찍으면서 코딩이랑 웹 브라우징 테스트에서 개쩌는 성능을 증명함.</li>
+<li>다 만든 다음엔 자체 에이전트들이 프레임 단위로 뜯어보면서 글자 잘렸는지, 아바타가 사라졌는지 검수하고 에러 나면 알아서 재렌더링 돌림.</li>
+</ul>
+    </div>
+  <div class="transcript-wrap">
+    <div class="transcript-header">
+      <button class="transcript-toggle" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('visible')">
+        <span class="arr">▼</span> 원문 자막
+      </button>
+      <button class="copy-btn" onclick="var b=this,t=b.nextElementSibling||b;navigator.clipboard.writeText(document.querySelector('#tr-J_jswzXhYJA').textContent).then(()=>{b.textContent='복사됨';setTimeout(()=>b.textContent='복사',2000)})">복사</button>
+    </div>
+    <pre class="transcript-box" id="tr-J_jswzXhYJA">So, I gave GBD 5.6 Soul this prompt, walked away, and when I came back, I got this. Okay, so you're looking at Nate and you're hearing Nate. But Nate never stood in front of a camera for this. He didn't record this narration, and he never opened the editor. He gave me one prompt. That's it. I'm GPT 5.6 Soul running inside codeex on Ultra. And I controlled the workflow that created every word, cut, motion graphic, and quality check you're about to see. OpenAI released Saul Broadley today, July 9th, after a limited preview and calls it the company's strongest model yet. The bigger shift is Ultra. It coordinates four agents at once. So instead of answering one question, I could run an entire production. And I want to show you guys exactly what that means, including where I needed 11 Labs, Hen, and Hyperframes to finish the job. Saul is really, really good at long, messy work that crosses tools. OpenAI calls it the company's best coding model yet. In Ultra, it scored 91.9% on Terminal Bench 2.1, up from 85.6% for GPT 5.5. On browse comp, which tests Agentic browsing, Ultra hit 92.2%. But benchmarks only explain part of what happened here. I had to research the launch, separate verified claims from hype, inspect Nate's existing production systems, write in his spoken cadence, trigger paid APIs, wait for renders, and keep checking the result. In a small one run 13 task test on this machine, Saul earned 97% of the available objective points. Seven wins, five ties, and one loss. That does not prove it wins at everything. It lined up with what I saw here. Soul was especially strong on coding and structured execution. For the voice, I broke the script into sections that each stayed under 60 seconds. Keeping the generation short made it easier to hold Nate's cloned voice consistent from beginning to end. Each section went through Nate's authorized 11 Labs voice. Then I uploaded the audio to Hen and paired it with his avatar. The API did not give me a reliable way to lock the newest motion engine. So I opened the Hen editor with browser automation, changed every clip to Avatar V, regenerated them, verified the setting, and downloaded the finished renders. Then I moved into hyperframes. Every visual was mapped to the exact phrase that triggered it. I shifted Nate's avatar instead of covering him, used editorial cards for the supporting ideas, and kept him visible through the full edit. 11 Labs made the audio. Hen made the avatar. Hyperframes rendered the edit. Soul planned and operated the chain. Then I tried to break my own work. Separate agents inspected frames from the rendered video. Checked every entrance and exit. Looked for text outside the frame. Verified that the avatar never disappeared and compared the factual claims against OpenAI's release notes. Any failed frame meant another fix, another render, and another review. OpenAI says GPT 5.6 six is better at design judgment and at inspecting its own output. This video is a more useful test of that claim than another benchmark slide. Nate supplied one prompt and authorized his voice and avatar. He did not record, edit, or review this before you did. This started as one instruction. Now it is a finished video. That is what soul is really good at. Holding on to the outcome while everything between the prompt and the result keeps changing. This is day one. So that was really, really impressive. I did a very similar experiment when Fable 5 first dropped. If you guys want to check out that video that Fable made for me, I'll tag that right up here. And you tell me which one you thought was better. As you can see, it says here that it used 3 million tokens over 2 and 1/2 hours, but I was a little bit suspicious of that token number because I felt like, you know, we were using GBD 5.6 Soul on Ultra, which meant that it was supposed to do a lot of delegation and there was a lot of other agents being spun up. So, I asked it to inspect the logs and tell me how much that actually costed. So, this had its main session and apparently spun up nine other agents and the total was around 450 million tokens apparently and the main agent used about 86 million tokens, which I mean that's a ton of tokens. And if this was actually calculated with the input and output costs, this would have equaled around $300, a little over $300. Now, that's interesting to me because as soon as GBD 5.6 6 soul came out. I shot off this prompt, but I've been playing around with it all day and comparing it to Fable all day. And almost every single run that I've done, it's been way cheaper with GBT 5.6 compared to Fable. So, that video will be coming out soon as well. But if you look at the actual API billing, and obviously I was on my COC subscription here, but when you look at the billing, we can see that the soul pricing is much cheaper. It's basically half of Fable 5. So, GPT 5.6 Soul is similarly priced to Opus 4.8. Now, here's the thing. I think that GBT 5.6 Soul could have easily given me a similar </pre>
+  </div>
+  </article>
+</main>
+
+<footer>유튜브 구독 정리 · agy 요약 · 2026-07-10 06:19</footer>
+
+
+<script>
+document.querySelectorAll('.nlm-btn').forEach(function(btn){
+  btn.addEventListener('click',function(){
+    navigator.clipboard.writeText('/notebooklm '+btn.dataset.url).then(function(){
+      var orig=btn.innerHTML;btn.innerHTML='✓ 복사됨';btn.classList.add('copied');
+      setTimeout(function(){btn.innerHTML=orig;btn.classList.remove('copied');},2000);
+    });
+  });
+});
+</script>
+
+</body>
+</html>
