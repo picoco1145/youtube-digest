@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>2026-07-14 — 유튜브 구독 정리</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+  :root{--bg:#090e1a;--surface:#111827;--surface2:#1a2235;--border:#1e2d47;--accent:#6c63ff;--accent2:#00d4ff;--text:#e8eaf0;--muted:#7a8499;--radius:14px;}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Pretendard',sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+  header{background:linear-gradient(135deg,#0d1b3e,#1a0533);border-bottom:1px solid var(--border);padding:20px 40px;display:flex;align-items:center;justify-content:space-between;}
+  .nav-back{color:var(--accent2);text-decoration:none;font-size:0.85rem;display:flex;align-items:center;gap:6px}
+  .nav-back:hover{color:#fff}
+  .date-badge{font-size:1.4rem;font-weight:700;letter-spacing:-0.5px;background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+  .count{font-size:0.85rem;color:var(--muted)}
+  main{max-width:900px;margin:0 auto;padding:32px 24px 80px}
+  .video-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;margin-bottom:24px;transition:border-color 0.2s,box-shadow 0.2s;}
+  .video-card:hover{border-color:var(--accent);box-shadow:0 4px 24px rgba(108,99,255,0.15)}
+  .card-top{display:flex;gap:0}
+  .thumb-wrap{flex:0 0 240px;position:relative;overflow:hidden}
+  .thumb-wrap img{width:100%;height:100%;object-fit:cover;transition:transform 0.4s}
+  .video-card:hover .thumb-wrap img{transform:scale(1.05)}
+  .card-info{flex:1;padding:20px;display:flex;flex-direction:column;gap:10px}
+  .card-meta{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+  .ch-tag{font-size:0.72rem;font-weight:600;padding:3px 12px;background:linear-gradient(135deg,rgba(108,99,255,0.2),rgba(0,212,255,0.2));border:1px solid rgba(108,99,255,0.3);border-radius:999px;color:var(--accent2);}
+  .date-tag{font-size:0.72rem;color:var(--muted)}
+  .no-transcript{font-size:0.68rem;padding:2px 8px;background:rgba(255,180,0,0.12);border:1px solid rgba(255,180,0,0.25);border-radius:999px;color:#ffa500;}
+  .video-title{font-size:1rem;font-weight:600;line-height:1.4}
+  .yt-link{display:inline-flex;align-items:center;gap:5px;font-size:0.8rem;color:var(--accent);text-decoration:none;transition:color 0.2s;}
+  .yt-link:hover{color:var(--accent2)}
+  
+  .nlm-btn{display:inline-flex;align-items:center;gap:5px;font-size:0.8rem;color:#fff;
+    background:rgba(108,99,255,0.2);border:1px solid rgba(108,99,255,0.4);border-radius:8px;
+    padding:4px 12px;cursor:pointer;font-family:inherit;transition:all 0.2s;margin-left:8px;}
+  .nlm-btn:hover{background:rgba(108,99,255,0.45);}
+  .nlm-btn.copied{background:rgba(0,200,100,0.2);border-color:rgba(0,200,100,0.4);color:#00c864;}
+
+  .summary-section{border-top:1px solid var(--border);background:var(--surface2);padding:20px 24px;font-size:0.85rem;line-height:1.7;color:#c5cad8;}
+  .summary-section h2{font-size:0.82rem;color:var(--accent2);margin:12px 0 4px}
+  .summary-section h2:first-child{margin-top:0}
+  .summary-section ul{padding-left:18px}
+  .summary-section li{margin-bottom:5px}
+  .transcript-wrap{border-top:1px solid var(--border);padding:14px 24px;background:#0c1220}
+  .transcript-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:0}
+  .transcript-toggle{background:none;border:none;color:var(--muted);font-size:0.8rem;cursor:pointer;font-family:inherit;display:flex;align-items:center;gap:4px;padding:0;transition:color 0.2s;}
+  .transcript-toggle:hover{color:var(--text)}
+  .copy-btn{background:rgba(108,99,255,0.1);border:1px solid rgba(108,99,255,0.3);border-radius:8px;color:var(--accent2);font-size:0.72rem;padding:4px 12px;cursor:pointer;font-family:inherit;transition:all 0.2s;}
+  .copy-btn:hover{background:rgba(108,99,255,0.25);color:#fff}
+  .transcript-box{display:none;margin-top:10px;background:#080d18;border:1px solid var(--border);border-radius:10px;padding:12px 14px;font-size:0.78rem;line-height:1.75;color:#8a95aa;max-height:260px;overflow-y:auto;white-space:pre-wrap;word-break:break-word;}
+  .transcript-box.visible{display:block}
+  footer{text-align:center;padding:24px;font-size:0.75rem;color:var(--muted);border-top:1px solid var(--border)}
+  @media(max-width:640px){.card-top{flex-direction:column}.thumb-wrap{flex:none;height:200px}header{padding:16px}main{padding:16px 12px 60px}}
+</style>
+</head>
+<body>
+
+<header>
+  <a class="nav-back" href="../index.html">← 대시보드로</a>
+  <div>
+    <div class="date-badge">2026-07-14</div>
+    <div class="count">1개 영상</div>
+  </div>
+  <div style="font-size:0.75rem;color:var(--muted)">2026-07-14 06:00 생성</div>
+</header>
+
+<main>
+
+  <article class="video-card">
+    <div class="card-top">
+      <a class="thumb-wrap" href="https://www.youtube.com/watch?v=wodr2cUI_VU" target="_blank" rel="noopener">
+        <img src="https://i.ytimg.com/vi/wodr2cUI_VU/hqdefault.jpg" alt="The Bigger Your Folder Gets, The Dumber Claude Gets" loading="lazy"/>
+      </a>
+      <div class="card-info">
+        <div class="card-meta">
+          <span class="ch-tag">Dylan Davis</span>
+          <span class="date-tag">2026-07-14</span>
+          
+        </div>
+        <div class="video-title">The Bigger Your Folder Gets, The Dumber Claude Gets</div>
+        <div style="display:flex;align-items:center;flex-wrap:wrap;gap:4px;margin-top:auto">
+          <a class="yt-link" href="https://www.youtube.com/watch?v=wodr2cUI_VU" target="_blank" rel="noopener">↗ 유튜브에서 보기</a>
+          <button class="nlm-btn" data-url="https://www.youtube.com/watch?v=wodr2cUI_VU">📓 NotebookLM</button>
+        </div>
+      </div>
+    </div>
+    <div class="summary-section">
+      <h2>핵심 요약</h2>
+<p>AI한테 자료 많다고 다 때려 박으면 대가리 터져서 점점 멍청해진다. 콘텍스트 윈도우가 절반 넘게 차면 답변 퀄리티가 수직 하강하기 때문이다. 해결하려면 책의 목차처럼 '맵 파일'을 만들어서 AI가 필요한 파일만 골라 읽게 시스템을 짜야 한다.</p>
+<h2>주요 포인트</h2>
+<ul>
+<li>폴더 통째로 AI한테 넘겨봤자 용량만 처먹고 대답은 더 못하게 됨.</li>
+<li>콘텍스트 윈도우의 50%를 넘기는 순간부터 답변 정확도가 개떡락함.</li>
+<li>수백 페이지 보고서에서 목차 보고 바로 찾아가듯, AI한테도 목차나 맵 파일이 필수적임.</li>
+<li>맵 파일 시스템을 구축해두면 AI가 수천 개 파일 중 핵심만 쏙쏙 정확하게 뽑아옴.</li>
+<li>이 시스템을 만들어 두면 AI 한계를 극복하고 대용량 파일도 가뿐하게 다룰 수 있음.</li>
+</ul>
+    </div>
+  <div class="transcript-wrap">
+    <div class="transcript-header">
+      <button class="transcript-toggle" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('visible')">
+        <span class="arr">▼</span> 원문 자막
+      </button>
+      <button class="copy-btn" onclick="var b=this,t=b.nextElementSibling||b;navigator.clipboard.writeText(document.querySelector('#tr-wodr2cUI_VU').textContent).then(()=>{b.textContent='복사됨';setTimeout(()=>b.textContent='복사',2000)})">복사</button>
+    </div>
+    <pre class="transcript-box" id="tr-wodr2cUI_VU">You've got a folder, or likely a few, full of years of work. And you think pointing AI at it would help. But the more data that you give AI, the worse it gets. If you're new here, I'm Dylan. I run an AI consultancy. And this is a common problem I help people fix. So by the end of this video, you'll have an AI that searches thousands of files and pulls the right ones without skipping what matters or making things up. And the best part is is AI will build the whole thing for you. So, let's get into it. This year is one of the ongoing battles that we tend to fight with AI. If you've watched any of my previous videos, you've likely heard me talk about this. Where the AI has limited space in its head. And the more we fill up the AI's head, the dumber it gets. And the technical term for the AI's head is a context window. So whatever model you're using, GPT, Claude, Gemini, it doesn't matter. They're all limited in how much they can hold in their head. And this visual does a really good job at depicting what's happening. Where on the vertical axis, we have the quality of the answer. On the horizontal axis, we have the number of files we've given the AI. Now once we've filled up the AI's head round past 50%, its intelligence drops like a rock. In our use case, that's going to be the number of files that we feed the AI. So we need to build systems and scaffolding around this weakness, so we can get the most out of AI even when we want it to read hundreds if not thousands of files. And that's what I want to show you in this video. Is that system that we can build around this to get the most out of AI without being hampered by this specific limitation. Now what is this system? It's very straightforward. Similar to how a human would deal with the issue. And it's going to be a table of contents or a map file. And I'll explain what that means in a second. But let's say that I give you a report. Say it's a 500-page report. If that 500-page report doesn't include the table of contents, you're going to be confused on where you need to look to get the information that you need. You're going to have to read the entire thing from front to back to get that information. But if you had a table of contents, you can look at that table of contents, realize that the budget is where you're interested, you can go straight to page 23 and get the information that's necessary. This is what we're going to provide to AI. Because right now, when you give AI hundreds if not thousands of files, you're just hoping that it finds what it needs to. And sometimes it does. But this is a really slow and less accurate approach to getting information from those files. Now, I'm assuming that you're using a desktop agent tool like Cloud Co-worker Codex, which are very good at getting through those files. But even those tools with high-end models struggle once you get past a certain point. And that's why we need this. So, now that we understand that we need a table of contents or a map file, how does this kind of interact with AI? Well, there are three layers AI is going to look at before it gets to the raw information. Because you likely have a folder or many sub folders that have hundreds if not thousands of files, and those that's the raw data, the source files. Well, we're going to put two layers of abstraction in front of that so that AI can easily find what it needs without getting overwhelmed. Quick pause in your regular programming. This video is brought to you by me, as always. Two quick things. First off, below is a 30-day AI Insight series, completely free. You'll get 30 insights in your inbox of how you can apply AI to your business and your work. The second thing is if you'd like to work with me, below are a series of offerings to see if there's a good fit between the two of us. Now, let's get back into the video. The first layer of abstraction is going to be the map file. So, this is going to be a map.md file that AI is going to create for you, and this is going to be our table of contents. And it's going to be extremely minimal because AI is going to look at it every single time you interact with AI. So, in this file, all we're likely going to have are the folder names as well as the file names inside of those sub folders, and maybe one to five words summarizing what's in that file. Because when we ask the AI a question of this huge data set of files, it's going to quickly determine based on our ask which of these are relevant for that ask. Once it's identified the ones that are relevant, it's going to go one layer deeper, not all the way to the source files, but one layer deeper. Reason being is that these source files, they could be hundreds if not thousands of pages long. And if they are, that's still extremely overwhelming for the AI. So, the next layer it's going to go is the summaries, because we're going to have the AI create one page or half page summaries for every single file. And maybe even less. It could be just three to five se</pre>
+  </div>
+  </article>
+</main>
+
+<footer>유튜브 구독 정리 · agy 요약 · 2026-07-14 06:00</footer>
+
+
+<script>
+document.querySelectorAll('.nlm-btn').forEach(function(btn){
+  btn.addEventListener('click',function(){
+    navigator.clipboard.writeText('/notebooklm '+btn.dataset.url).then(function(){
+      var orig=btn.innerHTML;btn.innerHTML='✓ 복사됨';btn.classList.add('copied');
+      setTimeout(function(){btn.innerHTML=orig;btn.classList.remove('copied');},2000);
+    });
+  });
+});
+</script>
+
+</body>
+</html>

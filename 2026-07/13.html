@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>2026-07-13 — 유튜브 구독 정리</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+  :root{--bg:#090e1a;--surface:#111827;--surface2:#1a2235;--border:#1e2d47;--accent:#6c63ff;--accent2:#00d4ff;--text:#e8eaf0;--muted:#7a8499;--radius:14px;}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Pretendard',sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+  header{background:linear-gradient(135deg,#0d1b3e,#1a0533);border-bottom:1px solid var(--border);padding:20px 40px;display:flex;align-items:center;justify-content:space-between;}
+  .nav-back{color:var(--accent2);text-decoration:none;font-size:0.85rem;display:flex;align-items:center;gap:6px}
+  .nav-back:hover{color:#fff}
+  .date-badge{font-size:1.4rem;font-weight:700;letter-spacing:-0.5px;background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+  .count{font-size:0.85rem;color:var(--muted)}
+  main{max-width:900px;margin:0 auto;padding:32px 24px 80px}
+  .video-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;margin-bottom:24px;transition:border-color 0.2s,box-shadow 0.2s;}
+  .video-card:hover{border-color:var(--accent);box-shadow:0 4px 24px rgba(108,99,255,0.15)}
+  .card-top{display:flex;gap:0}
+  .thumb-wrap{flex:0 0 240px;position:relative;overflow:hidden}
+  .thumb-wrap img{width:100%;height:100%;object-fit:cover;transition:transform 0.4s}
+  .video-card:hover .thumb-wrap img{transform:scale(1.05)}
+  .card-info{flex:1;padding:20px;display:flex;flex-direction:column;gap:10px}
+  .card-meta{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+  .ch-tag{font-size:0.72rem;font-weight:600;padding:3px 12px;background:linear-gradient(135deg,rgba(108,99,255,0.2),rgba(0,212,255,0.2));border:1px solid rgba(108,99,255,0.3);border-radius:999px;color:var(--accent2);}
+  .date-tag{font-size:0.72rem;color:var(--muted)}
+  .no-transcript{font-size:0.68rem;padding:2px 8px;background:rgba(255,180,0,0.12);border:1px solid rgba(255,180,0,0.25);border-radius:999px;color:#ffa500;}
+  .video-title{font-size:1rem;font-weight:600;line-height:1.4}
+  .yt-link{display:inline-flex;align-items:center;gap:5px;font-size:0.8rem;color:var(--accent);text-decoration:none;transition:color 0.2s;}
+  .yt-link:hover{color:var(--accent2)}
+  
+  .nlm-btn{display:inline-flex;align-items:center;gap:5px;font-size:0.8rem;color:#fff;
+    background:rgba(108,99,255,0.2);border:1px solid rgba(108,99,255,0.4);border-radius:8px;
+    padding:4px 12px;cursor:pointer;font-family:inherit;transition:all 0.2s;margin-left:8px;}
+  .nlm-btn:hover{background:rgba(108,99,255,0.45);}
+  .nlm-btn.copied{background:rgba(0,200,100,0.2);border-color:rgba(0,200,100,0.4);color:#00c864;}
+
+  .summary-section{border-top:1px solid var(--border);background:var(--surface2);padding:20px 24px;font-size:0.85rem;line-height:1.7;color:#c5cad8;}
+  .summary-section h2{font-size:0.82rem;color:var(--accent2);margin:12px 0 4px}
+  .summary-section h2:first-child{margin-top:0}
+  .summary-section ul{padding-left:18px}
+  .summary-section li{margin-bottom:5px}
+  .transcript-wrap{border-top:1px solid var(--border);padding:14px 24px;background:#0c1220}
+  .transcript-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:0}
+  .transcript-toggle{background:none;border:none;color:var(--muted);font-size:0.8rem;cursor:pointer;font-family:inherit;display:flex;align-items:center;gap:4px;padding:0;transition:color 0.2s;}
+  .transcript-toggle:hover{color:var(--text)}
+  .copy-btn{background:rgba(108,99,255,0.1);border:1px solid rgba(108,99,255,0.3);border-radius:8px;color:var(--accent2);font-size:0.72rem;padding:4px 12px;cursor:pointer;font-family:inherit;transition:all 0.2s;}
+  .copy-btn:hover{background:rgba(108,99,255,0.25);color:#fff}
+  .transcript-box{display:none;margin-top:10px;background:#080d18;border:1px solid var(--border);border-radius:10px;padding:12px 14px;font-size:0.78rem;line-height:1.75;color:#8a95aa;max-height:260px;overflow-y:auto;white-space:pre-wrap;word-break:break-word;}
+  .transcript-box.visible{display:block}
+  footer{text-align:center;padding:24px;font-size:0.75rem;color:var(--muted);border-top:1px solid var(--border)}
+  @media(max-width:640px){.card-top{flex-direction:column}.thumb-wrap{flex:none;height:200px}header{padding:16px}main{padding:16px 12px 60px}}
+</style>
+</head>
+<body>
+
+<header>
+  <a class="nav-back" href="../index.html">← 대시보드로</a>
+  <div>
+    <div class="date-badge">2026-07-13</div>
+    <div class="count">2개 영상</div>
+  </div>
+  <div style="font-size:0.75rem;color:var(--muted)">2026-07-14 06:00 생성</div>
+</header>
+
+<main>
+
+  <article class="video-card">
+    <div class="card-top">
+      <a class="thumb-wrap" href="https://www.youtube.com/watch?v=xvIICzK3jhc" target="_blank" rel="noopener">
+        <img src="https://i.ytimg.com/vi/xvIICzK3jhc/hqdefault.jpg" alt="Do This with Fable 5 While You Still Can" loading="lazy"/>
+      </a>
+      <div class="card-info">
+        <div class="card-meta">
+          <span class="ch-tag">Nicholas Puru</span>
+          <span class="date-tag">2026-07-13</span>
+          
+        </div>
+        <div class="video-title">Do This with Fable 5 While You Still Can</div>
+        <div style="display:flex;align-items:center;flex-wrap:wrap;gap:4px;margin-top:auto">
+          <a class="yt-link" href="https://www.youtube.com/watch?v=xvIICzK3jhc" target="_blank" rel="noopener">↗ 유튜브에서 보기</a>
+          <button class="nlm-btn" data-url="https://www.youtube.com/watch?v=xvIICzK3jhc">📓 NotebookLM</button>
+        </div>
+      </div>
+    </div>
+    <div class="summary-section">
+      <h2>핵심 요약</h2>
+<p>Anthropic이 AI 사용 권한을 확대한 지금, Claude 구독이 끝나기 전에 Fable 5를 활용해 업무를 자동화하는 것이 핵심이다. 코딩 없이 5분 만에 설정하여 백그라운드에서 반복 작업을 감시하고, 가장 시간 낭비가 심한 업무에 대한 자동화 툴을 직접 빌드해준다.</p>
+<h2>주요 포인트</h2>
+<ul>
+<li>Claude Code에 프롬프트 하나만 붙여넣으면 코딩 없이 5분 만에 바로 설정 가능하다.</li>
+<li>Fable이 백그라운드에서 주기적으로 스크린샷을 저장하며 비효율적인 반복 수작업을 감시한다.</li>
+<li>매일 하루를 분석해 사용자가 가장 시간을 많이 낭비한 업무 3가지를 찾아낸다.</li>
+<li>찾아낸 시간 낭비 업무들을 자동으로 해결해 주는 자동화 시스템을 Fable이 직접 빌드해 준다.</li>
+<li>저렴한 AI 모델 기반으로 화면을 감시하기 때문에 운영 비용이 거의 들지 않는다.</li>
+</ul>
+    </div>
+  <div class="transcript-wrap">
+    <div class="transcript-header">
+      <button class="transcript-toggle" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('visible')">
+        <span class="arr">▼</span> 원문 자막
+      </button>
+      <button class="copy-btn" onclick="var b=this,t=b.nextElementSibling||b;navigator.clipboard.writeText(document.querySelector('#tr-xvIICzK3jhc').textContent).then(()=>{b.textContent='복사됨';setTimeout(()=>b.textContent='복사',2000)})">복사</button>
+    </div>
+    <pre class="transcript-box" id="tr-xvIICzK3jhc">Anthropic just extended use for the smartest AI in the planet. So, here's the number one thing that you need to do before they take it off your Claude subscription. Now, this is the one thing that can immediately make you more money in your business and save you hundreds of hours a month. So, this will show you exactly where you're wasting time every single day and automate it for you and you can set this up in about 5 minutes with no coding. You just paste this one prompt into Claude Code, which you can screenshot or just comment need and I'll send it over to you. And then from there, you just work like normal. It quietly watches your screen. It takes a snapshot every few seconds saved on your own computer, so it's hunting for the repetitive, expensive work that you do by hand without even thinking about. So, all the same numbers that you copy from one tool into another one every morning or maybe the follow-ups that you send by hand every time a lead comes in. Whatever it is, Fable tracks it and then once a day, Fable looks back at your whole day and it hands you three biggest time wasters. And it builds you the automation that does each one for you. It barely costs anything to run because a cheap AI model does all the watching. Users across your team and you will find thousands of things to automate to create more leverage for your business. Just comment need and I'll send you the entire setup that has Fable build the whole thing out for you.</pre>
+  </div>
+  </article>
+  <article class="video-card">
+    <div class="card-top">
+      <a class="thumb-wrap" href="https://www.youtube.com/watch?v=tv4ttKKaDOk" target="_blank" rel="noopener">
+        <img src="https://i.ytimg.com/vi/tv4ttKKaDOk/hqdefault.jpg" alt="챗지피티 5.6 미쳤음" loading="lazy"/>
+      </a>
+      <div class="card-info">
+        <div class="card-meta">
+          <span class="ch-tag">AIMAX_PD</span>
+          <span class="date-tag">2026-07-13</span>
+          
+        </div>
+        <div class="video-title">챗지피티 5.6 미쳤음</div>
+        <div style="display:flex;align-items:center;flex-wrap:wrap;gap:4px;margin-top:auto">
+          <a class="yt-link" href="https://www.youtube.com/watch?v=tv4ttKKaDOk" target="_blank" rel="noopener">↗ 유튜브에서 보기</a>
+          <button class="nlm-btn" data-url="https://www.youtube.com/watch?v=tv4ttKKaDOk">📓 NotebookLM</button>
+        </div>
+      </div>
+    </div>
+    <div class="summary-section">
+      <h2>핵심 요약</h2>
+<p>챗지피티 단순 대화로만 쓰지 말고 숨겨진 지능 깨워서 업무 효율 극대화하라는 내용이다. GPTs 이미지 생성부터 드라이브 연동, 브라우저 제어 에이전트, 대시보드 시각화, 예약 봇까지 실무에 바로 쓰는 핵심 스킬 5가지를 소개함. 이거 제대로 활용하면 반복 노가다 작업 다 넘기고 업무 시간 혁신적으로 줄일 수 있음.</p>
+<h2>주요 포인트</h2>
+<ul>
+<li>**업무 레시피 학습 (GPTs)**: 브랜드 가이드 저장해두면 일치감 있는 광고 이미지 알아서 바로 뽑아줌.</li>
+<li>**드라이브 및 슬랙 연동**: 수많은 폴더 속 문서도 16초 만에 찾아내고 필요한 데이터만 쏙 빼서 분석에 써먹음.</li>
+<li>**AI 에이전트 자동 제어**: 코딩 몰라도 AI가 알아서 브라우저 켜고 폼 작성이나 메시지 전송 같은 반복 작업 다 해줌.</li>
+<li>**인터랙티브 대시보드 변환**: 더러운 스프레드시트 데이터들을 1분 만에 이쁜 필터 달린 시각화 분석 도구로 바꿔줌.</li>
+<li>**예약 봇 루틴 설정**: 뉴스레터 요약이나 경쟁사 모니터링 같이 매일 해야 하는 귀찮은 일들 배경에서 스스로 돌게 만듦.</li>
+</ul>
+    </div>
+  <div class="transcript-wrap">
+    <div class="transcript-header">
+      <button class="transcript-toggle" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('visible')">
+        <span class="arr">▼</span> 원문 자막
+      </button>
+      <button class="copy-btn" onclick="var b=this,t=b.nextElementSibling||b;navigator.clipboard.writeText(document.querySelector('#tr-tv4ttKKaDOk').textContent).then(()=>{b.textContent='복사됨';setTimeout(()=>b.textContent='복사',2000)})">복사</button>
+    </div>
+    <pre class="transcript-box" id="tr-tv4ttKKaDOk">이 남자는 채피에 미쳐 있습니다. 단순히 대화 상대로 쓰는 사람들과 달리 실제 브라우저를 제어하고 일꾼으로 부려 업무 시간을 혁신적으로 단축한 전문가. 그가 공개한 채치피에 숨겨진 지능을 깨우는 열 가지 비밀 스킬 저장하고 끝까지 보세요. 첫째, 채비티 스킬 기능을 활용해 나만의 업무 레시피를 학습시키세요. 우리 브랜드의 색상과 폰트 같은 복잡한 가이드를 한 번만 저장해 두면 매번 변경할 필요 없이 완벽하고 일관된 광고 이미지를 즉시 생성합니다. 둘째, 구글 드라이브와 슬랙을 직접 연결하는 커넥터 시스템을 가동하세요. 새00개의 폴더 속에 파묻혀 있는 문서도 단 16초 만에 찾아내고 필요한 핵심 수치만 곤란내어 데이터 분석에 바로 활용할 수 있습니다. 셋째, AI 에이전트 모드로 실제 업무의 제어권을 넘기세요. 코딩 없이도 AI가 사람처럼 직접 브라우저를 열고 웹사이트에 접속해 폼을 작성하거나 메시지를 보내는 등 지루한 반복 작업을 대신 끝내 줍니다. 넷째, 지저분한 스프레드시트를 인터액티브 대시보드로 변환하세요. 단순한 숫자 나열를 시각적인 필터가 포함된 분석 도구로 바꾸어 데이터 속에 숨겨진 비즈니스 인사이트를 단 1분 만에 시각화해 줍니다. 다섯째, 매일 정해진 시간에 스스로 작동하는 예약부를 설정하세요. 뉴스레토 요약이나 경쟁사 가격, 모니터링처럼 매일 반복되는 루틴을 AI가 배경에서 스스로 수행하도록 완전히 비워야 합니다. 이외에도 다섯 가지가 더 있는데요. 모든 내용 정리번이 궁금한 분들은이 채널 구독구 본문을 확인해 주세요.</pre>
+  </div>
+  </article>
+</main>
+
+<footer>유튜브 구독 정리 · agy 요약 · 2026-07-14 06:00</footer>
+
+
+<script>
+document.querySelectorAll('.nlm-btn').forEach(function(btn){
+  btn.addEventListener('click',function(){
+    navigator.clipboard.writeText('/notebooklm '+btn.dataset.url).then(function(){
+      var orig=btn.innerHTML;btn.innerHTML='✓ 복사됨';btn.classList.add('copied');
+      setTimeout(function(){btn.innerHTML=orig;btn.classList.remove('copied');},2000);
+    });
+  });
+});
+</script>
+
+</body>
+</html>
