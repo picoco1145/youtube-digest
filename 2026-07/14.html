@@ -60,7 +60,7 @@
   <a class="nav-back" href="../index.html">← 대시보드로</a>
   <div>
     <div class="date-badge">2026-07-14</div>
-    <div class="count">1개 영상</div>
+    <div class="count">4개 영상</div>
   </div>
   <div style="font-size:0.75rem;color:var(--muted)">2026-07-14 06:00 생성</div>
 </header>
@@ -105,6 +105,127 @@
       <button class="copy-btn" onclick="var b=this,t=b.nextElementSibling||b;navigator.clipboard.writeText(document.querySelector('#tr-wodr2cUI_VU').textContent).then(()=>{b.textContent='복사됨';setTimeout(()=>b.textContent='복사',2000)})">복사</button>
     </div>
     <pre class="transcript-box" id="tr-wodr2cUI_VU">You've got a folder, or likely a few, full of years of work. And you think pointing AI at it would help. But the more data that you give AI, the worse it gets. If you're new here, I'm Dylan. I run an AI consultancy. And this is a common problem I help people fix. So by the end of this video, you'll have an AI that searches thousands of files and pulls the right ones without skipping what matters or making things up. And the best part is is AI will build the whole thing for you. So, let's get into it. This year is one of the ongoing battles that we tend to fight with AI. If you've watched any of my previous videos, you've likely heard me talk about this. Where the AI has limited space in its head. And the more we fill up the AI's head, the dumber it gets. And the technical term for the AI's head is a context window. So whatever model you're using, GPT, Claude, Gemini, it doesn't matter. They're all limited in how much they can hold in their head. And this visual does a really good job at depicting what's happening. Where on the vertical axis, we have the quality of the answer. On the horizontal axis, we have the number of files we've given the AI. Now once we've filled up the AI's head round past 50%, its intelligence drops like a rock. In our use case, that's going to be the number of files that we feed the AI. So we need to build systems and scaffolding around this weakness, so we can get the most out of AI even when we want it to read hundreds if not thousands of files. And that's what I want to show you in this video. Is that system that we can build around this to get the most out of AI without being hampered by this specific limitation. Now what is this system? It's very straightforward. Similar to how a human would deal with the issue. And it's going to be a table of contents or a map file. And I'll explain what that means in a second. But let's say that I give you a report. Say it's a 500-page report. If that 500-page report doesn't include the table of contents, you're going to be confused on where you need to look to get the information that you need. You're going to have to read the entire thing from front to back to get that information. But if you had a table of contents, you can look at that table of contents, realize that the budget is where you're interested, you can go straight to page 23 and get the information that's necessary. This is what we're going to provide to AI. Because right now, when you give AI hundreds if not thousands of files, you're just hoping that it finds what it needs to. And sometimes it does. But this is a really slow and less accurate approach to getting information from those files. Now, I'm assuming that you're using a desktop agent tool like Cloud Co-worker Codex, which are very good at getting through those files. But even those tools with high-end models struggle once you get past a certain point. And that's why we need this. So, now that we understand that we need a table of contents or a map file, how does this kind of interact with AI? Well, there are three layers AI is going to look at before it gets to the raw information. Because you likely have a folder or many sub folders that have hundreds if not thousands of files, and those that's the raw data, the source files. Well, we're going to put two layers of abstraction in front of that so that AI can easily find what it needs without getting overwhelmed. Quick pause in your regular programming. This video is brought to you by me, as always. Two quick things. First off, below is a 30-day AI Insight series, completely free. You'll get 30 insights in your inbox of how you can apply AI to your business and your work. The second thing is if you'd like to work with me, below are a series of offerings to see if there's a good fit between the two of us. Now, let's get back into the video. The first layer of abstraction is going to be the map file. So, this is going to be a map.md file that AI is going to create for you, and this is going to be our table of contents. And it's going to be extremely minimal because AI is going to look at it every single time you interact with AI. So, in this file, all we're likely going to have are the folder names as well as the file names inside of those sub folders, and maybe one to five words summarizing what's in that file. Because when we ask the AI a question of this huge data set of files, it's going to quickly determine based on our ask which of these are relevant for that ask. Once it's identified the ones that are relevant, it's going to go one layer deeper, not all the way to the source files, but one layer deeper. Reason being is that these source files, they could be hundreds if not thousands of pages long. And if they are, that's still extremely overwhelming for the AI. So, the next layer it's going to go is the summaries, because we're going to have the AI create one page or half page summaries for every single file. And maybe even less. It could be just three to five se</pre>
+  </div>
+  </article>
+  <article class="video-card">
+    <div class="card-top">
+      <a class="thumb-wrap" href="https://www.youtube.com/watch?v=eFOTQpbGcy8" target="_blank" rel="noopener">
+        <img src="https://i.ytimg.com/vi/eFOTQpbGcy8/hqdefault.jpg" alt="The $200K AI Job That Didn't Exist Last Year" loading="lazy"/>
+      </a>
+      <div class="card-info">
+        <div class="card-meta">
+          <span class="ch-tag">Nate Herk</span>
+          <span class="date-tag">2026-07-14</span>
+          
+        </div>
+        <div class="video-title">The $200K AI Job That Didn't Exist Last Year</div>
+        <div style="display:flex;align-items:center;flex-wrap:wrap;gap:4px;margin-top:auto">
+          <a class="yt-link" href="https://www.youtube.com/watch?v=eFOTQpbGcy8" target="_blank" rel="noopener">↗ 유튜브에서 보기</a>
+          <button class="nlm-btn" data-url="https://www.youtube.com/watch?v=eFOTQpbGcy8">📓 NotebookLM</button>
+        </div>
+      </div>
+    </div>
+    <div class="summary-section">
+      <h2>핵심 요약</h2>
+<p>최근 기업들의 해고 바람은 AI가 사람을 대체해서가 아니라, AI를 쓰는 한 명이 3~5인분을 하기 때문에 일어난 현상이다. 기업들이 문제 해결과 자동화 구축을 위해 AI 전문가를 찾기 시작하면서 1,300억 달러 규모의 새로운 AI 자동화 시장이 열렸다. 이 변화에 빠르게 탑승해 AI 활용 능력을 갖추는 것이 향후 커리어를 바꿀 핵심 치트키다.</p>
+<h2>주요 포인트</h2>
+<ul>
+<li>12개월 전에는 없었던 연봉 20만 달러 상당의 새로운 AI 커리어 기회가 찾아옴.</li>
+<li>숙제 헬퍼 플랫폼 CHEG가 ChatGPT 등장 후 주가가 반토막 난 것처럼 기존 사업들이 무너지고 있음.</li>
+<li>해고의 본질은 AI의 일자리 탈취가 아니라, AI를 활용하는 인재 한 명이 다수의 업무를 쳐내기 때문임.</li>
+<li>결국 AI를 다룰 줄 아는 사람이 다루지 못하는 사람을 앞서 나가는 구조임.</li>
+<li>기업들이 자동화 구축을 위해 AI 전문가와 컨설턴트를 모셔가면서 관련 시장이 급성장하는 중임.</li>
+</ul>
+    </div>
+  <div class="transcript-wrap">
+    <div class="transcript-header">
+      <button class="transcript-toggle" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('visible')">
+        <span class="arr">▼</span> 원문 자막
+      </button>
+      <button class="copy-btn" onclick="var b=this,t=b.nextElementSibling||b;navigator.clipboard.writeText(document.querySelector('#tr-eFOTQpbGcy8').textContent).then(()=>{b.textContent='복사됨';setTimeout(()=>b.textContent='복사',2000)})">복사</button>
+    </div>
+    <pre class="transcript-box" id="tr-eFOTQpbGcy8">So, there's a new opportunity for the people who know how to use AI that nobody's really talking about. Specifically, if you have a corporate career or work a job, 12 months ago, this didn't really exist, but it's now turning into the next AI gold rush. This opportunity could genuinely make many of you career millionaires over the next few years, and I've seen a lot of the members in my community making this shift and getting great results with it. But like in every shift in the AI space, it's the ones that get in early that'll make the most out of it. So, in this video, I'll break down exactly what this opportunity is and the four-step road map to take advantage of it. So, let's dive in. Okay, so this is a new opportunity in the AI space, but it's not some random thing that came out of nowhere. It's really just a product of the same pattern that we've been seeing ever since AI went mainstream. So, let me tell you about a company called CHEG. And if you guys haven't heard of them, for years, CE basically sold homework help to students. It was the service where you could go ask a question and an actual expert on their end give you an answer. And it also had loaded in, you know, like study guides and answer keys, stuff like that. And millions of students were paying for this every single month. It was a super stable, super profitable business. I personally used Cheg all the time back in college. And boy, did I get my money's worth. But then late 2022 happens and JGBT comes around and pretty much overnight, every single student could get the exact same homework help in just a few seconds for much cheaper, sometimes even free. And as soon as that happened, I canceled my CH subscription as well. In 2023, CHEG's stock crashed almost 50% in a single [music] day. And they basically came out and admitted that CatchBeT was killing their business. So the point I'm trying to make, CHEG is just the most famous example, but over the last couple of years, we've watched company after company after company announce layoffs and point at AI as part of the reason why. But I do think that most people read this the wrong way. Those layoffs didn't happen because AI could just replace people's jobs. They happened because companies realize that one person using AI can now do the work that used to take three to five people to do so. So when you actually look at all of that, it's always coming back to the same thing. the people who know how to use AI get ahead of the people who don't. And that's exactly how the first AI related jobs started changing the way corporate work actually worked. Companies started going out and hiring AI experts and AI agencies and consultants to come in and to diagnose the problems, build automations, solve the problems. And over the past couple of years, this whole AI automation market went from being this brand new thing to being worth around $130 billion. But the exact same thing that made these AI agencies a ton of money is the same thing that's about to replace them. So for the last couple of years, companies were in kind of this weird spot. They knew the problems they had. They just had no idea how to actually solve them. They knew that their, you know, support inbox was a mess. They just didn't know what to actually do about it. And that gap right there between knowing the problem and knowing the solution, that's the reason that AI agencies could charge such premium prices. And of course, because AI was a big buzzword and businesses were feeling pressure both from, you know, their boards and their competitors to start using AI. And of course, the AI agencies were the ones who could fill that gap. But for a while they were basically the only ones who could come in and actually build a solution. And that's just not the case anymore because AI has gotten so accessible and so easy to use that at this point even the busiest CEO has opened up Chad GBT or Claude and used it in some way to solve a problem that they were having. So it's just completely flipped now. The cost and the value of development is dropping. Companies still know exactly what problems they have, but instead of going out and paying another company to come and solve them, they're looking for ways to solve these problems themselves. And they want to do it in house. And this brings me to the actual opportunity, the one that I think is going to create more AI careers than anything else over the next few years. So, a lot of people are going to assume that the safe AI career here is just to become the best builder for these companies. Like, you know, the AI engineer, the person who can actually go in and build all the automations. And yeah, I think that that's part of it because then you get a really good understanding of how it works and how, you know, like what success looks like. Just knowing how to build this stuff is honestly a very small piece of the puzzle because what really matters right now is not about knowing how to build something</pre>
+  </div>
+  </article>
+  <article class="video-card">
+    <div class="card-top">
+      <a class="thumb-wrap" href="https://www.youtube.com/watch?v=MA-BFwwY7SU" target="_blank" rel="noopener">
+        <img src="https://i.ytimg.com/vi/MA-BFwwY7SU/hqdefault.jpg" alt="GLM 5.2 Just Replaced Your Claude Subscription" loading="lazy"/>
+      </a>
+      <div class="card-info">
+        <div class="card-meta">
+          <span class="ch-tag">Nicholas Puru</span>
+          <span class="date-tag">2026-07-14</span>
+          
+        </div>
+        <div class="video-title">GLM 5.2 Just Replaced Your Claude Subscription</div>
+        <div style="display:flex;align-items:center;flex-wrap:wrap;gap:4px;margin-top:auto">
+          <a class="yt-link" href="https://www.youtube.com/watch?v=MA-BFwwY7SU" target="_blank" rel="noopener">↗ 유튜브에서 보기</a>
+          <button class="nlm-btn" data-url="https://www.youtube.com/watch?v=MA-BFwwY7SU">📓 NotebookLM</button>
+        </div>
+      </div>
+    </div>
+    <div class="summary-section">
+      <h2>핵심 요약</h2>
+<p>Open Router에서 제공하는 GLM 모델을 Claude Code에 연동해서 코딩 비용을 획기적으로 줄이는 방법이다.</p>
+<p>실제 테스트로 딜 트래커 툴을 만들어 본 결과 비싼 유료 모델이랑 퀄리티 차이를 전혀 느낄 수 없었다.</p>
+<p>어려운 작업은 유료 모델이 낫겠지만 일반적인 코딩 작업의 90%는 이 무료 모델로 충분히 커버 가능하다.</p>
+<h2>주요 포인트</h2>
+<ul>
+<li>Open Router에서 무료 API 키를 발급받아 Claude Code에 등록하면 2분 만에 세팅이 끝남.</li>
+<li>기존 유료 모델로 3달러 들던 작업 비용을 GLM 모델을 통해 40센트 수준으로 대폭 아낄 수 있음.</li>
+<li>파이프라인 딜 트래커 개발 테스트에서 비싼 모델과 거의 동일한 결과물을 보여줌.</li>
+<li>어렵고 긴 작업을 제외한 일반적인 코딩의 90%는 유료 구독 모델과 성능 차이를 느끼기 어려움.</li>
+</ul>
+    </div>
+  <div class="transcript-wrap">
+    <div class="transcript-header">
+      <button class="transcript-toggle" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('visible')">
+        <span class="arr">▼</span> 원문 자막
+      </button>
+      <button class="copy-btn" onclick="var b=this,t=b.nextElementSibling||b;navigator.clipboard.writeText(document.querySelector('#tr-MA-BFwwY7SU').textContent).then(()=>{b.textContent='복사됨';setTimeout(()=>b.textContent='복사',2000)})">복사</button>
+    </div>
+    <pre class="transcript-box" id="tr-MA-BFwwY7SU">This free model just killed the $200 cloud subscription. It's the same coding, but a fraction of the price. And no, it's not some watered-down knockoff. I gave this and the $200 model the exact same job side by side, and I genuinely could not tell you which one built which. So, first I had to build a real working tool to track every deal inside of my pipeline. So, who owes me what, what's been paid [music] in the whole board. And the result, it came out basically identical to the expensive subscription. Now, setting it up takes only about 2 minutes. First, [music] create a free account on Open Router and grab one API key and just drop it into Claude code. Every single job now is going to be running on the free model called GLM instead of a pricey one. So, a build that [music] used to cost me three bucks now runs me about 40 cents. Now, the paid models, of course, a bit better on the hardest, longest jobs, but for 90% of what you actually do, you will not feel the difference. I just recorded a setup guide and everything [music] that you need to know about this. Just comment "need" and I'll send it over to you.</pre>
+  </div>
+  </article>
+  <article class="video-card">
+    <div class="card-top">
+      <a class="thumb-wrap" href="https://www.youtube.com/watch?v=EDtlzS7Rl7k" target="_blank" rel="noopener">
+        <img src="https://i.ytimg.com/vi/EDtlzS7Rl7k/hqdefault.jpg" alt="클로드 에이전트 4가지 비밀기능" loading="lazy"/>
+      </a>
+      <div class="card-info">
+        <div class="card-meta">
+          <span class="ch-tag">AIMAX_PD</span>
+          <span class="date-tag">2026-07-14</span>
+          
+        </div>
+        <div class="video-title">클로드 에이전트 4가지 비밀기능</div>
+        <div style="display:flex;align-items:center;flex-wrap:wrap;gap:4px;margin-top:auto">
+          <a class="yt-link" href="https://www.youtube.com/watch?v=EDtlzS7Rl7k" target="_blank" rel="noopener">↗ 유튜브에서 보기</a>
+          <button class="nlm-btn" data-url="https://www.youtube.com/watch?v=EDtlzS7Rl7k">📓 NotebookLM</button>
+        </div>
+      </div>
+    </div>
+    <div class="summary-section">
+      <h2>핵심 요약</h2>
+<p>클로드 데스크톱과 다양한 오픈소스 도구를 결합해 자율형 AI 팀을 구축하는 헬레나의 5가지 기술 공식이다. 로컬 엔진 설치부터 병렬 추론, 실시간 소셜 리서치, 가상 개발 조직 운영, 전용 명령어 최적화로 업무 효율을 극대화하는 법을 다룬다.</p>
+<h2>주요 포인트</h2>
+<ul>
+<li>로컬 엔진을 깔고 클로드 데스크톱 코워크 환경을 구축해서 깃허브 저장소를 직접 다루는 게 에이전트의 시작이다.</li>
+<li>전문 에이전트 5명이 치열하게 토론하는 LLM 콘솔 기반의 병렬 추론 시스템으로 비즈니스 사각지대를 완전히 없앤다.</li>
+<li>레딧과 X의 날것 그대로의 피드백을 URL 단위로 긁어모아 정밀한 시장 보고서를 만드는 실시간 소셜 리서치 엔진을 연결한다.</li>
+<li>기획부터 테스트까지 가상 에이전트들이 알아서 척척 개발 전 과정을 스스로 처리하는 가상 개발 조직을 운영한다.</li>
+<li>길고 귀찮은 프롬프트 대신 전용 슬래시(/) 명령어를 등록해 고차원 업무 프로세스를 즉시 호출해서 쓴다.</li>
+</ul>
+    </div>
+  <div class="transcript-wrap">
+    <div class="transcript-header">
+      <button class="transcript-toggle" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('visible')">
+        <span class="arr">▼</span> 원문 자막
+      </button>
+      <button class="copy-btn" onclick="var b=this,t=b.nextElementSibling||b;navigator.clipboard.writeText(document.querySelector('#tr-EDtlzS7Rl7k').textContent).then(()=>{b.textContent='복사됨';setTimeout(()=>b.textContent='복사',2000)})">복사</button>
+    </div>
+    <pre class="transcript-box" id="tr-EDtlzS7Rl7k">이 여자는 AI 아키텍처의 천재입니다. 단순히 질문하고 답을 채봇의 수준을 넘어 16만 명이 넘는 개발자가 검증한 오픈 소스 기술을 클로드에 이식해 자율령 AI 팀을 구축한 헬레나. 그녀가 공개한 클로드의 지능을 1% 수준으로 끌어올리는 여섯 가지 기술 공식 저장하고 끝까지 보세요. 첫째, 클로드 데스크톱 코워크 환경을 구축하세요. 웹 버전의 한계를 벗어나 기타의 방대한 오픈소스 저장소를 직접 클로닝하고 실행할 수 있는 로컨 엔진을 설치하는 것이 에이전트와의 시작입니다. 둘째, LLM 콘솔로 병렬 추론 시스템을 가동하세요. 다섯 명의 전문 에이전트가 하나의 비즈니스를 안전을 두고 치열하게 토론하며 당신의 사각 지대를 완벽하게 제거합니다. 셋째, 실시간 소셜 리서치 엔진을 연결하세요. 단순한 데이터 학습을 넘어 레딕과 X에서 쏟아지는 실제 사용자들의 날것 그대로의 고통과 감정을 URL 단위로 수집해 정밀한 시장 보고서를 생성해야 합니다. 넷째, G스텍을 통해 가상 개발 조직을 운영하세요. Y 콤비네이터의 기술력의 노가든 CEO와 엔지리어닝 매니저 에이전트들이 협업하여 기획부터 테스트까지 개발 전정을 스스로 처리하는 시스템을 소유하세요. 다섯째, 전용 쓰래시의 명령어로 워크플로우를 최적화하세요. 길고 지루한 프롬프트 대신 미리 정의된 전용 명령어를 입력하는 것만으로도 오피스하워나 디자인 리뷰 같은 곧 차원적인 업무 프로세스를 즉시 호출할 수 있습니다. 영상속 주인공이 실제 AI를 활용하는 방식을 정리했습니다.이</pre>
   </div>
   </article>
 </main>

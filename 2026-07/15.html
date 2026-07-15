@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>2026-07-15 — 유튜브 구독 정리</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+  :root{--bg:#090e1a;--surface:#111827;--surface2:#1a2235;--border:#1e2d47;--accent:#6c63ff;--accent2:#00d4ff;--text:#e8eaf0;--muted:#7a8499;--radius:14px;}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Pretendard',sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+  header{background:linear-gradient(135deg,#0d1b3e,#1a0533);border-bottom:1px solid var(--border);padding:20px 40px;display:flex;align-items:center;justify-content:space-between;}
+  .nav-back{color:var(--accent2);text-decoration:none;font-size:0.85rem;display:flex;align-items:center;gap:6px}
+  .nav-back:hover{color:#fff}
+  .date-badge{font-size:1.4rem;font-weight:700;letter-spacing:-0.5px;background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+  .count{font-size:0.85rem;color:var(--muted)}
+  main{max-width:900px;margin:0 auto;padding:32px 24px 80px}
+  .video-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;margin-bottom:24px;transition:border-color 0.2s,box-shadow 0.2s;}
+  .video-card:hover{border-color:var(--accent);box-shadow:0 4px 24px rgba(108,99,255,0.15)}
+  .card-top{display:flex;gap:0}
+  .thumb-wrap{flex:0 0 240px;position:relative;overflow:hidden}
+  .thumb-wrap img{width:100%;height:100%;object-fit:cover;transition:transform 0.4s}
+  .video-card:hover .thumb-wrap img{transform:scale(1.05)}
+  .card-info{flex:1;padding:20px;display:flex;flex-direction:column;gap:10px}
+  .card-meta{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+  .ch-tag{font-size:0.72rem;font-weight:600;padding:3px 12px;background:linear-gradient(135deg,rgba(108,99,255,0.2),rgba(0,212,255,0.2));border:1px solid rgba(108,99,255,0.3);border-radius:999px;color:var(--accent2);}
+  .date-tag{font-size:0.72rem;color:var(--muted)}
+  .no-transcript{font-size:0.68rem;padding:2px 8px;background:rgba(255,180,0,0.12);border:1px solid rgba(255,180,0,0.25);border-radius:999px;color:#ffa500;}
+  .video-title{font-size:1rem;font-weight:600;line-height:1.4}
+  .yt-link{display:inline-flex;align-items:center;gap:5px;font-size:0.8rem;color:var(--accent);text-decoration:none;transition:color 0.2s;}
+  .yt-link:hover{color:var(--accent2)}
+  
+  .nlm-btn{display:inline-flex;align-items:center;gap:5px;font-size:0.8rem;color:#fff;
+    background:rgba(108,99,255,0.2);border:1px solid rgba(108,99,255,0.4);border-radius:8px;
+    padding:4px 12px;cursor:pointer;font-family:inherit;transition:all 0.2s;margin-left:8px;}
+  .nlm-btn:hover{background:rgba(108,99,255,0.45);}
+  .nlm-btn.copied{background:rgba(0,200,100,0.2);border-color:rgba(0,200,100,0.4);color:#00c864;}
+
+  .summary-section{border-top:1px solid var(--border);background:var(--surface2);padding:20px 24px;font-size:0.85rem;line-height:1.7;color:#c5cad8;}
+  .summary-section h2{font-size:0.82rem;color:var(--accent2);margin:12px 0 4px}
+  .summary-section h2:first-child{margin-top:0}
+  .summary-section ul{padding-left:18px}
+  .summary-section li{margin-bottom:5px}
+  .transcript-wrap{border-top:1px solid var(--border);padding:14px 24px;background:#0c1220}
+  .transcript-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:0}
+  .transcript-toggle{background:none;border:none;color:var(--muted);font-size:0.8rem;cursor:pointer;font-family:inherit;display:flex;align-items:center;gap:4px;padding:0;transition:color 0.2s;}
+  .transcript-toggle:hover{color:var(--text)}
+  .copy-btn{background:rgba(108,99,255,0.1);border:1px solid rgba(108,99,255,0.3);border-radius:8px;color:var(--accent2);font-size:0.72rem;padding:4px 12px;cursor:pointer;font-family:inherit;transition:all 0.2s;}
+  .copy-btn:hover{background:rgba(108,99,255,0.25);color:#fff}
+  .transcript-box{display:none;margin-top:10px;background:#080d18;border:1px solid var(--border);border-radius:10px;padding:12px 14px;font-size:0.78rem;line-height:1.75;color:#8a95aa;max-height:260px;overflow-y:auto;white-space:pre-wrap;word-break:break-word;}
+  .transcript-box.visible{display:block}
+  footer{text-align:center;padding:24px;font-size:0.75rem;color:var(--muted);border-top:1px solid var(--border)}
+  @media(max-width:640px){.card-top{flex-direction:column}.thumb-wrap{flex:none;height:200px}header{padding:16px}main{padding:16px 12px 60px}}
+</style>
+</head>
+<body>
+
+<header>
+  <a class="nav-back" href="../index.html">← 대시보드로</a>
+  <div>
+    <div class="date-badge">2026-07-15</div>
+    <div class="count">4개 영상</div>
+  </div>
+  <div style="font-size:0.75rem;color:var(--muted)">2026-07-16 06:02 생성</div>
+</header>
+
+<main>
+
+  <article class="video-card">
+    <div class="card-top">
+      <a class="thumb-wrap" href="https://www.youtube.com/watch?v=0_mIRDIir8E" target="_blank" rel="noopener">
+        <img src="https://i.ytimg.com/vi/0_mIRDIir8E/hqdefault.jpg" alt="Prompting AI Is Dead, Here’s its Replacement" loading="lazy"/>
+      </a>
+      <div class="card-info">
+        <div class="card-meta">
+          <span class="ch-tag">Nicholas Puru</span>
+          <span class="date-tag">2026-07-15</span>
+          
+        </div>
+        <div class="video-title">Prompting AI Is Dead, Here’s its Replacement</div>
+        <div style="display:flex;align-items:center;flex-wrap:wrap;gap:4px;margin-top:auto">
+          <a class="yt-link" href="https://www.youtube.com/watch?v=0_mIRDIir8E" target="_blank" rel="noopener">↗ 유튜브에서 보기</a>
+          <button class="nlm-btn" data-url="https://www.youtube.com/watch?v=0_mIRDIir8E">📓 NotebookLM</button>
+        </div>
+      </div>
+    </div>
+    <div class="summary-section">
+      <h2>핵심 요약</h2>
+<p>단순히 프롬프트를 치고 결과를 고쳐 쓰는 시대는 가고, AI에게 목표를 주고 스스로 검증하며 반복하게 만드는 '루핑(Looping)'의 시대가 왔다. 루핑은 수치화된 목표와 체크리스트를 명확히 던져줄 때만 제대로 굴러가며, 인간의 검토 시간과 토큰을 아껴준다. 일회성 작업은 그냥 프롬프팅하되, 반복 작업은 루핑으로 돌리는 게 핵심이다.</p>
+<h2>주요 포인트</h2>
+<ul>
+<li>프롬프팅은 인간이 일일이 피드백하며 퀄리티를 체크해야 하지만, 루핑은 AI가 알아서 검증하며 목표를 달성할 때까지 알아서 반복함.</li>
+<li>루핑이 제대로 작동하려면 반복 업무여야 하고, AI가 자가 검증할 수 있게 '숫자, 퍼센트, 체크리스트' 형태로 목표를 줘야 함.</li>
+<li>"더 잘해봐" 같은 추상적인 요구는 기준이 없어서 AI가 대충 해놓고 스스로 통과시키니 절대 금지임.</li>
+<li>412개 데이터를 특정 조건에 맞춰 100% 통과할 때까지 검증하라는 식의 명확한 피니시 라인이 있어야 함.</li>
+<li>일회성이나 주관적 판단이 필요한 일은 기존처럼 프롬프팅하고, 조건이 맞는 반복 업무에만 루핑을 적용해 시간과 토큰을 아껴라.</li>
+</ul>
+    </div>
+  <div class="transcript-wrap">
+    <div class="transcript-header">
+      <button class="transcript-toggle" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('visible')">
+        <span class="arr">▼</span> 원문 자막
+      </button>
+      <button class="copy-btn" onclick="var b=this,t=b.nextElementSibling||b;navigator.clipboard.writeText(document.querySelector('#tr-0_mIRDIir8E').textContent).then(()=>{b.textContent='복사됨';setTimeout(()=>b.textContent='복사',2000)})">복사</button>
+    </div>
+    <pre class="transcript-box" id="tr-0_mIRDIir8E">Stop prompting your AI without using this one secret setting first. The founder of Anthropic, he does not prompt at all anymore. He just gives it a goal and he lets it loop. Now, prompting, it's just you typing, reading what came back, fixing it, typing again. So, you are the quality check. Looping is you instead giving it a goal just once and it writes, it checks its own answer, and decides its own next steps, and it keeps going until the goal is hit. You just see it when it is done without all the back and forth and time wasted. And this only works if two things are true. It has to be a job that you repeat, and you have to write the goal properly. So, not simply just prompting make it better. Better is not a number, so it has nothing to check against, and it'll pass its own bad work every single time. Real goals, they have numbers, percentages, or a checklist. So, for last month's books, for example, you open Claude code, and instead of categorize these, you type categorize all 412 transactions in this file. And now, everyone, it gets exactly one of these 12 categories, nothing dumped in the other category, and anything you are under 90% sure on gets flagged, not just guessed. Check every row against those three rules, rewrite any that fail, and don't stop until all 412 pass. That last part is the loop. And if it's a one-off, or it's just a judgment call, don't bother, just prompt it like normal. But, if you give it a number, a checklist, and a finish line, and you will stop proofreading your own AI and save time and save tokens. Comment "need" if you want the full video tutorial and best use cases for this.</pre>
+  </div>
+  </article>
+  <article class="video-card">
+    <div class="card-top">
+      <a class="thumb-wrap" href="https://www.youtube.com/watch?v=IB-wGDJqt8M" target="_blank" rel="noopener">
+        <img src="https://i.ytimg.com/vi/IB-wGDJqt8M/hqdefault.jpg" alt="5 Insane Claude Fable 5 Use Cases You Must Do NOW (Steal These)" loading="lazy"/>
+      </a>
+      <div class="card-info">
+        <div class="card-meta">
+          <span class="ch-tag">Nicholas Puru</span>
+          <span class="date-tag">2026-07-15</span>
+          
+        </div>
+        <div class="video-title">5 Insane Claude Fable 5 Use Cases You Must Do NOW (Steal These)</div>
+        <div style="display:flex;align-items:center;flex-wrap:wrap;gap:4px;margin-top:auto">
+          <a class="yt-link" href="https://www.youtube.com/watch?v=IB-wGDJqt8M" target="_blank" rel="noopener">↗ 유튜브에서 보기</a>
+          <button class="nlm-btn" data-url="https://www.youtube.com/watch?v=IB-wGDJqt8M">📓 NotebookLM</button>
+        </div>
+      </div>
+    </div>
+    <div class="summary-section">
+      <h2>핵심 요약</h2>
+<p>Fable 5는 사람이 일일이 감시하지 않아도 알아서 코드를 테스트하고 오류까지 고쳐가며 작업을 끝마치는 에이전트다. Cursor 같은 IDE 환경에서 모델을 변경해 사용하며, WhisperFlow 음성 입력을 조합하면 작업 속도가 4배나 빨라진다.</p>
+<h2>주요 포인트</h2>
+<ul>
+<li>Fable 5는 진행 과정에서 자체 점검을 하므로 사용자가 매 단계 피드백을 줄 필요가 없다.</li>
+<li>웹 브라우저 채팅보다는 Cursor나 Claude Code 같은 데스크톱/IDE 환경에서 쓰는 것을 강력히 추천한다.</li>
+<li>WhisperFlow 음성 인식 도구를 사용하면 복잡하고 상세한 프롬프트도 타이핑보다 4배 빠르게 입력 가능하다.</li>
+<li>청소 견적 도구 예시처럼 프롬프트 한 번으로 작동하는 앱을 만들고, 발생한 에러까지 스스로 디버깅하여 완성해 낸다.</li>
+</ul>
+    </div>
+  <div class="transcript-wrap">
+    <div class="transcript-header">
+      <button class="transcript-toggle" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('visible')">
+        <span class="arr">▼</span> 원문 자막
+      </button>
+      <button class="copy-btn" onclick="var b=this,t=b.nextElementSibling||b;navigator.clipboard.writeText(document.querySelector('#tr-IB-wGDJqt8M').textContent).then(()=>{b.textContent='복사됨';setTimeout(()=>b.textContent='복사',2000)})">복사</button>
+    </div>
+    <pre class="transcript-box" id="tr-IB-wGDJqt8M">Fable 5가 돌아왔습니다! 이번 주에는 AI를 이용해서 전에는 해본 적 없는 일을 해냈습니다. 저는 제 사업 전체를 그 시스템에 맡기고, 시스템이 모든 일을 알아서 처리하도록 내버려두고 그냥 떠났습니다 . 이 도구는 실제로 작동하는 애플리케이션을 만들어 주었고, 완료되었다고 알려주기 전에 자체 코드를 테스트했으며, 그 애플리케이션을 멋진 출시 영상과 모션 그래픽 홍보 영상으로 변환해 주었습니다. 저는 편집기를 한 번도 열어보지 않았습니다. 그리고 그 프로그램은 대본을 쓰고, 배우를 캐스팅하고, 촬영하고, 자막까지 넣어주는 등 완전한 비디오 광고를 만들어줬어요. 또한 제가 집을 비운 동안 몇 시간 동안 전체 시장 데이터를 분석한 후, 깔끔한 보고서와 이를 기반으로 구축된 실시간 대시보드를 저에게 제공해 주었습니다. 그리고 제가 가장 좋아하는 기능은, 연락해야 할 적절한 회사와 각 회사의 의사 결정권자를 찾아내고, 그들에게 모두 개인 맞춤형 이메일을 작성해 준다는 점입니다. 그리고 저는 그 모든 업무를 직접 수행하지 않았습니다. 자, 가장 놀라운 점은 이 모든 내용을 제가 직접 타이핑한 것이 아니라는 겁니다. 저는 그 내용을 처음부터 끝까지 소리 내어 말했어요. 자, 시작하기 전에 꼭 알아두셔야 할 한 가지가 있습니다. 바로 이 모든 게 Fable 5 덕분이라는 겁니다. 지금까지의 모든 AI 게임에서는 플레이어가 모든 걸 일일이 확인해야 하는 입장이었죠. 시스템이 뭔가를 하도록 시킨 다음, 시스템이 어리석은 짓을 하지 않았는지 확인하고, 이런 식으로 계속 반복하는 겁니다 . 하지만 Fable에서는 그런 악순환이 대부분 사라집니다. 이 시스템은 진행하면서 자체적으로 점검을 하므로, 사용자가 모든 단계를 일일이 감독할 필요가 없습니다 . 그냥 건네주셨고, 결과는 그대로 돌아왔습니다. 이번 영상에서는 Fable 5의 놀라운 활용 사례 5가지를 보여드리겠습니다. 제가 가장 자주 사용하는 활용법과 각 활용법을 자세히 설명드릴 테니, 여러분도 오늘 바로 따라해 보세요. 저는 AI 에이전시와 이 채널을 운영하고 있어서 매주 상당한 양의 실제 작업을 이러한 도구에 투입하고 있는데, 이번에는 도구가 저를 도와주는 대신 스스로 작업을 완료해 주었습니다. 자, 우선 Fable 5를 어디에서, 그리고 실제로 어디에서 사용할 수 있는지에 대해 설명드리겠습니다. 몇 가지 옵션이 있습니다. IDE를 사용할 수도 있는데 , 저는 여기서 Cursor를 사용하고 있습니다. 클로드 데스크톱 애플리케이션 같은 것을 사용할 수도 있고, 웹 브라우저를 사용해서 채팅만 할 수도 있습니다. IDE를 사용하거나 최소한 Claude Code를 사용할 수 있는 데스크톱 애플리케이션과 같은 것을 사용하는 것을 강력히 추천합니다 . 간단히 말해서, Fable 5 모델로 변경하기만 하면 됩니다. 7월 7일까지 구독에 포함되어 있으니 확인해 보세요 . 그 후에는 API 기반 요금제로 전환될 예정이며, 앞으로 사용 비용이 훨씬 더 많이 들게 될 것입니다. 하지만 다시 말씀드리지만, 저희는 Cursor를 사용할 것이고, 모델만 Fable로 변경할 것입니다. 그래서 첫 번째 사용 사례에서는 크기는 작지만 실제로 유용한 것을 원합니다. 동네 가게에서 손님에게 흔히 건네주는 그런 종류의 물건. 그러니까, 프롬프트는 하나만 있을 거예요. 간단히 이렇게 말할게요. " 가정 청소 사업을 위한 한 페이지짜리 즉석 견적 도구를 만들어 주세요. 입력값은 침실 개수, 욕실 개수, 면적, 그리고 꼼꼼한 청소 여부입니다. 이 값들을 바탕으로 가격을 계산해서 명확하게 표시하고, 공유하기 쉬운 깔끔한 요약 페이지를 만들어 주세요. 그리고 몇 가지 다른 입력값을 넣어서 직접 테스트해 보세요 . 오류가 있으면 수정하고 나서 완료했다고 말씀해 주세요." 그래서, 그게 바로 우리가 요구할 사항입니다. 그리고 맨 위에서 Fable 5가 활성화되어 있는지 확인하고 실행해 보겠습니다. 이건 청소업체를 위한 간편 견적 도구입니다. 몇 가지 세부 사항을 추가했습니다. 가격 정보와 깔끔한 페이지를 제공하여 바로 전송할 수 있습니다. 그리고 제가 그 안에 담아두었던 중요한 요점은, 직접 만들어보고, 스스로 테스트해보고 , 문제가 있으면 수정한 후에 저에게 다시 오라는 것입니다. 이 영상 내내 제가 이 방법을 사용하는 걸 보실 수 있을 테니 간단하게만 말씀드릴게요. 제가 항상 사용하는 방법입니다. 저는 이 프롬프트들을 입력하지 않을 겁니다. 저는 그냥 말하고 있는 거고, WhisperFlow가 그걸 제 채팅창에 넣어주는 것뿐이에요. 참고로, 이 영상을 제작하기 위해 WhisperFlow와 파트너십을 맺었습니다. 오늘 영상 제작을 후원해 주신 WhisperFlow에 다시 한번 감사드립니다 . 혹시 WhisperFlow가 무엇인지 들어본 적도, 본 적도 없으신 분들을 위해 설명드리자면, 방금 보신 것처럼 음성을 텍스트로 변환해주는 도구입니다. 그러니까, 말만 하면 커서가 있는 위치에 깔끔한 텍스트가 자동으로 입력되는 거죠. 그리고 이는 생각보다 훨씬 중요한데, 말하는 것이 타이핑하는 것보다 약 네 배 빠르기 때문입니다. 그리고 이 영상에서처럼 AI에게 방대하고 상세한 명령어를 입력할 때는 속도가 매우 중요한 요소가 될 것입니다. 게다가 컴퓨터에 내장된 음성 입력 기능보다 훨씬 더 정확합니다. 그러니까, 저 프롬프트에 응답하는 데는 아마 30 초 정도밖에 걸리지 않았을 겁니다. 어쩌면 그 말을 실제로 하는 데에도 그만큼의 시간이 걸릴지도 모릅니다. 하지만 아주 길고 복잡한 내용을 입력할 때는 음성 인식 도구를 사용하면 시간을 엄청나게 절약할 수 있어요. 그리고 제가 지금 거의 모든 일에 사용하는 것도 바로 이것입니다. 혹시 직접 사용해보고 싶으신 분들을 위해 설명란에 링크를 남겨두었습니다 . Fable이 여기서 실제로 무엇을 하고 있는지 좀 더 자세히 살펴보겠습니다. 처음부터 벌써 두 가지 문제가 눈에 띄네요. 제목에 " Emoji Blake를 단독으로 실행할 때 문자 세트 장식이 누락되었으며 콘솔 오류가 발생합니다."라고 표시됩니다. 제가 한번 살펴보겠습니다 . 그래서 실제로 내부로 들어가서, 보시다시피 지금 플레이라이트 내부에서 자체 서버에서 실행되고 있습니다. 로컬 호스트인 Brightside Cleaning에서 10초 안에 가격을 확인할 수 있습니다. 그러니까, 모든 걸 꼼꼼히 살펴보고, 이해하고, 스크린샷을 찍고, 모든 걸 실행해보고, 오류를 수정하고, 정말 깔끔하고 효과적인 해결책이 제게 돌아올 수 있도록 하는 거죠. 이러한 애플리케이션을 구축하는 특정 사용 사례에서 가장 중요한 것은 단순히 구축하는 것뿐만 아니라 테스트하는 것입니다. 실제로 모든 기능을 실행하고 다양한 오류를 검토하여 제대로 작동하는지 확인하고, 설정을 변경하거나 세부적인 부분을 수정하지 않고 최종 결과물이 최적화되도록 하는 것입니다. 그런 다음 모든 파일을 폴더에 저장해 줍니다. 이렇게 해서 이 애플리케이션의 최종 결과물을 얻게 되었습니다. 저는 그 파일을 특정 공개 서버에 저장해두지 않았습니다 . 제대로 작동하는지 확인하기 위한 단순한 HTML 파일입니다 . 이제 우리는 이것을 어디든 배포할 수 있을 것입니다. 그러니까 사업주이시거나 AI 사업을 시작하려는 분이든, 어떤 목적이든 돈을 벌고 싶다면 기업을 위한 다양한 애플리케이션을 개발할 수 있습니다. 가격 견적 도구나 기타 여러 가지 기업용 애플리케이션을 만들 수도 있고, 직접 사업을 운영하면서 수익을 늘릴 수도 있습니다 . 자, 이제 두 번째 사용 사례로 넘어가 보겠습니다. 자, 두 번째 사용 사례는 단순히 기술적으로 존재하는 광고가 아니라, 실제로 훌륭한 비디오 광고를 제작할 수 있다는 것입니다 . 그래서 이건 정말 어려운 시험이에요. 좋은 광고는 단 하나의 역할만으로 결정되는 게 아니니까요. 실제로는 10가지 정도의 서로 다른 직업이에요. 그러니까 아이디어를 내고, 대본을 쓰고, 적합한 사람을 캐스팅하고, 영상을 촬영하고, 마지막으로 그걸 전부 다시 보면서 뭐가 괜찮은지 판단하는 거죠. 마지막 부분, 즉 평가 부분에서 AI 영상이 대개 한계를 드러냅니다. 보통 이럴 때는 그냥 클립을 하나 만들고, 잘 되기를 바라면서, 절반은 괜찮고 절반은 엉망인 상태로 다시 실행하고, 또 다시 만들고 기도하는, 즉 우리가 흔히 말하는 '스프레이처럼 뿌리고 기도하는' 방식을 쓰는 겁니다. 여기서 다른 점은 Fable이 실제로 여기에 어떤 결과가 돌아오는지 살펴본다는 것입니다 . 그래서 이 프로그램은 영상 클립을 검토하고, 좋지 않은 부분을 제거하고, 잘못된 부분이 있으면 자체적인 접근 방식을 수정하는 등, 광고가 만족스러울 때까지 계속해서 작업을 진행합니다. 그러니까 단순히 생성하는 것뿐만 아니라 실제로 지시하는 역할도 하는 거죠. 문제는 Fable 자체로는 동영상을 만들 수 없다는 점입니다. 따라서 그러한 기능이 내장되어 있지 않으며, 자체적으로 다른 애플리케이션에 연결할 수도 없습니다. 그래서 저는 이 작업을 수행할 수 있는 도구를 제공해야 했고 , 제가 사용한 도구는 Arcads입니다. 제가 생각하는 방식은 이렇습니다. Fable 5는 게임의 두뇌 역할을 하고, Arcads는 그 두뇌가 작동할 수 있는 스튜디오 역할을 하는 거죠. 그러니까 모든 배우, 목소리, 영상 등이 한 곳 안에서 만들어지는 겁니다. 전원을 연결하는 중인데 , 1분 정도 걸립니다. 방금 설치했는데, 생각보다 간단해요. 그냥 이 Arcads MCP에 연결하라고만 말씀드리겠습니다. 여기 링크가 있습니다. 그렇다면 저는 그냥 아르카즈 링크를 붙여넣겠습니다. 이제 Whisper Flow가 특히 그 부분에서 훨씬 더 정확해야 한다는 점을 말씀드리고 싶습니다. 또한 처음 시도에서 정확하지 않더라도 향후 특정 용어를 추가할 수 있는 개인 용어 사전도 있습니다. 그러니까, 자주 하는 말이 있다면 그걸 활용할 수 있어요. 어쨌든, 이 링크를 드릴게요. Fable 토큰을 낭비할 필요가 없기 때문에 Fable에서 Opus 4.8로 변경했습니다. 이런 간단한 요청에도 토큰을 쓸 필요가 없거든요. 그럼, Arcads에 접속하겠습니다. 인증 정보를 한 곳에 로드해 보겠습니다. 계정에 로그인하기만 하면 됩니다. 아래</pre>
+  </div>
+  </article>
+  <article class="video-card">
+    <div class="card-top">
+      <a class="thumb-wrap" href="https://www.youtube.com/watch?v=biZsmM5kEcA" target="_blank" rel="noopener">
+        <img src="https://i.ytimg.com/vi/biZsmM5kEcA/hqdefault.jpg" alt="15분만에 챗지피티 워크를 나만의 직원으로 만들기" loading="lazy"/>
+      </a>
+      <div class="card-info">
+        <div class="card-meta">
+          <span class="ch-tag">greenkokki 그코</span>
+          <span class="date-tag">2026-07-15</span>
+          
+        </div>
+        <div class="video-title">15분만에 챗지피티 워크를 나만의 직원으로 만들기</div>
+        <div style="display:flex;align-items:center;flex-wrap:wrap;gap:4px;margin-top:auto">
+          <a class="yt-link" href="https://www.youtube.com/watch?v=biZsmM5kEcA" target="_blank" rel="noopener">↗ 유튜브에서 보기</a>
+          <button class="nlm-btn" data-url="https://www.youtube.com/watch?v=biZsmM5kEcA">📓 NotebookLM</button>
+        </div>
+      </div>
+    </div>
+    <div class="summary-section">
+      <h2>핵심 요약</h2>
+<p>챗지피티 워크(ChatGPT Work) 써서 업무 시간 반으로 줄이는 법 알려주는 영상이다. 로컬 폴더랑 구글 드라이브 연결하고, 자주 쓰는 가이드를 '스킬'로 등록해두면 나만의 가상 직원이 알아서 톤 맞춰서 일해준다.</p>
+<h2>주요 포인트</h2>
+<ul>
+<li>챗지피티 워크 데스크톱 앱은 모든 플랜에서 쓸 수 있고, 질문이 아니라 작업 위주로 UI가 개편됐다.</li>
+<li>결과물 저장할 로컬 폴더는 한글 경로 에러 날 수 있으니까 무조건 영어 이름으로 만드는 게 핵심이다.</li>
+<li>구글 드라이브랑 지메일 플러그인 연동해놓으면 드라이브에 둔 기획서나 가이드 문서 쉽게 불러와서 써먹을 수 있다.</li>
+<li>매번 설명하기 귀찮은 브랜드 가이드라인은 '스킬(Skill)'로 한 번 심어두면 앞으로 모든 작업에 자동 반영된다.</li>
+<li>드라이브에서 소스 가져와서 기획 짜고, 결과물은 내 컴퓨터 로컬 폴더에 바로 꽂아넣는 꿀맛 워크플로우다.</li>
+</ul>
+    </div>
+  <div class="transcript-wrap">
+    <div class="transcript-header">
+      <button class="transcript-toggle" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('visible')">
+        <span class="arr">▼</span> 원문 자막
+      </button>
+      <button class="copy-btn" onclick="var b=this,t=b.nextElementSibling||b;navigator.clipboard.writeText(document.querySelector('#tr-biZsmM5kEcA').textContent).then(()=>{b.textContent='복사됨';setTimeout(()=>b.textContent='복사',2000)})">복사</button>
+    </div>
+    <pre class="transcript-box" id="tr-biZsmM5kEcA">이 완성도 높은 신제품 컨셉 문서는 제가 만들지 않았습니다. [음악] 신제품 컨셉에 나온 내용을 도대로 웹사이트와 광고에 사용될 고품질 [음악] 이미지는 제가 촬영하지 않았습니다. 신제품 컨셉 문서와 이미지를 사용해서 제작된이 고품질 제품 사이트 또한 제가 제작하지 않았습니다. [음악] 사이트를 통해 받은 문의 이메일에 대해 자동으로 작성된 초안들은 제가 [음악] 작성하지 않았습니다.이 모든 일을 바로 채치피pt 워크 하나로 끝냈습니다.이 이 영상에서는 채치피티 [음악] 워크를 통해 처음부터 끝까지 무엇을 할 수 있는지 함께 따라하며 진행해 볼게요.이 영상을 모두 보고 나면 [음악] 여러분이 업무에 사용되는 시간이 두 배 이상 줄어들 것입니다. 시작하기 전에 이와 같은 영상을 앞으로도 기대한다면 영상에 좋아요와 [음악] 응원 댓글도 잊지 마세요. 그럼 가이드 시작합니다. 채치피pt 워크가 나왔습니다. 현재 웹상에서 방문하면 상단에서 워크를 클릭해서 방문할 수 있습니다. 데스크 맵으로 방문하면 여기 채치 워크가 기본 설정이 되어 있고 채팅은 아래 메뉴로 들어간 형태로 변경되었습니다. 가운데 문구도 보면 어떤 작업을 할지에 대해 묻고 아래 예시 카드 또한 질문이 아니라 모두 작업과 관련된 일로 구성되어 있는데요. 오늘이 영상에서는 채지피t 워크를 모든 플랜에서 사용할 수 있는 데스크톱맵을 통해 진행해 볼게요. 예제로 캔들 브랜드가 겨울 신제품을 낸다고 가정하고 진행하겠습니다.이 이 프로젝트를 처음부터 함께 따라하면 채지 워크로 할 수 있는 강력한 일들을 자연스럽게 배우고 활용할 수 있게 될 것입니다. 참고로 캔들 브랜드는 예시일 뿐이고 자신의 상황에 맞게 자유롭게 활용해 볼 수 있습니다. 먼저 워크를 켜면 왼쪽에 프로젝트가 있는데요. 일시키기 전에 이거부터 만들어 볼게요. 채팅은 단만 주고 끝났지만 워크에서는 결과물을 만들기 때문에 저장될 작업 공간이 필요합니다. 저는 이미 데스크톱에 캔들 브랜드라고 빈 폴더를 만들어 놓았습니다. 프로젝트 옆에 플러스 아이콘을 클릭한 뒤 기존 폴더 사용을 클릭하세요. 만들어 둔 폴더를 선택할게요. 참고로 최상의 폴더는 영문 이름으로 작성하는 것을 권장합니다. 해당 지정 폴더가 한글로 되어 있는 경우 인식하지 못하는 경우가 있기 때문에 참고하시기 바랍니다. 여기서 하나만 정리할게요. 현재 로컬에 만들어서 프로젝트로 지정한 폴더는 채치T 워크에서 나오는 결과물을 저장합니다. 다른 하나는 결과물을 만들 때 참고하는 문서들은 여기 구글 드라이브에 저장해 놓고 필요할 때마다 가져오는 방식으로 진행할게요. 현재 영문으로 캔들 드라이브로 폴더를 만들었고 클릭해서 확인해 보면 브랜드 색상과 분위기가 정리된 오후 이향 브랜드 가이드와 뭘 판매할지 내용이 담긴 캠페인 가이드 문서가 있습니다. 근데 채t 워크는 처음에 드라이브 접근이 불가능합니다. 그래서 다음에 열어 줄게요. 이걸 열어 주는게 바로 플러그인입니다. 왼편에 나온 플러그인을 클릭하세요. 여기서 설치할 수 있는 플러그인 확인이 가능하고 사용할 외부 도구를 설치하면 됩니다. 설치하는 방식은 설치 버튼을 누르고 로그인 과정 및 권한 허용만 해 주면 되기 때문에 어렵지 않게 연결할 수 있습니다. 여기서 활용할 구글 드라이브와 Gma을 이미 연결해 놓았기 때문에 바로 넘어갈게요. 프로젝트 오른편에 나온 아이콘을 클릭해서 대화창을 열어 주세요. 이곳에 이렇게 입력할게요. 구글 드라이브에 생성했던 폴더에 있는 두 가이드를 가져와서 핵심을 요약 정리해 달라고 입력했어요. 그럼 요청해 볼게요. 참고로 아래 승인 요청 옵션을 선택한 상태라면 매번 승인이 필요하다는 점도 참고하시기 바랍니다. 결과적으로 문서를 잘 찾아서 브랜드 가이드와 캠페인 문서에 어떤 내용들이 있는지 요약한 파일이 생성되었습니다. 작업 공간 폴더에 이렇게 생성되었고 내용도 잘 확인할 수 있습니다. 여기까진 잘 됐는데요.이 브랜드 가이드가 걸립니다. 앞으로 이미지 만들 때도 참고해야 되고 사이트 만들 때도 소셜 관련 리소스를 만들 때도 참고해야 됩니다. 그럼 매번 이거 보고하라고 말해 줘야 되는데요. 좀 귀찮습니다. 그래서 다음엔 이걸 아예 새겨 버릴 거예요. 한 번 심어 두면 앞으로 뭘 만들든 우리 브랜드 톤이 알아서 나오게요. 이걸 해 주는게 바로 스킬입니다. 그냥 이렇게 생각하시면 됩니다. 매번 설명하기 귀찮은 걸 한번 적어 두고 계속 쓰는 거. 메뉴에서 플러그인을 클릭하세요. 왼쪽 상단에 플러그인 오른편에 나온 스킬을 클릭하세요. 이곳에 현재 설치된 모든 스킬을 확인할 수 있고 만들기 위해 오른쪽 상단에 만들기 버튼을 클릭하세요. 스킬 크리에이터라는 스킬을 통해 세 스킬을 만들 수 있습니다. 이곳에 이렇게 입력해 볼게요. 브랜드 가이드를 첨부해서 브랜드 디자인 스킬을 만들어 달라고 요청했고이를 통해 앞으로 결과물을 만들 때마다 자동 적용되도록 입력했어요. 그럼 이전에 가져온 브랜드 가이드 문서를 업로드한 뒤 요청할게요. [목을 가다듬음] 스킬 설치가 완료되면 확인해 볼게요. 플러그인을 클릭하세요. 상단에 스킬을 클릭하세요. 여기 보면 브랜드 디자인 스킬을 확인할 수 있고 클릭해 보면 어떻게 구성되었는지도 확인이 가능합니다. 그럼 이제 결과물을 만들기 위한 준비가 끝났고 진짜 만들어 볼게요. 먼저 캠페인 방향부터 잡아 볼게요. 현재 구글 드라이브에 추가해 놓은 캠페인 가이드 문서에는 제품 정보와 가격을 포함한 캠페인에 필요한 정보가 모두 담겨 있습니다. 그럼 캔들 브랜드 프로젝트에서 입력해 볼게요. 구글 드라이브에 있는 캠페인 가이드를 읽은 뒤 캠페인 방향 세 가지를 추천하고 하나를 추천해 달라고 입력했어요. 그럼 요청해 볼게요. 결과적으로 세 가지 방향을 제공했고 아래 최종적으로 추천한 방향을 확인할 수 있습니다. 저는 추천한 대로 진행해 볼게요. 방향 정했으면 문서로 남겨야 됩니다. 그리고 저장은 제 컴퓨터 폴더에 할게요. 아까 작업대로 잡아둔 그 폴더요.이를 통해 재료는 구글 드라이브에서 가져오고 결과물은 로컬 폴더에 저장하는 방식입니다. 참고로 정해진 정답은 없고 여기서는 다양한 방식을 보여 드리기 위해 이렇게 진행한다는 점 알려 드립니다. 그럼 요청할게요. 여기 선택한 캠페인을 토대로 컨셉이 정리된 PDF 문서가 나왔습니다. 우선 깔끔하고 고품질 결과물로 제작돼서 팀원이 있거나 클라이언트가 있다면 공유해도 될 만한 수준입니다. 여기에 더해 결과물은 이렇게 로컬에 저장했기 때문에 필요시 바로 공유할 수도 있겠습니다. 또한 현재이 문서는 이전에 만든 브랜드 스킬을 적용해서 제작되었는데요. 이미지 제작 방향 부분을 살펴보면 여기 비주얼 규칙을 확인할 수 있습니다.이 규칙은 자동으로 생성된 것이 아니라 여기 실제 브랜드 가이드를 토대로 제작된 것을 알 수 있습니다.이를 이를 통해 스킬의 유용함도 함께 느낄 수 있습니다. 아래 내려가면 한번 촬영하고 모든 채널에서 나눠쓴다와 같이 필요한 사진이 딱 정해져 있어요. 어떤 사진을 어디에 쓸지까지 다 짜놨습니다. 아래 다음 섹션에는 랜딩 페이지에 들어갈 섹션별 문구가 나왔고이를 토대로 나중에 웹사이트를 제작시 사용하면 됩니다. 정리하면이 컨셉 문서는 정리 문서를 넘어서 하나의 설계도와 같이 이용할 수 있습니다. 그럼 이제 이미지를 만들어 볼게요. 이전에 컨셉 문서에서 생성할 각 장면들에 대한 정보와 방향이 잡혀 있습니다. 그럼 그대로 시켜 볼게요. 컨셉 문서에 있는 샬리스트네 개를 비주얼 룰을 지켜서 이미지로 생성해 달라고 요청했고 완성보는 로컬 폴더 저장해 달라고 했습니다. 만약 실제 이미지가 준비되어 있다면 요청할 때 함께 업로드해서 요청하면 되겠습니다. 그럼 요청해 볼게요. 이미지가 생성되었습니다. 브랜드에 맞는 일관된 분위기의 사진 내장이 나왔습니다. 랜딩 첫 화면에 사용할 손에 불을 붙이는 넓은 커신 대표 장면부터 인스타그램에 사용할 휴대폰을 뒤집는 행동 장면, 상세 페이지나 제품 소개에 들어갈 제품 장면, 마지막으로 캔들 3종 세트가 모두 들어간 장면까지 요청한 그대로 생성되었습니다. 그럼 이제 두 번째로 웹사이트를 생성해 볼게요. 먼저 여기서 오늘 제일 중요한 걸 알려 드릴게요. 입력창에 골뱅이를 쳐 보세요. 앞에서 우리 골뱅이를 한번 썼는데요. 구글 드라이브에서 재료 가져올 때 썼습니다. 근데 골뱅이가 그것만 하는게 아닙니다. 여기 목록을 보시면요. 가져올 재료만 있는게 아니라 결과물을 뭘로 만들지도 여기 있어요. 사이트를 고르면 웹사이트가 생성됩니다. 그래서 결과물로 문서, PDF, 엑셀 파일, PPT 등 원하는 어떤 결과물 형태든 요청해 볼 수 있어요. 정리하면 골뱅이를 사용하는 목적으로 재료를 가져올 때 한 번, 재료를 담아서 만들 결과물 형태를 고를 때 한 번 이런 식으로 활용할 수 있습니다. 그럼 사이트를 생성하기 위해 먼저 골뱅이를 입력한 뒤 옵션 중 사이트를 찾아서 선택하세요. 준비한 프롬프트를 입력할게요. 여기 보면 이전에 컨셉 문서에서 확인했던 랜딩 페이지 메시지를 그대로 사용해서 만들고 배포해 달라고 요청했어요. 그리고 사진은 이전에 생성한 내장을 캠페인 컨서에 나왔던 리즈 맵대로 배치해 달라고 했고 브랜드 스타일을 유지해 달라고 했어요. 그럼 요청해 볼게요. 결과적으로 사이트가 완성되었고 비공개로 배포되었다고 확인할 수 있습니다. 사이트 링크를 클릭해서 열어 볼게요. 처음엔 채지 계정으로 로그인해서 연동이 필요하고 연동 후에는 자유롭게 사이트에 방문할 수 있습니다. 사이트에 방문했습니다. 사이트에 사용된 이미지와 문구들을 살펴보면 이전에 컨셉 문서에서 계획된 내용들을 기반으로 문구들이 반영되었고 이미지는 이전에 생성한 것들로 구성되었습니다.이 사이트는 제품 소개 사이트로 실제 제품을 판매하는 사이트 링크와 이메일 구독, 주소 등을 추가로 제공하면 해당 부분도 자동으로 연동되게 할 수 있습니다. 그럼 이렇게 제작된 사이트를 실제로 사람들도 방문할 수 있도록 배포하기 위해 다시 채치T로 돌아갈게요. 왼편에 사이트 메뉴를 클릭하세요. 이곳에 현재 생성된 사이트를 확인할 수 있습니다. 오른편에 메뉴 아이콘을 클릭하고 설정을 클릭하세요. 여기 보면 가장 먼저 사이트 이름을 수정할 수 있습니다. 아래에서 공유 설정을 클릭하면 현재 나만으로 설정되어 있는이 부분을 클릭한 뒤 인터넷 사</pre>
+  </div>
+  </article>
+  <article class="video-card">
+    <div class="card-top">
+      <a class="thumb-wrap" href="https://www.youtube.com/watch?v=C9-AyMCCjkQ" target="_blank" rel="noopener">
+        <img src="https://i.ytimg.com/vi/C9-AyMCCjkQ/hqdefault.jpg" alt="챗지피티 5.6 이렇게 쓰세요" loading="lazy"/>
+      </a>
+      <div class="card-info">
+        <div class="card-meta">
+          <span class="ch-tag">AIMAX_PD</span>
+          <span class="date-tag">2026-07-15</span>
+          
+        </div>
+        <div class="video-title">챗지피티 5.6 이렇게 쓰세요</div>
+        <div style="display:flex;align-items:center;flex-wrap:wrap;gap:4px;margin-top:auto">
+          <a class="yt-link" href="https://www.youtube.com/watch?v=C9-AyMCCjkQ" target="_blank" rel="noopener">↗ 유튜브에서 보기</a>
+          <button class="nlm-btn" data-url="https://www.youtube.com/watch?v=C9-AyMCCjkQ">📓 NotebookLM</button>
+        </div>
+      </div>
+    </div>
+    <div class="summary-section">
+      <h2>핵심 요약</h2>
+<p>챗지피티를 단순한 대화 상대를 넘어 실제 업무를 처리하는 강력한 워크 에이전트로 활용하는 실무 공식이다. 반복 업무 패키징, 외부 앱 연결, 브라우저 제어, 자동 웹사이트 구축 및 예약 자동화를 통해 업무 효율을 극대화할 수 있다.</p>
+<h2>주요 포인트</h2>
+<ul>
+<li>자주 하는 작업을 스킬로 저장해서 일관되고 퀄리티 높은 결과물을 알아서 뽑아내는 법임.</li>
+<li>AI에게 브라우저 제어권을 줘서 경쟁사 광고 패턴과 키워드를 분석하고 보고서까지 한 번에 끝냄.</li>
+<li>구글 드라이브와 노션 같은 외부 앱을 연결해 흩어진 문서를 직접 정리하고 수정하게 만듦.</li>
+<li>브랜드 가이드 한 장만으로 이미지 생성, 웹사이트 제작 및 클라우드 배포까지 자동 처리함.</li>
+<li>예약 작업 기능을 통해 주기적인 모니터링이나 보고서 작성 같은 루틴 업무를 자동화함.</li>
+</ul>
+    </div>
+  <div class="transcript-wrap">
+    <div class="transcript-header">
+      <button class="transcript-toggle" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('visible')">
+        <span class="arr">▼</span> 원문 자막
+      </button>
+      <button class="copy-btn" onclick="var b=this,t=b.nextElementSibling||b;navigator.clipboard.writeText(document.querySelector('#tr-C9-AyMCCjkQ').textContent).then(()=>{b.textContent='복사됨';setTimeout(()=>b.textContent='복사',2000)})">복사</button>
+    </div>
+    <pre class="transcript-box" id="tr-C9-AyMCCjkQ">이 여자는 채치피에 완전히 미쳤습니다. 단순히 대화만 하던 채지피티를 실제 업무를 끝내주는 강력한 워크 에이전트로 진화시킨 그레이슬러. 그녀가 공개한 채비로 마케팅하는 여섯 가지 실무 공식 저장하고 끝까지 보세요. 첫째, 반복 가능한 업무를 스킬로 패키징하세요. 브랜드 디자인이나 이메일 작성처럼 자주 하는 작업을 나만의 스킬로 저장해 두면 인공지능이 매번 일관된 고퀄리티 결과물을 스스로 만들어냅니다. 둘째, 인공지능에게 브라우저 제어권을 넘기세요. 에이전트가 직접 구글 쇼핑을 스캔해 경쟁사의 광고 패턴과 승리하는 키워드를 분석하고 바로 활용 가능한 보고서까지 한 번에 끝내 줍니다. 셋째, 구글 드라이브와 외부 앱을 직접 연결하서 노션과 드라이브의 흩어진 파일을 인공지능이 직접 읽고 수정하게 만들어 정리와 문서 관리에 들어가는 시간에 획기적으로 줄여야 합니다. 넷째, 웹사이트를 즉시 구축하. 브랜드 가이드 한 장만 입력하면 이미지 생성부터 웹사이트 제작과 클라우드 배포까지 인공지능이 알아서 처리하는 자율령 시스템을 가동할 수 있습니다. 다섯째, 예약 작업 기능으로 루틴 업무를 자동하세요. 매주 금요일 경쟁사 모니터링이나 매일 아침 트래픽 보고서 작성처럼 지루한 반복 업무를 AI가 정해진 시간에 스스로 수행하도록 설정해야 합니다. 25분짜리 영상을 모두 정리했습니다.이 이 정리본이 궁금하다면 구독 본문을 확인해 주세요.</pre>
+  </div>
+  </article>
+</main>
+
+<footer>유튜브 구독 정리 · agy 요약 · 2026-07-16 06:02</footer>
+
+
+<script>
+document.querySelectorAll('.nlm-btn').forEach(function(btn){
+  btn.addEventListener('click',function(){
+    navigator.clipboard.writeText('/notebooklm '+btn.dataset.url).then(function(){
+      var orig=btn.innerHTML;btn.innerHTML='✓ 복사됨';btn.classList.add('copied');
+      setTimeout(function(){btn.innerHTML=orig;btn.classList.remove('copied');},2000);
+    });
+  });
+});
+</script>
+
+</body>
+</html>
