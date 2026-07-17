@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>2026-07-17 — 유튜브 구독 정리</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+  :root{--bg:#090e1a;--surface:#111827;--surface2:#1a2235;--border:#1e2d47;--accent:#6c63ff;--accent2:#00d4ff;--text:#e8eaf0;--muted:#7a8499;--radius:14px;}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Pretendard',sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+  header{background:linear-gradient(135deg,#0d1b3e,#1a0533);border-bottom:1px solid var(--border);padding:20px 40px;display:flex;align-items:center;justify-content:space-between;}
+  .nav-back{color:var(--accent2);text-decoration:none;font-size:0.85rem;display:flex;align-items:center;gap:6px}
+  .nav-back:hover{color:#fff}
+  .date-badge{font-size:1.4rem;font-weight:700;letter-spacing:-0.5px;background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+  .count{font-size:0.85rem;color:var(--muted)}
+  main{max-width:900px;margin:0 auto;padding:32px 24px 80px}
+  .video-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;margin-bottom:24px;transition:border-color 0.2s,box-shadow 0.2s;}
+  .video-card:hover{border-color:var(--accent);box-shadow:0 4px 24px rgba(108,99,255,0.15)}
+  .card-top{display:flex;gap:0}
+  .thumb-wrap{flex:0 0 240px;position:relative;overflow:hidden}
+  .thumb-wrap img{width:100%;height:100%;object-fit:cover;transition:transform 0.4s}
+  .video-card:hover .thumb-wrap img{transform:scale(1.05)}
+  .card-info{flex:1;padding:20px;display:flex;flex-direction:column;gap:10px}
+  .card-meta{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+  .ch-tag{font-size:0.72rem;font-weight:600;padding:3px 12px;background:linear-gradient(135deg,rgba(108,99,255,0.2),rgba(0,212,255,0.2));border:1px solid rgba(108,99,255,0.3);border-radius:999px;color:var(--accent2);}
+  .date-tag{font-size:0.72rem;color:var(--muted)}
+  .no-transcript{font-size:0.68rem;padding:2px 8px;background:rgba(255,180,0,0.12);border:1px solid rgba(255,180,0,0.25);border-radius:999px;color:#ffa500;}
+  .video-title{font-size:1rem;font-weight:600;line-height:1.4}
+  .yt-link{display:inline-flex;align-items:center;gap:5px;font-size:0.8rem;color:var(--accent);text-decoration:none;transition:color 0.2s;}
+  .yt-link:hover{color:var(--accent2)}
+  
+  .nlm-btn{display:inline-flex;align-items:center;gap:5px;font-size:0.8rem;color:#fff;
+    background:rgba(108,99,255,0.2);border:1px solid rgba(108,99,255,0.4);border-radius:8px;
+    padding:4px 12px;cursor:pointer;font-family:inherit;transition:all 0.2s;margin-left:8px;}
+  .nlm-btn:hover{background:rgba(108,99,255,0.45);}
+  .nlm-btn.copied{background:rgba(0,200,100,0.2);border-color:rgba(0,200,100,0.4);color:#00c864;}
+
+  .summary-section{border-top:1px solid var(--border);background:var(--surface2);padding:20px 24px;font-size:0.85rem;line-height:1.7;color:#c5cad8;}
+  .summary-section h2{font-size:0.82rem;color:var(--accent2);margin:12px 0 4px}
+  .summary-section h2:first-child{margin-top:0}
+  .summary-section ul{padding-left:18px}
+  .summary-section li{margin-bottom:5px}
+  .transcript-wrap{border-top:1px solid var(--border);padding:14px 24px;background:#0c1220}
+  .transcript-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:0}
+  .transcript-toggle{background:none;border:none;color:var(--muted);font-size:0.8rem;cursor:pointer;font-family:inherit;display:flex;align-items:center;gap:4px;padding:0;transition:color 0.2s;}
+  .transcript-toggle:hover{color:var(--text)}
+  .copy-btn{background:rgba(108,99,255,0.1);border:1px solid rgba(108,99,255,0.3);border-radius:8px;color:var(--accent2);font-size:0.72rem;padding:4px 12px;cursor:pointer;font-family:inherit;transition:all 0.2s;}
+  .copy-btn:hover{background:rgba(108,99,255,0.25);color:#fff}
+  .transcript-box{display:none;margin-top:10px;background:#080d18;border:1px solid var(--border);border-radius:10px;padding:12px 14px;font-size:0.78rem;line-height:1.75;color:#8a95aa;max-height:260px;overflow-y:auto;white-space:pre-wrap;word-break:break-word;}
+  .transcript-box.visible{display:block}
+  footer{text-align:center;padding:24px;font-size:0.75rem;color:var(--muted);border-top:1px solid var(--border)}
+  @media(max-width:640px){.card-top{flex-direction:column}.thumb-wrap{flex:none;height:200px}header{padding:16px}main{padding:16px 12px 60px}}
+</style>
+</head>
+<body>
+
+<header>
+  <a class="nav-back" href="../index.html">← 대시보드로</a>
+  <div>
+    <div class="date-badge">2026-07-17</div>
+    <div class="count">3개 영상</div>
+  </div>
+  <div style="font-size:0.75rem;color:var(--muted)">2026-07-18 06:01 생성</div>
+</header>
+
+<main>
+
+  <article class="video-card">
+    <div class="card-top">
+      <a class="thumb-wrap" href="https://www.youtube.com/watch?v=cAeKDWa77xI" target="_blank" rel="noopener">
+        <img src="https://i.ytimg.com/vi/cAeKDWa77xI/hqdefault.jpg" alt="Build Your AI Marketing Agent that Works on Any AI" loading="lazy"/>
+      </a>
+      <div class="card-info">
+        <div class="card-meta">
+          <span class="ch-tag">Grace Leung</span>
+          <span class="date-tag">2026-07-17</span>
+          
+        </div>
+        <div class="video-title">Build Your AI Marketing Agent that Works on Any AI</div>
+        <div style="display:flex;align-items:center;flex-wrap:wrap;gap:4px;margin-top:auto">
+          <a class="yt-link" href="https://www.youtube.com/watch?v=cAeKDWa77xI" target="_blank" rel="noopener">↗ 유튜브에서 보기</a>
+          <button class="nlm-btn" data-url="https://www.youtube.com/watch?v=cAeKDWa77xI">📓 NotebookLM</button>
+        </div>
+      </div>
+    </div>
+    <div class="summary-section">
+      <h2>핵심 요약</h2>
+<p>요즘 AI 모델들 성능 차이가 크지 않으니 특정 모델에 종속되지 않는 에이전트 스택을 짜는 게 핵심이다. 뇌인 AI 모델을 바꿔도 내 브랜드 정보가 담긴 '하네스'만 있으면 나만의 에이전트를 유지할 수 있음. 이 하네스 기반 워크스페이스를 구축해서 클로드든 코덱스든 자유롭게 들고 다니며 쓰면 된다.</p>
+<h2>주요 포인트</h2>
+<ul>
+<li>프론티어 AI 모델 성능 차이가 좁혀져서 모델 자체보다 종속되지 않는 에이전트 스택 구축이 더 중요해졌다.</li>
+<li>에이전트는 뇌(모델)와 몸(하네스), 도구, 런타임으로 구성되며, 목표를 이룰 때까지 스스로 루프를 돌며 작동하는 게 챗봇과의 차이다.</li>
+<li>하네스는 브랜드 보이스나 캠페인 데이터를 갖고 있어서, 뇌(모델)를 ChatGPT 등으로 바꿔도 내 에이전트로서의 정체성을 유지해 준다.</li>
+<li>로컬 에이전트(Clarko, Codex 등)는 클라우드 에이전트와 달리 내 컴퓨터의 파일과 폴더를 직접 읽을 수 있는 장점이 있다.</li>
+<li>휴대용 에이전트 워크스페이스는 지식/맥락, 규칙/사양 설정, 에이전트 스킬, 전문 서브 에이전트 등 5가지 핵심 요소로 구성된다.</li>
+</ul>
+    </div>
+  <div class="transcript-wrap">
+    <div class="transcript-header">
+      <button class="transcript-toggle" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('visible')">
+        <span class="arr">▼</span> 원문 자막
+      </button>
+      <button class="copy-btn" onclick="var b=this,t=b.nextElementSibling||b;navigator.clipboard.writeText(document.querySelector('#tr-cAeKDWa77xI').textContent).then(()=>{b.textContent='복사됨';setTimeout(()=>b.textContent='복사',2000)})">복사</button>
+    </div>
+    <pre class="transcript-box" id="tr-cAeKDWa77xI">AI models are getting more expensive, more restricted, and honestly harder to stay committed. One week Claude feels like the best choice, and then ChatGPT gets better, and then Google shows up with something new. So, the question is no longer which model is the best because these questions matter less and less. Personally, I see the performance difference between these frontier models is getting marginal, and it's really more about how do you build your AI agent stack so you are not locked into any of them. And exactly this week a member in our community asked this same question. So, in this video, I'll show you how to build one portable AI marketing agent workspace and run it across Claude and Codex. And the same concept applies when you want to bring it to other platforms. Let's go. So, first things first, what is an AI agent really? Because understanding this concept right is really important as we design the agent stack. And here is NVIDIA CEO Jensen Huang describe it. The agent consists of model, harness, tools and skills, and a runtime. You can think of the model as the brain. The harness as the body. The tools that it uses working in a runtime. And what makes an agent instead of a chatbot is the loop. So, it takes an action, check the results, and keep going until the job is done. So, think of your AI marketing agent. The model determines its intelligence in doing marketing tasks, but the harness is what makes it your own marketing agent. It knows your brand voice, it has access to your campaign data. So, swap Claude for ChatGPT model, the marketing ability changes, but everything that make it yours, that is the harness. Now, there are two main ways AI agents can run. Cloud agents like Claude managed agent, Google Gemini Spark, Google enterprise agent platform, Perplexity computer on balance. So, these agents run on the company cloud server and don't automatically have access to your local computer. And the second way, local agents, which I believe most of us use, like Clarko, Cowork, Codex, Hermes, Open Cloud, they run on your own computer or company server. You can let them read your files and folders directly. [music] And for this video, we're covering Clarko and Codex specifically, but the general principle stay the same. So, now let's design your agent workspace. And this is the harness we just talked about. Now, of course, it can get super technical, but the simplest version to think of it is a whole project workspace with five core components. And this exact folder is what you carry to Clarko, Codex, or Antigravity, or other AI platforms. So, first, the knowledge and context, including memory. What your agent knows about you and your brand. And second, the instructions or configuration files. So, these tells how the agent should behave, rules and specs to follow in your workspace. And third, agent skills, the workflow that the agent can trigger and run. And fourth, specialized sub-agents. So, they're specialized at role definitions stored inside your harness and can be called in when needed. And lastly, tools. So, they are used in by the agents to access your real system, like your marketing analytics, CRM data. And knowing the core components is the key to making your agent system portable. Because once you see the setup as different core components, you are not asking, "How do I rebuild everything?" But really just asking, "Which are portable or not?" And we can just simply group them into three buckets. Bucket number one, completely portable. So, you can just grab them and go. Works anywhere. Bucket number two, that needs a small translation to make them work across platforms. And bucket three, isn't portable directly. So, your context and knowledge, they are bucket one since basically they are just plain files, documents, assets really. Instructions, agent skills, and sub agents, so they are bucket two because they are basically the same content, but each platform just package them a bit different. And your tools, that is bucket three since you might need to reconnect as you move between platforms. And to give you some examples, perhaps you're on a marketing team, one brand. So, you can have one shared contacts folder so the agents support from the same brand truth, and then each channel get its own project folders, paid channels, content, email, SEO, and sub agents, skills, instructions are shared across the whole team. Or maybe another scenario is you are on a functional team, say SEO. Same setup, but everything narrows to one job. And instead of channels, you split by the type of the SEO work. So, the shape is the same, but it just go deeper instead of wider. Or maybe you're a solo consultant managing multiple clients. You can organize all your clients in one workspace, each with their own contacts, but your skills and agents sit up top and shared. And if one client needs their own contacts and skills, it just live in their own folder. So, that means you inherit by default and add only </pre>
+  </div>
+  </article>
+  <article class="video-card">
+    <div class="card-top">
+      <a class="thumb-wrap" href="https://www.youtube.com/watch?v=G8ORAf0zvto" target="_blank" rel="noopener">
+        <img src="https://i.ytimg.com/vi/G8ORAf0zvto/hqdefault.jpg" alt="엑셀 파일 1개로 사이트부터 자동화까지 끝내는법 | 챗GPT 사이트" loading="lazy"/>
+      </a>
+      <div class="card-info">
+        <div class="card-meta">
+          <span class="ch-tag">greenkokki 그코</span>
+          <span class="date-tag">2026-07-17</span>
+          
+        </div>
+        <div class="video-title">엑셀 파일 1개로 사이트부터 자동화까지 끝내는법 | 챗GPT 사이트</div>
+        <div style="display:flex;align-items:center;flex-wrap:wrap;gap:4px;margin-top:auto">
+          <a class="yt-link" href="https://www.youtube.com/watch?v=G8ORAf0zvto" target="_blank" rel="noopener">↗ 유튜브에서 보기</a>
+          <button class="nlm-btn" data-url="https://www.youtube.com/watch?v=G8ORAf0zvto">📓 NotebookLM</button>
+        </div>
+      </div>
+    </div>
+    <div class="summary-section">
+      <h2>핵심 요약</h2>
+<p>챗GPT 사이트 기능을 활용해서 엑셀 파일 하나로 나만의 콘텐츠 제작 보드 웹사이트를 뚝딱 만드는 방법을 알려준다. 드래그 앤 드롭 카드 이동이나 데이터 추가·수정·삭제는 물론, 메일 전송을 통한 자동화 기획 카드 생성까지 쉽게 구축 가능하다. 챗GPT가 제공하는 자체 데이터베이스 덕분에 새로고침을 해도 데이터가 날아가지 않고 안전하게 저장되며 방문자 분석 등의 관리도 지원한다.</p>
+<h2>주요 포인트</h2>
+<ul>
+<li>콘텐츠 아이디어가 담긴 엑셀 파일을 영문 폴더에 넣고 챗GPT 데스크톱 앱 프로젝트에 연결함.</li>
+<li>채팅창에 골뱅이(@)를 치고 사이트 옵션을 선택한 뒤 엑셀을 소스로 삼아 한국어 사이트 제작을 요청함.</li>
+<li>드래그 앤 드롭 카드 이동, 메모 수정 및 삭제, 새 콘텐츠 추가 등 원하는 기능을 채팅으로 말만 하면 바로 추가해줌.</li>
+<li>자체 데이터베이스에 저장되기 때문에 원본 엑셀과 별개로 사이트 내에서 수정된 내용이 새로고침 후에도 유지됨.</li>
+<li>사이트 관리 도구를 통해 방문자 수, 페이지 조회수, 인기 페이지 순위 같은 상세한 분석 데이터를 볼 수 있음.</li>
+</ul>
+    </div>
+  <div class="transcript-wrap">
+    <div class="transcript-header">
+      <button class="transcript-toggle" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('visible')">
+        <span class="arr">▼</span> 원문 자막
+      </button>
+      <button class="copy-btn" onclick="var b=this,t=b.nextElementSibling||b;navigator.clipboard.writeText(document.querySelector('#tr-G8ORAf0zvto').textContent).then(()=>{b.textContent='복사됨';setTimeout(()=>b.textContent='복사',2000)})">복사</button>
+    </div>
+    <pre class="transcript-box" id="tr-G8ORAf0zvto">유튜브 콘텐츠 아이디어를 엑셀로 관리하다 보니 점점 복잡해졌습니다. [음악] 그래서 채지 워크의 사이트 기능에이 엑셀 파일 하나를 넘겨 봤는데 결과는 기대 이상이었습니다. 나만의 콘텐츠 제작 보드가 만들어졌고 아이디어를 추가하고 편집하고 삭제하는 것까지 전부되는 진짜 도구가 됐습니다. 그런데 이게 끝이 [음악] 아닙니다. 어디서든지 떠오른 아이디어를 두서 없이 제메일로 보내기만 하면 매일 아침 9시에 채치피가 알아서 정리해 기회 카드로 만들어 놓는 자동화까지 붙였습니다.이 [음악] 이 영상에서는이 모든 과정을 아무것도 몰라도 따라할 수 있게 처음부터 단계별로 [음악] 담았습니다. 이런 영상을 찾으셨다면 좋아요와 응원 댓글 부탁드립니다. 그럼 가이드 시작합니다. 가장 먼저 할 일은 사이트에 담을 재료를 한 곳에 모으는 것입니다. 거창한 준비는 필요 없습니다. 지금 여러분이 엑셀이나 메모에 적어둔 그 흩어진 자료가 그대로 재료가 될 수 있습니다. 저는 예시로 콘텐츠 아이디어를 정리한 파일 하나를 사용할게요. 파일 내용을 빠르게 살펴보면 유튜브를 운영하며 기획부터 촬영, 편집 등 영상 상태를 직접 관리하는 파일입니다. 참고로 채지T는 데스크톱 맵으로 진행하겠습니다. 먼저 바탕 화면에 콘텐츠 보드라는 영어로 된 이름으로 폴더를 하나 만들고이 폴더 안에는 콘텐츠 아이디어가 담긴 엑셀 파일을 옮겨 놓을게요. 폴더 이름은 영문으로 작성하는 것이 좋고 폴더 안에는 여러분이 쓰던 아이디어 메모나 자료가 있다면 그대로 넣으시면 됩니다. 지금은이 폴더 하나가 우리 사이트에 출발점이 됩니다. 이제이 폴더를 채치T가 작업할 공간으로 연결하기 위해 데스크톱 앱을 통해 채치T로 방문할게요. 왼편에 프로젝트 오른편에 나온 플러스 아이콘을 클릭한 뒤 기존 폴더 사용을 선택하세요. 미리 생성해 둔 폴더인 콘텐츠 보드를 선택해서 작업 공간으로 연결하겠습니다. 연결했다면 이제이 데이터를 진짜 보드 화면으로 바꿔 볼 차례입니다. 채팅창에서 프로젝트가 콘텐츠 보드로 연결되어 있는지 먼저 확인하세요. 채팅창에 골뱅이를 입력하세요. 옵션 중 사이트를 찾아서 선택하세요. 이렇게 입력하면 채치피에게 지금부터 사이트를 만들 거야라고 알려 주는 것입니다. 그럼 사이트 제작 요청 관련 프롬프트를 입력할게요. 파일을 소스로 삼아서 사이트를 제작해 달라고 요청했어요. 아래에는 구체적으로 어떤 사이트를 원하는지 최대한 상세히 적어 봤고 마지막에는 한국어로 만들어 달라고도 요청했어요. 참고로 요청하기 전에 아래 옵션 종류에는 승인 요청, 나 대신 승인, 전체 권한을 허용하는 옵션 등이 있습니다. 처음에는 승인 요청으로 진행해서 어떠한 내용들에 대해 직접 승인을 해야 하는지 확인해 보시는 것을 권장드립니다. 그럼 요청해 볼게요. 이렇게 사이트가 완성되었고 현재 비공개로 개시되었습니다. 참고로 진행 과정 중에 이렇게 사이트를 생성하기 전에 세 가지 스타일 지한을 옵션으로 제안해 줄 수 있습니다. 자유롭게 원하는 방향으로 선택하면 되고 저는 선명한 생산성 보드 스타일로 선택했습니다. 그럼 링크를 통해 열어 볼게요. 중간에 사이트 연동을 위해 채치T 로그인이 요청될 수 있고 저는 로그인 후 화면으로 바로 넘어갈게요. 완성된 콘텐츠 제작보드 사이트가 나왔습니다. 기획, 촬영, 편집, 업로드 예정 완료까지 다섯 개의 칸으로 나뉘어 있고 각 칸 위에는 콘텐츠가 몇 개인지 숫자로 표시됩니다. 상단에는 이번 주 마감이 다섯 개 있고 편집 중인 콘텐츠가 두 개라고 요약까지 한 눈에 잡아 줍니다. 표파일 하나를 건냈을 뿐인데 바로 쓸 수 있는 화면이 나왔다는 것이 놀랍습니다. 조금 더 살펴보면 앞에서 마감이 인박한 카드를 눈에 띄게 해 달라고 했었는데요. 실제로 오늘 마감인 콘텐츠에는 오늘 마감이라고 붙고 마감이 가까운 카드에는 얼마나 남았는지가 배지로 표시되며 카드 옆에 빨간 띠로 강조됩니다. 여기까지 살펴본 요소들은 제가 처음에 요청한 그대로 구현된 것입니다. 이번에는이 기획 단계에 있는 카드를 드래그해서 촬영 단계로 옮겨 볼게요. 해당 카드가 성공적으로 옮겨졌습니다. 또한 카드에 있는 메모를 통해 메모 내용을 팝업으로 확인하거나 수정 버튼을 통해 수정하거나 삭제를 통해 삭제할 수도 있습니다. 오른쪽 상단에 새 콘텐츠 버튼을 클릭하면 새 콘텐츠 또한 추가할 수도 있습니다. 하지만이 기능들은 제가 처음에 요청한 것이 아닙니다. 바로 처음에 사이트를 제작한 뒤 영상에서는 나오지 않았지만 추가 요청으로 카드 상태를 드래그 앤드롭브로 변경할 수 있도록 요청했고이 보드를 실제 운영으로 사용하기 위해 콘텐츠, 편집, 삭제 등이 가능하도록 추가 요청했기 때문에 가능해진 것입니다.이를 통해 자신이 원하는 어떤 기능이든 단순히 채팅창을 통해 추가 요청하며 자신의 입맛대로 사이트를 고쳐 나갈 수 있습니다. 여기서 갑자기 이런 생각이 들 수 있습니다. 이렇게 바꾼 내용이 진짜로 저장이 되는 걸까? 새로 고침하면 원래대로 돌아가는 거 아냐? 방금 카드를 옮기고 수정하는 동안 저는 저장 버튼도 따로 없었습니다. 확인하기 위해 브라우저 새로 고침을 해 볼게요. 수정했던 내용이 그대로 남아 있습니다. 이게 가능한 이유는이 보드 뒤에 채치피pt가 자체적으로 데이터베이스를 제공하기 때문입니다. 참고로 처음 사용했던 원본 엑셀 파일은 보드를 만들기 위해서만 사용되었습니다. 유는 사이트 내에 만들어진 데이터베이스에 데이터가 저장 및 편집된다는 점 알려 드립니다. 그럼 다음 단계로이 보드 사이트를 관리하는 방법에 대해 살펴볼게요. 채팅창으로 돌아와서 왼쪽 메뉴에서 사이트를 클릭해 보겠습니다. 여기에는 그동안 내가 만든 사이트들이 목록으로 정리되어 나오게 됩니다. 방금 만든 콘텐츠 제작 보드가 보이고 고유한 주소와 함께 현재 공유 범위가 나만으로 되어 있는 것도 확인됩니다. 오른쪽 점 세 개 메뉴를 누르면 편집, 분석, 설정. 이렇게 관리 기능이 펼쳐집니다. 먼저 분석을 클릭하세요.이 사이트에 방문자가 몇 명 들어왔는지, 페이지가 몇 번 조회는지, 날짜별 흐름까지 볼 수 있습니다. 아래에는 사이트에 어떤 화면이 많이 열렸는지 인기 페이지 순위도 나옵니다. 공개용으로 운영한다면이 분석 하나로 간단하게 반응을 확인할 수도 있게 됩니다. 다시 사이트로 나가 주세요. 이번에는 옵션 중 편집을 클릭하세요. 사이트 내용을 바꾸고 싶을 때 여기서 다시 채치T와 대화하며 수정할 수 있습니다. 앞에서 채팅으로 기능을 추가했던 것처럼 언제든 다시 여러 보드를 고쳐 나갈 수 있습니다. 사이트 메뉴로 돌아간 뒤에는 설정을 클릭해 주세요. 여기에이 사이트를 운영하는데 필요한 핵심 옵션들이 모여 있습니다. 먼저 공유입니다. 공유 설정을 누르면 접근 범위를 고를 수 있는데 나만 볼 수 있게 하거나 인터넷 사용자 누구나 볼 수 있게 두 가지 중에 선택합니다. 기본값인 남한 상태에서는 내 계정으로 로그인 했을 때만이 보드가 열립니다. 그래서 다른 사람이이 주소로 들어가면 채pt로 로그인하라는 화면이 먼저 뜹니다. 덕분에 주소가 실수로 세어나가도 아무나 내용을 볼 수는 없습니다.이 주소는 컴퓨터뿐 아니라 그대로 제폰에서도 문제없이 열립니다. 반대로 공유를 인터넷 사용자 누구나로 바꾼 뒤 버튼을 눌러서 개시하면 로그인 없이도 링크만 있으면 누구나 볼 수 있는 일반 사이트 주소로 공개됩니다. 창을 닫아 주세요. 설정에는이 밖에도 사이트를 진짜 내 것처럼 운영하게 하기 위해 내 도메인을이 사이트에 연결하는 기능이 있습니다. 네임칩과 같이 도메인 호스팅 사이트에서 자신의 사이트 주소를 가지고 있다면 도메인 추가 버튼을 통해 단순히 DNS 레코드 정보로 연동이 가능합니다. 현재이 사이트는 개인으로 사용하는 콘텐츠 제작 보드라서 도메인 주소까지 연결할 필요는 없지만 필요한 분들은 연결해서 사용하시면 되겠습니다. 참고로 콘텐츠 아이디어는 운전할 때, 길을 걸을 때, 잠들기 직전 등 문득 떠오르는 경우가 많습니다. 형식을 갖춰서 작성하기 귀찮을 때 생각나는 대로 작성해서 자신에게메일로 보내면 콘텐츠 보드에 형식을 갖춘 기획 카드로 자동 추가되는 자동화를 진행해 볼게요. 이건 단순히 예제이고이를 토대로 자신만의 다양한 방식으로 계획해서 활용해 보면 되겠습니다. 먼저 채지T가 Gma을 확인해야 하기 때문에 Gmail을 플러그인으로 연결해야 합니다. 왼편에 플러그인 메뉴를 클릭하세요. 현재 저는 Gmail이 연동되어 있고 연동되어 있지 않다면 단순히 설치 버튼을 통해 로그인 해 주면 되기 때문에 쉽게 진행할 수 있습니다. 연결했다면 자동화를 요청하기 위해 먼저 프로젝트에서 새 작업창을 열어 볼게요. 참고로 사이트를 편집하는 또 다른 방법으로 골뱅이를 입력하세요. 여기 옵션을 보다 보면 사이트 아이콘과 함께 제작했던 사이트 이름이 나오는 옵션이 있어요. 찾았다면 클릭하세요. 이렇게 불러와서 원하는 요청을 해 볼 수도 있습니다. 그럼 이렇게 입력할게요. 제가 메일에 그코 아이디어라는 단어를 제목에 포함해서 내용과 함께 보내면 매일 아침 9시마다 확인해서 콘텐츠 제작보드 기획에 정리해서 추가해 달라고 했어요. 그럼 요청해 볼게요. 결과적으로 자동화가 설정되었습니다. 한번 열어 볼게요. 여기 보면 자동화 설정 관련 내용이 나옵니다. 빈도를 통해 주기를 다시 변경할 수도 있고 확인했다면 아래 예약된 작업 작성 버튼을 눌러 주세요. 이제 매일 9시마다 자동으로 Gma을 둘러본 뒤 콘텐츠 아이디어가 있으면 정리해서 콘텐츠 보드로 올라가게 됩니다. 참고로이 자동화는 노트북이 항상 켜져 있어야 가능합니다. 그러므로 노트북을 항상 켜 놓지 않는다면 적어도 자신이 매일 8시에 노트북을 켠다면 9시로 설정해 놓는 방식으로 진행하면 되겠습니다. 현재메일로 그 아이디어를 포함하고 두서 없이 아이디어를 담아서 보냈습니다. 그럼이 메일을 바탕으로 잘 인식하는지 테스트해 보겠습니다. 다시 채치T로 이동할게요. 메뉴 중 예약됨을 클릭하세요. 여기 예약된 작업을 확인할 수 있고 오른편에 더보기 아이콘을 클릭한 뒤 지금 실행을 통해 진행하고 콘텐츠 보드 사이트로 이동해 볼게요.메일로 작성해서 보냈던 아이디어가 이렇게 정리된 기획 카드로 자동 추가되었습니다. 더 놀라운 사실은 기존에 두서 없이 작성한 내용이 이렇게 정리된 상태로 추가된다는 점입니다. 우리가 지금까지 한 일을 </pre>
+  </div>
+  </article>
+  <article class="video-card">
+    <div class="card-top">
+      <a class="thumb-wrap" href="https://www.youtube.com/watch?v=MQ7Db-plmek" target="_blank" rel="noopener">
+        <img src="https://i.ytimg.com/vi/MQ7Db-plmek/hqdefault.jpg" alt="챗지치티 뺨치는 구글 AI 기능" loading="lazy"/>
+      </a>
+      <div class="card-info">
+        <div class="card-meta">
+          <span class="ch-tag">AIMAX_PD</span>
+          <span class="date-tag">2026-07-17</span>
+          
+        </div>
+        <div class="video-title">챗지치티 뺨치는 구글 AI 기능</div>
+        <div style="display:flex;align-items:center;flex-wrap:wrap;gap:4px;margin-top:auto">
+          <a class="yt-link" href="https://www.youtube.com/watch?v=MQ7Db-plmek" target="_blank" rel="noopener">↗ 유튜브에서 보기</a>
+          <button class="nlm-btn" data-url="https://www.youtube.com/watch?v=MQ7Db-plmek">📓 NotebookLM</button>
+        </div>
+      </div>
+    </div>
+    <div class="summary-section">
+      <h2>핵심 요약</h2>
+<p>구글의 NotebookLM이 단순한 요약 도구에서 실무를 끝내주는 강력한 워크스페이스로 업데이트되었다. 페르소나 설정, 브랜드 가이드 학습, 편집 가능한 파일 추출 등의 기능을 활용해 업무 시간을 최대 90%까지 단축할 수 있다.</p>
+<h2>주요 포인트</h2>
+<ul>
+<li>커스텀 페르소나 설정을 통해 전문가 관점에 맞춘 답변과 파일을 생성함.</li>
+<li>브랜드 가이드 PDF를 학습시켜 회사 전용 스타일의 보고서와 슬라이드를 완성함.</li>
+<li>채팅창에서 구글 슬라이드나 엑셀로 편집 가능한 실물 문서를 즉시 추출함.</li>
+<li>비디오 오버뷰와 인포그래픽 스타일을 활용해 콘텐츠 형식을 시각적으로 바꿈.</li>
+<li>부족한 정보를 진단하고 외부 웹 검색을 통해 최신 데이터를 채워 리서치를 완성함.</li>
+</ul>
+    </div>
+  <div class="transcript-wrap">
+    <div class="transcript-header">
+      <button class="transcript-toggle" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('visible')">
+        <span class="arr">▼</span> 원문 자막
+      </button>
+      <button class="copy-btn" onclick="var b=this,t=b.nextElementSibling||b;navigator.clipboard.writeText(document.querySelector('#tr-MQ7Db-plmek').textContent).then(()=>{b.textContent='복사됨';setTimeout(()=>b.textContent='복사',2000)})">복사</button>
+    </div>
+    <pre class="transcript-box" id="tr-MQ7Db-plmek">여러분 채치T 버려도 됩니다. 단순한 요약 도구였던 노트북램을 실제 업무를 끝내주는 강력한 워크스페이스로 탈바꿈시킨 리서치 전문가 그가 공개한 노트북 LM 업데이트로 업무 시간을 90% 단축하는 여섯 가지 실무꿀팁 저장하고 끝까지 보세요. 첫째 커스텀 페르소나 설정으로 답변의지를 높이세요. 채팅 구성 버튼에서 운영 분석가 같은 전문성을 부여하면 노트북에 LM이 모든 답변과 파일을 그 관점에 맞춰 생성합니다. 둘째, 브랜드 가이드 PDF를 소스로 추가하세요. 브랜드 색상과 스타일이 담긴 문서를 미리 학습시키면 생성되는 모든 슬라이드와 보고서가 우리 회사 전용 디자인으로 완성됩니다. 셋째, 편집 가능한 실물 파일을 즉시 추출하세요. 단순히 텍스트로 답을 듣는게 아니라 구글 슬라이드나 엑셀에서 바로 수정하고 활용할 수 있는 실제 문서 파일을 채팅창에서 즉시 뽑아낼 수 있습니다. 넷째, 다차원 스튜디오 도구로 콘텐츠 형식을 바꾸세요. 단순한 문서를 영상 교육 자료로 바꾸는 비디오 오버뷰와 열 가지 이상의 인포그래픽 스타일을 활용해 시각적인 결과에 단숨에 제작할 수 있습니다. 다섯째, 정보의 공백을 진단하고 외부 소스를 발굴하세요. 현재 가진 정보에서 부족한 데이터가 무엇인지 분석하게 시키고 노트북이 직접 웹을 통해 필요한 최신 정보를 찾아와 리서치를 완성하게 만드세요. 더 자세한 활용법을 정리했습니다.이 이 자료 궁금하신다면 채널을 구독하시고 본문을 확인해 주세요.</pre>
+  </div>
+  </article>
+</main>
+
+<footer>유튜브 구독 정리 · agy 요약 · 2026-07-18 06:01</footer>
+
+
+<script>
+document.querySelectorAll('.nlm-btn').forEach(function(btn){
+  btn.addEventListener('click',function(){
+    navigator.clipboard.writeText('/notebooklm '+btn.dataset.url).then(function(){
+      var orig=btn.innerHTML;btn.innerHTML='✓ 복사됨';btn.classList.add('copied');
+      setTimeout(function(){btn.innerHTML=orig;btn.classList.remove('copied');},2000);
+    });
+  });
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>2026-07-18 — 유튜브 구독 정리</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+  :root{--bg:#090e1a;--surface:#111827;--surface2:#1a2235;--border:#1e2d47;--accent:#6c63ff;--accent2:#00d4ff;--text:#e8eaf0;--muted:#7a8499;--radius:14px;}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Pretendard',sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+  header{background:linear-gradient(135deg,#0d1b3e,#1a0533);border-bottom:1px solid var(--border);padding:20px 40px;display:flex;align-items:center;justify-content:space-between;}
+  .nav-back{color:var(--accent2);text-decoration:none;font-size:0.85rem;display:flex;align-items:center;gap:6px}
+  .nav-back:hover{color:#fff}
+  .date-badge{font-size:1.4rem;font-weight:700;letter-spacing:-0.5px;background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+  .count{font-size:0.85rem;color:var(--muted)}
+  main{max-width:900px;margin:0 auto;padding:32px 24px 80px}
+  .video-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;margin-bottom:24px;transition:border-color 0.2s,box-shadow 0.2s;}
+  .video-card:hover{border-color:var(--accent);box-shadow:0 4px 24px rgba(108,99,255,0.15)}
+  .card-top{display:flex;gap:0}
+  .thumb-wrap{flex:0 0 240px;position:relative;overflow:hidden}
+  .thumb-wrap img{width:100%;height:100%;object-fit:cover;transition:transform 0.4s}
+  .video-card:hover .thumb-wrap img{transform:scale(1.05)}
+  .card-info{flex:1;padding:20px;display:flex;flex-direction:column;gap:10px}
+  .card-meta{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+  .ch-tag{font-size:0.72rem;font-weight:600;padding:3px 12px;background:linear-gradient(135deg,rgba(108,99,255,0.2),rgba(0,212,255,0.2));border:1px solid rgba(108,99,255,0.3);border-radius:999px;color:var(--accent2);}
+  .date-tag{font-size:0.72rem;color:var(--muted)}
+  .no-transcript{font-size:0.68rem;padding:2px 8px;background:rgba(255,180,0,0.12);border:1px solid rgba(255,180,0,0.25);border-radius:999px;color:#ffa500;}
+  .video-title{font-size:1rem;font-weight:600;line-height:1.4}
+  .yt-link{display:inline-flex;align-items:center;gap:5px;font-size:0.8rem;color:var(--accent);text-decoration:none;transition:color 0.2s;}
+  .yt-link:hover{color:var(--accent2)}
+  
+  .nlm-btn{display:inline-flex;align-items:center;gap:5px;font-size:0.8rem;color:#fff;
+    background:rgba(108,99,255,0.2);border:1px solid rgba(108,99,255,0.4);border-radius:8px;
+    padding:4px 12px;cursor:pointer;font-family:inherit;transition:all 0.2s;margin-left:8px;}
+  .nlm-btn:hover{background:rgba(108,99,255,0.45);}
+  .nlm-btn.copied{background:rgba(0,200,100,0.2);border-color:rgba(0,200,100,0.4);color:#00c864;}
+
+  .summary-section{border-top:1px solid var(--border);background:var(--surface2);padding:20px 24px;font-size:0.85rem;line-height:1.7;color:#c5cad8;}
+  .summary-section h2{font-size:0.82rem;color:var(--accent2);margin:12px 0 4px}
+  .summary-section h2:first-child{margin-top:0}
+  .summary-section ul{padding-left:18px}
+  .summary-section li{margin-bottom:5px}
+  .transcript-wrap{border-top:1px solid var(--border);padding:14px 24px;background:#0c1220}
+  .transcript-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:0}
+  .transcript-toggle{background:none;border:none;color:var(--muted);font-size:0.8rem;cursor:pointer;font-family:inherit;display:flex;align-items:center;gap:4px;padding:0;transition:color 0.2s;}
+  .transcript-toggle:hover{color:var(--text)}
+  .copy-btn{background:rgba(108,99,255,0.1);border:1px solid rgba(108,99,255,0.3);border-radius:8px;color:var(--accent2);font-size:0.72rem;padding:4px 12px;cursor:pointer;font-family:inherit;transition:all 0.2s;}
+  .copy-btn:hover{background:rgba(108,99,255,0.25);color:#fff}
+  .transcript-box{display:none;margin-top:10px;background:#080d18;border:1px solid var(--border);border-radius:10px;padding:12px 14px;font-size:0.78rem;line-height:1.75;color:#8a95aa;max-height:260px;overflow-y:auto;white-space:pre-wrap;word-break:break-word;}
+  .transcript-box.visible{display:block}
+  footer{text-align:center;padding:24px;font-size:0.75rem;color:var(--muted);border-top:1px solid var(--border)}
+  @media(max-width:640px){.card-top{flex-direction:column}.thumb-wrap{flex:none;height:200px}header{padding:16px}main{padding:16px 12px 60px}}
+</style>
+</head>
+<body>
+
+<header>
+  <a class="nav-back" href="../index.html">← 대시보드로</a>
+  <div>
+    <div class="date-badge">2026-07-18</div>
+    <div class="count">1개 영상</div>
+  </div>
+  <div style="font-size:0.75rem;color:var(--muted)">2026-07-18 06:01 생성</div>
+</header>
+
+<main>
+
+  <article class="video-card">
+    <div class="card-top">
+      <a class="thumb-wrap" href="https://www.youtube.com/watch?v=JATDFgj1qz4" target="_blank" rel="noopener">
+        <img src="https://i.ytimg.com/vi/JATDFgj1qz4/hqdefault.jpg" alt="I Automated 99% of My 3 Businesses With Claude Code" loading="lazy"/>
+      </a>
+      <div class="card-info">
+        <div class="card-meta">
+          <span class="ch-tag">Nicholas Puru</span>
+          <span class="date-tag">2026-07-18</span>
+          
+        </div>
+        <div class="video-title">I Automated 99% of My 3 Businesses With Claude Code</div>
+        <div style="display:flex;align-items:center;flex-wrap:wrap;gap:4px;margin-top:auto">
+          <a class="yt-link" href="https://www.youtube.com/watch?v=JATDFgj1qz4" target="_blank" rel="noopener">↗ 유튜브에서 보기</a>
+          <button class="nlm-btn" data-url="https://www.youtube.com/watch?v=JATDFgj1qz4">📓 NotebookLM</button>
+        </div>
+      </div>
+    </div>
+    <div class="summary-section">
+      <h2>핵심 요약</h2>
+<p>3개 비즈니스 업무의 99%를 코딩 한 줄 없이 Claude 에이전트 팀으로 자동화한 셋업을 보여줌. 거대한 AI 하나를 쓰는 게 아니라 매니저 1명과 분야별 전문 에이전트들로 팀을 짰음. 매니저는 유저 요청을 분석해서 적절한 전문 에이전트 폴더로 일을 넘겨주는 역할을 함.</p>
+<h2>주요 포인트</h2>
+<ul>
+<li>코딩 없이 AI 에이전트 팀을 꾸려 3개 비즈니스의 99%를 자동화함</li>
+<li>매니저 에이전트 하나 밑에 링크드인, X(트위터), 유튜브, 뉴스레터 등 전문 에이전트들을 배치함</li>
+<li>전문 에이전트들은 서로 뇌를 공유하지 않아서 각 채널에 맞는 톤앤매너를 완벽히 유지함</li>
+<li>매니저('main')는 직접 글을 쓰지 않고 룰북에 따라 일을 배분하는 스위치보드 역할만 함</li>
+<li>영어로 적힌 매니저의 룰북에 따라 요청 키워드별로 담당 전문가에게 바로 라우팅됨</li>
+</ul>
+    </div>
+  <div class="transcript-wrap">
+    <div class="transcript-header">
+      <button class="transcript-toggle" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('visible')">
+        <span class="arr">▼</span> 원문 자막
+      </button>
+      <button class="copy-btn" onclick="var b=this,t=b.nextElementSibling||b;navigator.clipboard.writeText(document.querySelector('#tr-JATDFgj1qz4').textContent).then(()=>{b.textContent='복사됨';setTimeout(()=>b.textContent='복사',2000)})">복사</button>
+    </div>
+    <pre class="transcript-box" id="tr-JATDFgj1qz4">99% of my business now runs almost completely without me. And you've been seeing it everywhere lately. Everyone is talking about cloud AI agents automating your whole business. It's all over your feed. But have you noticed something? Nobody actually shows you what it really looks like. It's all talk. So, I'm not going to talk today. I'm going to open my laptop and show you the exact setup that does 99% of my work across three different businesses without me writing a single line of code. And it's not one giant AI doing everything. It's actually a little team of AI agents. We have one manager and a bunch of specialists under it. Each one running a different part of the business. Now, if you run any kind of business, this is the exact thing that gives you or your team your week back. So, I'll walk you through the setup, run it live on all three businesses, and I'll be very straight with you about the 1% that I would never be handing off. Now, if you don't know me already, my name is Nick. I've spent the last three years helping companies actually implement this stuff, and I've driven over $5 million in bottom line revenue across all of our clients with it. So, let me show you how this works. Okay, now this part right here, it is the entire thing. Now, what we have set up, it's not one AI trying to effectively do everything. We actually have a team. So, we have here one manager agent and then we have a bunch of specialist agents underneath this. So, we have one that only handles LinkedIn, one that only handles my Twitter or X, one for my YouTube, one for my community, even one for my ads. Now, each one it's just an expert at exactly one job, just like a real company. Now, if you see all these folders right here, each one is a different specialist on my team. So this one is my LinkedIn expert. We then have my ex or Twitter, YouTube, my newsletter, my community outreach, and they don't share brains across them. And that's on purpose. So my LinkedIn guy, they aren't going to be writing in my Twitter voice. My Twitter voice isn't going to be writing in an ads voice. Each one effectively stays in its lane. So each one is actually good. And this one right here called main, this is the manager. So I'll open its rule book just so you can actually see all of it. But it's all plain English. Now, right at the top, it says you are the coordinator. You're not going to be writing the post yourself. You route to the specialist whose folder owns that job. So, when I actually give it a task, the manager reads it, figures out who actually owns that task, and it hands it right to the expert. So, I never have to just remember where anything is going to be living. Now, inside of this, there is literally a table in here. If the request says LinkedIn post, send it to the LinkedIn agent. If it says tweet, send it to Twitter. If it's a YouTube idea, obviously, send it to YouTube. And that's the whole manager. It's just a switchboard. On top of that, every specialist has its own rulebook. and its own knowledge. So if you look at here, my community agent, it has the entire outreach playbook baked into it. My LinkedIn agent has the whole strategy in my past posts, all my content pillars, all that stuff. So when one of them actually does a job, it's using what I actually know, not just some random stuff on the internet. Now, it also even remembers things about my business over here. So, I tell it something once, maybe it's going to be something about my offer or my pricing, who I'm actually targeting, and it just keeps it so I never have to be repeating myself. And this is where, you know, other harnesses like Hermes are incredibly powerful, but I just built it myself. And then the rest of these are the trayins and the out trays. So, research comes in, finished work is going to be landing here. So we have these scripts, we have posts, we have outreach emails, we have even landing pages, we have reports and the actual output of three businesses is all sitting in plain text files in one place. So that effectively is the whole system. There's no app that I have to log into. All of this is completely no code. And we have a manager, we have a team of specialists, and we have the text files. And this exact same setup runs all three of my businesses. So my content, my community, and my agency. Now, beyond that, we could be deploying this on an operating system, which is a very popular thing that we've been seeing as of late, where it's just going to be an interface where it's a little bit easier to manage, but I prefer to just utilize and interact through everything inside of my IDE. Now, more than that, all of this can be living inside of the cloud application. And that's really just going to be for a couple of things like connecting your other applications or grabbing pre-built skills like the app. It's honestly the easier way to be utilizing all of this. And especially if you are a little bit more beginner, that's where I would recommend. Now</pre>
+  </div>
+  </article>
+</main>
+
+<footer>유튜브 구독 정리 · agy 요약 · 2026-07-18 06:01</footer>
+
+
+<script>
+document.querySelectorAll('.nlm-btn').forEach(function(btn){
+  btn.addEventListener('click',function(){
+    navigator.clipboard.writeText('/notebooklm '+btn.dataset.url).then(function(){
+      var orig=btn.innerHTML;btn.innerHTML='✓ 복사됨';btn.classList.add('copied');
+      setTimeout(function(){btn.innerHTML=orig;btn.classList.remove('copied');},2000);
+    });
+  });
+});
+</script>
+
+</body>
+</html>
