@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>2026-07-19 — 유튜브 구독 정리</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+  :root{--bg:#090e1a;--surface:#111827;--surface2:#1a2235;--border:#1e2d47;--accent:#6c63ff;--accent2:#00d4ff;--text:#e8eaf0;--muted:#7a8499;--radius:14px;}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Pretendard',sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+  header{background:linear-gradient(135deg,#0d1b3e,#1a0533);border-bottom:1px solid var(--border);padding:20px 40px;display:flex;align-items:center;justify-content:space-between;}
+  .nav-back{color:var(--accent2);text-decoration:none;font-size:0.85rem;display:flex;align-items:center;gap:6px}
+  .nav-back:hover{color:#fff}
+  .date-badge{font-size:1.4rem;font-weight:700;letter-spacing:-0.5px;background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+  .count{font-size:0.85rem;color:var(--muted)}
+  main{max-width:900px;margin:0 auto;padding:32px 24px 80px}
+  .video-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;margin-bottom:24px;transition:border-color 0.2s,box-shadow 0.2s;}
+  .video-card:hover{border-color:var(--accent);box-shadow:0 4px 24px rgba(108,99,255,0.15)}
+  .card-top{display:flex;gap:0}
+  .thumb-wrap{flex:0 0 240px;position:relative;overflow:hidden}
+  .thumb-wrap img{width:100%;height:100%;object-fit:cover;transition:transform 0.4s}
+  .video-card:hover .thumb-wrap img{transform:scale(1.05)}
+  .card-info{flex:1;padding:20px;display:flex;flex-direction:column;gap:10px}
+  .card-meta{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+  .ch-tag{font-size:0.72rem;font-weight:600;padding:3px 12px;background:linear-gradient(135deg,rgba(108,99,255,0.2),rgba(0,212,255,0.2));border:1px solid rgba(108,99,255,0.3);border-radius:999px;color:var(--accent2);}
+  .date-tag{font-size:0.72rem;color:var(--muted)}
+  .no-transcript{font-size:0.68rem;padding:2px 8px;background:rgba(255,180,0,0.12);border:1px solid rgba(255,180,0,0.25);border-radius:999px;color:#ffa500;}
+  .video-title{font-size:1rem;font-weight:600;line-height:1.4}
+  .yt-link{display:inline-flex;align-items:center;gap:5px;font-size:0.8rem;color:var(--accent);text-decoration:none;transition:color 0.2s;}
+  .yt-link:hover{color:var(--accent2)}
+  
+  .nlm-btn{display:inline-flex;align-items:center;gap:5px;font-size:0.8rem;color:#fff;
+    background:rgba(108,99,255,0.2);border:1px solid rgba(108,99,255,0.4);border-radius:8px;
+    padding:4px 12px;cursor:pointer;font-family:inherit;transition:all 0.2s;margin-left:8px;}
+  .nlm-btn:hover{background:rgba(108,99,255,0.45);}
+  .nlm-btn.copied{background:rgba(0,200,100,0.2);border-color:rgba(0,200,100,0.4);color:#00c864;}
+
+  .summary-section{border-top:1px solid var(--border);background:var(--surface2);padding:20px 24px;font-size:0.85rem;line-height:1.7;color:#c5cad8;}
+  .summary-section h2{font-size:0.82rem;color:var(--accent2);margin:12px 0 4px}
+  .summary-section h2:first-child{margin-top:0}
+  .summary-section ul{padding-left:18px}
+  .summary-section li{margin-bottom:5px}
+  .transcript-wrap{border-top:1px solid var(--border);padding:14px 24px;background:#0c1220}
+  .transcript-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:0}
+  .transcript-toggle{background:none;border:none;color:var(--muted);font-size:0.8rem;cursor:pointer;font-family:inherit;display:flex;align-items:center;gap:4px;padding:0;transition:color 0.2s;}
+  .transcript-toggle:hover{color:var(--text)}
+  .copy-btn{background:rgba(108,99,255,0.1);border:1px solid rgba(108,99,255,0.3);border-radius:8px;color:var(--accent2);font-size:0.72rem;padding:4px 12px;cursor:pointer;font-family:inherit;transition:all 0.2s;}
+  .copy-btn:hover{background:rgba(108,99,255,0.25);color:#fff}
+  .transcript-box{display:none;margin-top:10px;background:#080d18;border:1px solid var(--border);border-radius:10px;padding:12px 14px;font-size:0.78rem;line-height:1.75;color:#8a95aa;max-height:260px;overflow-y:auto;white-space:pre-wrap;word-break:break-word;}
+  .transcript-box.visible{display:block}
+  footer{text-align:center;padding:24px;font-size:0.75rem;color:var(--muted);border-top:1px solid var(--border)}
+  @media(max-width:640px){.card-top{flex-direction:column}.thumb-wrap{flex:none;height:200px}header{padding:16px}main{padding:16px 12px 60px}}
+</style>
+</head>
+<body>
+
+<header>
+  <a class="nav-back" href="../index.html">← 대시보드로</a>
+  <div>
+    <div class="date-badge">2026-07-19</div>
+    <div class="count">1개 영상</div>
+  </div>
+  <div style="font-size:0.75rem;color:var(--muted)">2026-07-19 06:00 생성</div>
+</header>
+
+<main>
+
+  <article class="video-card">
+    <div class="card-top">
+      <a class="thumb-wrap" href="https://www.youtube.com/watch?v=X-CjszltBf8" target="_blank" rel="noopener">
+        <img src="https://i.ytimg.com/vi/X-CjszltBf8/hqdefault.jpg" alt="ChatGPT and Claude Now Run 30 Minutes With No One Watching" loading="lazy"/>
+      </a>
+      <div class="card-info">
+        <div class="card-meta">
+          <span class="ch-tag">Dylan Davis</span>
+          <span class="date-tag">2026-07-19</span>
+          
+        </div>
+        <div class="video-title">ChatGPT and Claude Now Run 30 Minutes With No One Watching</div>
+        <div style="display:flex;align-items:center;flex-wrap:wrap;gap:4px;margin-top:auto">
+          <a class="yt-link" href="https://www.youtube.com/watch?v=X-CjszltBf8" target="_blank" rel="noopener">↗ 유튜브에서 보기</a>
+          <button class="nlm-btn" data-url="https://www.youtube.com/watch?v=X-CjszltBf8">📓 NotebookLM</button>
+        </div>
+      </div>
+    </div>
+    <div class="summary-section">
+      <h2>핵심 요약</h2>
+<p>데스크톱 에이전트가 사람 감시 없이 30분 넘게 돌아갈 수 있게 됐는데, 프롬프트가 애매하면 에이전트가 뇌절 치다가 토큰이랑 시간만 날리기 딱 좋다. 장시간 작업을 제대로 끝마치게 하려면 기대하는 결과물의 기준과 명확한 종료 조건을 프롬프트에 꽂아줘야 함.</p>
+<h2>주요 포인트</h2>
+<ul>
+<li>ChatGPT(Codex)나 Claude Co-work 같은 데스크톱 에이전트는 이제 감시 없이 30분 넘게 스스로 작업 수행이 가능함.</li>
+<li>실행 시간이 길어질수록 프롬프트가 모호할 때 발생하는 멋대로의 가정과 탈선 리스크가 커지고 비용도 팍팍 늘어남.</li>
+<li>"요약본이 마음에 들 때까지 계속해라" 같은 애매한 지시는 에이전트가 언제 멈출지 몰라 토큰만 무한으로 태우는 지름길임.</li>
+<li>에이전트가 뻘짓 안 하게 막으려면 '좋은 요약'의 기준, 위험 요소의 정의, 구체적인 완료 경계를 확실하게 설정해 둬야 함.</li>
+</ul>
+    </div>
+  <div class="transcript-wrap">
+    <div class="transcript-header">
+      <button class="transcript-toggle" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('visible')">
+        <span class="arr">▼</span> 원문 자막
+      </button>
+      <button class="copy-btn" onclick="var b=this,t=b.nextElementSibling||b;navigator.clipboard.writeText(document.querySelector('#tr-X-CjszltBf8').textContent).then(()=>{b.textContent='복사됨';setTimeout(()=>b.textContent='복사',2000)})">복사</button>
+    </div>
+    <pre class="transcript-box" id="tr-X-CjszltBf8">Desktop agents like ChatGPT via Codex and Claude Co-work can now run for 30 minutes or more without you having to watch them. If you're new here, I'm Dylan. I run an AI consultancy. And lately, many of my coaching sessions are around helping people get these long agent runs under control. But here's the catch. The longer it runs, the more a vague prompt actually costs you. And the AI agent either quits too early or it never knows when to stop, burning tokens and time. So, I'll show you why agents lose the thread and four things to lock them down before you ever hit go. So, let's get into it. Now, the reason I want to bring this up now is a lot of people that I work with are starting to venture off into the world of desktop agents. So, they're getting access to things like Codex or Claude Co-work. And these sophisticated models and really advanced tools, when applied to a hard task, can work for a long time. So, what you're likely used to is when you work with Claude or ChatGPT, you give it a question or a task, it goes off and does the task, and then it comes back and gives you a response. Within this loop, you can provide feedback continuously. You can stop it when you need to and you can redirect it. But when you have a tool like a desktop agent and you apply it to a really hard task that has many steps or many files the AI has to process, it's going to go off and it's going to do work for potentially 30 minutes, an hour, maybe even two to three hours. And when it's doing that task, there are a lot of assumptions it has to make. It has to fill in a lot of gaps. And that's sometimes beneficial, but it also can backfire on us. And one other thing to consider is the AI doesn't necessarily know when to stop often times. So, it'll go continuously until it feels it's done. And as you can see from this, there's a lot of things that can go wrong. And that's what I want to share with you today. We need to put guardrails around the AI so when it works on that long task, it knows how to go in the direction we care about. And also, it knows when to stop when we think it's done. Let me first show you the wrong way to do this. So, this here on the left-hand side looks like a prompt that's pretty strong. So, we're asking the AI to review the vendor contracts in this folder and create a summary of the biggest risks. Keep going until the summary is good. Now, at the surface, this seems okay, especially if it's a smaller task. But, if in this folder, what if there are 100, 200, 300, maybe 500 contracts that AI has to review? Well, that means it's going to process it for more than an hour. And there's a lot that's left unsaid in this prompt that needs to be covered, such as what does a good summary actually look like? What counts as a risk? How do you even define something as good and when to finish? And a variety of other things. We need to have some sort of explicit boundaries so that AI understands our expectations of what good looks like and how to get there. And the beautiful part about all of this is the AI can actually assist us in the process of creating these boundaries. We don't necessarily have to do it ourselves from scratch. And that's what this prompt's going to do for you. So, you can copy and paste this prompt, use it for yourself. The only thing that you need to update in this prompt are going to be these pink sections here. Quick pause in your regular programming. This video is brought to you by me, as always. So, two quick things. First off, below is a 30-day AI insight series, completely free. You'll get 30 insights in your inbox of how you can apply AI to your business and your work. The second thing is if you'd like to work with me, below are a series of offerings to see if there's good fit between the two of us. So, what is this prompt saying? Well, at the very top, we're simply telling the AI that we want to plan for a task that we're going to run in the future. And I need its help to design a specific plan for this task to ensure it goes in the right direction. I then give it three things. So, the first thing we're doing here is we're being very specific on the task. We're telling the AI exactly what we want to do. And here you want to be as specific as possible on the task and the outcome of the task. After you've explained the task, then you put in your inputs. So, the inputs could be folders you're sharing with the AI. It could be different systems AI is connecting to through data connectors and a variety of other things. You want to share those and let the AI know that it has access to them. Then finally, we want to share the output. And this is going to be key. We want to tell it not just where the information should go. So, should it go in a certain subfolder or if there's a certain tab you need to update, but we also need to show it what good looks like. So we need to say this is the expected output from you. Once we've shared those three things, we're then going to ask the AI to interview us</pre>
+  </div>
+  </article>
+</main>
+
+<footer>유튜브 구독 정리 · agy 요약 · 2026-07-19 06:00</footer>
+
+
+<script>
+document.querySelectorAll('.nlm-btn').forEach(function(btn){
+  btn.addEventListener('click',function(){
+    navigator.clipboard.writeText('/notebooklm '+btn.dataset.url).then(function(){
+      var orig=btn.innerHTML;btn.innerHTML='✓ 복사됨';btn.classList.add('copied');
+      setTimeout(function(){btn.innerHTML=orig;btn.classList.remove('copied');},2000);
+    });
+  });
+});
+</script>
+
+</body>
+</html>
