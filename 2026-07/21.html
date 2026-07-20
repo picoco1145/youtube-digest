@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>2026-07-21 — 유튜브 구독 정리</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+  :root{--bg:#090e1a;--surface:#111827;--surface2:#1a2235;--border:#1e2d47;--accent:#6c63ff;--accent2:#00d4ff;--text:#e8eaf0;--muted:#7a8499;--radius:14px;}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Pretendard',sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+  header{background:linear-gradient(135deg,#0d1b3e,#1a0533);border-bottom:1px solid var(--border);padding:20px 40px;display:flex;align-items:center;justify-content:space-between;}
+  .nav-back{color:var(--accent2);text-decoration:none;font-size:0.85rem;display:flex;align-items:center;gap:6px}
+  .nav-back:hover{color:#fff}
+  .date-badge{font-size:1.4rem;font-weight:700;letter-spacing:-0.5px;background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+  .count{font-size:0.85rem;color:var(--muted)}
+  main{max-width:900px;margin:0 auto;padding:32px 24px 80px}
+  .video-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;margin-bottom:24px;transition:border-color 0.2s,box-shadow 0.2s;}
+  .video-card:hover{border-color:var(--accent);box-shadow:0 4px 24px rgba(108,99,255,0.15)}
+  .card-top{display:flex;gap:0}
+  .thumb-wrap{flex:0 0 240px;position:relative;overflow:hidden}
+  .thumb-wrap img{width:100%;height:100%;object-fit:cover;transition:transform 0.4s}
+  .video-card:hover .thumb-wrap img{transform:scale(1.05)}
+  .card-info{flex:1;padding:20px;display:flex;flex-direction:column;gap:10px}
+  .card-meta{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+  .ch-tag{font-size:0.72rem;font-weight:600;padding:3px 12px;background:linear-gradient(135deg,rgba(108,99,255,0.2),rgba(0,212,255,0.2));border:1px solid rgba(108,99,255,0.3);border-radius:999px;color:var(--accent2);}
+  .date-tag{font-size:0.72rem;color:var(--muted)}
+  .no-transcript{font-size:0.68rem;padding:2px 8px;background:rgba(255,180,0,0.12);border:1px solid rgba(255,180,0,0.25);border-radius:999px;color:#ffa500;}
+  .video-title{font-size:1rem;font-weight:600;line-height:1.4}
+  .yt-link{display:inline-flex;align-items:center;gap:5px;font-size:0.8rem;color:var(--accent);text-decoration:none;transition:color 0.2s;}
+  .yt-link:hover{color:var(--accent2)}
+  
+  .nlm-btn{display:inline-flex;align-items:center;gap:5px;font-size:0.8rem;color:#fff;
+    background:rgba(108,99,255,0.2);border:1px solid rgba(108,99,255,0.4);border-radius:8px;
+    padding:4px 12px;cursor:pointer;font-family:inherit;transition:all 0.2s;margin-left:8px;}
+  .nlm-btn:hover{background:rgba(108,99,255,0.45);}
+  .nlm-btn.copied{background:rgba(0,200,100,0.2);border-color:rgba(0,200,100,0.4);color:#00c864;}
+
+  .summary-section{border-top:1px solid var(--border);background:var(--surface2);padding:20px 24px;font-size:0.85rem;line-height:1.7;color:#c5cad8;}
+  .summary-section h2{font-size:0.82rem;color:var(--accent2);margin:12px 0 4px}
+  .summary-section h2:first-child{margin-top:0}
+  .summary-section ul{padding-left:18px}
+  .summary-section li{margin-bottom:5px}
+  .transcript-wrap{border-top:1px solid var(--border);padding:14px 24px;background:#0c1220}
+  .transcript-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:0}
+  .transcript-toggle{background:none;border:none;color:var(--muted);font-size:0.8rem;cursor:pointer;font-family:inherit;display:flex;align-items:center;gap:4px;padding:0;transition:color 0.2s;}
+  .transcript-toggle:hover{color:var(--text)}
+  .copy-btn{background:rgba(108,99,255,0.1);border:1px solid rgba(108,99,255,0.3);border-radius:8px;color:var(--accent2);font-size:0.72rem;padding:4px 12px;cursor:pointer;font-family:inherit;transition:all 0.2s;}
+  .copy-btn:hover{background:rgba(108,99,255,0.25);color:#fff}
+  .transcript-box{display:none;margin-top:10px;background:#080d18;border:1px solid var(--border);border-radius:10px;padding:12px 14px;font-size:0.78rem;line-height:1.75;color:#8a95aa;max-height:260px;overflow-y:auto;white-space:pre-wrap;word-break:break-word;}
+  .transcript-box.visible{display:block}
+  footer{text-align:center;padding:24px;font-size:0.75rem;color:var(--muted);border-top:1px solid var(--border)}
+  @media(max-width:640px){.card-top{flex-direction:column}.thumb-wrap{flex:none;height:200px}header{padding:16px}main{padding:16px 12px 60px}}
+</style>
+</head>
+<body>
+
+<header>
+  <a class="nav-back" href="../index.html">← 대시보드로</a>
+  <div>
+    <div class="date-badge">2026-07-21</div>
+    <div class="count">1개 영상</div>
+  </div>
+  <div style="font-size:0.75rem;color:var(--muted)">2026-07-21 06:01 생성</div>
+</header>
+
+<main>
+
+  <article class="video-card">
+    <div class="card-top">
+      <a class="thumb-wrap" href="https://www.youtube.com/watch?v=vatOVZbumk0" target="_blank" rel="noopener">
+        <img src="https://i.ytimg.com/vi/vatOVZbumk0/hqdefault.jpg" alt="The Real Reason Claude and ChatGPT Only Made You a Little Faster" loading="lazy"/>
+      </a>
+      <div class="card-info">
+        <div class="card-meta">
+          <span class="ch-tag">Dylan Davis</span>
+          <span class="date-tag">2026-07-21</span>
+          
+        </div>
+        <div class="video-title">The Real Reason Claude and ChatGPT Only Made You a Little Faster</div>
+        <div style="display:flex;align-items:center;flex-wrap:wrap;gap:4px;margin-top:auto">
+          <a class="yt-link" href="https://www.youtube.com/watch?v=vatOVZbumk0" target="_blank" rel="noopener">↗ 유튜브에서 보기</a>
+          <button class="nlm-btn" data-url="https://www.youtube.com/watch?v=vatOVZbumk0">📓 NotebookLM</button>
+        </div>
+      </div>
+    </div>
+    <div class="summary-section">
+      <h2>핵심 요약</h2>
+<p>AI 쓰고도 일 속도가 겨우 조금 빨라진 건 기존 작업 과정에 AI를 얹기만 하는 'AI-assisted' 방식에 갇혀있기 때문이다. 진짜 변화는 AI를 중심으로 프로세스를 완전히 바꿔 불필요한 단계를 싹 잘라내는 'AI-native' 전환에서 나온다. 사람이 데이터 전달하려고 굳이 고생하던 중간 단계를 지워버리면 10단계 프로세스도 4단계로 대폭 줄일 수 있다.</p>
+<h2>주요 포인트</h2>
+<ul>
+<li>95~99%의 사람들은 기존 업무 단계에 AI를 살짝 얹어 툴처럼 쓰는 'AI-assisted' 수준에 머물러 있음</li>
+<li>AI 중심으로 프로세스와 조직을 재설계해서 불필요한 단계를 과감히 없애는 'AI-native'로 전환해야 함</li>
+<li>과거 인간끼리 문서 전달하려고 파일 정리하던 단계는 지저분한 글도 잘 알아듣는 AI 덕분에 삭제 가능함</li>
+<li>모든 업무 단계를 '유지(keep)', '삭제(cut)', '변경(change)' 3가지로 분류하고 인간 중심의 낭비 단계를 50% 이상 잘라내야 함</li>
+</ul>
+    </div>
+  <div class="transcript-wrap">
+    <div class="transcript-header">
+      <button class="transcript-toggle" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('visible')">
+        <span class="arr">▼</span> 원문 자막
+      </button>
+      <button class="copy-btn" onclick="var b=this,t=b.nextElementSibling||b;navigator.clipboard.writeText(document.querySelector('#tr-vatOVZbumk0').textContent).then(()=>{b.textContent='복사됨';setTimeout(()=>b.textContent='복사',2000)})">복사</button>
+    </div>
+    <pre class="transcript-box" id="tr-vatOVZbumk0">AI was supposed to transform how you work. But instead, it just made you a little bit faster. And that's because you're speeding up steps you should be deleting. If you're new here, I'm Dylan. I run an AI consultancy. And rebuilding processes around AI is most of what I do with my clients. The real change isn't adding AI to your steps. It's deleting them until a 10-step process becomes four. So by the end of this video, you'll be able to sort every step of the process into three piles: keep it, cut it, or change it. And the steps that feel most important usually go first. So, let's get into it. So, you may have heard of different types of people talking about AI-assisted and AI-native. These are two different ways one can apply AI to their organization and their teams. 95% or maybe even 99% of the people you're talking to are likely taking the AI-assisted approach. Or what they're doing is they're applying AI to existing processes and the existing steps. But they're very rarely adjusting their entire organization and processes to adapt to AI. So, they're trying to have AI fit their organization instead of fitting their organization to AI. And that's the primary difference between AI-assisted and AI-native. Practically speaking, say you have an activity that has seven to eight steps inside of it. You likely keep every single one of those steps and just apply AI to a few of them. And this is a good place to start because you're getting more leverage from AI and you're augmenting your work and speeding things up. But ideally, you go from this to the next step, which is becoming, {quote} {unquote}, more AI-native, which is changing your processes around AI and cutting out steps that are unnecessary now because we have AI. And it's important to note that just by doing this, and this video itself, doesn't make you AI-native. This is one of many steps one has to take to radically transform their organization and processes to get the most from these tools. And this baby step that we're going to take today in this video is simply reviewing all of the processes that you have within your organization and your And figuring out from the steps inside this process, what can we cut because we no longer need it thanks to AI. And the interesting thing about many of these steps and why when I work with my clients, we can cut probably 50% of the steps out, is those steps tend to be oriented towards humans. And what do I mean by this? A clear example, let's say that you have a messy file. It could be an Excel sheet, your notes, whatever else. You need to clean them up so you can pass it off to another human so they can finish that process. Well, if we have AI implemented in the process, we no longer need to do the cleanup because the AI can read those files even if they are messy and take the remaining steps necessary to complete that activity. That's removing maybe one or two steps from that process. And through the process of working with many different clients and many different industries, I found that every single process really has three primary steps. Two of which you'll keep and the third you'll cut. Quick pause in the regular programming. This video is brought to you by me, as always. Two quick things. First off, below is a 30-day AI Insight series, completely free. You'll get 30 insights in your inbox of how you can apply AI to your business and your work. The second thing is if you'd like to work with me, below are a series of offerings to see if there's a good fit between the two of us. Now, let's get back to the video. So, the two that you'll keep, the first one is going to be work. So, this is the actual step that does the thing that creates the result. So, if you remove this step from the process, the activity would not be completed. So, this is critical, foundational to the thing getting done. The next one is where a human needs to be in the loop for some form of judgment or decision-making. The two primary ways this manifests is if you need to judge the output from the AI to make sure it's on track. That's where you need to put a human or when there's a decision that needs to be made based on the AI's work. And the decisions tend to be based around high-risk tasks, which means there's some sort of financial, legal, or reputational risk associated with the organization when making that decision. And obviously you want a human in the loop for that, not just allowing the AI to do it autonomously. Those are the two steps that we're going to keep in the process. The one thing that we're going to cut is actually going to be the human tax. As I mentioned previously, the steps correlated to human tax solely exist to help other humans to get the process done. And I'll show you exactly what that's made up of from my experience. So, if I zoom in into human tax, there are three primary forms that I've seen in engagements with my clients that are human tax steps that we can cut or change. So, the first one are handoffs. So,</pre>
+  </div>
+  </article>
+</main>
+
+<footer>유튜브 구독 정리 · agy 요약 · 2026-07-21 06:01</footer>
+
+
+<script>
+document.querySelectorAll('.nlm-btn').forEach(function(btn){
+  btn.addEventListener('click',function(){
+    navigator.clipboard.writeText('/notebooklm '+btn.dataset.url).then(function(){
+      var orig=btn.innerHTML;btn.innerHTML='✓ 복사됨';btn.classList.add('copied');
+      setTimeout(function(){btn.innerHTML=orig;btn.classList.remove('copied');},2000);
+    });
+  });
+});
+</script>
+
+</body>
+</html>
