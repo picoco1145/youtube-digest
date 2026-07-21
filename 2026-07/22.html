@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>2026-07-22 — 유튜브 구독 정리</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+  :root{--bg:#090e1a;--surface:#111827;--surface2:#1a2235;--border:#1e2d47;--accent:#6c63ff;--accent2:#00d4ff;--text:#e8eaf0;--muted:#7a8499;--radius:14px;}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Pretendard',sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+  header{background:linear-gradient(135deg,#0d1b3e,#1a0533);border-bottom:1px solid var(--border);padding:20px 40px;display:flex;align-items:center;justify-content:space-between;}
+  .nav-back{color:var(--accent2);text-decoration:none;font-size:0.85rem;display:flex;align-items:center;gap:6px}
+  .nav-back:hover{color:#fff}
+  .date-badge{font-size:1.4rem;font-weight:700;letter-spacing:-0.5px;background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+  .count{font-size:0.85rem;color:var(--muted)}
+  main{max-width:900px;margin:0 auto;padding:32px 24px 80px}
+  .video-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;margin-bottom:24px;transition:border-color 0.2s,box-shadow 0.2s;}
+  .video-card:hover{border-color:var(--accent);box-shadow:0 4px 24px rgba(108,99,255,0.15)}
+  .card-top{display:flex;gap:0}
+  .thumb-wrap{flex:0 0 240px;position:relative;overflow:hidden}
+  .thumb-wrap img{width:100%;height:100%;object-fit:cover;transition:transform 0.4s}
+  .video-card:hover .thumb-wrap img{transform:scale(1.05)}
+  .card-info{flex:1;padding:20px;display:flex;flex-direction:column;gap:10px}
+  .card-meta{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+  .ch-tag{font-size:0.72rem;font-weight:600;padding:3px 12px;background:linear-gradient(135deg,rgba(108,99,255,0.2),rgba(0,212,255,0.2));border:1px solid rgba(108,99,255,0.3);border-radius:999px;color:var(--accent2);}
+  .date-tag{font-size:0.72rem;color:var(--muted)}
+  .no-transcript{font-size:0.68rem;padding:2px 8px;background:rgba(255,180,0,0.12);border:1px solid rgba(255,180,0,0.25);border-radius:999px;color:#ffa500;}
+  .video-title{font-size:1rem;font-weight:600;line-height:1.4}
+  .yt-link{display:inline-flex;align-items:center;gap:5px;font-size:0.8rem;color:var(--accent);text-decoration:none;transition:color 0.2s;}
+  .yt-link:hover{color:var(--accent2)}
+  
+  .nlm-btn{display:inline-flex;align-items:center;gap:5px;font-size:0.8rem;color:#fff;
+    background:rgba(108,99,255,0.2);border:1px solid rgba(108,99,255,0.4);border-radius:8px;
+    padding:4px 12px;cursor:pointer;font-family:inherit;transition:all 0.2s;margin-left:8px;}
+  .nlm-btn:hover{background:rgba(108,99,255,0.45);}
+  .nlm-btn.copied{background:rgba(0,200,100,0.2);border-color:rgba(0,200,100,0.4);color:#00c864;}
+
+  .summary-section{border-top:1px solid var(--border);background:var(--surface2);padding:20px 24px;font-size:0.85rem;line-height:1.7;color:#c5cad8;}
+  .summary-section h2{font-size:0.82rem;color:var(--accent2);margin:12px 0 4px}
+  .summary-section h2:first-child{margin-top:0}
+  .summary-section ul{padding-left:18px}
+  .summary-section li{margin-bottom:5px}
+  .transcript-wrap{border-top:1px solid var(--border);padding:14px 24px;background:#0c1220}
+  .transcript-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:0}
+  .transcript-toggle{background:none;border:none;color:var(--muted);font-size:0.8rem;cursor:pointer;font-family:inherit;display:flex;align-items:center;gap:4px;padding:0;transition:color 0.2s;}
+  .transcript-toggle:hover{color:var(--text)}
+  .copy-btn{background:rgba(108,99,255,0.1);border:1px solid rgba(108,99,255,0.3);border-radius:8px;color:var(--accent2);font-size:0.72rem;padding:4px 12px;cursor:pointer;font-family:inherit;transition:all 0.2s;}
+  .copy-btn:hover{background:rgba(108,99,255,0.25);color:#fff}
+  .transcript-box{display:none;margin-top:10px;background:#080d18;border:1px solid var(--border);border-radius:10px;padding:12px 14px;font-size:0.78rem;line-height:1.75;color:#8a95aa;max-height:260px;overflow-y:auto;white-space:pre-wrap;word-break:break-word;}
+  .transcript-box.visible{display:block}
+  footer{text-align:center;padding:24px;font-size:0.75rem;color:var(--muted);border-top:1px solid var(--border)}
+  @media(max-width:640px){.card-top{flex-direction:column}.thumb-wrap{flex:none;height:200px}header{padding:16px}main{padding:16px 12px 60px}}
+</style>
+</head>
+<body>
+
+<header>
+  <a class="nav-back" href="../index.html">← 대시보드로</a>
+  <div>
+    <div class="date-badge">2026-07-22</div>
+    <div class="count">1개 영상</div>
+  </div>
+  <div style="font-size:0.75rem;color:var(--muted)">2026-07-22 06:00 생성</div>
+</header>
+
+<main>
+
+  <article class="video-card">
+    <div class="card-top">
+      <a class="thumb-wrap" href="https://www.youtube.com/watch?v=o0UOkPRtmuA" target="_blank" rel="noopener">
+        <img src="https://i.ytimg.com/vi/o0UOkPRtmuA/hqdefault.jpg" alt="Build & Sell $10,000 Premium Websites (Complete Beginner's Guide)" loading="lazy"/>
+      </a>
+      <div class="card-info">
+        <div class="card-meta">
+          <span class="ch-tag">Nicholas Puru</span>
+          <span class="date-tag">2026-07-22</span>
+          
+        </div>
+        <div class="video-title">Build & Sell $10,000 Premium Websites (Complete Beginner's Guide)</div>
+        <div style="display:flex;align-items:center;flex-wrap:wrap;gap:4px;margin-top:auto">
+          <a class="yt-link" href="https://www.youtube.com/watch?v=o0UOkPRtmuA" target="_blank" rel="noopener">↗ 유튜브에서 보기</a>
+          <button class="nlm-btn" data-url="https://www.youtube.com/watch?v=o0UOkPRtmuA">📓 NotebookLM</button>
+        </div>
+      </div>
+    </div>
+    <div class="summary-section">
+      <h2>핵심 요약</h2>
+<p>한 문단짜리 프롬프트만 던져주면 단돈 몇 달러로 1,000만 원짜리 퀄리티의 웹사이트를 뽑아내는 AI 에이전트 활용법이다. 초보자도 20분 만에 뚝딱 만들어서 실제 업체에 팔아먹는 비즈니스 모델까지 친절하게 알려준다.</p>
+<h2>주요 포인트</h2>
+<ul>
+<li>이제는 사람이 디자인하는 게 아니라 AI가 디자인을 알아서 잘하도록 프롬프트만 잘 쥐여주면 되는 시대다.</li>
+<li>에어테이블 개발진이 만든 'Hyper Agent'는 대화형이 아니라 지시만 내리면 알아서 사이트를 완성해다 주는 씹사기 툴이다.</li>
+<li>실제 200억이 넘는 고급 저택의 웹사이트를 예시로 들었는데, 드론 영상에 매물 소개 글까지 에이전트가 알아서 깔끔하게 다 짜놓는다.</li>
+<li>영상 후반부에는 이 기술을 활용해 실제 비즈니스 고객에게 웹사이트 제작 서비스를 제안하고 돈을 버는 실전 꿀팁을 전수한다.</li>
+</ul>
+    </div>
+  <div class="transcript-wrap">
+    <div class="transcript-header">
+      <button class="transcript-toggle" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('visible')">
+        <span class="arr">▼</span> 원문 자막
+      </button>
+      <button class="copy-btn" onclick="var b=this,t=b.nextElementSibling||b;navigator.clipboard.writeText(document.querySelector('#tr-o0UOkPRtmuA').textContent).then(()=>{b.textContent='복사됨';setTimeout(()=>b.textContent='복사',2000)})">복사</button>
+    </div>
+    <pre class="transcript-box" id="tr-o0UOkPRtmuA">So, I just ran a pretty simple experiment where I gave one AI agent a single prompt, just one paragraph describing what I wanted, and I let it design and build this entire $10,000 looking website all on its own. So, it came up with the drone footage, the videos, the layout, literally all of it. And honestly, the result kind of stunned me where this whole thing, it cost me just a few dollars. And the coolest part is how simple this actually is now. I didn't give it some five-step framework. I didn't sit there art directing every section going back and forth. or I just wrote one good prompt and I got out of its way. Because at this point, the agent's design taste is honestly better than mine, could be better than yours. That's the whole trick. You're not designing the website. You are writing the prompt that designs it for you. And I'm making this video for two different reasons. One, just to show you exactly how to build beautiful professional sites like these for yourself, for your business in about 20 minutes, even if you've never built a website in your life. And number two, for anybody who wants to make money with this, I will show you the exact way to sell these to real businesses. and all the prompts, they're going to be available for completely free inside of my school community down below in the description. So, you can just copy them over. So, I'll first cover how to actually build this and then how to sell this and the best ways to do so. So, the tool is called Hyper Agent. It's built by the team behind Air Table and it's its own separate product. And the simplest way that I can describe it is that you don't chat with it. You just give an agent a job and it goes off on its own computer inside of its cloud with a real browser and real tools and it comes back with some finished work. So you'll get a published website back, not just a paragraph telling you how to actually create one. So here's the plan. I'm going to be showing you both builds in full. So the finished sites, the exact prompts that I have used, what each one actually did step by step, what it cost, and where it messed up because it did mess up at certain points. And then I'll walk you through how the tool actually works so you can build this on your own. And at the end, the part that actually matters, exactly how to turn this into a service that you can sell to real businesses. So I'm going to be starting with the real estate. So, this is a real property, 9826 Lola Farms Road. It's a 6-bedroom, 8 bath, 11,000 ft² oceanfront estate that has just sold for about $20.8 million. And this is the website the agent built for it. So, if we look over at the top, we have a cinematic aerial drone flyover of the actual house. It's orbiting the bluff over the Pacific, and then we have a very clean navigation bar and the real stats. So obviously the six beds, eight baths, 11,000 square ft, 270 degree ocean view. It also wrote an actual listing copy. So it says a rare statement in glass, stone, and sea. And then this part is the cinematic tour. So we have four separate video walkthroughs that it generated from complete scratch. It has an aerial flyover, the great room, the chef's kitchen, and the infinity pool terrace at Golden Hour. Now, these are all AI videos, and they look like a film crew genuinely shot every single one of them because they are stunning. They are very beautiful. And then we have a design portfolio. So there's about four photorealistic redesigns of the main rooms. And this is the part that I actually love where we have a neighborhood map with the real drive and the walk times to everything. So we have the nearest coffee 7 minute drive. Trader Joe's 9 minutes. Tory Pines Elementary that's 8 minutes. Then the Bishop School 13. It pulled all of that from real map data. One of the next features I want to show you is a live weather panel that updates when you actually load the page. We have a full spec sheet. And down here we have an honest footer that says like the interior redesigns are AI design concepts, not photos of the current home. It labeled its own work, just AI work. So the listing stays honest. Nobody told it to do that. And I don't know what the regulations would be like, but I'm sure, you know, we don't have to include that if we don't want to. And if we actually see this right here, this is the entire thing that I typed out to make all of that. It's just one paragraph. I quite literally one-shoted all of this. That's it. So you can pause it if you want it. It's also going to be free available inside of my school community for this entire prompt. So, just to walk you through it very briefly, I'm saying you're building a premium real estate marketing package for one property. And then I insert the property address. And then I said, "Deliver everything as one polished publishable web page that looks like a high-end $10 million listing site. Include a cinematic 3D aerial drone, fly over of the property, street view, so on so </pre>
+  </div>
+  </article>
+</main>
+
+<footer>유튜브 구독 정리 · agy 요약 · 2026-07-22 06:00</footer>
+
+
+<script>
+document.querySelectorAll('.nlm-btn').forEach(function(btn){
+  btn.addEventListener('click',function(){
+    navigator.clipboard.writeText('/notebooklm '+btn.dataset.url).then(function(){
+      var orig=btn.innerHTML;btn.innerHTML='✓ 복사됨';btn.classList.add('copied');
+      setTimeout(function(){btn.innerHTML=orig;btn.classList.remove('copied');},2000);
+    });
+  });
+});
+</script>
+
+</body>
+</html>
