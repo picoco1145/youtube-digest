@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>2026-07-23 — 유튜브 구독 정리</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+  :root{--bg:#090e1a;--surface:#111827;--surface2:#1a2235;--border:#1e2d47;--accent:#6c63ff;--accent2:#00d4ff;--text:#e8eaf0;--muted:#7a8499;--radius:14px;}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Pretendard',sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+  header{background:linear-gradient(135deg,#0d1b3e,#1a0533);border-bottom:1px solid var(--border);padding:20px 40px;display:flex;align-items:center;justify-content:space-between;}
+  .nav-back{color:var(--accent2);text-decoration:none;font-size:0.85rem;display:flex;align-items:center;gap:6px}
+  .nav-back:hover{color:#fff}
+  .date-badge{font-size:1.4rem;font-weight:700;letter-spacing:-0.5px;background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+  .count{font-size:0.85rem;color:var(--muted)}
+  main{max-width:900px;margin:0 auto;padding:32px 24px 80px}
+  .video-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;margin-bottom:24px;transition:border-color 0.2s,box-shadow 0.2s;}
+  .video-card:hover{border-color:var(--accent);box-shadow:0 4px 24px rgba(108,99,255,0.15)}
+  .card-top{display:flex;gap:0}
+  .thumb-wrap{flex:0 0 240px;position:relative;overflow:hidden}
+  .thumb-wrap img{width:100%;height:100%;object-fit:cover;transition:transform 0.4s}
+  .video-card:hover .thumb-wrap img{transform:scale(1.05)}
+  .card-info{flex:1;padding:20px;display:flex;flex-direction:column;gap:10px}
+  .card-meta{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+  .ch-tag{font-size:0.72rem;font-weight:600;padding:3px 12px;background:linear-gradient(135deg,rgba(108,99,255,0.2),rgba(0,212,255,0.2));border:1px solid rgba(108,99,255,0.3);border-radius:999px;color:var(--accent2);}
+  .date-tag{font-size:0.72rem;color:var(--muted)}
+  .no-transcript{font-size:0.68rem;padding:2px 8px;background:rgba(255,180,0,0.12);border:1px solid rgba(255,180,0,0.25);border-radius:999px;color:#ffa500;}
+  .video-title{font-size:1rem;font-weight:600;line-height:1.4}
+  .yt-link{display:inline-flex;align-items:center;gap:5px;font-size:0.8rem;color:var(--accent);text-decoration:none;transition:color 0.2s;}
+  .yt-link:hover{color:var(--accent2)}
+  
+  .nlm-btn{display:inline-flex;align-items:center;gap:5px;font-size:0.8rem;color:#fff;
+    background:rgba(108,99,255,0.2);border:1px solid rgba(108,99,255,0.4);border-radius:8px;
+    padding:4px 12px;cursor:pointer;font-family:inherit;transition:all 0.2s;margin-left:8px;}
+  .nlm-btn:hover{background:rgba(108,99,255,0.45);}
+  .nlm-btn.copied{background:rgba(0,200,100,0.2);border-color:rgba(0,200,100,0.4);color:#00c864;}
+
+  .summary-section{border-top:1px solid var(--border);background:var(--surface2);padding:20px 24px;font-size:0.85rem;line-height:1.7;color:#c5cad8;}
+  .summary-section h2{font-size:0.82rem;color:var(--accent2);margin:12px 0 4px}
+  .summary-section h2:first-child{margin-top:0}
+  .summary-section ul{padding-left:18px}
+  .summary-section li{margin-bottom:5px}
+  .transcript-wrap{border-top:1px solid var(--border);padding:14px 24px;background:#0c1220}
+  .transcript-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:0}
+  .transcript-toggle{background:none;border:none;color:var(--muted);font-size:0.8rem;cursor:pointer;font-family:inherit;display:flex;align-items:center;gap:4px;padding:0;transition:color 0.2s;}
+  .transcript-toggle:hover{color:var(--text)}
+  .copy-btn{background:rgba(108,99,255,0.1);border:1px solid rgba(108,99,255,0.3);border-radius:8px;color:var(--accent2);font-size:0.72rem;padding:4px 12px;cursor:pointer;font-family:inherit;transition:all 0.2s;}
+  .copy-btn:hover{background:rgba(108,99,255,0.25);color:#fff}
+  .transcript-box{display:none;margin-top:10px;background:#080d18;border:1px solid var(--border);border-radius:10px;padding:12px 14px;font-size:0.78rem;line-height:1.75;color:#8a95aa;max-height:260px;overflow-y:auto;white-space:pre-wrap;word-break:break-word;}
+  .transcript-box.visible{display:block}
+  footer{text-align:center;padding:24px;font-size:0.75rem;color:var(--muted);border-top:1px solid var(--border)}
+  @media(max-width:640px){.card-top{flex-direction:column}.thumb-wrap{flex:none;height:200px}header{padding:16px}main{padding:16px 12px 60px}}
+</style>
+</head>
+<body>
+
+<header>
+  <a class="nav-back" href="../index.html">← 대시보드로</a>
+  <div>
+    <div class="date-badge">2026-07-23</div>
+    <div class="count">1개 영상</div>
+  </div>
+  <div style="font-size:0.75rem;color:var(--muted)">2026-07-23 06:00 생성</div>
+</header>
+
+<main>
+
+  <article class="video-card">
+    <div class="card-top">
+      <a class="thumb-wrap" href="https://www.youtube.com/watch?v=tbTez-ToAmA" target="_blank" rel="noopener">
+        <img src="https://i.ytimg.com/vi/tbTez-ToAmA/hqdefault.jpg" alt="Why Claude Gets Worse When You Download Too Many Skills" loading="lazy"/>
+      </a>
+      <div class="card-info">
+        <div class="card-meta">
+          <span class="ch-tag">Dylan Davis</span>
+          <span class="date-tag">2026-07-23</span>
+          
+        </div>
+        <div class="video-title">Why Claude Gets Worse When You Download Too Many Skills</div>
+        <div style="display:flex;align-items:center;flex-wrap:wrap;gap:4px;margin-top:auto">
+          <a class="yt-link" href="https://www.youtube.com/watch?v=tbTez-ToAmA" target="_blank" rel="noopener">↗ 유튜브에서 보기</a>
+          <button class="nlm-btn" data-url="https://www.youtube.com/watch?v=tbTez-ToAmA">📓 NotebookLM</button>
+        </div>
+      </div>
+    </div>
+    <div class="summary-section">
+      <h2>핵심 요약</h2>
+<p>남이 만든 AI 스킬 무작정 다운로드해 쓰면 나만의 맥락이 없어서 AI 성능이 오히려 더 나빠진다. 스킬은 결국 폴더 안의 지침(skill.md)과 에셋 묶음일 뿐이고 AI가 알아서 만들어주니 직접 빌드하는 게 이득이다. 지도(일반 정보)만 보고 운전하는 것보다 골목길 지름길이나 싱크홀 위치 같은 실제 지형(나만의 맥락)을 담아 스킬을 직접 만들어 써야 한다.</p>
+<h2>주요 포인트</h2>
+<ul>
+<li>AI 스킬은 복잡한 게 아니라 폴더 안에 든 지침서(skill.md)와 추가 에셋, 코드 스크립트일 뿐이다.</li>
+<li>남의 스킬을 다운로드하면 제작자 맞춤형이라 내 업무 맥락이 전혀 안 들어가서 AI가 바보가 된다.</li>
+<li>지도는 대강의 길만 알려주지만 실제 지형은 매일 운전하며 쌓인 꿀팁과 변수(맥락)를 다 알고 있는 것과 같은 이치다.</li>
+<li>어차피 스킬은 AI가 알아서 빌드해주니까 남의 것 가져다 쓰지 말고 본인 맥락 넣어서 직접 만들어 쓰는 게 답이다.</li>
+</ul>
+    </div>
+  <div class="transcript-wrap">
+    <div class="transcript-header">
+      <button class="transcript-toggle" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('visible')">
+        <span class="arr">▼</span> 원문 자막
+      </button>
+      <button class="copy-btn" onclick="var b=this,t=b.nextElementSibling||b;navigator.clipboard.writeText(document.querySelector('#tr-tbTez-ToAmA').textContent).then(()=>{b.textContent='복사됨';setTimeout(()=>b.textContent='복사',2000)})">복사</button>
+    </div>
+    <pre class="transcript-box" id="tr-tbTez-ToAmA">If you spend any amount of time on LinkedIn, YouTube, or X, you'll likely see people handing out their AI skills, offering to send you theirs if you just drop in your email. If you're new here, I'm Dylan. I run an AI consultancy. And the executives and business owners I coach download these constantly, hoping for an edge. But each one was built for someone else's work. So even when the task is yours, the skill has none of your context. And your AI ends up worse instead of better. So today, I want to show you the one question that decides whether you grab a skill or you build your own. And the three options it leads to. So, let's get into it. Now, before we get into all the detail associated to why I think downloading other people's skills is kind of a waste of time for most use cases, we need to first understand what a skill is. Simply put, a skill is just instructions inside of a folder. That's it. And you call these when you have a specific process that you want to automate or augment with AI so it can do that thing for you on a recurring basis. Now, some detail of what's inside of that folder, there's always going to be a thing called a skill.md. So this is basically a file that tells the AI exactly what it needs to do. In addition to this, depending on what the skill is being applied to, there may be some additional sub folders inside of that parent folder. And some of those sub folders could be additional assets, so things that the AI references to make sure it matches your specific pattern of doing something, or scripts. And this could be code the AI writes for you to make sure that the skill matches your process to the T. The important thing about all of this is that the AI is going to create the skill for you. You don't have to create it from scratch by hand. And this is one of the key reasons why I think downloading other people's skills is kind of a waste when you can create your own that is enriched by your context and what matters to you. And to that point, around your context, I have a bit of an analogy for you here. So we have the map versus the terrain. This is kind of the thing that we're going to talk about throughout the entire video. So let's say that you're driving to and from work on a consistent basis. The map for those directions is going to be something like the left-hand side. So we have a general understanding of which which way we're going, what roads we have to turn down, etc. But, the terrain understands all the nuance and the subtlety associated to that path. And since you drive it every single day, you know that if you leave work at 5:00 p.m., if you take a side road, you'll get home 10 minutes faster. Or that there's a specific pothole on a certain street that you always try to avoid because it's so massive. Or that the red light next to your house stays on way longer than it should. And a variety of other nuances that you only understand because you've done this so many times. When you download somebody else's skill, it lacks that nuance, which means the AI that applies that skill is going to give you a lower quality output. So, the big thing I want you to take away from this slide is that your skills that you create have that subtle nuance and context to enrich the quality of what you get from the AI. Quick pause. In irregular programming, this video is brought to you by me, as always. Two quick things. First off, below is a 30-day AI Insight series, completely free. You'll get 30 insights in your inbox of how you can apply AI to your business and your work. The second thing is if you'd like to work with me, below are a series of offerings to see if there's a good fit between the two of us. Now, let's get back in the video. Now, let's talk about the trap that a lot of people fall into when they download other people's skills. There are two. The first one is the size of the skill. And this is something I've seen time and time again that if you have a really big skill, a large skill that's bloated with tons of text and tons of subfolders, the quality that you get back from the AI is much lower. But, if you have a minimal skill that's targeted on a given task, the quality you get back from the AI is much higher. And the reason this happens with the skills that you download publicly is that the person that created the skill that's sharing with everybody to download, they need to think about all the different edge cases based on the different types of people that would download it. So, the skill gets really long really fast. And when the AI uses it, it doesn't necessarily know which path to take based on your context, which degrades the overall quality over time. That's the first thing. The size of the skill tends to be massive that you download publicly, which then degrades the output. The second trap people run into is they download too many skills. Not just the size, but too many. Because if you can download skills from a library, why download one when you could download 30 j</pre>
+  </div>
+  </article>
+</main>
+
+<footer>유튜브 구독 정리 · agy 요약 · 2026-07-23 06:00</footer>
+
+
+<script>
+document.querySelectorAll('.nlm-btn').forEach(function(btn){
+  btn.addEventListener('click',function(){
+    navigator.clipboard.writeText('/notebooklm '+btn.dataset.url).then(function(){
+      var orig=btn.innerHTML;btn.innerHTML='✓ 복사됨';btn.classList.add('copied');
+      setTimeout(function(){btn.innerHTML=orig;btn.classList.remove('copied');},2000);
+    });
+  });
+});
+</script>
+
+</body>
+</html>
