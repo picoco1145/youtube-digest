@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>2026-07-24 — 유튜브 구독 정리</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+  :root{--bg:#090e1a;--surface:#111827;--surface2:#1a2235;--border:#1e2d47;--accent:#6c63ff;--accent2:#00d4ff;--text:#e8eaf0;--muted:#7a8499;--radius:14px;}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Pretendard',sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+  header{background:linear-gradient(135deg,#0d1b3e,#1a0533);border-bottom:1px solid var(--border);padding:20px 40px;display:flex;align-items:center;justify-content:space-between;}
+  .nav-back{color:var(--accent2);text-decoration:none;font-size:0.85rem;display:flex;align-items:center;gap:6px}
+  .nav-back:hover{color:#fff}
+  .date-badge{font-size:1.4rem;font-weight:700;letter-spacing:-0.5px;background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+  .count{font-size:0.85rem;color:var(--muted)}
+  main{max-width:900px;margin:0 auto;padding:32px 24px 80px}
+  .video-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;margin-bottom:24px;transition:border-color 0.2s,box-shadow 0.2s;}
+  .video-card:hover{border-color:var(--accent);box-shadow:0 4px 24px rgba(108,99,255,0.15)}
+  .card-top{display:flex;gap:0}
+  .thumb-wrap{flex:0 0 240px;position:relative;overflow:hidden}
+  .thumb-wrap img{width:100%;height:100%;object-fit:cover;transition:transform 0.4s}
+  .video-card:hover .thumb-wrap img{transform:scale(1.05)}
+  .card-info{flex:1;padding:20px;display:flex;flex-direction:column;gap:10px}
+  .card-meta{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+  .ch-tag{font-size:0.72rem;font-weight:600;padding:3px 12px;background:linear-gradient(135deg,rgba(108,99,255,0.2),rgba(0,212,255,0.2));border:1px solid rgba(108,99,255,0.3);border-radius:999px;color:var(--accent2);}
+  .date-tag{font-size:0.72rem;color:var(--muted)}
+  .no-transcript{font-size:0.68rem;padding:2px 8px;background:rgba(255,180,0,0.12);border:1px solid rgba(255,180,0,0.25);border-radius:999px;color:#ffa500;}
+  .video-title{font-size:1rem;font-weight:600;line-height:1.4}
+  .yt-link{display:inline-flex;align-items:center;gap:5px;font-size:0.8rem;color:var(--accent);text-decoration:none;transition:color 0.2s;}
+  .yt-link:hover{color:var(--accent2)}
+  
+  .nlm-btn{display:inline-flex;align-items:center;gap:5px;font-size:0.8rem;color:#fff;
+    background:rgba(108,99,255,0.2);border:1px solid rgba(108,99,255,0.4);border-radius:8px;
+    padding:4px 12px;cursor:pointer;font-family:inherit;transition:all 0.2s;margin-left:8px;}
+  .nlm-btn:hover{background:rgba(108,99,255,0.45);}
+  .nlm-btn.copied{background:rgba(0,200,100,0.2);border-color:rgba(0,200,100,0.4);color:#00c864;}
+
+  .summary-section{border-top:1px solid var(--border);background:var(--surface2);padding:20px 24px;font-size:0.85rem;line-height:1.7;color:#c5cad8;}
+  .summary-section h2{font-size:0.82rem;color:var(--accent2);margin:12px 0 4px}
+  .summary-section h2:first-child{margin-top:0}
+  .summary-section ul{padding-left:18px}
+  .summary-section li{margin-bottom:5px}
+  .transcript-wrap{border-top:1px solid var(--border);padding:14px 24px;background:#0c1220}
+  .transcript-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:0}
+  .transcript-toggle{background:none;border:none;color:var(--muted);font-size:0.8rem;cursor:pointer;font-family:inherit;display:flex;align-items:center;gap:4px;padding:0;transition:color 0.2s;}
+  .transcript-toggle:hover{color:var(--text)}
+  .copy-btn{background:rgba(108,99,255,0.1);border:1px solid rgba(108,99,255,0.3);border-radius:8px;color:var(--accent2);font-size:0.72rem;padding:4px 12px;cursor:pointer;font-family:inherit;transition:all 0.2s;}
+  .copy-btn:hover{background:rgba(108,99,255,0.25);color:#fff}
+  .transcript-box{display:none;margin-top:10px;background:#080d18;border:1px solid var(--border);border-radius:10px;padding:12px 14px;font-size:0.78rem;line-height:1.75;color:#8a95aa;max-height:260px;overflow-y:auto;white-space:pre-wrap;word-break:break-word;}
+  .transcript-box.visible{display:block}
+  footer{text-align:center;padding:24px;font-size:0.75rem;color:var(--muted);border-top:1px solid var(--border)}
+  @media(max-width:640px){.card-top{flex-direction:column}.thumb-wrap{flex:none;height:200px}header{padding:16px}main{padding:16px 12px 60px}}
+</style>
+</head>
+<body>
+
+<header>
+  <a class="nav-back" href="../index.html">← 대시보드로</a>
+  <div>
+    <div class="date-badge">2026-07-24</div>
+    <div class="count">1개 영상</div>
+  </div>
+  <div style="font-size:0.75rem;color:var(--muted)">2026-07-24 06:01 생성</div>
+</header>
+
+<main>
+
+  <article class="video-card">
+    <div class="card-top">
+      <a class="thumb-wrap" href="https://www.youtube.com/watch?v=my5lXX-cd8Y" target="_blank" rel="noopener">
+        <img src="https://i.ytimg.com/vi/my5lXX-cd8Y/hqdefault.jpg" alt="The Only Local AI Guide You'll Ever Need" loading="lazy"/>
+      </a>
+      <div class="card-info">
+        <div class="card-meta">
+          <span class="ch-tag">Nicholas Puru</span>
+          <span class="date-tag">2026-07-24</span>
+          
+        </div>
+        <div class="video-title">The Only Local AI Guide You'll Ever Need</div>
+        <div style="display:flex;align-items:center;flex-wrap:wrap;gap:4px;margin-top:auto">
+          <a class="yt-link" href="https://www.youtube.com/watch?v=my5lXX-cd8Y" target="_blank" rel="noopener">↗ 유튜브에서 보기</a>
+          <button class="nlm-btn" data-url="https://www.youtube.com/watch?v=my5lXX-cd8Y">📓 NotebookLM</button>
+        </div>
+      </div>
+    </div>
+    <div class="summary-section">
+      <h2>핵심 요약</h2>
+<p>로컬 AI는 외부 데이터센터를 이용하는 대신 오픈 웨이트(Open Weights) 모델을 개인 컴퓨터에 직접 다운로드하여 100% 무료 및 오프라인으로 실행하는 방식이다. 인터넷 연결이 끊긴 상태에서도 데이터 유출 걱정 없이 완벽한 프라이버시를 보장받으며 자유롭게 사용할 수 있다. 비개발자 관점에서 로컬 AI의 개념부터 추천 모델, 하드웨어 사양, 설치 방법까지 쉽게 설명한다.</p>
+<h2>주요 포인트</h2>
+<ul>
+<li>구독료, 사용 제한, 로그인 과정 없이 보유 중인 컴퓨터에서 100% 무료 및 오프라인으로 AI 실행 가능</li>
+<li>인터넷 선을 뽑아도 작동하며 입력한 모든 데이터가 외부로 유출되지 않는 완전한 프라이버시 보장</li>
+<li>기존 ChatGPT나 Claude 같은 데이터센터 대여 방식과 달리 내 기기의 하드웨어 자원을 직접 활용</li>
+<li>기업들이 GitHub 등에 무료로 공개한 오픈 웨이트(Open Weights) 모델 파일을 다운로드하여 구동</li>
+<li>비엔지니어 및 비즈니스 사용자의 눈높이에 맞춘 로컬 AI 선택 기준, 사양 안내, 설치법 및 오프라인 시연 제공</li>
+</ul>
+    </div>
+  <div class="transcript-wrap">
+    <div class="transcript-header">
+      <button class="transcript-toggle" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('visible')">
+        <span class="arr">▼</span> 원문 자막
+      </button>
+      <button class="copy-btn" onclick="var b=this,t=b.nextElementSibling||b;navigator.clipboard.writeText(document.querySelector('#tr-my5lXX-cd8Y').textContent).then(()=>{b.textContent='복사됨';setTimeout(()=>b.textContent='복사',2000)})">복사</button>
+    </div>
+    <pre class="transcript-box" id="tr-my5lXX-cd8Y">Okay, this might be one of the coolest things that you can do with AI right now and almost nobody's actually doing this. You can run a real genuinely smart AI completely free on the computer that you already own. You don't need a subscription. You don't have any limits. You don't need loginins and you have no credits just running out. You can have local AI writing for you, answering your questions, and getting real work done. And the best part is it is completely private and it runs 100% offline. You can legitimately rip your Wi-Fi out of the wall and it will just keep going and nothing that you type will ever leave your computer. And I don't care if you've never downloaded an AI model before a day in your life or you're not even sure that your laptop can handle this. By the end of this video, you are going to know exactly which models are worth running and how to have your own private AI up and running today for completely free. By the way, I am not an engineer. I don't write code. I just run AI businesses. So, I'm coming at this probably way closer to you than the people who actually typically make these videos. And I went down this whole rabbit hole so you do not have to. So, in this video, I'm going to be covering what Local AI actually is in plain English, why it suddenly got good, who it's actually for, and who should just stick with Chat GPT and the exact models worth running for you and your business, and what hardware you need, and how to be installing all of this. And at the end of this, I'll just show some demos of running all of this completely offline. It is genuinely insane. Okay, so the normal way that you have been using AI, most likely through Chai GBT, Claude, Gemini, with all of those, the actual AI isn't on your phone and it's not on your laptop. Instead, it's just sitting in a giant data center somewhere. And when you type a message, your message is then traveling to that data center. So, the AI is going to be thinking and the answer it travels back to you. So, you're basically renting time on a brain that lives in somebody else's building. You do not own it. However, local AI just flips that. So instead of renting the brain, you download it onto your computer, onto your machine, and then it just runs right there on your machine for you. So the thinking, it happens on all of your proprietary hardware. So your message, it's not going anywhere. There's no company that's in the middle reading all of your information, all of your messages, and there's no meter running. And the way that this is even possible is something called open weights. So when a company is training an AI model, the end result, it's basically just one big file. And that file, this is the model. So some companies they keep that file locked up and they only really let you reach it through their application but a lot of them and some of the best ones now just release the file practically for anybody to downloading for free usually on GitHub. Those are open weights. That is what I mean. So open weight that just means the actual brain is going to be yours to keep. So you download it once and from then on it's just going to be a file on your computer just like a movie that you downloaded instead of a movie that you're streaming. Right? And that one difference. So, renting the brain versus actually owning it, that is what the whole rest of this video is going to be built on. Well, there's three real reasons, and I'll be pretty honest about each one. The first one is that the free models finally got good and are getting better. So, for years, these open models that you could download, they just weren't good enough to really bother with. So, most people, they didn't bother with them. But that has been changing very fast. So, these strongest open models right now, one of them, they're called GLM 5.2. I just recently made a video on it, and it's surprisingly close to the top paid models. on a lot of different tasks. Really quick before I continue, I do want to preface because you're going to be hearing it constantly in this video and you know outside of it as well. And it's actually very simple, but people they describe a model by its number of parameters like 7 billion or maybe even 70 billion. And parameters, they are just the model's brain cells. So they're like the little settings inside it that are just holding everything that it had learned. So more parameters that generally means a smarter model, but also it's going to be a heavier one that needs a bigger computer to run on. That's the whole idea with that. So when I say GLM 5.2 is 740 billion parameters, I'm just saying that it is an enormous brain, which is exactly why it is so capable and also why, spoiler, you and I cannot run that particular one at home right now. But we'll get to the ones that you can. Now, the second reason is the one that I actually think matters most, and it's just about control. So when you use a closed model like Chat GPT or Claude Fable or Opus </pre>
+  </div>
+  </article>
+</main>
+
+<footer>유튜브 구독 정리 · agy 요약 · 2026-07-24 06:01</footer>
+
+
+<script>
+document.querySelectorAll('.nlm-btn').forEach(function(btn){
+  btn.addEventListener('click',function(){
+    navigator.clipboard.writeText('/notebooklm '+btn.dataset.url).then(function(){
+      var orig=btn.innerHTML;btn.innerHTML='✓ 복사됨';btn.classList.add('copied');
+      setTimeout(function(){btn.innerHTML=orig;btn.classList.remove('copied');},2000);
+    });
+  });
+});
+</script>
+
+</body>
+</html>
