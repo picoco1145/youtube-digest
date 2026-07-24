@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>2026-07-25 — 유튜브 구독 정리</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+  :root{--bg:#090e1a;--surface:#111827;--surface2:#1a2235;--border:#1e2d47;--accent:#6c63ff;--accent2:#00d4ff;--text:#e8eaf0;--muted:#7a8499;--radius:14px;}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Pretendard',sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+  header{background:linear-gradient(135deg,#0d1b3e,#1a0533);border-bottom:1px solid var(--border);padding:20px 40px;display:flex;align-items:center;justify-content:space-between;}
+  .nav-back{color:var(--accent2);text-decoration:none;font-size:0.85rem;display:flex;align-items:center;gap:6px}
+  .nav-back:hover{color:#fff}
+  .date-badge{font-size:1.4rem;font-weight:700;letter-spacing:-0.5px;background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+  .count{font-size:0.85rem;color:var(--muted)}
+  main{max-width:900px;margin:0 auto;padding:32px 24px 80px}
+  .video-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;margin-bottom:24px;transition:border-color 0.2s,box-shadow 0.2s;}
+  .video-card:hover{border-color:var(--accent);box-shadow:0 4px 24px rgba(108,99,255,0.15)}
+  .card-top{display:flex;gap:0}
+  .thumb-wrap{flex:0 0 240px;position:relative;overflow:hidden}
+  .thumb-wrap img{width:100%;height:100%;object-fit:cover;transition:transform 0.4s}
+  .video-card:hover .thumb-wrap img{transform:scale(1.05)}
+  .card-info{flex:1;padding:20px;display:flex;flex-direction:column;gap:10px}
+  .card-meta{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+  .ch-tag{font-size:0.72rem;font-weight:600;padding:3px 12px;background:linear-gradient(135deg,rgba(108,99,255,0.2),rgba(0,212,255,0.2));border:1px solid rgba(108,99,255,0.3);border-radius:999px;color:var(--accent2);}
+  .date-tag{font-size:0.72rem;color:var(--muted)}
+  .no-transcript{font-size:0.68rem;padding:2px 8px;background:rgba(255,180,0,0.12);border:1px solid rgba(255,180,0,0.25);border-radius:999px;color:#ffa500;}
+  .video-title{font-size:1rem;font-weight:600;line-height:1.4}
+  .yt-link{display:inline-flex;align-items:center;gap:5px;font-size:0.8rem;color:var(--accent);text-decoration:none;transition:color 0.2s;}
+  .yt-link:hover{color:var(--accent2)}
+  
+  .nlm-btn{display:inline-flex;align-items:center;gap:5px;font-size:0.8rem;color:#fff;
+    background:rgba(108,99,255,0.2);border:1px solid rgba(108,99,255,0.4);border-radius:8px;
+    padding:4px 12px;cursor:pointer;font-family:inherit;transition:all 0.2s;margin-left:8px;}
+  .nlm-btn:hover{background:rgba(108,99,255,0.45);}
+  .nlm-btn.copied{background:rgba(0,200,100,0.2);border-color:rgba(0,200,100,0.4);color:#00c864;}
+
+  .summary-section{border-top:1px solid var(--border);background:var(--surface2);padding:20px 24px;font-size:0.85rem;line-height:1.7;color:#c5cad8;}
+  .summary-section h2{font-size:0.82rem;color:var(--accent2);margin:12px 0 4px}
+  .summary-section h2:first-child{margin-top:0}
+  .summary-section ul{padding-left:18px}
+  .summary-section li{margin-bottom:5px}
+  .transcript-wrap{border-top:1px solid var(--border);padding:14px 24px;background:#0c1220}
+  .transcript-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:0}
+  .transcript-toggle{background:none;border:none;color:var(--muted);font-size:0.8rem;cursor:pointer;font-family:inherit;display:flex;align-items:center;gap:4px;padding:0;transition:color 0.2s;}
+  .transcript-toggle:hover{color:var(--text)}
+  .copy-btn{background:rgba(108,99,255,0.1);border:1px solid rgba(108,99,255,0.3);border-radius:8px;color:var(--accent2);font-size:0.72rem;padding:4px 12px;cursor:pointer;font-family:inherit;transition:all 0.2s;}
+  .copy-btn:hover{background:rgba(108,99,255,0.25);color:#fff}
+  .transcript-box{display:none;margin-top:10px;background:#080d18;border:1px solid var(--border);border-radius:10px;padding:12px 14px;font-size:0.78rem;line-height:1.75;color:#8a95aa;max-height:260px;overflow-y:auto;white-space:pre-wrap;word-break:break-word;}
+  .transcript-box.visible{display:block}
+  footer{text-align:center;padding:24px;font-size:0.75rem;color:var(--muted);border-top:1px solid var(--border)}
+  @media(max-width:640px){.card-top{flex-direction:column}.thumb-wrap{flex:none;height:200px}header{padding:16px}main{padding:16px 12px 60px}}
+</style>
+</head>
+<body>
+
+<header>
+  <a class="nav-back" href="../index.html">← 대시보드로</a>
+  <div>
+    <div class="date-badge">2026-07-25</div>
+    <div class="count">2개 영상</div>
+  </div>
+  <div style="font-size:0.75rem;color:var(--muted)">2026-07-25 06:01 생성</div>
+</header>
+
+<main>
+
+  <article class="video-card">
+    <div class="card-top">
+      <a class="thumb-wrap" href="https://www.youtube.com/watch?v=k7VI66CkKEY" target="_blank" rel="noopener">
+        <img src="https://i.ytimg.com/vi/k7VI66CkKEY/hqdefault.jpg" alt="Claude Opus 5 is Going to Save You Money" loading="lazy"/>
+      </a>
+      <div class="card-info">
+        <div class="card-meta">
+          <span class="ch-tag">Nate Herk</span>
+          <span class="date-tag">2026-07-25</span>
+          
+        </div>
+        <div class="video-title">Claude Opus 5 is Going to Save You Money</div>
+        <div style="display:flex;align-items:center;flex-wrap:wrap;gap:4px;margin-top:auto">
+          <a class="yt-link" href="https://www.youtube.com/watch?v=k7VI66CkKEY" target="_blank" rel="noopener">↗ 유튜브에서 보기</a>
+          <button class="nlm-btn" data-url="https://www.youtube.com/watch?v=k7VI66CkKEY">📓 NotebookLM</button>
+        </div>
+      </div>
+    </div>
+    <div class="summary-section">
+      <h2>핵심 요약</h2>
+<p>Claude Opus 5가 출시되어 터미널 코딩과 문제 해결 등 주요 벤치마크에서 최고 성능(SOTA)을 달성했다. Opus 5는 기존 Fable 5보다 우수한 성능을 보이면서도 비용은 절반 수준에 불과하여 뛰어난 가성비를 자랑한다. 실제 활용 가치가 높은 만큼 VS Code 등에서 Claude Code를 업데이트하여 직접 테스트해보는 것이 권장된다.</p>
+<h2>주요 포인트</h2>
+<ul>
+<li>터미널 코딩 벤치마크 43% 기록 (Fable 5: 33%, Opus 4.8: 21% 대비 큰 폭 상승)</li>
+<li>문제 해결 벤치마크 성능이 기존 Opus 4.8(1.5%)에서 Opus 5(30%)로 급격히 향상</li>
+<li>컴퓨터 사용, 비즈니스 워크플로우, 다학제 추론 등 주요 분야에서 Fable 5보다 우수한 성능 달성</li>
+<li>Fable 대비 절반 가격으로 제공되어 크레딧 소모를 줄이고 대폭 비용 절감 가능</li>
+<li>벤치마크 수치에만 의존하지 말고 VS Code Claude Code 업데이트 후 실제 사용 환경에서 직접 테스트 권장</li>
+</ul>
+    </div>
+  <div class="transcript-wrap">
+    <div class="transcript-header">
+      <button class="transcript-toggle" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('visible')">
+        <span class="arr">▼</span> 원문 자막
+      </button>
+      <button class="copy-btn" onclick="var b=this,t=b.nextElementSibling||b;navigator.clipboard.writeText(document.querySelector('#tr-k7VI66CkKEY').textContent).then(()=>{b.textContent='복사됨';setTimeout(()=>b.textContent='복사',2000)})">복사</button>
+    </div>
+    <pre class="transcript-box" id="tr-k7VI66CkKEY">Okay, so Claude Opus 5 literally just dropped. Now, obviously I'm going to spend the rest of my day playing around with it, comparing it to Fable 5, and I'm going to bring you guys an experiment. So, stay tuned for that later today. But, I wanted to just real quick come in here and just show you guys this cuz I think it's really, really interesting. On several coding and knowledge work evaluations, Opus 5 is the new state of the art. So, look at this first benchmark right here. Agentic terminal coding. Opus 5 has 43%. Fable 5 had 33%, and Opus 4.8 had 21%. So, this is a major jump in agentic terminal coding above Opus 4.8, but also above Fable 5. Same thing with knowledge work. This thing crushes Opus 4.8. I don't exactly know what the novel problem-solving benchmark is solving, but look at this. It went from Opus 4.8 at 1.5 to 30% at Opus 5. So, anyways, these benchmarks are insane. You can also see here computer use, which I always would default to Codex. I always thought that GPT 5.6 or 5.5 with Codex was just the absolute best with computer use, but look at this with Opus. Opus 5, I'm going to have to try it out with computer use. Anyways, what's really interesting to me is this efficiency because as you guys know, Opus is half the price of Fable, and Fable will burn through your credits like nobody's business. But, look at this. Agentic computer use. Opus 5 performs better than Fable and for cheaper. Look at this. Agentic business workflows. Opus 5 is better than Fable and for cheaper, which is just really, really interesting to me. Multidisciplinary reasoning by effort level. Opus 5 does better than Fable and is cheaper than Fable. So, like I said, guys, I'm about to run a ton of usage credits. If you look at this right here in my Claude, I am already at my weekly Fable limit, and I'm about to go into, you know, thousands of dollars in extra usage credits, but I'm going to run a ton of experiments here, and I'm going to bring you guys my consensus. But, I just wanted to come in here and just like show you guys that real quick. It's really interesting. So, if you real quick go into your VS Code, go into Claude Code, update it, get on Opus 5, and just start running your skills and start running things and seeing how it feels. Because as we know, these benchmarks are fun to look at, but always take them with a grain of salt. It always matters on your use case, the way you talk to agents, the type of work you're doing, things like that. So, Claude Opus 5 provides greatly improved performance for the same cost as its predecessor Opus 4.8. Opus 5 excels at valuable software engineering tasks like the Frontier bench, on Cursor bench. I really want to see how it performs on the Deep suite because that's the one that's been like a pretty true like leading indicator. But, the whole cost thing is just really interesting to me compared to Fable 5. Cuz I know a lot of you guys were kind of like, "Oh man, it it sucks that we're going to be losing Fable or that, you know, we only get a certain different limit for it, but it's overkill for most things and it's really expensive. So, if Opus 5 is better for like general knowledge work, then that's a huge win. And this is really exciting to me. Opus 5 is much stronger at verifying its work and iterating carefully until it succeeds. I heard this really funny analogy on X, which is honestly pretty true. They basically said like, "Hey, Fable 5 is like a wise old owl. It's really good at planning and managing and ideating and coming up with ideas, whereas GPT-5.6-Soul is like a Rottweiler because that thing will grab onto a task and it will shake it and it won't let go until the task is done, which I definitely felt. It was spinning up more tests and it was better at verification than Fable was, right? But now, maybe Opus 5 saw that and was like, "Oh wow, we need to work in some of this GPT-5.6-Soul verification." And now, if we have that, that's huge because verification is kind of what powers all of these agentic loops that everyone's talking about. And if you're using a model that's really, really good at verification, your loops are going to be better and your outputs are going to be better. So, I'm really excited to test out Opus 5 with some verification. And here are some examples where they gave Opus 5 some real scenarios and had it find bugs, verify, take different approaches, and ultimately give a good output. But, anyways, this is now completely available to everybody on all platforms, same exact price as Opus 4.8. So, like I said, I'm about to jump in right now and start testing the heck out of it against Fable 5 and I'll bring you guys that full experiment later today. So, keep your eyes peeled for that video. But, anyways, I'll see you guys there. Thanks, everyone.</pre>
+  </div>
+  </article>
+  <article class="video-card">
+    <div class="card-top">
+      <a class="thumb-wrap" href="https://www.youtube.com/watch?v=p-Y7J2_BZGs" target="_blank" rel="noopener">
+        <img src="https://i.ytimg.com/vi/p-Y7J2_BZGs/hqdefault.jpg" alt="How to Automate an Accounting Firm" loading="lazy"/>
+      </a>
+      <div class="card-info">
+        <div class="card-meta">
+          <span class="ch-tag">Nicholas Puru</span>
+          <span class="date-tag">2026-07-25</span>
+          
+        </div>
+        <div class="video-title">How to Automate an Accounting Firm</div>
+        <div style="display:flex;align-items:center;flex-wrap:wrap;gap:4px;margin-top:auto">
+          <a class="yt-link" href="https://www.youtube.com/watch?v=p-Y7J2_BZGs" target="_blank" rel="noopener">↗ 유튜브에서 보기</a>
+          <button class="nlm-btn" data-url="https://www.youtube.com/watch?v=p-Y7J2_BZGs">📓 NotebookLM</button>
+        </div>
+      </div>
+    </div>
+    <div class="summary-section">
+      <h2>핵심 요약</h2>
+<p>회계법인에서 몸값이 가장 높은 파트너들이 매달 초 반복적인 리포트 작성 작업에 시간을 낭비하지 않도록 업무를 자동화하는 솔루션을 제시한다. AI 에이전트가 퀵북스(QuickBooks)에서 수치를 가져와 리포트 템플릿과 코멘터리 초안을 자동 작성하고, 파트너는 검토 및 승인만 담당하도록 구성한다.</p>
+<h2>주요 포인트</h2>
+<ul>
+<li>파트너급 고급 인력이 매월 초 5일 동안 반복적인 고객 리포트 재작성 업무에 묶여 있는 문제를 해결함</li>
+<li>장부 마감 즉시 AI 에이전트가 퀵북스에서 데이터를 직접 추출해 리포트 템플릿에 자동 입력함</li>
+<li>월별 변동 내역, 전월 대비 차이점, 고객 전달 필요 사항 등 리포트 분석 코멘터리 초안을 자동 생성함</li>
+<li>수치를 임의 생성하지 않고 감사 추적(Audit trail)을 통해 모든 수치의 출처 링크를 명확히 남김</li>
+<li>AI는 초안만 생성하며, 파트너의 최종 검토와 승인을 거쳐야만 고객에게 리포트가 발송되는 안전장치를 둠</li>
+</ul>
+    </div>
+  <div class="transcript-wrap">
+    <div class="transcript-header">
+      <button class="transcript-toggle" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('visible')">
+        <span class="arr">▼</span> 원문 자막
+      </button>
+      <button class="copy-btn" onclick="var b=this,t=b.nextElementSibling||b;navigator.clipboard.writeText(document.querySelector('#tr-p-Y7J2_BZGs').textContent).then(()=>{b.textContent='복사됨';setTimeout(()=>b.textContent='복사',2000)})">복사</button>
+    </div>
+    <pre class="transcript-box" id="tr-p-Y7J2_BZGs">If I ran an accounting firm, here's exactly what I would do to automate my entire business. I'd first get my partners off of work that doesn't need a partner. Because right now, the most expensive people in your firm are spending the first 5 days of every single month just rebuilding the same client report. Watch this. So, the second the books close, an agent pulls the numbers straight from QuickBooks, it drops them into your reporting template, and it writes the first draft of the commentary. So, what moved this month, what's off versus last month, and what the client needs to be told. So, every number is pulled from the source, never just invented and every line it links back to where it came from on an audit trail. It then lands into a review queue where your partner edits the story and sends it off. Now, this always drafts and never sends anything itself. So, nothing reaches a client until a human approves it. If you want this set up for your firm, just comment need and I'll send you more information.</pre>
+  </div>
+  </article>
+</main>
+
+<footer>유튜브 구독 정리 · agy 요약 · 2026-07-25 06:01</footer>
+
+
+<script>
+document.querySelectorAll('.nlm-btn').forEach(function(btn){
+  btn.addEventListener('click',function(){
+    navigator.clipboard.writeText('/notebooklm '+btn.dataset.url).then(function(){
+      var orig=btn.innerHTML;btn.innerHTML='✓ 복사됨';btn.classList.add('copied');
+      setTimeout(function(){btn.innerHTML=orig;btn.classList.remove('copied');},2000);
+    });
+  });
+});
+</script>
+
+</body>
+</html>
