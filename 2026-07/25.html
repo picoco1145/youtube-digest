@@ -60,7 +60,7 @@
   <a class="nav-back" href="../index.html">← 대시보드로</a>
   <div>
     <div class="date-badge">2026-07-25</div>
-    <div class="count">2개 영상</div>
+    <div class="count">3개 영상</div>
   </div>
   <div style="font-size:0.75rem;color:var(--muted)">2026-07-25 06:01 생성</div>
 </header>
@@ -145,6 +145,45 @@
       <button class="copy-btn" onclick="var b=this,t=b.nextElementSibling||b;navigator.clipboard.writeText(document.querySelector('#tr-p-Y7J2_BZGs').textContent).then(()=>{b.textContent='복사됨';setTimeout(()=>b.textContent='복사',2000)})">복사</button>
     </div>
     <pre class="transcript-box" id="tr-p-Y7J2_BZGs">If I ran an accounting firm, here's exactly what I would do to automate my entire business. I'd first get my partners off of work that doesn't need a partner. Because right now, the most expensive people in your firm are spending the first 5 days of every single month just rebuilding the same client report. Watch this. So, the second the books close, an agent pulls the numbers straight from QuickBooks, it drops them into your reporting template, and it writes the first draft of the commentary. So, what moved this month, what's off versus last month, and what the client needs to be told. So, every number is pulled from the source, never just invented and every line it links back to where it came from on an audit trail. It then lands into a review queue where your partner edits the story and sends it off. Now, this always drafts and never sends anything itself. So, nothing reaches a client until a human approves it. If you want this set up for your firm, just comment need and I'll send you more information.</pre>
+  </div>
+  </article>
+  <article class="video-card">
+    <div class="card-top">
+      <a class="thumb-wrap" href="https://www.youtube.com/watch?v=2J3uX8iRNng" target="_blank" rel="noopener">
+        <img src="https://i.ytimg.com/vi/2J3uX8iRNng/hqdefault.jpg" alt="I Tested Opus 5 vs. Fable 5. What You Need to Know." loading="lazy"/>
+      </a>
+      <div class="card-info">
+        <div class="card-meta">
+          <span class="ch-tag">Nate Herk</span>
+          <span class="date-tag">2026-07-25</span>
+          
+        </div>
+        <div class="video-title">I Tested Opus 5 vs. Fable 5. What You Need to Know.</div>
+        <div style="display:flex;align-items:center;flex-wrap:wrap;gap:4px;margin-top:auto">
+          <a class="yt-link" href="https://www.youtube.com/watch?v=2J3uX8iRNng" target="_blank" rel="noopener">↗ 유튜브에서 보기</a>
+          <button class="nlm-btn" data-url="https://www.youtube.com/watch?v=2J3uX8iRNng">📓 NotebookLM</button>
+        </div>
+      </div>
+    </div>
+    <div class="summary-section">
+      <h2>핵심 요약</h2>
+<p>Claude Opus 5는 Fable 5의 절반 가격이면서도 코딩 및 지식 작업 벤치마크에서 오히려 Fable 5를 앞서는 성능을 보여준다. 작성자는 Claude Code 하네스와 Chat 환경에서 두 모델의 비용, 시간, 토큰 소비 및 실제 결과물을 직접 비교 실험했다. 실무 워크플로우 대부분에서 Opus 5가 가성비와 성능 모두를 만족시키는 강력한 대안임을 확인했다.</p>
+<h2>주요 포인트</h2>
+<ul>
+<li>Opus 5는 Fable 5 대비 50% 저렴하면서 Frontier Bench, Cursor Bench 등 주요 지표에서 더 뛰어난 성과를 냄</li>
+<li>단순 벤치마크 참고에 그치지 않고 Claude Code 하네스 내부 및 Claude Chat에서 직접 비교 테스트 진행</li>
+<li>AI 에이전트용 벡터 검색 원리 다이어그램(Excalidraw JSON) 생성 등 실제 프롬프트로 성능 검증</li>
+<li>사용자가 각 모델을 효율적으로 선택할 수 있도록 비용, 소요 시간, 토큰 사용량 기준 분석 제공</li>
+</ul>
+    </div>
+  <div class="transcript-wrap">
+    <div class="transcript-header">
+      <button class="transcript-toggle" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('visible')">
+        <span class="arr">▼</span> 원문 자막
+      </button>
+      <button class="copy-btn" onclick="var b=this,t=b.nextElementSibling||b;navigator.clipboard.writeText(document.querySelector('#tr-2J3uX8iRNng').textContent).then(()=>{b.textContent='복사됨';setTimeout(()=>b.textContent='복사',2000)})">복사</button>
+    </div>
+    <pre class="transcript-box" id="tr-2J3uX8iRNng">All right, so Claude Opus 5 is here and if you start to look at the benchmarks, it's really interesting because it shows us that for a lot of things that I care about, it's actually better than Fable and it is half the cost of Fable. Ultimately, Fable 5 is still Anthropic's most impressive and, you know, strongest model. But for a lot of these things, you know, I've realized when I'm doing knowledge work and when I'm building, you know, my videos or my research or whatever it is, Opus is more than enough power than what I need. And when you look at some of these charts, it's really interesting because it shows on things like the Frontier Bench and the Cursor Bench and this coding agent index that Opus is actually outperforming Fable and it's cheaper. And this really shocked me. So, obviously, I like to take all this stuff with a grain of salt. It's fun to look at and it's good to look at, but you want to actually get your hands dirty and run these models through your own actual workflows. So in today's video, I'm just going to break down a bunch of different experiments that I ran with Opus 5 versus Fable 5 and break down things like the cost, the time, and the tokens so that you can start to understand where you should work in these different models within your workflows. All right, so pretty much all of the experiments that I've been running today that I'm going to show you guys, I did within Claude Code, which means we're comparing the models, but also inside of the Cloud Code harness. and the variable is the same so it doesn't really change too much but I did do a few tests where I was actually in clawed chat and I was just you know seeing how they felt without a harness wrapped around and let me just show you one quick example so here I asked Fable 5 and Opus 5 to generate me an Excal diagram that accurately and visually explains how semantic search with vectorization works on a large data set for AI agents and it's interesting here because there's no skills that it can use and it doesn't have any context of me or you know any really way to verify all it did was it spit out a um JSON file of Excal for me and then I pasted it into Excal. So, here's what we got. Fable came back with this version over here where we see we've got like our indexing pipeline. We have a large database and it looks like it actually misspelled this right here, which is interesting. Large. Oh, data set. Okay, it was just like not expanded enough. Same thing over here. Vectorize. And this is part of the whole um it had no way to verify. And as you guys know, if you've been kind of building agent loops and stuff, verification is so so important. So anyways, large data set, we chunk it up. We vectorize it with an embedding model. We then get our embeddings, which is just like the numerical representation of the data. We put it into a vector database here. And then we can actually start to search. So we've got similarity and that's on, you know, points being close together. So your question lands here and it would grab the k nearest neighbors and different meaning is farther apart. We've got different clusters here. And then we come down here to the actual query. So if the user asks how I get my money back, the agent searches the knowledge base and then it does semantic search. It looks it up with the actual query vectors and we get the matches back. So pretty accurate. I will say though, Opus' layout seems a bit more organized, right? Like it's it's got boxes and it's got I mean this might not be as visual. You could argue you could argue that Fables was more visual, which you know I think that that's true, but this definitely feels more organized. it feels a little bit more detailed as well. So, that's just a very subjective exam. A lot of the stuff that I'm going to be talking about today is just really opinionated and subjective, but I'm going to still give you my own thoughts. So, in this example, I think that if I wanted to teach someone, I probably would take Opus 5's version here. Okay. So, let's start off with the first test I ran, which was basically giving them a huge codebase and having them look through any bugs and looking through like the expected behavior and some instructions like that. So, it had to do some exploration here and help us out, right? So, I set the goal and I gave it this prompt. And then what I did is I had Codeex review the output that Fable 5 gave us and that Opus gave us. So, real quick before we look at the results, Fable took about 11 minutes and it costed 5 bucks. 30, whereas Opus here took 13 minutes, so a little bit longer, but it was cheaper at $4.22. You can also see the breakdown here of input and output tokens and like what models they use and stuff like that. But, let me switch over to Codeex here. This is the actual result. So head-to-head, they both pretty much passed everything, which is great. But Codex thinks that Fable wins here because Fable's production patch is exactly the onelin</pre>
   </div>
   </article>
 </main>
