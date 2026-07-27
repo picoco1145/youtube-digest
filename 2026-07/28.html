@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>2026-07-28 — 유튜브 구독 정리</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+  :root{--bg:#090e1a;--surface:#111827;--surface2:#1a2235;--border:#1e2d47;--accent:#6c63ff;--accent2:#00d4ff;--text:#e8eaf0;--muted:#7a8499;--radius:14px;}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Pretendard',sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+  header{background:linear-gradient(135deg,#0d1b3e,#1a0533);border-bottom:1px solid var(--border);padding:20px 40px;display:flex;align-items:center;justify-content:space-between;}
+  .nav-back{color:var(--accent2);text-decoration:none;font-size:0.85rem;display:flex;align-items:center;gap:6px}
+  .nav-back:hover{color:#fff}
+  .date-badge{font-size:1.4rem;font-weight:700;letter-spacing:-0.5px;background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+  .count{font-size:0.85rem;color:var(--muted)}
+  main{max-width:900px;margin:0 auto;padding:32px 24px 80px}
+  .video-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;margin-bottom:24px;transition:border-color 0.2s,box-shadow 0.2s;}
+  .video-card:hover{border-color:var(--accent);box-shadow:0 4px 24px rgba(108,99,255,0.15)}
+  .card-top{display:flex;gap:0}
+  .thumb-wrap{flex:0 0 240px;position:relative;overflow:hidden}
+  .thumb-wrap img{width:100%;height:100%;object-fit:cover;transition:transform 0.4s}
+  .video-card:hover .thumb-wrap img{transform:scale(1.05)}
+  .card-info{flex:1;padding:20px;display:flex;flex-direction:column;gap:10px}
+  .card-meta{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+  .ch-tag{font-size:0.72rem;font-weight:600;padding:3px 12px;background:linear-gradient(135deg,rgba(108,99,255,0.2),rgba(0,212,255,0.2));border:1px solid rgba(108,99,255,0.3);border-radius:999px;color:var(--accent2);}
+  .date-tag{font-size:0.72rem;color:var(--muted)}
+  .no-transcript{font-size:0.68rem;padding:2px 8px;background:rgba(255,180,0,0.12);border:1px solid rgba(255,180,0,0.25);border-radius:999px;color:#ffa500;}
+  .video-title{font-size:1rem;font-weight:600;line-height:1.4}
+  .yt-link{display:inline-flex;align-items:center;gap:5px;font-size:0.8rem;color:var(--accent);text-decoration:none;transition:color 0.2s;}
+  .yt-link:hover{color:var(--accent2)}
+  
+  .nlm-btn{display:inline-flex;align-items:center;gap:5px;font-size:0.8rem;color:#fff;
+    background:rgba(108,99,255,0.2);border:1px solid rgba(108,99,255,0.4);border-radius:8px;
+    padding:4px 12px;cursor:pointer;font-family:inherit;transition:all 0.2s;margin-left:8px;}
+  .nlm-btn:hover{background:rgba(108,99,255,0.45);}
+  .nlm-btn.copied{background:rgba(0,200,100,0.2);border-color:rgba(0,200,100,0.4);color:#00c864;}
+
+  .summary-section{border-top:1px solid var(--border);background:var(--surface2);padding:20px 24px;font-size:0.85rem;line-height:1.7;color:#c5cad8;}
+  .summary-section h2{font-size:0.82rem;color:var(--accent2);margin:12px 0 4px}
+  .summary-section h2:first-child{margin-top:0}
+  .summary-section ul{padding-left:18px}
+  .summary-section li{margin-bottom:5px}
+  .transcript-wrap{border-top:1px solid var(--border);padding:14px 24px;background:#0c1220}
+  .transcript-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:0}
+  .transcript-toggle{background:none;border:none;color:var(--muted);font-size:0.8rem;cursor:pointer;font-family:inherit;display:flex;align-items:center;gap:4px;padding:0;transition:color 0.2s;}
+  .transcript-toggle:hover{color:var(--text)}
+  .copy-btn{background:rgba(108,99,255,0.1);border:1px solid rgba(108,99,255,0.3);border-radius:8px;color:var(--accent2);font-size:0.72rem;padding:4px 12px;cursor:pointer;font-family:inherit;transition:all 0.2s;}
+  .copy-btn:hover{background:rgba(108,99,255,0.25);color:#fff}
+  .transcript-box{display:none;margin-top:10px;background:#080d18;border:1px solid var(--border);border-radius:10px;padding:12px 14px;font-size:0.78rem;line-height:1.75;color:#8a95aa;max-height:260px;overflow-y:auto;white-space:pre-wrap;word-break:break-word;}
+  .transcript-box.visible{display:block}
+  footer{text-align:center;padding:24px;font-size:0.75rem;color:var(--muted);border-top:1px solid var(--border)}
+  @media(max-width:640px){.card-top{flex-direction:column}.thumb-wrap{flex:none;height:200px}header{padding:16px}main{padding:16px 12px 60px}}
+</style>
+</head>
+<body>
+
+<header>
+  <a class="nav-back" href="../index.html">← 대시보드로</a>
+  <div>
+    <div class="date-badge">2026-07-28</div>
+    <div class="count">1개 영상</div>
+  </div>
+  <div style="font-size:0.75rem;color:var(--muted)">2026-07-28 06:00 생성</div>
+</header>
+
+<main>
+
+  <article class="video-card">
+    <div class="card-top">
+      <a class="thumb-wrap" href="https://www.youtube.com/watch?v=B7SfSrJcIBQ" target="_blank" rel="noopener">
+        <img src="https://i.ytimg.com/vi/B7SfSrJcIBQ/hqdefault.jpg" alt="Anthropic Deleted 80% of Claude's Own Instructions" loading="lazy"/>
+      </a>
+      <div class="card-info">
+        <div class="card-meta">
+          <span class="ch-tag">Dylan Davis</span>
+          <span class="date-tag">2026-07-28</span>
+          
+        </div>
+        <div class="video-title">Anthropic Deleted 80% of Claude's Own Instructions</div>
+        <div style="display:flex;align-items:center;flex-wrap:wrap;gap:4px;margin-top:auto">
+          <a class="yt-link" href="https://www.youtube.com/watch?v=B7SfSrJcIBQ" target="_blank" rel="noopener">↗ 유튜브에서 보기</a>
+          <button class="nlm-btn" data-url="https://www.youtube.com/watch?v=B7SfSrJcIBQ">📓 NotebookLM</button>
+        </div>
+      </div>
+    </div>
+    <div class="summary-section">
+      <h2>핵심 요약</h2>
+<p>Anthropic이 Claude의 자체 프롬프트 지침 80%를 전격 삭제하며 기존 프롬프트 작성 공식이 미신이었음을 밝혔다. 최신 모델에서는 예시 남발, 빽빽한 하드 규칙, 중복 지침 제공이 오히려 AI 성능을 제한하는 요소로 작동한다. 프롬프트를 간결하게 유지해야 AI 지능을 100% 활용할 수 있으며 비용도 크게 절감된다.</p>
+<h2>주요 포인트</h2>
+<ul>
+<li>Anthropic은 기존 Claude 프롬프트 지침의 80%를 삭제하며 프롬프트 경량화 흐름을 보여줌.</li>
+<li>예시 다수 제공, 엄격한 하드 규칙, 지침 반복 작성 등 기존 3가지 팁이 미신으로 밝혀짐.</li>
+<li>전체 예시를 그대로 매핑하게 만들면 AI의 사고 폭이 제한되어 더 나은 결과물을 내지 못함.</li>
+<li>최신 모델은 프롬프트를 짧게 가져갈수록 벤치마크 점수가 높아지고 비용은 약 50% 절감됨.</li>
+<li>예시를 제공할 때는 전체 틀을 맞추게 하기보다 특정 핵심 포인트에만 집중하도록 지시해야 함.</li>
+</ul>
+    </div>
+  <div class="transcript-wrap">
+    <div class="transcript-header">
+      <button class="transcript-toggle" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('visible')">
+        <span class="arr">▼</span> 원문 자막
+      </button>
+      <button class="copy-btn" onclick="var b=this,t=b.nextElementSibling||b;navigator.clipboard.writeText(document.querySelector('#tr-B7SfSrJcIBQ').textContent).then(()=>{b.textContent='복사됨';setTimeout(()=>b.textContent='복사',2000)})">복사</button>
+    </div>
+    <pre class="transcript-box" id="tr-B7SfSrJcIBQ">Anthropic, the company that brought you Claude, just deleted 80% of the instructions that they'd written for their own AI. Not because any of it's wrong, it worked for years, it's just getting in the way now. And the stuff that they cut is exactly what I've been telling people to add. More examples, tighter rules, saying the important things twice. If you're new here, I'm Dylan. I run an AI consultancy. And I've spent this week undoing my own advice inside of client setups. And here's what makes this hard to catch. An out-of-date setup doesn't look out of date. Your projects and skills, they still run. The output still looks fine. But you wrote all of it for last year's models. And the newest ones, they don't need that help anymore. So, let's walk through the three habits that changed, and I'll give you a prompt for each one that goes and fixes what you've already built. So, let's get into it. And before we get started, here's the blog that I was referring to. So, Anthropic just put this out probably a day ago, talking about new generation models. So, models like stable 5, Opus 5, GPT-5.6, etc. And here are the three pieces of advice that they called out as myths. So, in the past, we were often told that it's best to share examples with AI, so it knows what good looks like. Or to give it hard rules, so it follows them in a specific way. And even to repeat ourselves in different locations to make sure it follows the really important things. Maybe repeating the same instruction at the top of a prompt, at the bottom of a prompt. And even adding it to the chat as well. All three of these things have been labeled as myths from Anthropic. And it's important to know that it's not just the Claude thing, but it's also a ChatGPT thing. OpenAI released GPT-5.6 only a few weeks ago. And when they released that, they showed a series of studies where when they tested the AI with a shorter prompt on the same exact task, they found that it wasn't only just more effective, so it scored better on different benchmarks, but also was more cost efficient. So, it saved roughly 50% on cost for each of those tasks. And it's specifically for those new generation models. Now, let's start with the first habit, which is sharing examples with the AI. Now, it's not that we shouldn't share examples, but when we do share examples, we need to focus AI's attention on a very specific piece of that example. What do I mean? So, when you give an example to an AI, you simply ask it to match this example for whatever task going forward. When we do that, we're actually setting a ceiling on the AI's ability to unlock its full intelligence for that specific task. Because when it looks at your example, it narrows its focus on mapping how you've done the thing in the past. So, if it's a report, it's going to use the same angles and approaches and ways of thinking that you used in that report going forward. But, there may be many better ways of doing that task, but we've limited the AI's intelligence on that specific way of doing things. So, we need to be careful when we share examples with them, so we're not limiting its intelligence. And the way that we can do that is by understanding that an example has two specific jobs. Quick pause. If you're enjoying this, you're going to enjoy two other things. First off, below is a 30-day AI insight series, completely free. You'll get 30 insights in your inbox if I can apply AI to your business and your work. The second thing is if you'd like to work with me, below are a series of offerings to see if there's a good fit between the two of us. Now, let's go back to the video. One is when we give an AI an example, that first job is the aesthetics. So, how does it look? The second job is the actual answer. So, what is our approach to this specific example? The aesthetics are fine and are still the reason as to why it's good to share examples with AI, because we want it to match to our aesthetics. So, our colors, our fonts, logos, etc. But, when sharing examples to an AI, we don't necessarily want to bias its answer to how we've answered in the past. So, our approaches, our angles, our options, etc. All that stuff was something we did in the past, they might have better alternatives for that specific approach or that specific task at hand. So, this distinction's really important for this specific habit. So, I'll give you two prompts in regards to actually creating net new prompts and skills with this habit in mind. And then I'll give you another one for fixing your old projects and skills with the old way of doing things. So, start with new first. And this is tackling the standards things. Remember we had our approach and our aesthetics. We're going to start with the approach and then we'll talk about the aesthetics in a second. So for the approach, what we want to do is we want to share an example with the AI, but this is an AI that's not going to have the skiller project baked into it going forward. This is just ex</pre>
+  </div>
+  </article>
+</main>
+
+<footer>유튜브 구독 정리 · agy 요약 · 2026-07-28 06:00</footer>
+
+
+<script>
+document.querySelectorAll('.nlm-btn').forEach(function(btn){
+  btn.addEventListener('click',function(){
+    navigator.clipboard.writeText('/notebooklm '+btn.dataset.url).then(function(){
+      var orig=btn.innerHTML;btn.innerHTML='✓ 복사됨';btn.classList.add('copied');
+      setTimeout(function(){btn.innerHTML=orig;btn.classList.remove('copied');},2000);
+    });
+  });
+});
+</script>
+
+</body>
+</html>
