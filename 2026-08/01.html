@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>2026-08-01 — 유튜브 구독 정리</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+  :root{--bg:#090e1a;--surface:#111827;--surface2:#1a2235;--border:#1e2d47;--accent:#6c63ff;--accent2:#00d4ff;--text:#e8eaf0;--muted:#7a8499;--radius:14px;}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Pretendard',sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+  header{background:linear-gradient(135deg,#0d1b3e,#1a0533);border-bottom:1px solid var(--border);padding:20px 40px;display:flex;align-items:center;justify-content:space-between;}
+  .nav-back{color:var(--accent2);text-decoration:none;font-size:0.85rem;display:flex;align-items:center;gap:6px}
+  .nav-back:hover{color:#fff}
+  .date-badge{font-size:1.4rem;font-weight:700;letter-spacing:-0.5px;background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+  .count{font-size:0.85rem;color:var(--muted)}
+  main{max-width:900px;margin:0 auto;padding:32px 24px 80px}
+  .video-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;margin-bottom:24px;transition:border-color 0.2s,box-shadow 0.2s;}
+  .video-card:hover{border-color:var(--accent);box-shadow:0 4px 24px rgba(108,99,255,0.15)}
+  .card-top{display:flex;gap:0}
+  .thumb-wrap{flex:0 0 240px;position:relative;overflow:hidden}
+  .thumb-wrap img{width:100%;height:100%;object-fit:cover;transition:transform 0.4s}
+  .video-card:hover .thumb-wrap img{transform:scale(1.05)}
+  .card-info{flex:1;padding:20px;display:flex;flex-direction:column;gap:10px}
+  .card-meta{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+  .ch-tag{font-size:0.72rem;font-weight:600;padding:3px 12px;background:linear-gradient(135deg,rgba(108,99,255,0.2),rgba(0,212,255,0.2));border:1px solid rgba(108,99,255,0.3);border-radius:999px;color:var(--accent2);}
+  .date-tag{font-size:0.72rem;color:var(--muted)}
+  .no-transcript{font-size:0.68rem;padding:2px 8px;background:rgba(255,180,0,0.12);border:1px solid rgba(255,180,0,0.25);border-radius:999px;color:#ffa500;}
+  .video-title{font-size:1rem;font-weight:600;line-height:1.4}
+  .yt-link{display:inline-flex;align-items:center;gap:5px;font-size:0.8rem;color:var(--accent);text-decoration:none;transition:color 0.2s;}
+  .yt-link:hover{color:var(--accent2)}
+  
+  .nlm-btn{display:inline-flex;align-items:center;gap:5px;font-size:0.8rem;color:#fff;
+    background:rgba(108,99,255,0.2);border:1px solid rgba(108,99,255,0.4);border-radius:8px;
+    padding:4px 12px;cursor:pointer;font-family:inherit;transition:all 0.2s;margin-left:8px;}
+  .nlm-btn:hover{background:rgba(108,99,255,0.45);}
+  .nlm-btn.copied{background:rgba(0,200,100,0.2);border-color:rgba(0,200,100,0.4);color:#00c864;}
+
+  .summary-section{border-top:1px solid var(--border);background:var(--surface2);padding:20px 24px;font-size:0.85rem;line-height:1.7;color:#c5cad8;}
+  .summary-section h2{font-size:0.82rem;color:var(--accent2);margin:12px 0 4px}
+  .summary-section h2:first-child{margin-top:0}
+  .summary-section ul{padding-left:18px}
+  .summary-section li{margin-bottom:5px}
+  .transcript-wrap{border-top:1px solid var(--border);padding:14px 24px;background:#0c1220}
+  .transcript-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:0}
+  .transcript-toggle{background:none;border:none;color:var(--muted);font-size:0.8rem;cursor:pointer;font-family:inherit;display:flex;align-items:center;gap:4px;padding:0;transition:color 0.2s;}
+  .transcript-toggle:hover{color:var(--text)}
+  .copy-btn{background:rgba(108,99,255,0.1);border:1px solid rgba(108,99,255,0.3);border-radius:8px;color:var(--accent2);font-size:0.72rem;padding:4px 12px;cursor:pointer;font-family:inherit;transition:all 0.2s;}
+  .copy-btn:hover{background:rgba(108,99,255,0.25);color:#fff}
+  .transcript-box{display:none;margin-top:10px;background:#080d18;border:1px solid var(--border);border-radius:10px;padding:12px 14px;font-size:0.78rem;line-height:1.75;color:#8a95aa;max-height:260px;overflow-y:auto;white-space:pre-wrap;word-break:break-word;}
+  .transcript-box.visible{display:block}
+  footer{text-align:center;padding:24px;font-size:0.75rem;color:var(--muted);border-top:1px solid var(--border)}
+  @media(max-width:640px){.card-top{flex-direction:column}.thumb-wrap{flex:none;height:200px}header{padding:16px}main{padding:16px 12px 60px}}
+</style>
+</head>
+<body>
+
+<header>
+  <a class="nav-back" href="../index.html">← 대시보드로</a>
+  <div>
+    <div class="date-badge">2026-08-01</div>
+    <div class="count">1개 영상</div>
+  </div>
+  <div style="font-size:0.75rem;color:var(--muted)">2026-08-01 06:00 생성</div>
+</header>
+
+<main>
+
+  <article class="video-card">
+    <div class="card-top">
+      <a class="thumb-wrap" href="https://www.youtube.com/watch?v=FMLZSy9EcOo" target="_blank" rel="noopener">
+        <img src="https://i.ytimg.com/vi/FMLZSy9EcOo/hqdefault.jpg" alt="Anthropic Just Killed Prompt Engineering (Opus 5 Guide)" loading="lazy"/>
+      </a>
+      <div class="card-info">
+        <div class="card-meta">
+          <span class="ch-tag">Nicholas Puru</span>
+          <span class="date-tag">2026-08-01</span>
+          
+        </div>
+        <div class="video-title">Anthropic Just Killed Prompt Engineering (Opus 5 Guide)</div>
+        <div style="display:flex;align-items:center;flex-wrap:wrap;gap:4px;margin-top:auto">
+          <a class="yt-link" href="https://www.youtube.com/watch?v=FMLZSy9EcOo" target="_blank" rel="noopener">↗ 유튜브에서 보기</a>
+          <button class="nlm-btn" data-url="https://www.youtube.com/watch?v=FMLZSy9EcOo">📓 NotebookLM</button>
+        </div>
+      </div>
+    </div>
+    <div class="summary-section">
+      <h2>핵심 요약</h2>
+<p>앤트로픽이 발표한 Opus 5 프롬프트 가이드는 지난 2년간 습관적으로 넣던 프롬프트 문구 3줄을 깎아내는 '뺄셈'이 핵심이다. 프롬프트 문구 자체보다 모델 선택과 Thought Effort(생각 깊이) 설정이 결과물에 더 결정적인 영향을 미친다. 코딩이나 API 없이 클로드 앱에서 Medium Effort로 설정하고 쓰는 걸 추천한다.</p>
+<h2>주요 포인트</h2>
+<ul>
+<li>기존 프롬프트 마지막에 습관적으로 넣던 구문을 포함해 불필요한 3줄을 삭제하는 것이 핵심임</li>
+<li>프롬프트 텍스트보다 모델 종류와 Effort(생각 시간) 설정이 답변 품질에 더 큰 영향을 줌</li>
+<li>$20 플랜은 Sonnet을 평소에 쓰다 중요한 일에 Opus를 켜고, Max 플랜은 Opus 5를 데일리로 박아두는 게 가성비상 이득임</li>
+<li>Effort를 Low나 Medium으로 둬도 토큰과 시간을 대폭 아끼면서 고품질 답변을 뽑아냄 (기본 Medium 추천)</li>
+<li>API나 별도 코딩 지식 없이 일반 Claude 서비스 안에서 즉시 적용 가능함</li>
+</ul>
+    </div>
+  <div class="transcript-wrap">
+    <div class="transcript-header">
+      <button class="transcript-toggle" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('visible')">
+        <span class="arr">▼</span> 원문 자막
+      </button>
+      <button class="copy-btn" onclick="var b=this,t=b.nextElementSibling||b;navigator.clipboard.writeText(document.querySelector('#tr-FMLZSy9EcOo').textContent).then(()=>{b.textContent='복사됨';setTimeout(()=>b.textContent='복사',2000)})">복사</button>
+    </div>
+    <pre class="transcript-box" id="tr-FMLZSy9EcOo">So, Anthropic just published a prompting guide for Opus 5, which is basically the official manual for how to write prompts for their newest model. And a lot of it's just subtraction, where it tells you to delete three of the lines that you have probably been putting into every serious prompt for the last 2 years or so, including the one almost everybody ends with. So, what I'm going to do is just cut straight to the chase and give you all five rules up front, so you've got the whole guide in about 3 minutes, and then I'm going to be building out one prompt out of those specific rules and run it against the way that I used to actually be writing these prompts on the same job, so that you can see what it's actually worth and its value. And then there's also one rule that this isn't about building whatsoever. It's just about reviewing, and that's the one that I had completely backwards. Now, at the end of all this, I'll show you what did actually survive from the previous methodologies and approaches, because some of it did survive and you're still wanting to be employing some of those strategies, but anyways, all of this is going to be living inside of the regular Claude application. You don't need any APIs, and you don't need to know how to code. Now, before all the rules, there's going to be two different settings, because they actually decide more than any single line that you are going to be writing. So, we can see here inside of our Claude application, we have obviously our different models here. We have Fable 5, Opus, Sonnet, Haiku, 4.5. Now, if you're on the $20 plan, I would be running Sonnet as your daily, and then switch over to Opus when the job actually matters. Even if you are on the $100 plan, I would be employing this. Now, on Max, this is where you should be making Opus 5 your actual daily driver, and stop opening the picker. It's just about half the price of Fable 5, so it's just worth keeping it on that. And then it comes down into effort. So, inside of the effort, just down below, this is the instinct to actually crank it. So, effort is just how much it thinks before it. And then below all of this, we have the effort and the instincts to actually crank this. So, effort, this is just going to be how much it thinks before it actually answers you. So, this is the difference between asking somebody a question and saying, you know, take your time, versus needing it off the top of their head. Now, in Anthropic's documentation, it says low and medium. They are going to give you strong quality at, you know, just about a fraction of the tokens and the time. So, mine it often sits on medium and I bump it when a job is genuinely going to be a bit harder, more complex. Everything after this is on Opus 5 medium. That's what I use as my daily driver and pretty much for everything, I would say, at this point. Okay, let's move on to the five rules starting with rule number one. Now, for about 2 years now, the advice was to just break a job into steps and feed them in one at a time, right? So, first analyze this and then write me a plan and then build it. And the reason why is because older models, they drifted on long jobs, so you kept them on a pretty short leash. Now, Anthropic, they actually say the opposite now. So, Opus 5, it does its best work off of just one complete brief. Hand it over at the start and left alone to actually run. So, the prompt it opens with the entire assignment, who it's for, what to actually be building, what it can use, and where the finished thing actually is going to be going. Now, one exception with this, if you actually want to see the middle steps, feeding it one at a time, it still does work natively. That's just the exception now, it's not the end-all be-all default. Now, for example, I'm going to be showing this inside of a demo later on in this video. Someone who runs a business should be able to open this on a phone, get why nearly 20,000 people are in this community, and join for free. Build a one-page site for my community that does that. Everything you can use, the numbers, the description, what's inside is on this page. Here's the page. Nothing else. Deliver the finished page as an artifact. So, that's the prompt that I would be entering, for example. Now, getting into rule number two, the guide flat-out says it. Hand this model a narrow task and it expands the job on its own. You give it a page and it'll offer you a blog and extra work. Sounds like a gift until it's actually your time reviewing things that you never wanted and your usage limits is going to be paying for them. So, what you do is you write the limits down. So, what not to be building, what not to be inventing, and one line that actually says to decide the cosmetic stuff yourself, and keep going. Only ask me when a decision genuinely is going to be needing me. So, for example, in this prompt, someone who runs a business should be able to open this on a phone, get why nearly 20,000 people are in this</pre>
+  </div>
+  </article>
+</main>
+
+<footer>유튜브 구독 정리 · agy 요약 · 2026-08-01 06:00</footer>
+
+
+<script>
+document.querySelectorAll('.nlm-btn').forEach(function(btn){
+  btn.addEventListener('click',function(){
+    navigator.clipboard.writeText('/notebooklm '+btn.dataset.url).then(function(){
+      var orig=btn.innerHTML;btn.innerHTML='✓ 복사됨';btn.classList.add('copied');
+      setTimeout(function(){btn.innerHTML=orig;btn.classList.remove('copied');},2000);
+    });
+  });
+});
+</script>
+
+</body>
+</html>
