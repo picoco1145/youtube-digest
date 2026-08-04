@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>2026-08-03 — 유튜브 구독 정리</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+  :root{--bg:#090e1a;--surface:#111827;--surface2:#1a2235;--border:#1e2d47;--accent:#6c63ff;--accent2:#00d4ff;--text:#e8eaf0;--muted:#7a8499;--radius:14px;}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Pretendard',sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+  header{background:linear-gradient(135deg,#0d1b3e,#1a0533);border-bottom:1px solid var(--border);padding:20px 40px;display:flex;align-items:center;justify-content:space-between;}
+  .nav-back{color:var(--accent2);text-decoration:none;font-size:0.85rem;display:flex;align-items:center;gap:6px}
+  .nav-back:hover{color:#fff}
+  .date-badge{font-size:1.4rem;font-weight:700;letter-spacing:-0.5px;background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+  .count{font-size:0.85rem;color:var(--muted)}
+  main{max-width:900px;margin:0 auto;padding:32px 24px 80px}
+  .video-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;margin-bottom:24px;transition:border-color 0.2s,box-shadow 0.2s;}
+  .video-card:hover{border-color:var(--accent);box-shadow:0 4px 24px rgba(108,99,255,0.15)}
+  .card-top{display:flex;gap:0}
+  .thumb-wrap{flex:0 0 240px;position:relative;overflow:hidden}
+  .thumb-wrap img{width:100%;height:100%;object-fit:cover;transition:transform 0.4s}
+  .video-card:hover .thumb-wrap img{transform:scale(1.05)}
+  .card-info{flex:1;padding:20px;display:flex;flex-direction:column;gap:10px}
+  .card-meta{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+  .ch-tag{font-size:0.72rem;font-weight:600;padding:3px 12px;background:linear-gradient(135deg,rgba(108,99,255,0.2),rgba(0,212,255,0.2));border:1px solid rgba(108,99,255,0.3);border-radius:999px;color:var(--accent2);}
+  .date-tag{font-size:0.72rem;color:var(--muted)}
+  .no-transcript{font-size:0.68rem;padding:2px 8px;background:rgba(255,180,0,0.12);border:1px solid rgba(255,180,0,0.25);border-radius:999px;color:#ffa500;}
+  .video-title{font-size:1rem;font-weight:600;line-height:1.4}
+  .yt-link{display:inline-flex;align-items:center;gap:5px;font-size:0.8rem;color:var(--accent);text-decoration:none;transition:color 0.2s;}
+  .yt-link:hover{color:var(--accent2)}
+  
+  .nlm-btn{display:inline-flex;align-items:center;gap:5px;font-size:0.8rem;color:#fff;
+    background:rgba(108,99,255,0.2);border:1px solid rgba(108,99,255,0.4);border-radius:8px;
+    padding:4px 12px;cursor:pointer;font-family:inherit;transition:all 0.2s;margin-left:8px;}
+  .nlm-btn:hover{background:rgba(108,99,255,0.45);}
+  .nlm-btn.copied{background:rgba(0,200,100,0.2);border-color:rgba(0,200,100,0.4);color:#00c864;}
+
+  .summary-section{border-top:1px solid var(--border);background:var(--surface2);padding:20px 24px;font-size:0.85rem;line-height:1.7;color:#c5cad8;}
+  .summary-section h2{font-size:0.82rem;color:var(--accent2);margin:12px 0 4px}
+  .summary-section h2:first-child{margin-top:0}
+  .summary-section ul{padding-left:18px}
+  .summary-section li{margin-bottom:5px}
+  .transcript-wrap{border-top:1px solid var(--border);padding:14px 24px;background:#0c1220}
+  .transcript-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:0}
+  .transcript-toggle{background:none;border:none;color:var(--muted);font-size:0.8rem;cursor:pointer;font-family:inherit;display:flex;align-items:center;gap:4px;padding:0;transition:color 0.2s;}
+  .transcript-toggle:hover{color:var(--text)}
+  .copy-btn{background:rgba(108,99,255,0.1);border:1px solid rgba(108,99,255,0.3);border-radius:8px;color:var(--accent2);font-size:0.72rem;padding:4px 12px;cursor:pointer;font-family:inherit;transition:all 0.2s;}
+  .copy-btn:hover{background:rgba(108,99,255,0.25);color:#fff}
+  .transcript-box{display:none;margin-top:10px;background:#080d18;border:1px solid var(--border);border-radius:10px;padding:12px 14px;font-size:0.78rem;line-height:1.75;color:#8a95aa;max-height:260px;overflow-y:auto;white-space:pre-wrap;word-break:break-word;}
+  .transcript-box.visible{display:block}
+  footer{text-align:center;padding:24px;font-size:0.75rem;color:var(--muted);border-top:1px solid var(--border)}
+  @media(max-width:640px){.card-top{flex-direction:column}.thumb-wrap{flex:none;height:200px}header{padding:16px}main{padding:16px 12px 60px}}
+</style>
+</head>
+<body>
+
+<header>
+  <a class="nav-back" href="../index.html">← 대시보드로</a>
+  <div>
+    <div class="date-badge">2026-08-03</div>
+    <div class="count">1개 영상</div>
+  </div>
+  <div style="font-size:0.75rem;color:var(--muted)">2026-08-05 06:01 생성</div>
+</header>
+
+<main>
+
+  <article class="video-card">
+    <div class="card-top">
+      <a class="thumb-wrap" href="https://www.youtube.com/watch?v=Va25SCaEJYw" target="_blank" rel="noopener">
+        <img src="https://i.ytimg.com/vi/Va25SCaEJYw/hqdefault.jpg" alt="클로드 뺨치는 키미 K3 미쳤음" loading="lazy"/>
+      </a>
+      <div class="card-info">
+        <div class="card-meta">
+          <span class="ch-tag">AIMAX_PD</span>
+          <span class="date-tag">2026-08-03</span>
+          
+        </div>
+        <div class="video-title">클로드 뺨치는 키미 K3 미쳤음</div>
+        <div style="display:flex;align-items:center;flex-wrap:wrap;gap:4px;margin-top:auto">
+          <a class="yt-link" href="https://www.youtube.com/watch?v=Va25SCaEJYw" target="_blank" rel="noopener">↗ 유튜브에서 보기</a>
+          <button class="nlm-btn" data-url="https://www.youtube.com/watch?v=Va25SCaEJYw">📓 NotebookLM</button>
+        </div>
+      </div>
+    </div>
+    <div class="summary-section">
+      <h2>핵심 요약</h2>
+<p>닉사라에프가 공개한 키미 K3 기반 5가지 실무 공식을 통해 단돈 1달러로 대기업 수준의 시네마틱 스크롤 웹사이트를 무한히 생성하는 비결을 설명합니다. 스크롤 컨셉 설계부터 프롬프트 변환, 8초 고해상도 영상 제작, 60fps 보강, 그리고 AI 자동화 파이프라인 구축까지의 핵심 과정을 담고 있습니다.</p>
+<h2>주요 포인트</h2>
+<ul>
+<li>**스크롤 기반 시네마틱 아이디어 추출**: 화면을 내릴 때 8초 동안 압도적인 여정이 펼쳐지는 웹사이트 컨셉을 우선 설계합니다.</li>
+<li>**고품질 비디오 프롬프트 변환**: 카메라 앵글과 조명을 포함한 정교한 명령어로 정제하여 모델의 한계를 극복합니다.</li>
+<li>**히스필드 시네마틱 스튜디오 활용**: 실제 촬영이 불가능한 세계를 8초 길이의 고해상도 영상 자산으로 구현합니다.</li>
+<li>**바이댄스 기술 기반 프레임 보강**: 30프레임 영상을 60프레임으로 2배 늘려 스크롤 시 끊김 없는 부드러운 애니메이션을 제공합니다.</li>
+<li>**키미 K3와 핵스필드 연동 자동화**: AI끼리 직접 대화하며 영상 생성부터 품질 개선까지 스스로 처리하는 파이프라인을 구축합니다.</li>
+</ul>
+    </div>
+  <div class="transcript-wrap">
+    <div class="transcript-header">
+      <button class="transcript-toggle" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('visible')">
+        <span class="arr">▼</span> 원문 자막
+      </button>
+      <button class="copy-btn" onclick="var b=this,t=b.nextElementSibling||b;navigator.clipboard.writeText(document.querySelector('#tr-Va25SCaEJYw').textContent).then(()=>{b.textContent='복사됨';setTimeout(()=>b.textContent='복사',2000)})">복사</button>
+    </div>
+    <pre class="transcript-box" id="tr-Va25SCaEJYw">이 남자는 웹 디자인의 천재입니다. 단돈 1달러로 대기업 브랜드나 볼 수 있는 시네마틱한 스크롤 웹사이트를 무한으로 찍어내는 비결을 찾아낸 닉사라에프. 그가 공개한 키미 K3로 디자인 시장을 해킹하는 다섯 가지 실무 공식 저장하고 끝까지 보세요. 첫째, 스크롤 기반의 시네마틱 아이디어를 먼저 추출하세요. 단순히 예쁜 사이트가 아니라 사용자가 화면을 내릴 때마다 8초 동안에 압도적인 매크로 여정이 펼쳐지는 독특한 컨셉을 설계합니다. 둘째, 추출된 아이디어를 고품질 비디오 프롬프트로 변환하세요. AR 모델이 한 개를 넘는 영상을 만들 수 있도록 카메라 앵글과 조명까지 포함된 정교한 명령으로 정제하는 것이 핵심입니다. 셋째, 히스필드 시네마틱 스튜디오를 통해 영상 자산을 만드세요. 실제 촬영에 불가능한 미세한 세계나 환상적인 공간을 8초 길이에 고해상도 영상으로 구현해 웹사이트의 중심 매력을 확보해야 합니다. 넷째, 바이댄스 기술을 활용해 프레임을 두 배로 늘리세요. 스크롤할 때 뚝뚝 끊기는 느낌을 없애기 위해 30프레임 영상을 60프레임으로 보강하여 비단결처럼 부드러운 애니메이션 효과를 완성하세요. 다섯째, 키미 K3와 핵스필드를 직접 연결하는 파이프라인에 구축하세요. 매번 명령어를 복사할 필요 없이 인공지능끼이 대화하며 영상 생성부터 품제의 개선까지 스스로 처리하는 자동화 시스템을 갖춰야 합니다. 더 자세한 방법은 따로 정리해 뒀습니다.이 이 자료 궁금한 분들은 구독후 본문을 확인해 주세요.</pre>
+  </div>
+  </article>
+</main>
+
+<footer>유튜브 구독 정리 · agy 요약 · 2026-08-05 06:01</footer>
+
+
+<script>
+document.querySelectorAll('.nlm-btn').forEach(function(btn){
+  btn.addEventListener('click',function(){
+    navigator.clipboard.writeText('/notebooklm '+btn.dataset.url).then(function(){
+      var orig=btn.innerHTML;btn.innerHTML='✓ 복사됨';btn.classList.add('copied');
+      setTimeout(function(){btn.innerHTML=orig;btn.classList.remove('copied');},2000);
+    });
+  });
+});
+</script>
+
+</body>
+</html>

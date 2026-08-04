@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>2026-08-05 — 유튜브 구독 정리</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+  :root{--bg:#090e1a;--surface:#111827;--surface2:#1a2235;--border:#1e2d47;--accent:#6c63ff;--accent2:#00d4ff;--text:#e8eaf0;--muted:#7a8499;--radius:14px;}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Pretendard',sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+  header{background:linear-gradient(135deg,#0d1b3e,#1a0533);border-bottom:1px solid var(--border);padding:20px 40px;display:flex;align-items:center;justify-content:space-between;}
+  .nav-back{color:var(--accent2);text-decoration:none;font-size:0.85rem;display:flex;align-items:center;gap:6px}
+  .nav-back:hover{color:#fff}
+  .date-badge{font-size:1.4rem;font-weight:700;letter-spacing:-0.5px;background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+  .count{font-size:0.85rem;color:var(--muted)}
+  main{max-width:900px;margin:0 auto;padding:32px 24px 80px}
+  .video-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;margin-bottom:24px;transition:border-color 0.2s,box-shadow 0.2s;}
+  .video-card:hover{border-color:var(--accent);box-shadow:0 4px 24px rgba(108,99,255,0.15)}
+  .card-top{display:flex;gap:0}
+  .thumb-wrap{flex:0 0 240px;position:relative;overflow:hidden}
+  .thumb-wrap img{width:100%;height:100%;object-fit:cover;transition:transform 0.4s}
+  .video-card:hover .thumb-wrap img{transform:scale(1.05)}
+  .card-info{flex:1;padding:20px;display:flex;flex-direction:column;gap:10px}
+  .card-meta{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+  .ch-tag{font-size:0.72rem;font-weight:600;padding:3px 12px;background:linear-gradient(135deg,rgba(108,99,255,0.2),rgba(0,212,255,0.2));border:1px solid rgba(108,99,255,0.3);border-radius:999px;color:var(--accent2);}
+  .date-tag{font-size:0.72rem;color:var(--muted)}
+  .no-transcript{font-size:0.68rem;padding:2px 8px;background:rgba(255,180,0,0.12);border:1px solid rgba(255,180,0,0.25);border-radius:999px;color:#ffa500;}
+  .video-title{font-size:1rem;font-weight:600;line-height:1.4}
+  .yt-link{display:inline-flex;align-items:center;gap:5px;font-size:0.8rem;color:var(--accent);text-decoration:none;transition:color 0.2s;}
+  .yt-link:hover{color:var(--accent2)}
+  
+  .nlm-btn{display:inline-flex;align-items:center;gap:5px;font-size:0.8rem;color:#fff;
+    background:rgba(108,99,255,0.2);border:1px solid rgba(108,99,255,0.4);border-radius:8px;
+    padding:4px 12px;cursor:pointer;font-family:inherit;transition:all 0.2s;margin-left:8px;}
+  .nlm-btn:hover{background:rgba(108,99,255,0.45);}
+  .nlm-btn.copied{background:rgba(0,200,100,0.2);border-color:rgba(0,200,100,0.4);color:#00c864;}
+
+  .summary-section{border-top:1px solid var(--border);background:var(--surface2);padding:20px 24px;font-size:0.85rem;line-height:1.7;color:#c5cad8;}
+  .summary-section h2{font-size:0.82rem;color:var(--accent2);margin:12px 0 4px}
+  .summary-section h2:first-child{margin-top:0}
+  .summary-section ul{padding-left:18px}
+  .summary-section li{margin-bottom:5px}
+  .transcript-wrap{border-top:1px solid var(--border);padding:14px 24px;background:#0c1220}
+  .transcript-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:0}
+  .transcript-toggle{background:none;border:none;color:var(--muted);font-size:0.8rem;cursor:pointer;font-family:inherit;display:flex;align-items:center;gap:4px;padding:0;transition:color 0.2s;}
+  .transcript-toggle:hover{color:var(--text)}
+  .copy-btn{background:rgba(108,99,255,0.1);border:1px solid rgba(108,99,255,0.3);border-radius:8px;color:var(--accent2);font-size:0.72rem;padding:4px 12px;cursor:pointer;font-family:inherit;transition:all 0.2s;}
+  .copy-btn:hover{background:rgba(108,99,255,0.25);color:#fff}
+  .transcript-box{display:none;margin-top:10px;background:#080d18;border:1px solid var(--border);border-radius:10px;padding:12px 14px;font-size:0.78rem;line-height:1.75;color:#8a95aa;max-height:260px;overflow-y:auto;white-space:pre-wrap;word-break:break-word;}
+  .transcript-box.visible{display:block}
+  footer{text-align:center;padding:24px;font-size:0.75rem;color:var(--muted);border-top:1px solid var(--border)}
+  @media(max-width:640px){.card-top{flex-direction:column}.thumb-wrap{flex:none;height:200px}header{padding:16px}main{padding:16px 12px 60px}}
+</style>
+</head>
+<body>
+
+<header>
+  <a class="nav-back" href="../index.html">← 대시보드로</a>
+  <div>
+    <div class="date-badge">2026-08-05</div>
+    <div class="count">1개 영상</div>
+  </div>
+  <div style="font-size:0.75rem;color:var(--muted)">2026-08-05 06:01 생성</div>
+</header>
+
+<main>
+
+  <article class="video-card">
+    <div class="card-top">
+      <a class="thumb-wrap" href="https://www.youtube.com/watch?v=Klg88UaNXuc" target="_blank" rel="noopener">
+        <img src="https://i.ytimg.com/vi/Klg88UaNXuc/hqdefault.jpg" alt="Stop Using One AI Model — Make Fable 5 Manage GPT 5.6" loading="lazy"/>
+      </a>
+      <div class="card-info">
+        <div class="card-meta">
+          <span class="ch-tag">Nicholas Puru</span>
+          <span class="date-tag">2026-08-05</span>
+          
+        </div>
+        <div class="video-title">Stop Using One AI Model — Make Fable 5 Manage GPT 5.6</div>
+        <div style="display:flex;align-items:center;flex-wrap:wrap;gap:4px;margin-top:auto">
+          <a class="yt-link" href="https://www.youtube.com/watch?v=Klg88UaNXuc" target="_blank" rel="noopener">↗ 유튜브에서 보기</a>
+          <button class="nlm-btn" data-url="https://www.youtube.com/watch?v=Klg88UaNXuc">📓 NotebookLM</button>
+        </div>
+      </div>
+    </div>
+    <div class="summary-section">
+      <h2>핵심 요약</h2>
+<p>단일 AI 모델 사용에서 벗어나 Anthropic의 모델(Fable 5)을 기획·관리자로, OpenAI의 모델(GPT 5.6/Codex)을 실무 집행자로 결합한 2-AI 협업 시스템이다. 두 모델을 하나로 연동하면 기획부터 개발, 검토까지 자동으로 수행되어 웹사이트 제작, 영업 자동화, 유료 툴 재개발 등 복잡한 작업을 손쉽게 완수할 수 있다. 단 하나의 설정 파일과 간단한 명령어 복사·붙여넣기만으로 비개발자도 2분 만에 구축 가능하다.</p>
+<h2>주요 포인트</h2>
+<ul>
+<li>Anthropic(Fable 5, 기획/관리)과 OpenAI(GPT 5.6/Codex, 실행/개발)의 역할을 분담해 강력한 자동화 워크플로우 구축</li>
+<li>웹사이트 12개 제작, 영업 아웃리치 작성, 리드 발굴 등 실제 수익 창출 작업에 동일한 시스템 적용</li>
+<li>사용자 작업 흐름 분석을 통한 시간 손실 자동 보완 및 기존 유료 소프트웨어 자체 재개발을 통한 구독료 절감</li>
+<li>복사·붙여넣기만으로 2분 만에 세팅 가능하며 기술적 지식이 전혀 없어도 운용 가능</li>
+<li>결과물이 사용자에게 전달되기 전에 기획, 구축, 검토까지 완료되는 높은 작업 완성도 제공</li>
+</ul>
+    </div>
+  <div class="transcript-wrap">
+    <div class="transcript-header">
+      <button class="transcript-toggle" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('visible')">
+        <span class="arr">▼</span> 원문 자막
+      </button>
+      <button class="copy-btn" onclick="var b=this,t=b.nextElementSibling||b;navigator.clipboard.writeText(document.querySelector('#tr-Klg88UaNXuc').textContent).then(()=>{b.textContent='복사됨';setTimeout(()=>b.textContent='복사',2000)})">복사</button>
+    </div>
+    <pre class="transcript-box" id="tr-Klg88UaNXuc">For the last few weeks, I have been using AI in a completely different way. And honestly, it is the best setup that I have found for doing real work, pretty much any kind of work for that matter. And the idea behind it, it's very simple. You stop using one model and you start using two together. So, with this, we combine OpenAI's best and anthropics best running on my computer just as one system. Now, one of them is going to be planning and managing the job, and the other one is going to be executing and actually building it. And once they're all wired together like that, you can point them at almost anything and it's going to come back actually done. It'll be planned, everything will be built and it'll be reviewed before you ever actually see it. So this week, I've just pointed the exact same system at five completely different jobs and built about a dozen websites for local businesses and wrote the outreach to actually go sell them and found qualified leads. And that went to genuine ways to actually make money. It also watched how I actually work for a full day and then it just built the fixes for where I was quietly losing my hours, losing my time and it rebuilt a piece of software that I have been paying for. So I could just, you know, go ahead and cancel that. It's the same system every single time. So some of these they make you money, some of them are going to be saving you money, and some just make you a lot better at doing the work itself. But the thing that they all share is going to be the setup. And that's what I'm going to hand you today. the whole thing. It runs off of just one file. It is very simple. You just copy and paste it and I'll give you every single prompt. It'll be available to download inside of my free school community. And you do not need to be technical for any reason if you can copy and paste. I promise you will be able to run every single one of these. Let's jump into it. Okay, so the whole setup, it only takes about 2 minutes and you really only ever have to do this once. So, we're just going to prop open our terminal and we're just going to type out both of these commands. I'm going to say npm installg openi codeex latest codeex login. So for the first thing that I'm going to be doing here is I'm just going to install the codeex cli and this is just openi's coding agent that actually runs inside of your terminal and then I can just sign in with my regular chat GPT account. Now soul it comes with the paid plans now so there is no API key to actually paste in or anything like that. And there it is on the model line. So we can see chat GPT 5.6 soul. We have about $5 in 30 out per million tokens and the strongest coding model OpenAI has ever shipped. And now from here I could just open up Claude code and I just have to set the model to Fable 5. Obviously Enthropic's best model at this point. And now I just give it the one instruction that runs this entire thing for me. And you could paste it just straight into the chat or you can save it as a cla.md file in the folder. So it's going to be loading automatically every single time. Whichever you prefer is completely fine. But that's the file that I just keep pointing at. But either way, here it is. So, what I'm saying is you're the manager on this machine and you never do the hands-on work yourself. Break every job that I give you into tasks and hand each task to the codeex CLI by running the codeex exec with a clear written precodex. It runs GPT 5.6 soul that is the engineer. So, run several sole workers in parallel when tasks are independent. When work does come back, review it carefully. If anything is wrong, cut a corner or does something that I did not ask for, send it back with the written notes until it actually meets the bar. Make the small calls yourself. State your assumptions and only bring me decisions that genuinely need me. Now, in plain English, what I have just told Fable is you never touch the hands-on work yourself. You're going to be breaking every job into some, you know, segmented tasks and you send each task to soul through the codeex CLI and you run several soul workers all at once when the tasks do not depend on each other and then you just review everything that comes back. Anything that you know cut a corner go straight back with the written notes and that review step that is the entire trick here because soul it is incredibly brilliant but it's a little too eager. It is I've seen other people call it a pit bull and it's the perfect way to describe it where it builds things that you did not ask for and it just kind of goes ham. So with Fable checking effectively every price the corner that soul typically cuts it gets caught before they actually ship it and not after. So that's really what we're looking to do here. Okay, first use case and this is where these two models really come together. What I've done is I just turned the whole setup into an instant web agency. And what it does is it just opens exactly</pre>
+  </div>
+  </article>
+</main>
+
+<footer>유튜브 구독 정리 · agy 요약 · 2026-08-05 06:01</footer>
+
+
+<script>
+document.querySelectorAll('.nlm-btn').forEach(function(btn){
+  btn.addEventListener('click',function(){
+    navigator.clipboard.writeText('/notebooklm '+btn.dataset.url).then(function(){
+      var orig=btn.innerHTML;btn.innerHTML='✓ 복사됨';btn.classList.add('copied');
+      setTimeout(function(){btn.innerHTML=orig;btn.classList.remove('copied');},2000);
+    });
+  });
+});
+</script>
+
+</body>
+</html>
