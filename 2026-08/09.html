@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>2026-08-09 — 유튜브 구독 정리</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+  :root{--bg:#090e1a;--surface:#111827;--surface2:#1a2235;--border:#1e2d47;--accent:#6c63ff;--accent2:#00d4ff;--text:#e8eaf0;--muted:#7a8499;--radius:14px;}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Pretendard',sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+  header{background:linear-gradient(135deg,#0d1b3e,#1a0533);border-bottom:1px solid var(--border);padding:20px 40px;display:flex;align-items:center;justify-content:space-between;}
+  .nav-back{color:var(--accent2);text-decoration:none;font-size:0.85rem;display:flex;align-items:center;gap:6px}
+  .nav-back:hover{color:#fff}
+  .date-badge{font-size:1.4rem;font-weight:700;letter-spacing:-0.5px;background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+  .count{font-size:0.85rem;color:var(--muted)}
+  main{max-width:900px;margin:0 auto;padding:32px 24px 80px}
+  .video-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;margin-bottom:24px;transition:border-color 0.2s,box-shadow 0.2s;}
+  .video-card:hover{border-color:var(--accent);box-shadow:0 4px 24px rgba(108,99,255,0.15)}
+  .card-top{display:flex;gap:0}
+  .thumb-wrap{flex:0 0 240px;position:relative;overflow:hidden}
+  .thumb-wrap img{width:100%;height:100%;object-fit:cover;transition:transform 0.4s}
+  .video-card:hover .thumb-wrap img{transform:scale(1.05)}
+  .card-info{flex:1;padding:20px;display:flex;flex-direction:column;gap:10px}
+  .card-meta{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+  .ch-tag{font-size:0.72rem;font-weight:600;padding:3px 12px;background:linear-gradient(135deg,rgba(108,99,255,0.2),rgba(0,212,255,0.2));border:1px solid rgba(108,99,255,0.3);border-radius:999px;color:var(--accent2);}
+  .date-tag{font-size:0.72rem;color:var(--muted)}
+  .no-transcript{font-size:0.68rem;padding:2px 8px;background:rgba(255,180,0,0.12);border:1px solid rgba(255,180,0,0.25);border-radius:999px;color:#ffa500;}
+  .video-title{font-size:1rem;font-weight:600;line-height:1.4}
+  .yt-link{display:inline-flex;align-items:center;gap:5px;font-size:0.8rem;color:var(--accent);text-decoration:none;transition:color 0.2s;}
+  .yt-link:hover{color:var(--accent2)}
+  
+  .nlm-btn{display:inline-flex;align-items:center;gap:5px;font-size:0.8rem;color:#fff;
+    background:rgba(108,99,255,0.2);border:1px solid rgba(108,99,255,0.4);border-radius:8px;
+    padding:4px 12px;cursor:pointer;font-family:inherit;transition:all 0.2s;margin-left:8px;}
+  .nlm-btn:hover{background:rgba(108,99,255,0.45);}
+  .nlm-btn.copied{background:rgba(0,200,100,0.2);border-color:rgba(0,200,100,0.4);color:#00c864;}
+
+  .summary-section{border-top:1px solid var(--border);background:var(--surface2);padding:20px 24px;font-size:0.85rem;line-height:1.7;color:#c5cad8;}
+  .summary-section h2{font-size:0.82rem;color:var(--accent2);margin:12px 0 4px}
+  .summary-section h2:first-child{margin-top:0}
+  .summary-section ul{padding-left:18px}
+  .summary-section li{margin-bottom:5px}
+  .transcript-wrap{border-top:1px solid var(--border);padding:14px 24px;background:#0c1220}
+  .transcript-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:0}
+  .transcript-toggle{background:none;border:none;color:var(--muted);font-size:0.8rem;cursor:pointer;font-family:inherit;display:flex;align-items:center;gap:4px;padding:0;transition:color 0.2s;}
+  .transcript-toggle:hover{color:var(--text)}
+  .copy-btn{background:rgba(108,99,255,0.1);border:1px solid rgba(108,99,255,0.3);border-radius:8px;color:var(--accent2);font-size:0.72rem;padding:4px 12px;cursor:pointer;font-family:inherit;transition:all 0.2s;}
+  .copy-btn:hover{background:rgba(108,99,255,0.25);color:#fff}
+  .transcript-box{display:none;margin-top:10px;background:#080d18;border:1px solid var(--border);border-radius:10px;padding:12px 14px;font-size:0.78rem;line-height:1.75;color:#8a95aa;max-height:260px;overflow-y:auto;white-space:pre-wrap;word-break:break-word;}
+  .transcript-box.visible{display:block}
+  footer{text-align:center;padding:24px;font-size:0.75rem;color:var(--muted);border-top:1px solid var(--border)}
+  @media(max-width:640px){.card-top{flex-direction:column}.thumb-wrap{flex:none;height:200px}header{padding:16px}main{padding:16px 12px 60px}}
+</style>
+</head>
+<body>
+
+<header>
+  <a class="nav-back" href="../index.html">← 대시보드로</a>
+  <div>
+    <div class="date-badge">2026-08-09</div>
+    <div class="count">1개 영상</div>
+  </div>
+  <div style="font-size:0.75rem;color:var(--muted)">2026-08-09 06:00 생성</div>
+</header>
+
+<main>
+
+  <article class="video-card">
+    <div class="card-top">
+      <a class="thumb-wrap" href="https://www.youtube.com/watch?v=erqcwNkcDlw" target="_blank" rel="noopener">
+        <img src="https://i.ytimg.com/vi/erqcwNkcDlw/hqdefault.jpg" alt="NO MORE AI SLOP. 7 Rules That Fix Generic ChatGPT Output" loading="lazy"/>
+      </a>
+      <div class="card-info">
+        <div class="card-meta">
+          <span class="ch-tag">Dylan Davis</span>
+          <span class="date-tag">2026-08-09</span>
+          
+        </div>
+        <div class="video-title">NO MORE AI SLOP. 7 Rules That Fix Generic ChatGPT Output</div>
+        <div style="display:flex;align-items:center;flex-wrap:wrap;gap:4px;margin-top:auto">
+          <a class="yt-link" href="https://www.youtube.com/watch?v=erqcwNkcDlw" target="_blank" rel="noopener">↗ 유튜브에서 보기</a>
+          <button class="nlm-btn" data-url="https://www.youtube.com/watch?v=erqcwNkcDlw">📓 NotebookLM</button>
+        </div>
+      </div>
+    </div>
+    <div class="summary-section">
+      <h2>핵심 요약</h2>
+<p>AI가 출력하는 알맹이 없고 뻔한 글(AI Slop)은 모델 자체의 결함이 아니라 사용자가 뻔하고 모호한 요청을 보냈기 때문이다. AI는 전체 인터넷 데이터를 학습해 모호한 프롬프트에는 가장 평균적인 답변을 내놓으므로, 성의 없는 글로 사용자의 신뢰를 잃지 않으려면 프롬프팅 방식을 바꿔야 한다. 이를 해결하기 위해 정보 제공, 요구사항 명시, 내용 깎아내기라는 3개 단계의 7가지 규칙으로 AI를 평균치 밖으로 끌어내야 한다.</p>
+<h2>주요 포인트</h2>
+<ul>
+<li>AI 특유의 진부한 어휘(delve, seamless 등)와 m-dash 사용은 글의 성의가 없다는 인상을 주어 사용자 본인의 신뢰도를 깎아먹음</li>
+<li>뻔한 결과물은 AI 모델의 실수가 아니라 뻔한 요청을 입력해서 발생하는 'Slop in, slop out' 현상임</li>
+<li>최신 AI 모델들은 문장력과 설득력은 향상되었으나 여전히 실질적인 알맹이(Substance)가 부족한 평균 수준의 글을 생성함</li>
+<li>AI는 정답을 주기 위해 훈련 데이터의 가장 흔한 '평균치' 답변을 고르므로, 사용자의 특정 니즈에 맞춘 구체적인 조율이 필요함</li>
+<li>AI 텍스트를 개선하는 방법은 크게 '정보 제공', '결과물 요구', '불필요한 요소 삭제' 3가지 카테고리의 7가지 규칙으로 구성됨</li>
+</ul>
+    </div>
+  <div class="transcript-wrap">
+    <div class="transcript-header">
+      <button class="transcript-toggle" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('visible')">
+        <span class="arr">▼</span> 원문 자막
+      </button>
+      <button class="copy-btn" onclick="var b=this,t=b.nextElementSibling||b;navigator.clipboard.writeText(document.querySelector('#tr-erqcwNkcDlw').textContent).then(()=>{b.textContent='복사됨';setTimeout(()=>b.textContent='복사',2000)})">복사</button>
+    </div>
+    <pre class="transcript-box" id="tr-erqcwNkcDlw">Most people now can tell when something was written by AI. And here's the problem with that. When your boss or your client reads something that you sent and it smells like AI, they don't blame the AI. They blame you. They assume you didn't care enough to do the real work. I run an AI consultancy and I've had this happen to me. I've caught generic AI writing going out with my own name on it. But here's what most people don't realize. Generic output isn't the AI messing up. It's what happens when you give it generic requests. Slop in, slop out. And in this video, I'll show you the seven rules that fix it. So, let's get into it. If you've used AI for long enough, you've probably seen AI slop manifest in different ways, not just in writing, but also in design and a variety of other things. In writing, some of the very common things you often see are words like delve, seamless. You even see these things called m dashes quite often and a variety of other things that annoy me quite a bit as well such as the word flip or gamecher or the excessive use of the word move in random places. These are all types of things that you'll see when you say AI slot from AI specifically in the context of writing. What's happening with these newer models such as Fable 5, Opus 5, GPD 5.6, etc. They are getting better at writing, but they still have the same underlying issue. The way that the writing reads is extremely compelling, but the substance of that content usually stays the same. I'm sure you run into people like this. I definitely have, where you talk to somebody and they speak for a while, but they don't really say anything of substance. The same thing is happening with AI when it writes. And there's a clear reason as to why this is happening and how it's fundamentally sits at the bottom of AI in the nature of how it was built. And this is something we've talked about in previous videos where AI has been trained on the entirety of the internet or most of it. So, when it gives you an answer back or writes something for you, it tends to revolve around the average. So, if you give it a poor prompt that's vague and minimal, such as, "Write me a post about leadership," it's going to give you the average answer, the average blog post that would fit that specific need. And the reason it's doing this is it wants to give you an answer that's correct. And from its training data set, the most common answer it saw was the average. And that's what you receive. So what we want to do is we want to move it out of the average and give us answers and responses in writing that fits our specific needs and suits the things we're trying to achieve. And there are seven ways we can do this and I've bucketed it into three steps. So the first one is you giving information to AI. The second category is you demanding something back from the AI and the third category is the AI actually cutting stuff from the writing itself. So we'll start with the first category which is what you give to the AI. So the very first prompt and step is naming the reader not the topic. And this works really well with the new cutting edge models like Fable 5, Office 5, and GBD5.6. So instead of asking the AI to say something like write about this service or write about our service, we want to ask AI to write towards a specific audience with the topic in mind. Quick pause. If you're enjoying this, you're going to enjoy two other things. First off, Blow is a 30-day AI insight series, completely free. You'll get 30 insights in your inbox of how you can apply AI to your business and your work. The second thing is if you'd like to work with me, blow a series of offerings to see if there's a good fit between the two of us. Now, let's get back to the video. So, here we're saying, I want you to write this for one reader. And then we specify what that reader is. We say it's a skeptical CFO who has been burned by consultants in the past. She often skims everything. She hates buzzwords and she only trusts the numbers. This type of prompt gives the AI a very specific audience it's writing for. It's a simple solution, but it dramatically increases the quality of the writing you get from AI. So, that's the first rule. The second rule is all around you supplying the substance instead of relying on the AI and it then shapes that substance because if you outsource both the substance and the shape of the writing to the AI, you're definitely going to get the average. And the simplest way for you to add substance to what the AI is writing for you is using dictation. But then you can dictate to the AI some of the context around what you want the AI to write, why you want it to write it, how you want it to write it. Some simple things to trigger in your head for an example here would be if you want the AI to write in regards to what happened in a meeting, you state what happened. the surprising numbers that were shared in that session and maybe what the client said that mattered most that you wan</pre>
+  </div>
+  </article>
+</main>
+
+<footer>유튜브 구독 정리 · agy 요약 · 2026-08-09 06:00</footer>
+
+
+<script>
+document.querySelectorAll('.nlm-btn').forEach(function(btn){
+  btn.addEventListener('click',function(){
+    navigator.clipboard.writeText('/notebooklm '+btn.dataset.url).then(function(){
+      var orig=btn.innerHTML;btn.innerHTML='✓ 복사됨';btn.classList.add('copied');
+      setTimeout(function(){btn.innerHTML=orig;btn.classList.remove('copied');},2000);
+    });
+  });
+});
+</script>
+
+</body>
+</html>
