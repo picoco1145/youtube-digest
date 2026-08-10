@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>2026-08-10 — 유튜브 구독 정리</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+  :root{--bg:#090e1a;--surface:#111827;--surface2:#1a2235;--border:#1e2d47;--accent:#6c63ff;--accent2:#00d4ff;--text:#e8eaf0;--muted:#7a8499;--radius:14px;}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Pretendard',sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+  header{background:linear-gradient(135deg,#0d1b3e,#1a0533);border-bottom:1px solid var(--border);padding:20px 40px;display:flex;align-items:center;justify-content:space-between;}
+  .nav-back{color:var(--accent2);text-decoration:none;font-size:0.85rem;display:flex;align-items:center;gap:6px}
+  .nav-back:hover{color:#fff}
+  .date-badge{font-size:1.4rem;font-weight:700;letter-spacing:-0.5px;background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+  .count{font-size:0.85rem;color:var(--muted)}
+  main{max-width:900px;margin:0 auto;padding:32px 24px 80px}
+  .video-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;margin-bottom:24px;transition:border-color 0.2s,box-shadow 0.2s;}
+  .video-card:hover{border-color:var(--accent);box-shadow:0 4px 24px rgba(108,99,255,0.15)}
+  .card-top{display:flex;gap:0}
+  .thumb-wrap{flex:0 0 240px;position:relative;overflow:hidden}
+  .thumb-wrap img{width:100%;height:100%;object-fit:cover;transition:transform 0.4s}
+  .video-card:hover .thumb-wrap img{transform:scale(1.05)}
+  .card-info{flex:1;padding:20px;display:flex;flex-direction:column;gap:10px}
+  .card-meta{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+  .ch-tag{font-size:0.72rem;font-weight:600;padding:3px 12px;background:linear-gradient(135deg,rgba(108,99,255,0.2),rgba(0,212,255,0.2));border:1px solid rgba(108,99,255,0.3);border-radius:999px;color:var(--accent2);}
+  .date-tag{font-size:0.72rem;color:var(--muted)}
+  .no-transcript{font-size:0.68rem;padding:2px 8px;background:rgba(255,180,0,0.12);border:1px solid rgba(255,180,0,0.25);border-radius:999px;color:#ffa500;}
+  .video-title{font-size:1rem;font-weight:600;line-height:1.4}
+  .yt-link{display:inline-flex;align-items:center;gap:5px;font-size:0.8rem;color:var(--accent);text-decoration:none;transition:color 0.2s;}
+  .yt-link:hover{color:var(--accent2)}
+  
+  .nlm-btn{display:inline-flex;align-items:center;gap:5px;font-size:0.8rem;color:#fff;
+    background:rgba(108,99,255,0.2);border:1px solid rgba(108,99,255,0.4);border-radius:8px;
+    padding:4px 12px;cursor:pointer;font-family:inherit;transition:all 0.2s;margin-left:8px;}
+  .nlm-btn:hover{background:rgba(108,99,255,0.45);}
+  .nlm-btn.copied{background:rgba(0,200,100,0.2);border-color:rgba(0,200,100,0.4);color:#00c864;}
+
+  .summary-section{border-top:1px solid var(--border);background:var(--surface2);padding:20px 24px;font-size:0.85rem;line-height:1.7;color:#c5cad8;}
+  .summary-section h2{font-size:0.82rem;color:var(--accent2);margin:12px 0 4px}
+  .summary-section h2:first-child{margin-top:0}
+  .summary-section ul{padding-left:18px}
+  .summary-section li{margin-bottom:5px}
+  .transcript-wrap{border-top:1px solid var(--border);padding:14px 24px;background:#0c1220}
+  .transcript-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:0}
+  .transcript-toggle{background:none;border:none;color:var(--muted);font-size:0.8rem;cursor:pointer;font-family:inherit;display:flex;align-items:center;gap:4px;padding:0;transition:color 0.2s;}
+  .transcript-toggle:hover{color:var(--text)}
+  .copy-btn{background:rgba(108,99,255,0.1);border:1px solid rgba(108,99,255,0.3);border-radius:8px;color:var(--accent2);font-size:0.72rem;padding:4px 12px;cursor:pointer;font-family:inherit;transition:all 0.2s;}
+  .copy-btn:hover{background:rgba(108,99,255,0.25);color:#fff}
+  .transcript-box{display:none;margin-top:10px;background:#080d18;border:1px solid var(--border);border-radius:10px;padding:12px 14px;font-size:0.78rem;line-height:1.75;color:#8a95aa;max-height:260px;overflow-y:auto;white-space:pre-wrap;word-break:break-word;}
+  .transcript-box.visible{display:block}
+  footer{text-align:center;padding:24px;font-size:0.75rem;color:var(--muted);border-top:1px solid var(--border)}
+  @media(max-width:640px){.card-top{flex-direction:column}.thumb-wrap{flex:none;height:200px}header{padding:16px}main{padding:16px 12px 60px}}
+</style>
+</head>
+<body>
+
+<header>
+  <a class="nav-back" href="../index.html">← 대시보드로</a>
+  <div>
+    <div class="date-badge">2026-08-10</div>
+    <div class="count">1개 영상</div>
+  </div>
+  <div style="font-size:0.75rem;color:var(--muted)">2026-08-11 06:01 생성</div>
+</header>
+
+<main>
+
+  <article class="video-card">
+    <div class="card-top">
+      <a class="thumb-wrap" href="https://www.youtube.com/watch?v=xYxO1ZY_45o" target="_blank" rel="noopener">
+        <img src="https://i.ytimg.com/vi/xYxO1ZY_45o/hqdefault.jpg" alt="클로드로 무한 마케팅 하기" loading="lazy"/>
+      </a>
+      <div class="card-info">
+        <div class="card-meta">
+          <span class="ch-tag">AIMAX_PD</span>
+          <span class="date-tag">2026-08-10</span>
+          
+        </div>
+        <div class="video-title">클로드로 무한 마케팅 하기</div>
+        <div style="display:flex;align-items:center;flex-wrap:wrap;gap:4px;margin-top:auto">
+          <a class="yt-link" href="https://www.youtube.com/watch?v=xYxO1ZY_45o" target="_blank" rel="noopener">↗ 유튜브에서 보기</a>
+          <button class="nlm-btn" data-url="https://www.youtube.com/watch?v=xYxO1ZY_45o">📓 NotebookLM</button>
+        </div>
+      </div>
+    </div>
+    <div class="summary-section">
+      <h2>핵심 요약</h2>
+<p>AI가 취향과 맥락을 학습하여 무한히 콘텐츠 소재를 추출하는 5가지 실무 마케팅 시스템을 소개한다. 심층 오디언스 분석부터 성공 패턴 이식, MCP 기반 트렌드 수집, 보관소 관리까지 결합해 지속 가능한 콘텐츠 생성 체계를 구축하는 방법을 다룬다.</p>
+<h2>주요 포인트</h2>
+<ul>
+<li>**심층 오디언스 프로필 구축**: 타깃의 반응 감정과 신뢰 대상을 AI에 학습시켜 팬들이 반응하는 맞춤형 콘텐츠를 생성함</li>
+<li>**플랫폼별 성공 패턴 분석**: 링크드인, 유튜브 등의 고성능 게시물 160개 이상을 분석해 리스트형·사전형 등 검증된 구조를 이식함</li>
+<li>**통합 AI 환경 설계**: 클로드와 ChatGPT 등 다양한 AI 도구 간 동일 맥락을 공유하며 아이디어를 끊임없이 발전시킴</li>
+<li>**MCP 서버 기반 실시간 트렌드 수집**: X(트위터) 및 레딧 등의 실시간 인기 주제를 AI가 스스로 수집하여 콘텐츠의 시의성을 확보함</li>
+<li>**체계적인 콘텐츠 보관소(인큐베이터) 관리**: 생성된 아이디어를 유형별로 분류하고 주기적으로 정제해 항상 신선한 소재를 유지함</li>
+</ul>
+    </div>
+  <div class="transcript-wrap">
+    <div class="transcript-header">
+      <button class="transcript-toggle" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('visible')">
+        <span class="arr">▼</span> 원문 자막
+      </button>
+      <button class="copy-btn" onclick="var b=this,t=b.nextElementSibling||b;navigator.clipboard.writeText(document.querySelector('#tr-xYxO1ZY_45o').textContent).then(()=>{b.textContent='복사됨';setTimeout(()=>b.textContent='복사',2000)})">복사</button>
+    </div>
+    <pre class="transcript-box" id="tr-xYxO1ZY_45o">이 남자는 콘텐츠 기획의 천재입니다. 더 이상 아이디어가 떠오르지 않아 고통받는 크리에이트들을 위해 AI가 취향을 학습해 무한히 소재를 뽑아내는 시스템을 완성한 전문가. 그가 공개한 평생 콘텐츠를 찍어내는 다섯 가지 실무 공식 저장하고 끝까지 보세요. 첫째, 단순한 고객을 넘어 심층 오디언스 프로필을 만드세요. 숫자가 누구인지뿐만 아니라 그들이 어떤 감정에 반응하고 누구를 신뢰하는지까지 플로드에게 학습시켜야 당신의 팬들이 반응하는 진짜 콘텐츠가 나옵니다. 둘째, 플랫폼별로 이미 검증된 성공 패턴을 분석하세요. 링크데인이나 유튜브에서 반응이 좋았던 160개 이상의 개시물 데이터를 분석해 사람들이 좋아하는 리스트형이나 안전형 같은 구조를 시스템에 이식해야 합니다. 셋째 플로드나 채지T를 넘나드는 통합 환경을 구축하세요. 어떤 도구를 쓰든 동일한 맥락에서 아이디어를 발전시킬 수 있도록 시스템을 설계하면 도구의 한 개를 넘어 최고의 결과물을 얻을 수 있습니다. 넷째, MCP 서버를 활용해 실시간 트렌드를 수집하세요. 에디나 X에서 지금 사람들이 가장 많이 언급하고 공유하는 뜨거운 주제들을 인공지능이 스스로 찾아오게 만들어 콘텐츠의 시성을 확보하세요. 첫째 나만의 콘텐츠 보관소 인큐를 체계적으로 관리하세요. 생성된 수많은 아이디어를 교육용이나 도전적인 주제 등으로 분류하고 주기적으로 불필요한 것들을 쳐내며 항상 신선한 소재가 가득 차게 유지해야 합니다. 15분짜리 영상 내용을 더 정리했습니다.이 이 자료 궁금하신 분들은이 채널을 구독고 본문을 확인하세요.</pre>
+  </div>
+  </article>
+</main>
+
+<footer>유튜브 구독 정리 · agy 요약 · 2026-08-11 06:01</footer>
+
+
+<script>
+document.querySelectorAll('.nlm-btn').forEach(function(btn){
+  btn.addEventListener('click',function(){
+    navigator.clipboard.writeText('/notebooklm '+btn.dataset.url).then(function(){
+      var orig=btn.innerHTML;btn.innerHTML='✓ 복사됨';btn.classList.add('copied');
+      setTimeout(function(){btn.innerHTML=orig;btn.classList.remove('copied');},2000);
+    });
+  });
+});
+</script>
+
+</body>
+</html>

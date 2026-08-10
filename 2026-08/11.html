@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>2026-08-11 — 유튜브 구독 정리</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+  :root{--bg:#090e1a;--surface:#111827;--surface2:#1a2235;--border:#1e2d47;--accent:#6c63ff;--accent2:#00d4ff;--text:#e8eaf0;--muted:#7a8499;--radius:14px;}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Pretendard',sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+  header{background:linear-gradient(135deg,#0d1b3e,#1a0533);border-bottom:1px solid var(--border);padding:20px 40px;display:flex;align-items:center;justify-content:space-between;}
+  .nav-back{color:var(--accent2);text-decoration:none;font-size:0.85rem;display:flex;align-items:center;gap:6px}
+  .nav-back:hover{color:#fff}
+  .date-badge{font-size:1.4rem;font-weight:700;letter-spacing:-0.5px;background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+  .count{font-size:0.85rem;color:var(--muted)}
+  main{max-width:900px;margin:0 auto;padding:32px 24px 80px}
+  .video-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;margin-bottom:24px;transition:border-color 0.2s,box-shadow 0.2s;}
+  .video-card:hover{border-color:var(--accent);box-shadow:0 4px 24px rgba(108,99,255,0.15)}
+  .card-top{display:flex;gap:0}
+  .thumb-wrap{flex:0 0 240px;position:relative;overflow:hidden}
+  .thumb-wrap img{width:100%;height:100%;object-fit:cover;transition:transform 0.4s}
+  .video-card:hover .thumb-wrap img{transform:scale(1.05)}
+  .card-info{flex:1;padding:20px;display:flex;flex-direction:column;gap:10px}
+  .card-meta{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+  .ch-tag{font-size:0.72rem;font-weight:600;padding:3px 12px;background:linear-gradient(135deg,rgba(108,99,255,0.2),rgba(0,212,255,0.2));border:1px solid rgba(108,99,255,0.3);border-radius:999px;color:var(--accent2);}
+  .date-tag{font-size:0.72rem;color:var(--muted)}
+  .no-transcript{font-size:0.68rem;padding:2px 8px;background:rgba(255,180,0,0.12);border:1px solid rgba(255,180,0,0.25);border-radius:999px;color:#ffa500;}
+  .video-title{font-size:1rem;font-weight:600;line-height:1.4}
+  .yt-link{display:inline-flex;align-items:center;gap:5px;font-size:0.8rem;color:var(--accent);text-decoration:none;transition:color 0.2s;}
+  .yt-link:hover{color:var(--accent2)}
+  
+  .nlm-btn{display:inline-flex;align-items:center;gap:5px;font-size:0.8rem;color:#fff;
+    background:rgba(108,99,255,0.2);border:1px solid rgba(108,99,255,0.4);border-radius:8px;
+    padding:4px 12px;cursor:pointer;font-family:inherit;transition:all 0.2s;margin-left:8px;}
+  .nlm-btn:hover{background:rgba(108,99,255,0.45);}
+  .nlm-btn.copied{background:rgba(0,200,100,0.2);border-color:rgba(0,200,100,0.4);color:#00c864;}
+
+  .summary-section{border-top:1px solid var(--border);background:var(--surface2);padding:20px 24px;font-size:0.85rem;line-height:1.7;color:#c5cad8;}
+  .summary-section h2{font-size:0.82rem;color:var(--accent2);margin:12px 0 4px}
+  .summary-section h2:first-child{margin-top:0}
+  .summary-section ul{padding-left:18px}
+  .summary-section li{margin-bottom:5px}
+  .transcript-wrap{border-top:1px solid var(--border);padding:14px 24px;background:#0c1220}
+  .transcript-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:0}
+  .transcript-toggle{background:none;border:none;color:var(--muted);font-size:0.8rem;cursor:pointer;font-family:inherit;display:flex;align-items:center;gap:4px;padding:0;transition:color 0.2s;}
+  .transcript-toggle:hover{color:var(--text)}
+  .copy-btn{background:rgba(108,99,255,0.1);border:1px solid rgba(108,99,255,0.3);border-radius:8px;color:var(--accent2);font-size:0.72rem;padding:4px 12px;cursor:pointer;font-family:inherit;transition:all 0.2s;}
+  .copy-btn:hover{background:rgba(108,99,255,0.25);color:#fff}
+  .transcript-box{display:none;margin-top:10px;background:#080d18;border:1px solid var(--border);border-radius:10px;padding:12px 14px;font-size:0.78rem;line-height:1.75;color:#8a95aa;max-height:260px;overflow-y:auto;white-space:pre-wrap;word-break:break-word;}
+  .transcript-box.visible{display:block}
+  footer{text-align:center;padding:24px;font-size:0.75rem;color:var(--muted);border-top:1px solid var(--border)}
+  @media(max-width:640px){.card-top{flex-direction:column}.thumb-wrap{flex:none;height:200px}header{padding:16px}main{padding:16px 12px 60px}}
+</style>
+</head>
+<body>
+
+<header>
+  <a class="nav-back" href="../index.html">← 대시보드로</a>
+  <div>
+    <div class="date-badge">2026-08-11</div>
+    <div class="count">3개 영상</div>
+  </div>
+  <div style="font-size:0.75rem;color:var(--muted)">2026-08-11 06:01 생성</div>
+</header>
+
+<main>
+
+  <article class="video-card">
+    <div class="card-top">
+      <a class="thumb-wrap" href="https://www.youtube.com/watch?v=IVx8OSMbTss" target="_blank" rel="noopener">
+        <img src="https://i.ytimg.com/vi/IVx8OSMbTss/hqdefault.jpg" alt="Build & Sell AI SaaS Products (2 HOUR COURSE)" loading="lazy"/>
+      </a>
+      <div class="card-info">
+        <div class="card-meta">
+          <span class="ch-tag">Nate Herk</span>
+          <span class="date-tag">2026-08-11</span>
+          
+        </div>
+        <div class="video-title">Build & Sell AI SaaS Products (2 HOUR COURSE)</div>
+        <div style="display:flex;align-items:center;flex-wrap:wrap;gap:4px;margin-top:auto">
+          <a class="yt-link" href="https://www.youtube.com/watch?v=IVx8OSMbTss" target="_blank" rel="noopener">↗ 유튜브에서 보기</a>
+          <button class="nlm-btn" data-url="https://www.youtube.com/watch?v=IVx8OSMbTss">📓 NotebookLM</button>
+        </div>
+      </div>
+    </div>
+    <div class="summary-section">
+      <h2>핵심 요약</h2>
+<p>코딩 지식이 없어도 AI를 활용해 아이디어 구상부터 실제 판매까지 AI SaaS 제품을 만들어내는 전 과정을 다룸. 사전 검증, 시스템 구축, 브랜딩까지 이어지는 6가지 P 프레임워크를 기반으로 초보자도 1인 비즈니스를 시작할 수 있는 실전 가이드를 제공함.</p>
+<h2>주요 포인트</h2>
+<ul>
+<li>**Pain (문제 파악)**: AI를 활용해 시장의 핵심 문제를 찾고, 빌드 전에 미리 반응을 확인하는 사전 검증 방식을 강조함.</li>
+<li>**Promise (가치 약속)**: 랜딩 페이지 상단에 서비스가 해결해 주는 문제를 한 문장으로 명확하게 표현함.</li>
+<li>**Product (제품 구현)**: 구상한 아이디어를 바탕으로 실제 작동하는 핵심 기능과 서비스 프론트를 개발함.</li>
+<li>**Plumbing (시스템 연동)**: 대규모 유저 확장에 대비해 결제 시스템, 회원 인증, 데이터베이스 등 필수 기반을 연결함.</li>
+<li>**Packaging (포장 및 브랜딩)**: 일관된 디자인과 브랜딩을 적용해 유저가 안심하고 결제할 수 있는 전문적인 완성도를 갖춤.</li>
+<li>**Proof (지속적인 검증)**: 개발 지식이 부족하더라도 제작 과정 전반에서 서비스가 제대로 동작하는지 지속적으로 테스트함.</li>
+</ul>
+    </div>
+  <div class="transcript-wrap">
+    <div class="transcript-header">
+      <button class="transcript-toggle" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('visible')">
+        <span class="arr">▼</span> 원문 자막
+      </button>
+      <button class="copy-btn" onclick="var b=this,t=b.nextElementSibling||b;navigator.clipboard.writeText(document.querySelector('#tr-IVx8OSMbTss').textContent).then(()=>{b.textContent='복사됨';setTimeout(()=>b.textContent='복사',2000)})">복사</button>
+    </div>
+    <pre class="transcript-box" id="tr-IVx8OSMbTss">Today I'm going to be building an AI SAS product right in front of you guys pretty much live. I'm going to be basically starting at the complete beginning. I don't even have an idea yet. I'm going to go through ideation, planning, building, testing, authentication, payment processing, connecting it to a real domain. I'm going to do all of that in front of you guys so that after this video you basically know exactly how you can find some sort of idea, turn it into a product, and then actually go look at getting some customers for your product. So, I don't want to waste any time. Let's just get straight into the video. So there's six major P's that we're going to be focusing on today when we're building this sort of like SAS sprint. So the first P is pain. I'm basically going to pretend that I am in your shoes right now. You might be starting from completely zero, a little bit of AI knowledge, but you don't have an idea or a product. So that's what I want to kind of simulate today. So pain, we obviously want to build something that people will actually use. Now in a perfect world, the way that I would actually go about this is I would go get feedback. I would say, "Hey, here's my business idea. How much would you pay for this? Would you pay for this?" and I would get a bunch of validation before I actually build or I'd build like a little P proof of concept to just say, "Hey, here's a demo. When I build this out for real, would you build this? Would you guys find this value?" And then I would go build it. So, basically sell before you build. So, we're going to be using AI here to help us find some pain points and find the business idea. From there, we're going to step into promise. It has to be super clear and basically one sentence on the landing page. What does this tool do? How does this tool promise that it's going to answer the pain that we already found? From there, we're going to be actually doing the product. We're going to be planning it out. We're going to be building it. We're going to be testing it. And then, you know, that's basically the actual core product that we're building today. The fourth one is the plumbing. So, we're going to have to wire up things like the payment processing, things like the authentication, managing the database. Obviously, when you have a product like this, the goal is that you one day can scale it to, you know, potentially thousands and thousands of users. So, you need to make sure the plumbing is there to actually handle that. The fifth one we have is the packaging. So, making sure we have stuff like the brand guidelines, consistent colors, you know, it just feels like a professional product that someone could actually like maybe go to the website and just buy or subscribe to. And then the last one is proof. So, basically all throughout this whole thing, we're going to be doing so much verification because at the end of the day, I don't know how to read Python. I don't know how to code in Python. I don't know what other languages we might use, but AI can do it really well. But it's on us to be the project manager, to be the one that's saying, "Hey, verify this until you're like confident that it's done and prove to me that you're confident." So, it's all about how can we actually utilize the more intelligent and more capable coding agents that we're going to be able to use, but we still remain in control of the judgment. And you know, at the end of the day, if the product fails, it's on us. We can't blame AI, we blame ourselves. So, I'm sure you guys are curious about what tech stack we're going to be using today. We're going to be using three main ones to sort of drive everything, but I'm sure there's going to be, you know, other APIs or other payment processors. There's going to be a lot of things that go into this build, but the three core that I want to call to your attention are we're going to be using codec. So, I have the chat GBT desktop app that I'm going to be using. I'm going to be using codec through this. I'm also going to be using Claude, so Claude code inside of the Claude desktop app. So, you can download that as well. And then finally, we're going to be using Glido to actually talk to everything. It's basically going to be the voice layer so that I'm not going to be bottlenecked by typing. I'm just going to be able to talk as fast as I can. and do this as fast as I can. So, if you want to sort of follow along with this video, then I would definitely recommend you get all three of these things so that you can basically move quick and you can have different AI models and different coding harnesses get different perspectives on your build, which I think is really helpful. If you prefer codecs and you just want to use codecs or if you prefer claw and you just want to use claw, that's totally fine. But I found it to be very helpful to be able to have different coding harnesses and models take a peek at what I'm doing and help me sort of like play devil's </pre>
+  </div>
+  </article>
+  <article class="video-card">
+    <div class="card-top">
+      <a class="thumb-wrap" href="https://www.youtube.com/watch?v=zIZMxKin4Gk" target="_blank" rel="noopener">
+        <img src="https://i.ytimg.com/vi/zIZMxKin4Gk/hqdefault.jpg" alt="This Claude Skill Lets My Whole Team Answer Anything (No Code)" loading="lazy"/>
+      </a>
+      <div class="card-info">
+        <div class="card-meta">
+          <span class="ch-tag">Nicholas Puru</span>
+          <span class="date-tag">2026-08-11</span>
+          
+        </div>
+        <div class="video-title">This Claude Skill Lets My Whole Team Answer Anything (No Code)</div>
+        <div style="display:flex;align-items:center;flex-wrap:wrap;gap:4px;margin-top:auto">
+          <a class="yt-link" href="https://www.youtube.com/watch?v=zIZMxKin4Gk" target="_blank" rel="noopener">↗ 유튜브에서 보기</a>
+          <button class="nlm-btn" data-url="https://www.youtube.com/watch?v=zIZMxKin4Gk">📓 NotebookLM</button>
+        </div>
+      </div>
+    </div>
+    <div class="summary-section">
+      <h2>핵심 요약</h2>
+<p>기업의 핵심 정보와 노하우가 대표나 특정 직원의 머릿속에만 존재해 발생하는 업무 병목과 지식 유실 문제를 해결하는 노코드 솔루션을 소개한다. 복잡한 소프트웨어 도입 없이 Claude Skill과 하나의 공유 폴더를 활용해 팀 전체가 공유하는 '하나의 뇌(Shared Brain)'를 구축할 수 있다. 별도 코딩 없이 AI와의 대화만으로 단 반나절 만에 완성되며, 퇴사나 주말 공백 없이 업무 지식을 지속해서 축적해 준다.</p>
+<h2>주요 포인트</h2>
+<ul>
+<li>**대표 개인에 대한 의존성**: 모든 주요 승인과 의사결정이 특정 한 사람에게 쏠려 업무 병목 현상과 퇴사 시 지식 유실 위험이 발생함</li>
+<li>**파편화된 업무 메모리**: 비즈니스 지식이 개인 챗방 등에 갇혀 있어 담당자 부재 시 주말 고객 응대가 불가능하고 경쟁사에 계약을 빼앗김</li>
+<li>**지식 축적의 부재**: 체계적인 교육 자료가 없어 신규 입사자가 실무에 투입되기까지 수개월이 걸리고 노하우가 자산으로 축적되지 않음</li>
+<li>**Shared Brain 구축**: Claude Skill과 단 하나의 공유 폴더를 연결하여 퇴사나 주말 휴무가 없는 전사 공유 인공지능 지식 기반을 완성함</li>
+<li>**노코드 솔루션**: 복잡한 엔터프라이즈 개발 없이 AI와 직접 대화하며 내부 프로세스, 가격, 판단 기준을 입력해 반나절 만에 구현 가능함</li>
+</ul>
+    </div>
+  <div class="transcript-wrap">
+    <div class="transcript-header">
+      <button class="transcript-toggle" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('visible')">
+        <span class="arr">▼</span> 원문 자막
+      </button>
+      <button class="copy-btn" onclick="var b=this,t=b.nextElementSibling||b;navigator.clipboard.writeText(document.querySelector('#tr-zIZMxKin4Gk').textContent).then(()=>{b.textContent='복사됨';setTimeout(()=>b.textContent='복사',2000)})">복사</button>
+    </div>
+    <pre class="transcript-box" id="tr-zIZMxKin4Gk">Right now, most businesses are running on stuff that only exists inside of one person's head. And usually that person is the owner or perhaps you. So, every real decision, it waits on that specific person. And if they were ever going to leave, that information leaves with them as well. And this is not just something you could buy or hire a way out of because it was never a software or hiring problem. So, I came up with a solution. Every price, every process, every judgment call, it's inside of one folder the company actually owns. And consequently, that whole team is going to be working out of that one folder. So now it's just one brain shared by everybody in a company. And unlike your best employees, this one does not resign. It does not take weekends off. It doesn't walk out of the door with 15 years of customer knowledge. So I asked it, "What happens if the operation manager quits tomorrow?" If you're not familiar with our channel, my name is Nick. I've deployed AI inside of more than 60 businesses over the last 2 years, and this is what owners have been asking me for the most. And it's not just simply enterprise software. It's actually just claude skills and a folder. You just need one afternoon. It requires no coding. and I'm going to be building it all in front of you. And the step that actually gets this working in your organization, getting it across the finish line, it's just having a conversation with the AI system. I'll be showing that today. Let's get into it. And fundamentally, every business that I have walked into has had the same disease, and it actually shows up in four different ways. Problem number one, the owner is the database. This is where you're the only person who can price the big order, approve that exception, answer the hard questions, whatever it may be. which means that every one of those questions it's going to be waiting for you. There's so many things in approval loop that is contingent on one person. I recently just talked to a founder running a sevenfigure business and he told me that his entire bottleneck was just getting his brain onto paper. Now, he is not the exception in this case. He is every owner that I have practically ever met. Problem number two, the company's memory lives inside of the chat threads. Now, here's a real example of what that actually costs. So, a customer, they ask for volume pricing Saturday morning. Now they're expanding. This is good news for them. This is money. However, the question it just sits there all weekend because the one person who knows the answer, they're away. They cannot answer them right now. So by Monday afternoon, a competitor, they've already sent them that quote. And that's not a software problem. That's a knowledge trapped in one person's head. And just because of that, they weren't able to close that deal. Problem number three, nothing is compounding. So every new hire starts from zero and takes months to actually be useful because the training material it's just stuck inside of other people's memories. So when somebody good leaves their 15 years of experience it's leaving with them and just leaving the company in a hole. And problem number four nobody knows what actually matters today. Everyone's busy but the priority is they live in the same place that everything else lives which is somebody's head. So the team they work on what feels urgent instead of what actually is the pressing matters. Now, here's the diagnosis because these four problems, they're actually just one problem. None of this is a software issue. You could buy more software tomorrow if you would like and all four they're going to be surviving because the real issue, it's actually the knowledge. Who holds that? Who owns it? So software, it's basically software right now, your company's knowledge, it is not accounted for. And this is why your standard fix or solutions to this actually fails. The standard fix is typically renting more software. So maybe you implement a new CRM or maybe you get a help desk inside of another department or maybe a task tool or a chatbot tool and now you're past $2,000 a month forever. And the knowledge that you feed those tools, it lives in their database, not yours. So it's not proprietary. Now, what I'm about to be building and showing you instead lives in a folder that you are owning. It's going to be proprietary. But before I build anything, let me just take a step back and show you the entire system. So when we get into the walkthrough, you know exactly what is going on. Now your company's brain, it is effectively a folder. That's it. That is the big secret with this. So the files inside of this, these are what the company actually knows. So this is going to comprise of your prices, your customers, your processes, and even your judgment calls. Now the skills, these are how the company actually does things. So the rules for using that knowledge. And every application, Claude included, it is just a window you look at that fol</pre>
+  </div>
+  </article>
+  <article class="video-card">
+    <div class="card-top">
+      <a class="thumb-wrap" href="https://www.youtube.com/watch?v=d4ZhdRneQ7U" target="_blank" rel="noopener">
+        <img src="https://i.ytimg.com/vi/d4ZhdRneQ7U/hqdefault.jpg" alt="Anthropic Just Revealed How They Actually Use Claude Skills" loading="lazy"/>
+      </a>
+      <div class="card-info">
+        <div class="card-meta">
+          <span class="ch-tag">Dylan Davis</span>
+          <span class="date-tag">2026-08-11</span>
+          
+        </div>
+        <div class="video-title">Anthropic Just Revealed How They Actually Use Claude Skills</div>
+        <div style="display:flex;align-items:center;flex-wrap:wrap;gap:4px;margin-top:auto">
+          <a class="yt-link" href="https://www.youtube.com/watch?v=d4ZhdRneQ7U" target="_blank" rel="noopener">↗ 유튜브에서 보기</a>
+          <button class="nlm-btn" data-url="https://www.youtube.com/watch?v=d4ZhdRneQ7U">📓 NotebookLM</button>
+        </div>
+      </div>
+    </div>
+    <div class="summary-section">
+      <h2>핵심 요약</h2>
+<p>Anthropic이 자사의 수백 가지 클로드 스킬을 분석한 결과, 가장 뛰어난 품질 향상을 이끈 것은 작업을 직접 수행하는 스킬이 아니라 결과를 검증하는 스킬이었습니다. 대부분의 사용자들은 작업 자동화(Doer)와 문서 양식 맞춤(Formatter) 두 가지 유형에만 치중하고 있습니다. 이번 영상에서는 비기술자도 활용할 수 있도록 정리한 4가지 스킬 유형과 함께, Anthropic이 가장 가치 있게 평가한 검증 스킬의 중요성을 설명합니다.</p>
+<h2>주요 포인트</h2>
+<ul>
+<li>Anthropic 내부 스킬 분석 결과, 작업 실행 스킬보다 결과물을 검토하고 검증하는 스킬이 품질 향상에 가장 큰 기여를 했습니다.</li>
+<li>Anthropic이 발표한 9가지 스킬 유형을 비개발자도 쉽게 적용할 수 있는 4가지 핵심 유형으로 요약했습니다.</li>
+<li>대부분의 사용자가 주로 만드는 첫 번째 스킬은 정기 이메일이나 제안서 작성 등을 자동화하는 'Doer(수행자) 스킬'입니다.</li>
+<li>두 번째로 자주 쓰이는 스킬은 브랜드 가이드라인과 레이아웃에 맞게 문서를 일관되게 정렬하는 'Formatter(포맷터) 스킬'입니다.</li>
+<li>대다수 사용자의 스킬 목록에는 결과물의 오류를 점검하고 품질을 높여주는 '검증(Checker) 스킬'이 빠져 있습니다.</li>
+</ul>
+    </div>
+  <div class="transcript-wrap">
+    <div class="transcript-header">
+      <button class="transcript-toggle" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('visible')">
+        <span class="arr">▼</span> 원문 자막
+      </button>
+      <button class="copy-btn" onclick="var b=this,t=b.nextElementSibling||b;navigator.clipboard.writeText(document.querySelector('#tr-d4ZhdRneQ7U').textContent).then(()=>{b.textContent='복사됨';setTimeout(()=>b.textContent='복사',2000)})">복사</button>
+    </div>
+    <pre class="transcript-box" id="tr-d4ZhdRneQ7U">Anthropic, the company that created Claude, recently sorted through hundreds of their own Claude skills. And the biggest quality jump didn't come from the skills that do the work. It came from the skills that check it. If you're new here, I'm Dylan. I run an AI consultancy. And when I sit down with my coaching clients and we go through what they've built, there's almost never a checking skill in the list. Nearly everyone builds the same two kinds of skills and stop. So, what I'm going to do is I'm going to walk you through all four skill types and show you which ones you're missing and I'll give you the prompts to fix it this week. So, let's get into it. So, they, Anthropic, reviewed hundreds of skills inside the company. After they reviewed it, they then published a blog that covered the nine types of skills specifically targeting engineers and developers. So, after I read that blog, I then distilled this down into four skills that I feel are suitable for non-technical users. And it also highlights the two skills that Anthropic themselves find the most valuable. Now, first, what are the two skills most people are already using? So, the first one, this is probably the only skill most people build, are doer skills. So, a doer skill is simply a skill that automates a given task. So, there's probably something that you do on a reoccurring basis that if you encapsulate that into a skill, it can then do that for you automatically. Some simple examples are if you have a reoccurring meeting on Mondays, it can write the follow-up email for you perfectly. Or maybe when there's a specific service or product that you sell, the AI can draft the proposals for you for new clients. That's the most common type of skill that I see and most people build. The second category of skill are formatters. So, this is the second most frequent thing that I see that people build with skills. And this is when the AI formats a document to match your specific brand in a pixel-perfect way. And the reason this is ideal for skills is because you can have AI embed code into a skill, which increases the chances that it matches your format for a presentation or report perfectly. This is probably a good thing for you to remember as well is that if you want AI to match your brand guidelines for a deck or report, go ahead and use a skill for that. Now, these are the two things most people build. So, when I look at somebody's library of skills, when I look at their shelves in their library of skills, I see most often that doers are the most often type of skill, and the formatters are the second category. But, very rarely, if ever, do I see the other two categories. That's what I want to focus on today in this video. Quick pause in your regular programming. This video is brought to you by me, as always. Two quick things. First off, below is a 30-day AI Insight series, completely free. You'll get 30 insights in your inbox of how you can apply AI to your business and your work. The second thing is if you'd like to work with me, below are a series of offerings to see if there's a good fit between the two of us. Now, let's get back in the video. So, the first category of skill, and probably the most important skill type that Anthropic labeled inside their blog, are checker skills. So, the purpose of a checker skill is simply to check the output of another AI. And for most of the people I work with, the highest value version of this skill is simply checking the data an AI extracted out of a document. Cuz often times, we have AI extracting information from PDFs, from PowerPoints, Excel sheets, and then putting it somewhere else. We always have to double-check and audit the output to make sure it did it correctly. Well, if you have a second skill that's a checker skill that's checking that AI's output, the likelihood of that being correct is much higher. And that's why this is so valuable and so important. Now, both with this skill and the next skill, I'm going to give a bit of a caveat. Before you actually separate these out as separate skills, I'd recommend adding them as simple instructions into your existing doer skills. That's where this all should start. But, later on, I'll tell you when to actually evolve that instruction into its own skill. But, note that in the beginning, it's best suited as just an additional line inside of your instructions for any skill. So, how do we actually create this additional line or lines inside of our instructions for a checker skill? Well, here's a prompt you can steal. All this prompt is doing is simply giving an AI a good output. So, here we're saying, "I want you to study this approved proposal." Now, this use case is dedicated to proposals, but the output could be anything. You just want the AI to see what good looks like at the end. After it looks at it, you want it to methodically understand specifically what makes this good, and then extract out from that a a checklist of things it can check on future instance</pre>
+  </div>
+  </article>
+</main>
+
+<footer>유튜브 구독 정리 · agy 요약 · 2026-08-11 06:01</footer>
+
+
+<script>
+document.querySelectorAll('.nlm-btn').forEach(function(btn){
+  btn.addEventListener('click',function(){
+    navigator.clipboard.writeText('/notebooklm '+btn.dataset.url).then(function(){
+      var orig=btn.innerHTML;btn.innerHTML='✓ 복사됨';btn.classList.add('copied');
+      setTimeout(function(){btn.innerHTML=orig;btn.classList.remove('copied');},2000);
+    });
+  });
+});
+</script>
+
+</body>
+</html>
