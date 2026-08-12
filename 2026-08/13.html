@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>2026-08-13 — 유튜브 구독 정리</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+  :root{--bg:#090e1a;--surface:#111827;--surface2:#1a2235;--border:#1e2d47;--accent:#6c63ff;--accent2:#00d4ff;--text:#e8eaf0;--muted:#7a8499;--radius:14px;}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Pretendard',sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+  header{background:linear-gradient(135deg,#0d1b3e,#1a0533);border-bottom:1px solid var(--border);padding:20px 40px;display:flex;align-items:center;justify-content:space-between;}
+  .nav-back{color:var(--accent2);text-decoration:none;font-size:0.85rem;display:flex;align-items:center;gap:6px}
+  .nav-back:hover{color:#fff}
+  .date-badge{font-size:1.4rem;font-weight:700;letter-spacing:-0.5px;background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+  .count{font-size:0.85rem;color:var(--muted)}
+  main{max-width:900px;margin:0 auto;padding:32px 24px 80px}
+  .video-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;margin-bottom:24px;transition:border-color 0.2s,box-shadow 0.2s;}
+  .video-card:hover{border-color:var(--accent);box-shadow:0 4px 24px rgba(108,99,255,0.15)}
+  .card-top{display:flex;gap:0}
+  .thumb-wrap{flex:0 0 240px;position:relative;overflow:hidden}
+  .thumb-wrap img{width:100%;height:100%;object-fit:cover;transition:transform 0.4s}
+  .video-card:hover .thumb-wrap img{transform:scale(1.05)}
+  .card-info{flex:1;padding:20px;display:flex;flex-direction:column;gap:10px}
+  .card-meta{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+  .ch-tag{font-size:0.72rem;font-weight:600;padding:3px 12px;background:linear-gradient(135deg,rgba(108,99,255,0.2),rgba(0,212,255,0.2));border:1px solid rgba(108,99,255,0.3);border-radius:999px;color:var(--accent2);}
+  .date-tag{font-size:0.72rem;color:var(--muted)}
+  .no-transcript{font-size:0.68rem;padding:2px 8px;background:rgba(255,180,0,0.12);border:1px solid rgba(255,180,0,0.25);border-radius:999px;color:#ffa500;}
+  .video-title{font-size:1rem;font-weight:600;line-height:1.4}
+  .yt-link{display:inline-flex;align-items:center;gap:5px;font-size:0.8rem;color:var(--accent);text-decoration:none;transition:color 0.2s;}
+  .yt-link:hover{color:var(--accent2)}
+  
+  .nlm-btn{display:inline-flex;align-items:center;gap:5px;font-size:0.8rem;color:#fff;
+    background:rgba(108,99,255,0.2);border:1px solid rgba(108,99,255,0.4);border-radius:8px;
+    padding:4px 12px;cursor:pointer;font-family:inherit;transition:all 0.2s;margin-left:8px;}
+  .nlm-btn:hover{background:rgba(108,99,255,0.45);}
+  .nlm-btn.copied{background:rgba(0,200,100,0.2);border-color:rgba(0,200,100,0.4);color:#00c864;}
+
+  .summary-section{border-top:1px solid var(--border);background:var(--surface2);padding:20px 24px;font-size:0.85rem;line-height:1.7;color:#c5cad8;}
+  .summary-section h2{font-size:0.82rem;color:var(--accent2);margin:12px 0 4px}
+  .summary-section h2:first-child{margin-top:0}
+  .summary-section ul{padding-left:18px}
+  .summary-section li{margin-bottom:5px}
+  .transcript-wrap{border-top:1px solid var(--border);padding:14px 24px;background:#0c1220}
+  .transcript-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:0}
+  .transcript-toggle{background:none;border:none;color:var(--muted);font-size:0.8rem;cursor:pointer;font-family:inherit;display:flex;align-items:center;gap:4px;padding:0;transition:color 0.2s;}
+  .transcript-toggle:hover{color:var(--text)}
+  .copy-btn{background:rgba(108,99,255,0.1);border:1px solid rgba(108,99,255,0.3);border-radius:8px;color:var(--accent2);font-size:0.72rem;padding:4px 12px;cursor:pointer;font-family:inherit;transition:all 0.2s;}
+  .copy-btn:hover{background:rgba(108,99,255,0.25);color:#fff}
+  .transcript-box{display:none;margin-top:10px;background:#080d18;border:1px solid var(--border);border-radius:10px;padding:12px 14px;font-size:0.78rem;line-height:1.75;color:#8a95aa;max-height:260px;overflow-y:auto;white-space:pre-wrap;word-break:break-word;}
+  .transcript-box.visible{display:block}
+  footer{text-align:center;padding:24px;font-size:0.75rem;color:var(--muted);border-top:1px solid var(--border)}
+  @media(max-width:640px){.card-top{flex-direction:column}.thumb-wrap{flex:none;height:200px}header{padding:16px}main{padding:16px 12px 60px}}
+</style>
+</head>
+<body>
+
+<header>
+  <a class="nav-back" href="../index.html">← 대시보드로</a>
+  <div>
+    <div class="date-badge">2026-08-13</div>
+    <div class="count">2개 영상</div>
+  </div>
+  <div style="font-size:0.75rem;color:var(--muted)">2026-08-13 06:01 생성</div>
+</header>
+
+<main>
+
+  <article class="video-card">
+    <div class="card-top">
+      <a class="thumb-wrap" href="https://www.youtube.com/watch?v=XNQBCRcwXV4" target="_blank" rel="noopener">
+        <img src="https://i.ytimg.com/vi/XNQBCRcwXV4/hqdefault.jpg" alt="I Deleted All My Claude Skills... And Claude Got Smarter" loading="lazy"/>
+      </a>
+      <div class="card-info">
+        <div class="card-meta">
+          <span class="ch-tag">Nate Herk</span>
+          <span class="date-tag">2026-08-13</span>
+          
+        </div>
+        <div class="video-title">I Deleted All My Claude Skills... And Claude Got Smarter</div>
+        <div style="display:flex;align-items:center;flex-wrap:wrap;gap:4px;margin-top:auto">
+          <a class="yt-link" href="https://www.youtube.com/watch?v=XNQBCRcwXV4" target="_blank" rel="noopener">↗ 유튜브에서 보기</a>
+          <button class="nlm-btn" data-url="https://www.youtube.com/watch?v=XNQBCRcwXV4">📓 NotebookLM</button>
+        </div>
+      </div>
+    </div>
+    <div class="summary-section">
+      <h2>핵심 요약</h2>
+<p>Anthropic은 Claude 최신 모델(Opus 5)을 출시하면서 Claude Code의 시스템 프롬프트를 80% 이상 삭제함. 최신 모델은 이전 모델보다 훨씬 똑똑해서 과거의 한계를 보완하기 위한 복잡한 지시나 스킬이 불필요하기 때문임. 따라서 주기적으로 기존 스킬, 훅, 프롬프트를 정리하고 모델 자체 성능을 활용하는 것이 훨씬 좋은 결과를 가져옴.</p>
+<h2>주요 포인트</h2>
+<ul>
+<li>Anthropic은 새로운 모델이 나올 때마다 모델 특성에 맞춰 시스템 프롬프트와 툴 설정을 대폭 삭제하고 수정함.</li>
+<li>이전 모델의 한계를 보완하려고 붙여둔 수많은 스킬과 지시문이 최신 모델에서는 오히려 방해가 되고 성능을 저하시킬 수 있음.</li>
+<li>최신 Opus 5 모델은 과거 모델보다 지능이 크게 향상되어 불필요한 보완용 프롬프트 없이도 스스로 정확히 동작함.</li>
+<li>Claude Code 사용자는 주기적으로(약 6개월마다) 기존 프롬프트, 스킬, 훅을 싹 지워보고 모델 본연의 수행 능력을 테스트해보는 것을 권장함.</li>
+</ul>
+    </div>
+  <div class="transcript-wrap">
+    <div class="transcript-header">
+      <button class="transcript-toggle" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('visible')">
+        <span class="arr">▼</span> 원문 자막
+      </button>
+      <button class="copy-btn" onclick="var b=this,t=b.nextElementSibling||b;navigator.clipboard.writeText(document.querySelector('#tr-XNQBCRcwXV4').textContent).then(()=>{b.textContent='복사됨';setTimeout(()=>b.textContent='복사',2000)})">복사</button>
+    </div>
+    <pre class="transcript-box" id="tr-XNQBCRcwXV4">So, I listened to the creator of Claude Code explain why Claude has gotten worse and how to actually fix that. And I learned something that sounds really weird, but more skills and more system prompts are probably breaking your system. So, I dug deeper into this and I started doing some testing and I found that there are three super important things that everyone has to be doing right now. It's super easy to do and you don't need any technical experience to actually implement this stuff. So, I don't want to waste any time. Let's just get straight into the video. So, let's just start off with some real quick context on what they're actually doing behind the scenes at Enthropic. Let's talk a bit about the new release. You actually deleted over 80% of the system prompt from claw code. Yes. Tell us more about that. I think something that a lot of people might not realize is um clawed code as a product and as a harness is just always changing. We're always adding stuff. We're always deleting stuff. Every time that a new model comes out, we delete a bunch of the system prompt. Change a bunch of the system prompt. We change the set of tools all the time. We change the prompts for the tools all the time. And the reason is every model is very different. So something that you did for one model maybe three months ago, it just might not translate at all to the next model. And so one thing about Opus 5 is it's just really intelligent. And a lot of the stuff in the system prompt was correcting for these behaviors that the model should have known, but uh it didn't. Now, Opus 5 just does it. So, that's interesting. It makes you think a little bit, but I just wanted to sort of lay the foundation of they're doing that adanthropic. They are treating each different model as like a different completely different personality, different flaws, different strengths, and different ways that you should prompt it. And so, whenever a new model drops, one of the things that I tell you guys is like, hey, run this model through your skills. Make sure they all still work. Make sure they all still feel good. And for some reason with Opus 5, it's just felt degraded to the point where I'm actually going back to 4.8 every once in a while when I need to do something and I'm just getting better results. But I never really thought about, hm, maybe if I just got rid of some of my instructions and got out of the model's way, it is actually just more intelligent now and it could handle those things. So take a look at this next clip. Yeah. And and for people that aren't building aic products, but you're using cloth code every six months, delete your quadd, delete your skills, delete your hooks, see what the model does, and it might surprise you. And actually for Opus 5, this is something we really do recommend is just try deleting all of these things because the model might really just not need all those instructions that you needed for past models. So when you think about that for a sec, I feel like that almost sounds counterintuitive because what we've been told is, hey, you know, if everyone has access to the same model or some this is something that I say a lot, then wouldn't everybody be getting the same results? And to an extent that is very true. But if Boris is basically saying, hey, remove your skills, remove your own system prompts, and just see what's possible. It's a different way to think about it because the the the immediate thing that I think about is like, okay, let's say that I was teaching um a 10-year-old, a college student, and someone that's been in the workforce for 10 years how to do something, how to do something like create a slide deck. I would probably give the 10-year-old the most specific instructions. I would say, "Hey, here's exactly what you should be looking for. Here are the 10 slides to make. Here's what the title should look like. Here's the color. Here's the way that the text should be formatted." I would be super specific and I basically wouldn't give that 10-year-old any freedom really to just kind of go experiment because if it's a high stakes thing, we want to just steer it. But as you work your way up the chain in, I guess like intelligence and experience, what if you gave that same instruction set to the person who's been working for 10 years and has made hundreds of slide decks, you're going to get in their way. They're not going to be able to actually use their subject matter expertise and their intelligence to put their own spin on it. And so I'm not saying that it's always the case, but I think that there is an element of like removing some of the some of the like kind of instructions and constraints on a model. They call this unhobbling the model, which I'll play a clip from in just a minute here. But take a look at this example I ran. So after I watched this interview, I made a duplicate of my repo and I took away the cloud MD and I took away all my skills and I just started using it a little bit to s</pre>
+  </div>
+  </article>
+  <article class="video-card">
+    <div class="card-top">
+      <a class="thumb-wrap" href="https://www.youtube.com/watch?v=qLDCibFH34c" target="_blank" rel="noopener">
+        <img src="https://i.ytimg.com/vi/qLDCibFH34c/hqdefault.jpg" alt="Claude Doesn't Need Training. It Needs These 3 Things." loading="lazy"/>
+      </a>
+      <div class="card-info">
+        <div class="card-meta">
+          <span class="ch-tag">Dylan Davis</span>
+          <span class="date-tag">2026-08-13</span>
+          
+        </div>
+        <div class="video-title">Claude Doesn't Need Training. It Needs These 3 Things.</div>
+        <div style="display:flex;align-items:center;flex-wrap:wrap;gap:4px;margin-top:auto">
+          <a class="yt-link" href="https://www.youtube.com/watch?v=qLDCibFH34c" target="_blank" rel="noopener">↗ 유튜브에서 보기</a>
+          <button class="nlm-btn" data-url="https://www.youtube.com/watch?v=qLDCibFH34c">📓 NotebookLM</button>
+        </div>
+      </div>
+    </div>
+    <div class="summary-section">
+      <h2>핵심 요약</h2>
+<p>대부분의 비즈니스에는 거대한 비용과 시간이 드는 AI 모델 훈련이나 미세 조정이 필요하지 않습니다. 진짜 필요한 것은 AI가 내 사업의 맥락과 일하는 방식을 기억하게 만드는 것입니다. 파일, 규칙, 메모 3가지를 Claude나 ChatGPT의 프로젝트 기능과 결합하면 즉시 맞춤형 AI를 구축할 수 있습니다.</p>
+<h2>주요 포인트</h2>
+<ul>
+<li>**훈련/미세 조정의 오해**: 수억 달러가 드는 모델 훈련이나 미세 조정은 99%의 기업에 불필요하며, 변화하는 비즈니스 지식을 업데이트하는 데 적합하지 않습니다.</li>
+<li>**AI 적용의 핵심**: 기업에 필요한 것은 AI 학습이 아니라 내 비즈니스의 가격, 고객, 처리 방식을 기억하고 맞춤화된 응답을 내는 것입니다.</li>
+<li>**파일 (Files)**: 가격표, 서비스 개요, 우수 작업 사례 등 AI가 참고해야 하는 기본 기준 문서입니다.</li>
+<li>**규칙 (Rules)**: 할인율 제한, 특정 시간대/월의 급한 작업 제한 등 AI가 지켜야 할 일 처리 방식과 지침입니다.</li>
+<li>**메모 (Memory)**: 작업을 수행하면서 생기는 사용자 선호도와 교훈을 시간이 지남에 따라 자동으로 기록 및 누적하는 기능입니다.</li>
+<li>**실전 적용 (Projects & Skills)**: Claude나 ChatGPT에 내장된 '프로젝트' 기능을 활용하면 파일, 규칙, 메모를 폴더 형태로 묶어 쉽게 관리할 수 있습니다.</li>
+</ul>
+    </div>
+  <div class="transcript-wrap">
+    <div class="transcript-header">
+      <button class="transcript-toggle" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('visible')">
+        <span class="arr">▼</span> 원문 자막
+      </button>
+      <button class="copy-btn" onclick="var b=this,t=b.nextElementSibling||b;navigator.clipboard.writeText(document.querySelector('#tr-qLDCibFH34c').textContent).then(()=>{b.textContent='복사됨';setTimeout(()=>b.textContent='복사',2000)})">복사</button>
+    </div>
+    <pre class="transcript-box" id="tr-qLDCibFH34c">당신의 AI는 당신의 고객, 가격, 또는 당신의 글쓰기 방식을 알지 못할 가능성이 높습니다. 결국에는 똑같은 문장이 나오게 마련이다 . 저는 제 사업에 적용해 보고 싶습니다. 혹시 처음 오신 분이라면, 저는 딜런입니다. 저는 AI 컨설팅 회사를 운영하고 있습니다. 그리고 제가 보기에 그 '단어의 기차'는 유능한 사업가와 경영진들이 발목을 잡거나 과도한 비용을 지불하는 지점입니다. 그래서 저는 여러분에게 훈련이 실제로 무엇을 의미하는지 보여드리고, 여러분이 진정으로 원하는 것을 만들어 드리겠습니다. 이미 사용 중인 도구에 내장된 기능을 활용하여 귀사의 비즈니스를 기억하는 AI입니다 . 자, 그럼 시작해 볼까요? 자, 여러분이 누군가 '훈련'이라는 말을 하는 것을 듣 거나 직접 그 말을 할 때, 그것은 실제로 무엇을 의미할까요? 사실, 그게 바로 Anthropic, OpenAI, 그리고 Google이 하는 일입니다. 그들은 수십억, 수조 개의 데이터 포인트를 수집하고, 수억 달러, 어쩌면 수십억 달러를 투자하고, 수개월의 시간을 들여 그 모든 데이터를 우리가 사용하는 모델로 변환합니다 . 그러니까 GPT, 클로드, 제미니 등이 되는 거죠. 그게 바로 훈련의 본질입니다. 때때로 사람들은 '훈련'이라는 말을 할 때 ' 미세 조정'이라는 개념을 함께 의미하기도 합니다. 미세 조정과 교육 모두 99%의 회사에는 필요하지 않습니다. 대부분의 사람들은 AI를 통해 더 많은 것을 얻기 위해 실제로 이런 종류의 작업을 할 필요는 없습니다. 첫째로, 훈련을 받으면 그건 당연한 것 같아요. 당신이 인류 과학자가 아니라면 그렇게 많은 돈을 쓸 필요는 없습니다. 물론 인류과학자라면 그렇게 해도 괜찮겠지만요 . 하지만 그렇지 않고 미세 조정이 차선책이라고 생각한다면, 그것 또한 오해입니다. 미세 조정이란, 수천 개에 달하는 방대한 예제 집합을 사용하여 AI를 학습시키 거나 미세 조정함으로써 특정 예제에 최적화된 AI를 만드는 것입니다. 미세 조정의 대부분은 단순히 AI가 사용자와 상호 작용하는 방식을 변경하는 것입니다 . 그러니까, 이건 소리가 나는 방식과 상호작용하는 방식이지, 반드시 그 안에 담긴 지식을 의미하는 건 아닙니다 . 미세 조정을 통해 지식을 업데이트하는 것은 맞지만, 그것이 미세 조정의 주된 목적은 아닙니다. 이 방식의 또 다른 단점은 시간이 지남에 따라 가격, 고객, 서비스 등이 변하게 된다는 것입니다. 그리고 그 당시 모델에 맞춰 세밀하게 조정했던 모든 것들이 더 이상 유효하지 않게 됩니다 . 그래서 그 이후에 일어나는 일들은 완전히 놓치게 됩니다. 그래서 제가 임원이나 사업주들과 이야기를 나눌 때 , 그들이 " 내 사업에 AI를 훈련시키고 싶다"라고 말할 때는 , 단순히 AI가 내 상황을 이해하고 기억하기를 바란다는 뜻인 경우가 많습니다. 그리고 그게 바로 여러분 대부분에게 필요한 것일 겁니다. 그러니까, 인공지능을 '훈련'시킬 필요가 없다는 뜻입니다. 여러분에게 필요한 것은 특정 작업, 상황 등에 대한 여러분의 선호도를 기억하는 AI입니다. 이렇게 하는 방법은 아주 간단합니다. 이건 오늘 오후에 시작할 수 있는 일이에요. 세 가지만 있으면 됩니다. 파일, 규칙, 메모가 필요합니다. 잠시 평소 방송을 중단하겠습니다. 이 영상은 언제나처럼 제가 직접 제작했습니다 . 두 가지입니다. 우선, 30일 동안 진행되는 AI 인사이트 시리즈를 완전 무료로 제공합니다. AI를 비즈니스와 업무에 적용하는 방법에 대한 30가지 유용한 정보를 이메일로 받아보실 수 있습니다 . 두 번째는, 저와 함께 일하고 싶으시다면, 저희가 제공하는 다양한 서비스들을 살펴보시고 서로 잘 맞는지 확인해 보시는 것입니다 . 자, 이제 다시 영상으로 돌아가 봅시다. 그러니까 파일은 간단히 말해서 AI에 제공할 수 있는 문서이거나, 사용하는 AI 유형에 따라 AI가 접근할 수 있는 문서입니다 . 예를 들어 가격표, 서비스 개요 또는 훌륭한 작업의 실제 사례 등이 될 수 있습니다 . 저게 바로 파일 조각이에요. 다음은 규칙입니다. 그러니까 이것들은 우리가 일을 처리하는 방식에 대한 맥락을 인공지능이 이해하도록 하기 위한 간단한 지침입니다. 예를 들어, 특정 고객들이 긴 이메일을 정말 싫어한다는 것을 알고 있기 때문에 10% 이상 할인을 하지 않거나, 12월에는 급한 작업을 받지 않는다는 점 등이 이에 해당합니다. 이것들은 모두 우리가 인공지능과 공유할 수 있는 규칙들이며, 인공지능은 앞으로 이 규칙들을 기억할 것입니다. 그리고 마지막으로 메모가 있습니다. 그러니까 메모 기능은 인공지능이 사용자의 선호도를 시간이 지남에 따라 자동으로 기록하는 곳으로, 사용자가 직접 개입할 필요가 없으며 , 시간이 지남에 따라 누적 효과를 통해 성능이 향상됩니다 . 그러니까, 이것들은 기본적으로 특정 작업을 수행하면서 얻게 되는 모든 교훈이며, 이를 통해 특정 작업에 대한 자신의 선호도를 알 수 있습니다. 그러니까 인공지능이 사용자의 선호도, 맥락을 기억하고 비즈니스에 더욱 맞춤화된 서비스를 제공하기 위해 실제로 필요한 것은 이 세 가지뿐입니다. 그렇다면 이것이 실제로 어떻게 나타날까요? 네, 주로 AI가 여러분을 위해 생성하는 일련의 파일 과 모든 제공업체가 제공하는 두 가지 기능인 프로젝트 및 스킬을 통해 나타날 것입니다. 자 , 그럼 프로젝트부터 시작해 볼까요? 여러분 대부분이, 적어도 처음에는, 활용하게 될 기능이니까요. 그래서 저는 여러분 대부분이 브라우저 내에서 Claude나 ChatGPT를 사용하고 있다고 가정합니다. 그리고 그 도구들 안에는 ' 프로젝트'라는 옵션이 있습니다. 간단히 말해, 프로젝트는 특정 작업을 위해 만들어진 폴더입니다. 그래서 해당 폴더를 열면 AI가 특정 작업을 수행하도록 최적화되고 준비된 상태가 됩니다. 그리고 이것은 그것이 어떤 모습일지 시각적으로 표현한 것입니다 . 그래서 우리에게는 프로젝트가 있고, 그 프로젝트 안에는 제가 앞서 언급했던 규칙들, 즉 지침들이 있을 겁니다 . 이것들은 인공지능이 이 특정 작업을 수행하는 방식에 대한 모든 선호 사항입니다 . 그뿐만 아니라, 지침에서 프로젝트 에 업로드되는 특정 파일을 지정할 수도 있습니다 . 따라서 우리는 AI에게 이 작업을 수행하기 전에 가격표, 사례 연구, 보고서 샘플 등을 살펴보도록 지시하여 더 많은 맥락을 파악하고 우리의 선호도와 일치하는지 확인할 수 있습니다. 자, 이것은 파일 부분 이고, 이것은 프로젝트에 대한 규칙 구성 요소입니다 . 그래서 이 AI와 대화를 나눌 때마다 , AI는 매번 사용자의 비즈니스와 특정 상황에서의 특정 작업에 대한 사용자의 선호도를 파악합니다. 대부분의 사람들이 가장 먼저 접하게 될 카테고리가 바로 그것입니다. 참고로 브라우저에서는 이것이 프로젝트이지만, Claude나 Codex 같은 데스크톱 에이전트를 사용하는 경우 , 두 도구 모두 바탕 화면에 폴더를 열고 그 안에 있는 지침 파일( 사용하는 도구에 따라 claude.md 또는 agent.md라고 함)을 열면 비슷한 작업을 할 수 있습니다. Claude를 사용하는 경우 Claude.md, Codex를 사용하는 경우 agent.md 파일을 사용하세요. 이것이 여러분이 따라야 할 지침입니다. 그리고 그 폴더 안에는 다양한 하위 폴더와 파일들이 있어서 AI가 더 자세한 맥락을 파악하기 위해 필요할 경우 접근할 수 있습니다 . 똑같은 건데, 하나는 컴퓨터에 있고 다른 하나는 클라우드에 있는 거죠. 자, 다음으로 제가 이야기하고 싶은 것은 기억입니다. 그래서 이건 메모와 관련된 내용입니다. 인공지능이 시간이 지남에 따라 무언가를 기억하도록 하는 방법에는 두 가지가 있습니다 . 첫 번째 옵션은 대부분의 사용자가 이미 경험하고 있는 브라우저 기반의 Claude 및 ChatGPT 사용 방식이며, 네이티브 메모리 구성 요소가 포함되어 있습니다. 어쩌면 당신은 그것이 있다는 사실조차 모를 수도 있지만, 분명히 그 덕분에 이득을 봅니다. 왜냐하면 종종 "ChatGPT가 내가 3주 전에 언급했던 것을 기억하고 있다니 신기하네."라고 생각하게 될 테니까요. 네 , 그게 바로 추억에 관한 부분이에요. 그리고 이 두 제공업체 모두 메모리 성능이 향상되고 있습니다. 하지만, 특히 중요한 일을 처리할 때는 이러한 방식에 의존해서는 안 됩니다. 인공지능이 특정 작업을 위해 무언가를 기억하도록 하려면, 프로젝트 지침을 업데이트 하거나 (잠시 후에 설명할) 스킬을 해당 특정 선호 사항으로 업데이트해야 합니다. 지금은 웹 브라우저에서 이용하고 있지만, 데스크톱에서 이용한다면 완전히 다른 게임이며 제 생각에는 데스크톱 버전이 훨씬 더 유익하고 유용합니다. 그래서 브라우저에서 할 수 있는 일은 AI에게 지시 사항을 통해, 내가 학습한 내용이나 선호도 등을 알려줄 때마다 다른 파일을 업데이트하도록 하는 것입니다. 교훈을 담은 파일이나 통찰력을 정리한 파일 같은 것일 수도 있습니다. 그래서 사용자가 인사이트나 선호 사항을 입력할 때마다 해당 정보를 바탕으로 파일을 자동으로 업데이트합니다. 데스크톱 에이전트를 사용하면 사용자가 아무것도 하지 않아도 데스크톱의 파일을 업데이트할 수 있기 때문입니다 . 그러니까, 그 기억을 외부로 표출하는 것이죠. 그게 바로 추억에 관한 부분이에요. 자, 이제 기술에 대해 이야기해 볼까요. 그러니까 스킬이란 기본적으로 반복적으로 수행하는 과정이며, 그 과정을 인공지능에 담아내는 것입니다. 기술과 프로젝트의 차이점은 기술은 다양한 대화에서 활용할 수 있다는 점입니다 . 프로젝트란 직접 참여 하고 상호작용해야 하는 것입니다. 기술은 저절로 생기는 것이다. 프로젝트보다는 기술을 사용하는 이유는, 여러 주제에 걸쳐 적용되는 매우 구체적인 프로세스가 있을 때 , 언제 그 기술을 적용해야 할지 정확히 알 수 있기 때문입니다 . 이 예시에서는 제안서가 있습니다. 저희는 10개 정도의 고객사를 보유하고 있는데, 각 고객사마다 사업 분야, 업종, 선호도 등이 모두 다릅니다. 저마다의 상황이 있는 거죠. 하지만 저희가 모든 고객에게 제안서를 작성하는 방식은 비슷합니다. 그래서 우리도 비슷한 구조를 가지고 있습니다. 우리는 고객이 겪고 있는 문제점을 강조하고, 가격을 페이지 상단에 배치하는 등의 방법을</pre>
+  </div>
+  </article>
+</main>
+
+<footer>유튜브 구독 정리 · agy 요약 · 2026-08-13 06:01</footer>
+
+
+<script>
+document.querySelectorAll('.nlm-btn').forEach(function(btn){
+  btn.addEventListener('click',function(){
+    navigator.clipboard.writeText('/notebooklm '+btn.dataset.url).then(function(){
+      var orig=btn.innerHTML;btn.innerHTML='✓ 복사됨';btn.classList.add('copied');
+      setTimeout(function(){btn.innerHTML=orig;btn.classList.remove('copied');},2000);
+    });
+  });
+});
+</script>
+
+</body>
+</html>
