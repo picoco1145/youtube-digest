@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>2026-08-14 — 유튜브 구독 정리</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+  :root{--bg:#090e1a;--surface:#111827;--surface2:#1a2235;--border:#1e2d47;--accent:#6c63ff;--accent2:#00d4ff;--text:#e8eaf0;--muted:#7a8499;--radius:14px;}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Pretendard',sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+  header{background:linear-gradient(135deg,#0d1b3e,#1a0533);border-bottom:1px solid var(--border);padding:20px 40px;display:flex;align-items:center;justify-content:space-between;}
+  .nav-back{color:var(--accent2);text-decoration:none;font-size:0.85rem;display:flex;align-items:center;gap:6px}
+  .nav-back:hover{color:#fff}
+  .date-badge{font-size:1.4rem;font-weight:700;letter-spacing:-0.5px;background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+  .count{font-size:0.85rem;color:var(--muted)}
+  main{max-width:900px;margin:0 auto;padding:32px 24px 80px}
+  .video-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;margin-bottom:24px;transition:border-color 0.2s,box-shadow 0.2s;}
+  .video-card:hover{border-color:var(--accent);box-shadow:0 4px 24px rgba(108,99,255,0.15)}
+  .card-top{display:flex;gap:0}
+  .thumb-wrap{flex:0 0 240px;position:relative;overflow:hidden}
+  .thumb-wrap img{width:100%;height:100%;object-fit:cover;transition:transform 0.4s}
+  .video-card:hover .thumb-wrap img{transform:scale(1.05)}
+  .card-info{flex:1;padding:20px;display:flex;flex-direction:column;gap:10px}
+  .card-meta{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+  .ch-tag{font-size:0.72rem;font-weight:600;padding:3px 12px;background:linear-gradient(135deg,rgba(108,99,255,0.2),rgba(0,212,255,0.2));border:1px solid rgba(108,99,255,0.3);border-radius:999px;color:var(--accent2);}
+  .date-tag{font-size:0.72rem;color:var(--muted)}
+  .no-transcript{font-size:0.68rem;padding:2px 8px;background:rgba(255,180,0,0.12);border:1px solid rgba(255,180,0,0.25);border-radius:999px;color:#ffa500;}
+  .video-title{font-size:1rem;font-weight:600;line-height:1.4}
+  .yt-link{display:inline-flex;align-items:center;gap:5px;font-size:0.8rem;color:var(--accent);text-decoration:none;transition:color 0.2s;}
+  .yt-link:hover{color:var(--accent2)}
+  
+  .nlm-btn{display:inline-flex;align-items:center;gap:5px;font-size:0.8rem;color:#fff;
+    background:rgba(108,99,255,0.2);border:1px solid rgba(108,99,255,0.4);border-radius:8px;
+    padding:4px 12px;cursor:pointer;font-family:inherit;transition:all 0.2s;margin-left:8px;}
+  .nlm-btn:hover{background:rgba(108,99,255,0.45);}
+  .nlm-btn.copied{background:rgba(0,200,100,0.2);border-color:rgba(0,200,100,0.4);color:#00c864;}
+
+  .summary-section{border-top:1px solid var(--border);background:var(--surface2);padding:20px 24px;font-size:0.85rem;line-height:1.7;color:#c5cad8;}
+  .summary-section h2{font-size:0.82rem;color:var(--accent2);margin:12px 0 4px}
+  .summary-section h2:first-child{margin-top:0}
+  .summary-section ul{padding-left:18px}
+  .summary-section li{margin-bottom:5px}
+  .transcript-wrap{border-top:1px solid var(--border);padding:14px 24px;background:#0c1220}
+  .transcript-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:0}
+  .transcript-toggle{background:none;border:none;color:var(--muted);font-size:0.8rem;cursor:pointer;font-family:inherit;display:flex;align-items:center;gap:4px;padding:0;transition:color 0.2s;}
+  .transcript-toggle:hover{color:var(--text)}
+  .copy-btn{background:rgba(108,99,255,0.1);border:1px solid rgba(108,99,255,0.3);border-radius:8px;color:var(--accent2);font-size:0.72rem;padding:4px 12px;cursor:pointer;font-family:inherit;transition:all 0.2s;}
+  .copy-btn:hover{background:rgba(108,99,255,0.25);color:#fff}
+  .transcript-box{display:none;margin-top:10px;background:#080d18;border:1px solid var(--border);border-radius:10px;padding:12px 14px;font-size:0.78rem;line-height:1.75;color:#8a95aa;max-height:260px;overflow-y:auto;white-space:pre-wrap;word-break:break-word;}
+  .transcript-box.visible{display:block}
+  footer{text-align:center;padding:24px;font-size:0.75rem;color:var(--muted);border-top:1px solid var(--border)}
+  @media(max-width:640px){.card-top{flex-direction:column}.thumb-wrap{flex:none;height:200px}header{padding:16px}main{padding:16px 12px 60px}}
+</style>
+</head>
+<body>
+
+<header>
+  <a class="nav-back" href="../index.html">← 대시보드로</a>
+  <div>
+    <div class="date-badge">2026-08-14</div>
+    <div class="count">2개 영상</div>
+  </div>
+  <div style="font-size:0.75rem;color:var(--muted)">2026-08-15 06:01 생성</div>
+</header>
+
+<main>
+
+  <article class="video-card">
+    <div class="card-top">
+      <a class="thumb-wrap" href="https://www.youtube.com/watch?v=hqM-IcFmRes" target="_blank" rel="noopener">
+        <img src="https://i.ytimg.com/vi/hqM-IcFmRes/hqdefault.jpg" alt="I Built an AI That Scores My Leads and Writes the Reply" loading="lazy"/>
+      </a>
+      <div class="card-info">
+        <div class="card-meta">
+          <span class="ch-tag">Nicholas Puru</span>
+          <span class="date-tag">2026-08-14</span>
+          
+        </div>
+        <div class="video-title">I Built an AI That Scores My Leads and Writes the Reply</div>
+        <div style="display:flex;align-items:center;flex-wrap:wrap;gap:4px;margin-top:auto">
+          <a class="yt-link" href="https://www.youtube.com/watch?v=hqM-IcFmRes" target="_blank" rel="noopener">↗ 유튜브에서 보기</a>
+          <button class="nlm-btn" data-url="https://www.youtube.com/watch?v=hqM-IcFmRes">📓 NotebookLM</button>
+        </div>
+      </div>
+    </div>
+    <div class="summary-section">
+      <h2>핵심 요약</h2>
+<p>잠재고객(Lead) 응답 관리 부실로 발생하던 80%의 노쇼 문제를 해결하기 위해 Rocket New와 Notion SOP를 연동한 AI 자동화 시스템을 구축했습니다. 이 AI는 들어오는 문의를 자동으로 분석 및 점수화하고 답장까지 작성해 주어 20분 만에 구축을 완료하고 2만 달러의 추가 매출을 올렸습니다. 또한 시스템 생성 과정 중 발생한 문제는 Rocket New의 실제 지원 담당자를 통해 즉시 해결할 수 있었습니다.</p>
+<h2>주요 포인트</h2>
+<ul>
+<li>높은 잠재고객 획득 비용에도 불구하고 응답 문제로 인해 80%의 높은 노쇼율과 고객 손실이 발생함</li>
+<li>Rocket New를 이용해 기존 Notion SOP 문서를 연동하고, 한 문장 입력으로 리드 점수화 및 답장 자동화 앱을 생성함</li>
+<li>AI가 예산, 일정, 예약 여부 등 기준에 대해 확인 질문을 던져 정교한 점수화 로직을 완성함</li>
+<li>앱 생성 과정에서 문제가 발생했으나 Rocket New 실제 담당자의 신속한 실시간 지원으로 해결함</li>
+<li>서비스 플랜에 따라 이메일, 디스코드 연결 및 유료 플랜의 상담원 직접 지원 기능을 제공함</li>
+<li>단 20분 만에 자동화 이메일 응답 시스템 구축을 마치고 이번 달 2만 달러의 추가 수익을 달성함</li>
+</ul>
+    </div>
+  <div class="transcript-wrap">
+    <div class="transcript-header">
+      <button class="transcript-toggle" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('visible')">
+        <span class="arr">▼</span> 원문 자막
+      </button>
+      <button class="copy-btn" onclick="var b=this,t=b.nextElementSibling||b;navigator.clipboard.writeText(document.querySelector('#tr-hqM-IcFmRes').textContent).then(()=>{b.textContent='복사됨';setTimeout(()=>b.textContent='복사',2000)})">복사</button>
+    </div>
+    <pre class="transcript-box" id="tr-hqM-IcFmRes">내 잠재고객 응답 기능에 문제가 있어서 고객 한 명을 잃을 뻔했어요. 우리는 잠재 고객 한 명당 수백 달러를 지불했지만, 그중 80%는 약속 장소에 나타나지 않았습니다 . 그래서 제가 이번 달에 2만 달러를 추가로 벌어들인 방법을 알려드리겠습니다. 저는 Rocket New에 가서 제가 이미 신규 리드 처리 방법에 대한 표준 운영 절차(SOP)를 적어 놓은 Notion 문서를 가리켰습니다 . 그런 다음 저는 한 문장만 입력하면 모든 새로운 문의를 읽고, 전화할 가치가 있는 문의를 점수화하고, 답장을 작성하는 앱을 만들어 줍니다. 그리고 거기서 그치지 않았습니다 . 중간에 멈추더니 실제로 어떤 잠재 고객이 우리에게 연락할 가치가 있는지 물어봤습니다. 예산 문제인가요? 일정 문제인가요, 아니면 이미 예약을 마쳤는지 여부인가요? 제가 답변을 했더니, 단순히 추측하는 것이 아니라 제 답변을 바탕으로 점수가 매겨졌습니다. 그런데 작업 도중에 뭔가 문제가 생겨서 고객이 저를 기다리게 됐어요. 바로 그때 로켓츠 신임팀의 실제 담당자가 나섰습니다. 그들은 문제점을 살펴보고 즉시 해결했습니다. 현재 모든 요금제에서 무료 플랜은 실제 이메일과 디스코드 연결을 제공하고, 유료 플랜은 실제 상담원과의 연결을 지원합니다. 그리고 20분 후, 마치 마법처럼 앞으로 새로 들어오는 모든 잠재 고객에 대한 이메일이 바로 이런 내용으로 제게 도착했습니다. 댓글에 "필요해요"라고 남겨주시면 시스템 설정에 필요한 정확한 안내와 모든 자료를 보내드리겠습니다. rocket.new/build로 이동하세요.</pre>
+  </div>
+  </article>
+  <article class="video-card">
+    <div class="card-top">
+      <a class="thumb-wrap" href="https://www.youtube.com/watch?v=cbRpzePVO80" target="_blank" rel="noopener">
+        <img src="https://i.ytimg.com/vi/cbRpzePVO80/hqdefault.jpg" alt="자동화가 브라우저 밖으로 나온 순간" loading="lazy"/>
+      </a>
+      <div class="card-info">
+        <div class="card-meta">
+          <span class="ch-tag">AIMAX_PD</span>
+          <span class="date-tag">2026-08-14</span>
+          
+        </div>
+        <div class="video-title">자동화가 브라우저 밖으로 나온 순간</div>
+        <div style="display:flex;align-items:center;flex-wrap:wrap;gap:4px;margin-top:auto">
+          <a class="yt-link" href="https://www.youtube.com/watch?v=cbRpzePVO80" target="_blank" rel="noopener">↗ 유튜브에서 보기</a>
+          <button class="nlm-btn" data-url="https://www.youtube.com/watch?v=cbRpzePVO80">📓 NotebookLM</button>
+        </div>
+      </div>
+    </div>
+    <div class="summary-section">
+      <h2>핵심 요약</h2>
+<p>코덱스 브라우저 에이전트는 API 유무와 상관없이 사람이 브라우저에서 수행하던 클릭 및 입력 작업을 그대로 대신한다. 웹 테스트와 시각적 코드 수정부터 로컬 서버 구동 및 파일 확인까지 하나의 워크플로우로 묶어 처리한다. 이제 자동화는 API 중심 개발을 넘어 AI가 브라우저 화면을 직접 보고 실행하는 단계로 확장되고 있다.</p>
+<h2>주요 포인트</h2>
+<ul>
+<li>**API 없는 서비스 자동화**: 로그인 상태를 유지한 채 버튼 클릭, 폼 입력, 결과 확인 등 인간의 반복 웹 업무를 자동화함.</li>
+<li>**실제 사용자 기반 앱 테스트**: AI가 직접 페이지를 탐색하고 입력을 진행하며 화면 깨짐이나 UX 문제를 자동으로 찾아냄.</li>
+<li>**화면 위 직관적인 코드 수정**: 브라우저상에서 이상이 있는 요소를 직접 표시하고 지시하면 AI가 코드를 고치고 재검증함.</li>
+<li>**로컬 컴퓨터 작업과의 통합**: 파일 확인, 서버 구동, 브라우저 결과 테스트까지의 일련의 과정을 하나로 연결해 실행함.</li>
+<li>**자동화 패러다임의 전환**: 단순 API 호출 수준을 벗어나 사람이 브라우저에서 할 수 있는 모든 작업을 AI가 직접 수행함.</li>
+</ul>
+    </div>
+  <div class="transcript-wrap">
+    <div class="transcript-header">
+      <button class="transcript-toggle" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('visible')">
+        <span class="arr">▼</span> 원문 자막
+      </button>
+      <button class="copy-btn" onclick="var b=this,t=b.nextElementSibling||b;navigator.clipboard.writeText(document.querySelector('#tr-cbRpzePVO80').textContent).then(()=>{b.textContent='복사됨';setTimeout(()=>b.textContent='복사',2000)})">복사</button>
+    </div>
+    <pre class="transcript-box" id="tr-cbRpzePVO80">이 남자는 브라우저 자동화의 기준을 바꿨습니다. 지금까지 자동화는 API가 있어야 가능하다고 생각했죠. 그런데 코덱스 브라우저 에이전트는 사람이 브라우저에서 하던 클릭, 입력 작업을 그대로 대신합니다. 핵심은 다섯 가지입니다. 첫째, API가 없는 서비스도 자동화할 수 있습니다. 로그인한 브라우저 상태를 유지한 채 버튼을 누르고 홈을 채우고 결과를 확인합니다. 사람이 반복하던 웹 업무가 그대로 워크플로우가 됩니다. 둘째, 앱 테스트를 실제 사용자처럼 돌릴 수 있습니다. 코덱스가 페이지를 열고 버튼을 누르고 입력값을 넣고 화면 깨짐이나 UX 문제를 찾아냅니다. 개발자가 직접 하나씩 클릭하던 시간이 줄어드는 겁니다. 셋째, 애매한 수정은 화면에 바로 표시하면 됩니다. 어디가 겹치는지, 어떤 버튼이 이상한지 브라우저 위에 표시하고 지시하면 코덱스가 코드를 고치고 다시 화면에서 검증합니다. 넷째, 로컬 컴퓨터 작업까지 이어집니다. 파일을 확인하고 서버를 띄우고 브라우저에서 결과를 테스트하는 흐름을 한 번에 묶을 수 있습니다. 정리하면 이제 자동화는 개발자만의 API 작업이 아닙니다. 사람이 브라우저에서 할 수 있는 일이라면 AI가 직접 보고 실행하는 단계로 넘어가고 있습니다. 16분짜리 영상을 정리했습니다. 자료가 궁금하신 분들은 채널 구독 후 링크를 확인해 주세요.</pre>
+  </div>
+  </article>
+</main>
+
+<footer>유튜브 구독 정리 · agy 요약 · 2026-08-15 06:01</footer>
+
+
+<script>
+document.querySelectorAll('.nlm-btn').forEach(function(btn){
+  btn.addEventListener('click',function(){
+    navigator.clipboard.writeText('/notebooklm '+btn.dataset.url).then(function(){
+      var orig=btn.innerHTML;btn.innerHTML='✓ 복사됨';btn.classList.add('copied');
+      setTimeout(function(){btn.innerHTML=orig;btn.classList.remove('copied');},2000);
+    });
+  });
+});
+</script>
+
+</body>
+</html>

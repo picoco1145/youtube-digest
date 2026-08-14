@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>2026-08-15 — 유튜브 구독 정리</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+  :root{--bg:#090e1a;--surface:#111827;--surface2:#1a2235;--border:#1e2d47;--accent:#6c63ff;--accent2:#00d4ff;--text:#e8eaf0;--muted:#7a8499;--radius:14px;}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Pretendard',sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+  header{background:linear-gradient(135deg,#0d1b3e,#1a0533);border-bottom:1px solid var(--border);padding:20px 40px;display:flex;align-items:center;justify-content:space-between;}
+  .nav-back{color:var(--accent2);text-decoration:none;font-size:0.85rem;display:flex;align-items:center;gap:6px}
+  .nav-back:hover{color:#fff}
+  .date-badge{font-size:1.4rem;font-weight:700;letter-spacing:-0.5px;background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+  .count{font-size:0.85rem;color:var(--muted)}
+  main{max-width:900px;margin:0 auto;padding:32px 24px 80px}
+  .video-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;margin-bottom:24px;transition:border-color 0.2s,box-shadow 0.2s;}
+  .video-card:hover{border-color:var(--accent);box-shadow:0 4px 24px rgba(108,99,255,0.15)}
+  .card-top{display:flex;gap:0}
+  .thumb-wrap{flex:0 0 240px;position:relative;overflow:hidden}
+  .thumb-wrap img{width:100%;height:100%;object-fit:cover;transition:transform 0.4s}
+  .video-card:hover .thumb-wrap img{transform:scale(1.05)}
+  .card-info{flex:1;padding:20px;display:flex;flex-direction:column;gap:10px}
+  .card-meta{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+  .ch-tag{font-size:0.72rem;font-weight:600;padding:3px 12px;background:linear-gradient(135deg,rgba(108,99,255,0.2),rgba(0,212,255,0.2));border:1px solid rgba(108,99,255,0.3);border-radius:999px;color:var(--accent2);}
+  .date-tag{font-size:0.72rem;color:var(--muted)}
+  .no-transcript{font-size:0.68rem;padding:2px 8px;background:rgba(255,180,0,0.12);border:1px solid rgba(255,180,0,0.25);border-radius:999px;color:#ffa500;}
+  .video-title{font-size:1rem;font-weight:600;line-height:1.4}
+  .yt-link{display:inline-flex;align-items:center;gap:5px;font-size:0.8rem;color:var(--accent);text-decoration:none;transition:color 0.2s;}
+  .yt-link:hover{color:var(--accent2)}
+  
+  .nlm-btn{display:inline-flex;align-items:center;gap:5px;font-size:0.8rem;color:#fff;
+    background:rgba(108,99,255,0.2);border:1px solid rgba(108,99,255,0.4);border-radius:8px;
+    padding:4px 12px;cursor:pointer;font-family:inherit;transition:all 0.2s;margin-left:8px;}
+  .nlm-btn:hover{background:rgba(108,99,255,0.45);}
+  .nlm-btn.copied{background:rgba(0,200,100,0.2);border-color:rgba(0,200,100,0.4);color:#00c864;}
+
+  .summary-section{border-top:1px solid var(--border);background:var(--surface2);padding:20px 24px;font-size:0.85rem;line-height:1.7;color:#c5cad8;}
+  .summary-section h2{font-size:0.82rem;color:var(--accent2);margin:12px 0 4px}
+  .summary-section h2:first-child{margin-top:0}
+  .summary-section ul{padding-left:18px}
+  .summary-section li{margin-bottom:5px}
+  .transcript-wrap{border-top:1px solid var(--border);padding:14px 24px;background:#0c1220}
+  .transcript-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:0}
+  .transcript-toggle{background:none;border:none;color:var(--muted);font-size:0.8rem;cursor:pointer;font-family:inherit;display:flex;align-items:center;gap:4px;padding:0;transition:color 0.2s;}
+  .transcript-toggle:hover{color:var(--text)}
+  .copy-btn{background:rgba(108,99,255,0.1);border:1px solid rgba(108,99,255,0.3);border-radius:8px;color:var(--accent2);font-size:0.72rem;padding:4px 12px;cursor:pointer;font-family:inherit;transition:all 0.2s;}
+  .copy-btn:hover{background:rgba(108,99,255,0.25);color:#fff}
+  .transcript-box{display:none;margin-top:10px;background:#080d18;border:1px solid var(--border);border-radius:10px;padding:12px 14px;font-size:0.78rem;line-height:1.75;color:#8a95aa;max-height:260px;overflow-y:auto;white-space:pre-wrap;word-break:break-word;}
+  .transcript-box.visible{display:block}
+  footer{text-align:center;padding:24px;font-size:0.75rem;color:var(--muted);border-top:1px solid var(--border)}
+  @media(max-width:640px){.card-top{flex-direction:column}.thumb-wrap{flex:none;height:200px}header{padding:16px}main{padding:16px 12px 60px}}
+</style>
+</head>
+<body>
+
+<header>
+  <a class="nav-back" href="../index.html">← 대시보드로</a>
+  <div>
+    <div class="date-badge">2026-08-15</div>
+    <div class="count">2개 영상</div>
+  </div>
+  <div style="font-size:0.75rem;color:var(--muted)">2026-08-15 06:01 생성</div>
+</header>
+
+<main>
+
+  <article class="video-card">
+    <div class="card-top">
+      <a class="thumb-wrap" href="https://www.youtube.com/watch?v=MmrKvQxtlwE" target="_blank" rel="noopener">
+        <img src="https://i.ytimg.com/vi/MmrKvQxtlwE/hqdefault.jpg" alt="Never Miss a Customer Call Again (AI Receptionist)" loading="lazy"/>
+      </a>
+      <div class="card-info">
+        <div class="card-meta">
+          <span class="ch-tag">Nate Herk</span>
+          <span class="date-tag">2026-08-15</span>
+          
+        </div>
+        <div class="video-title">Never Miss a Customer Call Again (AI Receptionist)</div>
+        <div style="display:flex;align-items:center;flex-wrap:wrap;gap:4px;margin-top:auto">
+          <a class="yt-link" href="https://www.youtube.com/watch?v=MmrKvQxtlwE" target="_blank" rel="noopener">↗ 유튜브에서 보기</a>
+          <button class="nlm-btn" data-url="https://www.youtube.com/watch?v=MmrKvQxtlwE">📓 NotebookLM</button>
+        </div>
+      </div>
+    </div>
+    <div class="summary-section">
+      <h2>핵심 요약</h2>
+<p>고객은 응답을 기다려주지 않고 즉시 경쟁사로 이탈하기 때문에 24시간 끊김 없는 소통 관리가 필수적이다. Ring Central의 AI 리셉셔니스트는 전화, 문자, WhatsApp 문의에 24시간 실시간 응대하여 단순 문의 답변부터 예약 및 담당자 연결까지 자동으로 처리한다. 이를 통해 사업자는 10개 이상의 언어를 지원하는 AI에게 소통을 맡기고 사업 운영에만 집중할 수 있다.</p>
+<h2>주요 포인트</h2>
+<ul>
+<li>**24시간 실시간 응대**: 전화, 문자, WhatsApp 메시지에 상시 응대하여 통화 중 신호나 음성메일 전환 없이 고객 이탈을 방지함</li>
+<li>**자주 묻는 질문 답변 및 예약 자동화**: 행사 장소, 시간, 포함 내역 등 반복적인 문의 처리와 일정 예약을 자동화함</li>
+<li>**상담 맥락 유지 및 담당자 연결**: 팀원이 바쁘거나 부재중일 때 이전 대화 맥락을 유지하면서 적절한 담당자에게 자동으로 안내함</li>
+<li>**다국어 자동 감지 및 10개 이상 언어 지원**: 첫 단어로 언어를 빠르게 감지하여 10개 이상의 언어로 유연하고 유창한 소통이 가능함</li>
+<li>**14일 무료 체험 혜택**: 영상 하단에 'Ring Central' 댓글을 작성하면 14일 무료 체험 링크를 제공함</li>
+</ul>
+    </div>
+  <div class="transcript-wrap">
+    <div class="transcript-header">
+      <button class="transcript-toggle" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('visible')">
+        <span class="arr">▼</span> 원문 자막
+      </button>
+      <button class="copy-btn" onclick="var b=this,t=b.nextElementSibling||b;navigator.clipboard.writeText(document.querySelector('#tr-MmrKvQxtlwE').textContent).then(()=>{b.textContent='복사됨';setTimeout(()=>b.textContent='복사',2000)})">복사</button>
+    </div>
+    <pre class="transcript-box" id="tr-MmrKvQxtlwE">So, if I call your business and you don't answer, then I'm going to go buy from your competitor. We just hosted our first virtual event called AIS Live, and we did it on a platform called Ring Central. And one thing that I massively underestimated is how important the customer communication really is because people were asking questions at all hours of the day. Things like, where's the venue, what's included, what time does it start, how long does the event last, all kinds of questions. And the reality is that people don't wait around for businesses anymore. That's why tools like Ring Central's AI receptionist exist. It answer your customers calls, texts, and WhatsApp messages 24/7, so customers aren't getting busy signals or getting sent to voicemail. This thing can book appointments. It'll answer common questions, and it'll even route your customers around to the right person with context, so that they can step in automatically when your team is slammed or unavailable. It also picks up languages on the first word. So, it's not just fast, but it's also fluent in over 10 languages. So, instead of worrying about responding to every single customer, you can actually just focus on running your business. So, if you want to give it a try, just comment Ring Central down below and I'll shoot you over a link for a 14-day free trial to try Ring Central AI receptionist.</pre>
+  </div>
+  </article>
+  <article class="video-card">
+    <div class="card-top">
+      <a class="thumb-wrap" href="https://www.youtube.com/watch?v=WCrnS09vpfo" target="_blank" rel="noopener">
+        <img src="https://i.ytimg.com/vi/WCrnS09vpfo/hqdefault.jpg" alt="I Made Codex and Claude Code Build the Same App. One Clearly Won." loading="lazy"/>
+      </a>
+      <div class="card-info">
+        <div class="card-meta">
+          <span class="ch-tag">Nate Herk</span>
+          <span class="date-tag">2026-08-15</span>
+          
+        </div>
+        <div class="video-title">I Made Codex and Claude Code Build the Same App. One Clearly Won.</div>
+        <div style="display:flex;align-items:center;flex-wrap:wrap;gap:4px;margin-top:auto">
+          <a class="yt-link" href="https://www.youtube.com/watch?v=WCrnS09vpfo" target="_blank" rel="noopener">↗ 유튜브에서 보기</a>
+          <button class="nlm-btn" data-url="https://www.youtube.com/watch?v=WCrnS09vpfo">📓 NotebookLM</button>
+        </div>
+      </div>
+    </div>
+    <div class="summary-section">
+      <h2>핵심 요약</h2>
+<p>유튜버 Nate Herk가 Claude Code와 Codex에 동일한 Typeform 클론 앱 개발 프롬프트를 주고 성능과 작업 방식을 비교함. 두 에이전트는 소요 시간(3일 vs 5시간)과 비용($3,000 vs $800) 면에서 극명한 차이를 보임. 단순 시제품에 멈추지 않고 연구·구축·검증 프로세스를 거쳐 완성형 앱을 만들도록 지시함.</p>
+<h2>주요 포인트</h2>
+<ul>
+<li>Claude Code와 Codex에 완전 동일한 조건의 프롬프트를 입력하여 동일 앱 제작을 비교함</li>
+<li>작업 소요 시간(3일 vs 5시간)과 사용 비용($3,000 vs $800)에서 두 에이전트 간 큰 격차가 발생함</li>
+<li>프롬프트를 통해 연구, 구축, 검증 3단계 진행 및 지속적인 테스트와 오류 수정을 지시함</li>
+<li>결과물인 'Real Form' 앱은 AI 제작 특유의 느낌이 있으나 완성도 높은 UI와 구조를 보여줌</li>
+<li>이번 실험을 통해 각 에이전트가 우수한 성능을 보이는 특정 영역과 강점을 명확히 파악함</li>
+</ul>
+    </div>
+  <div class="transcript-wrap">
+    <div class="transcript-header">
+      <button class="transcript-toggle" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('visible')">
+        <span class="arr">▼</span> 원문 자막
+      </button>
+      <button class="copy-btn" onclick="var b=this,t=b.nextElementSibling||b;navigator.clipboard.writeText(document.querySelector('#tr-WCrnS09vpfo').textContent).then(()=>{b.textContent='복사됨';setTimeout(()=>b.textContent='복사',2000)})">복사</button>
+    </div>
+    <pre class="transcript-box" id="tr-WCrnS09vpfo">So, I had Cloud Code and Codeex build me the exact same app. I gave them the exact same prompt, but the results are extremely different. Not only the outputs, but the way that they actually got to the output, very different. One of them took 3 days, one of them took 5 hours, one of them spent $3,000, one of them spent $800. So, today I'm going to break down the two outputs, why they're so different, and it's very clear to me now what Codeex is better at, and what Cloud Code is better at. So, by the end of this video, hopefully you have some clarity. Let's not waste any time and get straight into the video. All right, so real quick before we start going over the outputs, let me just show you guys the actual prompt. I utilized a slashgoal and I did the slashgoal inside both codeex and cloud code. Gave them the exact same prompt. So here it is. I'm not going to read the whole thing, but here it is. I basically said build a productionready originally branded type form alternative. So we're kind of trying to clone type form here. I said orchestrate specialized agents throughout three phases. The research phase, the build phase, the verify phase. Now looking back, I'm not saying this is the most optimal prompt. I honestly, if I was to redo this, I would probably add another phase between research and build that would be all about planning and mapping out the whole flow. I honestly think that that would result in a much better output from both of these systems. But we'll take a look at them in a sec. Anyways, I'm not going to read this whole thing out. You can screenshot it. You can reuse it if you want. I do want to call out what I put at the end though here, which was do not stop at a prototype or first successful build. Continue researching, building, testing, breaking, fixing, and retesting until the app is genuinely complete. So, I basically just wanted something that was like production ready. Maybe we could go to market the next day. Cool. So, like I said, I gave both coding agents, Codeex and Cloud Code, the exact same prompt. Okay, so let's take a look. I have not looked at either of these yet. This first one I had to do on my Mac because I was actually out of town. I was traveling when I kicked off this first one and then I had the idea to like, oh, you know, I should have the other one do the same thing. So, anyways, this is the first version that we have. I haven't actually tested any of this yet. I haven't clicked through. So, we're getting the real raw reaction. My first reaction here is that this is called real form and it looks pretty solid. Like honestly, I because I've built a lot of sites with AI, I can tell this was AI generated. You know, we've got the hero image over here, which is still pretty a pretty cool UI element. We've got the text over here. We've got this little pill. It just feels to me like AI, but the background, the depth, it's not too bad, right? Like an average person probably wouldn't look at this and just assume, oh, AI vibecoded site. So, we've got experience, which will take us down a little bit. We've got reliability, which takes us down again. We have pricing, which goes down to the bottom. We can build a private draft, which will take us to a signup page. I'm going to blur this out right here because it says it basically gives away which agent built this version. And we can also click right here to start building. So, let me just sign up real quick for an account and then I'll show you what the experience inside looks like. And by the way, this whole signup page, not too bad at all. I like this vibe. Okay, so we are in a demo workspace because it didn't have any keys to make like real authentication and real whatever. So this is a demo workspace. Let's take a look at how this thing runs. So we can make a product launch survey. We have the ability to structure how this works. This is the welcome screen of our form. So let's play a launch. People remember we can play with this text right here. We can put variables. So we can put a score or a price. Interesting. Okay. So, this is how we like insert different elements and we can play with the sizings on them. Okay, very interesting. I don't know how I don't know how we remove these. So, like if I wanted to remove these elements right here, these two boxes. I'm not exactly sure how I do that. Do I click delete there? Delete. Oh, this would delete the entire thing. No, I don't want to do that. We can add text right here. Okay. So, I think this is a little bit honestly like looking at this, it's a little bit overwhelming. Like I'm kind of confused. There's a lot going on in this UI. I can change the label of the button. Cool. We can upload an image for the welcome screen. Okay. So, I put in an image, but it actually says the image preview is unavailable. So, this just goes to show that even though there was testing, there's so many different scenarios that agents might not think to actually test, especially if you're not the on</pre>
+  </div>
+  </article>
+</main>
+
+<footer>유튜브 구독 정리 · agy 요약 · 2026-08-15 06:01</footer>
+
+
+<script>
+document.querySelectorAll('.nlm-btn').forEach(function(btn){
+  btn.addEventListener('click',function(){
+    navigator.clipboard.writeText('/notebooklm '+btn.dataset.url).then(function(){
+      var orig=btn.innerHTML;btn.innerHTML='✓ 복사됨';btn.classList.add('copied');
+      setTimeout(function(){btn.innerHTML=orig;btn.classList.remove('copied');},2000);
+    });
+  });
+});
+</script>
+
+</body>
+</html>
