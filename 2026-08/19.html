@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>2026-08-19 — 유튜브 구독 정리</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+  :root{--bg:#090e1a;--surface:#111827;--surface2:#1a2235;--border:#1e2d47;--accent:#6c63ff;--accent2:#00d4ff;--text:#e8eaf0;--muted:#7a8499;--radius:14px;}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Pretendard',sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+  header{background:linear-gradient(135deg,#0d1b3e,#1a0533);border-bottom:1px solid var(--border);padding:20px 40px;display:flex;align-items:center;justify-content:space-between;}
+  .nav-back{color:var(--accent2);text-decoration:none;font-size:0.85rem;display:flex;align-items:center;gap:6px}
+  .nav-back:hover{color:#fff}
+  .date-badge{font-size:1.4rem;font-weight:700;letter-spacing:-0.5px;background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+  .count{font-size:0.85rem;color:var(--muted)}
+  main{max-width:900px;margin:0 auto;padding:32px 24px 80px}
+  .video-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;margin-bottom:24px;transition:border-color 0.2s,box-shadow 0.2s;}
+  .video-card:hover{border-color:var(--accent);box-shadow:0 4px 24px rgba(108,99,255,0.15)}
+  .card-top{display:flex;gap:0}
+  .thumb-wrap{flex:0 0 240px;position:relative;overflow:hidden}
+  .thumb-wrap img{width:100%;height:100%;object-fit:cover;transition:transform 0.4s}
+  .video-card:hover .thumb-wrap img{transform:scale(1.05)}
+  .card-info{flex:1;padding:20px;display:flex;flex-direction:column;gap:10px}
+  .card-meta{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+  .ch-tag{font-size:0.72rem;font-weight:600;padding:3px 12px;background:linear-gradient(135deg,rgba(108,99,255,0.2),rgba(0,212,255,0.2));border:1px solid rgba(108,99,255,0.3);border-radius:999px;color:var(--accent2);}
+  .date-tag{font-size:0.72rem;color:var(--muted)}
+  .no-transcript{font-size:0.68rem;padding:2px 8px;background:rgba(255,180,0,0.12);border:1px solid rgba(255,180,0,0.25);border-radius:999px;color:#ffa500;}
+  .video-title{font-size:1rem;font-weight:600;line-height:1.4}
+  .yt-link{display:inline-flex;align-items:center;gap:5px;font-size:0.8rem;color:var(--accent);text-decoration:none;transition:color 0.2s;}
+  .yt-link:hover{color:var(--accent2)}
+  
+  .nlm-btn{display:inline-flex;align-items:center;gap:5px;font-size:0.8rem;color:#fff;
+    background:rgba(108,99,255,0.2);border:1px solid rgba(108,99,255,0.4);border-radius:8px;
+    padding:4px 12px;cursor:pointer;font-family:inherit;transition:all 0.2s;margin-left:8px;}
+  .nlm-btn:hover{background:rgba(108,99,255,0.45);}
+  .nlm-btn.copied{background:rgba(0,200,100,0.2);border-color:rgba(0,200,100,0.4);color:#00c864;}
+
+  .summary-section{border-top:1px solid var(--border);background:var(--surface2);padding:20px 24px;font-size:0.85rem;line-height:1.7;color:#c5cad8;}
+  .summary-section h2{font-size:0.82rem;color:var(--accent2);margin:12px 0 4px}
+  .summary-section h2:first-child{margin-top:0}
+  .summary-section ul{padding-left:18px}
+  .summary-section li{margin-bottom:5px}
+  .transcript-wrap{border-top:1px solid var(--border);padding:14px 24px;background:#0c1220}
+  .transcript-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:0}
+  .transcript-toggle{background:none;border:none;color:var(--muted);font-size:0.8rem;cursor:pointer;font-family:inherit;display:flex;align-items:center;gap:4px;padding:0;transition:color 0.2s;}
+  .transcript-toggle:hover{color:var(--text)}
+  .copy-btn{background:rgba(108,99,255,0.1);border:1px solid rgba(108,99,255,0.3);border-radius:8px;color:var(--accent2);font-size:0.72rem;padding:4px 12px;cursor:pointer;font-family:inherit;transition:all 0.2s;}
+  .copy-btn:hover{background:rgba(108,99,255,0.25);color:#fff}
+  .transcript-box{display:none;margin-top:10px;background:#080d18;border:1px solid var(--border);border-radius:10px;padding:12px 14px;font-size:0.78rem;line-height:1.75;color:#8a95aa;max-height:260px;overflow-y:auto;white-space:pre-wrap;word-break:break-word;}
+  .transcript-box.visible{display:block}
+  footer{text-align:center;padding:24px;font-size:0.75rem;color:var(--muted);border-top:1px solid var(--border)}
+  @media(max-width:640px){.card-top{flex-direction:column}.thumb-wrap{flex:none;height:200px}header{padding:16px}main{padding:16px 12px 60px}}
+</style>
+</head>
+<body>
+
+<header>
+  <a class="nav-back" href="../index.html">← 대시보드로</a>
+  <div>
+    <div class="date-badge">2026-08-19</div>
+    <div class="count">2개 영상</div>
+  </div>
+  <div style="font-size:0.75rem;color:var(--muted)">2026-08-19 06:01 생성</div>
+</header>
+
+<main>
+
+  <article class="video-card">
+    <div class="card-top">
+      <a class="thumb-wrap" href="https://www.youtube.com/watch?v=lM3KWEmBdMg" target="_blank" rel="noopener">
+        <img src="https://i.ytimg.com/vi/lM3KWEmBdMg/hqdefault.jpg" alt="Practice Any Hard Conversation Before It Matters" loading="lazy"/>
+      </a>
+      <div class="card-info">
+        <div class="card-meta">
+          <span class="ch-tag">Nate Herk</span>
+          <span class="date-tag">2026-08-19</span>
+          
+        </div>
+        <div class="video-title">Practice Any Hard Conversation Before It Matters</div>
+        <div style="display:flex;align-items:center;flex-wrap:wrap;gap:4px;margin-top:auto">
+          <a class="yt-link" href="https://www.youtube.com/watch?v=lM3KWEmBdMg" target="_blank" rel="noopener">↗ 유튜브에서 보기</a>
+          <button class="nlm-btn" data-url="https://www.youtube.com/watch?v=lM3KWEmBdMg">📓 NotebookLM</button>
+        </div>
+      </div>
+    </div>
+    <div class="summary-section">
+      <h2>핵심 요약</h2>
+<p>단순히 교육 영상을 시청하는 것만으로는 실전 대화 능력을 키울 수 없습니다. 신시아의 AI 아바타 롤플레잉 기능을 활용하면 실제 잠재 고객과 대화하듯 반박과 응대를 사전에 연습하고 실시간 코칭을 받을 수 있습니다. 영업, 고객 지원, 리더십 등 다양한 실무 상황에서 반복 훈련을 통해 실질적인 역량을 강화할 수 있습니다.</p>
+<h2>주요 포인트</h2>
+<ul>
+<li>단순 비디오 시청이나 이론 교육만으로는 실제 업무 대화 능력을 체득하기 어려움</li>
+<li>신시아 AI 아바타를 활용해 실제 잠재 고객을 상대하듯 현실감 있는 반응과 반박 연습 가능</li>
+<li>실시간 피드백과 코칭을 통해 실수한 부분을 파악하고 반복 시도로 역량 개선 지원</li>
+<li>영업 전화, 반론 처리, 고객 지원, 리더십 대화 등 다양한 실무 시나리오에 적용 가능</li>
+<li>미래 직무 교육의 핵심은 수동적 시청이 아닌 실전에 대비한 능동적인 사전 연습임</li>
+</ul>
+    </div>
+  <div class="transcript-wrap">
+    <div class="transcript-header">
+      <button class="transcript-toggle" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('visible')">
+        <span class="arr">▼</span> 원문 자막
+      </button>
+      <button class="copy-btn" onclick="var b=this,t=b.nextElementSibling||b;navigator.clipboard.writeText(document.querySelector('#tr-lM3KWEmBdMg').textContent).then(()=>{b.textContent='복사됨';setTimeout(()=>b.textContent='복사',2000)})">복사</button>
+    </div>
+    <pre class="transcript-box" id="tr-lM3KWEmBdMg">그러니까, 여러분은 아마 유튜브에서 복싱 영상을 보고 바로 링으로 뛰어들지는 않겠죠. 그렇다면 우리는 왜 직장에서 그렇게 하는 걸까요? 우리는 교육 영상을 보고 워크숍에 참석하면서 사람들이 마법처럼 의사소통 능력이 향상될 거라고 기대합니다. 하지만 사실은, 무엇을 해야 할지 아는 것과 실제로 그것을 어떻게 해낼 수 있는지 아는 것은 전혀 다른 문제입니다. 그래서 저는 신시아의 새로운 롤플레잉 세션 상품이 정말 흥미롭다고 생각했어요. 내일 중요한 영업 전화가 있다고 가정해 봅시다. 여기서 인공지능 아바타를 통해 실제 대화처럼 현실감 있게 반응하고 반박하는 연습을 할 수 있습니다. 마치 실제 잠재 고객과 대화하는 것과 같습니다 . 그러면 실시간으로 코칭을 해줄 겁니다. 어디에서 잘못했는지 알려주고 여러 번 시도하면서 실력을 향상시킬 수 있도록 도와줍니다. 앞서 말씀드렸듯이, 이 자료는 영업 전화, 반론 처리, 고객 지원, 리더십 대화 등 실제 업무 환경의 거의 모든 상황에서 활용할 수 있습니다. 미래의 업무 교육은 단순히 더 많은 비디오를 시청하는 것에 그치지 않기 때문입니다. 그것은 실제로 중요한 것들을 연습하는 것입니다. 그러니, 이걸 한번 시도해보고 싶으시면 댓글에 '연습'이라고 남겨주세요. 제가 보내드리겠습니다.</pre>
+  </div>
+  </article>
+  <article class="video-card">
+    <div class="card-top">
+      <a class="thumb-wrap" href="https://www.youtube.com/watch?v=kekMlmcr5kM" target="_blank" rel="noopener">
+        <img src="https://i.ytimg.com/vi/kekMlmcr5kM/hqdefault.jpg" alt="Automate Your ENTIRE Business W/ Claude: The Complete 3-Hour Course" loading="lazy"/>
+      </a>
+      <div class="card-info">
+        <div class="card-meta">
+          <span class="ch-tag">Nicholas Puru</span>
+          <span class="date-tag">2026-08-19</span>
+          <span class="no-transcript">설명 기반</span>
+        </div>
+        <div class="video-title">Automate Your ENTIRE Business W/ Claude: The Complete 3-Hour Course</div>
+        <div style="display:flex;align-items:center;flex-wrap:wrap;gap:4px;margin-top:auto">
+          <a class="yt-link" href="https://www.youtube.com/watch?v=kekMlmcr5kM" target="_blank" rel="noopener">↗ 유튜브에서 보기</a>
+          <button class="nlm-btn" data-url="https://www.youtube.com/watch?v=kekMlmcr5kM">📓 NotebookLM</button>
+        </div>
+      </div>
+    </div>
+    <div class="summary-section">
+      <h2>핵심 요약</h2>
+<p>Anthropic의 AI 모델 Claude를 활용해 반복적인 데이터 입력, 문서 처리, 고객 대응 등 비즈니스 운영 전반을 자동화하는 3시간 풀코스 강의다. 단순 대화형 챗봇 활용에 그치지 않고 기존 업무 툴과 연동하여 스케줄 기반으로 작업을 자동 수행하는 에이전트 시스템 구축법을 다룬다. 코딩 지식이 많지 않은 사업자나 실무자도 단계별로 비즈니스 워크플로우를 자동화할 수 있도록 실전 가이드를 제공한다.</p>
+<h2>주요 포인트</h2>
+<ul>
+<li>Claude 기반 비즈니스 자동화 시스템의 기본 개념 및 아키텍처 설계 방법 설명</li>
+<li>회계 프로그램, 고객 관리(CRM), 문서 관리 시스템 등 기존 업무 툴과 Claude 연동 기법 제시</li>
+<li>데이터 입력, 서류 검토, 고객 응대 등 반복 업무를 전담하는 맞춤형 AI 에이전트 구축 실습</li>
+<li>단계별(도구 연동 → 특화 에이전트 개발 → 통합 대시보드 구축) 엔드투엔드 자동화 파이프라인 구현</li>
+<li>반복 업무 리소스를 절감하고 비즈니스 스케일업 및 고부가가치 작업에 집중하는 운영 전략 공유</li>
+</ul>
+    </div>
+  </article>
+</main>
+
+<footer>유튜브 구독 정리 · agy 요약 · 2026-08-19 06:01</footer>
+
+
+<script>
+document.querySelectorAll('.nlm-btn').forEach(function(btn){
+  btn.addEventListener('click',function(){
+    navigator.clipboard.writeText('/notebooklm '+btn.dataset.url).then(function(){
+      var orig=btn.innerHTML;btn.innerHTML='✓ 복사됨';btn.classList.add('copied');
+      setTimeout(function(){btn.innerHTML=orig;btn.classList.remove('copied');},2000);
+    });
+  });
+});
+</script>
+
+</body>
+</html>
