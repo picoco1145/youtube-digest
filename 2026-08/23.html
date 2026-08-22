@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>2026-08-23 — 유튜브 구독 정리</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+  :root{--bg:#090e1a;--surface:#111827;--surface2:#1a2235;--border:#1e2d47;--accent:#6c63ff;--accent2:#00d4ff;--text:#e8eaf0;--muted:#7a8499;--radius:14px;}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Pretendard',sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+  header{background:linear-gradient(135deg,#0d1b3e,#1a0533);border-bottom:1px solid var(--border);padding:20px 40px;display:flex;align-items:center;justify-content:space-between;}
+  .nav-back{color:var(--accent2);text-decoration:none;font-size:0.85rem;display:flex;align-items:center;gap:6px}
+  .nav-back:hover{color:#fff}
+  .date-badge{font-size:1.4rem;font-weight:700;letter-spacing:-0.5px;background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+  .count{font-size:0.85rem;color:var(--muted)}
+  main{max-width:900px;margin:0 auto;padding:32px 24px 80px}
+  .video-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;margin-bottom:24px;transition:border-color 0.2s,box-shadow 0.2s;}
+  .video-card:hover{border-color:var(--accent);box-shadow:0 4px 24px rgba(108,99,255,0.15)}
+  .card-top{display:flex;gap:0}
+  .thumb-wrap{flex:0 0 240px;position:relative;overflow:hidden}
+  .thumb-wrap img{width:100%;height:100%;object-fit:cover;transition:transform 0.4s}
+  .video-card:hover .thumb-wrap img{transform:scale(1.05)}
+  .card-info{flex:1;padding:20px;display:flex;flex-direction:column;gap:10px}
+  .card-meta{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+  .ch-tag{font-size:0.72rem;font-weight:600;padding:3px 12px;background:linear-gradient(135deg,rgba(108,99,255,0.2),rgba(0,212,255,0.2));border:1px solid rgba(108,99,255,0.3);border-radius:999px;color:var(--accent2);}
+  .date-tag{font-size:0.72rem;color:var(--muted)}
+  .no-transcript{font-size:0.68rem;padding:2px 8px;background:rgba(255,180,0,0.12);border:1px solid rgba(255,180,0,0.25);border-radius:999px;color:#ffa500;}
+  .video-title{font-size:1rem;font-weight:600;line-height:1.4}
+  .yt-link{display:inline-flex;align-items:center;gap:5px;font-size:0.8rem;color:var(--accent);text-decoration:none;transition:color 0.2s;}
+  .yt-link:hover{color:var(--accent2)}
+  
+  .nlm-btn{display:inline-flex;align-items:center;gap:5px;font-size:0.8rem;color:#fff;
+    background:rgba(108,99,255,0.2);border:1px solid rgba(108,99,255,0.4);border-radius:8px;
+    padding:4px 12px;cursor:pointer;font-family:inherit;transition:all 0.2s;margin-left:8px;}
+  .nlm-btn:hover{background:rgba(108,99,255,0.45);}
+  .nlm-btn.copied{background:rgba(0,200,100,0.2);border-color:rgba(0,200,100,0.4);color:#00c864;}
+
+  .summary-section{border-top:1px solid var(--border);background:var(--surface2);padding:20px 24px;font-size:0.85rem;line-height:1.7;color:#c5cad8;}
+  .summary-section h2{font-size:0.82rem;color:var(--accent2);margin:12px 0 4px}
+  .summary-section h2:first-child{margin-top:0}
+  .summary-section ul{padding-left:18px}
+  .summary-section li{margin-bottom:5px}
+  .transcript-wrap{border-top:1px solid var(--border);padding:14px 24px;background:#0c1220}
+  .transcript-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:0}
+  .transcript-toggle{background:none;border:none;color:var(--muted);font-size:0.8rem;cursor:pointer;font-family:inherit;display:flex;align-items:center;gap:4px;padding:0;transition:color 0.2s;}
+  .transcript-toggle:hover{color:var(--text)}
+  .copy-btn{background:rgba(108,99,255,0.1);border:1px solid rgba(108,99,255,0.3);border-radius:8px;color:var(--accent2);font-size:0.72rem;padding:4px 12px;cursor:pointer;font-family:inherit;transition:all 0.2s;}
+  .copy-btn:hover{background:rgba(108,99,255,0.25);color:#fff}
+  .transcript-box{display:none;margin-top:10px;background:#080d18;border:1px solid var(--border);border-radius:10px;padding:12px 14px;font-size:0.78rem;line-height:1.75;color:#8a95aa;max-height:260px;overflow-y:auto;white-space:pre-wrap;word-break:break-word;}
+  .transcript-box.visible{display:block}
+  footer{text-align:center;padding:24px;font-size:0.75rem;color:var(--muted);border-top:1px solid var(--border)}
+  @media(max-width:640px){.card-top{flex-direction:column}.thumb-wrap{flex:none;height:200px}header{padding:16px}main{padding:16px 12px 60px}}
+</style>
+</head>
+<body>
+
+<header>
+  <a class="nav-back" href="../index.html">← 대시보드로</a>
+  <div>
+    <div class="date-badge">2026-08-23</div>
+    <div class="count">2개 영상</div>
+  </div>
+  <div style="font-size:0.75rem;color:var(--muted)">2026-08-23 06:01 생성</div>
+</header>
+
+<main>
+
+  <article class="video-card">
+    <div class="card-top">
+      <a class="thumb-wrap" href="https://www.youtube.com/watch?v=QUI6Ug4cHnE" target="_blank" rel="noopener">
+        <img src="https://i.ytimg.com/vi/QUI6Ug4cHnE/hqdefault.jpg" alt="I Built The Ultimate Claude Website Design Skill (steal this)" loading="lazy"/>
+      </a>
+      <div class="card-info">
+        <div class="card-meta">
+          <span class="ch-tag">Nate Herk</span>
+          <span class="date-tag">2026-08-23</span>
+          
+        </div>
+        <div class="video-title">I Built The Ultimate Claude Website Design Skill (steal this)</div>
+        <div style="display:flex;align-items:center;flex-wrap:wrap;gap:4px;margin-top:auto">
+          <a class="yt-link" href="https://www.youtube.com/watch?v=QUI6Ug4cHnE" target="_blank" rel="noopener">↗ 유튜브에서 보기</a>
+          <button class="nlm-btn" data-url="https://www.youtube.com/watch?v=QUI6Ug4cHnE">📓 NotebookLM</button>
+        </div>
+      </div>
+    </div>
+    <div class="summary-section">
+      <h2>핵심 요약</h2>
+<p>Nate Herk는 뻔한 AI 웹사이트 느낌을 벗어나 인터랙티브한 스크롤 애니메이션을 구현하는 Claude 전용 웹 디자인 스킬 'Scroll Craft'를 무료로 배포했다. 이 스킬은 기존 웹사이트의 카피와 브랜딩을 유지하면서 스크롤과 연동되는 프리미엄 디자인으로 탈바꿈시켜 준다. 단순 템플릿 복제가 아니라 사전 인터뷰를 통해 사이트 목적과 사용자 여정을 분석해 맞춤형 결과물을 만든다.</p>
+<h2>주요 포인트</h2>
+<ul>
+<li>**인터랙티브 스크롤 스킬 'Scroll Craft'**: Claude로 제작되는 전형적인 AI 사이트(AI slop)를 고품질 스크롤 애니메이션 기반 사이트로 변환하는 무료 스킬이다.</li>
+<li>**브랜드 아이덴티티 및 카피 보존**: 기존 사이트의 문구, 색상, 브랜드 톤은 유지하면서 레이아웃과 반응형 인터랙션을 강화해 더 고급스러운 느낌을 부여한다.</li>
+<li>**몰입도를 높이는 사용자 여정 설계**: 숏폼 콘텐츠처럼 사용자가 페이지를 계속 스크롤하며 몰입할 수 있도록 훅(Hook) 요소와 인터랙션을 배치한다.</li>
+<li>**인터뷰 기반 맞춤형 디자인**: 획일화된 템플릿이 아닌 사전 질문을 통해 사용자의 목적, 톤앤매너, 타이포그래피, 여백 등을 파악한 뒤 다양한 스타일로 제작한다.</li>
+<li>**목적에 맞춘 애니메이션 강약 조절**: 전체 사이트를 과하게 꾸미지 않고 히어로 섹션에만 포인트를 주거나 핵심 정보에 순차적으로 집중시키는 등 유연한 연출이 가능하다.</li>
+</ul>
+    </div>
+  <div class="transcript-wrap">
+    <div class="transcript-header">
+      <button class="transcript-toggle" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('visible')">
+        <span class="arr">▼</span> 원문 자막
+      </button>
+      <button class="copy-btn" onclick="var b=this,t=b.nextElementSibling||b;navigator.clipboard.writeText(document.querySelector('#tr-QUI6Ug4cHnE').textContent).then(()=>{b.textContent='복사됨';setTimeout(()=>b.textContent='복사',2000)})">복사</button>
+    </div>
+    <pre class="transcript-box" id="tr-QUI6Ug4cHnE">I think I built the ultimate claw design skill for websites and I'm going to give it to you guys for completely free. This thing helps you figure out what type of website you're looking for, generates you all the assets or takes the assets you already have and then creates an interactive scrolling style of website. So, it's not just your generic AI slop. You can see in this one we're literally going through a journey because this is like a travel agency that's trying to get clients to book in with them. Here's my original website that I had built with Claude. It's it's okay, right? It's nothing crazy. And what I did is I said, "Hey, Claude, look at my website. use this skill and transform it. And this is what it created. It kept all the same copy. It kept all the same branding and the same feel, but it turned it into something that's way more interactive and it almost like hooks you in to make you want to keep scrolling through the rest of the website to actually see what's to come. It has a way more premium feel than the way that you typically get your websites if you're building with Claude. So, I call this skill scroll craft because the whole idea is that you're actually having this hook in the viewer by making the scroll correlate to something that's going on on the actual page. So, on top of the idea that Claude should always be looking for opportunities to make the scroll feel interactive, there's also design elements in the skill as well. Things like spacing, typography, feel, taste, all that kind of stuff. And what you'll notice about the skill is it's not just one specific template, right? Every single one of these websites that I've shown you guys so far comes out a little bit different. And that's why the interview section of this skill is so important because it asks you, what type of website do you want? What do you want the field to be? It really thinks about the user journey when they would actually open up the site and scroll through. It's almost like short form content. If you don't get hooked right away, you're not as interested. You can see some of these are super professional and super editorial, like this one. This is a very like trusted feel, but it still has a bunch of scroll animations and it feels more premium. It just gives it so much more depth when there's something else going on. Love this little animation right here. And hopping back over to the perk form example. I had it generate two versions for me. So, this is the first one. They both keep the consistency in like the color scheme and the vibe and the actual copy that's trying to be communicated through. The entire site doesn't have to be super flashy and animated. This one was mainly just kind of like that first hero section. But here's another version of it that's a little more simple at the front because we're just zooming in a little bit. And then we get into this thing where it's like we're only focusing on one thing at a time and the user is scrolling through and the user is in control of what they're actually going to be looking at. And now we can see the three different product shots, the three different flavors and the call to action at the end. Anyways, there's so many different examples that I've generated and you can see that they all just have different vibes and different styles, but they all are still unique, right? like they're going to make the client remember your business. So anyways, let me quit yapping and let's just talk about how the skill works, how you get it, and let's do a live example together. So real quick, if you want to get the skill, it's completely free. Go to my free school community link in the description, go to the classroom, click on all YouTube resources, and everything that I give away for free ever is always in here. So just hop in and grab the skill. And so in this video, I'm going to be using the Cloud Code desktop. I'm also going to assume that you have a little bit of Cloud Code knowledge. So if you're just starting out at the complete beginning, go ahead and watch the 6-hour course I have or I guess it'll be up here for non-coders. watch a little bit of that course, get familiar with Claude Code and then come back in here and build some crazy websites. So that skill will be a plugin that you can install or you can actually just take the actual folders and files and put it into your cloud, whatever you want to do. But now you can see if I come in here and I type scroll, we have the scrollcraft skill which says to build a premium scroll driven interface landing page for any business. So whatever type of product you have or service, you can do it in here. We saw a ton of different examples. We saw physical products as you could see. We saw a personal branding website which was for myself, another agency that was like travel. So you can do a lot of different things with this skill. So let's actually make a real website for myself for AI Automation Society. So right now this is AI Au</pre>
+  </div>
+  </article>
+  <article class="video-card">
+    <div class="card-top">
+      <a class="thumb-wrap" href="https://www.youtube.com/watch?v=m1S7AxoOD3s" target="_blank" rel="noopener">
+        <img src="https://i.ytimg.com/vi/m1S7AxoOD3s/hqdefault.jpg" alt="ChatGPT & Claude Tasks Die When Your Laptop Closes" loading="lazy"/>
+      </a>
+      <div class="card-info">
+        <div class="card-meta">
+          <span class="ch-tag">Dylan Davis</span>
+          <span class="date-tag">2026-08-23</span>
+          
+        </div>
+        <div class="video-title">ChatGPT & Claude Tasks Die When Your Laptop Closes</div>
+        <div style="display:flex;align-items:center;flex-wrap:wrap;gap:4px;margin-top:auto">
+          <a class="yt-link" href="https://www.youtube.com/watch?v=m1S7AxoOD3s" target="_blank" rel="noopener">↗ 유튜브에서 보기</a>
+          <button class="nlm-btn" data-url="https://www.youtube.com/watch?v=m1S7AxoOD3s">📓 NotebookLM</button>
+        </div>
+      </div>
+    </div>
+    <div class="summary-section">
+      <h2>핵심 요약</h2>
+<p>ChatGPT와 Claude의 예약 작업(Scheduled Tasks)은 사용자가 지정한 시간에 이메일 요약, 캘린더 확인 등의 업무를 자율적으로 수행하는 기능이다. 과거에는 노트북을 덮거나 앱을 끄면 작업이 에러 없이 조용히 멈췄으나, 최근 업데이트로 백그라운드 실행 방식에 중요한 변화가 생겼다. 문서에 숨겨진 세부 조건을 제대로 파악해야 PC가 꺼진 상태에서도 작업이 정상 작동한다.</p>
+<h2>주요 포인트</h2>
+<ul>
+<li>ChatGPT와 Claude 모두 정해진 시간에 자율적으로 업무를 처리하는 '예약 작업(Scheduled Tasks)' 기능을 제공함</li>
+<li>매주 특정 시간(예: 월요일 오전 8시)에 캘린더와 이메일을 요약해 초안을 작성하도록 루틴을 자동화할 수 있음</li>
+<li>작업 생성 시 실행 지침(Prompt), 실행 주기(Cadence), 자동 승인 권한 등을 손쉽게 설정할 수 있음</li>
+<li>과거(7월 이전)에는 로컬 환경 의존성으로 인해 노트북을 닫으면 작업이 조용히 중단되는 한계가 있었음</li>
+<li>노트북을 닫고 자는 동안에도 작업이 완수되도록 하려면 양사 공식 문서의 특정 백그라운드 실행 조건을 충족해야 함</li>
+</ul>
+    </div>
+  <div class="transcript-wrap">
+    <div class="transcript-header">
+      <button class="transcript-toggle" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('visible')">
+        <span class="arr">▼</span> 원문 자막
+      </button>
+      <button class="copy-btn" onclick="var b=this,t=b.nextElementSibling||b;navigator.clipboard.writeText(document.querySelector('#tr-m1S7AxoOD3s').textContent).then(()=>{b.textContent='복사됨';setTimeout(()=>b.textContent='복사',2000)})">복사</button>
+    </div>
+    <pre class="transcript-box" id="tr-m1S7AxoOD3s">So, last night, while you were sleeping, ChatGPT or Claude could have gone through your email, checked your calendar, and left a finished briefing sitting in your drafts, with your laptop closed, sitting in your bag somewhere else. Now, here's the thing. Until a few weeks ago, this didn't actually work. You'd close your laptop, and the whole thing just quietly stopped. No error, nothing. That changed in July, and almost nobody noticed. But, there's one sentence buried in both OpenAI's and Anthropic's documentation that decides whether your task actually runs while you're sleeping. I run an AI consultancy, and honestly, almost nobody I talk to knows it's there. So, I'm going to show you exactly how this works. Let's get into it. So, if you've not heard of this ability of scheduled tasks, both ChatGPT and Claude offer this. So, all you need to do is ask the AI to run a given task at a given time, and it'll do that autonomously for you. A common example that I work with my clients on is I want you to give me an update from what happened over the weekend. So, summarize both the calendar invites, the emails, etc., and do this every Monday at 8:00 a.m. So, it'll run this, and it'll keep running it continuously, giving you updates every single Monday on what's happened. And you can find this both inside of Claude and ChatGPT. I'll quickly show you what that looks like. They've both named it the same thing, which is helpful. So, inside of ChatGPT, I'm inside of ChatGPT work here. On the left-hand side, you can see I have scheduled. So, if I select scheduled, I have my scheduled tasks here. Same thing for Claude. So, now I'm inside of Claude Co-work. Here, you can see on the left-hand side, we have scheduled. So, when I select this, it's the same idea. We have our scheduled tasks here, and then recommendations down here. Now, if I click into either of these, you'll see we have a description of the instructions of what the AI is going to do for that given task, how frequently it's going to run, so you can see this is weekdays at 8:00 a.m., and then what's allowed or not allowed. And you can see this is automatically approving tasks. Same thing applies to ChatGPT. So, if I go into here, I click into an example here, you can see on the left-hand side I have my instructions. I then have exactly what's running and where it's running, and then the cadence of how it's going to run. So, you can see this is weekly Mondays at 7:00. And that's a high level of how to find schedule tasks and also how they're structured internally. And to create these, it's very straightforward. All you have to do is ask the AI to create it for you after you've done a task. Say, create a schedule task for me, and it'll do that for you based on the cadence you've asked for. Now, the question here is what's changed? Well, in the past, before July, when you would create a schedule task, it always ran on your computer, which means that if you shut your computer, if you shut down Claude or ChatGPT, and you walk away, that schedule task won't run cuz it's on your computer. But once you reopen that computer and turn that specific product back on, so ChatGPT or Claude, it'll catch up for what it missed. So, if you have a schedule task that runs daily, say you shut your computer on Monday and open it Thursday, it'll catch up for Tuesday and Wednesday once you reopen the computer and reopen that application. Quick pause in your regular programming. If you're enjoying this video, you're going to enjoy two other things. First off, below is a 30-day AI insight series, completely free. You'll get 30 insights in your inbox of how you can apply AI to your business and your work. The second thing is if you'd like to work with me, below are a series of offerings to see if there's a good fit for the two of us. Now, let's get back in the video. The thing that's changed now is there is an option to have your schedule tasks run in the cloud. And this is going to run on Anthropic or OpenAI's servers, depending on the product you're using. Now, there's a series of caveats associated to doing it inside of their cloud. We'll talk through each one of those in detail later on of figuring out exactly where your task best is suited. Should it be on your computer or in the cloud? The obvious benefit with running it in the cloud is that I can shut my computer. I can walk away. I can do a bunch of travel. And I can still have that schedule task running in the background and pinging me where I've asked to ping me. So, the work keeps happening even if my computer's shut. And this here is the clearest rule that I found that discerns where you should run the task. Should it be on my computer or should be in the cloud? And this is actually from Anthropic's documentation themselves, but this applies to OpenAI as well. They're stating that if a schedule task requires local files or applications, it should only run locally on your computer and not in the cloud. Now, applications, I'm go</pre>
+  </div>
+  </article>
+</main>
+
+<footer>유튜브 구독 정리 · agy 요약 · 2026-08-23 06:01</footer>
+
+
+<script>
+document.querySelectorAll('.nlm-btn').forEach(function(btn){
+  btn.addEventListener('click',function(){
+    navigator.clipboard.writeText('/notebooklm '+btn.dataset.url).then(function(){
+      var orig=btn.innerHTML;btn.innerHTML='✓ 복사됨';btn.classList.add('copied');
+      setTimeout(function(){btn.innerHTML=orig;btn.classList.remove('copied');},2000);
+    });
+  });
+});
+</script>
+
+</body>
+</html>
