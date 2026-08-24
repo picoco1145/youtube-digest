@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>2026-08-25 — 유튜브 구독 정리</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+  :root{--bg:#090e1a;--surface:#111827;--surface2:#1a2235;--border:#1e2d47;--accent:#6c63ff;--accent2:#00d4ff;--text:#e8eaf0;--muted:#7a8499;--radius:14px;}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Pretendard',sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+  header{background:linear-gradient(135deg,#0d1b3e,#1a0533);border-bottom:1px solid var(--border);padding:20px 40px;display:flex;align-items:center;justify-content:space-between;}
+  .nav-back{color:var(--accent2);text-decoration:none;font-size:0.85rem;display:flex;align-items:center;gap:6px}
+  .nav-back:hover{color:#fff}
+  .date-badge{font-size:1.4rem;font-weight:700;letter-spacing:-0.5px;background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+  .count{font-size:0.85rem;color:var(--muted)}
+  main{max-width:900px;margin:0 auto;padding:32px 24px 80px}
+  .video-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;margin-bottom:24px;transition:border-color 0.2s,box-shadow 0.2s;}
+  .video-card:hover{border-color:var(--accent);box-shadow:0 4px 24px rgba(108,99,255,0.15)}
+  .card-top{display:flex;gap:0}
+  .thumb-wrap{flex:0 0 240px;position:relative;overflow:hidden}
+  .thumb-wrap img{width:100%;height:100%;object-fit:cover;transition:transform 0.4s}
+  .video-card:hover .thumb-wrap img{transform:scale(1.05)}
+  .card-info{flex:1;padding:20px;display:flex;flex-direction:column;gap:10px}
+  .card-meta{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+  .ch-tag{font-size:0.72rem;font-weight:600;padding:3px 12px;background:linear-gradient(135deg,rgba(108,99,255,0.2),rgba(0,212,255,0.2));border:1px solid rgba(108,99,255,0.3);border-radius:999px;color:var(--accent2);}
+  .date-tag{font-size:0.72rem;color:var(--muted)}
+  .no-transcript{font-size:0.68rem;padding:2px 8px;background:rgba(255,180,0,0.12);border:1px solid rgba(255,180,0,0.25);border-radius:999px;color:#ffa500;}
+  .video-title{font-size:1rem;font-weight:600;line-height:1.4}
+  .yt-link{display:inline-flex;align-items:center;gap:5px;font-size:0.8rem;color:var(--accent);text-decoration:none;transition:color 0.2s;}
+  .yt-link:hover{color:var(--accent2)}
+  
+  .nlm-btn{display:inline-flex;align-items:center;gap:5px;font-size:0.8rem;color:#fff;
+    background:rgba(108,99,255,0.2);border:1px solid rgba(108,99,255,0.4);border-radius:8px;
+    padding:4px 12px;cursor:pointer;font-family:inherit;transition:all 0.2s;margin-left:8px;}
+  .nlm-btn:hover{background:rgba(108,99,255,0.45);}
+  .nlm-btn.copied{background:rgba(0,200,100,0.2);border-color:rgba(0,200,100,0.4);color:#00c864;}
+
+  .summary-section{border-top:1px solid var(--border);background:var(--surface2);padding:20px 24px;font-size:0.85rem;line-height:1.7;color:#c5cad8;}
+  .summary-section h2{font-size:0.82rem;color:var(--accent2);margin:12px 0 4px}
+  .summary-section h2:first-child{margin-top:0}
+  .summary-section ul{padding-left:18px}
+  .summary-section li{margin-bottom:5px}
+  .transcript-wrap{border-top:1px solid var(--border);padding:14px 24px;background:#0c1220}
+  .transcript-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:0}
+  .transcript-toggle{background:none;border:none;color:var(--muted);font-size:0.8rem;cursor:pointer;font-family:inherit;display:flex;align-items:center;gap:4px;padding:0;transition:color 0.2s;}
+  .transcript-toggle:hover{color:var(--text)}
+  .copy-btn{background:rgba(108,99,255,0.1);border:1px solid rgba(108,99,255,0.3);border-radius:8px;color:var(--accent2);font-size:0.72rem;padding:4px 12px;cursor:pointer;font-family:inherit;transition:all 0.2s;}
+  .copy-btn:hover{background:rgba(108,99,255,0.25);color:#fff}
+  .transcript-box{display:none;margin-top:10px;background:#080d18;border:1px solid var(--border);border-radius:10px;padding:12px 14px;font-size:0.78rem;line-height:1.75;color:#8a95aa;max-height:260px;overflow-y:auto;white-space:pre-wrap;word-break:break-word;}
+  .transcript-box.visible{display:block}
+  footer{text-align:center;padding:24px;font-size:0.75rem;color:var(--muted);border-top:1px solid var(--border)}
+  @media(max-width:640px){.card-top{flex-direction:column}.thumb-wrap{flex:none;height:200px}header{padding:16px}main{padding:16px 12px 60px}}
+</style>
+</head>
+<body>
+
+<header>
+  <a class="nav-back" href="../index.html">← 대시보드로</a>
+  <div>
+    <div class="date-badge">2026-08-25</div>
+    <div class="count">1개 영상</div>
+  </div>
+  <div style="font-size:0.75rem;color:var(--muted)">2026-08-25 06:02 생성</div>
+</header>
+
+<main>
+
+  <article class="video-card">
+    <div class="card-top">
+      <a class="thumb-wrap" href="https://www.youtube.com/watch?v=lH4CDV0vLqM" target="_blank" rel="noopener">
+        <img src="https://i.ytimg.com/vi/lH4CDV0vLqM/hqdefault.jpg" alt="ChatGPT Writes Every Email I Send. Full 20-Minute Setup" loading="lazy"/>
+      </a>
+      <div class="card-info">
+        <div class="card-meta">
+          <span class="ch-tag">Dylan Davis</span>
+          <span class="date-tag">2026-08-25</span>
+          
+        </div>
+        <div class="video-title">ChatGPT Writes Every Email I Send. Full 20-Minute Setup</div>
+        <div style="display:flex;align-items:center;flex-wrap:wrap;gap:4px;margin-top:auto">
+          <a class="yt-link" href="https://www.youtube.com/watch?v=lH4CDV0vLqM" target="_blank" rel="noopener">↗ 유튜브에서 보기</a>
+          <button class="nlm-btn" data-url="https://www.youtube.com/watch?v=lH4CDV0vLqM">📓 NotebookLM</button>
+        </div>
+      </div>
+    </div>
+    <div class="summary-section">
+      <h2>핵심 요약</h2>
+<p>단순히 말투만 모방하는 기존 AI 이메일 작성 방식은 상황과 대상에 따른 미묘한 판단력을 담지 못해 로봇처럼 느껴지기 쉽다. 이메일 유형 분류, 맥락 파악 및 판단, 톤 적용으로 이어지는 3단계 '이메일 맵'을 구축하고 데이터 소스를 연동하면 사람처럼 자연스러운 이메일을 자동으로 작성할 수 있다.</p>
+<h2>주요 포인트</h2>
+<ul>
+<li>**말투 모방의 한계와 판단력의 중요성**: 상황(거절, 온보딩, 단순 감사 등)과 수신자에 따라 작성 방식이 달라지므로, 단순한 말투가 아닌 '판단(Judgment)'을 AI에 반영해야 함</li>
+<li>**3단계 이메일 맵(Email Map) 구조**: 이메일 수신 시 ① 유형/카테고리 분류 ② 관련 맥락 파악 및 판단 적용 ③ 최종 톤 적용 순서로 초안 작성</li>
+<li>**최종 검토 중심의 워크플로우**: AI가 맥락과 판단을 거쳐 완성도 높은 초안을 작성하면, 사용자는 내용 확인 후 클릭 한 번으로 발송</li>
+<li>**필수 데이터 커넥터 연동**: 정확한 사실 기반 작성을 위해 이메일(Gmail, Outlook) 외에도 캘린더, 클라우드 드라이브(Google Drive, OneDrive), 메신저(Slack, Teams) 연동이 필수적임</li>
+</ul>
+    </div>
+  <div class="transcript-wrap">
+    <div class="transcript-header">
+      <button class="transcript-toggle" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('visible')">
+        <span class="arr">▼</span> 원문 자막
+      </button>
+      <button class="copy-btn" onclick="var b=this,t=b.nextElementSibling||b;navigator.clipboard.writeText(document.querySelector('#tr-lH4CDV0vLqM').textContent).then(()=>{b.textContent='복사됨';setTimeout(()=>b.textContent='복사',2000)})">복사</button>
+    </div>
+    <pre class="transcript-box" id="tr-lH4CDV0vLqM">So, I haven't actually written an email from scratch in about 2 years. ChatGPT and Claude write basically every email I send, and no, they don't sound like a robot wrote them. And that's because of one thing most people skip. Most tools just learn your tone, but you don't have one tone. You write differently to a close teammate compared to somebody that you just met. That judgment piece is what nobody teaches the AI. I run an AI consultancy, and honestly, this is the most common thing clients get value from immediately. And it's an AI that writes, sounds, and thinks like them. The whole setup takes about 20 minutes. So, let's get into it. Many of you have different types of emails that you respond to. Sometimes, you have to provide a hard decision. You have to be firm with a no. Or maybe you're introducing a new prospect to the business, and you have to give a lot of facts when you're onboarding that prospect to be a common client. Or maybe it's just a quick thank you email with a few lines. All these are different types of emails you respond to. It's not just the tone, but the judgment applied. And that's why we have to create something that's a bit more extensive than just an AI that sounds like us. The thing that I found that works the best is an email map. That's what I call it. So, when you receive a new email, and you've built this with an AI, the AI is going to do three things. The first thing is the AI is going to figure out what type of email this is. What's the category it fits best inside of. Once it's determined that, then it figures out how to respond to that email. And that comes down to two things. One is what's the associated context I need to gather to respond to here, but also what's the judgment I need to apply to this to then respond in an effective way. After it's figured out these two really important things, then and only then does it apply your tone. And that's when it sounds like you after it's done the hard work of judgment, context, and the category of email. Then what you do is you simply look at the email. If you're happy with it, then you click send. So, what we're trying to do is we're trying to figure out basically how to encapsulate all three of these into an AI for all the types of emails we respond to. And from this email map explanation, you probably understand the importance of connectors or plugins. So, if you're using Chat GPT work or Claude, it doesn't matter. They have all types of different systems you can connect your AI to. So, the obvious thing is connecting your email as the source. So, it could be Gmail, Outlook, doesn't matter. You connect your AI to that. Once you've connected it, don't forget to actually connect the important part here, which is where the facts live. So, you need to connect your calendar, your sources of data, which is probably Google Drive, OneDrive, SharePoint, etc. Also, any potential Slack conversations or Teams conversations. All of these places is where additional contacts lives, and those are the places you go to to respond to emails. We need to make sure the AI has access to those. And both Chat GPT work and Claude have all the plugins and connectors you would need to do this. Now, assuming we've connected the connectors and plugins that we need here, we then move to the steps of actually creating our email map. And this is probably the most important step of all of them, where we're going to point the AI towards our sent folder specifically, because this is where we've actually done the work when we've responded to emails. Quick pause in your video. If you're enjoying this, you're going to enjoy two other things. First off, below is a 30-day AI Insight series, completely free. You'll get 30 insights in your inbox of how you can apply AI to your business and your work. The second thing is if you'd like to work with me, below are a series of offerings to see if there's a good fit between the two of us. Now, let's get back in the video. We're going to ask it to look at probably 5 to 600 sent emails that we've sent in the past, so it can then aggregate all of those insights into a single specification or document that categorizes the emails, the tone, the judgment, etc. And this is where most of the time will be spent. So, the AI is going to work probably for 20 to 30 minutes doing this. When it comes back, then you're going to review the output. And here's the exact prompt that we're actually going to use for that task. I'll go through all this in detail, but know that you can just simply copy and paste this prompt, give it to your AI, and it'll do the work for you. But if you're interested in understanding the details behind the prompt, I'll walk you through that now. So, the first thing here is the what. So, what are we doing here? We're simply telling the AI to look at our sent emails, looking at the last 500 to 600 emails. We then tell it we want it to understand two specific things, the categories of emails, as well as our tone as</pre>
+  </div>
+  </article>
+</main>
+
+<footer>유튜브 구독 정리 · agy 요약 · 2026-08-25 06:02</footer>
+
+
+<script>
+document.querySelectorAll('.nlm-btn').forEach(function(btn){
+  btn.addEventListener('click',function(){
+    navigator.clipboard.writeText('/notebooklm '+btn.dataset.url).then(function(){
+      var orig=btn.innerHTML;btn.innerHTML='✓ 복사됨';btn.classList.add('copied');
+      setTimeout(function(){btn.innerHTML=orig;btn.classList.remove('copied');},2000);
+    });
+  });
+});
+</script>
+
+</body>
+</html>
