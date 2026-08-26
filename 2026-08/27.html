@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>2026-08-27 — 유튜브 구독 정리</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+  :root{--bg:#090e1a;--surface:#111827;--surface2:#1a2235;--border:#1e2d47;--accent:#6c63ff;--accent2:#00d4ff;--text:#e8eaf0;--muted:#7a8499;--radius:14px;}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Pretendard',sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+  header{background:linear-gradient(135deg,#0d1b3e,#1a0533);border-bottom:1px solid var(--border);padding:20px 40px;display:flex;align-items:center;justify-content:space-between;}
+  .nav-back{color:var(--accent2);text-decoration:none;font-size:0.85rem;display:flex;align-items:center;gap:6px}
+  .nav-back:hover{color:#fff}
+  .date-badge{font-size:1.4rem;font-weight:700;letter-spacing:-0.5px;background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+  .count{font-size:0.85rem;color:var(--muted)}
+  main{max-width:900px;margin:0 auto;padding:32px 24px 80px}
+  .video-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;margin-bottom:24px;transition:border-color 0.2s,box-shadow 0.2s;}
+  .video-card:hover{border-color:var(--accent);box-shadow:0 4px 24px rgba(108,99,255,0.15)}
+  .card-top{display:flex;gap:0}
+  .thumb-wrap{flex:0 0 240px;position:relative;overflow:hidden}
+  .thumb-wrap img{width:100%;height:100%;object-fit:cover;transition:transform 0.4s}
+  .video-card:hover .thumb-wrap img{transform:scale(1.05)}
+  .card-info{flex:1;padding:20px;display:flex;flex-direction:column;gap:10px}
+  .card-meta{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+  .ch-tag{font-size:0.72rem;font-weight:600;padding:3px 12px;background:linear-gradient(135deg,rgba(108,99,255,0.2),rgba(0,212,255,0.2));border:1px solid rgba(108,99,255,0.3);border-radius:999px;color:var(--accent2);}
+  .date-tag{font-size:0.72rem;color:var(--muted)}
+  .no-transcript{font-size:0.68rem;padding:2px 8px;background:rgba(255,180,0,0.12);border:1px solid rgba(255,180,0,0.25);border-radius:999px;color:#ffa500;}
+  .video-title{font-size:1rem;font-weight:600;line-height:1.4}
+  .yt-link{display:inline-flex;align-items:center;gap:5px;font-size:0.8rem;color:var(--accent);text-decoration:none;transition:color 0.2s;}
+  .yt-link:hover{color:var(--accent2)}
+  
+  .nlm-btn{display:inline-flex;align-items:center;gap:5px;font-size:0.8rem;color:#fff;
+    background:rgba(108,99,255,0.2);border:1px solid rgba(108,99,255,0.4);border-radius:8px;
+    padding:4px 12px;cursor:pointer;font-family:inherit;transition:all 0.2s;margin-left:8px;}
+  .nlm-btn:hover{background:rgba(108,99,255,0.45);}
+  .nlm-btn.copied{background:rgba(0,200,100,0.2);border-color:rgba(0,200,100,0.4);color:#00c864;}
+
+  .summary-section{border-top:1px solid var(--border);background:var(--surface2);padding:20px 24px;font-size:0.85rem;line-height:1.7;color:#c5cad8;}
+  .summary-section h2{font-size:0.82rem;color:var(--accent2);margin:12px 0 4px}
+  .summary-section h2:first-child{margin-top:0}
+  .summary-section ul{padding-left:18px}
+  .summary-section li{margin-bottom:5px}
+  .transcript-wrap{border-top:1px solid var(--border);padding:14px 24px;background:#0c1220}
+  .transcript-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:0}
+  .transcript-toggle{background:none;border:none;color:var(--muted);font-size:0.8rem;cursor:pointer;font-family:inherit;display:flex;align-items:center;gap:4px;padding:0;transition:color 0.2s;}
+  .transcript-toggle:hover{color:var(--text)}
+  .copy-btn{background:rgba(108,99,255,0.1);border:1px solid rgba(108,99,255,0.3);border-radius:8px;color:var(--accent2);font-size:0.72rem;padding:4px 12px;cursor:pointer;font-family:inherit;transition:all 0.2s;}
+  .copy-btn:hover{background:rgba(108,99,255,0.25);color:#fff}
+  .transcript-box{display:none;margin-top:10px;background:#080d18;border:1px solid var(--border);border-radius:10px;padding:12px 14px;font-size:0.78rem;line-height:1.75;color:#8a95aa;max-height:260px;overflow-y:auto;white-space:pre-wrap;word-break:break-word;}
+  .transcript-box.visible{display:block}
+  footer{text-align:center;padding:24px;font-size:0.75rem;color:var(--muted);border-top:1px solid var(--border)}
+  @media(max-width:640px){.card-top{flex-direction:column}.thumb-wrap{flex:none;height:200px}header{padding:16px}main{padding:16px 12px 60px}}
+</style>
+</head>
+<body>
+
+<header>
+  <a class="nav-back" href="../index.html">← 대시보드로</a>
+  <div>
+    <div class="date-badge">2026-08-27</div>
+    <div class="count">2개 영상</div>
+  </div>
+  <div style="font-size:0.75rem;color:var(--muted)">2026-08-27 06:03 생성</div>
+</header>
+
+<main>
+
+  <article class="video-card">
+    <div class="card-top">
+      <a class="thumb-wrap" href="https://www.youtube.com/watch?v=BIHC6IJNO9I" target="_blank" rel="noopener">
+        <img src="https://i.ytimg.com/vi/BIHC6IJNO9I/hqdefault.jpg" alt="Don’t Automate Anything Until You Run These 4 Numbers" loading="lazy"/>
+      </a>
+      <div class="card-info">
+        <div class="card-meta">
+          <span class="ch-tag">Nicholas Puru</span>
+          <span class="date-tag">2026-08-27</span>
+          
+        </div>
+        <div class="video-title">Don’t Automate Anything Until You Run These 4 Numbers</div>
+        <div style="display:flex;align-items:center;flex-wrap:wrap;gap:4px;margin-top:auto">
+          <a class="yt-link" href="https://www.youtube.com/watch?v=BIHC6IJNO9I" target="_blank" rel="noopener">↗ 유튜브에서 보기</a>
+          <button class="nlm-btn" data-url="https://www.youtube.com/watch?v=BIHC6IJNO9I">📓 NotebookLM</button>
+        </div>
+      </div>
+    </div>
+    <div class="summary-section">
+      <h2>핵심 요약</h2>
+<p>AI 자동화는 가끔 하는 작업이 아니라 팀이 매일 반복하는 단 하나의 업무부터 적용해야 비용을 회수할 수 있다. 시간과 비용을 실제로 투입하기 전에 4가지 핵심 숫자를 미리 계산해 보면 AI 도입이 실제로 이익을 가져다주는지 사전에 명확히 판단할 수 있다.</p>
+<h2>주요 포인트</h2>
+<ul>
+<li>**매일 발생하는 업무 우선 선정**: 1년에 25번 정도만 수행하는 업무는 자동화 비용 회수가 불가능하므로 매일 반복되는 업무(리드 응대, 미수금 관리, 시스템 간 중복 데이터 입력 등)부터 시작해야 함</li>
+<li>**절약되는 시간 계산**: 해당 자동화를 통해 실제로 절감할 수 있는 업무 시간을 파악해야 함</li>
+<li>**초기 연동 비용 산출**: 기존에 사용 중인 소프트웨어 및 시스템과 연동하는 데 드는 비용을 고려해야 함</li>
+<li>**월간 유지 관리 비용 산출**: 자동화 시스템을 매월 정상적으로 유지하고 운영하는 데 들어가는 고정 비용을 파악해야 함</li>
+<li>**조직 정착 및 교육 비용 산출**: 팀원들이 새로운 자동화 방식을 실제로 학습하고 업무에 도입하도록 유도하는 비용을 계산해야 함</li>
+</ul>
+    </div>
+  <div class="transcript-wrap">
+    <div class="transcript-header">
+      <button class="transcript-toggle" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('visible')">
+        <span class="arr">▼</span> 원문 자막
+      </button>
+      <button class="copy-btn" onclick="var b=this,t=b.nextElementSibling||b;navigator.clipboard.writeText(document.querySelector('#tr-BIHC6IJNO9I').textContent).then(()=>{b.textContent='복사됨';setTimeout(()=>b.textContent='복사',2000)})">복사</button>
+    </div>
+    <pre class="transcript-box" id="tr-BIHC6IJNO9I">I spent the past three years consulting businesses on AI. And here's everything that you need to know about using it. First, just start with one job that your team already does every single day. So whether it's calling new leads back or chasing any unpaid invoices or typing the same job details into two systems that do not talk to each other, things that are occurring daily is the bar. Because a job that only runs 25 times a year, it's never going to be paying back what it costs to automate. And then from there, just write down four different numbers. the hours that it saves, what it costs to be connecting to the software that you already run, what it costs to keep it working every month, and what it costs to get your team to actually be using it. So, run this on one daily job this week, and you'll know in real dollars whether AI makes you money before you've even spent a single minute or scent on it. I've already built a sheet that does the math for you with real world price ranges for every number that you can't guess. Comment ne and I'll send it over to</pre>
+  </div>
+  </article>
+  <article class="video-card">
+    <div class="card-top">
+      <a class="thumb-wrap" href="https://www.youtube.com/watch?v=dKotnL8vj2w" target="_blank" rel="noopener">
+        <img src="https://i.ytimg.com/vi/dKotnL8vj2w/hqdefault.jpg" alt="The Hidden Cost of Managing AI Agents Nobody Talks About" loading="lazy"/>
+      </a>
+      <div class="card-info">
+        <div class="card-meta">
+          <span class="ch-tag">Dylan Davis</span>
+          <span class="date-tag">2026-08-27</span>
+          
+        </div>
+        <div class="video-title">The Hidden Cost of Managing AI Agents Nobody Talks About</div>
+        <div style="display:flex;align-items:center;flex-wrap:wrap;gap:4px;margin-top:auto">
+          <a class="yt-link" href="https://www.youtube.com/watch?v=dKotnL8vj2w" target="_blank" rel="noopener">↗ 유튜브에서 보기</a>
+          <button class="nlm-btn" data-url="https://www.youtube.com/watch?v=dKotnL8vj2w">📓 NotebookLM</button>
+        </div>
+      </div>
+    </div>
+    <div class="summary-section">
+      <h2>핵심 요약</h2>
+<p>AI 에이전트를 무작정 늘리면 직접 일하는 대신 에이전트를 감시하고 수정하는 관리 업무에 갇히게 된다. 정교한 설계 없이 에이전트 수만 늘리면 검토 부담이 커져 오히려 AI 도입의 시간 절약 효과가 사라진다.</p>
+<h2>주요 포인트</h2>
+<ul>
+<li>**역할의 전환**: 실무자에서 여러 AI 에이전트의 결과물을 지속적으로 검토하고 조율하는 관리자로 역할이 바뀜</li>
+<li>**관리 과부하 발생**: 에이전트를 제대로 설계하지 않고 무작정 늘리면 사후 검토와 분석 부담이 커져 생산성이 저하됨</li>
+<li>**숨은 비용 1 (부실한 초기 지시)**: 처음 업무를 모호하게 설명하면 에이전트가 기대에 못 미쳐 계속해서 재설명하는 낭비가 발생함</li>
+<li>**숨은 비용 2 (실행 과정 감시)**: 에이전트가 작동하는 10~30분 동안 화면만 지켜보며 시간을 허비하지 말고 다른 업무를 처리해야 함</li>
+<li>**숨은 비용 3 (결과물 검증 및 오류 수정)**: 잘못 구축된 에이전트의 산출물을 일일이 확인하고 고치는 데 과도한 리소스가 투입됨</li>
+</ul>
+    </div>
+  <div class="transcript-wrap">
+    <div class="transcript-header">
+      <button class="transcript-toggle" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('visible')">
+        <span class="arr">▼</span> 원문 자막
+      </button>
+      <button class="copy-btn" onclick="var b=this,t=b.nextElementSibling||b;navigator.clipboard.writeText(document.querySelector('#tr-dKotnL8vj2w').textContent).then(()=>{b.textContent='복사됨';setTimeout(()=>b.textContent='복사',2000)})">복사</button>
+    </div>
+    <pre class="transcript-box" id="tr-dKotnL8vj2w">There's an interesting pattern that I keep seeing with AI and it never starts with something going wrong. It actually starts with a win. Someone gets their first AI agent working and it feels like magic. So, they build 10 more and a few weeks later they come to me feeling completely overwhelmed. I run an AI consult and this comes up with almost every single one of my clients and the reason is almost always the same. Every agent that you build still needs someone to check it, fix it, and keep it on track. And that someone ends up being you. So, let me show you where that time actually goes and how to build agents that end up saving you time instead of taking it. Let's get into it. For those of you that are actively using AI on a day-to-day basis, the way that work is shaped is starting to change. In the past, you probably spent most of your time actually doing the work. So, you're doing the research, you're writing, you're building things. But now that you've adopted AI, AI is starting to do a lot of the work for you. So your job has shifted and now you're starting to turn into a manager, an orchestrator, or a reviewer. There's different words for this, but it's all the same thing. You have all these different AIs or agents that are actually doing work for you. What you're doing is you're reviewing their output to make sure that it met your expectations. And then this loop just continues. It does the work and you review the output. And what people don't realize is that as this shift occurs and you start to create many AIs that are working on your behalf, if you create too many incorrectly, the burden actually goes back to you and the benefit of AI starts to degrade. And that's where the overwhelm comes from. You have too many AIs working simultaneously. They're likely poorly created and that means you're having to do a lot of checking and analyzing afterwards. And that's the hidden cost. There actually five specific hidden costs that I want to highlight here for you. So the very first hidden cost actually happens before the agent ever even exists. And that's when you're explaining the work to the AI. If you explain the work to the AI poorly and your ask isn't very good, then you're likely going to have to continually keep explaining yourself over time as the AI doesn't meet your expectations over and over and over. That's the first one. So, this next one might seem a little weird, but I see it happen all the time where when you start an AI and you have it work for 10 minutes, 15 minutes, 30 minutes, even an hour, what you do is you end up actually watching the AI work, which counteracts the whole point of the AI doing the work for you in the first place. So, instead of you watching the AI work, you should go off and do something else and then come back when it's finished. So don't get distracted by watching the AI do its stuff. That's just another hidden cost. So the next one here is checking. So let's say that you built an AI and when you built it, it was built poorly. So when the output comes out, you have to keep checking the output because it's not meeting expectations. But that's the first part. The second part is that when you check the output, you have to read the entire thing. And again, that's going to take way too much time. So instead, we want the AI to create the output as well as a distilled version of it so we can quickly review that to make sure the output meets our expectations. And that's for some tasks, not all, but some. That's our third one. Our fourth one is cleaning things up. So this goes back to the point that AI can be overly verbose and also overly aggressive. So if you again don't constrain the AI in the right way, it could create too many files in too many different locations and you have to clean it up afterwards. Quick pause in your video. If you're enjoying this, you're going to enjoy two other things. First off, Blow is a 30-day AI insight series, completely free. You'll get 30 insights in your inbox of how you can apply AI to your business and your work. The second thing is if you'd like to work with me, Blow a series of offerings to see if there's a good fit between the two of us. Now, let's get back in the video. And then the final one is deciding. So, this is where the AI keeps asking for your input over and over and over, seeking decisions from you as well as answering questions for it. And depending on the task, we should actually outsource some of that judgment to the AI so we're not doing it ourselves. So, there's many different costs. These are the primary five that I've seen most frequently. And that's why people get overwhelmed when they have too many agents in the first place. But there's a way to fix this. There's specific rules that we need to follow when creating different agents. So when we're monitoring them and managing them over time, the burden isn't as high on us and we can get more leverage for these tools, not being overwhelmed. There are three primary c</pre>
+  </div>
+  </article>
+</main>
+
+<footer>유튜브 구독 정리 · agy 요약 · 2026-08-27 06:03</footer>
+
+
+<script>
+document.querySelectorAll('.nlm-btn').forEach(function(btn){
+  btn.addEventListener('click',function(){
+    navigator.clipboard.writeText('/notebooklm '+btn.dataset.url).then(function(){
+      var orig=btn.innerHTML;btn.innerHTML='✓ 복사됨';btn.classList.add('copied');
+      setTimeout(function(){btn.innerHTML=orig;btn.classList.remove('copied');},2000);
+    });
+  });
+});
+</script>
+
+</body>
+</html>
