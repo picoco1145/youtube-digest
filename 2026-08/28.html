@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>2026-08-28 — 유튜브 구독 정리</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+  :root{--bg:#090e1a;--surface:#111827;--surface2:#1a2235;--border:#1e2d47;--accent:#6c63ff;--accent2:#00d4ff;--text:#e8eaf0;--muted:#7a8499;--radius:14px;}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Pretendard',sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+  header{background:linear-gradient(135deg,#0d1b3e,#1a0533);border-bottom:1px solid var(--border);padding:20px 40px;display:flex;align-items:center;justify-content:space-between;}
+  .nav-back{color:var(--accent2);text-decoration:none;font-size:0.85rem;display:flex;align-items:center;gap:6px}
+  .nav-back:hover{color:#fff}
+  .date-badge{font-size:1.4rem;font-weight:700;letter-spacing:-0.5px;background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+  .count{font-size:0.85rem;color:var(--muted)}
+  main{max-width:900px;margin:0 auto;padding:32px 24px 80px}
+  .video-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;margin-bottom:24px;transition:border-color 0.2s,box-shadow 0.2s;}
+  .video-card:hover{border-color:var(--accent);box-shadow:0 4px 24px rgba(108,99,255,0.15)}
+  .card-top{display:flex;gap:0}
+  .thumb-wrap{flex:0 0 240px;position:relative;overflow:hidden}
+  .thumb-wrap img{width:100%;height:100%;object-fit:cover;transition:transform 0.4s}
+  .video-card:hover .thumb-wrap img{transform:scale(1.05)}
+  .card-info{flex:1;padding:20px;display:flex;flex-direction:column;gap:10px}
+  .card-meta{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+  .ch-tag{font-size:0.72rem;font-weight:600;padding:3px 12px;background:linear-gradient(135deg,rgba(108,99,255,0.2),rgba(0,212,255,0.2));border:1px solid rgba(108,99,255,0.3);border-radius:999px;color:var(--accent2);}
+  .date-tag{font-size:0.72rem;color:var(--muted)}
+  .no-transcript{font-size:0.68rem;padding:2px 8px;background:rgba(255,180,0,0.12);border:1px solid rgba(255,180,0,0.25);border-radius:999px;color:#ffa500;}
+  .video-title{font-size:1rem;font-weight:600;line-height:1.4}
+  .yt-link{display:inline-flex;align-items:center;gap:5px;font-size:0.8rem;color:var(--accent);text-decoration:none;transition:color 0.2s;}
+  .yt-link:hover{color:var(--accent2)}
+  
+  .nlm-btn{display:inline-flex;align-items:center;gap:5px;font-size:0.8rem;color:#fff;
+    background:rgba(108,99,255,0.2);border:1px solid rgba(108,99,255,0.4);border-radius:8px;
+    padding:4px 12px;cursor:pointer;font-family:inherit;transition:all 0.2s;margin-left:8px;}
+  .nlm-btn:hover{background:rgba(108,99,255,0.45);}
+  .nlm-btn.copied{background:rgba(0,200,100,0.2);border-color:rgba(0,200,100,0.4);color:#00c864;}
+
+  .summary-section{border-top:1px solid var(--border);background:var(--surface2);padding:20px 24px;font-size:0.85rem;line-height:1.7;color:#c5cad8;}
+  .summary-section h2{font-size:0.82rem;color:var(--accent2);margin:12px 0 4px}
+  .summary-section h2:first-child{margin-top:0}
+  .summary-section ul{padding-left:18px}
+  .summary-section li{margin-bottom:5px}
+  .transcript-wrap{border-top:1px solid var(--border);padding:14px 24px;background:#0c1220}
+  .transcript-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:0}
+  .transcript-toggle{background:none;border:none;color:var(--muted);font-size:0.8rem;cursor:pointer;font-family:inherit;display:flex;align-items:center;gap:4px;padding:0;transition:color 0.2s;}
+  .transcript-toggle:hover{color:var(--text)}
+  .copy-btn{background:rgba(108,99,255,0.1);border:1px solid rgba(108,99,255,0.3);border-radius:8px;color:var(--accent2);font-size:0.72rem;padding:4px 12px;cursor:pointer;font-family:inherit;transition:all 0.2s;}
+  .copy-btn:hover{background:rgba(108,99,255,0.25);color:#fff}
+  .transcript-box{display:none;margin-top:10px;background:#080d18;border:1px solid var(--border);border-radius:10px;padding:12px 14px;font-size:0.78rem;line-height:1.75;color:#8a95aa;max-height:260px;overflow-y:auto;white-space:pre-wrap;word-break:break-word;}
+  .transcript-box.visible{display:block}
+  footer{text-align:center;padding:24px;font-size:0.75rem;color:var(--muted);border-top:1px solid var(--border)}
+  @media(max-width:640px){.card-top{flex-direction:column}.thumb-wrap{flex:none;height:200px}header{padding:16px}main{padding:16px 12px 60px}}
+</style>
+</head>
+<body>
+
+<header>
+  <a class="nav-back" href="../index.html">← 대시보드로</a>
+  <div>
+    <div class="date-badge">2026-08-28</div>
+    <div class="count">3개 영상</div>
+  </div>
+  <div style="font-size:0.75rem;color:var(--muted)">2026-08-29 06:01 생성</div>
+</header>
+
+<main>
+
+  <article class="video-card">
+    <div class="card-top">
+      <a class="thumb-wrap" href="https://www.youtube.com/watch?v=PYjbeY8sGLs" target="_blank" rel="noopener">
+        <img src="https://i.ytimg.com/vi/PYjbeY8sGLs/hqdefault.jpg" alt="I Cloned Calendly and Now It’s Free Forever" loading="lazy"/>
+      </a>
+      <div class="card-info">
+        <div class="card-meta">
+          <span class="ch-tag">Nate Herk</span>
+          <span class="date-tag">2026-08-28</span>
+          
+        </div>
+        <div class="video-title">I Cloned Calendly and Now It’s Free Forever</div>
+        <div style="display:flex;align-items:center;flex-wrap:wrap;gap:4px;margin-top:auto">
+          <a class="yt-link" href="https://www.youtube.com/watch?v=PYjbeY8sGLs" target="_blank" rel="noopener">↗ 유튜브에서 보기</a>
+          <button class="nlm-btn" data-url="https://www.youtube.com/watch?v=PYjbeY8sGLs">📓 NotebookLM</button>
+        </div>
+      </div>
+    </div>
+    <div class="summary-section">
+      <h2>핵심 요약</h2>
+<p>수조 원대 기업 가치를 지닌 캘린들리(Calendly)의 핵심 기능을 단 1주일 만에 프롬프트 몇 개로 복제한 'Snag Time'을 직접 개발했다. 워크스페이스 관리부터 일정 예약 및 Stripe 연동 유료 결제까지 지원하며, Vercel 등을 통해 완전 무료로 배포·운영할 수 있다. 제작자는 이 프로젝트의 소스코드와 셋업 가이드를 무료 커뮤니티를 통해 전면 무료로 배포하고 있다.</p>
+<h2>주요 포인트</h2>
+<ul>
+<li>**초고속 클론 개발**: 막대한 투자를 유치한 캘린들리 및 Cal.com의 핵심 기능을 프롬프트 기반으로 1주일 만에 구현함.</li>
+<li>**주요 기능 완비**: 예약 대시보드, 일정 변경/취소, 워크스페이스 브랜딩, 팀원 권한 관리 등 필수 기능 지원.</li>
+<li>**유료 예약 지원**: Stripe 결제 시스템을 연동하여 유료 상담 및 세션 예약 기능 처리 가능.</li>
+<li>**무료 호스팅 및 배포**: 로컬 환경뿐만 아니라 Vercel, Google 계정 연동, 백엔드 DB 구성을 통해 영구 무료 운영 가능.</li>
+<li>**무료 리소스 배포**: 제작자의 Skool 커뮤니티 리소스를 통해 하루 만에 구축 가능한 전체 셋업 가이드 제공.</li>
+</ul>
+    </div>
+  <div class="transcript-wrap">
+    <div class="transcript-header">
+      <button class="transcript-toggle" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('visible')">
+        <span class="arr">▼</span> 원문 자막
+      </button>
+      <button class="copy-btn" onclick="var b=this,t=b.nextElementSibling||b;navigator.clipboard.writeText(document.querySelector('#tr-PYjbeY8sGLs').textContent).then(()=>{b.textContent='복사됨';setTimeout(()=>b.textContent='복사',2000)})">복사</button>
+    </div>
+    <pre class="transcript-box" id="tr-PYjbeY8sGLs">So, I just built a clone of Kalanley and it's completely free for me to run. Kalanley has an estimated valuation of $3 billion and competitors like Cal.com have a valuation of around $150 million and have raised tens of millions of dollars. But in one week, I was able to clone the core functionality of it with just a few prompts and now it's free for me. So, in this video, I'm going to show you guys what I built, give it away for free, show you how you can get set up for yourself, and talk about exactly how much this cost me to actually build. So, let's not waste any time and just get straight into today's video. All right, so just going to jump right in. This is called Snag Time. You can see that we have to sign in. I've already created an account. So, I'm just going to go ahead and log in. And now we are at the home screen. You can see we have an overview. We have my branding. This is my workspace called Upet AI. I can see my upcoming bookings. I can see how many I've had this month. I can see how many hours I've booked and my published links. So, how many different event types I have. I can see all of my upcoming bookings right here. And I could go in find some more details. I could also reschedule or cancel. So, if you guys have used Calendarly or stuff like cal.com before, it's very similar. You're getting the same functionality. I can come down here to my settings and I can change my workspace, my password, my profile photo. I can invite other members and have different like permissions whether they're a member or an admin. And I can set up my workspace, image, colors, descriptions, stuff like that. So, what I thought I'd show you real quick is what is an event type and how does that actually work? So, if I go to my event types, you can see that I have a revenue strategy session. I have this test and all of these were pretty much made during testing. I've made a few of these myself, like the paid sculping session. Yes, I've connected Stripe. So you can actually book in paid calls. And then we've got this regular strategy call. So let me first just do a simple one real quick. And by the way, all of these say local host, meaning right now I'm running all of this locally. So in order to actually get this up and running so you can send, you know, links to clients and have them book in, you'd have to put it to some sort of public domain on let's just say Versell and then all of this is fully working. So when you get in here to set this up, you're just going to have to connect things like your Google account, a backend database, and your Stripe account. And if you guys want to get this for free, all you have to do is go to my free school community, which looks like this. The link is in the description. You'll go to classroom, and you'll go to all YouTube resources. You'll be able to grab the whole setup guide in there and get set up in one day. So, anyways, let me go ahead and copy this link, open up a new tab, paste that in here, and show you guys what that actually looks like. This booking flow, you can see that I've set up for this to be the description. I could obviously change that. This is coming through as our custom branding, and I'm going to be able to go ahead and choose a date and time. So, this is live to my real calendar. I'll go over to the actual calendar. We're looking at Friday. You can see that I can only book in from 2 to about 3 and then from 4 to 4:30. And this is the real calendar. So, you can see all day tomorrow is blocked off in the morning and then 3:00 to 4 is blocked off. So, this is coming through as accurate. And then if I go to like next week, there's nothing at all next week besides these two calls. Um 9:00 a.m. to 11:00 a.m. on Monday. And if we come back into the booking link and I go to Monday, you should see that we don't have 9:00 a.m. up until 11:00 a.m. So, this is syncing live. If I was to on Monday real quick put in some big block from like 1 till 6. We'll just call this busy. We go back over here. Oops, wrong tab. We just give this a quick refresh. And now if I go to Monday, all those times are blocked off. So it's syncing live. Anyways, I'm going to go to Friday and I'm just going to book in for 4:15. And we're going to move on to the next screen. This is where we can obviously put in some information. So I'm just going to put in Nate uh sample email address, which actually is real. We're just going to call this test and test. And then we can go ahead and review the booking. This page though, I could ask more questions when I create an event type. So, I'll show you guys that in a sec. But then I'm able to just go ahead and confirm the booking. And then this is the screen that the user who is confirming or setting up the booking sees. They get a little notification. We can reschedule or cancel it. And then if I go back to my calendar and I go to Friday, we now see that we have the strategy call with that email address that put that in right there. And then right her</pre>
+  </div>
+  </article>
+  <article class="video-card">
+    <div class="card-top">
+      <a class="thumb-wrap" href="https://www.youtube.com/watch?v=O9Gn-EwcwCE" target="_blank" rel="noopener">
+        <img src="https://i.ytimg.com/vi/O9Gn-EwcwCE/hqdefault.jpg" alt="비싼 영상 생성 도구를 대체하는 자동화 5단계" loading="lazy"/>
+      </a>
+      <div class="card-info">
+        <div class="card-meta">
+          <span class="ch-tag">AIMAX_PD</span>
+          <span class="date-tag">2026-08-28</span>
+          
+        </div>
+        <div class="video-title">비싼 영상 생성 도구를 대체하는 자동화 5단계</div>
+        <div style="display:flex;align-items:center;flex-wrap:wrap;gap:4px;margin-top:auto">
+          <a class="yt-link" href="https://www.youtube.com/watch?v=O9Gn-EwcwCE" target="_blank" rel="noopener">↗ 유튜브에서 보기</a>
+          <button class="nlm-btn" data-url="https://www.youtube.com/watch?v=O9Gn-EwcwCE">📓 NotebookLM</button>
+        </div>
+      </div>
+    </div>
+    <div class="summary-section">
+      <h2>핵심 요약</h2>
+<p>클로드의 스킬 지침과 AI API를 연동해 제품 링크만으로 광고 영상을 제작하는 자동화 워크플로우다. 고가의 월 정액제 툴 대신 사용량 기반 선불 종량제 API와 자동화 스크립트를 활용해 제작 비용과 시간을 대폭 줄일 수 있다.</p>
+<h2>주요 포인트</h2>
+<ul>
+<li>월 정액제 대신 쓴 만큼 차감되는 선불 종량제 AI API 연동</li>
+<li>작업 순서와 저장 경로를 정의하는 클로드 스킬 파일 등록 (MCP와 구분)</li>
+<li>쇼핑몰 제품 링크 입력 시 광고용 이미지 자동 분리 및 추출</li>
+<li>생성된 결과물을 로컬 폴더나 구글 드라이브에 순차적으로 자동 저장</li>
+<li>여러 상품 링크를 한 번에 처리해 대량 광고 영상 제작 공정 단축</li>
+</ul>
+    </div>
+  <div class="transcript-wrap">
+    <div class="transcript-header">
+      <button class="transcript-toggle" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('visible')">
+        <span class="arr">▼</span> 원문 자막
+      </button>
+      <button class="copy-btn" onclick="var b=this,t=b.nextElementSibling||b;navigator.clipboard.writeText(document.querySelector('#tr-O9Gn-EwcwCE').textContent).then(()=>{b.textContent='복사됨';setTimeout(()=>b.textContent='복사',2000)})">복사</button>
+    </div>
+    <pre class="transcript-box" id="tr-O9Gn-EwcwCE">이 프로그램 대박입니다. 클로드의 스킬 지침과 AI API를 연결하면 제품 링크 하나로 광고 영상 제작을 자동화할 수 있습니다. 다섯 가지 방법 저장하고 끝까지 보세요. 첫째, 월 정액제 대신 API를 연결하세요. AI는 미리 충전한 크레딧에서 사용량만큼 차감되는 선불 종량제입니다. 완전 무료는 아닙니다. 둘째, 클로드 스킬 파일을 등록하세요. 반복할 작업과 저장 위치를 적어두면 클로드가 적어둔 순서대로 실행합니다. 스킬과 MCP는 같은 기능이 아닙니다. 셋째, 제품 링크로 이미지를 추출하세요. 틱톡쇼 상품 링크를 넣으면 제품 이미지를 분리하고 광고용 이미지로 다시 [음악] 모델 사용료는 별도입니다. 다섯째, 결과를 로컬 폴더나 구글 드라이브에 저장하세요. 여러 제품을 처리할 때도 생성 결과가 지정한 위치의 차례로 쌓입니다. 8분짜리 영상 내용을 모두 정리했습니다.이 이 자료 궁금하신 분들은 채널을 구독후 프로필 링크를 확인하세요.</pre>
+  </div>
+  </article>
+  <article class="video-card">
+    <div class="card-top">
+      <a class="thumb-wrap" href="https://www.youtube.com/watch?v=47dlbGXJ9nM" target="_blank" rel="noopener">
+        <img src="https://i.ytimg.com/vi/47dlbGXJ9nM/hqdefault.jpg" alt="옵시디언과 클로드 코드로 사업 자료를 찾는 5단계" loading="lazy"/>
+      </a>
+      <div class="card-info">
+        <div class="card-meta">
+          <span class="ch-tag">AIMAX_PD</span>
+          <span class="date-tag">2026-08-28</span>
+          
+        </div>
+        <div class="video-title">옵시디언과 클로드 코드로 사업 자료를 찾는 5단계</div>
+        <div style="display:flex;align-items:center;flex-wrap:wrap;gap:4px;margin-top:auto">
+          <a class="yt-link" href="https://www.youtube.com/watch?v=47dlbGXJ9nM" target="_blank" rel="noopener">↗ 유튜브에서 보기</a>
+          <button class="nlm-btn" data-url="https://www.youtube.com/watch?v=47dlbGXJ9nM">📓 NotebookLM</button>
+        </div>
+      </div>
+    </div>
+    <div class="summary-section">
+      <h2>핵심 요약</h2>
+<p>클로드 코드와 옵시디언을 동일한 로컬 폴더에 연동하여 비즈니스 문서를 효율적으로 탐색하고 초안을 작성하는 '세컨드 브레인' 구축 방법이다. 시스템 프롬프트 역할을 하는 설정 파일과 기존 업무 자료를 결합해 반복 작업을 줄이고, 이를 고수익 구축 대행 상품으로 발전시키는 비즈니스 전략을 소개한다.</p>
+<h2>주요 포인트</h2>
+<ul>
+<li>**로컬 폴더 연동**: 작업 폴더에서 클로드 코드를 직접 실행해 로컬 문서를 읽고 초안을 생성함</li>
+<li>**옵시디언 보관함 동기화**: 별도 DB 이전 없이 동일 폴더를 옵시디언으로 열어 사람이 정리하고 AI가 활용하는 구조 마련</li>
+<li>**CLAUDE.md 두뇌 파일 생성**: 업무 목표, 대상 고객, 문체, 작업 규칙을 정의해 매번 배경을 재설명하는 번거로움 해소</li>
+<li>**템플릿 및 정보 통합**: 영업 스크립트와 고객사 정보를 결합해 맞춤형 대본을 생성하되 최종 결과물은 사람이 검토</li>
+<li>**세컨드 브레인 상품화**: 개인 워크플로우에 그치지 않고 타 기업 대상 세컨드 브레인 구축 서비스를 유료 모델로 제안</li>
+</ul>
+    </div>
+  <div class="transcript-wrap">
+    <div class="transcript-header">
+      <button class="transcript-toggle" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('visible')">
+        <span class="arr">▼</span> 원문 자막
+      </button>
+      <button class="copy-btn" onclick="var b=this,t=b.nextElementSibling||b;navigator.clipboard.writeText(document.querySelector('#tr-47dlbGXJ9nM').textContent).then(()=>{b.textContent='복사됨';setTimeout(()=>b.textContent='복사',2000)})">복사</button>
+    </div>
+    <pre class="transcript-box" id="tr-47dlbGXJ9nM">이 남자 미쳤습니다. 클로드 코드와 옵시디언을 한 폴더에 연결해 자신의 비즈니스 자료를 읽는 두 번째 뇌를 만든 올리버 라스무센. 그가 공개한 비즈니스용 세컨드 브레인을 만드는 다섯 가지 방법 저장하고 끝까지 보세요. 첫째, 클러드 코드와 로컬 폴더를 연결하세요. 컴퓨터의 작업 폴더를 만들고 그 폴더에서 클로드 코드를 실행하면 필요한 문서를 읽고 초안을 만들 수 있습니다. 둘째, 같은 폴더를 옵시디언 보관함으로 여세요. 별도 데이터베이스로 옮기지 않아도 막다운 메모를 사람이 정리하고 클로드가 필요한 파일을 찾아 활용할 수 있습니다. 셋째, 클로드 MD 두뇌 파일을 만드세요. 업무 목표와 핵심 가치, 대상 고객, 글 쓰기 스타일, 반복 작업 규칙을 적어두면 매번 같은 배경을 다시 설명하는 일을 줄일 수 있습니다. 넷째, 비즈니스 정보와 템플릿을 한 곳에 모으세요. 기존 영업 스크립트와 잠재 고객의 회사 정보를 함께 읽히면 회사별 통화대본 초안을 만드는데 활용할 수 있습니다. 결과는 반드시 사람이 검토해야 합니다. 다섯째, 구축 서비스를 상품으로 제안하세요. 제작자는이 세컨드 브레인 구축을 고객당 2,500달러에 판매하고 월을 확보하면 15,000달러가 된다고 계산합니다.이는 제작자의 사업 제한이며 수익을 보장하는 수치는 아닙니다. 11분짜리 영상 내용을 모두 정리했습니다.이 이 자료 궁금하신 분들은 채널을 구독 후 링크를 확인하세요.</pre>
+  </div>
+  </article>
+</main>
+
+<footer>유튜브 구독 정리 · agy 요약 · 2026-08-29 06:01</footer>
+
+
+<script>
+document.querySelectorAll('.nlm-btn').forEach(function(btn){
+  btn.addEventListener('click',function(){
+    navigator.clipboard.writeText('/notebooklm '+btn.dataset.url).then(function(){
+      var orig=btn.innerHTML;btn.innerHTML='✓ 복사됨';btn.classList.add('copied');
+      setTimeout(function(){btn.innerHTML=orig;btn.classList.remove('copied');},2000);
+    });
+  });
+});
+</script>
+
+</body>
+</html>

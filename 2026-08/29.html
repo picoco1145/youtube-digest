@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>2026-08-29 — 유튜브 구독 정리</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+  :root{--bg:#090e1a;--surface:#111827;--surface2:#1a2235;--border:#1e2d47;--accent:#6c63ff;--accent2:#00d4ff;--text:#e8eaf0;--muted:#7a8499;--radius:14px;}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Pretendard',sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+  header{background:linear-gradient(135deg,#0d1b3e,#1a0533);border-bottom:1px solid var(--border);padding:20px 40px;display:flex;align-items:center;justify-content:space-between;}
+  .nav-back{color:var(--accent2);text-decoration:none;font-size:0.85rem;display:flex;align-items:center;gap:6px}
+  .nav-back:hover{color:#fff}
+  .date-badge{font-size:1.4rem;font-weight:700;letter-spacing:-0.5px;background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+  .count{font-size:0.85rem;color:var(--muted)}
+  main{max-width:900px;margin:0 auto;padding:32px 24px 80px}
+  .video-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;margin-bottom:24px;transition:border-color 0.2s,box-shadow 0.2s;}
+  .video-card:hover{border-color:var(--accent);box-shadow:0 4px 24px rgba(108,99,255,0.15)}
+  .card-top{display:flex;gap:0}
+  .thumb-wrap{flex:0 0 240px;position:relative;overflow:hidden}
+  .thumb-wrap img{width:100%;height:100%;object-fit:cover;transition:transform 0.4s}
+  .video-card:hover .thumb-wrap img{transform:scale(1.05)}
+  .card-info{flex:1;padding:20px;display:flex;flex-direction:column;gap:10px}
+  .card-meta{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+  .ch-tag{font-size:0.72rem;font-weight:600;padding:3px 12px;background:linear-gradient(135deg,rgba(108,99,255,0.2),rgba(0,212,255,0.2));border:1px solid rgba(108,99,255,0.3);border-radius:999px;color:var(--accent2);}
+  .date-tag{font-size:0.72rem;color:var(--muted)}
+  .no-transcript{font-size:0.68rem;padding:2px 8px;background:rgba(255,180,0,0.12);border:1px solid rgba(255,180,0,0.25);border-radius:999px;color:#ffa500;}
+  .video-title{font-size:1rem;font-weight:600;line-height:1.4}
+  .yt-link{display:inline-flex;align-items:center;gap:5px;font-size:0.8rem;color:var(--accent);text-decoration:none;transition:color 0.2s;}
+  .yt-link:hover{color:var(--accent2)}
+  
+  .nlm-btn{display:inline-flex;align-items:center;gap:5px;font-size:0.8rem;color:#fff;
+    background:rgba(108,99,255,0.2);border:1px solid rgba(108,99,255,0.4);border-radius:8px;
+    padding:4px 12px;cursor:pointer;font-family:inherit;transition:all 0.2s;margin-left:8px;}
+  .nlm-btn:hover{background:rgba(108,99,255,0.45);}
+  .nlm-btn.copied{background:rgba(0,200,100,0.2);border-color:rgba(0,200,100,0.4);color:#00c864;}
+
+  .summary-section{border-top:1px solid var(--border);background:var(--surface2);padding:20px 24px;font-size:0.85rem;line-height:1.7;color:#c5cad8;}
+  .summary-section h2{font-size:0.82rem;color:var(--accent2);margin:12px 0 4px}
+  .summary-section h2:first-child{margin-top:0}
+  .summary-section ul{padding-left:18px}
+  .summary-section li{margin-bottom:5px}
+  .transcript-wrap{border-top:1px solid var(--border);padding:14px 24px;background:#0c1220}
+  .transcript-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:0}
+  .transcript-toggle{background:none;border:none;color:var(--muted);font-size:0.8rem;cursor:pointer;font-family:inherit;display:flex;align-items:center;gap:4px;padding:0;transition:color 0.2s;}
+  .transcript-toggle:hover{color:var(--text)}
+  .copy-btn{background:rgba(108,99,255,0.1);border:1px solid rgba(108,99,255,0.3);border-radius:8px;color:var(--accent2);font-size:0.72rem;padding:4px 12px;cursor:pointer;font-family:inherit;transition:all 0.2s;}
+  .copy-btn:hover{background:rgba(108,99,255,0.25);color:#fff}
+  .transcript-box{display:none;margin-top:10px;background:#080d18;border:1px solid var(--border);border-radius:10px;padding:12px 14px;font-size:0.78rem;line-height:1.75;color:#8a95aa;max-height:260px;overflow-y:auto;white-space:pre-wrap;word-break:break-word;}
+  .transcript-box.visible{display:block}
+  footer{text-align:center;padding:24px;font-size:0.75rem;color:var(--muted);border-top:1px solid var(--border)}
+  @media(max-width:640px){.card-top{flex-direction:column}.thumb-wrap{flex:none;height:200px}header{padding:16px}main{padding:16px 12px 60px}}
+</style>
+</head>
+<body>
+
+<header>
+  <a class="nav-back" href="../index.html">← 대시보드로</a>
+  <div>
+    <div class="date-badge">2026-08-29</div>
+    <div class="count">1개 영상</div>
+  </div>
+  <div style="font-size:0.75rem;color:var(--muted)">2026-08-29 06:01 생성</div>
+</header>
+
+<main>
+
+  <article class="video-card">
+    <div class="card-top">
+      <a class="thumb-wrap" href="https://www.youtube.com/watch?v=QCSmTnd2TdE" target="_blank" rel="noopener">
+        <img src="https://i.ytimg.com/vi/QCSmTnd2TdE/hqdefault.jpg" alt="How I Grew My Instagram to 70K+ With Claude (Complete Beginner Guide)" loading="lazy"/>
+      </a>
+      <div class="card-info">
+        <div class="card-meta">
+          <span class="ch-tag">Nicholas Puru</span>
+          <span class="date-tag">2026-08-29</span>
+          
+        </div>
+        <div class="video-title">How I Grew My Instagram to 70K+ With Claude (Complete Beginner Guide)</div>
+        <div style="display:flex;align-items:center;flex-wrap:wrap;gap:4px;margin-top:auto">
+          <a class="yt-link" href="https://www.youtube.com/watch?v=QCSmTnd2TdE" target="_blank" rel="noopener">↗ 유튜브에서 보기</a>
+          <button class="nlm-btn" data-url="https://www.youtube.com/watch?v=QCSmTnd2TdE">📓 NotebookLM</button>
+        </div>
+      </div>
+    </div>
+    <div class="summary-section">
+      <h2>핵심 요약</h2>
+<p>월 20달러 수준의 클로드 기반 자동화 시스템을 활용해 인스타그램을 7만 팔로워와 20만 달러 이상의 매출로 성장시킨 노하우를 소개한다. 최신 AI 이슈를 입력하면 에이전트가 관련 정보를 검색하고 과거 영상의 성과 데이터를 분석해 최적의 숏폼 스크립트를 자동 생성한다. 과거에 검증된 성공 패턴은 복제하고 반응이 저조했던 프레이밍은 배제하여 콘텐츠 성공 확률을 극대화한다.</p>
+<h2>주요 포인트</h2>
+<ul>
+<li>**숏폼 중심의 비즈니스 성과**: 숏폼 영상만으로 인스타그램 7만 팔로워, 1,200만 회 이상의 조회수, 이메일 구독자 2만 명 확보 및 20만 달러 이상의 계약 체결 달성.</li>
+<li>**저비용·초보자 친화적 구축**: 복잡한 개발 지식이나 터미널 경험 없이도 몇 시간 만에 구축할 수 있으며, 월 20달러 요금제로 운영 가능.</li>
+<li>**자동 정보 탐색 및 과거 데이터 대조**: 새로운 주제 입력 시 에이전트가 웹 정보를 검증함과 동시에 과거 유사 주제 영상의 성과(스킵률 등)를 추출.</li>
+<li>**성공 패턴 복제와 실패 요인 필터링**: 성과가 좋았던 과거 영상의 훅(Hook)과 구성을 차용하고, 실패했던 프레이밍 방식은 사전에 제외하여 스크립트 작성.</li>
+</ul>
+    </div>
+  <div class="transcript-wrap">
+    <div class="transcript-header">
+      <button class="transcript-toggle" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('visible')">
+        <span class="arr">▼</span> 원문 자막
+      </button>
+      <button class="copy-btn" onclick="var b=this,t=b.nextElementSibling||b;navigator.clipboard.writeText(document.querySelector('#tr-QCSmTnd2TdE').textContent).then(()=>{b.textContent='복사됨';setTimeout(()=>b.textContent='복사',2000)})">복사</button>
+    </div>
+    <pre class="transcript-box" id="tr-QCSmTnd2TdE">So I've grown my Instagram following to about 70,000, over a dozen million views, which leads to a 20,000 email subscriber list, and over $200,000 just in closed deals from short-form alone. And every single video that got it there has came out of this one folder on my computer. And I don't care if you're not technical or ever opened a terminal in your life, you can build this out in just a few hours, and it runs on just a $20 a month plan. But before I explain any of it, let me just show you this working. So obviously, I create AI content. My Instagram, it's all about uploading AI news and different things, how to use AI to automate your business and how to make money with it. And recently, Claude has this watermarking thing that has been blowing up this week, and that's exactly the kind of topic that I would normally just shoot and upload to Instagram. So let's give it to the folder instead. Here's what I'm going to be pasting in. Write script, Claude is watermarking everything you write with it. So pull up anything similar that I've posted in the past and show me the numbers before you write it. So what it's doing right here is it's going to look at my past videos, give me the numbers, find something similar, and ultimately help me create a script and upload a video about this Claude watermarking news. So what it's actually doing right now, it's going through all of my previous reels, looking for anything shaped just like this one, and also it's going to be helping me find any video hooks that I could be using to create a script for this specific video. Beyond that, as you see, it's searching up what all this Anthropic Claude watermarking is all about. So it has information to actually create the script for me. So just a few moments later, we have our output where it was able to verify what this Claude watermarking is actually about. That is the output right here, but more importantly, we have our corpus numbers. So this is just finding some of the different topics that is somewhat similar to what I want to create a video on. So this is AI news, so it's finding all of my other AI news videos. So we can see some previous ones. Claude, it just got caught quietly putting a backdoor into every browser on your Mac. That was a skip rate of 34.7. So of course, we want to adhere to something like that, and that's what this script or this agent is going to be adhering to trying to write something similar to. Just replicate what already worked in the past. And then on flip side, we go down a little bit further, it is breaking this down into the failure side. So, this is the same topic area but different framing. So, this stuff it's going to be avoiding making sure we're not repeating anything that has not worked in the past for us specifically just adhering to everything in these four columns right here. So, it's coming up with this long list of what we should be killing, whether we should be going with a gift or guide which, you know, we don't have to get into all that just yet. Make sure to stick around. I'll be explaining all of that and how it's helpful to my growth. But anyways, we can see we have two things I want your call on before I write. Gift versus guide and the angle. So, I'm going to go ahead and answer that right now. So, I ended up just saying go with the gift approach and agree with your angle. Give me a few to be running with and then finish with the writing script. So, I'm just asking, "Hey, finish up the script but give me a few different angles to actually play around with and see what we can do here." Whoever I'll put back, Claude I just started watermarking everything it writes and your last client proposal already has the mark. So, in this specific use case, we are applying this more to a B2B case. So, that's why it's using client proposal as the use case in that example. Of course, we can broaden it trying to appeal to the broadest possible audience which would be getting more views. However, I want to be getting clients for our agency on Instagram. So, that's why we're relating it to a client proposal and uh another process inside of a business. And then we can see the rest of the script. Every structure is following the specific rules that we have for creating short-form scripts. And then we can see the last sentence, "Send this to whoever writes your proposals before they send the next one." So, I went with the gift approach. Otherwise, we can be going with a different approach saying, "You know, comment X for the lead magnet and I'll send it over to you." And that's more or less what I do for most of my videos where people just have to comment down at the bottom for the resource. So, we can then see down below that, "What should my visual hook be?" That is going to be given to my editor. Everything else, it's not too important. Most important thing is we now have our final script right here. We can be going back and forth providing some more revisions, or we can even do {slash} review </pre>
+  </div>
+  </article>
+</main>
+
+<footer>유튜브 구독 정리 · agy 요약 · 2026-08-29 06:01</footer>
+
+
+<script>
+document.querySelectorAll('.nlm-btn').forEach(function(btn){
+  btn.addEventListener('click',function(){
+    navigator.clipboard.writeText('/notebooklm '+btn.dataset.url).then(function(){
+      var orig=btn.innerHTML;btn.innerHTML='✓ 복사됨';btn.classList.add('copied');
+      setTimeout(function(){btn.innerHTML=orig;btn.classList.remove('copied');},2000);
+    });
+  });
+});
+</script>
+
+</body>
+</html>
