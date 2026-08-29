@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>2026-08-30 — 유튜브 구독 정리</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+  :root{--bg:#090e1a;--surface:#111827;--surface2:#1a2235;--border:#1e2d47;--accent:#6c63ff;--accent2:#00d4ff;--text:#e8eaf0;--muted:#7a8499;--radius:14px;}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Pretendard',sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+  header{background:linear-gradient(135deg,#0d1b3e,#1a0533);border-bottom:1px solid var(--border);padding:20px 40px;display:flex;align-items:center;justify-content:space-between;}
+  .nav-back{color:var(--accent2);text-decoration:none;font-size:0.85rem;display:flex;align-items:center;gap:6px}
+  .nav-back:hover{color:#fff}
+  .date-badge{font-size:1.4rem;font-weight:700;letter-spacing:-0.5px;background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+  .count{font-size:0.85rem;color:var(--muted)}
+  main{max-width:900px;margin:0 auto;padding:32px 24px 80px}
+  .video-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;margin-bottom:24px;transition:border-color 0.2s,box-shadow 0.2s;}
+  .video-card:hover{border-color:var(--accent);box-shadow:0 4px 24px rgba(108,99,255,0.15)}
+  .card-top{display:flex;gap:0}
+  .thumb-wrap{flex:0 0 240px;position:relative;overflow:hidden}
+  .thumb-wrap img{width:100%;height:100%;object-fit:cover;transition:transform 0.4s}
+  .video-card:hover .thumb-wrap img{transform:scale(1.05)}
+  .card-info{flex:1;padding:20px;display:flex;flex-direction:column;gap:10px}
+  .card-meta{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+  .ch-tag{font-size:0.72rem;font-weight:600;padding:3px 12px;background:linear-gradient(135deg,rgba(108,99,255,0.2),rgba(0,212,255,0.2));border:1px solid rgba(108,99,255,0.3);border-radius:999px;color:var(--accent2);}
+  .date-tag{font-size:0.72rem;color:var(--muted)}
+  .no-transcript{font-size:0.68rem;padding:2px 8px;background:rgba(255,180,0,0.12);border:1px solid rgba(255,180,0,0.25);border-radius:999px;color:#ffa500;}
+  .video-title{font-size:1rem;font-weight:600;line-height:1.4}
+  .yt-link{display:inline-flex;align-items:center;gap:5px;font-size:0.8rem;color:var(--accent);text-decoration:none;transition:color 0.2s;}
+  .yt-link:hover{color:var(--accent2)}
+  
+  .nlm-btn{display:inline-flex;align-items:center;gap:5px;font-size:0.8rem;color:#fff;
+    background:rgba(108,99,255,0.2);border:1px solid rgba(108,99,255,0.4);border-radius:8px;
+    padding:4px 12px;cursor:pointer;font-family:inherit;transition:all 0.2s;margin-left:8px;}
+  .nlm-btn:hover{background:rgba(108,99,255,0.45);}
+  .nlm-btn.copied{background:rgba(0,200,100,0.2);border-color:rgba(0,200,100,0.4);color:#00c864;}
+
+  .summary-section{border-top:1px solid var(--border);background:var(--surface2);padding:20px 24px;font-size:0.85rem;line-height:1.7;color:#c5cad8;}
+  .summary-section h2{font-size:0.82rem;color:var(--accent2);margin:12px 0 4px}
+  .summary-section h2:first-child{margin-top:0}
+  .summary-section ul{padding-left:18px}
+  .summary-section li{margin-bottom:5px}
+  .transcript-wrap{border-top:1px solid var(--border);padding:14px 24px;background:#0c1220}
+  .transcript-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:0}
+  .transcript-toggle{background:none;border:none;color:var(--muted);font-size:0.8rem;cursor:pointer;font-family:inherit;display:flex;align-items:center;gap:4px;padding:0;transition:color 0.2s;}
+  .transcript-toggle:hover{color:var(--text)}
+  .copy-btn{background:rgba(108,99,255,0.1);border:1px solid rgba(108,99,255,0.3);border-radius:8px;color:var(--accent2);font-size:0.72rem;padding:4px 12px;cursor:pointer;font-family:inherit;transition:all 0.2s;}
+  .copy-btn:hover{background:rgba(108,99,255,0.25);color:#fff}
+  .transcript-box{display:none;margin-top:10px;background:#080d18;border:1px solid var(--border);border-radius:10px;padding:12px 14px;font-size:0.78rem;line-height:1.75;color:#8a95aa;max-height:260px;overflow-y:auto;white-space:pre-wrap;word-break:break-word;}
+  .transcript-box.visible{display:block}
+  footer{text-align:center;padding:24px;font-size:0.75rem;color:var(--muted);border-top:1px solid var(--border)}
+  @media(max-width:640px){.card-top{flex-direction:column}.thumb-wrap{flex:none;height:200px}header{padding:16px}main{padding:16px 12px 60px}}
+</style>
+</head>
+<body>
+
+<header>
+  <a class="nav-back" href="../index.html">← 대시보드로</a>
+  <div>
+    <div class="date-badge">2026-08-30</div>
+    <div class="count">1개 영상</div>
+  </div>
+  <div style="font-size:0.75rem;color:var(--muted)">2026-08-30 06:00 생성</div>
+</header>
+
+<main>
+
+  <article class="video-card">
+    <div class="card-top">
+      <a class="thumb-wrap" href="https://www.youtube.com/watch?v=quCotFqhxjE" target="_blank" rel="noopener">
+        <img src="https://i.ytimg.com/vi/quCotFqhxjE/hqdefault.jpg" alt="I Stopped Typing Into My CRM. ChatGPT Fills It Now." loading="lazy"/>
+      </a>
+      <div class="card-info">
+        <div class="card-meta">
+          <span class="ch-tag">Dylan Davis</span>
+          <span class="date-tag">2026-08-30</span>
+          
+        </div>
+        <div class="video-title">I Stopped Typing Into My CRM. ChatGPT Fills It Now.</div>
+        <div style="display:flex;align-items:center;flex-wrap:wrap;gap:4px;margin-top:auto">
+          <a class="yt-link" href="https://www.youtube.com/watch?v=quCotFqhxjE" target="_blank" rel="noopener">↗ 유튜브에서 보기</a>
+          <button class="nlm-btn" data-url="https://www.youtube.com/watch?v=quCotFqhxjE">📓 NotebookLM</button>
+        </div>
+      </div>
+    </div>
+    <div class="summary-section">
+      <h2>핵심 요약</h2>
+<p>대부분의 기업에서 핵심 인력들이 매일 1시간 이상을 CRM 데이터 수동 입력에 낭비하거나 방치하여 심각한 데이터 누락이 발생하고 있습니다. 이제는 수동 입력 대신 AI가 통화 및 음성 메모를 분석해 CRM을 자동으로 업데이트하는 방식으로 전환해야 합니다. 세일즈포스, 허브스팟 등 주요 SaaS 플랫폼도 기존 UI 대신 AI 커넥터를 전면에 내세우며 이러한 패러다임 변화를 주도하고 있습니다.</p>
+<h2>주요 포인트</h2>
+<ul>
+<li>**CRM 방치 및 데이터 누락**: 조사에 따르면 기업 CRM 데이터의 70%가 불완전한 상태로 방치되어 올바른 의사결정을 방해합니다.</li>
+<li>**핵심 인력의 시간 낭비**: 데이터를 성실히 입력하는 직원조차 매일 1시간 이상을 단순 데이터 입력에 소모하고 있습니다.</li>
+<li>**AI 기반 자동화 전환**: 직접 입력하는 방식을 중단하고, 통화 기록과 음성 메모를 AI가 분석해 자동으로 채우도록 구성할 수 있습니다.</li>
+<li>**"UI는 이제 AI" 트렌드**: 세일즈포스, 허브스팟 등이 Claude 및 ChatGPT와 연동 커넥터를 출시하며 기존 웹 UI를 거치지 않고 대화형 AI로 데이터를 읽고 쓰는 흐름이 가속화되고 있습니다.</li>
+</ul>
+    </div>
+  <div class="transcript-wrap">
+    <div class="transcript-header">
+      <button class="transcript-toggle" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('visible')">
+        <span class="arr">▼</span> 원문 자막
+      </button>
+      <button class="copy-btn" onclick="var b=this,t=b.nextElementSibling||b;navigator.clipboard.writeText(document.querySelector('#tr-quCotFqhxjE').textContent).then(()=>{b.textContent='복사됨';setTimeout(()=>b.textContent='복사',2000)})">복사</button>
+    </div>
+    <pre class="transcript-box" id="tr-quCotFqhxjE">Almost every business I work with has the same dead system sitting in the middle of it. A CRM that's half empty or a task tracker that's weeks behind. And the owners always tell me the same exact thing. My people just won't update it. But take a second to think about who you're asking to update these systems. These are your busiest people, the ones selling, building, and driving your business forward. And we're pulling them from that to do data entry. So, I stopped asking altogether. I haven't typed into my CRM in months. I have AI fill it in from my calls and voice notes. And in this video, I'm actually going to show you how to set that up for whatever system your business runs on. So, let's get into it. All of the companies that I've ever interacted with have this problem here that you're looking at. So, I actually wanted to add some numbers to the issue. So, we all have CRMs, task trackers, project management tools, whatever else. There was a study that looked at a series of companies, and they wanted to see how their CRMs are being updated and how much. So, in that study, they found that actually 70% of the information was incomplete in the CRM. And of the people that completed out the entire thing for the CRM, it would take them over an hour to do every single day. And that's over an hour every single day for all of your employees that are critical to the business to drive it forward. For those that are actually consistent in their data entry, we're taking away their time. And for those that aren't, we're actually losing that data so we can't make more informed decisions in the future. And this isn't just a major problem that people are facing when it comes to actually adding data to these tools, but even the CEO of Salesforce recently, only a few days ago, stated that the UI of their tool is actually now AI. And what that means is all these tools that we use, HubSpot, Salesforce, Notion, Jira, all of these UIs are starting to disappear, and we're overlaying in front of that with AI. And in that announcement, when the Salesforce CEO stated that the UI is now the AI, they were doing an announcement with Claude. So, they're saying that now Salesforce is available inside of Claude as a connector. So, you can read and write information to Salesforce without having to go to it. But in that same week, ChatGPT actually updated their HubSpot connection, so now you can actually write information back to HubSpot. So, this isn't just a problem that people are facing, but actually there are many solutions that are bubbling up in some of the biggest providers for these tools, which is one of the many reasons why it's important to start doing this now. So, we understand the problem, and we also understand the associated trend. So, actually, what is the practical solution to this? Well, with all the clients I work with, it's not the system that's the problem, cuz when you look at Salesforce, HubSpot, Jira, it doesn't matter. All these systems are fine. The crux of the issue is actually capturing the information and putting it into the system. That's what we've been talking about this entire time. And that's where the solution has to reside. So, what we want to do is we want to try to remove all of the friction that our folks in sales and product or whatever else, they're removing all the friction for them to actually update these systems. And the flow for this it looks very simple, and I'm going to give you a very specific flow that I've seen work with a lot of clients. Quick pause, if you're enjoying this, you're going to enjoy two other things. First off, below is a 30-day AI Insight Series, completely free. You'll get 30 insights in your inbox if I can apply AI to your business and your work. The second thing is if you'd like to work with me, below are a series of offerings to see if there's a good fit between the two of us. Now, let's get back into the video. So, let's talk about this through the lens of a CRM, since most people have those, and we'll talk about it through the lens of sales and CRMs. So, say we have a salesperson in the field. What we want to do is we want to try to capture that information from the meeting they just had in a very simple way. And one of the most frictionless ways that I found for people is simply using voice. So, you pull out your phone, and you dictate to your phone what happened in the meeting and the value associated to that. After you've done that, then you're going to pass that off to an AI. AI's going to take that, it's going to then match that against the CRM and determine is this a new contact or an old contact? If it's old, I'll update it. If it's new, I'll add it. But before I do anything, I'm actually going to seek approval from the person that dictated it. So, I dictated it to the AI, it then comes back to me and says, "Hey, here are the things I'm going to change in your CRM. Are you cool with that?" All you have to do is say yes. Once you've said yes, it writes those</pre>
+  </div>
+  </article>
+</main>
+
+<footer>유튜브 구독 정리 · agy 요약 · 2026-08-30 06:00</footer>
+
+
+<script>
+document.querySelectorAll('.nlm-btn').forEach(function(btn){
+  btn.addEventListener('click',function(){
+    navigator.clipboard.writeText('/notebooklm '+btn.dataset.url).then(function(){
+      var orig=btn.innerHTML;btn.innerHTML='✓ 복사됨';btn.classList.add('copied');
+      setTimeout(function(){btn.innerHTML=orig;btn.classList.remove('copied');},2000);
+    });
+  });
+});
+</script>
+
+</body>
+</html>
