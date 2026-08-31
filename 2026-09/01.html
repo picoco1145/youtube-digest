@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>2026-09-01 — 유튜브 구독 정리</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+  :root{--bg:#090e1a;--surface:#111827;--surface2:#1a2235;--border:#1e2d47;--accent:#6c63ff;--accent2:#00d4ff;--text:#e8eaf0;--muted:#7a8499;--radius:14px;}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Pretendard',sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+  header{background:linear-gradient(135deg,#0d1b3e,#1a0533);border-bottom:1px solid var(--border);padding:20px 40px;display:flex;align-items:center;justify-content:space-between;}
+  .nav-back{color:var(--accent2);text-decoration:none;font-size:0.85rem;display:flex;align-items:center;gap:6px}
+  .nav-back:hover{color:#fff}
+  .date-badge{font-size:1.4rem;font-weight:700;letter-spacing:-0.5px;background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+  .count{font-size:0.85rem;color:var(--muted)}
+  main{max-width:900px;margin:0 auto;padding:32px 24px 80px}
+  .video-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;margin-bottom:24px;transition:border-color 0.2s,box-shadow 0.2s;}
+  .video-card:hover{border-color:var(--accent);box-shadow:0 4px 24px rgba(108,99,255,0.15)}
+  .card-top{display:flex;gap:0}
+  .thumb-wrap{flex:0 0 240px;position:relative;overflow:hidden}
+  .thumb-wrap img{width:100%;height:100%;object-fit:cover;transition:transform 0.4s}
+  .video-card:hover .thumb-wrap img{transform:scale(1.05)}
+  .card-info{flex:1;padding:20px;display:flex;flex-direction:column;gap:10px}
+  .card-meta{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+  .ch-tag{font-size:0.72rem;font-weight:600;padding:3px 12px;background:linear-gradient(135deg,rgba(108,99,255,0.2),rgba(0,212,255,0.2));border:1px solid rgba(108,99,255,0.3);border-radius:999px;color:var(--accent2);}
+  .date-tag{font-size:0.72rem;color:var(--muted)}
+  .no-transcript{font-size:0.68rem;padding:2px 8px;background:rgba(255,180,0,0.12);border:1px solid rgba(255,180,0,0.25);border-radius:999px;color:#ffa500;}
+  .video-title{font-size:1rem;font-weight:600;line-height:1.4}
+  .yt-link{display:inline-flex;align-items:center;gap:5px;font-size:0.8rem;color:var(--accent);text-decoration:none;transition:color 0.2s;}
+  .yt-link:hover{color:var(--accent2)}
+  
+  .nlm-btn{display:inline-flex;align-items:center;gap:5px;font-size:0.8rem;color:#fff;
+    background:rgba(108,99,255,0.2);border:1px solid rgba(108,99,255,0.4);border-radius:8px;
+    padding:4px 12px;cursor:pointer;font-family:inherit;transition:all 0.2s;margin-left:8px;}
+  .nlm-btn:hover{background:rgba(108,99,255,0.45);}
+  .nlm-btn.copied{background:rgba(0,200,100,0.2);border-color:rgba(0,200,100,0.4);color:#00c864;}
+
+  .summary-section{border-top:1px solid var(--border);background:var(--surface2);padding:20px 24px;font-size:0.85rem;line-height:1.7;color:#c5cad8;}
+  .summary-section h2{font-size:0.82rem;color:var(--accent2);margin:12px 0 4px}
+  .summary-section h2:first-child{margin-top:0}
+  .summary-section ul{padding-left:18px}
+  .summary-section li{margin-bottom:5px}
+  .transcript-wrap{border-top:1px solid var(--border);padding:14px 24px;background:#0c1220}
+  .transcript-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:0}
+  .transcript-toggle{background:none;border:none;color:var(--muted);font-size:0.8rem;cursor:pointer;font-family:inherit;display:flex;align-items:center;gap:4px;padding:0;transition:color 0.2s;}
+  .transcript-toggle:hover{color:var(--text)}
+  .copy-btn{background:rgba(108,99,255,0.1);border:1px solid rgba(108,99,255,0.3);border-radius:8px;color:var(--accent2);font-size:0.72rem;padding:4px 12px;cursor:pointer;font-family:inherit;transition:all 0.2s;}
+  .copy-btn:hover{background:rgba(108,99,255,0.25);color:#fff}
+  .transcript-box{display:none;margin-top:10px;background:#080d18;border:1px solid var(--border);border-radius:10px;padding:12px 14px;font-size:0.78rem;line-height:1.75;color:#8a95aa;max-height:260px;overflow-y:auto;white-space:pre-wrap;word-break:break-word;}
+  .transcript-box.visible{display:block}
+  footer{text-align:center;padding:24px;font-size:0.75rem;color:var(--muted);border-top:1px solid var(--border)}
+  @media(max-width:640px){.card-top{flex-direction:column}.thumb-wrap{flex:none;height:200px}header{padding:16px}main{padding:16px 12px 60px}}
+</style>
+</head>
+<body>
+
+<header>
+  <a class="nav-back" href="../index.html">← 대시보드로</a>
+  <div>
+    <div class="date-badge">2026-09-01</div>
+    <div class="count">2개 영상</div>
+  </div>
+  <div style="font-size:0.75rem;color:var(--muted)">2026-09-01 06:01 생성</div>
+</header>
+
+<main>
+
+  <article class="video-card">
+    <div class="card-top">
+      <a class="thumb-wrap" href="https://www.youtube.com/watch?v=9kN5HhsnnQ0" target="_blank" rel="noopener">
+        <img src="https://i.ytimg.com/vi/9kN5HhsnnQ0/hqdefault.jpg" alt="Make Just Dropped Maia and It Builds Automations For You" loading="lazy"/>
+      </a>
+      <div class="card-info">
+        <div class="card-meta">
+          <span class="ch-tag">Nicholas Puru</span>
+          <span class="date-tag">2026-09-01</span>
+          
+        </div>
+        <div class="video-title">Make Just Dropped Maia and It Builds Automations For You</div>
+        <div style="display:flex;align-items:center;flex-wrap:wrap;gap:4px;margin-top:auto">
+          <a class="yt-link" href="https://www.youtube.com/watch?v=9kN5HhsnnQ0" target="_blank" rel="noopener">↗ 유튜브에서 보기</a>
+          <button class="nlm-btn" data-url="https://www.youtube.com/watch?v=9kN5HhsnnQ0">📓 NotebookLM</button>
+        </div>
+      </div>
+    </div>
+    <div class="summary-section">
+      <h2>핵심 요약</h2>
+<p>Make에 내장된 AI 협업 도구 Maia가 출시되어 복잡한 기술 지식 없이도 자연어 대화만으로 전체 비즈니스 워크플로우를 자동 구축할 수 있게 되었습니다. 사용자가 원하는 업무 흐름을 설명하면 AI가 도구 선택부터 세부 로직까지 직접 설정하며, 조건 변경이나 오류 수정도 말 한마디로 즉시 반영됩니다. CRM 연동 응대, 송장 추적, 보고서 작성 등 다양한 업무를 즉시 실행 가능한 상태로 손쉽게 자동화할 수 있습니다.</p>
+<h2>주요 포인트</h2>
+<ul>
+<li>**Make 내장 AI 협업 도구 Maia 출시**: 별도의 파일 변환이나 수동 설정 없이 Make 계정 내에서 자연어 대화로 자동화 워크플로우를 직접 생성</li>
+<li>**실시간 워크플로우 구상 및 구축**: 텍스트 설명에 따라 적절한 도구 선택, 흐름 구성, 세부 단계 준비 과정을 투명하게 시각화하여 제공</li>
+<li>**대화를 통한 즉각적인 로직 수정**: 기존 설정을 직접 건드리지 않고도 조건 추가(예: 특정 금액 이상 거래만 실행 등)를 말로 지시해 즉시 반영 가능</li>
+<li>**시스템 설명 및 트러블슈팅 지원**: 복잡하게 얽힌 워크플로우에 대한 설명 요청이나 오류 발생 시 디버깅 및 수정을 AI에게 직접 요청 가능</li>
+<li>**다양한 비즈니스 영역 적용**: 잠재 고객 응대, 슬랙 알림, 송장 추적, 고객 온보딩, 보고서 작성 등 다양한 실무 영역에 바로 도입 가능</li>
+</ul>
+    </div>
+  <div class="transcript-wrap">
+    <div class="transcript-header">
+      <button class="transcript-toggle" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('visible')">
+        <span class="arr">▼</span> 원문 자막
+      </button>
+      <button class="copy-btn" onclick="var b=this,t=b.nextElementSibling||b;navigator.clipboard.writeText(document.querySelector('#tr-9kN5HhsnnQ0').textContent).then(()=>{b.textContent='복사됨';setTimeout(()=>b.textContent='복사',2000)})">복사</button>
+    </div>
+    <pre class="transcript-box" id="tr-9kN5HhsnnQ0">이제 더 이상 기술적인 지식 없이도 비즈니스 전체를 자동화할 수 있습니다. Make에 내장된 AI 협업 도구인 Maya가 출시되었기 때문입니다. Maya는 자동화 기능을 직접 구축해 줍니다. 마치 직원에게 문자를 보내듯 업무 내용을 설명하면, 직원이 그 내용을 종합해서 당신에게 보여줄 거예요. 자, 이것 좀 보세요. 새로운 잠재 고객이 CRM에 등록되면 즉시 이메일로 답장을 보내고 슬랙을 통해 팀원들에게 요약 정보를 보내도록 설정했습니다 . 화면 속에서 그녀는 심사숙고하는 모습을 보여줍니다 . 그녀는 도구를 고르고, 흐름을 구상하고, 음악을 설정하고, 모든 단계를 준비하는 동안 당신은 그녀가 무엇을 하고 왜 하는지 정확히 지켜볼 수 있습니다. 그리고 제가 뭔가를 바꾸고 싶다고 가정해 봅시다. 저는 설정을 하나도 건드리지 않고, 그냥 그녀에게 " 1,000달러 이상 거래에만 이 작업을 하세요"라고 말합니다. [음악] 그리고 그녀는 바로 그 자리에서 논리를 수정합니다 . 그리고 이건 ChatGPT가 여러분이 직접 해석해야 하는 워크플로 파일을 건네주는 상황이 아닙니다 . 이 기능은 Make [음악] 계정 내에 내장되어 있으며, 모든 설정이 완료되어 자동으로 실행됩니다. 반대로 자동화 시스템이 고장 나거나 아무도 이해하지 못하는 시스템을 만들었다면 , 그녀에게 설명이나 수정을 요청하면 됩니다. 자, 이와 똑같은 대화 방식이 송장 추적, 보고서 작성, 고객 온보딩 등 기술적인 지식이 있어야 설정할 수 있다고 생각했던 모든 작업에 적용됩니다. 업무 내용을 간단하게 설명해 주시면 오늘 바로 실행에 옮길 수 있습니다. [음악]이 필요하다고 댓글을 남겨주시면 제가 사용한 링크와 정확한 문장들을 보내드리겠습니다. 그걸로 미뤄왔던 음악을 직접 만들어보실 수 있을 거예요 .</pre>
+  </div>
+  </article>
+  <article class="video-card">
+    <div class="card-top">
+      <a class="thumb-wrap" href="https://www.youtube.com/watch?v=wQW0XOtl2UY" target="_blank" rel="noopener">
+        <img src="https://i.ytimg.com/vi/wQW0XOtl2UY/hqdefault.jpg" alt="10 Normal ChatGPT Habits That Are Quietly Costing You" loading="lazy"/>
+      </a>
+      <div class="card-info">
+        <div class="card-meta">
+          <span class="ch-tag">Dylan Davis</span>
+          <span class="date-tag">2026-09-01</span>
+          
+        </div>
+        <div class="video-title">10 Normal ChatGPT Habits That Are Quietly Costing You</div>
+        <div style="display:flex;align-items:center;flex-wrap:wrap;gap:4px;margin-top:auto">
+          <a class="yt-link" href="https://www.youtube.com/watch?v=wQW0XOtl2UY" target="_blank" rel="noopener">↗ 유튜브에서 보기</a>
+          <button class="nlm-btn" data-url="https://www.youtube.com/watch?v=wQW0XOtl2UY">📓 NotebookLM</button>
+        </div>
+      </div>
+    </div>
+    <div class="summary-section">
+      <h2>핵심 요약</h2>
+<p>과거의 프롬프트 작성법(무조건 긴 설명, 예시 과다 제공 등)은 최신 AI 모델 환경에서 오히려 성능을 저하시킬 수 있습니다. AI에게 단순 작업을 지시하기보다 명확한 목적(Why)을 공유하고, 불필요한 정보 과적 대신 핵심 맥락만 선별해 제공하는 것이 핵심입니다.</p>
+<h2>주요 포인트</h2>
+<ul>
+<li>**과거 프롬프트 방식의 한계**: 모델 성능이 크게 발전함에 따라 지나치게 세세한 지시나 고정된 템플릿 사용은 역효과를 낼 수 있음</li>
+<li>**목적(Why)과 의도 공유**: 작업을 지시할 때 구체적인 이유와 목표를 전달하면 AI가 누락된 맥락을 스스로 보완해 정확하게 처리함</li>
+<li>**올바른 컨텍스트 선별**: 방대한 문서를 통째로 넣기보다 필요한 핵심 내용만 추려서 제공하는 것이 결과물의 품질을 높임</li>
+<li>**최신 모델에 맞춘 습관 교정**: 질문 방식, 오류 대처, AI와의 신뢰 구축 등 낡은 상호작용 패턴을 점검하고 전환해야 함</li>
+</ul>
+    </div>
+  <div class="transcript-wrap">
+    <div class="transcript-header">
+      <button class="transcript-toggle" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('visible')">
+        <span class="arr">▼</span> 원문 자막
+      </button>
+      <button class="copy-btn" onclick="var b=this,t=b.nextElementSibling||b;navigator.clipboard.writeText(document.querySelector('#tr-wQW0XOtl2UY').textContent).then(()=>{b.textContent='복사됨';setTimeout(()=>b.textContent='복사',2000)})">복사</button>
+    </div>
+    <pre class="transcript-box" id="tr-wQW0XOtl2UY">Some of the best AI advice that you've ever learned is now working against you. Stuff like add more detail to your prompts, save your best prompts, give the AI examples to follow. That was all correct a year ago. But models have changed so much since then that a lot of that now makes your results worse. And nobody tells you which advice expired. If you're new here, I'm Dylan. I run an AI consultancy and I see these expired habits every single week. So I want to walk you through the 10 that I see most. Odds are you're running at least a few of them. For each one, I'll show you what it costs you and a replacement that fixes each one of them in about 20 seconds. So, let's get into it. Now, there are 10 habits that we're going to walk through. And each of these habits I've categorized into three buckets. So, the first category of habits are going to be us asking the AI things. So, how do we improve the way that we ask the AI stuff? The second one is when the AI gets something wrong, how do we behave? And then the third is how do we increase our trust with AI? Now, what I want you to do in this video is I want you to keep count. So, how many of these habits are you currently doing with the old way of doing things with the older models? At the end, I actually want you to put below in the comments what your number is. Usually it's between four and six for most people. But there's a lot of stuff we need to get through, so let's just jump right into the first habit. So, the very first habit is when you ask the AI to do something, you just give it a task without a goal. And with these new models, the goal really really matters. Specifically, the why. Why are we doing this in the first place? When you share your intent with the AI, it can actually retroactively fill in all the gaps you forgot to share previously when you just gave it the task. So, the wrong way of doing things is by doing something like this where you ask the AI to summarize this contract without any additional context as to why we're doing this in the first place. But if you add on to this prompt stating that the why we're doing this is that I need to renew on Friday, and what I usually care about in renewals is the pricing and the terms associated to that. By just sharing your why and sharing the goal, the AI is going to be able to achieve that task in a much more accurate way based on what you care about. But without it, it's going to struggle. So, that's our first habit. The second habit is all around context. So, often times people share way too much context with AI, especially today. Instead of sharing more context, you need to share the right context. So, what does this actually mean? So, if you have a 200-page document, don't share the entire thing if you can. Maybe just take out the 12 pages that matter and share that to the AI. But maybe you can't do that, which is totally fine. So, what you do instead is simply give it a prompt like this. So, you point it towards that file or multiple files and you tell it what you care about in regards to those files. So, you can say in this case, here's a file that's attached. I care about specifically the payments section. So, focus on that. And by pointing the AI in that direction and saying an area to focus, it's going to give you a much higher-quality output. Instead of giving it too much context, you're giving it the right context and pointing it towards it. So, that's our second habit. Now, we're going to go into our third habit. Quick pause. If you're enjoying this, you're going to enjoy two other things. First off, below is a 30-day AI Insight series, completely free. You'll get 30 insights in your inbox of how I can apply AI to your business and your work. The second thing is if you'd like to work with me, below are a series of offerings to see if there's a good fit between the two of us. Now, let's get back to the video. Which is brushing off the questions that the AI gives you. So, many of these cutting-edge models like GPT-5.6, Fable-5, Opus-5, for long-horizon tasks, they tend to ask you questions before they start because they want to make sure they're clear on the ask before they begin. And often times, what I see people do is for some of the answers to the questions, they just say, "Go ahead and answer it whatever you think is best." What you need to do is you need to give your input. You need to get share rich context with the AI, answering the questions so it can get closer to what you expect and want. So, for questions like, "Should this be formal or casual?" or, "Who's the audience?" you want to answer them effectively. And one thing that you can even do better than this is instead of relying on the AI to proactively ask you questions, you can actually initiate it. And I'd recommend doing that for the tasks, again, that are really long-horizon tasks, things that the AI will work on for 10 minutes, 30 minutes, an hour. And you can do something like this where you say, "Before you begin,</pre>
+  </div>
+  </article>
+</main>
+
+<footer>유튜브 구독 정리 · agy 요약 · 2026-09-01 06:01</footer>
+
+
+<script>
+document.querySelectorAll('.nlm-btn').forEach(function(btn){
+  btn.addEventListener('click',function(){
+    navigator.clipboard.writeText('/notebooklm '+btn.dataset.url).then(function(){
+      var orig=btn.innerHTML;btn.innerHTML='✓ 복사됨';btn.classList.add('copied');
+      setTimeout(function(){btn.innerHTML=orig;btn.classList.remove('copied');},2000);
+    });
+  });
+});
+</script>
+
+</body>
+</html>

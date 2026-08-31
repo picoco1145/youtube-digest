@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>2026-08-31 — 유튜브 구독 정리</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+  :root{--bg:#090e1a;--surface:#111827;--surface2:#1a2235;--border:#1e2d47;--accent:#6c63ff;--accent2:#00d4ff;--text:#e8eaf0;--muted:#7a8499;--radius:14px;}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Pretendard',sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+  header{background:linear-gradient(135deg,#0d1b3e,#1a0533);border-bottom:1px solid var(--border);padding:20px 40px;display:flex;align-items:center;justify-content:space-between;}
+  .nav-back{color:var(--accent2);text-decoration:none;font-size:0.85rem;display:flex;align-items:center;gap:6px}
+  .nav-back:hover{color:#fff}
+  .date-badge{font-size:1.4rem;font-weight:700;letter-spacing:-0.5px;background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+  .count{font-size:0.85rem;color:var(--muted)}
+  main{max-width:900px;margin:0 auto;padding:32px 24px 80px}
+  .video-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;margin-bottom:24px;transition:border-color 0.2s,box-shadow 0.2s;}
+  .video-card:hover{border-color:var(--accent);box-shadow:0 4px 24px rgba(108,99,255,0.15)}
+  .card-top{display:flex;gap:0}
+  .thumb-wrap{flex:0 0 240px;position:relative;overflow:hidden}
+  .thumb-wrap img{width:100%;height:100%;object-fit:cover;transition:transform 0.4s}
+  .video-card:hover .thumb-wrap img{transform:scale(1.05)}
+  .card-info{flex:1;padding:20px;display:flex;flex-direction:column;gap:10px}
+  .card-meta{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+  .ch-tag{font-size:0.72rem;font-weight:600;padding:3px 12px;background:linear-gradient(135deg,rgba(108,99,255,0.2),rgba(0,212,255,0.2));border:1px solid rgba(108,99,255,0.3);border-radius:999px;color:var(--accent2);}
+  .date-tag{font-size:0.72rem;color:var(--muted)}
+  .no-transcript{font-size:0.68rem;padding:2px 8px;background:rgba(255,180,0,0.12);border:1px solid rgba(255,180,0,0.25);border-radius:999px;color:#ffa500;}
+  .video-title{font-size:1rem;font-weight:600;line-height:1.4}
+  .yt-link{display:inline-flex;align-items:center;gap:5px;font-size:0.8rem;color:var(--accent);text-decoration:none;transition:color 0.2s;}
+  .yt-link:hover{color:var(--accent2)}
+  
+  .nlm-btn{display:inline-flex;align-items:center;gap:5px;font-size:0.8rem;color:#fff;
+    background:rgba(108,99,255,0.2);border:1px solid rgba(108,99,255,0.4);border-radius:8px;
+    padding:4px 12px;cursor:pointer;font-family:inherit;transition:all 0.2s;margin-left:8px;}
+  .nlm-btn:hover{background:rgba(108,99,255,0.45);}
+  .nlm-btn.copied{background:rgba(0,200,100,0.2);border-color:rgba(0,200,100,0.4);color:#00c864;}
+
+  .summary-section{border-top:1px solid var(--border);background:var(--surface2);padding:20px 24px;font-size:0.85rem;line-height:1.7;color:#c5cad8;}
+  .summary-section h2{font-size:0.82rem;color:var(--accent2);margin:12px 0 4px}
+  .summary-section h2:first-child{margin-top:0}
+  .summary-section ul{padding-left:18px}
+  .summary-section li{margin-bottom:5px}
+  .transcript-wrap{border-top:1px solid var(--border);padding:14px 24px;background:#0c1220}
+  .transcript-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:0}
+  .transcript-toggle{background:none;border:none;color:var(--muted);font-size:0.8rem;cursor:pointer;font-family:inherit;display:flex;align-items:center;gap:4px;padding:0;transition:color 0.2s;}
+  .transcript-toggle:hover{color:var(--text)}
+  .copy-btn{background:rgba(108,99,255,0.1);border:1px solid rgba(108,99,255,0.3);border-radius:8px;color:var(--accent2);font-size:0.72rem;padding:4px 12px;cursor:pointer;font-family:inherit;transition:all 0.2s;}
+  .copy-btn:hover{background:rgba(108,99,255,0.25);color:#fff}
+  .transcript-box{display:none;margin-top:10px;background:#080d18;border:1px solid var(--border);border-radius:10px;padding:12px 14px;font-size:0.78rem;line-height:1.75;color:#8a95aa;max-height:260px;overflow-y:auto;white-space:pre-wrap;word-break:break-word;}
+  .transcript-box.visible{display:block}
+  footer{text-align:center;padding:24px;font-size:0.75rem;color:var(--muted);border-top:1px solid var(--border)}
+  @media(max-width:640px){.card-top{flex-direction:column}.thumb-wrap{flex:none;height:200px}header{padding:16px}main{padding:16px 12px 60px}}
+</style>
+</head>
+<body>
+
+<header>
+  <a class="nav-back" href="../index.html">← 대시보드로</a>
+  <div>
+    <div class="date-badge">2026-08-31</div>
+    <div class="count">2개 영상</div>
+  </div>
+  <div style="font-size:0.75rem;color:var(--muted)">2026-09-01 06:01 생성</div>
+</header>
+
+<main>
+
+  <article class="video-card">
+    <div class="card-top">
+      <a class="thumb-wrap" href="https://www.youtube.com/watch?v=4hKJ9X6rGFo" target="_blank" rel="noopener">
+        <img src="https://i.ytimg.com/vi/4hKJ9X6rGFo/hqdefault.jpg" alt="Build & Sell Grok Bots (2 Hour Course)" loading="lazy"/>
+      </a>
+      <div class="card-info">
+        <div class="card-meta">
+          <span class="ch-tag">Nate Herk</span>
+          <span class="date-tag">2026-08-31</span>
+          
+        </div>
+        <div class="video-title">Build & Sell Grok Bots (2 Hour Course)</div>
+        <div style="display:flex;align-items:center;flex-wrap:wrap;gap:4px;margin-top:auto">
+          <a class="yt-link" href="https://www.youtube.com/watch?v=4hKJ9X6rGFo" target="_blank" rel="noopener">↗ 유튜브에서 보기</a>
+          <button class="nlm-btn" data-url="https://www.youtube.com/watch?v=4hKJ9X6rGFo">📓 NotebookLM</button>
+        </div>
+      </div>
+    </div>
+    <div class="summary-section">
+      <h2>핵심 요약</h2>
+<p>Grokbot은 복잡한 기술적 지식 없이도 누구나 AI 에이전트 팀을 구축해 비즈니스에 활용할 수 있는 강력한 멀티 에이전트 도구다. 텔레그램과 유사한 친숙한 인터페이스에서 각 분야별 에이전트들이 서로 소통하고 협업하며 사용자의 업무를 대신 처리한다. 본 영상은 Grokbot을 처음부터 설정해 자신의 사업을 확장하거나 다른 기업에 판매할 수 있는 실전 구축법을 다룬다.</p>
+<h2>주요 포인트</h2>
+<ul>
+<li>**비개발자 친화적 AI 도구**: 코딩이나 기술적 장벽 없이 간편하게 AI 에이전트 팀을 세팅하고 즉시 가치를 창출할 수 있다.</li>
+<li>**텔레그램 스타일의 멀티 에이전트 협업**: 익숙한 메신저 인터페이스에서 COO, CCO, CFO 등 직무별 에이전트들과 대화하고, 에이전트들끼리 서로 태그하며 협업하도록 설계할 수 있다.</li>
+<li>**자율적인 의사결정 및 업무 위임**: 사용자가 자는 동안에도 에이전트들이 회의를 진행해 창업자 의존도를 줄이고 주요 비즈니스 전략(5대 핵심 결정 등)을 도출해낸다.</li>
+<li>**비즈니스 확장 및 수익화 모델**: 본인의 비즈니스 자동화뿐만 아니라 다른 기업에게 맞춤형 Grokbot 솔루션을 구축해 제공하는 B2B 비즈니스 모델로 확장이 가능하다.</li>
+</ul>
+    </div>
+  <div class="transcript-wrap">
+    <div class="transcript-header">
+      <button class="transcript-toggle" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('visible')">
+        <span class="arr">▼</span> 원문 자막
+      </button>
+      <button class="copy-btn" onclick="var b=this,t=b.nextElementSibling||b;navigator.clipboard.writeText(document.querySelector('#tr-4hKJ9X6rGFo').textContent).then(()=>{b.textContent='복사됨';setTimeout(()=>b.textContent='복사',2000)})">복사</button>
+    </div>
+    <pre class="transcript-box" id="tr-4hKJ9X6rGFo">Grockbot은 가장 강력한 AI 중 하나입니다. 제가 지금까지 사용해 본 도구들 중에서 가장 뛰어난 도구는 다음과 같습니다. 이것은 당신에게 인공지능 에이전트 군대를 제공합니다. 주머니에 넣고 다닐 필요도 없어요. 사용하고 이해하는 데 전혀 기술적인 어려움이 없습니다. 그것으로부터 가치를 얻어내세요. 저는 게임을 하고 있어요. Grockbot이 출시된 이후로 계속 사용해 왔습니다. 그리고 그것은 실제로 그 방식을 바꿔놓았습니다. 나는 그냥 가만히 있는 게 아니라 일하고 있어. 재미있는 AI 도구, 여러 에이전트로 구성된 도구입니다. 데모용이나 소셜 미디어용으로 딱 좋아요. 메디아. 자, 이 영상에서는 제가 필요한 모든 것을 세분화하세요 Grockbot에 대해 알아보세요. 제가 보여드리겠습니다 내가 사용하는 방식대로. 나는 갈 것이다 전체 설정을 완료하세요. 저는 ~에 대해 이야기하려고 합니다. 사고방식과 실제 연결 방식 이런 것들을 유용하게 만들어 줍니다. 나는 완전히 새로운 것을 시작할 예정입니다 계정 관리 및 팀 구축 요원들이 바로 여러분 앞에 있습니다. 그러니까, 그냥 저를 따라오시면 됩니다. 그리고 제가 여러분께 방법을 보여드리겠습니다. 이를 활용하여 분명히 가치를 제공할 수 있습니다. 당신과 당신의 사업을 성장시키는 데 도움이 될 뿐만 아니라 이건 정말 좋은 제안이네요. 다른 사업체와 협력하고 그들을 돕습니다. 그들만의 그록봇을 갖추게 됩니다. 그리고 혹시 저를 모르시는 분들을 위해 간단히 말씀드리자면, 제 이름은 네이트입니다. 저는 인공지능을 개발해 왔습니다. 약 2년간 자동화 및 에이전트 관련 업무를 해왔습니다. 지금. 저는 전 세계적인 AI 커뮤니티를 가지고 있습니다. 건설업체 회원 수는 44만 명이 넘습니다. 그리고 지난 12개월 동안 제 사업은 어땠나요? 약 5백만 달러에 가까운 금액을 투자했습니다. 매출액. 그 이유는 다음과 같습니다. 모두가 더 빨리 움직일 수 있는 이유는 다음과 같습니다. 이러한 시스템을 사용하는 것. 그리고 그게 바로 교육을 비롯한 여러 분야에 걸쳐, 커뮤니티, 자격증, 이벤트 뉴스레터 등. 그래서 어쨌든, ~에 의해 이 과정을 마치면 여러분은 다음과 같은 모습이 될 것입니다. 필요한 모든 것이 완벽하게 갖춰져 있습니다. Grockbot에 대해 알아보고 비즈니스 규모를 확장하는 방법을 알아보세요. 사업 및 기타 사업. 그럼 시작해 봅시다 시간 낭비하지 말고 바로 본론으로 들어가자. 이쪽으로. 자, 그럼 그록봇, 실제 업무를 맡길 수 있는 AI 팀원 그들은 로그인할 수 있고, 사용할 수 있습니다. 여러분의 도구는 다음과 같은 조치를 취할 수 있습니다. 너. 당신은 앞으로 나아갈 것임을 알 수 있습니다. 다음과 같은 멋진 인터페이스를 얻으세요 텔레그램 스타일이라서 그런지 느낌이 아주 좋아요. 친숙하고 그들과 대화할 수 있습니다. 팀 동료들처럼요. 그들은 서로 이야기할 수 있습니다 다른. 그들은 서로에게 업무를 위임할 수 있습니다. 다른. 당신이 있는 동안 그들은 다른 일을 할 수 있습니다. 잠. 정말 정말 멋져요. 그리고 그냥 우선 3만 피트 정도부터 시작해 볼까 우리가 어디로 가고 있는지 보고 확인하기 위해서입니다. 이 과정에 대해서는 당연히 서명할 겁니다. 이 중에서 새 계정을 만드세요. 여러분과 함께 모든 것을 설정했습니다. 당신은 전혀 혼란스러워하지 않아요. 하지만 이것은 이것이 대략 어떤 모습일지 짐작해 볼 수 있습니다. 이 과정이 여러분을 위한 마지막 부분입니다. 그러니까, 그렇죠? 여기서 제가 그룹을 가지고 있다는 것을 보실 수 있습니다. 채팅. 사실 이건 비슷한 채널이에요. 슬랙 채널이 있는 것처럼요. ClickUp 채널이든, 여러분이 익숙한 채널이든 상관없습니다. 에게. 그리고 왼쪽을 보시면 알 수 있듯이 저는 기본적으로 모든 사람들과 DM을 주고받습니다. 일반 에이전트든 아니든 서로 다른 에이전트 또는 그들의 콘텐츠 또는 내가 가진 것들 여기 핀으로 고정되어 있는 건 마치 내 것 같은 느낌이야 세우이트. 제가 전화하는 제 비서 그들의 우두머리. 저는 최고운영책임자(COO)와 최고경쟁책임자(CCO)를 두고 있습니다. 제가 최고 콘텐츠 책임자라고 부르는 사람입니다. 그때는 제 최고재무책임자(CFO)였습니다. 그래서 어쨌든, 우리가 바로 여기를 보면 제가 가지고 있는 것들이 있습니다. 그룹 채팅에 참여한 네 명의 에이전트 지도. 그리고 제가 말씀드린 내용은 다음을 근거로 합니다. 지난 한 주가 어떻게 흘러갔는지, 그리고 우리의 장기적인 목표를 세웠는데, 여러분들이 그렇게 해주셨으면 좋겠어요. 이상화하다. 여러분들의 도움이 필요해요 우리가 무엇을 해야 할지 알아내자 4분기 말인가요? 우리는 어떻게 계속 나아갈까요? 구별하기 위해서요? 그렇다면 우리는 어떻게 계속 나아갈 수 있을까요? 규모 확장에 따른 핵심인물 위험을 줄이기 위해 사업을 확장하려는 건가요? 보시다시피 베키와 댄, 그들이 함께 모인다. 챈들러와 클라우스가 모두 한자리에 모인다. 그리고 다양한 영역에 대해 이야기해 봅시다 그들은 참여하고 있으며, 일하고 있습니다. 리더십 팀처럼 함께 협력하여 돕습니다. 우리가 무엇을 해야 할지 알아내는 데 도움을 줄게요. 그들은 서로를 태그하고 있어요, 그들은 그들은 서로 이야기하고, 책을 읽고 있다. 서로의 답변. 그리고 나서 바로 여기서 그들은 결국 다섯 가지 핵심 사항으로 좁혀졌습니다. 그들이 동의한 결정은 다음과 같았습니다. 4분기에는 신규 사업 부문이 없으며, 지출만 있습니다. 네이트를 핵심 업무에서 제외시키기 위해, 메인 전원에서 2단계 테스트가 꺼집니다. 채널, 베키는 댓글 마인드 픽을 소유하고 있습니다. 그러니까 네이트가 아이디어의 관문이 아니라, CIC가 아이디어의 관문인 거죠. 네이트 없이도 확장 가능한 2027년 유닛 카메라 앞에서. 그러니까 당연히 더 많은 것들이 있죠. 여기서 자세히 살펴볼 건 아니지만, 그게 그들이 원하는 바입니다. 단 몇 분 만에 생각해낼 수 있었습니다. 면적에 따라 분 단위로 계산 제 사업 분야에 대한 전문 지식. 그리고 그 이유는 내가 이 네 명의 주요 요원을 특정한 이유 여기 위에 있는 이유는 무엇이 될 것인가 때문입니다. Grockbot을 사용하기 시작하면 다음과 같은 일이 발생합니다. 엄청난 양의 회전을 시작하게 될 겁니다. 서로 다른 에이전트. 보시다시피 저는 지금 여기엔 10개밖에 없다는 뜻이에요. 사실 그렇게 많은 건 아니지만, 저는 각 에이전트가 매우 구체적인 한 가지를 갖도록 합니다. 목적. 이건 X만 살펴봅니다. 한 사람은 애니메이션만 만듭니다. 이거 제 콘텐츠 전략에 대한 이야기입니다. 이건 반딧불이만 확인하는 거예요. 모두 이것들은 아주 아주 특정한 것을 가지고 있습니다. 그들이 그렇게 합니다. 그리고 그렇게 될 겁니다 친절하지 않으면 엄청나게 빨리 지나갈 거예요. 마치 최상단에 있는 당신의 리더십 팀처럼 대표자들이 이를 우회하여 문제를 해결합니다. 당신 때문에 내가 Klouse를 클릭하면 볼 수 있다는 것뿐만 아니라, 클라우스와 이야기할 수 있을까요? 하지만 그는 할 수 있어요. 다른 사람들과 이야기하세요. 그는 할 수 있다 이 모든 것에 대한 업무를 위임하세요 봇. 클라우스가 보낼 수 있다는 것을 알 수 있습니다. 댄, 베키, 챈들러, 데브에게 보내는 메시지 눈, 전망, 사소한, 움직임, 돈, 돌진, 칼, 커피. 모든 요원들이 대화할 수 있습니다. 서로에게. 그리고 그때부터 상황이 달라지기 시작합니다. 정말 멋지네요. 만드는 동안 확실히 규모를 확장하는 방식이 적절한가요? 요원들은 혼란스러워하지 않습니다. 누가 무엇을 하고 있는지, 그리고 각 사람과 어떻게 대화해야 하는지 기타 등등. 당신은 그렇지 않습니다 그들이 업무를 중복해서 수행하도록 하고 싶거나 계획에 허점을 남기는 것, 예를 들면 다음과 같습니다. 저것. 그리고 이 인터페이스가 다소 복잡해 보일 수 있다는 것을 알고 있습니다. 지금은 조금 부담스럽지만, 날 믿어, 나쁘지 않을 거야 모두. 다른 것들도 좀 보여드리려고요. 각 에이전트에서 가능합니다. 기본적으로 이름이 생길 거예요. 바로 여기 보이는 것이 그것입니다. 당신은 레이블을 지정할 수 있으며, 이는 선택 사항입니다. 그들에게 역할을 주고 싶어요, 마치 직책. 그러면 여러분은 다음을 갖게 됩니다. 설명이고, 그게 바로 사실입니다. 이 요원이 무엇을 하는지 다른 요원들에게 알려줍니다. 하다. 예를 들어, 클라우스의 경우, 이것은 설명은 당신이 네이트의 상관이라는 것입니다. 직원. 클라우스는 네이트가 사용하는 유일한 봇입니다. 대화합니다. 어떤 작업을 시작하기 전에 먼저 확인하세요. 다른 그록봇이 그것을 소유하고 있는지 여부와 먼저 위임하세요. 일만 하세요 적합한 전문가가 없다면 스스로 해결하십시오. 결과를 여기로 가져오세요. 당신은 가질 수 있습니다 특정 항목에 대한 알림이 켜져 있습니다. 봇. 그리고 여러분이 할 수 있는 또 다른 일은 다음과 같습니다. 보시다시피 각 봇은 고유한 특징을 가지고 있습니다. 컴퓨터. 이제 그들은 자신들만의 것을 갖게 되었습니다. 화면은 다르지만 같은 것을 공유합니다. 컴퓨터. 그러므로 인증을 하시면 school.com처럼 또는 로그인할 때처럼 그러면 다른 봇들도 할 수 있게 될 것입니다. 그것에 접근할 수도 있지만, 그들은 자신들의 권리를 가지고 있습니다. 자신의 화면. 바로 여기에서 보실 수 있습니다. 말 그대로 자체 CLI에 있었습니다. GitHub에 인증 중입니다. 볼 수 있습니다 내 Herk 2 저장소를 보고 있었다는 뜻입니다. 그것이 우리를 쳐다보고 있었다는 것을 알 수 있습니다. 학교 커뮤니티이며 다음과 같이 로그인됩니다. 보시다시피 저는 그렇습니다. 그래서 저에게 도움이 될 수 있습니다. AIS 또는 AIS Plus 내에서 조치를 취하십시오. 그리고 그런 것들 말이죠. 그것이 어떤 의미였는지 알 수 있습니다. 시카고 컵스 관련 음식도 찾고 있어요. 그게 무슨 일을 하고 있었는지는 잘 모르겠지만, 요점은 제가 브라우저를 제어할 수 있다는 것입니다. 클라우스도 마찬가지고 다른 사람들도 마찬가지다 자치령 대표. 또한 거기에 있는 것을 볼 수 있습니다. 루틴이라고 하는 것. 이건 ~을 위한 거예요 클라우스는 일요일</pre>
+  </div>
+  </article>
+  <article class="video-card">
+    <div class="card-top">
+      <a class="thumb-wrap" href="https://www.youtube.com/watch?v=vQQuvixSBz4" target="_blank" rel="noopener">
+        <img src="https://i.ytimg.com/vi/vQQuvixSBz4/hqdefault.jpg" alt="Claude 업무 자동화 5개, 과장 없이 정리했습니다" loading="lazy"/>
+      </a>
+      <div class="card-info">
+        <div class="card-meta">
+          <span class="ch-tag">AIMAX_PD</span>
+          <span class="date-tag">2026-08-31</span>
+          
+        </div>
+        <div class="video-title">Claude 업무 자동화 5개, 과장 없이 정리했습니다</div>
+        <div style="display:flex;align-items:center;flex-wrap:wrap;gap:4px;margin-top:auto">
+          <a class="yt-link" href="https://www.youtube.com/watch?v=vQQuvixSBz4" target="_blank" rel="noopener">↗ 유튜브에서 보기</a>
+          <button class="nlm-btn" data-url="https://www.youtube.com/watch?v=vQQuvixSBz4">📓 NotebookLM</button>
+        </div>
+      </div>
+    </div>
+    <div class="summary-section">
+      <h2>핵심 요약</h2>
+<p>17세 제작자가 Claude와 도구들을 연결해 구축한 5가지 업무 자동화 시스템을 과장 없이 정리한 내용이다. 콘텐츠 기획부터 대본 작성, 미팅 전사, 제안서 작성, 로컬 지식 관리까지 이어지는 실전 워크플로우를 다룬다. 다만 제작자의 수익 성과나 계약 인과관계는 검증되지 않았으므로 권한 설정과 사람의 최종 검토가 필수적이다.</p>
+<h2>주요 포인트</h2>
+<ul>
+<li>**콘텐츠 아이디어 발굴**: Claude 커넥터를 활용해 반응 좋은 영상을 수집하되, 신뢰할 수 있는 서버 및 최소 권한으로 설정해야 함</li>
+<li>**스크립트 전용 스킬 구축**: 검증된 대본 구조를 스킬 지침으로 저장해 재사용하며, 최종 완성본은 사람이 직접 검토해야 함</li>
+<li>**Notion AI 미팅 전사 및 요약**: 회의록 작성 부담을 줄이되 사전 참석자 동의와 오디오 보관·보안 권한 점검이 선행되어야 함</li>
+<li>**맞춤형 제안서 신속 생성**: 회의 요약본을 Claude 제안서 스킬에 연동해 빠르게 발송하나 빠른 제안서가 계약을 보장하지는 않음</li>
+<li>**Obsidian 로컬 맥락 저장소 활용**: 로컬 볼트의 마크다운으로 자료를 관리하며, 민감 자료 연결 전 권한과 공유 범위를 명확히 설정해야 함</li>
+</ul>
+    </div>
+  <div class="transcript-wrap">
+    <div class="transcript-header">
+      <button class="transcript-toggle" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('visible')">
+        <span class="arr">▼</span> 원문 자막
+      </button>
+      <button class="copy-btn" onclick="var b=this,t=b.nextElementSibling||b;navigator.clipboard.writeText(document.querySelector('#tr-vQQuvixSBz4').textContent).then(()=>{b.textContent='복사됨';setTimeout(()=>b.textContent='복사',2000)})">복사</button>
+    </div>
+    <pre class="transcript-box" id="tr-vQQuvixSBz4">이 남자 미쳤습니다. 17살 제작자가 클라우데로 콘텐츠와 제한서 회사 기록을 연결한 운영 시스템을 공개했습니다. 최근 30일 24 871달러 수익은 제작자 주장이지 독립 검증된 성과는 아닙니다. 그가 소개한 다섯 가지 방법 저장하고 끝까지 보세요. 첫째로 커넥터로 콘텐츠 아이디어를 찾습니다. 영상에서는 클로우드 커넥터로 자기 분야에서 반응이 윗 영상을 모으는 흐름을 보여줍니다. 커넥터 권한은 신뢰할 수 있는 서버와 최소 범위로 설정하세요. 둘째, 클로드 전용 스크립트 스킬을 만듭니다. 잘 나온 대본의 구조를 스킬 너디 지침으로 저장해 반복 작업에 재사용합니다. 스킬을 만들었다고 결과가 자동으로 같아지는 건 아니니 마지막 검토는 사람이 해야 합니다. 셋째, 로우션 AI로 미팅을 전사하고 요약합니다. 메모 대신 대화에 집중하되 시작 전에 참석자 동의를 확인하세요. 민감한 회의라면 오디오 처리와 보관, 공유 권한도 먼저 점검해야 합니다. 넷째, 회의 요약을 클로드 제한서 스킬에 넣습니다. 제작자는 당일 저녁에 고객 맞춤 제한서를 보냈다고 설명합니다. 빠른 제한서가 계약을 만든다는 인과는 확인되지 않았습니다. 다섯째, 옵시디안을 로컬 맥락 저장소로 씁니다. 노트는 로컬 바울트의 마크다운 파일로 저장할 수 있지만 옵시디안 앱 자체는 오픈 소스가 아닙니다. 고객과 재무 자료를 연결하기 전에 권한과 공유 범위를 먼저 정하세요. 11분짜리 영상 내용을 모두 정리했습니다.이 이 자료 궁금하신 분들은 채널을 구독 후 링크를 확인하세요.</pre>
+  </div>
+  </article>
+</main>
+
+<footer>유튜브 구독 정리 · agy 요약 · 2026-09-01 06:01</footer>
+
+
+<script>
+document.querySelectorAll('.nlm-btn').forEach(function(btn){
+  btn.addEventListener('click',function(){
+    navigator.clipboard.writeText('/notebooklm '+btn.dataset.url).then(function(){
+      var orig=btn.innerHTML;btn.innerHTML='✓ 복사됨';btn.classList.add('copied');
+      setTimeout(function(){btn.innerHTML=orig;btn.classList.remove('copied');},2000);
+    });
+  });
+});
+</script>
+
+</body>
+</html>
