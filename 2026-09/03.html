@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>2026-09-03 — 유튜브 구독 정리</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+  :root{--bg:#090e1a;--surface:#111827;--surface2:#1a2235;--border:#1e2d47;--accent:#6c63ff;--accent2:#00d4ff;--text:#e8eaf0;--muted:#7a8499;--radius:14px;}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Pretendard',sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+  header{background:linear-gradient(135deg,#0d1b3e,#1a0533);border-bottom:1px solid var(--border);padding:20px 40px;display:flex;align-items:center;justify-content:space-between;}
+  .nav-back{color:var(--accent2);text-decoration:none;font-size:0.85rem;display:flex;align-items:center;gap:6px}
+  .nav-back:hover{color:#fff}
+  .date-badge{font-size:1.4rem;font-weight:700;letter-spacing:-0.5px;background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+  .count{font-size:0.85rem;color:var(--muted)}
+  main{max-width:900px;margin:0 auto;padding:32px 24px 80px}
+  .video-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;margin-bottom:24px;transition:border-color 0.2s,box-shadow 0.2s;}
+  .video-card:hover{border-color:var(--accent);box-shadow:0 4px 24px rgba(108,99,255,0.15)}
+  .card-top{display:flex;gap:0}
+  .thumb-wrap{flex:0 0 240px;position:relative;overflow:hidden}
+  .thumb-wrap img{width:100%;height:100%;object-fit:cover;transition:transform 0.4s}
+  .video-card:hover .thumb-wrap img{transform:scale(1.05)}
+  .card-info{flex:1;padding:20px;display:flex;flex-direction:column;gap:10px}
+  .card-meta{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+  .ch-tag{font-size:0.72rem;font-weight:600;padding:3px 12px;background:linear-gradient(135deg,rgba(108,99,255,0.2),rgba(0,212,255,0.2));border:1px solid rgba(108,99,255,0.3);border-radius:999px;color:var(--accent2);}
+  .date-tag{font-size:0.72rem;color:var(--muted)}
+  .no-transcript{font-size:0.68rem;padding:2px 8px;background:rgba(255,180,0,0.12);border:1px solid rgba(255,180,0,0.25);border-radius:999px;color:#ffa500;}
+  .video-title{font-size:1rem;font-weight:600;line-height:1.4}
+  .yt-link{display:inline-flex;align-items:center;gap:5px;font-size:0.8rem;color:var(--accent);text-decoration:none;transition:color 0.2s;}
+  .yt-link:hover{color:var(--accent2)}
+  
+  .nlm-btn{display:inline-flex;align-items:center;gap:5px;font-size:0.8rem;color:#fff;
+    background:rgba(108,99,255,0.2);border:1px solid rgba(108,99,255,0.4);border-radius:8px;
+    padding:4px 12px;cursor:pointer;font-family:inherit;transition:all 0.2s;margin-left:8px;}
+  .nlm-btn:hover{background:rgba(108,99,255,0.45);}
+  .nlm-btn.copied{background:rgba(0,200,100,0.2);border-color:rgba(0,200,100,0.4);color:#00c864;}
+
+  .summary-section{border-top:1px solid var(--border);background:var(--surface2);padding:20px 24px;font-size:0.85rem;line-height:1.7;color:#c5cad8;}
+  .summary-section h2{font-size:0.82rem;color:var(--accent2);margin:12px 0 4px}
+  .summary-section h2:first-child{margin-top:0}
+  .summary-section ul{padding-left:18px}
+  .summary-section li{margin-bottom:5px}
+  .transcript-wrap{border-top:1px solid var(--border);padding:14px 24px;background:#0c1220}
+  .transcript-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:0}
+  .transcript-toggle{background:none;border:none;color:var(--muted);font-size:0.8rem;cursor:pointer;font-family:inherit;display:flex;align-items:center;gap:4px;padding:0;transition:color 0.2s;}
+  .transcript-toggle:hover{color:var(--text)}
+  .copy-btn{background:rgba(108,99,255,0.1);border:1px solid rgba(108,99,255,0.3);border-radius:8px;color:var(--accent2);font-size:0.72rem;padding:4px 12px;cursor:pointer;font-family:inherit;transition:all 0.2s;}
+  .copy-btn:hover{background:rgba(108,99,255,0.25);color:#fff}
+  .transcript-box{display:none;margin-top:10px;background:#080d18;border:1px solid var(--border);border-radius:10px;padding:12px 14px;font-size:0.78rem;line-height:1.75;color:#8a95aa;max-height:260px;overflow-y:auto;white-space:pre-wrap;word-break:break-word;}
+  .transcript-box.visible{display:block}
+  footer{text-align:center;padding:24px;font-size:0.75rem;color:var(--muted);border-top:1px solid var(--border)}
+  @media(max-width:640px){.card-top{flex-direction:column}.thumb-wrap{flex:none;height:200px}header{padding:16px}main{padding:16px 12px 60px}}
+</style>
+</head>
+<body>
+
+<header>
+  <a class="nav-back" href="../index.html">← 대시보드로</a>
+  <div>
+    <div class="date-badge">2026-09-03</div>
+    <div class="count">2개 영상</div>
+  </div>
+  <div style="font-size:0.75rem;color:var(--muted)">2026-09-03 06:03 생성</div>
+</header>
+
+<main>
+
+  <article class="video-card">
+    <div class="card-top">
+      <a class="thumb-wrap" href="https://www.youtube.com/watch?v=znAPVVnzdfo" target="_blank" rel="noopener">
+        <img src="https://i.ytimg.com/vi/znAPVVnzdfo/hqdefault.jpg" alt="That Entire Phone Call Was AI" loading="lazy"/>
+      </a>
+      <div class="card-info">
+        <div class="card-meta">
+          <span class="ch-tag">Nicholas Puru</span>
+          <span class="date-tag">2026-09-03</span>
+          
+        </div>
+        <div class="video-title">That Entire Phone Call Was AI</div>
+        <div style="display:flex;align-items:center;flex-wrap:wrap;gap:4px;margin-top:auto">
+          <a class="yt-link" href="https://www.youtube.com/watch?v=znAPVVnzdfo" target="_blank" rel="noopener">↗ 유튜브에서 보기</a>
+          <button class="nlm-btn" data-url="https://www.youtube.com/watch?v=znAPVVnzdfo">📓 NotebookLM</button>
+        </div>
+      </div>
+    </div>
+    <div class="summary-section">
+      <h2>핵심 요약</h2>
+<p>문의 폼 작성 후 40초 만에 걸려온 고객 응대 및 예약 전화가 사실 전체 AI로 진행된 통화였음을 시연하는 영상이다. Fish Audio의 최신 기술을 기반으로 구축된 AI 상담원은 자연스러운 대화와 언어 전환은 물론 실제 예약까지 사람 개입 없이 자동으로 처리한다.</p>
+<h2>주요 포인트</h2>
+<ul>
+<li>고객이 리드 폼을 제출한 직후 수십 초 내에 즉각 전화를 걸어 응대함</li>
+<li>사람과 구별하기 어려울 정도로 자연스러운 반응 속도와 대화 흐름 구현</li>
+<li>대화 도중 스페인어 등 다른 언어로의 전환 요청 및 상담 내용도 유연하게 처리</li>
+<li>의사 진료 일정 조율부터 예약 확정 및 문자 발송까지 전 과정을 완전 자동화</li>
+</ul>
+    </div>
+  <div class="transcript-wrap">
+    <div class="transcript-header">
+      <button class="transcript-toggle" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('visible')">
+        <span class="arr">▼</span> 원문 자막
+      </button>
+      <button class="copy-btn" onclick="var b=this,t=b.nextElementSibling||b;navigator.clipboard.writeText(document.querySelector('#tr-znAPVVnzdfo').textContent).then(()=>{b.textContent='복사됨';setTimeout(()=>b.textContent='복사',2000)})">복사</button>
+    </div>
+    <pre class="transcript-box" id="tr-znAPVVnzdfo">Hi. Is this with Nick? Yeah, this is Nick. Hey, Nick. Ava from Lumin Aesthetic. You filled out the form about Botox about 40 seconds ago, so I figured I'd catch you before you close the tab. Okay. Wow, that was actually really fast. Um, actually, let's switch to Spanish. Wait, I completely forgot. I don't speak Spanish. Let's go back to English. No problem. I said the consult's free and I can book you right now. Okay. I mean, honestly, I was just seeing what it costs. Yeah, absolutely. Best thing is to get you in with Dr. Reyes. He'll price out exactly what you're after and tell you if it's even a fit. Free either way. Does Thursday at 6:00 or Saturday at 10:30 work? Okay. Um, yeah, let's let's do Saturday, I guess. 10:30 done with Dr. Ray texting or confirmation now? We'll see you then. Let me know if you have any other questions. That entire conversation was AI. This is Fish Audio's latest release, and we've been using this exact kind of system to build AI phone agents for dozens of different businesses. The agent can respond to leads within seconds of them opting in, have a natural conversation, answer any questions, switch languages, and even book appointments without a human ever picking up the phone. If you want the exact step-by-step tutorial for building this yourself, just comment need and I'll send it over to</pre>
+  </div>
+  </article>
+  <article class="video-card">
+    <div class="card-top">
+      <a class="thumb-wrap" href="https://www.youtube.com/watch?v=WhxZY1b8Fhs" target="_blank" rel="noopener">
+        <img src="https://i.ytimg.com/vi/WhxZY1b8Fhs/hqdefault.jpg" alt="Claude Fills Every Gap You Leave and Never Tells You" loading="lazy"/>
+      </a>
+      <div class="card-info">
+        <div class="card-meta">
+          <span class="ch-tag">Dylan Davis</span>
+          <span class="date-tag">2026-09-03</span>
+          
+        </div>
+        <div class="video-title">Claude Fills Every Gap You Leave and Never Tells You</div>
+        <div style="display:flex;align-items:center;flex-wrap:wrap;gap:4px;margin-top:auto">
+          <a class="yt-link" href="https://www.youtube.com/watch?v=WhxZY1b8Fhs" target="_blank" rel="noopener">↗ 유튜브에서 보기</a>
+          <button class="nlm-btn" data-url="https://www.youtube.com/watch?v=WhxZY1b8Fhs">📓 NotebookLM</button>
+        </div>
+      </div>
+    </div>
+    <div class="summary-section">
+      <h2>핵심 요약</h2>
+<p>AI에게 작업을 지시하면 AI는 사용자에게 알리지 않고 수많은 판단(중요도, 생략 기준, 톤 등)을 임의로 내린다. 사람들이 겪는 작업물의 불만족은 단순 오류가 아니라 AI가 사용자 모르게 내린 암묵적 결정 때문에 발생한다. 이러한 숨겨진 결정은 모호한 단어 해석, 출력 형태, 상충 데이터 선택, 임의 누락 등 4가지 범주로 나뉜다.</p>
+<h2>주요 포인트</h2>
+<ul>
+<li>AI는 '중요한 부분 요약' 같은 단순한 요청에서도 무엇이 중요한지, 분량이나 어조는 어떠해야 하는지 등을 사용자 모르게 스스로 결정함</li>
+<li>AI 작업물에 대한 반복적인 수정과 피로감은 AI의 단순 실수가 아니라 숨겨진 임의 판단 때문임</li>
+<li>첫 번째 범주(모호한 단어 해석): 사용자가 쓴 '중요한' 같은 모호한 표현을 AI가 자의적인 기준으로 한정해 해석함</li>
+<li>두 번째 범주(결과물 형태): 분량(1장 vs 10장), 톤앤매너(격식체 vs 비격식체) 등을 AI가 임의로 결정함</li>
+<li>세 번째 범주(상충 데이터 선택): 데이터나 날짜가 충돌할 때 사용자의 선호와 무관하게 한쪽을 임의 선택함</li>
+<li>네 번째 범주(정보 누락): 별첨이나 특정 조항 등을 AI가 아예 누락시켜 사용자가 빠졌다는 사실조차 인지하기 어렵게 만듦</li>
+</ul>
+    </div>
+  <div class="transcript-wrap">
+    <div class="transcript-header">
+      <button class="transcript-toggle" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('visible')">
+        <span class="arr">▼</span> 원문 자막
+      </button>
+      <button class="copy-btn" onclick="var b=this,t=b.nextElementSibling||b;navigator.clipboard.writeText(document.querySelector('#tr-WhxZY1b8Fhs').textContent).then(()=>{b.textContent='복사됨';setTimeout(()=>b.textContent='복사',2000)})">복사</button>
+    </div>
+    <pre class="transcript-box" id="tr-WhxZY1b8Fhs">Whether you know it or not, every time you hand AI a task, it's making a bunch of decisions that you never see. Like what actually matters, what to skip, and how to sound. And it never mentions any of them to you. If you're new here, I'm Dylan. I run an AI consultancy. And when my coaching clients bring me AI work they're frustrated with, the problem is almost never a mistake. It's a decision the AI made for them quietly, and then they've been re-fixing that same mistake every single week without knowing why. So in this video, I'll give you one sentence that makes every one of those decisions visible. And more importantly, then we'll fix the ones that keep coming back, so they're gone for good. Now, let's get into it. Now, here we have a seemingly simple task, where we're asking the AI to summarize the important parts of a contract. So we pass it a 40-page contract, and it reviews it for us. Now, with this basic ask, there are tons and tons of decisions that the AI has to make before it actually gives us back that summary. Such as what counts as important. What type of tone do you expect from me? How long is summary? So when you say summarize, is that 10 pages? Is that 20 pages? Or is that one page? And a variety of other things. And with all of these decisions that are being made, like I mentioned previously, you're not seeing them. But we can distill these decisions down into four categories, irrelevant of the task. So the first category is getting clarity on the ambiguous words that you use. So when you say important, what does that actually mean? And this is specific to the words that matter a lot in the task at hand. So in this case, we talked about importance. So I want you to summarize the important pieces of the contract, but for the AI, that might mean only the payment terms and the termination terms, but not necessarily the renewal terms. This is the first category. The second category is figuring out what the result actually looks like. So do you want it to be written in an informal tone? Do you want it to be one page or 10 pages? How do you want the output to look? The third category is when the AI runs into a fork in the road, where there might be contradicting data points or perspectives in what it's doing, and it has to make a choice. In this case, when the AI is reviewing the contract, it could see two different dates, one on page three and one on page 40. It decides to go with page 40's date, but maybe you preferred page three. And then the final category is the one that I see hurt most of my clients. And it's the thing that you never see because the AI left it out. In this case, there could have been an attachment section of the contract, the AI completely left out of the summary. And again, this is probably the most painful. And the reason this and the other four categories are harmful to people is that when you look at the output from the AI, in this case, the one-page summary from the contract review, you only see what the AI produced. You don't see what it skipped, what it left out, and the associated decisions behind that. So, there's obviously risk to this, but also you're wasting time because you have to review the original document as well as the output methodically back and forth to make sure nothing was missed. And through the review process, you might realize that it skipped or left out the renewal clause, which is really important to you. Quick pause. If you're enjoying this, you might enjoy two other things. First off, below is a 30-day AI Insight Series, completely free. You'll get 30 insights in your inbox of how you can apply AI to your business and your work. The second thing is if you'd like to work with me, below are a series of offerings to see if there's a good fit between the two of us. Now, let's get back to the video. And through that review process, when you do this time and time again, day after day, week after week, on different tasks, you find yourself fixing the output consistently. And sometimes those fixes are saved by the AI and it doesn't make that mistake again in the future. But this isn't reliable and it's not systematic. Ideally, what we should be doing is looking underneath these simple fixes to figure out what decisions underneath are being made and how can we systematically fix those. And that's what I want to help you solve today. It's going to be a very simple prompt that's going to help us identify what those four categories of decisions are for whatever task we're applying AI towards. And here's your prompt, literally one line. All we're telling the AI is simply saying, "As you do your work, I want you to keep a log of every decision you make for this task. Specifically, anything that I didn't explicitly specify fight you." And the important locations where we want to put this are going to be likely for reoccurring tasks. So, you probably have a series of projects or skills they're using in whatever tool you're using. You want to embed that promp</pre>
+  </div>
+  </article>
+</main>
+
+<footer>유튜브 구독 정리 · agy 요약 · 2026-09-03 06:03</footer>
+
+
+<script>
+document.querySelectorAll('.nlm-btn').forEach(function(btn){
+  btn.addEventListener('click',function(){
+    navigator.clipboard.writeText('/notebooklm '+btn.dataset.url).then(function(){
+      var orig=btn.innerHTML;btn.innerHTML='✓ 복사됨';btn.classList.add('copied');
+      setTimeout(function(){btn.innerHTML=orig;btn.classList.remove('copied');},2000);
+    });
+  });
+});
+</script>
+
+</body>
+</html>
