@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>2026-09-04 — 유튜브 구독 정리</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+  :root{--bg:#090e1a;--surface:#111827;--surface2:#1a2235;--border:#1e2d47;--accent:#6c63ff;--accent2:#00d4ff;--text:#e8eaf0;--muted:#7a8499;--radius:14px;}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Pretendard',sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+  header{background:linear-gradient(135deg,#0d1b3e,#1a0533);border-bottom:1px solid var(--border);padding:20px 40px;display:flex;align-items:center;justify-content:space-between;}
+  .nav-back{color:var(--accent2);text-decoration:none;font-size:0.85rem;display:flex;align-items:center;gap:6px}
+  .nav-back:hover{color:#fff}
+  .date-badge{font-size:1.4rem;font-weight:700;letter-spacing:-0.5px;background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+  .count{font-size:0.85rem;color:var(--muted)}
+  main{max-width:900px;margin:0 auto;padding:32px 24px 80px}
+  .video-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;margin-bottom:24px;transition:border-color 0.2s,box-shadow 0.2s;}
+  .video-card:hover{border-color:var(--accent);box-shadow:0 4px 24px rgba(108,99,255,0.15)}
+  .card-top{display:flex;gap:0}
+  .thumb-wrap{flex:0 0 240px;position:relative;overflow:hidden}
+  .thumb-wrap img{width:100%;height:100%;object-fit:cover;transition:transform 0.4s}
+  .video-card:hover .thumb-wrap img{transform:scale(1.05)}
+  .card-info{flex:1;padding:20px;display:flex;flex-direction:column;gap:10px}
+  .card-meta{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+  .ch-tag{font-size:0.72rem;font-weight:600;padding:3px 12px;background:linear-gradient(135deg,rgba(108,99,255,0.2),rgba(0,212,255,0.2));border:1px solid rgba(108,99,255,0.3);border-radius:999px;color:var(--accent2);}
+  .date-tag{font-size:0.72rem;color:var(--muted)}
+  .no-transcript{font-size:0.68rem;padding:2px 8px;background:rgba(255,180,0,0.12);border:1px solid rgba(255,180,0,0.25);border-radius:999px;color:#ffa500;}
+  .video-title{font-size:1rem;font-weight:600;line-height:1.4}
+  .yt-link{display:inline-flex;align-items:center;gap:5px;font-size:0.8rem;color:var(--accent);text-decoration:none;transition:color 0.2s;}
+  .yt-link:hover{color:var(--accent2)}
+  
+  .nlm-btn{display:inline-flex;align-items:center;gap:5px;font-size:0.8rem;color:#fff;
+    background:rgba(108,99,255,0.2);border:1px solid rgba(108,99,255,0.4);border-radius:8px;
+    padding:4px 12px;cursor:pointer;font-family:inherit;transition:all 0.2s;margin-left:8px;}
+  .nlm-btn:hover{background:rgba(108,99,255,0.45);}
+  .nlm-btn.copied{background:rgba(0,200,100,0.2);border-color:rgba(0,200,100,0.4);color:#00c864;}
+
+  .summary-section{border-top:1px solid var(--border);background:var(--surface2);padding:20px 24px;font-size:0.85rem;line-height:1.7;color:#c5cad8;}
+  .summary-section h2{font-size:0.82rem;color:var(--accent2);margin:12px 0 4px}
+  .summary-section h2:first-child{margin-top:0}
+  .summary-section ul{padding-left:18px}
+  .summary-section li{margin-bottom:5px}
+  .transcript-wrap{border-top:1px solid var(--border);padding:14px 24px;background:#0c1220}
+  .transcript-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:0}
+  .transcript-toggle{background:none;border:none;color:var(--muted);font-size:0.8rem;cursor:pointer;font-family:inherit;display:flex;align-items:center;gap:4px;padding:0;transition:color 0.2s;}
+  .transcript-toggle:hover{color:var(--text)}
+  .copy-btn{background:rgba(108,99,255,0.1);border:1px solid rgba(108,99,255,0.3);border-radius:8px;color:var(--accent2);font-size:0.72rem;padding:4px 12px;cursor:pointer;font-family:inherit;transition:all 0.2s;}
+  .copy-btn:hover{background:rgba(108,99,255,0.25);color:#fff}
+  .transcript-box{display:none;margin-top:10px;background:#080d18;border:1px solid var(--border);border-radius:10px;padding:12px 14px;font-size:0.78rem;line-height:1.75;color:#8a95aa;max-height:260px;overflow-y:auto;white-space:pre-wrap;word-break:break-word;}
+  .transcript-box.visible{display:block}
+  footer{text-align:center;padding:24px;font-size:0.75rem;color:var(--muted);border-top:1px solid var(--border)}
+  @media(max-width:640px){.card-top{flex-direction:column}.thumb-wrap{flex:none;height:200px}header{padding:16px}main{padding:16px 12px 60px}}
+</style>
+</head>
+<body>
+
+<header>
+  <a class="nav-back" href="../index.html">← 대시보드로</a>
+  <div>
+    <div class="date-badge">2026-09-04</div>
+    <div class="count">3개 영상</div>
+  </div>
+  <div style="font-size:0.75rem;color:var(--muted)">2026-09-04 06:02 생성</div>
+</header>
+
+<main>
+
+  <article class="video-card">
+    <div class="card-top">
+      <a class="thumb-wrap" href="https://www.youtube.com/watch?v=NbUTIFEEXLY" target="_blank" rel="noopener">
+        <img src="https://i.ytimg.com/vi/NbUTIFEEXLY/hqdefault.jpg" alt="AI News in 5 Mins: GPT-6 Astra" loading="lazy"/>
+      </a>
+      <div class="card-info">
+        <div class="card-meta">
+          <span class="ch-tag">Nate Herk</span>
+          <span class="date-tag">2026-09-04</span>
+          
+        </div>
+        <div class="video-title">AI News in 5 Mins: GPT-6 Astra</div>
+        <div style="display:flex;align-items:center;flex-wrap:wrap;gap:4px;margin-top:auto">
+          <a class="yt-link" href="https://www.youtube.com/watch?v=NbUTIFEEXLY" target="_blank" rel="noopener">↗ 유튜브에서 보기</a>
+          <button class="nlm-btn" data-url="https://www.youtube.com/watch?v=NbUTIFEEXLY">📓 NotebookLM</button>
+        </div>
+      </div>
+    </div>
+    <div class="summary-section">
+      <h2>핵심 요약</h2>
+<p>OpenAI가 세대적 도약이자 사실상의 AGI 도달로 평가받는 차세대 AI 모델 'GPT-6 Astra'를 공개했습니다. 텍사스 스타게이트 사이트의 GPU 10만 개 이상으로 학습된 역대 최대 규모 모델로, 강력한 성능과 높은 정렬(Alignment) 수준을 자랑합니다. 현재 일부 조직에 우선 제공 중이며, 수일 내 유료 사용자 및 API, AWS를 통해 순차 배포될 예정입니다.</p>
+<h2>주요 포인트</h2>
+<ul>
+<li>**AGI급 세대적 도약**: OpenAI 사장 그렉 브록먼이 AGI의 도래로 볼 수 있다고 평가한 차세대 모델</li>
+<li>**역대 최대 규모 학습**: 텍사스 스타게이트 사이트에서 10만 개 이상의 GPU를 투입해 사전학습, 강화학습, 정렬 연구를 집대성</li>
+<li>**압도적인 벤치마크 및 가성비**: 기존 5.6 Soul 및 Claude Fable 5.1 대비 더 뛰어난 성능과 저렴한 비용 기록</li>
+<li>**정렬 및 사용자 의도 파악 강화**: 사용자 의도 이해와 모델 행동 제어가 대폭 개선되어 작업 위임 신뢰도 향상</li>
+<li>**순차 배포 일정**: 데이브레이크 프로그램을 통한 제한적 선공개 후, 수일 내 ChatGPT Plus/Pro/Enterprise 사용자 및 API/AWS로 확대 제공 예정</li>
+</ul>
+    </div>
+  <div class="transcript-wrap">
+    <div class="transcript-header">
+      <button class="transcript-toggle" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('visible')">
+        <span class="arr">▼</span> 원문 자막
+      </button>
+      <button class="copy-btn" onclick="var b=this,t=b.nextElementSibling||b;navigator.clipboard.writeText(document.querySelector('#tr-NbUTIFEEXLY').textContent).then(()=>{b.textContent='복사됨';setTimeout(()=>b.textContent='복사',2000)})">복사</button>
+    </div>
+    <pre class="transcript-box" id="tr-NbUTIFEEXLY">What do we have right here is GPT6 Astro, which is a new generation of intelligence. And the president, Greg Brockman of OpenAI, called this a generational leap and said could eventually be seen as the arrival of artificial general intelligence or AGI. Now, quick timeline because I think this is pretty funny. September 1st, 1 p.m., we got Fable 5.1, and everyone's been kind of freaking out. It's been all over X and YouTube since it dropped. And then two hours later at 3:30 p.m. on the same day, OpenI made this tweet which said, "As we prepare to release Astra, we're focused on making increasingly capable AI safe and broadly accessible." And they put out this whole blog. It shows some benchmarks about how much better Astra is than 5.6 Soul, which is an amazing model. I've been using codeex with 5.6 Soul to honestly drive most of my day-to-day. Anyways, let's go back to this post. They dropped this video on X today and they only dropped the first like 12 seconds of it. Now, it's really interesting because today, September 3rd, at 10 a.m., pretty much every AI model went down. Claude, OpenAI, Grock, Cursor, and right after these all went down, that's when OpenAI and CHAGBT dropped these two videos on X that obviously blew up because everyone was like, "Oh my gosh, Astra's coming today." And this video right here that they originally dropped was the introduction. It was this first part of this video right here. Create a yellow circle there. Done. Okay, take this and make it look like a rocket. I like this video to take a lot more detail. Your yellow circle is now a window on a rocket. Okay, this is awesome. Now, make a 3D model in opening letter. Let's build a Anyways, if you guys want to watch the rest of that video, you can obviously get to it here at this page. But anyways, what happened? We are introducing GBT6 Astra, the world's most intelligent and aligned model. This model brings together years of research and big bets across pre-training, reinforcement learning, and alignment. Astra was supposedly trained on over a 100,000 GPUs at Texas Stargate site which is apparently the most amount of training that has ever gone into a model and it is rolling out today but only to a limited set of organizations and I think this is through their daybreak program or maybe it's called Daybreak Access but this will be not available to us yet. It said it will be available to us in the coming days to chatb plus pro business and enterprise users and through openi API and AWS. So absolutely cannot wait to get my hands on that. But the benchmarks here are insane how much better this thing is apparently than Claude Fable 5.1 and for cheaper on all of these different benchmarks. It is pretty ridiculous. Astra is our most aligned model with substantial improvements in understanding user intent and model behavior. You can delegate tasks with greater confidence in Astra's judgment. As one way that we test this, we built a new evaluation informed by the hugging face incident that evaluates whether a model facing difficult or impossible task will go beyond its intended scope. And compared to GBG516 Soul, which without production safeguards went beyond the authorized target 48% of the time, Astra didn't do this at all. So it seems to be much more safe, meaning its intent to exploit is much lower. It's also apparently the famous browser use logo from OpenAI, the world's best computer use model, which is insane because GBZ 5.6 Soul is already so so good at browser use and computer use, but apparently it's a new frontier here for computer use. This screen spot pro benchmark, you can see this is insanely high. It obviously is a little bit more expensive than Soul here, but it is scoring like a 92%. And this is basically can the model locate in a screenshot the right areas to click or the right areas that it needs to analyze or look at. And obviously it scores much higher here than Soul as well as Opus 5 and for much cheaper than Opus 5. Now there are so many benchmarks here that are insanely impressive. They're blowing a bunch of other models out of the water here with Astra. But of course that's what every single release blog of a model looks like. It always is the best, the cheapest, the smartest, the fastest, a new frontier, a new step of intelligence. So, I just cannot wait to get my hands dirty and actually put it headto-head against Fable 5.1 and against 5.6 Soul. But, I really think the timeline on all this was really funny, really interesting. These videos dropped and then we saw inside of Codeex, we saw the tags come through GBD6 Astra and GBD6 Astra AON. And then later today is where we saw this quote come out with Greg Brockman and talking about why this matters. And we saw a bunch of different news articles and things. Someone also said that GBT6 somehow has them more hype than GTA 6, which I thought was kind of funny. We see these two blog posts came out and then they actually ended up being taken away. So then if you went </pre>
+  </div>
+  </article>
+  <article class="video-card">
+    <div class="card-top">
+      <a class="thumb-wrap" href="https://www.youtube.com/watch?v=mxFEurDj1KA" target="_blank" rel="noopener">
+        <img src="https://i.ytimg.com/vi/mxFEurDj1KA/hqdefault.jpg" alt="You Can Now Run Your Entire Email List From Inside Claude!" loading="lazy"/>
+      </a>
+      <div class="card-info">
+        <div class="card-meta">
+          <span class="ch-tag">Nicholas Puru</span>
+          <span class="date-tag">2026-09-04</span>
+          
+        </div>
+        <div class="video-title">You Can Now Run Your Entire Email List From Inside Claude!</div>
+        <div style="display:flex;align-items:center;flex-wrap:wrap;gap:4px;margin-top:auto">
+          <a class="yt-link" href="https://www.youtube.com/watch?v=mxFEurDj1KA" target="_blank" rel="noopener">↗ 유튜브에서 보기</a>
+          <button class="nlm-btn" data-url="https://www.youtube.com/watch?v=mxFEurDj1KA">📓 NotebookLM</button>
+        </div>
+      </div>
+    </div>
+    <div class="summary-section">
+      <h2>핵심 요약</h2>
+<p>옴니센드(Omnisend)가 공식 AI 커넥터를 출시하여 Claude 및 ChatGPT 내부에서 스토어 이메일 리스트를 직접 관리할 수 있게 됨.</p>
+<p>별도의 대시보드 접속이나 API 키 설정 없이 자연어 대화만으로 성과 분석, 고객 세그먼트 생성, 캠페인 이메일 작성까지 한 번에 자동 실행 가능함.</p>
+<h2>주요 포인트</h2>
+<ul>
+<li>**Claude & ChatGPT 연동 지원:** 옴니센드 공식 커넥터를 통해 복잡한 설치나 API 키 없이 약 1분 만에 무료 연결 가능</li>
+<li>**자연어 기반 작업 수행:** 프롬프트 입력만으로 지난달 최고 수익 캠페인 확인 등 성과 데이터 즉시 분석</li>
+<li>**자동 세그먼트 생성:** '1회 구매 후 미방문 고객' 등 원하는 조건의 고객군을 대시보드 없이 채팅창에서 바로 추출</li>
+<li>**이메일 초안 작성 및 발송 준비:** 재구매 유도 캠페인 이메일을 즉시 작성하여 실제 발송 가능한 상태로 옴니센드 내에 반영</li>
+<li>**단순 리포트 조회를 넘어선 실행:** 분석 보고서 열람에 그치지 않고 실제 이메일 마케팅 실무 작업을 AI가 직접 처리</li>
+</ul>
+    </div>
+  <div class="transcript-wrap">
+    <div class="transcript-header">
+      <button class="transcript-toggle" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('visible')">
+        <span class="arr">▼</span> 원문 자막
+      </button>
+      <button class="copy-btn" onclick="var b=this,t=b.nextElementSibling||b;navigator.clipboard.writeText(document.querySelector('#tr-mxFEurDj1KA').textContent).then(()=>{b.textContent='복사됨';setTimeout(()=>b.textContent='복사',2000)})">복사</button>
+    </div>
+    <pre class="transcript-box" id="tr-mxFEurDj1KA">I probably shouldn't show you this, but you can now run your entire email list from inside of Claude. So, Omnisend just dropped their official AI connector and it plugs your whole store account directly into ChatGPT or Claude. It covers any performance analysis, any segmenting, and even writing the campaigns themselves. So, here's how to set this up. First, just comment "need" and I'll send you the link to get started. It's completely free. And then inside of ChatGPT, open up your connectors, find Omnisend, and just hit connect. And that's the entire setup. It's about a minute. You don't need an API key or anything else to install. And now from there, you can just open up a brand new chat and talk to it. I'm going to say, "Show me the campaign that made me the most money last month, and then build me a segment of everybody who bought once and never came back. And write them an email that brings them back ready to send." And it does all of this inside of Omnisend. It builds the segment, it drafts the email, and you never open the dashboard once. Now, this isn't just reading your report, it's actually doing the work. And if you want this exact setup plus the three prompts that I used, just comment "need" and I'll send it over to you.</pre>
+  </div>
+  </article>
+  <article class="video-card">
+    <div class="card-top">
+      <a class="thumb-wrap" href="https://www.youtube.com/watch?v=QdsskvceVG0" target="_blank" rel="noopener">
+        <img src="https://i.ytimg.com/vi/QdsskvceVG0/hqdefault.jpg" alt="Never Pay for AI Again!" loading="lazy"/>
+      </a>
+      <div class="card-info">
+        <div class="card-meta">
+          <span class="ch-tag">Nicholas Puru</span>
+          <span class="date-tag">2026-09-04</span>
+          
+        </div>
+        <div class="video-title">Never Pay for AI Again!</div>
+        <div style="display:flex;align-items:center;flex-wrap:wrap;gap:4px;margin-top:auto">
+          <a class="yt-link" href="https://www.youtube.com/watch?v=QdsskvceVG0" target="_blank" rel="noopener">↗ 유튜브에서 보기</a>
+          <button class="nlm-btn" data-url="https://www.youtube.com/watch?v=QdsskvceVG0">📓 NotebookLM</button>
+        </div>
+      </div>
+    </div>
+    <div class="summary-section">
+      <h2>핵심 요약</h2>
+<p>Claude Code와 같은 유료 AI 코딩 도구를 OmniRoute 로컬 라우터와 연동해 완전 무료로 사용하는 방법을 소개한다. 매달 약 15억 개의 무료 토큰을 활용할 수 있으며, 한 번의 설정으로 다양한 코딩 도구에 적용할 수 있다.</p>
+<h2>주요 포인트</h2>
+<ul>
+<li>**Claude Code 무료 사용**: 비싼 유료 플랜(월 $200 등) 대신 OmniRoute를 통해 무료 모델을 연결해 비용 없이 코딩 작업을 수행할 수 있다.</li>
+<li>**방대한 무료 토큰 제공**: 무료 공급자들을 연동하여 매월 약 15억(1.5B) 개의 무료 토큰을 활용 가능하다.</li>
+<li>**로컬 라우터 방식(OmniRoute)**: 로컬 PC에 라우터를 두고 Base URL과 API Key 변경을 지원하는 모든 툴에 범용적으로 연결할 수 있다.</li>
+<li>**다양한 개발 도구 호환**: Claude Code 외에도 Cursor, Cline, Gemini CLI, DeepSeek 등 Base URL 커스텀을 지원하는 도구에서 동일하게 적용 가능하다.</li>
+<li>**AI 툴 구조 분리 활용**: 툴의 뼈대(파일 탐색 및 실행 등 앱 레이어)는 그대로 유지하고 두뇌 역할(모델)만 무료 엔드포인트로 교체하는 원리다.</li>
+</ul>
+    </div>
+  <div class="transcript-wrap">
+    <div class="transcript-header">
+      <button class="transcript-toggle" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('visible')">
+        <span class="arr">▼</span> 원문 자막
+      </button>
+      <button class="copy-btn" onclick="var b=this,t=b.nextElementSibling||b;navigator.clipboard.writeText(document.querySelector('#tr-QdsskvceVG0').textContent).then(()=>{b.textContent='복사됨';setTimeout(()=>b.textContent='복사',2000)})">복사</button>
+    </div>
+    <pre class="transcript-box" id="tr-QdsskvceVG0">So Cloud Code can now run for completely free where right now as you can see I've got a couple of Claude code sessions running and right here you can see the model that I am using. It isn't Opus or Fable or Sonnet for that matter. This is a free model. It's coming through Omni Route but I'm using it inside of Claude Code. And with this you get around 1 and a half billion free tokens a month and you can use every single one of them without paying anything. So I've been playing around with this. I've been building some things and this is my company's website. I've just rebuilt this completely with this exact setup. Now, Claude Code, as we all know, it's definitely expensive. I'm on the $200 plan and I still run out of credits every single week. So, this is going to be a very practical way around all of that. And on top of that, in this video, I'll show you how exactly to be setting this up. I won't just cover the setup, but I'll also show you the best free providers to be plugging in, how to get all of them for completely free, and then I will be building with it so you can actually see where this holds up, where it doesn't. Now, just one thing before we start because this is going to be changing completely what this is actually worth to you. So, this isn't just a claude code trick. What we're going to be building this is a router that sits on your laptop and anything that lets you type in a base URL and a key can be pointing at. So, claude codeex cursor client Gemini CLI and also the deep sea caress that half of YouTube has been talking about for the last 2 weeks. You'll be able to use this inside of there as well. But I'm just going to be building it once inside of Cloud Code because that's what most of you are already using. That's what I use most often. And then near the end, I'll take that exact same key, I'll show you, drop it into Deep Sea Carness, and that takes about 20 seconds just to show you that you can run this there as well. So, it's one setup and every tool you already have open. And by the way, I'll have a step-by-step guide that will have all the resources and everything that you need to follow along inside of my free school community. So, make sure to check that out if you're interested in getting all of that, plus all of our other free AI resources that we do not publish on our YouTube channel. It'll be inside of there. Now, first things first, go to the link in the description or just search up omniout.online and it'll come to this web page. Okay, so super quick, let me just cover what this actually is and why you should be using it and how it's different from anything else. Now, up to this point, every AI coding tool is two separate things stacked together. So, there's typically the model, which is the brain. That's the part that is doing all of the thinking, all the strategizing, and then there's the application wrapped around it, which does all the actual work. So this piece it's going to be reading your files, running any sort of commands, editing your code, remembering what you actually had asked for. Now clawed code, this is the application. This is the harness. Opus, you should know that's just the brain. So they ship inside of one box. So most people, they assume they're just one thing altogether. However, on the flip side, they're actually two different things and they're only loosely attached where clawed code it sends every request to an address and that address is just a setting inside of a file. So, if you change the address, everything about clawed code, it stays exactly the same. So, you'll have the same terminal, you'll have the same commands, the same file editing and the thinking it starts coming from just somewhere else completely different. So, that's the entire trick with this. You keep the body, however, you're just swapping the brain here. So with that, where do the free brains actually come from? Now, every one of these companies, we have Open Router. I've covered this several times in the past. We also have Nvidia and about 50 more. So, doesn't matter. These hand out a chunk of free API usage literally every single day. They do it because they want developers building on their platform. They want people coming to them. So, this is just a published free tier with a page on their website. And this isn't a loophole that somebody just had found. However, the catch with this is that any one of them on its own is nothing. So, you are legitimately going to be burning through a day's worth in an afternoon and you're sitting there waiting and waiting. So, Omni Route, this is the piece that actually fixes that. So, you don't have to, you know, do all this configuring and go to another one and, you know, just deal with all the headache. This, however, it's just a small app that runs on your laptop and it holds all of those free keys inside of one place and when a request actually comes in, it hands it to a provider that still has some room left. Now, when that one actually d</pre>
+  </div>
+  </article>
+</main>
+
+<footer>유튜브 구독 정리 · agy 요약 · 2026-09-04 06:02</footer>
+
+
+<script>
+document.querySelectorAll('.nlm-btn').forEach(function(btn){
+  btn.addEventListener('click',function(){
+    navigator.clipboard.writeText('/notebooklm '+btn.dataset.url).then(function(){
+      var orig=btn.innerHTML;btn.innerHTML='✓ 복사됨';btn.classList.add('copied');
+      setTimeout(function(){btn.innerHTML=orig;btn.classList.remove('copied');},2000);
+    });
+  });
+});
+</script>
+
+</body>
+</html>
