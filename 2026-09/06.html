@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>2026-09-06 — 유튜브 구독 정리</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+  :root{--bg:#090e1a;--surface:#111827;--surface2:#1a2235;--border:#1e2d47;--accent:#6c63ff;--accent2:#00d4ff;--text:#e8eaf0;--muted:#7a8499;--radius:14px;}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Pretendard',sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+  header{background:linear-gradient(135deg,#0d1b3e,#1a0533);border-bottom:1px solid var(--border);padding:20px 40px;display:flex;align-items:center;justify-content:space-between;}
+  .nav-back{color:var(--accent2);text-decoration:none;font-size:0.85rem;display:flex;align-items:center;gap:6px}
+  .nav-back:hover{color:#fff}
+  .date-badge{font-size:1.4rem;font-weight:700;letter-spacing:-0.5px;background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+  .count{font-size:0.85rem;color:var(--muted)}
+  main{max-width:900px;margin:0 auto;padding:32px 24px 80px}
+  .video-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;margin-bottom:24px;transition:border-color 0.2s,box-shadow 0.2s;}
+  .video-card:hover{border-color:var(--accent);box-shadow:0 4px 24px rgba(108,99,255,0.15)}
+  .card-top{display:flex;gap:0}
+  .thumb-wrap{flex:0 0 240px;position:relative;overflow:hidden}
+  .thumb-wrap img{width:100%;height:100%;object-fit:cover;transition:transform 0.4s}
+  .video-card:hover .thumb-wrap img{transform:scale(1.05)}
+  .card-info{flex:1;padding:20px;display:flex;flex-direction:column;gap:10px}
+  .card-meta{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+  .ch-tag{font-size:0.72rem;font-weight:600;padding:3px 12px;background:linear-gradient(135deg,rgba(108,99,255,0.2),rgba(0,212,255,0.2));border:1px solid rgba(108,99,255,0.3);border-radius:999px;color:var(--accent2);}
+  .date-tag{font-size:0.72rem;color:var(--muted)}
+  .no-transcript{font-size:0.68rem;padding:2px 8px;background:rgba(255,180,0,0.12);border:1px solid rgba(255,180,0,0.25);border-radius:999px;color:#ffa500;}
+  .video-title{font-size:1rem;font-weight:600;line-height:1.4}
+  .yt-link{display:inline-flex;align-items:center;gap:5px;font-size:0.8rem;color:var(--accent);text-decoration:none;transition:color 0.2s;}
+  .yt-link:hover{color:var(--accent2)}
+  
+  .nlm-btn{display:inline-flex;align-items:center;gap:5px;font-size:0.8rem;color:#fff;
+    background:rgba(108,99,255,0.2);border:1px solid rgba(108,99,255,0.4);border-radius:8px;
+    padding:4px 12px;cursor:pointer;font-family:inherit;transition:all 0.2s;margin-left:8px;}
+  .nlm-btn:hover{background:rgba(108,99,255,0.45);}
+  .nlm-btn.copied{background:rgba(0,200,100,0.2);border-color:rgba(0,200,100,0.4);color:#00c864;}
+
+  .summary-section{border-top:1px solid var(--border);background:var(--surface2);padding:20px 24px;font-size:0.85rem;line-height:1.7;color:#c5cad8;}
+  .summary-section h2{font-size:0.82rem;color:var(--accent2);margin:12px 0 4px}
+  .summary-section h2:first-child{margin-top:0}
+  .summary-section ul{padding-left:18px}
+  .summary-section li{margin-bottom:5px}
+  .transcript-wrap{border-top:1px solid var(--border);padding:14px 24px;background:#0c1220}
+  .transcript-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:0}
+  .transcript-toggle{background:none;border:none;color:var(--muted);font-size:0.8rem;cursor:pointer;font-family:inherit;display:flex;align-items:center;gap:4px;padding:0;transition:color 0.2s;}
+  .transcript-toggle:hover{color:var(--text)}
+  .copy-btn{background:rgba(108,99,255,0.1);border:1px solid rgba(108,99,255,0.3);border-radius:8px;color:var(--accent2);font-size:0.72rem;padding:4px 12px;cursor:pointer;font-family:inherit;transition:all 0.2s;}
+  .copy-btn:hover{background:rgba(108,99,255,0.25);color:#fff}
+  .transcript-box{display:none;margin-top:10px;background:#080d18;border:1px solid var(--border);border-radius:10px;padding:12px 14px;font-size:0.78rem;line-height:1.75;color:#8a95aa;max-height:260px;overflow-y:auto;white-space:pre-wrap;word-break:break-word;}
+  .transcript-box.visible{display:block}
+  footer{text-align:center;padding:24px;font-size:0.75rem;color:var(--muted);border-top:1px solid var(--border)}
+  @media(max-width:640px){.card-top{flex-direction:column}.thumb-wrap{flex:none;height:200px}header{padding:16px}main{padding:16px 12px 60px}}
+</style>
+</head>
+<body>
+
+<header>
+  <a class="nav-back" href="../index.html">← 대시보드로</a>
+  <div>
+    <div class="date-badge">2026-09-06</div>
+    <div class="count">1개 영상</div>
+  </div>
+  <div style="font-size:0.75rem;color:var(--muted)">2026-09-06 06:02 생성</div>
+</header>
+
+<main>
+
+  <article class="video-card">
+    <div class="card-top">
+      <a class="thumb-wrap" href="https://www.youtube.com/watch?v=2M4CCe_KDSQ" target="_blank" rel="noopener">
+        <img src="https://i.ytimg.com/vi/2M4CCe_KDSQ/hqdefault.jpg" alt="OpenAI's Team Runs One Chat for Months. Here's How." loading="lazy"/>
+      </a>
+      <div class="card-info">
+        <div class="card-meta">
+          <span class="ch-tag">Dylan Davis</span>
+          <span class="date-tag">2026-09-06</span>
+          
+        </div>
+        <div class="video-title">OpenAI's Team Runs One Chat for Months. Here's How.</div>
+        <div style="display:flex;align-items:center;flex-wrap:wrap;gap:4px;margin-top:auto">
+          <a class="yt-link" href="https://www.youtube.com/watch?v=2M4CCe_KDSQ" target="_blank" rel="noopener">↗ 유튜브에서 보기</a>
+          <button class="nlm-btn" data-url="https://www.youtube.com/watch?v=2M4CCe_KDSQ">📓 NotebookLM</button>
+        </div>
+      </div>
+    </div>
+    <div class="summary-section">
+      <h2>핵심 요약</h2>
+<p>과거에는 대화가 길어지면 AI의 성능이 급격히 저하되어 새 대화창을 자주 여는 것이 권장되었으나, 최근 기술 발전으로 단일 대화를 수개월간 유지하는 방식이 더 효과적인 작업이 늘었다. 이는 내부 요약·압축(Compaction) 기술과 도구 자체의 기본 기억(Native Memory) 기능이 크게 개선된 덕분이다. 특히 브라우저 환경보다 데스크톱 에이전트 환경에서 이러한 장기 대화의 이점이 훨씬 강력하게 나타난다.</p>
+<h2>주요 포인트</h2>
+<ul>
+<li>**대화 압축(Compaction) 기술 도입**: 대화가 길어지면 AI가 이전 맥락의 핵심을 내부적으로 자동 요약하여, 컨텍스트 한계로 인한 지능 저하 없이 대화를 계속 이어갈 수 있음</li>
+<li>**과거 한계 극복**: 6개월~1년 전만 해도 컨텍스트의 약 50%만 차도 AI의 사고 능력이 급격히 떨어졌으나 현재는 크게 개선됨</li>
+<li>**자체 기억(Native Memory) 발전**: 사용자 이름, 직업, 위치, 공통 선호도 등 기본 정보를 도구 차원에서 기억하는 기능이 점차 고도화되는 중</li>
+<li>**환경에 따른 성능 차이**: 일반 웹 브라우저보다 데스크톱 기반 에이전트 도구에서 대화 압축 및 기억 저장 능력이 훨씬 뛰어나 장기 대화 효율이 극대화됨</li>
+</ul>
+    </div>
+  <div class="transcript-wrap">
+    <div class="transcript-header">
+      <button class="transcript-toggle" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('visible')">
+        <span class="arr">▼</span> 원문 자막
+      </button>
+      <button class="copy-btn" onclick="var b=this,t=b.nextElementSibling||b;navigator.clipboard.writeText(document.querySelector('#tr-2M4CCe_KDSQ').textContent).then(()=>{b.textContent='복사됨';setTimeout(()=>b.textContent='복사',2000)})">복사</button>
+    </div>
+    <pre class="transcript-box" id="tr-2M4CCe_KDSQ">People inside of Open AI, the company that brought you ChatGPT, now run one AI conversation for months and it gets more useful the longer it goes. If you're new here, I'm Dylan. I run an AI consultancy. And for the past year, I've told my coaching clients the exact opposite advice. Start fresh chats early and often. That advice still holds most of the time, but the tools have changed. And now there's one kind of work where it backfires. I'll show you what changed, the two ways your AI now remembers, and the test that matches each one to the right job. So, let's get into it. Now, there are two key things that have improved both in Claude and ChatGPT around memory and how an AI can have a longer conversation with you. The first thing here is compaction. So, you've probably seen when you're using Claude or ChatGPT, once you've had a really long conversation, it summarizes. And the summarizing effect, what happens, is simply looking at the previous conversation, the AI determines what it feels is most important. It summarizes that to itself, not showing you, and then you can keep having that conversation ongoing. And that's why you can have longer conversations with AI today. Its intelligence doesn't automatically degrade. But it's important to note that this benefit is more obvious in different tools. And I'll talk more about that later. But in the past, probably not even a year ago, but probably even 6 months ago, when you're using these tools, if you had a long conversation with an AI, it got dumb fast. Its intelligence dropped like a rock after around 50% of filling up its head. And that's the reason this happens is the AI only has so much space in its head. So, when you fill the head too much, it doesn't have that much space to actually think about the task at hand. So, this is the first improvement that we've seen around memory and long conversations. The second improvement is native memory in the tools you're using. So, both Claude and ChatGPT have a native memory feature where it can remember things about you. And right now still, this is very surface level. So, most of what it can remember about you are basic facts. So, your name, your location, what you do, and some general preferences that you have that likely map across multiple activities. So, this isn't that detailed. Both of the providers, Anthropic and Open AI, are working heavily to improve these, but right now they're still not that great. And that's the second thing, or the second thing that's improved in the last couple of months. Now, to the point around how these benefits are not equally distributed. So, if you're inside the browser using Claude or ChatGPT, you're still likely not going to see massive uplifts in long conversations and the value associated to those. Reason being is that in desktop agents like Claude Co-work and Codec's, the ability to compact conversations and save memories more effectively is much better. So, you can have much longer conversations. Now, it's important to know if you already have a subscription with ChatGPT or Claude, you already have access to these tools. All you have to do is download them. So, Claude Co-work is for Claude and Codec's is for ChatGPT. Both of which are extremely easy to set up and easy to use. And that's my caveat here. So, if you're not using a desktop agent, I wouldn't recommend watching the rest of this video. But, if you're willing to try it out and or download it, then you can keep going. So, I'm going to walk you through two different setups. Both of which have different configurations of memory. And there are two primary forms of memory that we're going to mix and match for both of the setups. Quick pause. If you're enjoying this, you're going to enjoy two other things. First off, below is a 30-day AI insight series, completely free. You'll get 30 insights in your inbox of how you can apply AI to your business and your work. The second thing is if you'd like to work with me, below are a series of offerings to see if there's a good fit between the two of us. Now, let's get back to the video. The first form of memory is written memory. So, this is the long-term memory the AI will have. And the reason it's written is the AI is going to externalize these memories into files that it can access later on. So, you can think of this kind of like a filing cabinet where really important detailed facts go. The other thing is working memory. So, you can think about this as short-term memory. And this is the memory the AI has for ongoing conversations. So, if each one of these dots on this line are representative of a compaction of a conversation, the AI will have enriched context of previous conversations when you interact with it in future iterations. So, this is the running conversation memory. Those are the two things we have. We're first going to start with setup A. And the reason we're starting with setup A is this is the setup I'd recommend most people start with and most people use for m</pre>
+  </div>
+  </article>
+</main>
+
+<footer>유튜브 구독 정리 · agy 요약 · 2026-09-06 06:02</footer>
+
+
+<script>
+document.querySelectorAll('.nlm-btn').forEach(function(btn){
+  btn.addEventListener('click',function(){
+    navigator.clipboard.writeText('/notebooklm '+btn.dataset.url).then(function(){
+      var orig=btn.innerHTML;btn.innerHTML='✓ 복사됨';btn.classList.add('copied');
+      setTimeout(function(){btn.innerHTML=orig;btn.classList.remove('copied');},2000);
+    });
+  });
+});
+</script>
+
+</body>
+</html>
