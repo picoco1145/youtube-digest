@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>2026-09-07 — 유튜브 구독 정리</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+  :root{--bg:#090e1a;--surface:#111827;--surface2:#1a2235;--border:#1e2d47;--accent:#6c63ff;--accent2:#00d4ff;--text:#e8eaf0;--muted:#7a8499;--radius:14px;}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Pretendard',sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+  header{background:linear-gradient(135deg,#0d1b3e,#1a0533);border-bottom:1px solid var(--border);padding:20px 40px;display:flex;align-items:center;justify-content:space-between;}
+  .nav-back{color:var(--accent2);text-decoration:none;font-size:0.85rem;display:flex;align-items:center;gap:6px}
+  .nav-back:hover{color:#fff}
+  .date-badge{font-size:1.4rem;font-weight:700;letter-spacing:-0.5px;background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+  .count{font-size:0.85rem;color:var(--muted)}
+  main{max-width:900px;margin:0 auto;padding:32px 24px 80px}
+  .video-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;margin-bottom:24px;transition:border-color 0.2s,box-shadow 0.2s;}
+  .video-card:hover{border-color:var(--accent);box-shadow:0 4px 24px rgba(108,99,255,0.15)}
+  .card-top{display:flex;gap:0}
+  .thumb-wrap{flex:0 0 240px;position:relative;overflow:hidden}
+  .thumb-wrap img{width:100%;height:100%;object-fit:cover;transition:transform 0.4s}
+  .video-card:hover .thumb-wrap img{transform:scale(1.05)}
+  .card-info{flex:1;padding:20px;display:flex;flex-direction:column;gap:10px}
+  .card-meta{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+  .ch-tag{font-size:0.72rem;font-weight:600;padding:3px 12px;background:linear-gradient(135deg,rgba(108,99,255,0.2),rgba(0,212,255,0.2));border:1px solid rgba(108,99,255,0.3);border-radius:999px;color:var(--accent2);}
+  .date-tag{font-size:0.72rem;color:var(--muted)}
+  .no-transcript{font-size:0.68rem;padding:2px 8px;background:rgba(255,180,0,0.12);border:1px solid rgba(255,180,0,0.25);border-radius:999px;color:#ffa500;}
+  .video-title{font-size:1rem;font-weight:600;line-height:1.4}
+  .yt-link{display:inline-flex;align-items:center;gap:5px;font-size:0.8rem;color:var(--accent);text-decoration:none;transition:color 0.2s;}
+  .yt-link:hover{color:var(--accent2)}
+  
+  .nlm-btn{display:inline-flex;align-items:center;gap:5px;font-size:0.8rem;color:#fff;
+    background:rgba(108,99,255,0.2);border:1px solid rgba(108,99,255,0.4);border-radius:8px;
+    padding:4px 12px;cursor:pointer;font-family:inherit;transition:all 0.2s;margin-left:8px;}
+  .nlm-btn:hover{background:rgba(108,99,255,0.45);}
+  .nlm-btn.copied{background:rgba(0,200,100,0.2);border-color:rgba(0,200,100,0.4);color:#00c864;}
+
+  .summary-section{border-top:1px solid var(--border);background:var(--surface2);padding:20px 24px;font-size:0.85rem;line-height:1.7;color:#c5cad8;}
+  .summary-section h2{font-size:0.82rem;color:var(--accent2);margin:12px 0 4px}
+  .summary-section h2:first-child{margin-top:0}
+  .summary-section ul{padding-left:18px}
+  .summary-section li{margin-bottom:5px}
+  .transcript-wrap{border-top:1px solid var(--border);padding:14px 24px;background:#0c1220}
+  .transcript-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:0}
+  .transcript-toggle{background:none;border:none;color:var(--muted);font-size:0.8rem;cursor:pointer;font-family:inherit;display:flex;align-items:center;gap:4px;padding:0;transition:color 0.2s;}
+  .transcript-toggle:hover{color:var(--text)}
+  .copy-btn{background:rgba(108,99,255,0.1);border:1px solid rgba(108,99,255,0.3);border-radius:8px;color:var(--accent2);font-size:0.72rem;padding:4px 12px;cursor:pointer;font-family:inherit;transition:all 0.2s;}
+  .copy-btn:hover{background:rgba(108,99,255,0.25);color:#fff}
+  .transcript-box{display:none;margin-top:10px;background:#080d18;border:1px solid var(--border);border-radius:10px;padding:12px 14px;font-size:0.78rem;line-height:1.75;color:#8a95aa;max-height:260px;overflow-y:auto;white-space:pre-wrap;word-break:break-word;}
+  .transcript-box.visible{display:block}
+  footer{text-align:center;padding:24px;font-size:0.75rem;color:var(--muted);border-top:1px solid var(--border)}
+  @media(max-width:640px){.card-top{flex-direction:column}.thumb-wrap{flex:none;height:200px}header{padding:16px}main{padding:16px 12px 60px}}
+</style>
+</head>
+<body>
+
+<header>
+  <a class="nav-back" href="../index.html">← 대시보드로</a>
+  <div>
+    <div class="date-badge">2026-09-07</div>
+    <div class="count">1개 영상</div>
+  </div>
+  <div style="font-size:0.75rem;color:var(--muted)">2026-09-07 06:01 생성</div>
+</header>
+
+<main>
+
+  <article class="video-card">
+    <div class="card-top">
+      <a class="thumb-wrap" href="https://www.youtube.com/watch?v=WfJPBVXPt8k" target="_blank" rel="noopener">
+        <img src="https://i.ytimg.com/vi/WfJPBVXPt8k/hqdefault.jpg" alt="I Tested GPT-6 Astra vs Fable 5.1 on 15 Real Use Cases" loading="lazy"/>
+      </a>
+      <div class="card-info">
+        <div class="card-meta">
+          <span class="ch-tag">Nate Herk</span>
+          <span class="date-tag">2026-09-07</span>
+          
+        </div>
+        <div class="video-title">I Tested GPT-6 Astra vs Fable 5.1 on 15 Real Use Cases</div>
+        <div style="display:flex;align-items:center;flex-wrap:wrap;gap:4px;margin-top:auto">
+          <a class="yt-link" href="https://www.youtube.com/watch?v=WfJPBVXPt8k" target="_blank" rel="noopener">↗ 유튜브에서 보기</a>
+          <button class="nlm-btn" data-url="https://www.youtube.com/watch?v=WfJPBVXPt8k">📓 NotebookLM</button>
+        </div>
+      </div>
+    </div>
+    <div class="summary-section">
+      <h2>핵심 요약</h2>
+<p>Nate Herk가 실제 업무 환경의 15가지 실전 시나리오를 바탕으로 GPT-6 Astra와 Fable 5.1의 성능, 작업 시간 및 비용을 직접 비교 분석한 영상이다. 두 모델 모두 뛰어난 리서치 및 추론 능력을 보여주지만, 요청 사항에 대한 명확화 질문 처리 방식과 결과물의 시각적 구조화 및 포맷팅 방식에서 뚜렷한 차이를 보인다.</p>
+<h2>주요 포인트</h2>
+<ul>
+<li>**15가지 실전 업무 시나리오 테스트**: 웹 디자인, 개인 일정 관리, 세금 처리, 브라우저 비전 작업, 자동화 및 소프트웨어 개발 등 실제 업무 작업을 기준으로 두 모델을 비교함.</li>
+<li>**초기 프롬프트 대응 방식의 차이**: GPT-6 Astra(코덱스 기반)는 작업을 시작하기 전 추가 질문을 던져 요구사항을 명확히 정의하려는 경향이 강한 반면, Fable 5.1은 질문 없이 즉각 작업 수행에 돌입함.</li>
+<li>**리서치 및 팩트 기반 데이터 품질**: 두 모델 모두 높은 수준의 조사 능력과 검증된 출처를 제공하며 지능 면에서는 우열을 가리기 어려울 정도로 뛰어난 성능을 보임.</li>
+<li>**슬라이드 산출물의 스타일 및 레이아웃 차이**: 한 모델은 맥킨지 보고서 스타일의 텍스트 중심 구조화(35개 슬라이드, 푸터/브랜딩 포함)로 배포용 문서에 적합한 결과물을 냈고, 다른 모델은 간결한 헤드라인 중심의 프레젠테이션용 슬라이드를 생성함.</li>
+</ul>
+    </div>
+  <div class="transcript-wrap">
+    <div class="transcript-header">
+      <button class="transcript-toggle" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('visible')">
+        <span class="arr">▼</span> 원문 자막
+      </button>
+      <button class="copy-btn" onclick="var b=this,t=b.nextElementSibling||b;navigator.clipboard.writeText(document.querySelector('#tr-WfJPBVXPt8k').textContent).then(()=>{b.textContent='복사됨';setTimeout(()=>b.textContent='복사',2000)})">복사</button>
+    </div>
+    <pre class="transcript-box" id="tr-WfJPBVXPt8k">방금 GPT-6를 비교해 봤어요. Astra와 Fable 5.1은 15가지 다른 버전으로 제공됩니다. 시나리오 그것을 사용합니다 정말 적용해 보세요 나의 일상 사무. 그것은 ~에 관한 것입니다 예를 들면 웹 디자인, 개인 조직, 세금, 브라우저를 사용하여 작업하기 비전뿐 아니라 실제를 창조하다 자동화 및 소프트웨어 소프트웨어. 을 위한 이러한 작업 각각 어떤 걸로 할지 고민 중이에요. 모델은 대처했다 더 나아지려면, 얼마나 걸릴까요? 얼마나 걸렸나요? 그럴 만한 가치가 있었어요. 그러므로, 혹시 생각해 보셨다면, 어떤 모델 사용 목적 구체적인 작업, 이 영상은 당신만을 위한 영상입니다. 나는 낭비하고 싶지 않아 시간이 낭비된다. 우리 이제 다음으로 넘어가죠. 바로 본론으로 들어가겠습니다. 그러니까 총 15가지 종류가 있는 거죠. 시나리오 우리가 사용하는 용도 우리는 가지고 있습니다. 그리고 제가 이미 말씀드렸듯이, 내가 그들을 선택했다고 말했어요. 왜냐하면 이것들은 내가 중요하게 생각하는 것들이기 때문입니다. 저는 정말로 계획하고 있어요 ~의 도움을 받아 이러한 모델들 중 일부입니다. 아래는 타임코드를 사용한다면 원하세요? 뛰어넘기 위해, 그리고 안에 맨 마지막에 보여드리겠습니다. 최종 결론, 최종 비용 그리고 시간 배분. 에게 물건들, 친구들, 나 약 코덱스 구독 3건, 4개의 클라우드 구독 그리고 수천 달러 신용 한도 사용 중입니다. 그래서 저는 정말 그렇게 되기를 바랍니다 이 영상은 유용한. 음, 숫자 하나: 나는 그러지 않을 거야 각각을 읽으세요 요청은 아니지만, 제가 드릴 말씀은 이렇습니다. 물었다. 나는 필요하다 프레젠테이션이 있었습니다. 맥킨지 수준의 주 소형 및 중형 내 사업 헤라클레스 컨설팅 브랜드. 나는 그래야만 했다. 그래서 그것은 브랜드화되고 걱정스러운 우리 타겟 고객 이 허구의 경우 컨설팅 사업. 그것은 클로드에게 맡길 임무. 너 보시다시피 저는 코덱스를 정확히 이렇게 줬어요. 요청 자체에 대해서. 즉시 코덱스가 눈에 띈다 더 많이 넣습니다 질문, 즉 GPT-6 아스트라는 더 많은 것을 넣습니다 질문 명확화 . 여기서 볼 수 있듯이 그녀는 이미 배치했습니다 질문이 하나 있습니다. 그 다음에 Fable이 어떻게 받아들였는지 그리고 거의 즉시 시작했습니다 공연하다. 이게 전부입니다. 제가 전반적으로 느낀 점은 다음과 같습니다. 그래서 제가 지적하고 싶었던 점은 다음과 같습니다. 이건 맨 처음 부분이에요. 자, 그럼 시작해 볼까요? 이 두 가지를 살펴보겠습니다. 프레젠테이션. 여기 프레젠테이션룸 하나. 아직은 말하지 않겠습니다. 무슨 모델이었나요? 하지만 나는 즉시 나는 그녀의 모습이 좋아. 외모. 그녀, 알잖아, 구조화된. 그 안에 브랜딩이 존재합니다. 지금까지는 이렇습니다. 예뻐 보여요 전문적으로. 나는 이미 둘 다 확인했습니다 출처 및 검증, 그리고 그들은 관점에서 보면 좋다 사실이잖아요, 그렇죠? 연구 결과는 다음과 같습니다. 두 가지 모두 실시했습니다 모델들의 품질이 높았습니다. . 지금 나는 더 저는 다음 사실에 주목하고자 합니다. 그들의 실제 모습 이것을 포맷했습니다 결과. 제 생각엔 우리가 현재 그 단계에서는, GPT-6 아스트라와 페이블 5.1이 출시되었을 때— 둘 다 그래요 엄청나게 똑똑하다. 그건 필요 없어요. 끌어들이기 위해 에이전트 및 행위 연구. 나를 위한 이제는 어떻게가 더 중요한가 그들은 돌아오고 그것을 다음과 같이 제시하십시오. 알려주는 방식 역사, 그리고 어떤 면에서는, 내가 정말로 할 수 있는 일은 무엇일까? 발표할지 말지 예? 왜냐하면 그게 바로 우리니까요 우리가 원하는 것: 변화시키기 이 지저분한 데이터는 읽을 수 있는 무언가 고품질. 그리고 지금 저는 이것이 매우 그렇다고 생각합니다. 브랜드 이미지가 뚜렷하다. 그것 우리의 것과 일치합니다 색 구성표. 여기 아래는 바닥입니다 내가 가지고 있는 푸터 좋아요. 그것 순차적으로. 우리는 가지고 있습니다 일종의 구조물. 여기 열이 있습니다. 저의 경우는, 그들은 잘했어요 이것이 만들어짐으로써. 하지만 지금은 그렇게 생각합니다. 이건 정말 정말 수다스럽게. 의 기회 무언가를 제시하다 비슷할 겁니다. 여기가 어려운 이유는... 너무 많은 단어들, 그리고 제어하기 어렵다 그들은 어디를 볼까요? 사람들과 그들이 하는 일들 말할 것입니다. 그래서, 어떻게 프레젠테이션 재질이 아닙니다. 최선의 선택입니다. 하지만 재료로서 통과할 수 있습니다 또는 없이 누군가에게 보내다 프레젠테이션—매우 네, 그리고 여기엔 많은 게 있네요. 아래 출처에서 가져왔습니다. 그것 알고 보니 슬라이드가 35개였어요. 자, 이제 살펴보겠습니다. 또 다른 버전에서 나는 즉시는 아닙니다 나는 그게 아니라는 점이 마음에 든다 대문자로 시작합니다. 아니다 알아요. 저는 그냥 이것은 그런 것 같습니다 매우 좋아 보인다 전문적으로. 여기 우리가 가지고 있는 것 이미지가 몇 장 있습니다. 색상 구성도 있습니다. 하지만 우리는 한 번 넘겨볼까요? 우리 우리는 즉시 알아차립니다. 이 옵션은 그렇지 않습니다. 말 수가 많은. 나 즉시 그렇게 보인다 이 옵션은 더 적습니다 전문가를 통해 구조. 그 안에서 또 다른 선택지는 다음과 같았습니다. 글쎄요, 그럴지도 모르죠. 모두에게서 보기 컬럼 슬라이드. 거기 조금, 잘 모르겠어요. 특정한 구조가 있었다. 이것은 다음과 같이 보입니다. 좀 더 추상적이다. 그런 느낌이 든다 하나의 큰 요소. 큰 게 하나 있네요. 아시잖아요, 헤드라인 말이에요. 그리고 나 제 생각엔 그럴 것 같아요. 훨씬 더 좋아 내가 재료를 가고 있었다 그것을 다음과 같이 제시하십시오. 사람들로 가득 찬 방 . 하지만 일반적으로 우리가 페이지를 넘겨보다가 이 옵션을 발견했습니다. 그냥 그런 느낌이 들어요 전문성이 떨어진다. 그 느낌은 마치 이것은 덜 그렇습니다 맥킨지, 그리고 구글에 대한 더 많은 정보 슬라이드 또는 Canva. 모르겠습니다. 또한 없습니다 일관된 보행인 또는 저희 로고가 아닙니다 각 슬라이드마다. 그러니까, 아시다시피, 이것은 뭔가 좀 이상해 보이네요 매우 체계적이고 그다지 전문적이지 않네요. 심지어 일부 섹션조차도 출처가 훨씬 많습니다 더 작지만, 다음 링크를 포함합니다: 실제 출처. 그러므로 그것이 무엇이든 간에, 그것은 GPT-6 아스트라가 있었고, 이것은 페이블 5.1입니다. 그리고 저는 이 점에 있어서 이렇게 말씀드리겠습니다. 구체적인 예 나 더 Fable을 좋아했어요. 그래서 저는 저는 주려고 합니다 페이블의 승리. 제가 적어두겠습니다. 이것은 우리가 알 수 있도록 여기에 있는 것입니다. 이게 무슨 일이야? 우화 실험 이겼다면, 당신이 가져가면 결과만. 하지만 한번 살펴보겠습니다. 시간과 비용. 우화 37분이 걸렸고, 아스트라 —23분; 우화 비용은 26달러입니다. 아스트라 - 12달러. 그러므로, 아스트라는 가격이 좀 비싸요 가격이 절반도 안 돼요. 그리고 아시다시피, 14분 더 빠릅니다. 그래서 다음과 같은 질문이 제기됩니다. 사용하셨다면 아스트라를 샀고, 더 많은 돈을 썼죠, 음, 14달러 첫 번째의 개선 버전들 중에서 어떤 걸 받으시겠어요? 당신은 그 결과입니다 좋아하세요? 첫 번째 것보다 더 Fable 버전인가요? 마치 전에는 없었지만, 이제 우리는 시간을 살펴봅시다. 비용 그 자체 끝은 있지만, 무엇이 우려사항 결과적으로, 나 더 마음에 들었어요 우화의 원작 자료 . 좋아요, 다음으로 넘어가죠. 실험에 두 번째, 우리는 편지를 썼다 판매. 그래서, 요약하자면, 저는 이렇게 말했습니다: 당신이 무엇을 하느냐에 따라 저희 회사에 대해 아시나요? 프로그램 "인증". 저는 그렇지 않습니다. 그에게 주었다 정보. 내가 말했듯이 그 사람 말이죠, 아시잖아요. 내 것을 사용하세요 AIOS, 나의 "제2의 두뇌" 어떤 연구든, 랜딩 페이지를 만들기 위해 판매합니다. 그러므로, 텍스트 작성, 최적화됨 변환. 그래서 우리 것을 생각해 보세요 고객에 관하여, 그에 대하여 이 모든 것에 대한 고통, 그리고 나 난 이걸 원하지 않아. 그것은 마치 ~처럼 들렸다 작성된 AI. 나는 그러지 않을 것이다 전문을 읽어보세요 편지라니, 그건 너무 과한 것 같네요. 지루한. 잠깐만요 제가 확인해보고 알려드리겠습니다. 제 생각에는 어느 쪽이 더 나을까요? 어떤 것이 더 나은지, 그리고 그 이유는 무엇인지 의견을 나눠주세요. 다음은 하나의 옵션입니다. Fable 5.1을 썼습니다. 너 보시다시피 그는 꽤... 긴. 이것은 더 길게. 그것은 가지고 있었다 약 2800단어 정도입니다. 그리고 다음으로 넘어가겠습니다. GPT 버전인 경우 여기로 스크롤하세요. 텍스트를 직접 게시했습니다. 채팅. 이것은 다음과 같은 옵션입니다. 아스트라가 썼고, 그 안에는 약 1700단어 정도였습니다. 그래서 그는 상당히 더 짧은. 지금 짧은 예약. 나는 아니다 전문가 카피라이팅. 저는 ~하고 싶습니다 원했던 거잖아요, 존 같은 사람 내 가족 중에 누가 있나요? 정말 팀 글을 잘 쓴다. 어떤 건지 말해줬어 그 옵션이 더 낫습니다. 제가 말씀드리겠습니다 제가 지금까지 들은 건 이게 전부입니다. 팀에서 나온 내용입니다. 최근 그들은 오히려 GPT 모델 글 작성. 이전에는 클로드 항상 지배적이었다 그것은 관련이 있었기 때문입니다 글쓰기. 하지만 제가 말씀드리겠습니다. 네: 만약 제가 잠재적인 학생 인증 및 읽기 저는 진심으로 이것을 선택하겠습니다. 우화. 이유는 다음과 같습니다. 이 프로그램은 저렴하지 않습니다. 페이블은 다음과 같은 질문을 했습니다. 보통 어떤 유형의 사람들 그들은 묻습니다: 도움이 될까요? 이건 저를 위한 거예요 취업하려면 어떻게 해야 하나요? 모든 사람이 누구인가요? 참여하게 되면, 받게 될 것입니다. 자격증? 또는 저는 충분히 가지고 있어요. 기술적 지식? 안에 저는 이미 제 것을 가지고 있어요. 대행사. 어떻게 해야 할까요? 내가 놓치면 실시간 수업인가요? 그 방식 이것은 공식화되었다고 덧붙입니다. 저는 자신감이 있습니다. 더 나은 이해 내가 어울리는 것. 섹션도 있었습니다. 비용에 관하여 가르침. 아직 누구에 관한 섹션 누구를 위한 것인지 설명합니다. 누구에게 해당되지 않으며, 어떻게 해당되지 않는가? 프로그램 자체는 정상적으</pre>
+  </div>
+  </article>
+</main>
+
+<footer>유튜브 구독 정리 · agy 요약 · 2026-09-07 06:01</footer>
+
+
+<script>
+document.querySelectorAll('.nlm-btn').forEach(function(btn){
+  btn.addEventListener('click',function(){
+    navigator.clipboard.writeText('/notebooklm '+btn.dataset.url).then(function(){
+      var orig=btn.innerHTML;btn.innerHTML='✓ 복사됨';btn.classList.add('copied');
+      setTimeout(function(){btn.innerHTML=orig;btn.classList.remove('copied');},2000);
+    });
+  });
+});
+</script>
+
+</body>
+</html>
