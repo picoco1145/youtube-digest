@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>2026-09-12 — 유튜브 구독 정리</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+  :root{--bg:#090e1a;--surface:#111827;--surface2:#1a2235;--border:#1e2d47;--accent:#6c63ff;--accent2:#00d4ff;--text:#e8eaf0;--muted:#7a8499;--radius:14px;}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Pretendard',sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+  header{background:linear-gradient(135deg,#0d1b3e,#1a0533);border-bottom:1px solid var(--border);padding:20px 40px;display:flex;align-items:center;justify-content:space-between;}
+  .nav-back{color:var(--accent2);text-decoration:none;font-size:0.85rem;display:flex;align-items:center;gap:6px}
+  .nav-back:hover{color:#fff}
+  .date-badge{font-size:1.4rem;font-weight:700;letter-spacing:-0.5px;background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+  .count{font-size:0.85rem;color:var(--muted)}
+  main{max-width:900px;margin:0 auto;padding:32px 24px 80px}
+  .video-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;margin-bottom:24px;transition:border-color 0.2s,box-shadow 0.2s;}
+  .video-card:hover{border-color:var(--accent);box-shadow:0 4px 24px rgba(108,99,255,0.15)}
+  .card-top{display:flex;gap:0}
+  .thumb-wrap{flex:0 0 240px;position:relative;overflow:hidden}
+  .thumb-wrap img{width:100%;height:100%;object-fit:cover;transition:transform 0.4s}
+  .video-card:hover .thumb-wrap img{transform:scale(1.05)}
+  .card-info{flex:1;padding:20px;display:flex;flex-direction:column;gap:10px}
+  .card-meta{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+  .ch-tag{font-size:0.72rem;font-weight:600;padding:3px 12px;background:linear-gradient(135deg,rgba(108,99,255,0.2),rgba(0,212,255,0.2));border:1px solid rgba(108,99,255,0.3);border-radius:999px;color:var(--accent2);}
+  .date-tag{font-size:0.72rem;color:var(--muted)}
+  .no-transcript{font-size:0.68rem;padding:2px 8px;background:rgba(255,180,0,0.12);border:1px solid rgba(255,180,0,0.25);border-radius:999px;color:#ffa500;}
+  .video-title{font-size:1rem;font-weight:600;line-height:1.4}
+  .yt-link{display:inline-flex;align-items:center;gap:5px;font-size:0.8rem;color:var(--accent);text-decoration:none;transition:color 0.2s;}
+  .yt-link:hover{color:var(--accent2)}
+  
+  .nlm-btn{display:inline-flex;align-items:center;gap:5px;font-size:0.8rem;color:#fff;
+    background:rgba(108,99,255,0.2);border:1px solid rgba(108,99,255,0.4);border-radius:8px;
+    padding:4px 12px;cursor:pointer;font-family:inherit;transition:all 0.2s;margin-left:8px;}
+  .nlm-btn:hover{background:rgba(108,99,255,0.45);}
+  .nlm-btn.copied{background:rgba(0,200,100,0.2);border-color:rgba(0,200,100,0.4);color:#00c864;}
+
+  .summary-section{border-top:1px solid var(--border);background:var(--surface2);padding:20px 24px;font-size:0.85rem;line-height:1.7;color:#c5cad8;}
+  .summary-section h2{font-size:0.82rem;color:var(--accent2);margin:12px 0 4px}
+  .summary-section h2:first-child{margin-top:0}
+  .summary-section ul{padding-left:18px}
+  .summary-section li{margin-bottom:5px}
+  .transcript-wrap{border-top:1px solid var(--border);padding:14px 24px;background:#0c1220}
+  .transcript-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:0}
+  .transcript-toggle{background:none;border:none;color:var(--muted);font-size:0.8rem;cursor:pointer;font-family:inherit;display:flex;align-items:center;gap:4px;padding:0;transition:color 0.2s;}
+  .transcript-toggle:hover{color:var(--text)}
+  .copy-btn{background:rgba(108,99,255,0.1);border:1px solid rgba(108,99,255,0.3);border-radius:8px;color:var(--accent2);font-size:0.72rem;padding:4px 12px;cursor:pointer;font-family:inherit;transition:all 0.2s;}
+  .copy-btn:hover{background:rgba(108,99,255,0.25);color:#fff}
+  .transcript-box{display:none;margin-top:10px;background:#080d18;border:1px solid var(--border);border-radius:10px;padding:12px 14px;font-size:0.78rem;line-height:1.75;color:#8a95aa;max-height:260px;overflow-y:auto;white-space:pre-wrap;word-break:break-word;}
+  .transcript-box.visible{display:block}
+  footer{text-align:center;padding:24px;font-size:0.75rem;color:var(--muted);border-top:1px solid var(--border)}
+  @media(max-width:640px){.card-top{flex-direction:column}.thumb-wrap{flex:none;height:200px}header{padding:16px}main{padding:16px 12px 60px}}
+</style>
+</head>
+<body>
+
+<header>
+  <a class="nav-back" href="../index.html">← 대시보드로</a>
+  <div>
+    <div class="date-badge">2026-09-12</div>
+    <div class="count">1개 영상</div>
+  </div>
+  <div style="font-size:0.75rem;color:var(--muted)">2026-09-12 06:01 생성</div>
+</header>
+
+<main>
+
+  <article class="video-card">
+    <div class="card-top">
+      <a class="thumb-wrap" href="https://www.youtube.com/watch?v=z3l7NmmjO18" target="_blank" rel="noopener">
+        <img src="https://i.ytimg.com/vi/z3l7NmmjO18/hqdefault.jpg" alt="5 BORING Grok Bot + Fable 5.1 AI Agents That Can Make $10k+/month!" loading="lazy"/>
+      </a>
+      <div class="card-info">
+        <div class="card-meta">
+          <span class="ch-tag">Nicholas Puru</span>
+          <span class="date-tag">2026-09-12</span>
+          
+        </div>
+        <div class="video-title">5 BORING Grok Bot + Fable 5.1 AI Agents That Can Make $10k+/month!</div>
+        <div style="display:flex;align-items:center;flex-wrap:wrap;gap:4px;margin-top:auto">
+          <a class="yt-link" href="https://www.youtube.com/watch?v=z3l7NmmjO18" target="_blank" rel="noopener">↗ 유튜브에서 보기</a>
+          <button class="nlm-btn" data-url="https://www.youtube.com/watch?v=z3l7NmmjO18">📓 NotebookLM</button>
+        </div>
+      </div>
+    </div>
+    <div class="summary-section">
+      <h2>핵심 요약</h2>
+<p>기존 단순 워크플로 툴 기반의 AI 에이전시는 포화 상태에 이르렀으나, '생각'을 담당하는 Claude(Fable)와 '행동'을 담당하는 Grok Bot의 결합으로 1인 고수익 에이전시 운영이 가능해졌습니다. Fable이 리서치와 맞춤형 제안서 작성을 맡고 Grok Bot이 UI 조작과 발송을 처리함으로써 인건비를 대폭 절감할 수 있습니다. 다만 비용 효율을 위해 API 지원 여부에 따라 직접 연동과 봇 조작을 적절히 분리해 운용하는 전략이 핵심입니다.</p>
+<h2>주요 포인트</h2>
+<ul>
+<li>**에이전시 시장의 변화**: Zapier·Make 기반의 단순 자동화는 경쟁 과열로 단가가 급락했으며, 고도화된 AI 에이전트로의 전환이 필요함</li>
+<li>**역할 분담 (두뇌 vs 손)**: Fable(Claude)은 타겟 분석 및 제안서 작성 등 '판단'을 수행하고, Grok Bot은 화면 클릭, 로그인, 발송 등 '실행'을 전담함</li>
+<li>**생산성 극대화**: 과거 4명이 일주일간 하던 수천 건의 리서치 및 개인화 피치 작업을 단 한 번의 야간 AI 실행으로 완료 가능</li>
+<li>**비용 최적화 기준**: API가 지원되는 서비스(Gmail, CRM 등)는 직접 연동하고, 공식 API가 없거나 사용이 까다로운 플랫폼(LinkedIn, 인스타그램 DM 등)에만 Grok Bot을 적용해야 비용 낭비를 방지함</li>
+</ul>
+    </div>
+  <div class="transcript-wrap">
+    <div class="transcript-header">
+      <button class="transcript-toggle" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('visible')">
+        <span class="arr">▼</span> 원문 자막
+      </button>
+      <button class="copy-btn" onclick="var b=this,t=b.nextElementSibling||b;navigator.clipboard.writeText(document.querySelector('#tr-z3l7NmmjO18').textContent).then(()=>{b.textContent='복사됨';setTimeout(()=>b.textContent='복사',2000)})">복사</button>
+    </div>
+    <pre class="transcript-box" id="tr-z3l7NmmjO18">이 영상에서는 Claude's New Fable과 Grockbot을 활용하여 월 1만 달러 수익을 올리는 에이전시를 성장시키는 방법을 보여드리겠습니다. 그래서 지난 몇 년 동안 이 작업을 수행하는 방법은 꽤 간단했습니다. Make.com, Zapier, N8N과 같은 워크플로 빌더를 배우고 자동화를 연결한 다음 이를 AI 시스템으로 기업에 판매하는 것이었습니다. 그리고 그 방법은 효과가 있었습니다. 그 기회는 엄청나게 빠르게 사라지고 있으며, 매달 더 많은 사람들이 이 분야에 뛰어들고 있습니다. 모두가 똑같은 지폐를 팔고 있어요. 가격이 계속 떨어지고 있습니다. 그리고 당신이 제안하려는 사업주는 이번 달에 이미 다른 10명으로부터 제안을 받았습니다. 하지만 이 작업의 한 부분이 훨씬 쉬워졌는데, Fable과 Grockbot이라는 두 모델이 더 이상 작업을 도와주지 않기 때문에 아직 제대로 활용하는 사람이 거의 없습니다. 그들은 정당하게 그 일을 합니다. 그들은 모든 잠재 고객과 단서를 찾아냅니다. 그들은 연구를 하고 내용을 풍부하게 합니다. 그들은 광고 문구 작성부터 이메일 발송까지 모든 작업을 직접 처리합니다. 그 기관이 세워지는 데 필요한 실제 노동력 말입니다 . 즉, 이전에는 사람을 고용해야 했던 부분이 더 이상 사람을 고용할 필요가 없게 되었다는 뜻입니다. 바로 그 이유 때문에 2년 전에는 불가능했던 일이 올해는 단 한 사람이 혼자서도 매달 10달러에서 10만 달러를 벌 수 있게 된 것입니다 . 이 영상에서는 두 장비 중 어떤 것이 어떤 역할을 하는지, 각각의 임대 비용은 얼마인지, 그리고 초보자에서 유료 고객 5명을 확보하는 데 실제로 도움이 되는 5가지 작업에 대해 자세히 보여드리겠습니다. 그럼 바로 본론으로 들어가 보겠습니다 . 좋아요, 그러니까 이 모든 건 결국 단 하나의 분열로 귀결되는 거예요. 이것만 이해하면 나머지는 거의 다 스스로 해결할 수 있을 겁니다 . 그러니까 에이전시의 모든 직무는 딱 두 가지 중 하나입니다. 생각하는 것과 행동하는 것, 이 두 가지는 서로 다른 선택지입니다. 그러니까 생각해 보세요. 이게 꼭 완벽한 목록은 아니지만, 예를 들어 어떤 고객을 공략할지 결정하고, 제안서를 작성하고, 잠재 고객의 웹사이트를 읽고, 그들이 실제로 무엇에 관심을 가질지 파악하거나, 영업 전화를 제안서로 전환하는 것 등이 포함될 수 있습니다 . 그러니까 그게 바로 판단이고, 우리가 클로드의 우화 5.1을 사용하는 목적도 바로 그 판단을 위한 것입니다. 반면에, 이것은 행동입니다. 그러니까 '하는 것'이라는 건 다시 말하지만 모든 걸 다 나열한 건 아니고 , 여기에 나온 것들에만 국한되는 것도 아닙니다. 탭을 열고, 여러 가지에 로그인하고 , 웹사이트 나 소프트웨어에 파일을 넣고 빼고, 클릭하고 입력하고, DM이나 이메일을 보내는 등 '보내기' 버튼을 누르는 모든 행위를 포함합니다 . 그러니까 이게 바로 손인 거죠. 이 사람은 그록봇입니다. 간단히 말해서, Fable은 생각하고 Grockbot은 실행하고 작업을 대신 수행하는 역할을 합니다 . 좋습니다. 실행했을 때 어떤 모습인지 예시를 보여드리겠습니다. 바로 어젯밤에 Fable이라는 프로그램을 이용해서 약 8,000개의 사업체를 살펴보고 각 사업체마다 완전히 다른 홍보 자료를 작성하도록 했습니다 . 오른쪽을 보시면 아시겠지만 , 여기에 저희의 피치들이 있습니다. 자, 이제 여기서부터는 이러한 다양한 제안 과 잠재 고객 정보를 모두 제 이메일 발송 도구에 입력하는 것입니다. 그래서 저는 Instantly를 사용합니다. 제가 그들 모두를 몰아넣고 있는 곳이 바로 여기입니다. 저는 약 3년 전부터 제 개인 에이전시를 운영하고 있습니다. 저희는 지금까지 100개에 가까운 기업과 협력하여 AI를 도입해 왔습니다 . 그리고 2년 전만 해도 이 일은 일주일에 네 명의 다른 사람이 필요한 일이었어요. 이제는 하룻밤 사이에 한 번만 실행하면 모든 데이터가 제 200달러짜리 클라우드 구독료에 포함됩니다. 그런데 이와 관련해서 많은 사람들이 실제로 오해하는 부분이 있는데, 그로 인해 엄청난 비용이 발생합니다. 이제 AI를 사용하면 말 그대로 무엇이든 지정하여 거의 모든 작업 이나 프로세스를 처리하게 할 수 있기 때문에 비용이 매우 많이 들 수 있습니다. Grockbot은 기본적으로 클라우드에 있는 컴퓨터로, 사용자가 직접 하는 모든 작업을 대신 수행합니다 . 그리고 여기서 GoHigh에 로그인하고 싶다면 얼마든지 그렇게 할 수 있습니다. 왜냐하면 GoHigh의 API는 보통 사용하기가 매우 불편하기 때문입니다 . 그래서 이 기기로 제 컴퓨터를 제어하고, 이 안에서 제가 원하는 모든 작업을 할 수 있어요 . 다른 방법으로 해당 도구에 접근할 수 없을 때 이것은 정말 놀라운 방법입니다. 하지만 이는 이미 API가 있는 대상, 즉 누군가가 로봇을 위해 이미 만들어 놓은 문과 같은 것을 로봇에게 가리키게 하면, 일반적으로 한 줄의 코드로 훨씬 더 빠르고 효율적으로 처리할 수 있는 작업을 기계가 수작업으로 하도록 비용을 지불하는 것과 마찬가지라는 의미이기도 합니다. 제 인증 코드 이메일은 즉시 발송됩니다. 그래서 궁극적으로 이것이 의미하는 바는, API가 제공되므로 Grockbot을 건드릴 필요가 전혀 없다는 것입니다 . 그들은 우리가 굳이 사용할 필요가 없는 문을 가지고 있습니다. 왜냐하면 API를 사용하는 것이 장기적으로 우리에게 더 효과적이고 궁극적으로 더 저렴할 것이기 때문입니다 . 다양한 응용 분야의 몇 가지 예를 더 들어보겠습니다 . 그래서 Gmail은 클라우드 기반으로 전환될 수 있습니다. API를 통해 CRM을 비롯한 대부분의 문서 관련 데이터에 즉시 쉽게 접근할 수 있기 때문입니다 . 링크드인, 인스타그램 DM, 구글 지도 또는 고객 포털과 같은 다양한 것들이 있습니다. 이건 그록 봇(Grockbot)을 통해 가는 게 더 나을 거예요. 왜냐하면 그록봇은 보통 정문이 없거든요. 그들은 우리가 쉽게 접근할 수 있는 API를 가지고 있지 않습니다 . 알았어요? 좋아요. 자, 이제 Fable과 Grockbot의 차이점과 각각을 활용하여 에이전시를 시작하고 성장시키는 방법을 이해하셨으니 , 이제 여러분이 실제로 판매하게 될 제품이나 서비스에 대해 소개해 드리겠습니다. 우리가 단순히 "우리는 AI 자동화 솔루션을 판매합니다" 또는 "제가 당신을 위해 이 AI 시스템을 개발했습니다 "라고 말하는 방식은 절대 아닐 것이라는 점을 분명히 말씀드리고 싶습니다. 그렇게 하면 당신 회사만 망할 거예요. 네가 무슨 말을 하는지 아무도 못 알아들을 거야 . 그리고 그들은 당신에게 아무것도 사주고 싶어하지 않을 거예요. 그들은 인공지능 시스템이 실제로 무엇을 의미하는지 전혀 모릅니다. 알렉스 라모지가 "휴가를 팔아라"라고 말할 때 의미하는 바가 바로 이것입니다 . 비행기표를 팔지 마세요. 고객이 실제로 얻게 될 것을 판매해야 합니다. 하지만 본격적인 논의에 앞서, 먼저 배경 설명과 서론을 간단히 드리고 싶습니다 . 잠시 후면 더 이해가 되실 거예요 . 자, 그럼 첫 번째 제안을 드리겠습니다. 이번 건은 예약 통화입니다. 이것은 1번부터 4번까지의 일을 하나의 문장으로 요약한 것입니다 . 그래서 저희는 매달 고객님의 일정에 10건의 검증된 상담 전화를 넣어드리겠다는 제안을 간단히 제시할 예정입니다 . 정액 요금에 더해 예약된 통화 건당 추가 요금이 부과됩니다. 일반적으로 이 고정 수수료는 기술 수수료로만 구성됩니다. 예를 들어 , 모든 도메인을 구축하고 이메일 발송 소프트웨어를 사용하여 모든 잠재 고객을 찾는 데에는 비용이 드는데, 보통 한 달에 약 500달러 정도입니다. 이것이 고객이 지불해야 할 금액입니다. 그러니까 당신은 그 수수료를 받아서 고객에게 전가하는 거군요. 그러면 여러분이 만들어내는 모든 결과는 회의당 비용으로 지급될 것입니다. 결과가 나오든, 결과별로 비용을 지불하세요 . 이렇게 하면 모든 종류의 마찰을 제거할 수 있고, 사례 연구에 의존할 필요도 없어집니다. 그래서 이것이 현재로서는 초보자에게 가장 적합한 상품 중 하나인 이유입니다 . 그러니까 실제로는 기술 지원 비용으로 월 500달러에서 1,000달러 정도를 청구하고, 통화당 250달러 정도를 추가로 받는 방식이 될 수 있겠네요. 결과적으로, 이것이 여러분이 청구할 수 있는 금액입니다. 그러니까 그들을 위해 예약하는 모든 미팅에 대해 250달러를 청구하게 될 겁니다. 그러면 30일 안에 10건을 놓치는 것과 같은 일종의 보장을 둘 수 있겠죠. 그러면 정액 수수료는 무료가 됩니다. 자, 이 영상 후반부에서 좀 더 자세히 다룰 몇 가지 특정 틈새시장이 있는데, 이 제안이 특히 적합한 대상 과 잠재 고객을 찾기 위해 살펴봐야 할 신호에 대해 알아보겠습니다 . 하지만 전반적으로 보면, 여러분은 콜드 이메일 같은 다양한 방법을 사용하게 될 겁니다. 링크드인을 이용하시면 됩니다. 잠재 고객을 위해 콜드콜이나 인스타그램 또는 페이스북 DM과 같은 다른 채널을 활용하여 고객을 확보할 수도 있습니다. 더 구체적으로 말하자면, 잠재 고객과의 미팅 예약을 통해 실질적인 결과를 얻는 것입니다 . 자, 이제 두 번째 제안으로 넘어가겠습니다. 이것은 선두를 향한 속도가 될 것입니다. 그래서 여기서는 낮이든 밤이든 모든 문의에 1분 이내에 답변을 드리고, 이미 결제하신 건에 대한 밀린 업무도 처리해 드립니다. 좀 더 구체적으로 설명드리자면, 이미 잠재 고객을 확보하고 있는 사람들에게 연락하는 것입니다. 페이스북 광고를 통해 잠재 고객을 확보하고 있거나, 많은 영상을 게시하여 자연 유입적인 도달률을 높이고 있거나, 또는 훌륭한 추천 파트너십 시스템을 갖추고 있을 수도 있습니다. 그래서 이 경우에는 이러한 다양한 요소들이 모두 더 많은 잠재 고객을 확보하는 데 도움이 될 것이고, 그렇게 확보한 잠재 고객들을 대상으로 후속 조치를 취하게 될 것입니다 . 인공지능 시스템을 사용하거나, 아니면 담당자를 직접 고용해서 모든 잠재 고객에게 제대로 후속 조치를 취하는 수동 방식을 사용할 수도 있습니다. 그러니까 모든 잠재 고객이 가입 후 5분 이내에 응답을 받을 수 있도록 하는 겁니다. 예를 들어 페이스북 메타 광고를 </pre>
+  </div>
+  </article>
+</main>
+
+<footer>유튜브 구독 정리 · agy 요약 · 2026-09-12 06:01</footer>
+
+
+<script>
+document.querySelectorAll('.nlm-btn').forEach(function(btn){
+  btn.addEventListener('click',function(){
+    navigator.clipboard.writeText('/notebooklm '+btn.dataset.url).then(function(){
+      var orig=btn.innerHTML;btn.innerHTML='✓ 복사됨';btn.classList.add('copied');
+      setTimeout(function(){btn.innerHTML=orig;btn.classList.remove('copied');},2000);
+    });
+  });
+});
+</script>
+
+</body>
+</html>
