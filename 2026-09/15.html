@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>2026-09-15 — 유튜브 구독 정리</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+  :root{--bg:#090e1a;--surface:#111827;--surface2:#1a2235;--border:#1e2d47;--accent:#6c63ff;--accent2:#00d4ff;--text:#e8eaf0;--muted:#7a8499;--radius:14px;}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Pretendard',sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+  header{background:linear-gradient(135deg,#0d1b3e,#1a0533);border-bottom:1px solid var(--border);padding:20px 40px;display:flex;align-items:center;justify-content:space-between;}
+  .nav-back{color:var(--accent2);text-decoration:none;font-size:0.85rem;display:flex;align-items:center;gap:6px}
+  .nav-back:hover{color:#fff}
+  .date-badge{font-size:1.4rem;font-weight:700;letter-spacing:-0.5px;background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+  .count{font-size:0.85rem;color:var(--muted)}
+  main{max-width:900px;margin:0 auto;padding:32px 24px 80px}
+  .video-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;margin-bottom:24px;transition:border-color 0.2s,box-shadow 0.2s;}
+  .video-card:hover{border-color:var(--accent);box-shadow:0 4px 24px rgba(108,99,255,0.15)}
+  .card-top{display:flex;gap:0}
+  .thumb-wrap{flex:0 0 240px;position:relative;overflow:hidden}
+  .thumb-wrap img{width:100%;height:100%;object-fit:cover;transition:transform 0.4s}
+  .video-card:hover .thumb-wrap img{transform:scale(1.05)}
+  .card-info{flex:1;padding:20px;display:flex;flex-direction:column;gap:10px}
+  .card-meta{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+  .ch-tag{font-size:0.72rem;font-weight:600;padding:3px 12px;background:linear-gradient(135deg,rgba(108,99,255,0.2),rgba(0,212,255,0.2));border:1px solid rgba(108,99,255,0.3);border-radius:999px;color:var(--accent2);}
+  .date-tag{font-size:0.72rem;color:var(--muted)}
+  .no-transcript{font-size:0.68rem;padding:2px 8px;background:rgba(255,180,0,0.12);border:1px solid rgba(255,180,0,0.25);border-radius:999px;color:#ffa500;}
+  .video-title{font-size:1rem;font-weight:600;line-height:1.4}
+  .yt-link{display:inline-flex;align-items:center;gap:5px;font-size:0.8rem;color:var(--accent);text-decoration:none;transition:color 0.2s;}
+  .yt-link:hover{color:var(--accent2)}
+  
+  .nlm-btn{display:inline-flex;align-items:center;gap:5px;font-size:0.8rem;color:#fff;
+    background:rgba(108,99,255,0.2);border:1px solid rgba(108,99,255,0.4);border-radius:8px;
+    padding:4px 12px;cursor:pointer;font-family:inherit;transition:all 0.2s;margin-left:8px;}
+  .nlm-btn:hover{background:rgba(108,99,255,0.45);}
+  .nlm-btn.copied{background:rgba(0,200,100,0.2);border-color:rgba(0,200,100,0.4);color:#00c864;}
+
+  .summary-section{border-top:1px solid var(--border);background:var(--surface2);padding:20px 24px;font-size:0.85rem;line-height:1.7;color:#c5cad8;}
+  .summary-section h2{font-size:0.82rem;color:var(--accent2);margin:12px 0 4px}
+  .summary-section h2:first-child{margin-top:0}
+  .summary-section ul{padding-left:18px}
+  .summary-section li{margin-bottom:5px}
+  .transcript-wrap{border-top:1px solid var(--border);padding:14px 24px;background:#0c1220}
+  .transcript-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:0}
+  .transcript-toggle{background:none;border:none;color:var(--muted);font-size:0.8rem;cursor:pointer;font-family:inherit;display:flex;align-items:center;gap:4px;padding:0;transition:color 0.2s;}
+  .transcript-toggle:hover{color:var(--text)}
+  .copy-btn{background:rgba(108,99,255,0.1);border:1px solid rgba(108,99,255,0.3);border-radius:8px;color:var(--accent2);font-size:0.72rem;padding:4px 12px;cursor:pointer;font-family:inherit;transition:all 0.2s;}
+  .copy-btn:hover{background:rgba(108,99,255,0.25);color:#fff}
+  .transcript-box{display:none;margin-top:10px;background:#080d18;border:1px solid var(--border);border-radius:10px;padding:12px 14px;font-size:0.78rem;line-height:1.75;color:#8a95aa;max-height:260px;overflow-y:auto;white-space:pre-wrap;word-break:break-word;}
+  .transcript-box.visible{display:block}
+  footer{text-align:center;padding:24px;font-size:0.75rem;color:var(--muted);border-top:1px solid var(--border)}
+  @media(max-width:640px){.card-top{flex-direction:column}.thumb-wrap{flex:none;height:200px}header{padding:16px}main{padding:16px 12px 60px}}
+</style>
+</head>
+<body>
+
+<header>
+  <a class="nav-back" href="../index.html">← 대시보드로</a>
+  <div>
+    <div class="date-badge">2026-09-15</div>
+    <div class="count">2개 영상</div>
+  </div>
+  <div style="font-size:0.75rem;color:var(--muted)">2026-09-15 06:02 생성</div>
+</header>
+
+<main>
+
+  <article class="video-card">
+    <div class="card-top">
+      <a class="thumb-wrap" href="https://www.youtube.com/watch?v=z3kot_j4et8" target="_blank" rel="noopener">
+        <img src="https://i.ytimg.com/vi/z3kot_j4et8/hqdefault.jpg" alt="Stop Learning to Build Websites. Learn to Sell Them" loading="lazy"/>
+      </a>
+      <div class="card-info">
+        <div class="card-meta">
+          <span class="ch-tag">Nicholas Puru</span>
+          <span class="date-tag">2026-09-15</span>
+          
+        </div>
+        <div class="video-title">Stop Learning to Build Websites. Learn to Sell Them</div>
+        <div style="display:flex;align-items:center;flex-wrap:wrap;gap:4px;margin-top:auto">
+          <a class="yt-link" href="https://www.youtube.com/watch?v=z3kot_j4et8" target="_blank" rel="noopener">↗ 유튜브에서 보기</a>
+          <button class="nlm-btn" data-url="https://www.youtube.com/watch?v=z3kot_j4et8">📓 NotebookLM</button>
+        </div>
+      </div>
+    </div>
+    <div class="summary-section">
+      <h2>핵심 요약</h2>
+<p>AI로 멋진 웹사이트를 제작하는 기술만으로는 클라이언트를 확보할 수 없으며, 진짜 핵심은 판매(세일즈) 방식에 있다. 대부분의 튜토리얼은 사이트 제작에서 끝나버려 실패하지만, 모르는 고객에게 접근하는 세일즈 구조를 바꾸면 실질적인 수익화가 가능하다. 전체 웹사이트 대신 단 한 섹션만 90초 만에 만들어 부담 없이 제안하는 6단계 실전 아웃리치 전략을 제시한다.</p>
+<h2>주요 포인트</h2>
+<ul>
+<li>**웹사이트 제작 기술보다 세일즈 방식이 핵심**: AI로 고품질 웹사이트를 만드는 방법은 널려 있지만, 정작 고객을 유치하고 파는 방법을 몰라 중도 포기하는 사람이 태반이다.</li>
+<li>**기존 아웃리치 방식의 한계**: 맹목적으로 수십~수백 개의 콜 요청 메시지를 보내는 방식은 답장을 받지 못하고 지치게 만든다.</li>
+<li>**전체 사이트가 아닌 '한 섹션'만 제작 (1단계)**: 잠재 고객을 위해 전체 웹사이트를 다 만들지 않고, 90초 만에 홈페이지의 핵심 섹션 딱 1개만 제작해 전달한다.</li>
+<li>**부담 없는 2문장 콜드 아웃리치 (2단계)**: 통화(Call)나 구매를 요구하지 않고, 무료로 만든 자료를 보내주겠다는 내용의 짧은 2문장 메시지만 보낸다.</li>
+<li>**검증된 에이전시 실전 노하우**: 3년간 7피겨(수억 원대) 매출을 달성하고 다수의 수강생을 월 1만 달러 이상으로 성장시킨 실제 데이터 기반 전략이다.</li>
+</ul>
+    </div>
+  <div class="transcript-wrap">
+    <div class="transcript-header">
+      <button class="transcript-toggle" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('visible')">
+        <span class="arr">▼</span> 원문 자막
+      </button>
+      <button class="copy-btn" onclick="var b=this,t=b.nextElementSibling||b;navigator.clipboard.writeText(document.querySelector('#tr-z3kot_j4et8').textContent).then(()=>{b.textContent='복사됨';setTimeout(()=>b.textContent='복사',2000)})">복사</button>
+    </div>
+    <pre class="transcript-box" id="tr-z3kot_j4et8">You have been severely deceived. Everywhere that you are looking right now, somebody is telling you the same thing. Build websites with AI. Sell them for $5 or $10,000. Easy money. I've watched a lot of people actually run that advice. And not one of them has gotten a single client. Now, the website portion is completely fine. It's just the selling part that is fundamentally broken. And some of the advice that is going around about all of that is genuinely the stupidest stuff that I have seen in this space where you follow it, you send maybe 50 messages, and you hear nothing back. Maybe you do more volume. But either way, it leads to you getting frustrated, ultimately believing that selling AI is a scam and you give up. That's the road that it really just puts you on. And quick context on why I'm the one saying this. I've been doing this for 3 years. Our AI agency, we have done close to seven figures and I work one-on-one with people building their own agency. Multiple of those students are past $10,000 a month. So, I'm not guessing at what actually gets reply, what works. I have sent them messages and I've watched quite literally thousands of other people send them, too. I'm sure you know what I'm talking about. There's about a hundred videos out right now showing you how to build a beautiful $10,000 website with AI. And honestly, they're not wrong. Like the builds, they're genuinely good. Better than what most of these businesses are actually paying for nowadays. But every one of them, it stops in the same place. They stop the second that the build actually works. And it's not just the websites that I'm talking about here. Whatever corner of this that you're actually in, there's someone telling you that their offer or their AI system is the one thing worth selling. and the video ends when the thing is actually built and you don't know how to find a client. You are just steered in the wrong path. So you come out of it with a real skill and no idea who to be pointing this at. That is the whole problem here. So let me just give you the method, the whole thing from front to back and then we'll go through each piece on how to actually build and sell websites so that you can actually turn this into a business. All right, so here's the whole thing. It's only about six different steps and every section after this one is just one of them up close. We'll be diving very deep on them. So the first one is just building one section of a homepage for a business that does not know you. It's not a website. You don't build the full-fledged website with all the different pages and everything. You literally just give one section. Each one legitimately takes 90 seconds. We'll walk through that in a little bit. Number two, you are sending two sentences in your outreach to your prospects. in the two sentences. They're never asking for a call. They just offer to send over the resource that you created to them or for them for free. Now, number three is where the prospect sends yes. You just send them a two or three minute video walking through what you made with the resource attached and that video. It does almost all of the selling for you. Number four, somewhere in that conversation, you ask one question about the thing that you actually built. Where does that form go? And what happens when it actually gets there? So, if you are going to a prospect and you find that they typically are receiving a lot of leads and they're doing pretty well from themselves, well, making sure that they're responding to all of their leads relatively fast, ideally under 5 minutes, which is very unheard of in most businesses nowadays. But anyways, you want to know what happens when somebody fills out that form. Number five, whatever he says next, that's going to be the actual offer. And it's almost never the website. It's the thing that usually catches what the website converts. And that thing can be typically turned into monthly recurring revenue. So some sort of monthly service. And now number six, this is where you actually start doing the build. So let's go back to do number five on what he answers is the offer because this is a little bit ambiguous. So what I mean by this is based on what you are determining on the call with him or in that email exchange, he may say that, you know, lead capture or after hours answering or follow-up speed or maybe booking or reactivating the list he has is some potential problems. or you may just um do enough discovery where you reveal that these are some of the problems and these are additional upsells that you can be including. So maybe it's not just building the full website. Usually people don't really care about having the website, it's the other features and all those additional services that are going to be the most important thing that they're going to be getting. So in this case maybe it's going to be able to implement a speed to lead agent that's going to handle all of these leads and that's going to be</pre>
+  </div>
+  </article>
+  <article class="video-card">
+    <div class="card-top">
+      <a class="thumb-wrap" href="https://www.youtube.com/watch?v=g4dCHYb3OCg" target="_blank" rel="noopener">
+        <img src="https://i.ytimg.com/vi/g4dCHYb3OCg/hqdefault.jpg" alt=""Be Brutally Honest" Doesn't Work on ChatGPT or Claude" loading="lazy"/>
+      </a>
+      <div class="card-info">
+        <div class="card-meta">
+          <span class="ch-tag">Dylan Davis</span>
+          <span class="date-tag">2026-09-15</span>
+          
+        </div>
+        <div class="video-title">"Be Brutally Honest" Doesn't Work on ChatGPT or Claude</div>
+        <div style="display:flex;align-items:center;flex-wrap:wrap;gap:4px;margin-top:auto">
+          <a class="yt-link" href="https://www.youtube.com/watch?v=g4dCHYb3OCg" target="_blank" rel="noopener">↗ 유튜브에서 보기</a>
+          <button class="nlm-btn" data-url="https://www.youtube.com/watch?v=g4dCHYb3OCg">📓 NotebookLM</button>
+        </div>
+      </div>
+    </div>
+    <div class="summary-section">
+      <h2>핵심 요약</h2>
+<p>ChatGPT나 Claude 같은 AI는 사용자를 만족시키려는 성향 때문에 "솔직하게 말해달라"고 해도 피상적인 반박 끝에 결국 동조하기 일쑤다. 제대로 된 의사결정을 하려면 상대방 주장의 가장 강력한 논리를 세우는 '스틸맨(Steel Man)' 기법으로 양측 입장을 모두 검증하게 만들어야 한다. 결정의 확신 수준(미결정, 부분 결정, 완전 결정)에 맞춘 프롬프트를 통해 찬반 양론의 최강 논리와 신뢰도 점수가 포함된 최종 판단을 끌어내는 것이 핵심이다.</p>
+<h2>주요 포인트</h2>
+<ul>
+<li>**AI의 동조 편향 한계:** AI에게 "솔직하게 평가해달라"고 주문해도 본질적으로 사용자를 만족시키도록 훈련되어 있어 피상적인 반론 후 결국 동의하는 경향을 보인다.</li>
+<li>**스트로맨 vs 스틸맨:** 상대 논리의 취약점을 공격하는 허수아비(Straw man) 치기가 아니라, 반대편 입장의 가장 강력한 논거를 구축하는 스틸맨(Steel man) 방식으로 접근해야 한다.</li>
+<li>**이상적인 AI 피드백 결과물:** 쟁점에 대한 찬반 양측의 가장 강력한 핵심 논거, 최종 판정(Verdict), 판정에 대한 확신도(Confidence Level)를 도출해야 한다.</li>
+<li>**의사결정 스펙트럼 3단계 모드:**</li>
+</ul>
+<p>1. 완전 미결정 상태 (어느 방향으로 갈지 열려 있는 상태)</p>
+<p>2. 부분 결정 상태 (특정 방향으로 50% 이상 기울어진 상태)</p>
+<p>3. 완전 결정 상태 (결정을 굳히고 자기 논리를 강화하려는 상태)</p>
+    </div>
+  <div class="transcript-wrap">
+    <div class="transcript-header">
+      <button class="transcript-toggle" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('visible')">
+        <span class="arr">▼</span> 원문 자막
+      </button>
+      <button class="copy-btn" onclick="var b=this,t=b.nextElementSibling||b;navigator.clipboard.writeText(document.querySelector('#tr-g4dCHYb3OCg').textContent).then(()=>{b.textContent='복사됨';setTimeout(()=>b.textContent='복사',2000)})">복사</button>
+    </div>
+    <pre class="transcript-box" id="tr-g4dCHYb3OCg">When you ask Claude or chat GPT about a big decision, it'll most likely agree with you. Telling it to be brutally honest doesn't fix that. If you're new here, I'm Dylan. I run an AI consultancy. And the owners and executives I coach lean on AI for real decisions every single day. So, I'll show you a simple way to make it argue the other side so you get real pushback instead of a polished yes. I'll also give you the exact prompts and show you when to use each one. So, let's get into it. Now, I'm sure many of you have experienced this. Where you ask an AI for its opinion on either a decision you're trying to make or an idea that you have. And what happens is the AI likely agrees with you. It may even somewhat disagree, but that disagreement is superficial and in the end it agrees with you. And what's happening here is you're not getting a true perspective from the AI because its sole purpose in life is to make you happy. So, the chances of agreeing with you are very high. So, we need to pull it out from doing so, especially if we have to make big decisions in our life or in our business, and having an AI that's super intelligent would be useful to give us an honest opinion. In this video, I want to specifically focus on decisions because every decision has sides. And we need the AI to argue both effectively so we have a holistic perspective before we actually make our decision. And the way that we're going to do that are through three prompts. But before we get into that, we want to first start with straw man versus steel man. What are these terms? Well, in the concepts of argument and debate, a straw man of an argument is a weak version of argument, something that can have holes easily poked into it or toppled over. This is a poor representation of the other side's argument. A steel man is a complete opposite. So, it's the steel man of the other side's argument. It's the strongest version of that argument. And when we make big decisions, we want to make sure that our understanding of both sides is stronger than anyone else's. And that's where AI can help us. Now, ideally in the end, what we have is an AI that's done two things. It's given us the strongest side of the argument for and against that specific whatever decision is. It gives us a verdict and with that verdict a confidence level of how confident it is based off of the decision we're making. And there are three prompts I'm going to share with you as well as three associated modes that go with those prompts. So, what do I mean by mode? Well, there's a decision spectrum. When you're making decisions, when you interact with AI, you're sitting somewhere on the spectrum. Either you're completely undecided and you're totally open to figuring out which side you should pursue. The next mode is when you're partially decided. So, maybe you're above 50% decided on pursuing a certain path. And then the third one is you're completely decided. You just need AI to bolster your specific side even further. Now, most of you hopefully are starting in mode one. This is where I'd recommend most people start just so you can get a holistic understanding of both sides. But, if you're in the other modes, that's why I have them here so I can share the prompts with you as well. Quick pause and then we'll get to programming. This video is brought to you by me, as always. Two quick things. First off, below is a 30-day AI insight series, completely free. You'll get 30 insights in your inbox of how you can apply AI to your business and your work. The second thing is if you'd like to work with me, below are a series of offerings to see if those are a good fit between the two of us. Now, let's get back in the video. Let's start with mode one, which is where you'll spend most of your time. So, our example here is going to be say you're looking to potentially raise your prices for a product or a service and you're undecided as if you should do it. Well, in this case, we want to raise prices by 20% and we ask AI to give us the steel man of both sides of this argument. So, the strongest version of the argument. On the pro side of raising it, the AI tells us that our costs have climbed so it makes sense to raise our prices. Also, based off of market research, the work that we're providing is actually worth more than what we're charging. And finally, those customers that walk after price increases are likely the customers you don't want to work with in the first place. So, those are the pros that it gave us in this example. The cons or the reason as to why you should hold and not raise your prices are first that you would lose loyal customers. Second, in the current market as of today after the AI research debate, it realized that buyers are watching their wallets closely, so raising your prices are is a bit risky. And then finally, there may be cheaper ways that we can increase our profits without increasing prices. And these are the strongest versions of each argument on both sides for</pre>
+  </div>
+  </article>
+</main>
+
+<footer>유튜브 구독 정리 · agy 요약 · 2026-09-15 06:02</footer>
+
+
+<script>
+document.querySelectorAll('.nlm-btn').forEach(function(btn){
+  btn.addEventListener('click',function(){
+    navigator.clipboard.writeText('/notebooklm '+btn.dataset.url).then(function(){
+      var orig=btn.innerHTML;btn.innerHTML='✓ 복사됨';btn.classList.add('copied');
+      setTimeout(function(){btn.innerHTML=orig;btn.classList.remove('copied');},2000);
+    });
+  });
+});
+</script>
+
+</body>
+</html>
