@@ -60,7 +60,7 @@
   <a class="nav-back" href="../index.html">← 대시보드로</a>
   <div>
     <div class="date-badge">2026-07-06</div>
-    <div class="count">4개 영상</div>
+    <div class="count">3개 영상</div>
   </div>
   <div style="font-size:0.75rem;color:var(--muted)">2026-07-07 06:01 생성</div>
 </header>
@@ -183,46 +183,6 @@
       <button class="copy-btn" onclick="var b=this,t=b.nextElementSibling||b;navigator.clipboard.writeText(document.querySelector('#tr-odbWTtwt99o').textContent).then(()=>{b.textContent='복사됨';setTimeout(()=>b.textContent='복사',2000)})">복사</button>
     </div>
     <pre class="transcript-box" id="tr-odbWTtwt99o">Right now there's a tweet from Peter Steinberger with over 8 million views saying that you shouldn't be prompting coding agents anymore and instead you should be designing loops that prompt your agents and there's dozens of other examples from other really big names in the space including the team at Anthropic just preaching about using this method and that it is a meta. It all sounds like jargon but I'm telling you it is not. You give the AI just one instruction, you walk away and it keeps working on its own until the whole job is done. That is what a loop is and it's the biggest jump in how you use AI since people started using it to write code. Now there is one catch with this and it's the thing that everyone worries about. You set it up wrong and it'll run all night and quietly run up a bill. So I'm going to show you exactly how to stop and prevent that so by the end of this you can leave one running and actually trust it to handle much more work for you. Now first before you write this off as just more AI hype, look at who's actually doing it. So Peter Steinberger, he obviously built Open Claw one of the biggest open source AI agents out there. So it's coming from someone who builds the real thing. We have Boris Cherny the creator of Claude Code. He says he barely prompts anymore. He just sets up loops and then loops do the prompting. He says that's basically his whole job now. Andre Karpathy who you might know from OpenAI and Tesla recently just moved over into Anthropic. Let a coding agent loop on its own for about two days. It ran around 700 experiments by itself and came back with about 20 real improvements. Nobody sat there watching it. Even the CEO of Shopify ran one of these overnight and he woke up with real gains in his own product. Now this isn't even brand new. People have been doing a rough version of this for a while. There's even a nickname for it. It's called the Ralph loop and it's just running the same instruction over and over until the job is done. So the idea has been proven for actually quite a while now. It just didn't have a button but now it does. Anthropic built it straight into Claude Code with two simple commands and we're going to be using both today. If you don't know me, my name is Nick. I've been running Claude Code across my businesses for a long time now and the looping part, it's the new piece for me and it's changed how I work more than any new model has and even if you've never opened Claude Code in your life, you will be able to follow along with all of it. The idea matters more than the tool. So, let's first start with what a loop actually is because once this clicks, the rest is going to be very easy for you. Now, when you use AI the normal way, you are the one keeping it going. So, you ask, you then read what comes back, and you point out what is wrong, then you have to ask again. So, you're effectively the engine in this situation, and the second you stop typing, of course, it all stops as well. A loop, however, it changes who is actually running that engine, where you set the goal once, and then the system from there can take over. So, it does a bit of work, and then it checks its own result, it sees what is still off, it fixes it, and it runs again. So, it goes like act, check, then the fixing, and the repeating over and over on its own until your goal is actually met. So, that's the whole idea, instead of you prompting it again and again, it prompts itself. So, really, a loop is just two things, a goal, and a way to check whether it is there yet. So, hold on to that because everything else is going to hang onto that core premise. So, let's jump in, try running one, but before we do that, we have to do one quick bit of setup because it's the whole reason this actually works. So, for a loop to check a webpage, it has to be able to open one, and out of the box, Claude Code cannot do that. So, I had to give it access to a browser tool. Unless I'm using computer use, but using other features like Playwright or anything else is going to be much more practical, and you just add it with a single command, and you only have to do this once. So, I already have this connected, and the easiest way to actually set this up is just asking Claude to set it up for you, or you can navigate into the terminal, and you just type out Claude MCP add Playwright. And by the way, for all these commands and all the prompts that I'm going to be using and anything else, it's going to be inside of my free school community. Link will be down below in the description. All right, you can see file modified, looks like everything ran correctly, so we can just close this out. Now, I'm going to type a {slash} goal, and we're going to enter this prompt to build a sales analytics dashboard in one HTML file. Read the sales data and show the KPI cards, a bar chart of the revenue by month, and a sortable table of the top products. Keep going until it loads in the browser with no console errors. Every </pre>
-  </div>
-  </article>
-  <article class="video-card">
-    <div class="card-top">
-      <a class="thumb-wrap" href="https://www.youtube.com/watch?v=qKfR5_IK1gI" target="_blank" rel="noopener">
-        <img src="https://i.ytimg.com/vi/qKfR5_IK1gI/hqdefault.jpg" alt="클로드로 유튜브 씹어먹기" loading="lazy"/>
-      </a>
-      <div class="card-info">
-        <div class="card-meta">
-          <span class="ch-tag">AIMAX_PD</span>
-          <span class="date-tag">2026-07-06</span>
-          
-        </div>
-        <div class="video-title">클로드로 유튜브 씹어먹기</div>
-        <div style="display:flex;align-items:center;flex-wrap:wrap;gap:4px;margin-top:auto">
-          <a class="yt-link" href="https://www.youtube.com/watch?v=qKfR5_IK1gI" target="_blank" rel="noopener">↗ 유튜브에서 보기</a>
-          <button class="nlm-btn" data-url="https://www.youtube.com/watch?v=qKfR5_IK1gI">📓 NotebookLM</button>
-        </div>
-      </div>
-    </div>
-    <div class="summary-section">
-      <h2>핵심 요약</h2>
-<p>셰인 호머스가 공개한 클로드 AI 기반 유튜브 수익화 채널 구축 공식이다. 잘 나가는 소형 채널의 검증된 아이디어를 바탕으로, 독보적인 정보와 자연스러운 구어체 대본을 더해 유튜브를 자동화하는 전략임.</p>
-<h2>주요 포인트</h2>
-<ul>
-<li>구독자 3만 이하 채널에서 조회수 10만 이상 터진 주제를 찾아 자기만의 방식으로 업그레이드함.</li>
-<li>클릭과 시청 유지를 위해 제목, 썸네일, 인트로 3가지를 클로드로 한 번에 세트로 설계함.</li>
-<li>썸네일 구도와 카피는 클로드한테 맡기고, 이미지 생성은 챗GPT로 뽑아서 고퀄리티로 만듦.</li>
-<li>단순 짜깁기 정보가 아니라 실제 검증된 리스트나 성공 사례 같은 나만의 '알파' 데이터를 무조건 박아 넣음.</li>
-<li>키보드 대신 AI와 직접 음성 대화로 스크립트를 짜서 자연스러운 본인 말투를 대본에 녹여냄.</li>
-</ul>
-    </div>
-  <div class="transcript-wrap">
-    <div class="transcript-header">
-      <button class="transcript-toggle" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('visible')">
-        <span class="arr">▼</span> 원문 자막
-      </button>
-      <button class="copy-btn" onclick="var b=this,t=b.nextElementSibling||b;navigator.clipboard.writeText(document.querySelector('#tr-qKfR5_IK1gI').textContent).then(()=>{b.textContent='복사됨';setTimeout(()=>b.textContent='복사',2000)})">복사</button>
-    </div>
-    <pre class="transcript-box" id="tr-qKfR5_IK1gI">이 남자는 AI 유튜브 수익화 천재입니다. 단 하나의 영상으로 에센스 수익만 8,500만 원을 벌어들이고 수강생들에게 총 1억 달러의 수익을 알려준 셰인 호머스. 그가 공개한 클로드 AI로 활용해 돈 복사하는 유튜브 채널 구축 6단계 공식 저장하고 끝까지 보세요. 첫째, 아이콘 법칙으로 이길 수밖에 없는 주제를 찾으세요. 구독자 3만 명 이하의 작은 채널에서 조회수 10만회를 넘긴 검증된 아이디어를 찾아 나만의 방식으로 업그레이드 하는 것이 시작입니다. 둘째, 제목과 썸네일, 인트로 등 동시에 설계하세요. 클로드에게이 세 가지를 한 번에 기획하게 만들어 시청자가 클릭하고 끝까지 보게 만드는 강력한 연결 고리를 구축해야 합니다. 셋째, 썸네일의 뇌는 클로드에게, 몸통은 이미지에게 맡기세요. 클로드로 시선을 끄는 구도와 문구를 기획하고 채pt로 이미지를 뽑아내면 초보자도 80점 이상의 고퀄리티 썸네일을 만들 수 있습니다. 넷째, 당신만의 독보적 정보인 알파를 반드시 넣으세요. 단순히 AI가 긁어온 정보가 아니라 실제 검증된 리스트나 성공 사례 같은 나만의 데이터를 추가해야 시청자의 신뢰를 얻고 수익화가 가능합니다. 다섯째, 음성 대화로 스크립트를 쓰세요. 키보드 대신 AI에게 직접 말을 걸어 본인의 말투와 철학을 녹여내면 기계적인 느낌이 싹 사라진 자연스러운 대본이 완성됩니다. 25분짜리 영상 내용을 모두 정리했습니다. 이런 유튜브 수익과 자동화 이야기가 도움됐다면이 채널을 구독하시고 본문을 확인해 주세요.</pre>
   </div>
   </article>
 </main>

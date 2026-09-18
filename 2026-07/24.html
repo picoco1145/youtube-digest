@@ -60,7 +60,7 @@
   <a class="nav-back" href="../index.html">← 대시보드로</a>
   <div>
     <div class="date-badge">2026-07-24</div>
-    <div class="count">3개 영상</div>
+    <div class="count">2개 영상</div>
   </div>
   <div style="font-size:0.75rem;color:var(--muted)">2026-07-24 06:01 생성</div>
 </header>
@@ -145,45 +145,6 @@
       <button class="copy-btn" onclick="var b=this,t=b.nextElementSibling||b;navigator.clipboard.writeText(document.querySelector('#tr-Ek1NBfnnTH0').textContent).then(()=>{b.textContent='복사됨';setTimeout(()=>b.textContent='복사',2000)})">복사</button>
     </div>
     <pre class="transcript-box" id="tr-Ek1NBfnnTH0">The number one most common question I've been getting lately is about how I have my AI operating system organized. Questions about how I should be routing files and how I should have wikis organized and folders organized and where do I put client projects and so many questions around the organization of it. Because the problem is if you don't have it organized, then your agent is going to start to hallucinate things not only to you, but potentially in your skills and when you're having it build automations and stuff like that that could get pretty bad. So today I want to talk to you guys about these five different tricks that I've been using that have helped me keep my AI operating system super accurate, super upto-date, and it allows me to add more and more data every week without sacrificing quality or memory. So let's not waste any time and just get straight into today's video. All right, so here is an older version of my Herku project that I pulled in just to show you guys a quick skill that I built that I'll be giving you all for free. So look at this. I'm going to go in here and I'm going to run this OS audit skill. Now what's going to happen here is it's going to look through my entire project. It's going to read everything. It's going to look at all of the routing rules, and it's going to tell me all of the areas where there are things that are weak, where I need to make some improvements, where I need to update some data, that kind of stuff. Essentially, the deliverable of this audit is an audit. It says, "Hey, here are 10 things I noticed. Here are the 10 fixes. Do you want me to do them? Yes or no." It won't actually do anything yet. This is just kind of an exploratory phase. It will also create this folder at the root of your project if you don't have one. If you do, it's called audits. and then it will just chuck in a markdown file that tells you what it found and what the fixes are. And by the way, if you guys want to get this skill for free, just go to my free school community. Link for that is down in the description. Come into here, click on classroom, click on all YouTube resources, and you'll find it in there. So, while this is running, what I want to do real quick is talk about why this is so important, and then we'll come back and we'll look at the actual audit. So, what I want to talk about today before we get into these five tips are the different methods of context failures. So, four different failure modes of context and then two different context types. So understanding these six different things is going to make the audit make more sense and it's going to just help you in your day-to-day when you're using your AIOS way more. So the first thing is the four failure modes, poisoning, bloat, confusion, and clash. Basically meaning when your agent tells you something that you know is incorrect or maybe you don't even know, maybe you find out later that it's incorrect. When it makes a mistake because of the context, there are these four reasons. So let's start with poisoning. Poisoning means you have a false fact somewhere in the context. So imagine this is the context. Imagine this is a false fact that gets dropped in amongst these green facts which are the right ones. The agent looks in there and it will display that back to you or put it in the email to the customer or whatever it is because it was in the context. So the agent inherently is not going to intentionally lie. It's probably going to grab something and then use that as data. But the problem is the data set was poisoned with an incorrect fact. Now luckily poisoning is the easiest one to fix because basically it's just a matter of having some verification. So making sure that it fact checks everything with a web search or maybe two web searches or fact checks and cross- checks across your live database or maybe if it's not 100% confident it has to just human in the loop. You know what I mean? So poisoning is the easiest to fix. Now let's take a look at bloat. Bloat is when there's so much stuff. There's just way too much data. And this is what I think a lot of you guys start to feel as you scale up your AIOS's and you start to use them more and more. Now, this one is tough because as you can see, we all know about context rot as far as the window, but we also know about the idea of needle in the haystack, right? The agent is going to look at the data that it's currently loaded in in order to make some sort of decision. And if it has way too much to look at, then it's going to be really hard for it to actually pull out what's relevant and what's not. And there's just going to be some stuff that bleeds in, and you probably don't want it to. The tough thing about bloat is that it's a little bit harder to fix. But when I talk about expertise versus situational, that's something that's really going to help us out here. So just hold on to that thought for a sec. So anyways, that's bloat. Then we have confusion. This is where there</pre>
-  </div>
-  </article>
-  <article class="video-card">
-    <div class="card-top">
-      <a class="thumb-wrap" href="https://www.youtube.com/watch?v=9E_VYOVvikQ" target="_blank" rel="noopener">
-        <img src="https://i.ytimg.com/vi/9E_VYOVvikQ/hqdefault.jpg" alt="모니터에 폭탄 달림" loading="lazy"/>
-      </a>
-      <div class="card-info">
-        <div class="card-meta">
-          <span class="ch-tag">AIMAX_PD</span>
-          <span class="date-tag">2026-07-24</span>
-          
-        </div>
-        <div class="video-title">모니터에 폭탄 달림</div>
-        <div style="display:flex;align-items:center;flex-wrap:wrap;gap:4px;margin-top:auto">
-          <a class="yt-link" href="https://www.youtube.com/watch?v=9E_VYOVvikQ" target="_blank" rel="noopener">↗ 유튜브에서 보기</a>
-          <button class="nlm-btn" data-url="https://www.youtube.com/watch?v=9E_VYOVvikQ">📓 NotebookLM</button>
-        </div>
-      </div>
-    </div>
-    <div class="summary-section">
-      <h2>핵심 요약</h2>
-<p>ADHD로 할 일을 자주 잊는 개발자가 바이브 코딩으로 독특한 일정 관리 프로그램을 만들었습니다. 일정을 등록하면 모니터에 포스트잇과 폭탄이 생성되고, 시간 내에 마치지 못하면 병아리 캐릭터가 나와 사이렌을 울립니다. 노션 연동을 지원하며 댓글 작성자를 대상으로 3,000원에 평생 사용권을 제공하고 있습니다.</p>
-<h2>주요 포인트</h2>
-<ul>
-<li>ADHD 사용자의 일정 관리를 돕기 위해 바이브 코딩으로 개발된 모니터 위젯 프로그램</li>
-<li>마감 시간이 다가올수록 폭탄 형태의 타이머가 커지며 미완료 시 병아리가 사이렌 경고 출력</li>
-<li>노션(Notion)과 연동되어 학생 및 직장인의 투두리스트 관리에 유용</li>
-<li>영상 댓글에 '맥스'를 남기면 3,000원에 평생 사용할 수 있는 할인 링크 전달</li>
-</ul>
-    </div>
-  <div class="transcript-wrap">
-    <div class="transcript-header">
-      <button class="transcript-toggle" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('visible')">
-        <span class="arr">▼</span> 원문 자막
-      </button>
-      <button class="copy-btn" onclick="var b=this,t=b.nextElementSibling||b;navigator.clipboard.writeText(document.querySelector('#tr-9E_VYOVvikQ').textContent).then(()=>{b.textContent='복사됨';setTimeout(()=>b.textContent='복사',2000)})">복사</button>
-    </div>
-    <pre class="transcript-box" id="tr-9E_VYOVvikQ">이 병화리는 미쳤습니다. AGHD 때문에 매일 할 일을 까먹는 사용자가 바이브 코딩으로 미친 프로그램을 만들었는데요. 일정을 등록해 두면 모니터에 포스티이 생기고 시간이 다가올수록 폭탄이 생깁니다. 시간 안에 일정을 끝내지 못하면 병아리가 나와서 사이렌을 울리는데 게다가 노션과 연동도 되니 투드리스트 관리하는 학생들에겐 도움이 될 겁니다. 본인도 모르게 쌓이는 찌꺼기 시간을 모두 없애 보고 싶다면 댓글에 맥스 남겨 주세요. 현재 3,000원에 평생 사용 가능한 링크 보내 드릴게요.</pre>
   </div>
   </article>
 </main>
