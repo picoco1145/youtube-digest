@@ -13454,18 +13454,26 @@ function fallbackCopy(text, onSuccess) {
   try { document.execCommand('copy'); onSuccess(); }
   finally { document.body.removeChild(ta); }
 }
+let currentChannel = 'all';
+let currentQuery = '';
+function applyFilters() {
+  const lq = currentQuery.toLowerCase();
+  document.querySelectorAll('.card').forEach(c => {
+    const chOk = (currentChannel === 'all' || c.dataset.channel === currentChannel);
+    const hay = ((c.dataset.title || '') + ' ' + (c.dataset.channel || '')).toLowerCase();
+    const qOk = !lq || hay.includes(lq);
+    c.style.display = (chOk && qOk) ? '' : 'none';
+  });
+}
 function filterChannel(ch, btn) {
   document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
   btn.classList.add('active');
-  document.querySelectorAll('.card').forEach(c => {
-    c.style.display = (ch === 'all' || c.dataset.channel === ch) ? '' : 'none';
-  });
+  currentChannel = ch;
+  applyFilters();
 }
 function doSearch(q) {
-  const lq = q.toLowerCase();
-  document.querySelectorAll('.card').forEach(c => {
-    c.style.display = c.dataset.title.includes(lq) ? '' : 'none';
-  });
+  currentQuery = q;
+  applyFilters();
 }
 async function copyAndSendTG(btn) {
   const url = btn.dataset.url;
