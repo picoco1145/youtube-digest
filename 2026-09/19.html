@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>2026-09-19 — 유튜브 구독 정리</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+  :root{--bg:#090e1a;--surface:#111827;--surface2:#1a2235;--border:#1e2d47;--accent:#6c63ff;--accent2:#00d4ff;--text:#e8eaf0;--muted:#7a8499;--radius:14px;}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Pretendard',sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+  header{background:linear-gradient(135deg,#0d1b3e,#1a0533);border-bottom:1px solid var(--border);padding:20px 40px;display:flex;align-items:center;justify-content:space-between;}
+  .nav-back{color:var(--accent2);text-decoration:none;font-size:0.85rem;display:flex;align-items:center;gap:6px}
+  .nav-back:hover{color:#fff}
+  .date-badge{font-size:1.4rem;font-weight:700;letter-spacing:-0.5px;background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+  .count{font-size:0.85rem;color:var(--muted)}
+  main{max-width:900px;margin:0 auto;padding:32px 24px 80px}
+  .video-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;margin-bottom:24px;transition:border-color 0.2s,box-shadow 0.2s;}
+  .video-card:hover{border-color:var(--accent);box-shadow:0 4px 24px rgba(108,99,255,0.15)}
+  .card-top{display:flex;gap:0}
+  .thumb-wrap{flex:0 0 240px;position:relative;overflow:hidden}
+  .thumb-wrap img{width:100%;height:100%;object-fit:cover;transition:transform 0.4s}
+  .video-card:hover .thumb-wrap img{transform:scale(1.05)}
+  .card-info{flex:1;padding:20px;display:flex;flex-direction:column;gap:10px}
+  .card-meta{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+  .ch-tag{font-size:0.72rem;font-weight:600;padding:3px 12px;background:linear-gradient(135deg,rgba(108,99,255,0.2),rgba(0,212,255,0.2));border:1px solid rgba(108,99,255,0.3);border-radius:999px;color:var(--accent2);}
+  .date-tag{font-size:0.72rem;color:var(--muted)}
+  .no-transcript{font-size:0.68rem;padding:2px 8px;background:rgba(255,180,0,0.12);border:1px solid rgba(255,180,0,0.25);border-radius:999px;color:#ffa500;}
+  .video-title{font-size:1rem;font-weight:600;line-height:1.4}
+  .yt-link{display:inline-flex;align-items:center;gap:5px;font-size:0.8rem;color:var(--accent);text-decoration:none;transition:color 0.2s;}
+  .yt-link:hover{color:var(--accent2)}
+  
+  .nlm-btn{display:inline-flex;align-items:center;gap:5px;font-size:0.8rem;color:#fff;
+    background:rgba(108,99,255,0.2);border:1px solid rgba(108,99,255,0.4);border-radius:8px;
+    padding:4px 12px;cursor:pointer;font-family:inherit;transition:all 0.2s;margin-left:8px;}
+  .nlm-btn:hover{background:rgba(108,99,255,0.45);}
+  .nlm-btn.copied{background:rgba(0,200,100,0.2);border-color:rgba(0,200,100,0.4);color:#00c864;}
+
+  .summary-section{border-top:1px solid var(--border);background:var(--surface2);padding:20px 24px;font-size:0.85rem;line-height:1.7;color:#c5cad8;}
+  .summary-section h2{font-size:0.82rem;color:var(--accent2);margin:12px 0 4px}
+  .summary-section h2:first-child{margin-top:0}
+  .summary-section ul{padding-left:18px}
+  .summary-section li{margin-bottom:5px}
+  .transcript-wrap{border-top:1px solid var(--border);padding:14px 24px;background:#0c1220}
+  .transcript-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:0}
+  .transcript-toggle{background:none;border:none;color:var(--muted);font-size:0.8rem;cursor:pointer;font-family:inherit;display:flex;align-items:center;gap:4px;padding:0;transition:color 0.2s;}
+  .transcript-toggle:hover{color:var(--text)}
+  .copy-btn{background:rgba(108,99,255,0.1);border:1px solid rgba(108,99,255,0.3);border-radius:8px;color:var(--accent2);font-size:0.72rem;padding:4px 12px;cursor:pointer;font-family:inherit;transition:all 0.2s;}
+  .copy-btn:hover{background:rgba(108,99,255,0.25);color:#fff}
+  .transcript-box{display:none;margin-top:10px;background:#080d18;border:1px solid var(--border);border-radius:10px;padding:12px 14px;font-size:0.78rem;line-height:1.75;color:#8a95aa;max-height:260px;overflow-y:auto;white-space:pre-wrap;word-break:break-word;}
+  .transcript-box.visible{display:block}
+  footer{text-align:center;padding:24px;font-size:0.75rem;color:var(--muted);border-top:1px solid var(--border)}
+  @media(max-width:640px){.card-top{flex-direction:column}.thumb-wrap{flex:none;height:200px}header{padding:16px}main{padding:16px 12px 60px}}
+</style>
+</head>
+<body>
+
+<header>
+  <a class="nav-back" href="../index.html">← 대시보드로</a>
+  <div>
+    <div class="date-badge">2026-09-19</div>
+    <div class="count">1개 영상</div>
+  </div>
+  <div style="font-size:0.75rem;color:var(--muted)">2026-09-20 06:01 생성</div>
+</header>
+
+<main>
+
+  <article class="video-card">
+    <div class="card-top">
+      <a class="thumb-wrap" href="https://www.youtube.com/watch?v=9KOtMsZ9I28" target="_blank" rel="noopener">
+        <img src="https://i.ytimg.com/vi/9KOtMsZ9I28/hqdefault.jpg" alt="How to Build Codex Skills Better than 99% of People" loading="lazy"/>
+      </a>
+      <div class="card-info">
+        <div class="card-meta">
+          <span class="ch-tag">Nate Herk</span>
+          <span class="date-tag">2026-09-19</span>
+          
+        </div>
+        <div class="video-title">How to Build Codex Skills Better than 99% of People</div>
+        <div style="display:flex;align-items:center;flex-wrap:wrap;gap:4px;margin-top:auto">
+          <a class="yt-link" href="https://www.youtube.com/watch?v=9KOtMsZ9I28" target="_blank" rel="noopener">↗ 유튜브에서 보기</a>
+          <button class="nlm-btn" data-url="https://www.youtube.com/watch?v=9KOtMsZ9I28">📓 NotebookLM</button>
+        </div>
+      </div>
+    </div>
+    <div class="summary-section">
+      <h2>핵심 요약</h2>
+<p>AI 에이전트의 스킬(Skill)은 원하는 결과물을 일관되게 만들어내기 위한 '레시피(마크다운 지침서)'와 같다.</p>
+<p>스킬을 제대로 구축하려면 '역공학(Reverse Engineering)' 방식을 적용해 최종 완료 형태(Output)를 먼저 정의해야 한다.</p>
+<p>이미 성공적으로 완성된 결과물을 기준으로 과정을 거꾸로 추적해 레시피를 작성해야 에이전트가 엉뚱한 결과물을 내지 않고 의도대로 작업한다.</p>
+<h2>주요 포인트</h2>
+<ul>
+<li>**스킬의 본질**: 스킬은 에이전트가 작업을 일관되게 수행하도록 작업 프로세스를 마크다운 문서로 코드화한 레시피다.</li>
+<li>**모호한 지시의 문제점**: 단순히 "치킨 만들어줘"라고 요청하면 원하는 요리(치킨 파마산) 대신 엉뚱한 것(치킨 샌드위치)이 나올 수 있어 결과물 불일치가 발생한다.</li>
+<li>**역공학(Reverse Engineer) 방식**: 원하는 최종 결과물(Excel 보고서 등)을 먼저 제시하고, 해당 결과물에 들어간 데이터·계산·서식 과정을 역추적해 스킬을 만든다.</li>
+<li>**스킬 구축의 기준점(North Star)**: 최종 형태를 명확히 정의하고 역으로 단계를 밟아가야 사용자와 에이전트 간의 목표 싱크가 완벽하게 맞춰진다.</li>
+</ul>
+    </div>
+  <div class="transcript-wrap">
+    <div class="transcript-header">
+      <button class="transcript-toggle" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('visible')">
+        <span class="arr">▼</span> 원문 자막
+      </button>
+      <button class="copy-btn" onclick="var b=this,t=b.nextElementSibling||b;navigator.clipboard.writeText(document.querySelector('#tr-9KOtMsZ9I28').textContent).then(()=>{b.textContent='복사됨';setTimeout(()=>b.textContent='복사',2000)})">복사</button>
+    </div>
+    <pre class="transcript-box" id="tr-9KOtMsZ9I28">Today, I've got this proven six-step process for building codec skills better than 99% of people. So, let's not waste any time and just get straight into this one. All right, so these are the six steps that I'm going to go over. I'm going to explain each of these and tell you why they're so important and then we're going to get into Codex and actually try some of the stuff out. And real quick before we get started, I'm going to talk about what actually is a skill. So, if you already know what a skill is, then just go ahead and skip past this part. But for those of you who need a refresher, here we go. So, I'm going to use my chocolate chip pancake analogy. Let's say we have this chef and this chef makes the most amazing chocolate chip pancakes and you want to know how to make those. This is essentially the output that you're looking for. The way that you would be able to copy this chef is by looking at the recipe that the chef used or the recipe that the chef made. So the chef gives you the recipe. This is you. And now you're able to pretty much make the exact same output, the really, you know, popular famous chocolate chip pancakes because you followed the recipe. So this recipe is basically the skill. This is essentially the skill.mmd file which means a markdown file. It's just a simple language. It just means that inside of the skill file there are like pound signs and asterisks to indicate like bullet points and headers and things like that. So it's it's just natural language. But then the agent is basically able to take this skill file and just use it so that if you say, "Hey, Mr. AI agent, you know, make me those chocolate chip pancakes." It wouldn't have to be like, "Okay, well, let me just do some research on how to make them. And I don't know exactly what kind of pancakes Nate wants. I don't know how big they should be." So what I'll do is I'll just follow this skill. I'll follow the recipe and now I get the same output that Nate's looking for and I get it consistently the same every single time because it's all documented for me right here. And these can be really simple. It can be a simple prompt like, hey, you know, help me turn this email into something that's more professional or something that sounds like me and maybe that's like my nate email skill. But it could also be complicated processes like doing research on the market and analyzing, you know, 50 stocks and telling you which one to buy. So really, it's whenever you want to basically like codify some sort of process that you do and so that you can delegate that process to an agent and then you turn it into a skill and now your agent can use those skills. All right, so now that that is out of the way, let's start with number one up here where we have reverse engineer. So the whole idea with reverse engineering your skills is basically that you want to start with an output. You want to start with what is the definition of done? What are you actually looking for? Because let's say you ask your agent here for chicken, for example, and you actually want like chicken parmesan on a bed of pasta, but because you just said chicken, the agent might interpret that a little bit differently and make you a chicken sandwich. And then next time you ask for chicken, it might make you, you know, chicken thighs. It doesn't actually know specifically what you want. So if you start with an output and you have, you know, essentially this chicken parmesan and you say, "Okay, let's reverse engineer this food and see what went into it, how long we cooked it, how did we get here?" And that's how you build the recipe. So, for example, if you wanted to build a skill for the end of the week report, you've got certain columns in your Excel sheet. You've got certain calculations that were made, it's way easier to give the agent that Excel sheet to give it the final deliverable and say, "Hey, this is an output that is really good and this is what I want to build a skill for so that you understand how to take some raw input and turn it into this output that I have already told you that I like and this is what we're looking for every time." And then it can basically walk you backwards through that process. Okay, what data did you look at? where did you get it from? How did you calculate it? Where did you format it? You answer those questions and then you have a version of a skill that already knows sort of like the north star that it's building towards. I think it's so much easier to run the process, get the output and say, "Okay, let's turn that into a skill." Rather than saying, "Hey, build me a skill for building a YouTube dashboard." And then you might have this vision and your agent might have a completely different vision. And then you're going to get frustrated when it delivers you a chicken sandwich and you actually wanted chicken parm. Now remember, all of these concepts I'm going to, you know, bring back together when we actually hop into Codex and I show you </pre>
+  </div>
+  </article>
+</main>
+
+<footer>유튜브 구독 정리 · agy 요약 · 2026-09-20 06:01</footer>
+
+
+<script>
+document.querySelectorAll('.nlm-btn').forEach(function(btn){
+  btn.addEventListener('click',function(){
+    navigator.clipboard.writeText('/notebooklm '+btn.dataset.url).then(function(){
+      var orig=btn.innerHTML;btn.innerHTML='✓ 복사됨';btn.classList.add('copied');
+      setTimeout(function(){btn.innerHTML=orig;btn.classList.remove('copied');},2000);
+    });
+  });
+});
+</script>
+
+</body>
+</html>
